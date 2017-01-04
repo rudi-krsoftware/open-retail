@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.Bll.Service", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.Bll.Service.UnitTest", "OpenRetail.Bll.Service.UnitTest\OpenRetail.Bll.Service.UnitTest.csproj", "{A96A2C8C-B335-4B27-A11A-CF0098E9AB12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.T4Generator", "OpenRetail.T4Generator\OpenRetail.T4Generator.csproj", "{EC5DAD4C-E1FC-4178-9594-56D21E945E25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{A96A2C8C-B335-4B27-A11A-CF0098E9AB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A96A2C8C-B335-4B27-A11A-CF0098E9AB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A96A2C8C-B335-4B27-A11A-CF0098E9AB12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC5DAD4C-E1FC-4178-9594-56D21E945E25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC5DAD4C-E1FC-4178-9594-56D21E945E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC5DAD4C-E1FC-4178-9594-56D21E945E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC5DAD4C-E1FC-4178-9594-56D21E945E25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
