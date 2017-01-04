@@ -52,6 +52,7 @@
     <Compile Include="AlasanPenyesuaianStokRepository.cs" />
     <Compile Include="DapperContext.cs" />
     <Compile Include="JabatanRepository.cs" />
+    <Compile Include="JenisPengeluaranRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>

@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="AlasanPenyesuaianStokBllTest.cs" />
     <Compile Include="JabatanBllTest.cs" />
+    <Compile Include="JenisPengeluaranBllTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

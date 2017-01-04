@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="AlasanPenyesuaianStok.cs" />
     <Compile Include="Jabatan.cs" />
+    <Compile Include="JenisPengeluaran.cs" />
     <Compile Include="ModelExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationError.cs" />

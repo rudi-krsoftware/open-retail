@@ -42,6 +42,7 @@
     <Compile Include="IAlasanPenyesuaianStokBll.cs" />
     <Compile Include="IBaseBll.cs" />
     <Compile Include="IJabatanBll.cs" />
+    <Compile Include="IJenisPengeluaranBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
