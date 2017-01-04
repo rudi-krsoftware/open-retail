@@ -30,7 +30,8 @@ namespace OpenRetail.Repository.Service
     {
         private IDapperContext _context;
         private IAlasanPenyesuaianStokRepository _alasanpenyesuaianstokRepository;
-        
+        private IJabatanRepository _jabatanRepository;
+
         public UnitOfWork(IDapperContext context)
         {
             this._context = context;
@@ -41,5 +42,9 @@ namespace OpenRetail.Repository.Service
             get { return _alasanpenyesuaianstokRepository ?? (_alasanpenyesuaianstokRepository = new AlasanPenyesuaianStokRepository(_context)); }
         }
 
+        public IJabatanRepository JabatanRepository
+        {
+            get { return _jabatanRepository ?? (_jabatanRepository = new JabatanRepository(_context)); }
+        }
     }
 }     

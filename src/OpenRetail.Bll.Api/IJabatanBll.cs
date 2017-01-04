@@ -21,12 +21,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using OpenRetail.Model;
  
-namespace OpenRetail.Repository.Api
+namespace OpenRetail.Bll.Api
 {    
-    public interface IUnitOfWork
+    public interface IJabatanBll : IBaseBll<Jabatan>
     {
-        IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
-        IJabatanRepository JabatanRepository { get; }                
+        Jabatan GetByID(string id);    
+        IList<Jabatan> GetByName(string name);
+
+		int Save(Jabatan obj, ref ValidationError validationError);
+		int Update(Jabatan obj, ref ValidationError validationError);
     }
 }     
