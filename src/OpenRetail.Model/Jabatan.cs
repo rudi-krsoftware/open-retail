@@ -31,8 +31,8 @@ namespace OpenRetail.Model
 	[Table("m_jabatan")]
     public class Jabatan
     {
-		[Display(Name = "jabatan_id")]
-		[ExplicitKey]
+        [ExplicitKey]
+		[Display(Name = "jabatan_id")]		
 		public string jabatan_id { get; set; }
 		
 		[Display(Name = "Jabatan")]
@@ -40,9 +40,6 @@ namespace OpenRetail.Model
 		
 		[Display(Name = "Keterangan")]
 		public string keterangan { get; set; }
-		
-		[Write(false)]
-		public string table_name { get { return "m_jabatan"; } }
 	}
 
     public class JabatanValidator : AbstractValidator<Jabatan>

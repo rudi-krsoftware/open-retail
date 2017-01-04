@@ -31,15 +31,12 @@ namespace OpenRetail.Model
 	[Table("m_alasan_penyesuaian_stok")]
     public class AlasanPenyesuaianStok
     {
-		[Display(Name = "alasan_penyesuaian_stok_id")]
-		[ExplicitKey]
+        [ExplicitKey]
+		[Display(Name = "alasan_penyesuaian_stok_id")]		
 		public string alasan_penyesuaian_stok_id { get; set; }
 		
 		[Display(Name = "Alasan")]
 		public string alasan { get; set; }
-		
-		[Write(false)]
-		public string table_name { get { return "m_alasan_penyesuaian_stok"; } }
 	}
 
     public class AlasanPenyesuaianStokValidator : AbstractValidator<AlasanPenyesuaianStok>
