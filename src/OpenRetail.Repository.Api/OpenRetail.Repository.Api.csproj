@@ -39,7 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAlasanPenyesuaianStokRepository.cs" />
+    <Compile Include="IBaseRepository.cs" />
+    <Compile Include="IDapperContext.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">
+      <Project>{6b9cabad-1a6c-4323-8548-bd5f3c12613c}</Project>
+      <Name>OpenRetail.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

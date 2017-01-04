@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\FluentValidation.6.2.1.0\lib\portable-net40+sl50+wp80+win8+wpa81\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +43,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlasanPenyesuaianStokBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenRetail.Bll.Api\OpenRetail.Bll.Api.csproj">
+      <Project>{24e6fae6-2f30-4b86-bbe7-4c88fb631956}</Project>
+      <Name>OpenRetail.Bll.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">
+      <Project>{6b9cabad-1a6c-4323-8548-bd5f3c12613c}</Project>
+      <Name>OpenRetail.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenRetail.Repository.Api\OpenRetail.Repository.Api.csproj">
+      <Project>{981af3c6-f601-45ad-9f33-abbc7cc1f00f}</Project>
+      <Name>OpenRetail.Repository.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenRetail.Repository.Service\OpenRetail.Repository.Service.csproj">
+      <Project>{ffef9dee-c608-4160-baec-1723185677f6}</Project>
+      <Name>OpenRetail.Repository.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
