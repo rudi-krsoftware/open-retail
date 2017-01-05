@@ -6,7 +6,7 @@ OpenRetail adalah perangkat lunak open source yang dikembangkan khusus untuk bid
 Prerequisites
 -----------------------------------------------
 
-* Visual Studio Community 2013 atau versi yang lebih tinggi
+* [Visual Studio Community 2013](https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs) atau versi yang lebih tinggi
 * [.NET Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=17718) atau versi yang lebih tinggi
     * Windows XP SP3, Windows Vista, Windows 7, Windows 8 atau versi yang lebih tinggi
     * Windows Server 2008 R2, Windows Server 2008 SP2, Windows Server 2012 atau versi yang lebih tinggi    
@@ -23,3 +23,10 @@ Prerequisites
     * [Crystal Reports .NET](http://downloads.businessobjects.com/akdlm/cr4vs2010/CRforVS_13_0_15.exe) versi 13.0.15
 
 * Database [PostgreSQL](https://www.postgresql.org/) versi 9.4.1 atau yang lebih tinggi
+
+Lisensi
+-----------------------------------------------
+
+Source code OpenRetail menggunakan lisensi [Apache](http://www.apache.org/licenses/LICENSE-2.0). Lisensi [Apache](http://www.apache.org/licenses/LICENSE-2.0) adalah lisensi untuk perangkat lunak bebas guna yang ditulis oleh Apache Software Foundation (ASF). Lisensi ini memberikan hak penggunaan paten secara langsung dari si pembuat perangkat lunak kepada pengguna.
+
+Pada perangkat lunak berlisensi ini, pengguna boleh menggunakannya untuk tujuan komersil, pengguna boleh mendistribusikan ulang, memodifikasi, menggunakan paten, dan boleh menerapkan lisensi yang berbeda dari perangkat lunak asal. Pengguna juga boleh menggunakan dan memodifikasi perangkat lunak secara pribadi tanpa ada kewajiban untuk mendistribusikan ulang. Pengguna harus menyertakan lisensi ini pada perangkat lunak turunan yang didistribusikan, menyertakan hak cipta asli si pembuat, serta menyertakan perubahan apa saja yang dilakukan (apabila dimodifikasi). Pengguna tidak boleh menggunakan trademark, logo, atau mengatasnamakan si pembuat dalam proses distribusi ulang dan tidak punya hak untuk menuntut si pembuat ketika terjadi kerusakan pada perangkat lunak tersebut.
