@@ -22,8 +22,8 @@ using System.Data.Common;
 using System.Configuration;
 using OpenRetail.Repository.Api;
 using Dapper;
- 
-namespace OpenRetail.Repository.Api
+
+namespace OpenRetail.Repository.Service
 {    
     public class DapperContext : IDapperContext
     {
