@@ -21,14 +21,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using OpenRetail.Model;
  
 namespace OpenRetail.Repository.Api
-{    
-    public interface IUnitOfWork
+{        
+    public interface IGolonganRepository : IBaseRepository<Golongan>
     {
-        IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
-        IJabatanRepository JabatanRepository { get; }
-        IJenisPengeluaranRepository JenisPengeluaranRepository { get; }
-        IGolonganRepository GolonganRepository { get; }                 
+		Golongan GetByID(string id);            
+        IList<Golongan> GetByName(string name);
     }
 }     

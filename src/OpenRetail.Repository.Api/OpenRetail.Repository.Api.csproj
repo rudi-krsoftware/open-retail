@@ -42,6 +42,7 @@
     <Compile Include="IAlasanPenyesuaianStokRepository.cs" />
     <Compile Include="IBaseRepository.cs" />
     <Compile Include="IDapperContext.cs" />
+    <Compile Include="IGolonganRepository.cs" />
     <Compile Include="IJabatanRepository.cs" />
     <Compile Include="IJenisPengeluaranRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
