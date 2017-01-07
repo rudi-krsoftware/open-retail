@@ -1,0 +1,153 @@
+/**
+ * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ *
+ * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using OpenRetail.Model;
+using OpenRetail.Bll.Api;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Service;
+ 
+namespace OpenRetail.Bll.Service
+{    
+    public class ProdukBll : IProdukBll
+    {
+		private ProdukValidator _validator;
+
+		public ProdukBll()
+        {
+            _validator = new ProdukValidator();
+        }
+
+        public Produk GetByID(string id)
+        {
+            Produk obj = null;
+            
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context);
+                obj = uow.ProdukRepository.GetByID(id);
+            }
+
+            return obj;
+        }
+
+        public IList<Produk> GetByName(string name)
+        {
+            IList<Produk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context);
+                oList = uow.ProdukRepository.GetByName(name);
+            }
+
+            return oList;
+        }
+
+        public IList<Produk> GetAll()
+        {
+            IList<Produk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context);
+                oList = uow.ProdukRepository.GetAll();
+            }
+
+            return oList;
+        }
+
+		public int Save(Produk obj)
+        {
+            var result = 0;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context);
+                result = uow.ProdukRepository.Save(obj);
+            }
+
+            return result;
+        }
+
+        public int Save(Produk obj, ref ValidationError validationError)
+        {
+			var validatorResults = _validator.Validate(obj);
+
+            if (!validatorResults.IsValid)
+            {
+                foreach (var failure in validatorResults.Errors)
+                {
+                    validationError.Message = failure.ErrorMessage;
+                    validationError.PropertyName = failure.PropertyName;
+                    return 0;
+                }
+            }
+
+            return Save(obj);
+        }
+
+		public int Update(Produk obj)
+        {
+            var result = 0;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context);
+                result = uow.ProdukRepository.Update(obj);
+            }
+
+            return result;
+        }
+
+        public int Update(Produk obj, ref ValidationError validationError)
+        {
+            var validatorResults = _validator.Validate(obj);
+
+            if (!validatorResults.IsValid)
+            {
+                foreach (var failure in validatorResults.Errors)
+                {
+                    validationError.Message = failure.ErrorMessage;
+                    validationError.PropertyName = failure.PropertyName;
+                    return 0;
+                }
+            }
+
+            return Update(obj);
+        }
+
+        public int Delete(Produk obj)
+        {
+            var result = 0;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context);
+                result = uow.ProdukRepository.Delete(obj);
+            }
+
+            return result;
+        }
+    }
+}     
