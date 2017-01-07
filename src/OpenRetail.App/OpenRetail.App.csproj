@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenRetail.App</RootNamespace>
-    <AssemblyName>OpenRetail.App</AssemblyName>
+    <AssemblyName>OpenRetail</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -56,6 +56,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Helper\KeyPressHelper.cs" />
     <Compile Include="Helper\MsgHelper.cs" />
     <Compile Include="Program.cs" />

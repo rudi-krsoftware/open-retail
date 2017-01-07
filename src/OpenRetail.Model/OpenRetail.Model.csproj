@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="AlasanPenyesuaianStok.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Golongan.cs" />
