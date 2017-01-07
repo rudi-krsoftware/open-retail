@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlasanPenyesuaianStokRepository.cs" />
+    <Compile Include="CustomerRepository.cs" />
     <Compile Include="DapperContext.cs" />
     <Compile Include="GolonganRepository.cs" />
     <Compile Include="JabatanRepository.cs" />

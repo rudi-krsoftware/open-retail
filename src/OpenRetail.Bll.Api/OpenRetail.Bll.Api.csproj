@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="IAlasanPenyesuaianStokBll.cs" />
     <Compile Include="IBaseBll.cs" />
+    <Compile Include="ICustomerBll.cs" />
     <Compile Include="IGolonganBll.cs" />
     <Compile Include="IJabatanBll.cs" />
     <Compile Include="IJenisPengeluaranBll.cs" />

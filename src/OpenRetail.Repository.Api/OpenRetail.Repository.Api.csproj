@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="IAlasanPenyesuaianStokRepository.cs" />
     <Compile Include="IBaseRepository.cs" />
+    <Compile Include="ICustomerRepository.cs" />
     <Compile Include="IDapperContext.cs" />
     <Compile Include="IGolonganRepository.cs" />
     <Compile Include="IJabatanRepository.cs" />
