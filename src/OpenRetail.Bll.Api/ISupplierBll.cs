@@ -21,17 +21,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using OpenRetail.Model;
  
-namespace OpenRetail.Repository.Api
+namespace OpenRetail.Bll.Api
 {    
-    public interface IUnitOfWork
+    public interface ISupplierBll : IBaseBll<Supplier>
     {
-        IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
-        IJabatanRepository JabatanRepository { get; }
-        IJenisPengeluaranRepository JenisPengeluaranRepository { get; }
-        IGolonganRepository GolonganRepository { get; }
-        IProdukRepository ProdukRepository { get; }
-        ICustomerRepository CustomerRepository { get; }
-        ISupplierRepository SupplierRepository { get; }                
+        Supplier GetByID(string id);    
+        IList<Supplier> GetByName(string name);
+
+		int Save(Supplier obj, ref ValidationError validationError);
+		int Update(Supplier obj, ref ValidationError validationError);
     }
 }     

@@ -47,6 +47,7 @@
     <Compile Include="IJabatanRepository.cs" />
     <Compile Include="IJenisPengeluaranRepository.cs" />
     <Compile Include="IProdukRepository.cs" />
+    <Compile Include="ISupplierRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

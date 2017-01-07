@@ -46,6 +46,7 @@
     <Compile Include="IJabatanBll.cs" />
     <Compile Include="IJenisPengeluaranBll.cs" />
     <Compile Include="IProdukBll.cs" />
+    <Compile Include="ISupplierBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
