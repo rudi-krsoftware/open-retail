@@ -145,16 +145,16 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-            //try
-            //{
+            try
+            {
                 if (!(IsExist(obj.kode_produk) && obj.kode_produk != obj.kode_produk_old))
                 {
                     result = _context.db.Update<Produk>(obj) ? 1 : 0;
-                }                
-            //}
-            //catch
-            //{
-            //}
+                }
+            }
+            catch
+            {
+            }
 
             return result;
         }
