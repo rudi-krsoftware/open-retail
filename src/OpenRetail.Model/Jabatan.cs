@@ -52,7 +52,7 @@ namespace OpenRetail.Model
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
 			RuleFor(c => c.nama_jabatan).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
-            RuleFor(c => c.keterangan).Length(1, 100).WithMessage(msgError2);
+            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
 		}
 	}
 }
