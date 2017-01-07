@@ -50,10 +50,46 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.11.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\DockPanelSuite.2.12.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\KeyPressHelper.cs" />
+    <Compile Include="Helper\MsgHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI.Template\FrmLookupEmptyBody.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmLookupEmptyBody.Designer.cs">
+      <DependentUpon>FrmLookupEmptyBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmLookupStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmLookupStandard.Designer.cs">
+      <DependentUpon>FrmLookupStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmEntryStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmEntryStandard.Designer.cs">
+      <DependentUpon>FrmEntryStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmListEmptyBody.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmListEmptyBody.Designer.cs">
+      <DependentUpon>FrmListEmptyBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmListStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmListStandard.Designer.cs">
+      <DependentUpon>FrmListStandard.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\AdvancedTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -67,6 +103,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI.Template\FrmLookupEmptyBody.resx">
+      <DependentUpon>FrmLookupEmptyBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmLookupStandard.resx">
+      <DependentUpon>FrmLookupStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmEntryStandard.resx">
+      <DependentUpon>FrmEntryStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmListEmptyBody.resx">
+      <DependentUpon>FrmListEmptyBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmListStandard.resx">
+      <DependentUpon>FrmListStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -83,8 +135,21 @@
     <Folder Include="Main\" />
     <Folder Include="Pengaturan\" />
     <Folder Include="Referensi\" />
-    <Folder Include="Template\" />
     <Folder Include="Transaksi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenRetail.Bll.Api\OpenRetail.Bll.Api.csproj">
+      <Project>{24e6fae6-2f30-4b86-bbe7-4c88fb631956}</Project>
+      <Name>OpenRetail.Bll.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenRetail.Bll.Service\OpenRetail.Bll.Service.csproj">
+      <Project>{2a5e29ae-358a-4129-b28a-9a1425a90de0}</Project>
+      <Name>OpenRetail.Bll.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">
+      <Project>{6b9cabad-1a6c-4323-8548-bd5f3c12613c}</Project>
+      <Name>OpenRetail.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
