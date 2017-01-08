@@ -51,7 +51,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(326, 41);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(403, 41);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // pnlHeader
@@ -62,7 +62,7 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHeader.Location = new System.Drawing.Point(3, 3);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(320, 35);
+            this.pnlHeader.Size = new System.Drawing.Size(397, 35);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblHeader
@@ -85,7 +85,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(326, 41);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(403, 41);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // pnlFooter
@@ -97,14 +97,14 @@
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFooter.Location = new System.Drawing.Point(3, 3);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(320, 35);
+            this.pnlFooter.Size = new System.Drawing.Size(397, 35);
             this.pnlFooter.TabIndex = 0;
             // 
             // btnSimpan
             // 
             this.btnSimpan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSimpan.Location = new System.Drawing.Point(153, 6);
+            this.btnSimpan.Location = new System.Drawing.Point(230, 6);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.Size = new System.Drawing.Size(75, 23);
             this.btnSimpan.TabIndex = 0;
@@ -116,7 +116,7 @@
             // 
             this.btnSelesai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelesai.Location = new System.Drawing.Point(234, 6);
+            this.btnSelesai.Location = new System.Drawing.Point(311, 6);
             this.btnSelesai.Name = "btnSelesai";
             this.btnSelesai.Size = new System.Drawing.Size(75, 23);
             this.btnSelesai.TabIndex = 1;
@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 367);
+            this.ClientSize = new System.Drawing.Size(403, 367);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

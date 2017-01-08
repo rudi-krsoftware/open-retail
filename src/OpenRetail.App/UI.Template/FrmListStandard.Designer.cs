@@ -106,6 +106,7 @@
             this.btnSelesai.TabIndex = 3;
             this.btnSelesai.Text = "Selesai";
             this.btnSelesai.UseVisualStyleBackColor = true;
+            this.btnSelesai.Click += new System.EventHandler(this.btnSelesai_Click);
             // 
             // btnHapus
             // 

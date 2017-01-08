@@ -133,5 +133,10 @@ namespace OpenRetail.App.UI.Template
         }
 
         #endregion
+
+        private void btnSelesai_Click(object sender, EventArgs e)
+        {
+            Selesai();
+        }
     }
 }
