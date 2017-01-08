@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(820, 441);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "FrmListGolongan";
-            this.Text = "FrmGolongan";
+            this.Text = "FrmListGolongan";
             this.ResumeLayout(false);
 
         }

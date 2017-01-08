@@ -39,6 +39,8 @@ namespace OpenRetail.App.UserControl
 
     public class AdvancedTextbox : TextBox
     {
+        private static readonly int DEFAULT_MAX_LENGTH = 20;
+
         private Color _enterFocusColor = Color.White;
         private Color _leaveFocusColor = Color.White;
         private EConversion _conversion;
@@ -57,8 +59,8 @@ namespace OpenRetail.App.UserControl
 
             set
             {
-                if (this._isThousandSeparator && value > 20)
-                    value = 20;
+                if (this._isThousandSeparator && value > DEFAULT_MAX_LENGTH)
+                    value = DEFAULT_MAX_LENGTH;
                 base.MaxLength = value;
             }
         }
@@ -102,7 +104,7 @@ namespace OpenRetail.App.UserControl
                 if (_isThousandSeparator)
                 {
                     _isNumericOnly = true;
-                    this.MaxLength = 15;
+                    this.MaxLength = DEFAULT_MAX_LENGTH;
                     this.TextAlign = HorizontalAlignment.Right;
                     this.Text = "0";
                 }

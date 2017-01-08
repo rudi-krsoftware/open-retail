@@ -19,7 +19,7 @@ namespace OpenRetail.App.Referensi
 {
     public partial class FrmListGolongan : FrmListStandard, IListener
     {
-        private IGolonganBll _bll; // deklarsi objek business logic layer 
+        private IGolonganBll _bll; // deklarasi objek business logic layer 
         private IList<Golongan> _listOfGolongan = new List<Golongan>();
 
         public FrmListGolongan(string header)
@@ -55,12 +55,12 @@ namespace OpenRetail.App.Referensi
 
                         if (rowIndex < _listOfGolongan.Count)
                         {
-                            var obj = _listOfGolongan[rowIndex];
+                            var golongan = _listOfGolongan[rowIndex];
 
                             switch (e.ColIndex)
                             {
                                 case 2:
-                                    e.Style.CellValue = obj.nama_golongan;
+                                    e.Style.CellValue = golongan.nama_golongan;
                                     break;
 
                                 default:
@@ -140,15 +140,15 @@ namespace OpenRetail.App.Referensi
 
         public void Ok(object sender, bool isNewData, object data)
         {
-            var obj = (Golongan)data;
+            var golongan = (Golongan)data;
 
             if (isNewData)
             {
-                GridListControlHelper.AddObject<Golongan>(this.gridList, _listOfGolongan, obj);
+                GridListControlHelper.AddObject<Golongan>(this.gridList, _listOfGolongan, golongan);
                 ResetButton();
             }
             else
-                GridListControlHelper.UpdateObject<Golongan>(this.gridList, _listOfGolongan, obj);
+                GridListControlHelper.UpdateObject<Golongan>(this.gridList, _listOfGolongan, golongan);
         }
     }
 }

@@ -66,7 +66,7 @@
             this.txtGolongan.AutoEnter = false;
             this.txtGolongan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
             this.txtGolongan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtGolongan.EnterFocusColor = System.Drawing.Color.White;
+            this.txtGolongan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtGolongan.LeaveFocusColor = System.Drawing.Color.White;
             this.txtGolongan.LetterOnly = false;
             this.txtGolongan.Location = new System.Drawing.Point(62, 3);

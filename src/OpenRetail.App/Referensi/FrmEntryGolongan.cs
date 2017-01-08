@@ -16,7 +16,7 @@ namespace OpenRetail.App.Referensi
 {
     public partial class FrmEntryGolongan : FrmEntryStandard
     {
-        private IGolonganBll _bll = null; // deklarsi objek business logic layer 
+        private IGolonganBll _bll = null; // deklarasi objek business logic layer 
         private Golongan _golongan = null;
         private bool _isNewData = false;
 
