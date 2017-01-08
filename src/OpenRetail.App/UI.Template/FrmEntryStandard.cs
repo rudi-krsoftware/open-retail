@@ -112,6 +112,7 @@ namespace OpenRetail.App.UI.Template
                     {
                         case "AdvancedTextbox":
                             ((AdvancedTextbox)ctl).Focus();
+                            ((AdvancedTextbox)ctl).SelectAll();
                             break;
                         
                         case "ComboBox":
@@ -124,10 +125,12 @@ namespace OpenRetail.App.UI.Template
 
                         case "MaskedTextBox":
                             ((MaskedTextBox)ctl).Focus();
+                            ((MaskedTextBox)ctl).SelectAll();
                             break;
 
                         case "TextBox":
                             ((TextBox)ctl).Focus();
+                            ((TextBox)ctl).SelectAll();
                             break;
 
                         default:
