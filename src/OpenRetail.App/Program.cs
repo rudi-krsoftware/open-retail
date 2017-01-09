@@ -17,7 +17,7 @@ namespace OpenRetail.App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmListSupplier("Supplier"));
+            //Application.Run(new FrmListJabatan("Jabatan"));
         }
     }
 }

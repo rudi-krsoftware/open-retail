@@ -125,6 +125,12 @@
     <Compile Include="Helper\NumberHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Referensi\FrmEntryJabatan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmEntryJabatan.Designer.cs">
+      <DependentUpon>FrmEntryJabatan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Referensi\FrmEntrySupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,12 @@
     </Compile>
     <Compile Include="Referensi\FrmEntryGolongan.Designer.cs">
       <DependentUpon>FrmEntryGolongan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Referensi\FrmListJabatan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmListJabatan.Designer.cs">
+      <DependentUpon>FrmListJabatan.cs</DependentUpon>
     </Compile>
     <Compile Include="Referensi\FrmListSupplier.cs">
       <SubType>Form</SubType>
@@ -204,6 +216,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Referensi\FrmEntryJabatan.resx">
+      <DependentUpon>FrmEntryJabatan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntrySupplier.resx">
       <DependentUpon>FrmEntrySupplier.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntryGolongan.resx">
       <DependentUpon>FrmEntryGolongan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Referensi\FrmListJabatan.resx">
+      <DependentUpon>FrmListJabatan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmListSupplier.resx">
       <DependentUpon>FrmListSupplier.cs</DependentUpon>
