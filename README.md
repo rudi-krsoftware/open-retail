@@ -5,7 +5,6 @@ OpenRetail adalah perangkat lunak open source yang dikembangkan khusus untuk bid
 
 Prerequisites
 -----------------------------------------------
-
 * [Visual Studio Community 2013](https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs) atau versi yang lebih tinggi
 * [.NET Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=17718) atau versi yang lebih tinggi
     * Windows XP SP3, Windows Vista, Windows 7, Windows 8 atau versi yang lebih tinggi
@@ -23,6 +22,12 @@ Prerequisites
     * [Crystal Reports .NET](http://downloads.businessobjects.com/akdlm/cr4vs2010/CRforVS_13_0_15.exe) versi 13.0.15
 
 * Database [PostgreSQL](https://www.postgresql.org/) versi 9.4.1 atau yang lebih tinggi
+
+Tool Development Lainnya
+-----------------------------------------------
+* [pgAdmin](https://www.pgadmin.org/) - PostgreSQL administration and management tools
+* [SQL Manager Lite for PostgreSQL](http://www.sqlmanager.net/products/postgresql/manager/download) - Database Management for PostgreSQL
+* [Liquibase](http://www.liquibase.org/) - Database Refactoring 
 
 Lisensi
 -----------------------------------------------
