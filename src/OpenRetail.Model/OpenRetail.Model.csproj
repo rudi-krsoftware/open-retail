@@ -61,6 +61,7 @@
     <Compile Include="Golongan.cs" />
     <Compile Include="Jabatan.cs" />
     <Compile Include="JenisPengeluaran.cs" />
+    <Compile Include="Karyawan.cs" />
     <Compile Include="ModelExtension.cs" />
     <Compile Include="Produk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

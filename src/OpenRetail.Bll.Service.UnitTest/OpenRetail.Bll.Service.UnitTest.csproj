@@ -78,6 +78,7 @@
     <Compile Include="GolonganBllTest.cs" />
     <Compile Include="JabatanBllTest.cs" />
     <Compile Include="JenisPengeluaranBllTest.cs" />
+    <Compile Include="KaryawanBllTest.cs" />
     <Compile Include="ProdukBllTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierBllTest.cs" />

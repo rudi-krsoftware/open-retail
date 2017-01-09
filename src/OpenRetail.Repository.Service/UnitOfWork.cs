@@ -36,6 +36,7 @@ namespace OpenRetail.Repository.Service
         private IProdukRepository _produkRepository;
         private ICustomerRepository _customerRepository;
         private ISupplierRepository _supplierRepository;
+        private IKaryawanRepository _karyawanRepository;
 
         public UnitOfWork(IDapperContext context)
         {
@@ -75,6 +76,11 @@ namespace OpenRetail.Repository.Service
         public ISupplierRepository SupplierRepository
         {
             get { return _supplierRepository ?? (_supplierRepository = new SupplierRepository(_context)); }
+        }
+
+        public IKaryawanRepository KaryawanRepository
+        {
+            get { return _karyawanRepository ?? (_karyawanRepository = new KaryawanRepository(_context)); }
         }
     }
 }     
