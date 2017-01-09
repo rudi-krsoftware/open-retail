@@ -125,6 +125,12 @@
     <Compile Include="Helper\NumberHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Referensi\FrmEntrySupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmEntrySupplier.Designer.cs">
+      <DependentUpon>FrmEntrySupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Referensi\FrmEntryCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,12 @@
     </Compile>
     <Compile Include="Referensi\FrmEntryGolongan.Designer.cs">
       <DependentUpon>FrmEntryGolongan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Referensi\FrmListSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmListSupplier.Designer.cs">
+      <DependentUpon>FrmListSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="Referensi\FrmListCustomer.cs">
       <SubType>Form</SubType>
@@ -192,11 +204,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Referensi\FrmEntrySupplier.resx">
+      <DependentUpon>FrmEntrySupplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntryCustomer.resx">
       <DependentUpon>FrmEntryCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntryGolongan.resx">
       <DependentUpon>FrmEntryGolongan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Referensi\FrmListSupplier.resx">
+      <DependentUpon>FrmListSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmListCustomer.resx">
       <DependentUpon>FrmListCustomer.cs</DependentUpon>
