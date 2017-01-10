@@ -21,20 +21,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using OpenRetail.Model;
  
-namespace OpenRetail.Repository.Api
+namespace OpenRetail.Bll.Api
 {    
-    public interface IUnitOfWork
+    public interface IBeliProdukBll : IBaseBll<BeliProduk>
     {
-        IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
-        IJabatanRepository JabatanRepository { get; }
-        IJenisPengeluaranRepository JenisPengeluaranRepository { get; }
-        IGolonganRepository GolonganRepository { get; }
-        IProdukRepository ProdukRepository { get; }
-        ICustomerRepository CustomerRepository { get; }
-        ISupplierRepository SupplierRepository { get; }
-        IKaryawanRepository KaryawanRepository { get; }
-        IBeliProdukRepository BeliProdukRepository { get; }
-        IPembayaranHutangProdukRepository PembayaranHutangProdukRepository { get; }                
+        string GetLastNota();
+        BeliProduk GetByID(string id);
+
+        IList<BeliProduk> GetAll(string name);
+        IList<BeliProduk> GetNotaSupplier(string id, string nota);
+        IList<BeliProduk> GetNotaKreditBySupplier(string id, bool isLunas);
+        IList<BeliProduk> GetByName(string name);
+        IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+        IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);
+
+        IList<ItemBeliProduk> GetItemBeli(string beliId);
+
+		int Save(BeliProduk obj, ref ValidationError validationError);
+		int Update(BeliProduk obj, ref ValidationError validationError);
     }
 }     

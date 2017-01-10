@@ -53,12 +53,14 @@
       <Link>VersionInfo.cs</Link>
     </Compile>
     <Compile Include="AlasanPenyesuaianStokRepository.cs" />
+    <Compile Include="BeliProdukRepository.cs" />
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="DapperContext.cs" />
     <Compile Include="GolonganRepository.cs" />
     <Compile Include="JabatanRepository.cs" />
     <Compile Include="JenisPengeluaranRepository.cs" />
     <Compile Include="KaryawanRepository.cs" />
+    <Compile Include="PembayaranHutangProdukRepository.cs" />
     <Compile Include="ProdukRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierRepository.cs" />

@@ -44,12 +44,14 @@
     </Compile>
     <Compile Include="IAlasanPenyesuaianStokRepository.cs" />
     <Compile Include="IBaseRepository.cs" />
+    <Compile Include="IBeliProdukRepository.cs" />
     <Compile Include="ICustomerRepository.cs" />
     <Compile Include="IDapperContext.cs" />
     <Compile Include="IGolonganRepository.cs" />
     <Compile Include="IJabatanRepository.cs" />
     <Compile Include="IJenisPengeluaranRepository.cs" />
     <Compile Include="IKaryawanRepository.cs" />
+    <Compile Include="IPembayaranHutangProdukRepository.cs" />
     <Compile Include="IProdukRepository.cs" />
     <Compile Include="ISupplierRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />

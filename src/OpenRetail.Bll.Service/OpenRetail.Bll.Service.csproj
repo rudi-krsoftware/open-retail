@@ -47,11 +47,13 @@
       <Link>VersionInfo.cs</Link>
     </Compile>
     <Compile Include="AlasanPenyesuaianStokBll.cs" />
+    <Compile Include="BeliProdukBll.cs" />
     <Compile Include="CustomerBll.cs" />
     <Compile Include="GolonganBll.cs" />
     <Compile Include="JabatanBll.cs" />
     <Compile Include="JenisPengeluaranBll.cs" />
     <Compile Include="KaryawanBll.cs" />
+    <Compile Include="PembayaranHutangProdukBll.cs" />
     <Compile Include="ProdukBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierBll.cs" />

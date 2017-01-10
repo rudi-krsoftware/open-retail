@@ -21,20 +21,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using OpenRetail.Model;
  
 namespace OpenRetail.Repository.Api
-{    
-    public interface IUnitOfWork
+{        
+    public interface IPembayaranHutangProdukRepository : IBaseRepository<PembayaranHutangProduk>
     {
-        IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
-        IJabatanRepository JabatanRepository { get; }
-        IJenisPengeluaranRepository JenisPengeluaranRepository { get; }
-        IGolonganRepository GolonganRepository { get; }
-        IProdukRepository ProdukRepository { get; }
-        ICustomerRepository CustomerRepository { get; }
-        ISupplierRepository SupplierRepository { get; }
-        IKaryawanRepository KaryawanRepository { get; }
-        IBeliProdukRepository BeliProdukRepository { get; }
-        IPembayaranHutangProdukRepository PembayaranHutangProdukRepository { get; }                
+        int Save(PembayaranHutangProduk obj, bool isSaveFromPembelian);
+        int Update(PembayaranHutangProduk obj, bool isUpdateFromPembelian);
+
+        string GetLastNota();
+		PembayaranHutangProduk GetByID(string id);
+        ItemPembayaranHutangProduk GetByBeliID(string id);
+        IList<PembayaranHutangProduk> GetByName(string name);
+        IList<PembayaranHutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);  
     }
 }     

@@ -44,11 +44,13 @@
     </Compile>
     <Compile Include="IAlasanPenyesuaianStokBll.cs" />
     <Compile Include="IBaseBll.cs" />
+    <Compile Include="IBeliProdukBll.cs" />
     <Compile Include="ICustomerBll.cs" />
     <Compile Include="IGolonganBll.cs" />
     <Compile Include="IJabatanBll.cs" />
     <Compile Include="IJenisPengeluaranBll.cs" />
     <Compile Include="IKaryawanBll.cs" />
+    <Compile Include="IPembayaranHutangProdukBll.cs" />
     <Compile Include="IProdukBll.cs" />
     <Compile Include="ISupplierBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
