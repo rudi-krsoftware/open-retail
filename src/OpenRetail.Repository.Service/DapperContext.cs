@@ -132,7 +132,7 @@ namespace OpenRetail.Repository.Service
             }            
         }
 
-		public int GetGeneratorIDByTable(string tableName)
+        private int GetGeneratorIDByTable(string tableName, IDbTransaction transaction = null)
         {
             int result = 0;
 
@@ -141,7 +141,7 @@ namespace OpenRetail.Repository.Service
                 var generatorName = tableName + "_" + tableName.Substring(2) + "_id_seq";
 
                 var strSql = String.Format("SELECT NEXTVAL('{0}')", generatorName);
-				result = _db.QuerySingleOrDefault<int>(strSql);
+				result = _db.QuerySingleOrDefault<int>(strSql, transaction);
             }
             catch
             {
@@ -150,86 +150,12 @@ namespace OpenRetail.Repository.Service
             return result;
         }
 
-        public int GetGeneratorIDByTable(string tableName, IDbTransaction transaction)
+        public string GetLastNota(string tableName, IDbTransaction transaction = null)
         {
-            int result = 0;
+            var lastId = GetGeneratorIDByTable(tableName, transaction);
+            var lastNota = string.Format("{0}{1:00}{2:00}{3:0000}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, lastId);
 
-            try
-            {
-                var generatorName = tableName + "_" + tableName.Substring(2) + "_id_seq";
-
-                var strSql = String.Format("SELECT NEXTVAL('{0}')", generatorName);
-				result = _db.QuerySingleOrDefault<int>(strSql, transaction: transaction);
-            }
-            catch
-            {
-            }
-
-            return result;
-        }
-
-        public int GetGeneratorIDByName(string generatorName)
-        {
-            int result = 0;
-
-            try
-            {
-                var strSql = String.Format("SELECT NEXTVAL('{0}')", generatorName);
-				result = _db.QuerySingleOrDefault<int>(strSql);
-            }
-            catch
-            {
-            }
-
-            return result;
-        }
-
-        public int GetGeneratorIDByName(string generatorName, IDbTransaction transaction)
-        {
-            int result = 0;
-
-            try
-            {
-                var strSql = String.Format("SELECT NEXTVAL('{0}')", generatorName);
-				result = _db.QuerySingleOrDefault<int>(strSql, transaction: transaction);
-            }
-            catch
-            {
-            }
-
-            return result;
-        }
-
-		private string GetLastKode(string prefix, int lastNota)
-        {
-            var result = "<prefix>0000001";
-            result = result.Replace("<prefix>", prefix);
-
-            try
-            {
-                var formatNota = "<prefix>{0:0000000}";
-                formatNota = formatNota.Replace("<prefix>", prefix);
-
-                result = string.Format(formatNota, lastNota);
-            }
-            catch
-            {
-            }
-
-            return result;
-        }
-
-		public string GetLastKode(string tableOrGeneratorName, bool isUseGeneratorName = false)
-        {
-            var lastId = 0;
-            var prefix = string.Format("{0}{1:00}{2:00}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Date);
-
-            if (!isUseGeneratorName)
-                lastId = this.GetGeneratorIDByTable(tableOrGeneratorName);
-            else
-                lastId = this.GetGeneratorIDByName(tableOrGeneratorName);
-
-            return GetLastKode(prefix, lastId);
+            return lastNota;
         }
 
 		public string GetGUID()
@@ -245,37 +171,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }
-
-		public string GetLastNota(string prefix, int lastNota)
-        {
-            var result = "<prefix>-0000001";
-            result = result.Replace("<prefix>", prefix);
-
-            try
-            {
-                var formatNota = "<prefix>-{0:0000000}";
-                formatNota = formatNota.Replace("<prefix>", prefix);
-
-                result = string.Format(formatNota, lastNota);
-            }
-            catch
-            {
-            }
-
-            return result;
-        }
-
-		public string GetLastNota(string prefix, string tableOrGeneratorName, bool isUseGeneratorName = false)
-        {
-            var lastId = 0;
-            
-            if (!isUseGeneratorName)
-                lastId = this.GetGeneratorIDByTable(tableOrGeneratorName);
-            else
-                lastId = this.GetGeneratorIDByName(tableOrGeneratorName);
-
-            return GetLastNota(prefix, lastId);
         }
 
         public void Dispose()
@@ -301,6 +196,6 @@ namespace OpenRetail.Repository.Service
             }
 
             GC.SuppressFinalize(this);
-        }
+        }        
     }
 }
