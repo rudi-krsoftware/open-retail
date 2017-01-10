@@ -57,14 +57,22 @@
       <Link>VersionInfo.cs</Link>
     </Compile>
     <Compile Include="AlasanPenyesuaianStok.cs" />
+    <Compile Include="BeliProduk.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="EntityState.cs" />
     <Compile Include="Golongan.cs" />
+    <Compile Include="ItemBeliProduk.cs" />
+    <Compile Include="ItemPembayaranHutangProduk.cs" />
     <Compile Include="Jabatan.cs" />
     <Compile Include="JenisPengeluaran.cs" />
     <Compile Include="Karyawan.cs" />
     <Compile Include="ModelExtension.cs" />
+    <Compile Include="PembayaranHutangProduk.cs" />
+    <Compile Include="Pengguna.cs" />
     <Compile Include="Produk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReturBeliProduk.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="Supplier.cs" />
     <Compile Include="ValidationError.cs" />
   </ItemGroup>
