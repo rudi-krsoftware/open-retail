@@ -45,5 +45,26 @@ namespace OpenRetail.Model
 
             return tableName;
         }
+
+        /// <summary>
+        /// Method untuk mengecek apakah sebuah tanggal null atau tidak
+        /// </summary>
+        /// <param name="tanggal"></param>
+        /// <returns></returns>
+        public static bool IsNull(this Nullable<DateTime> tanggal)
+        {
+            var result = true;
+
+            try
+            {
+                result = tanggal == DateTime.MinValue || tanggal == new DateTime(1753, 1, 1) ||
+                         tanggal == new DateTime(0001, 1, 1);
+            }
+            catch
+            {
+            }
+
+            return result;
+        }
     }
 }
