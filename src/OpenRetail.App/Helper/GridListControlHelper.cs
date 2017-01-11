@@ -28,10 +28,7 @@ using System.Windows.Forms;
 namespace OpenRetail.App.Helper
 {
     public sealed class GridListControlHelper
-    {
-        private static readonly Color BACK_COLOR_ALTERNATE = Color.FromArgb(239, 239, 239);
-        private static readonly Color DEFAULT_FORM_COLOR = Color.FromArgb(232, 235, 242);
-
+    {        
         public static void InitializeGridListControl<T>(GridListControl gridControl, IList<T> record, IList<GridListControlProperties> oglProperty, bool addRowNumber = true, int rowHeight = 25)
         {
             gridControl.ShowColumnHeader = true;
@@ -85,7 +82,7 @@ namespace OpenRetail.App.Helper
                     if (e.RowIndex > 0)
                     {
                         if (e.RowIndex % 2 == 0)
-                            e.Style.BackColor = BACK_COLOR_ALTERNATE;
+                            e.Style.BackColor = ColorCollection.BACK_COLOR_ALTERNATE;
                         else
                             e.Style.BackColor = Color.White;
 
@@ -155,7 +152,7 @@ namespace OpenRetail.App.Helper
                 }
 
                 if (!item.IsEditable)
-                    colStyle.BackColor = DEFAULT_FORM_COLOR;
+                    colStyle.BackColor = ColorCollection.DEFAULT_FORM_COLOR;
 
                 #endregion cell style
 

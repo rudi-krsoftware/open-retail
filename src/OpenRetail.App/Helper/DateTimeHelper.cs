@@ -57,7 +57,7 @@ namespace OpenRetail.App.Helper
         /// </summary>
         /// <param name="tanggal">Data tanggal dengan tipe DateTime</param>
         /// <returns></returns>
-        public static string DateToString(DateTime tanggal, string format = "dd/MM/yyyy")
+        public static string DateToString(Nullable<DateTime> tanggal, string format = "dd/MM/yyyy")
         {
             var result = string.Empty;
 
