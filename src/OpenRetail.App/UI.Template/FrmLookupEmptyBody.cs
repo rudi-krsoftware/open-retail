@@ -40,24 +40,51 @@ namespace OpenRetail.App.UI.Template
             InitializeComponent();
         }
 
-        public FrmLookupEmptyBody(string header)
-            : this()
-        {
-            this.Text = header;
-            this.lblHeader.Text = header;
-        }
-
         #region protected dan override method
 
         /// <summary>
-        /// Status tombol piliah aktif atau enggak
+        /// Status tombol pilihan aktif atau enggak
         /// </summary>
-        public bool IsEnabled
+        public bool IsButtonPilihEnabled
         {
             get
             {
                 return this.btnPilih.Enabled;
             }
+        }
+
+        /// <summary>
+        /// Method override untuk menghandle item yang dipilih
+        /// </summary>
+        /// <param name="index">Diisi dengan index grid list</param>
+        /// <param name="prompt">Informasi data yang dipilih</param>
+        /// <returns></returns>
+        protected bool IsSelectedItem(int index, string prompt)
+        {
+            if (index < 0)
+            {
+                var msg = "Maaf '" + prompt + "' belum dipilih.";
+                MsgHelper.MsgWarning(msg);
+
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Method protected untuk mengeset header form lookup
+        /// </summary>
+        /// <param name="header"></param>
+        protected void SetHeader(string header)
+        {
+            this.Text = header;
+            this.lblHeader.Text = header;
+        }
+
+        protected void SetTitleBtnPilih(string title)
+        {
+            btnPilih.Text = title;
         }
 
         /// <summary>
@@ -68,6 +95,7 @@ namespace OpenRetail.App.UI.Template
         {
             btnPilih.Enabled = status;
         }
+
 
         /// <summary>
         /// Method override untuk menghandle proses pilih
