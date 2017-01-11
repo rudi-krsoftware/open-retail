@@ -24,6 +24,7 @@ App.config
 *.lib
 *.sbr
 doc/
+blog/
 OpenRetail.T4Generator/
 TestPrint/
 obj/
