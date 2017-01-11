@@ -39,6 +39,11 @@ namespace OpenRetail.App.Helper
             return (e.KeyChar == (char)Keys.Return);
         }
 
+        public static bool IsEnter(KeyEventArgs e)
+        {
+            return (e.KeyCode == Keys.Enter);
+        }
+
         /// <summary>
         /// Untuk mengecek apakah user menekan tombol Esc
         /// </summary>
