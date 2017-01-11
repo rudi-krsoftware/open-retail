@@ -28,8 +28,11 @@ namespace OpenRetail.Bll.Api
 {    
     public interface IProdukBll : IBaseBll<Produk>
     {
-        Produk GetByID(string id);    
+        Produk GetByID(string id);
+        Produk GetByKode(string kodeProduk);
         IList<Produk> GetByName(string name);
+        IList<Produk> GetByGolongan(string golonganId);
+        string GetLastKodeProduk();
 
 		int Save(Produk obj, ref ValidationError validationError);
 		int Update(Produk obj, ref ValidationError validationError);

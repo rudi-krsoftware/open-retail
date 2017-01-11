@@ -28,7 +28,11 @@ namespace OpenRetail.Repository.Api
 {        
     public interface IProdukRepository : IBaseRepository<Produk>
     {
-		Produk GetByID(string id);            
+		Produk GetByID(string id);
+        Produk GetByKode(string kodeProduk);
+        string GetLastKodeProduk();
+
         IList<Produk> GetByName(string name);
+        IList<Produk> GetByGolongan(string golonganId);
     }
 }     

@@ -71,6 +71,40 @@ namespace OpenRetail.Bll.Service.UnitTest
         }
 
         [TestMethod]
+        public void GetByKodeProdukTest()
+        {
+            var kodeProduk = "201607000000055";
+            var obj = bll.GetByKode(kodeProduk);
+
+            Assert.IsNotNull(obj);
+            Assert.AreEqual("17c7626c-e5ca-43f2-b075-af6b6cbcbf83", obj.produk_id);
+            Assert.AreEqual("201607000000055", obj.kode_produk);
+            Assert.AreEqual("CD ROM ALL Merk 2nd", obj.nama_produk);
+            Assert.AreEqual("", obj.satuan);
+            Assert.AreEqual(0, obj.stok);
+            Assert.AreEqual(20000, obj.harga_beli);
+            Assert.AreEqual(50000, obj.harga_jual);
+            Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", obj.golongan_id);
+            Assert.AreEqual(0, obj.minimal_stok);
+            Assert.AreEqual(0, obj.stok_gudang);
+            Assert.AreEqual(0, obj.minimal_stok_gudang);
+
+            var golongan = obj.Golongan;
+            Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", golongan.golongan_id);
+            Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);
+        }
+
+        [TestMethod]
+        public void GetLastKodeProdukTest()
+        {
+            var lastKodeProduk = bll.GetLastKodeProduk();
+            Assert.AreEqual("201701120066", lastKodeProduk);
+
+            lastKodeProduk = bll.GetLastKodeProduk();
+            Assert.AreEqual("201701120067", lastKodeProduk);
+        }
+
+        [TestMethod]
         public void GetByNameTest()
         {
             var name = "cd";
@@ -96,6 +130,34 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", golongan.golongan_id);
             Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);                             
                      
+        }
+
+        [TestMethod]
+        public void GetByGolonganTest()
+        {
+            var golonganId = "2aae21ba-8954-4db6-a6dc-c648e27255ad";
+
+            var index = 0;
+            var oList = bll.GetByGolongan(golonganId);
+            var obj = oList[index];
+
+            Assert.IsNotNull(obj);
+            Assert.AreEqual("17c7626c-e5ca-43f2-b075-af6b6cbcbf83", obj.produk_id);
+            Assert.AreEqual("201607000000055", obj.kode_produk);
+            Assert.AreEqual("CD ROM ALL Merk 2nd", obj.nama_produk);
+            Assert.AreEqual("", obj.satuan);
+            Assert.AreEqual(0, obj.stok);
+            Assert.AreEqual(20000, obj.harga_beli);
+            Assert.AreEqual(50000, obj.harga_jual);
+            Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", obj.golongan_id);
+            Assert.AreEqual(0, obj.minimal_stok);
+            Assert.AreEqual(0, obj.stok_gudang);
+            Assert.AreEqual(0, obj.minimal_stok_gudang);
+
+            var golongan = obj.Golongan;
+            Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", golongan.golongan_id);
+            Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);
+
         }
 
         [TestMethod]

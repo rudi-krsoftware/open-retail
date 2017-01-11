@@ -73,6 +73,29 @@ namespace OpenRetail.Repository.Service
             return obj;
         }
 
+        public Produk GetByKode(string kodeProduk)
+        {
+            Produk obj = null;
+
+            try
+            {
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.kode_produk) = @kodeProduk");
+                _sql = _sql.Replace("{ORDER BY}", "");
+
+                obj = MappingRecordToObject(_sql, new { kodeProduk }).SingleOrDefault();
+            }
+            catch
+            {
+            }
+
+            return obj;
+        }
+
+        public string GetLastKodeProduk()
+        {
+            return _context.GetLastNota(new Produk().GetTableName());
+        }
+
         public IList<Produk> GetByName(string name)
         {
             IList<Produk> oList = new List<Produk>();
@@ -89,6 +112,24 @@ namespace OpenRetail.Repository.Service
             catch
             {
             }            
+
+            return oList;
+        }
+
+        public IList<Produk> GetByGolongan(string golonganId)
+        {
+            IList<Produk> oList = new List<Produk>();
+
+            try
+            {
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_produk.golongan_id = @golonganId");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY m_produk.nama_produk");
+
+                oList = MappingRecordToObject(_sql, new { golonganId }).ToList();
+            }
+            catch
+            {
+            }
 
             return oList;
         }
@@ -172,6 +213,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }
+        }        
     }
 }     

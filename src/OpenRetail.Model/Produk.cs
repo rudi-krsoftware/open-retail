@@ -35,7 +35,7 @@ namespace OpenRetail.Model
 		[Display(Name = "produk_id")]		
 		public string produk_id { get; set; }
 		
-		[Display(Name = "Produk")]
+		[Display(Name = "Nama Produk")]
 		public string nama_produk { get; set; }
 		
 		[Display(Name = "Satuan")]
@@ -81,7 +81,7 @@ namespace OpenRetail.Model
 			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-            RuleFor(c => c.kode_produk).Length(1, 15).WithMessage(msgError2);
+            RuleFor(c => c.kode_produk).NotEmpty().WithMessage(msgError1).Length(1, 15).WithMessage(msgError2);
 			RuleFor(c => c.nama_produk).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
 			RuleFor(c => c.satuan).Length(0, 20).WithMessage(msgError2);			
 		}

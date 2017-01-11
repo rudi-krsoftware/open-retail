@@ -51,6 +51,32 @@ namespace OpenRetail.Bll.Service
             return obj;
         }
 
+        public Produk GetByKode(string kodeProduk)
+        {
+            Produk obj = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context);
+                obj = uow.ProdukRepository.GetByKode(kodeProduk);
+            }
+
+            return obj;
+        }
+
+        public string GetLastKodeProduk()
+        {
+            var lastNota = string.Empty;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context);
+                lastNota = uow.ProdukRepository.GetLastKodeProduk();
+            }
+
+            return lastNota;
+        }
+
         public IList<Produk> GetByName(string name)
         {
             IList<Produk> oList = null;
@@ -59,6 +85,19 @@ namespace OpenRetail.Bll.Service
             {
                 IUnitOfWork uow = new UnitOfWork(context);
                 oList = uow.ProdukRepository.GetByName(name);
+            }
+
+            return oList;
+        }
+
+        public IList<Produk> GetByGolongan(string golonganId)
+        {
+            IList<Produk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context);
+                oList = uow.ProdukRepository.GetByGolongan(golonganId);
             }
 
             return oList;
@@ -148,6 +187,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return result;
-        }
+        }        
     }
 }     

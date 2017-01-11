@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 
 using OpenRetail.App.Referensi;
+using OpenRetail.App.Transaksi;
 
 namespace OpenRetail.App
 {
@@ -17,7 +18,7 @@ namespace OpenRetail.App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmListJabatan("Jabatan"));
+            //Application.Run(new FrmListProduk("Produk"));
         }
     }
 }
