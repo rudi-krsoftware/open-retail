@@ -360,6 +360,7 @@ namespace OpenRetail.Repository.Service
             }
             catch
             {
+                result = 0;
             }
 
             return result;
@@ -428,6 +429,7 @@ namespace OpenRetail.Repository.Service
             }
             catch
             {
+                result = 0;
             }
 
             return result;

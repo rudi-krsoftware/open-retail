@@ -18,7 +18,7 @@ namespace OpenRetail.App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmListProduk("Produk"));
+            //Application.Run(new FrmListPembelianProduk("Pembelian Produk"));
         }
     }
 }
