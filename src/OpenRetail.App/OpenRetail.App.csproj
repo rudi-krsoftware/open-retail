@@ -247,6 +247,12 @@
     <Compile Include="UserControl\AdvancedTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControl\FilterRangeTanggal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\FilterRangeTanggal.Designer.cs">
+      <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Lookup\FrmLookupReferensi.resx">
       <DependentUpon>FrmLookupReferensi.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI.Template\FrmListStandard.resx">
       <DependentUpon>FrmListStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\FilterRangeTanggal.resx">
+      <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />

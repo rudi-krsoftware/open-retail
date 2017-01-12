@@ -50,9 +50,7 @@ namespace OpenRetail.App.Transaksi
 
             _bll = new BeliProdukBll();
 
-            dtpTanggalMulai.Value = DateTime.Today;
-            dtpTanggalSelesai.Value = DateTime.Today;
-            LoadData(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
+            LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
 
             InitGridList();
         }
@@ -235,41 +233,34 @@ namespace OpenRetail.App.Transaksi
                 GridListControlHelper.UpdateObject<BeliProduk>(this.gridList, _listOfBeli, beli);
         }
 
-        private void chkTampilkanSemuaData_CheckedChanged(object sender, EventArgs e)
+        private void gridList_DoubleClick(object sender, EventArgs e)
         {
-            var chk = (CheckBox)sender;
-            var isEnable = false;
-
-            if (chk.Checked)
-                isEnable = false;
-            else
-                isEnable = true;
-
-            dtpTanggalMulai.Enabled = isEnable;
-            dtpTanggalSelesai.Enabled = isEnable;
-            btnTampilkan.Enabled = isEnable;
-
-            if (!isEnable)
-                LoadData();
-            else
-                LoadData(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
+            if (btnPerbaiki.Enabled)
+                Perbaiki();
         }
 
-        private void btnTampilkan_Click(object sender, EventArgs e)
+        private void filterRangeTanggal_BtnTampilkanClicked(object sender, EventArgs e)
         {
-            if (!DateTimeHelper.IsValidRangeTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value))
+            var tanggalMulai = filterRangeTanggal.TanggalMulai;
+            var tanggalSelesai = filterRangeTanggal.TanggalSelesai;
+
+            if (!DateTimeHelper.IsValidRangeTanggal(tanggalMulai, tanggalSelesai))
             {
                 MsgHelper.MsgNotValidRangeTanggal();
                 return;
             }
 
-            LoadData(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
+            LoadData(tanggalMulai, tanggalSelesai);
         }
 
-        private void gridList_DoubleClick(object sender, EventArgs e)
+        private void filterRangeTanggal_ChkTampilkanSemuaDataClicked(object sender, EventArgs e)
         {
-            if (btnPerbaiki.Enabled)
-                Perbaiki();
+            var chk = (CheckBox)sender;
+
+            if (chk.Checked)
+                LoadData();
+            else
+                LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
         }
     }
 }
