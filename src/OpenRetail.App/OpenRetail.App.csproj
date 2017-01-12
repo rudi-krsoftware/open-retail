@@ -142,6 +142,12 @@
     </Compile>
     <Compile Include="MainProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Referensi\FrmEntryJenisPengeluaran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmEntryJenisPengeluaran.Designer.cs">
+      <DependentUpon>FrmEntryJenisPengeluaran.cs</DependentUpon>
+    </Compile>
     <Compile Include="Referensi\FrmEntryProduk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,12 @@
     </Compile>
     <Compile Include="Referensi\FrmEntryGolongan.Designer.cs">
       <DependentUpon>FrmEntryGolongan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Referensi\FrmListJenisPengeluaran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmListJenisPengeluaran.Designer.cs">
+      <DependentUpon>FrmListJenisPengeluaran.cs</DependentUpon>
     </Compile>
     <Compile Include="Referensi\FrmListJabatan.cs">
       <SubType>Form</SubType>
@@ -269,6 +281,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Referensi\FrmEntryJenisPengeluaran.resx">
+      <DependentUpon>FrmEntryJenisPengeluaran.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntryProduk.resx">
       <DependentUpon>FrmEntryProduk.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntryGolongan.resx">
       <DependentUpon>FrmEntryGolongan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Referensi\FrmListJenisPengeluaran.resx">
+      <DependentUpon>FrmListJenisPengeluaran.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmListJabatan.resx">
       <DependentUpon>FrmListJabatan.cs</DependentUpon>

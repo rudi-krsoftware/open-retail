@@ -43,6 +43,8 @@ namespace OpenRetail.App.Main
 
         private FrmListJabatan _frmListJabatan;
 
+        private FrmListJenisPengeluaran _frmListJenisPengeluaran;
+
         private FrmListPembelianProduk _frmListPembelianProduk;
 
         public FrmMain()
@@ -155,6 +157,14 @@ namespace OpenRetail.App.Main
                 _frmListPembelianProduk = new FrmListPembelianProduk(((ToolStripMenuItem)sender).Text);
 
             _frmListPembelianProduk.Show(this.mainDock);
+        }
+
+        private void mnuJenisPengeluaran_Click(object sender, EventArgs e)
+        {
+            if (!IsChildFormExists(_frmListJenisPengeluaran))
+                _frmListJenisPengeluaran = new FrmListJenisPengeluaran(((ToolStripMenuItem)sender).Text);
+
+            _frmListJenisPengeluaran.Show(this.mainDock);
         }
     }
 }
