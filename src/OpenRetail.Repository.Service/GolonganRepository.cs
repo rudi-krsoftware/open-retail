@@ -22,7 +22,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
 using Dapper.Contrib.Extensions;
+
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
  
@@ -31,10 +33,12 @@ namespace OpenRetail.Repository.Service
     public class GolonganRepository : IGolonganRepository
     {
         private IDapperContext _context;
+        private ILog _log;
 
-        public GolonganRepository(IDapperContext context)
+        public GolonganRepository(IDapperContext context, ILog log)
         {
             this._context = context;
+            this._log = log;
         }
 
         public Golongan GetByID(string id)
@@ -45,8 +49,9 @@ namespace OpenRetail.Repository.Service
             {
                 obj = _context.db.Get<Golongan>(id);
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);                
             }
 
             return obj;
@@ -63,9 +68,10 @@ namespace OpenRetail.Repository.Service
                                 .OrderBy(f => f.nama_golongan)
                                 .ToList();
             }
-            catch
+            catch (Exception ex)
             {
-            }            
+                _log.Error("Error:", ex);
+            }
 
             return oList;
         }
@@ -80,8 +86,9 @@ namespace OpenRetail.Repository.Service
                                 .OrderBy(f => f.nama_golongan)
                                 .ToList();
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -98,8 +105,9 @@ namespace OpenRetail.Repository.Service
                 _context.db.Insert<Golongan>(obj);
                 result = 1;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -113,8 +121,9 @@ namespace OpenRetail.Repository.Service
             {
                 result = _context.db.Update<Golongan>(obj) ? 1 : 0;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -123,13 +132,14 @@ namespace OpenRetail.Repository.Service
         public int Delete(Golongan obj)
         {
             var result = 0;
-
+            
             try
             {
                 result = _context.db.Delete<Golongan>(obj) ? 1 : 0;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;

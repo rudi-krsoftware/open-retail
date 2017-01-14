@@ -38,6 +38,10 @@
       <HintPath>..\..\lib\Dapper.Contrib.1.50.0\lib\net40\Dapper.Contrib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\log4net.2.0.7\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -60,6 +64,7 @@
     <Compile Include="JabatanRepository.cs" />
     <Compile Include="JenisPengeluaranRepository.cs" />
     <Compile Include="KaryawanRepository.cs" />
+    <Compile Include="Log4NetRepository.cs" />
     <Compile Include="PembayaranHutangProdukRepository.cs" />
     <Compile Include="ProdukRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

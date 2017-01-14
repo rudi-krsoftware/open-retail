@@ -22,10 +22,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
+using Dapper;
 using Dapper.Contrib.Extensions;
+
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
-using Dapper;
  
 namespace OpenRetail.Repository.Service
 {        
@@ -38,11 +40,13 @@ namespace OpenRetail.Repository.Service
                                               {WHERE}
                                               {ORDER BY}";
         private IDapperContext _context;
+        private ILog _log;
         private string _sql;
 
-        public KaryawanRepository(IDapperContext context)
+        public KaryawanRepository(IDapperContext context, ILog log)
         {
             this._context = context;
+            this._log = log;
         }
 
         private IEnumerable<Karyawan> MappingRecordToObject(string sql, object param = null)
@@ -67,8 +71,9 @@ namespace OpenRetail.Repository.Service
 
                 obj = MappingRecordToObject(_sql, new { id }).SingleOrDefault();
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return obj;
@@ -87,9 +92,10 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql, new { name }).ToList();
             }
-            catch
+            catch (Exception ex)
             {
-            }            
+                _log.Error("Error:", ex);
+            }
 
             return oList;
         }
@@ -105,8 +111,9 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql).ToList();
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -123,8 +130,9 @@ namespace OpenRetail.Repository.Service
                 _context.db.Insert<Karyawan>(obj);
                 result = 1;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -138,8 +146,9 @@ namespace OpenRetail.Repository.Service
             {
                 result = _context.db.Update<Karyawan>(obj) ? 1 : 0;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -153,8 +162,9 @@ namespace OpenRetail.Repository.Service
             {
                 result = _context.db.Delete<Karyawan>(obj) ? 1 : 0;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;

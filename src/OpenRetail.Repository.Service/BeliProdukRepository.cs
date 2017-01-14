@@ -22,8 +22,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
 using Dapper;
 using Dapper.Contrib.Extensions;
+
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
  
@@ -39,11 +41,13 @@ namespace OpenRetail.Repository.Service
                                               {WHERE}
                                               {ORDER BY}";
         private IDapperContext _context;
+        private ILog _log;
         private string _sql;
 
-        public BeliProdukRepository(IDapperContext context)
+        public BeliProdukRepository(IDapperContext context, ILog log)
         {
             this._context = context;
+            this._log = log;
         }
 
         private IEnumerable<BeliProduk> MappingRecordToObject(string sql, object param = null)
@@ -76,8 +80,9 @@ namespace OpenRetail.Repository.Service
                     return ib;
                 }, new { beliId }, splitOn: "produk_id").ToList();
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -98,8 +103,9 @@ namespace OpenRetail.Repository.Service
                     // load item beli
                     obj.item_beli = GetItemBeli(obj.beli_produk_id);
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return obj;
@@ -124,8 +130,9 @@ namespace OpenRetail.Repository.Service
                     item.item_beli = GetItemBeli(item.beli_produk_id);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -148,8 +155,9 @@ namespace OpenRetail.Repository.Service
                     item.item_beli = GetItemBeli(item.beli_produk_id);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -174,8 +182,9 @@ namespace OpenRetail.Repository.Service
                     item.item_beli = GetItemBeli(item.beli_produk_id);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -217,8 +226,9 @@ namespace OpenRetail.Repository.Service
                     item.item_beli = GetItemBeli(item.beli_produk_id);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -250,8 +260,9 @@ namespace OpenRetail.Repository.Service
                 //    item.item_beli = GetItemBeli(item.beli_produk_id);
                 //}
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -274,8 +285,9 @@ namespace OpenRetail.Repository.Service
                     item.item_beli = GetItemBeli(item.beli_produk_id);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -300,8 +312,9 @@ namespace OpenRetail.Repository.Service
                     item.item_beli = GetItemBeli(item.beli_produk_id);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -358,9 +371,9 @@ namespace OpenRetail.Repository.Service
                 _context.Commit();
                 result = 1;
             }
-            catch
+            catch (Exception ex)
             {
-                result = 0;
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -427,9 +440,9 @@ namespace OpenRetail.Repository.Service
                 _context.Commit();
                 result = 1;
             }
-            catch
+            catch (Exception ex)
             {
-                result = 0;
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -444,7 +457,7 @@ namespace OpenRetail.Repository.Service
         {
             PembayaranHutangProduk pembayaranHutang;
             ItemPembayaranHutangProduk itemPembayaranHutang;
-            IPembayaranHutangProdukRepository pembayaranHutangRepo = new PembayaranHutangProdukRepository(_context);
+            IPembayaranHutangProdukRepository pembayaranHutangRepo = new PembayaranHutangProdukRepository(_context, _log);
 
             var result = 0;
 
@@ -502,7 +515,7 @@ namespace OpenRetail.Repository.Service
         {
             PembayaranHutangProduk pembayaranHutang;
             ItemPembayaranHutangProduk itemPembayaranHutang;
-            IPembayaranHutangProdukRepository pembayaranHutangRepo = new PembayaranHutangProdukRepository(_context);
+            IPembayaranHutangProdukRepository pembayaranHutangRepo = new PembayaranHutangProdukRepository(_context, _log);
 
             var result = 0;
 
@@ -525,8 +538,9 @@ namespace OpenRetail.Repository.Service
             {
                 result = _context.db.Delete<BeliProduk>(obj) ? 1 : 0;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;

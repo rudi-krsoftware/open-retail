@@ -21,36 +21,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
- 
+
 namespace OpenRetail.Bll.Service.UnitTest
 {    
     [TestClass]
     public class KaryawanBllTest
     {
-        private IKaryawanBll bll = null;
+        private ILog _log;
+        private IKaryawanBll _bll;
 
         [TestInitialize]
         public void Init()
         {
-            bll = new KaryawanBll();
+            _log = LogManager.GetLogger(typeof(KaryawanBllTest));
+            _bll = new KaryawanBll(_log);
         }
 
         [TestCleanup]
         public void CleanUp()
         {
-            bll = null;
+            _bll = null;
         }
 
         [TestMethod]
         public void GetByIDTest()
         {
             var id = "72f28a4f-f364-423a-a09b-2b9571543fde";
-            var obj = bll.GetByID(id);
+            var obj = _bll.GetByID(id);
 
             Assert.IsNotNull(obj);
             Assert.AreEqual("72f28a4f-f364-423a-a09b-2b9571543fde", obj.karyawan_id);
@@ -73,7 +78,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var name = "bang";
 
             var index = 0;
-            var oList = bll.GetByName(name);
+            var oList = _bll.GetByName(name);
             var obj = oList[index];
                  
             Assert.IsNotNull(obj);
@@ -95,7 +100,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         public void GetAllTest()
         {            
             var index = 0;
-            var oList = bll.GetAll();
+            var oList = _bll.GetAll();
             var obj = oList[index];
                  
             Assert.IsNotNull(obj);
@@ -130,12 +135,12 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var validationError = new ValidationError();
 
-            var result = bll.Save(obj, ref validationError);
+            var result = _bll.Save(obj, ref validationError);
             Console.WriteLine("Error : " + validationError.Message);
 
             Assert.IsTrue(result != 0);
 
-            var newObj = bll.GetByID(obj.karyawan_id);
+            var newObj = _bll.GetByID(obj.karyawan_id);
 			Assert.IsNotNull(newObj);
 			Assert.AreEqual(obj.karyawan_id, newObj.karyawan_id);                                
             Assert.AreEqual(obj.jabatan_id, newObj.jabatan_id);                                
@@ -168,12 +173,12 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var validationError = new ValidationError();
 
-            var result = bll.Update(obj, ref validationError);
+            var result = _bll.Update(obj, ref validationError);
             Console.WriteLine("Error : " + validationError.Message);
 
             Assert.IsTrue(result != 0);
 
-            var updatedObj = bll.GetByID(obj.karyawan_id);
+            var updatedObj = _bll.GetByID(obj.karyawan_id);
 			Assert.IsNotNull(updatedObj);
             Assert.AreEqual(obj.karyawan_id, updatedObj.karyawan_id);                                
             Assert.AreEqual(obj.jabatan_id, updatedObj.jabatan_id);                                
@@ -198,10 +203,10 @@ namespace OpenRetail.Bll.Service.UnitTest
                 karyawan_id = "8b8c9988-e868-40d5-9972-42655cd28618"
             };
 
-            var result = bll.Delete(obj);
+            var result = _bll.Delete(obj);
             Assert.IsTrue(result != 0);
 
-            var deletedObj = bll.GetByID(obj.karyawan_id);
+            var deletedObj = _bll.GetByID(obj.karyawan_id);
 			Assert.IsNull(deletedObj);
         }
     }

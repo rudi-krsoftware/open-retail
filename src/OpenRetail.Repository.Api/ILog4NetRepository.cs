@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,22 +20,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
- 
+
+using OpenRetail.Model;
+
 namespace OpenRetail.Repository.Api
-{    
-    public interface IUnitOfWork
+{
+    public interface ILog4NetRepository : IBaseRepository<Log>
     {
-        IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
-        IJabatanRepository JabatanRepository { get; }
-        IJenisPengeluaranRepository JenisPengeluaranRepository { get; }
-        IGolonganRepository GolonganRepository { get; }
-        IProdukRepository ProdukRepository { get; }
-        ICustomerRepository CustomerRepository { get; }
-        ISupplierRepository SupplierRepository { get; }
-        IKaryawanRepository KaryawanRepository { get; }
-        IBeliProdukRepository BeliProdukRepository { get; }
-        IPembayaranHutangProdukRepository PembayaranHutangProdukRepository { get; }
-        ILog4NetRepository Log4NetRepository { get; }                
     }
-}     
+}

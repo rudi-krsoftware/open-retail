@@ -136,6 +136,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmEntryStandard";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmEntryStandard";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmEntryStandard_KeyPress);

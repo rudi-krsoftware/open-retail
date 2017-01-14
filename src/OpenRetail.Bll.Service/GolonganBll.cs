@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Repository.Api;
@@ -31,20 +32,22 @@ namespace OpenRetail.Bll.Service
 {    
     public class GolonganBll : IGolonganBll
     {
+        private ILog _log;
 		private GolonganValidator _validator;
 
-		public GolonganBll()
+        public GolonganBll(ILog log)
         {
+            _log = log;
             _validator = new GolonganValidator();
         }
 
         public Golongan GetByID(string id)
         {
             Golongan obj = null;
-            
+
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 obj = uow.GolonganRepository.GetByID(id);
             }
 
@@ -57,7 +60,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.GolonganRepository.GetByName(name);
             }
 
@@ -70,7 +73,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.GolonganRepository.GetAll();
             }
 
@@ -83,7 +86,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.GolonganRepository.Save(obj);
             }
 
@@ -113,7 +116,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.GolonganRepository.Update(obj);
             }
 
@@ -140,10 +143,10 @@ namespace OpenRetail.Bll.Service
         public int Delete(Golongan obj)
         {
             var result = 0;
-
+            
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.GolonganRepository.Delete(obj);
             }
 

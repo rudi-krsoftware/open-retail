@@ -137,6 +137,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmLookupEmptyBody";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmLookupEmptyBody";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmLookupEmptyBody_KeyPress);

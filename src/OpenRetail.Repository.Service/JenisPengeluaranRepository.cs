@@ -22,7 +22,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
 using Dapper.Contrib.Extensions;
+
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
  
@@ -31,10 +33,12 @@ namespace OpenRetail.Repository.Service
     public class JenisPengeluaranRepository : IJenisPengeluaranRepository
     {
         private IDapperContext _context;
+        private ILog _log;
 
-        public JenisPengeluaranRepository(IDapperContext context)
+        public JenisPengeluaranRepository(IDapperContext context, ILog log)
         {
             this._context = context;
+            this._log = log;
         }
 
         public JenisPengeluaran GetByID(string id)
@@ -45,8 +49,9 @@ namespace OpenRetail.Repository.Service
             {
                 obj = _context.db.Get<JenisPengeluaran>(id);
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return obj;
@@ -67,8 +72,9 @@ namespace OpenRetail.Repository.Service
                                 .OrderBy(f => f.nama_jenis_pengeluaran)
                                 .ToList();
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -85,8 +91,9 @@ namespace OpenRetail.Repository.Service
                 _context.db.Insert<JenisPengeluaran>(obj);
                 result = 1;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -100,8 +107,9 @@ namespace OpenRetail.Repository.Service
             {
                 result = _context.db.Update<JenisPengeluaran>(obj) ? 1 : 0;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -115,8 +123,9 @@ namespace OpenRetail.Repository.Service
             {
                 result = _context.db.Delete<JenisPengeluaran>(obj) ? 1 : 0;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;

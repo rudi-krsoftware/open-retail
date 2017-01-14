@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Repository.Api;
@@ -31,10 +32,12 @@ namespace OpenRetail.Bll.Service
 {    
     public class KaryawanBll : IKaryawanBll
     {
+        private ILog _log;
 		private KaryawanValidator _validator;
 
-		public KaryawanBll()
+		public KaryawanBll(ILog log)
         {
+            _log = log;
             _validator = new KaryawanValidator();
         }
 
@@ -44,7 +47,7 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 obj = uow.KaryawanRepository.GetByID(id);
             }
 
@@ -57,7 +60,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.KaryawanRepository.GetByName(name);
             }
 
@@ -70,7 +73,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.KaryawanRepository.GetAll();
             }
 
@@ -83,7 +86,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.KaryawanRepository.Save(obj);
             }
 
@@ -113,7 +116,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.KaryawanRepository.Update(obj);
             }
 
@@ -143,7 +146,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.KaryawanRepository.Delete(obj);
             }
 

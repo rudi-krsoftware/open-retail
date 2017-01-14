@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
 using OpenRetail.Repository.Api;
  
 namespace OpenRetail.Repository.Service
@@ -29,6 +30,8 @@ namespace OpenRetail.Repository.Service
     public class UnitOfWork : IUnitOfWork
     {
         private IDapperContext _context;
+        private ILog _log;
+
         private IAlasanPenyesuaianStokRepository _alasanpenyesuaianstokRepository;
         private IJabatanRepository _jabatanRepository;
         private IJenisPengeluaranRepository _jenispengeluaranRepository;
@@ -39,60 +42,67 @@ namespace OpenRetail.Repository.Service
         private IKaryawanRepository _karyawanRepository;
         private IBeliProdukRepository _beliprodukRepository;
         private IPembayaranHutangProdukRepository _pembayaranhutangprodukRepository;
+        private ILog4NetRepository _log4NetRepository;
 
-        public UnitOfWork(IDapperContext context)
+        public UnitOfWork(IDapperContext context, ILog log)
         {
             this._context = context;
+            this._log = log;
         }
 
         public IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository
         {
-            get { return _alasanpenyesuaianstokRepository ?? (_alasanpenyesuaianstokRepository = new AlasanPenyesuaianStokRepository(_context)); }
+            get { return _alasanpenyesuaianstokRepository ?? (_alasanpenyesuaianstokRepository = new AlasanPenyesuaianStokRepository(_context, _log)); }
         }
 
         public IJabatanRepository JabatanRepository
         {
-            get { return _jabatanRepository ?? (_jabatanRepository = new JabatanRepository(_context)); }
+            get { return _jabatanRepository ?? (_jabatanRepository = new JabatanRepository(_context, _log)); }
         }
 
         public IJenisPengeluaranRepository JenisPengeluaranRepository
         {
-            get { return _jenispengeluaranRepository ?? (_jenispengeluaranRepository = new JenisPengeluaranRepository(_context)); }
+            get { return _jenispengeluaranRepository ?? (_jenispengeluaranRepository = new JenisPengeluaranRepository(_context, _log)); }
         }
 
         public IGolonganRepository GolonganRepository
         {
-            get { return _golonganRepository ?? (_golonganRepository = new GolonganRepository(_context)); }
+            get { return _golonganRepository ?? (_golonganRepository = new GolonganRepository(_context, _log)); }
         }
 
         public IProdukRepository ProdukRepository
         {
-            get { return _produkRepository ?? (_produkRepository = new ProdukRepository(_context)); }
+            get { return _produkRepository ?? (_produkRepository = new ProdukRepository(_context, _log)); }
         }
 
         public ICustomerRepository CustomerRepository
         {
-            get { return _customerRepository ?? (_customerRepository = new CustomerRepository(_context)); }
+            get { return _customerRepository ?? (_customerRepository = new CustomerRepository(_context, _log)); }
         }
 
         public ISupplierRepository SupplierRepository
         {
-            get { return _supplierRepository ?? (_supplierRepository = new SupplierRepository(_context)); }
+            get { return _supplierRepository ?? (_supplierRepository = new SupplierRepository(_context, _log)); }
         }
 
         public IKaryawanRepository KaryawanRepository
         {
-            get { return _karyawanRepository ?? (_karyawanRepository = new KaryawanRepository(_context)); }
+            get { return _karyawanRepository ?? (_karyawanRepository = new KaryawanRepository(_context, _log)); }
         }
 
         public IBeliProdukRepository BeliProdukRepository
         {
-            get { return _beliprodukRepository ?? (_beliprodukRepository = new BeliProdukRepository(_context)); }
+            get { return _beliprodukRepository ?? (_beliprodukRepository = new BeliProdukRepository(_context, _log)); }
         }
 
         public IPembayaranHutangProdukRepository PembayaranHutangProdukRepository
         {
-            get { return _pembayaranhutangprodukRepository ?? (_pembayaranhutangprodukRepository = new PembayaranHutangProdukRepository(_context)); }
+            get { return _pembayaranhutangprodukRepository ?? (_pembayaranhutangprodukRepository = new PembayaranHutangProdukRepository(_context, _log)); }
+        }
+
+        public ILog4NetRepository Log4NetRepository
+        {
+            get { return _log4NetRepository ?? (_log4NetRepository = new Log4NetRepository(_context)); }
         }
     }
 }     

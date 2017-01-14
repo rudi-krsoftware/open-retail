@@ -22,8 +22,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
 using Dapper;
 using Dapper.Contrib.Extensions;
+
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using System.Data;
@@ -39,11 +41,13 @@ namespace OpenRetail.Repository.Service
                                               {WHERE}
                                               {ORDER BY}";
         private IDapperContext _context;
+        private ILog _log;
         private string _sql;
 
-        public PembayaranHutangProdukRepository(IDapperContext context)
+        public PembayaranHutangProdukRepository(IDapperContext context, ILog log)
         {
             this._context = context;
+            this._log = log;
         }
 
         private IEnumerable<PembayaranHutangProduk> MappingRecordToObject(string sql, object param = null)
@@ -77,8 +81,9 @@ namespace OpenRetail.Repository.Service
                     return ip;
                 }, new { id }, splitOn: "beli_produk_id").ToList();
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -97,8 +102,9 @@ namespace OpenRetail.Repository.Service
                 if (obj != null)
                     obj.item_pembayaran_hutang = GetItemPembayaran(obj.pembayaran_hutang_produk_id);
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return obj;
@@ -125,8 +131,9 @@ namespace OpenRetail.Repository.Service
                     item.item_pembayaran_hutang = GetItemPembayaran(item.pembayaran_hutang_produk_id);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -148,8 +155,9 @@ namespace OpenRetail.Repository.Service
                     item.item_pembayaran_hutang = GetItemPembayaran(item.pembayaran_hutang_produk_id);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -205,8 +213,9 @@ namespace OpenRetail.Repository.Service
 
                 result = 1;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -269,8 +278,9 @@ namespace OpenRetail.Repository.Service
                 result = 1;
 
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result; 
@@ -284,8 +294,9 @@ namespace OpenRetail.Repository.Service
             {
                 result = _context.db.Delete<PembayaranHutangProduk>(obj) ? 1 : 0;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -315,8 +326,9 @@ namespace OpenRetail.Repository.Service
                     return iph;
                 }, new { id }, splitOn: "pembayaran_hutang_produk_id").SingleOrDefault();
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return obj;

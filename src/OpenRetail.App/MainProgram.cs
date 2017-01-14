@@ -20,16 +20,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Reflection;
 
+using log4net;
 using OpenRetail.App.Referensi;
 using OpenRetail.App.Transaksi;
 using OpenRetail.App.Main;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace OpenRetail.App
 {
     static class MainProgram
     {
-        public static string appName = "Open Retail Versi {0} - Copyright © 2017 Kamarudin";
+        /// <summary>
+        /// Instance log4net
+        /// </summary>
+        public static readonly ILog log = LogManager.GetLogger(typeof(MainProgram));
+
+        public static readonly string appName = "Open Retail Versi {0} - Copyright © 2017 Kamarudin";
 
         /// <summary>
         /// The main entry point for the application.
@@ -37,6 +45,9 @@ namespace OpenRetail.App
         [STAThread]
         static void Main()
         {
+            log4net.GlobalContext.Properties["AppName"] = Assembly.GetExecutingAssembly().FullName;
+            log4net.GlobalContext.Properties["Operator"] = "Kamarudin"; // TODO: fix me (ganti dengan user yang login)
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain());

@@ -484,7 +484,7 @@ namespace OpenRetail.App.Transaksi
             {
                 var supplierName = ((AdvancedTextbox)sender).Text;
 
-                ISupplierBll bll = new SupplierBll();
+                ISupplierBll bll = new SupplierBll(MainProgram.log);
                 var listOfSupplier = bll.GetByName(supplierName);
 
                 if (listOfSupplier.Count == 0)
@@ -551,7 +551,7 @@ namespace OpenRetail.App.Transaksi
                 var rowIndex = grid.CurrentCell.RowIndex;
                 var colIndex = grid.CurrentCell.ColIndex;
 
-                IProdukBll bll = new ProdukBll();
+                IProdukBll bll = new ProdukBll(MainProgram.log);
                 Produk produk = null;
                 GridCurrentCell cc;
 
@@ -731,14 +731,14 @@ namespace OpenRetail.App.Transaksi
         {
             // TODO: pengecekan hak akses
 
-            IGolonganBll golonganBll = new GolonganBll();
+            IGolonganBll golonganBll = new GolonganBll(MainProgram.log);
             var listOfGolongan = golonganBll.GetAll();
 
             Golongan golongan = null;
             if (listOfGolongan.Count > 0)
                 golongan = listOfGolongan[0];
 
-            IProdukBll produkBll = new ProdukBll();
+            IProdukBll produkBll = new ProdukBll(MainProgram.log);
             var frmEntryProduk = new FrmEntryProduk("Tambah Data Produk", golongan, listOfGolongan, produkBll);
             frmEntryProduk.Listener = this;
             frmEntryProduk.ShowDialog();
@@ -748,7 +748,7 @@ namespace OpenRetail.App.Transaksi
         {
             // TODO: pengecekan hak akses
 
-            ISupplierBll supplierBll = new SupplierBll();
+            ISupplierBll supplierBll = new SupplierBll(MainProgram.log);
             var frmEntrySupplier = new FrmEntrySupplier("Tambah Data Supplier", supplierBll);
             frmEntrySupplier.Listener = this;
             frmEntrySupplier.ShowDialog();

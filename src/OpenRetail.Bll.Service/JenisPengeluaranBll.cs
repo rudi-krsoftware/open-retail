@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Repository.Api;
@@ -31,10 +32,12 @@ namespace OpenRetail.Bll.Service
 {    
     public class JenisPengeluaranBll : IJenisPengeluaranBll
     {
+        private ILog _log;
 		private JenisPengeluaranValidator _validator;
 
-		public JenisPengeluaranBll()
+		public JenisPengeluaranBll(ILog log)
         {
+            _log = log;
             _validator = new JenisPengeluaranValidator();
         }
 
@@ -44,7 +47,7 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 obj = uow.JenisPengeluaranRepository.GetByID(id);
             }
 
@@ -57,7 +60,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.JenisPengeluaranRepository.GetByName(name);
             }
 
@@ -70,7 +73,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.JenisPengeluaranRepository.GetAll();
             }
 
@@ -83,7 +86,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.JenisPengeluaranRepository.Save(obj);
             }
 
@@ -113,7 +116,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.JenisPengeluaranRepository.Update(obj);
             }
 
@@ -143,7 +146,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.JenisPengeluaranRepository.Delete(obj);
             }
 

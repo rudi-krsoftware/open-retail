@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Repository.Api;
@@ -31,10 +32,12 @@ namespace OpenRetail.Bll.Service
 {    
     public class AlasanPenyesuaianStokBll : IAlasanPenyesuaianStokBll
     {
+        private ILog _log;
 		private AlasanPenyesuaianStokValidator _validator;
 
-		public AlasanPenyesuaianStokBll()
+        public AlasanPenyesuaianStokBll(ILog log)
         {
+            _log = log;
             _validator = new AlasanPenyesuaianStokValidator();
         }
 
@@ -44,7 +47,7 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 obj = uow.AlasanPenyesuaianStokRepository.GetByID(id);
             }
 
@@ -62,7 +65,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.AlasanPenyesuaianStokRepository.GetAll();
             }
 
@@ -75,7 +78,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.AlasanPenyesuaianStokRepository.Save(obj);
             }
 
@@ -105,7 +108,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.AlasanPenyesuaianStokRepository.Update(obj);
             }
 
@@ -135,7 +138,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context);
+                IUnitOfWork uow = new UnitOfWork(context, _log);
                 result = uow.AlasanPenyesuaianStokRepository.Delete(obj);
             }
 

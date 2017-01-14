@@ -21,36 +21,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
- 
+
 namespace OpenRetail.Bll.Service.UnitTest
 {    
     [TestClass]
     public class ProdukBllTest
     {
-        private IProdukBll bll = null;
+        private ILog _log;
+        private IProdukBll _bll;
 
         [TestInitialize]
         public void Init()
         {
-            bll = new ProdukBll();
+            _log = LogManager.GetLogger(typeof(ProdukBllTest));
+            _bll = new ProdukBll(_log);
         }
 
         [TestCleanup]
         public void CleanUp()
         {
-            bll = null;
+            _bll = null;
         }
 
         [TestMethod]
         public void GetByIDTest()
         {
             var id = "17c7626c-e5ca-43f2-b075-af6b6cbcbf83";
-            var obj = bll.GetByID(id);
+            var obj = _bll.GetByID(id);
 
             Assert.IsNotNull(obj);
             Assert.AreEqual("17c7626c-e5ca-43f2-b075-af6b6cbcbf83", obj.produk_id);
@@ -74,7 +79,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         public void GetByKodeProdukTest()
         {
             var kodeProduk = "201607000000055";
-            var obj = bll.GetByKode(kodeProduk);
+            var obj = _bll.GetByKode(kodeProduk);
 
             Assert.IsNotNull(obj);
             Assert.AreEqual("17c7626c-e5ca-43f2-b075-af6b6cbcbf83", obj.produk_id);
@@ -97,10 +102,10 @@ namespace OpenRetail.Bll.Service.UnitTest
         [TestMethod]
         public void GetLastKodeProdukTest()
         {
-            var lastKodeProduk = bll.GetLastKodeProduk();
+            var lastKodeProduk = _bll.GetLastKodeProduk();
             Assert.AreEqual("201701120066", lastKodeProduk);
 
-            lastKodeProduk = bll.GetLastKodeProduk();
+            lastKodeProduk = _bll.GetLastKodeProduk();
             Assert.AreEqual("201701120067", lastKodeProduk);
         }
 
@@ -110,7 +115,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var name = "cd";
 
             var index = 0;
-            var oList = bll.GetByName(name);
+            var oList = _bll.GetByName(name);
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
@@ -138,7 +143,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var golonganId = "2aae21ba-8954-4db6-a6dc-c648e27255ad";
 
             var index = 0;
-            var oList = bll.GetByGolongan(golonganId);
+            var oList = _bll.GetByGolongan(golonganId);
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
@@ -164,7 +169,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         public void GetAllTest()
         {
             var index = 3;
-            var oList = bll.GetAll();
+            var oList = _bll.GetAll();
             var obj = oList[index];
                  
             Assert.IsNotNull(obj);
@@ -205,12 +210,12 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var validationError = new ValidationError();
 
-            var result = bll.Save(obj, ref validationError);
+            var result = _bll.Save(obj, ref validationError);
             Console.WriteLine("Error : " + validationError.Message);
 
             Assert.IsTrue(result != 0);
 
-            var newObj = bll.GetByID(obj.produk_id);
+            var newObj = _bll.GetByID(obj.produk_id);
 			Assert.IsNotNull(newObj);
 			Assert.AreEqual(obj.produk_id, newObj.produk_id);                                
             Assert.AreEqual(obj.nama_produk, newObj.nama_produk);                                
@@ -229,7 +234,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         [TestMethod]
         public void UpdateTest()
         {
-            var obj = bll.GetByID("9864948c-5dbc-42ac-91de-8844f546f47b");
+            var obj = _bll.GetByID("9864948c-5dbc-42ac-91de-8844f546f47b");
             obj.kode_produk_old = obj.kode_produk;
             obj.nama_produk = "Printer Epson L220";
             obj.stok = 1;
@@ -242,12 +247,12 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var validationError = new ValidationError();
 
-            var result = bll.Update(obj, ref validationError);
+            var result = _bll.Update(obj, ref validationError);
             Console.WriteLine("Error : " + validationError.Message);
 
             Assert.IsTrue(result != 0);
 
-            var updatedObj = bll.GetByID(obj.produk_id);
+            var updatedObj = _bll.GetByID(obj.produk_id);
 			Assert.IsNotNull(updatedObj);
             Assert.AreEqual(obj.produk_id, updatedObj.produk_id);                                
             Assert.AreEqual(obj.nama_produk, updatedObj.nama_produk);                                
@@ -271,10 +276,10 @@ namespace OpenRetail.Bll.Service.UnitTest
                 produk_id = "9864948c-5dbc-42ac-91de-8844f546f47b"
             };
 
-            var result = bll.Delete(obj);
+            var result = _bll.Delete(obj);
             Assert.IsTrue(result != 0);
 
-            var deletedObj = bll.GetByID(obj.produk_id);
+            var deletedObj = _bll.GetByID(obj.produk_id);
 			Assert.IsNull(deletedObj);
         }
     }

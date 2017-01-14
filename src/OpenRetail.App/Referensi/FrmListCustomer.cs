@@ -45,7 +45,7 @@ namespace OpenRetail.App.Referensi
         {
             InitializeComponent();
 
-            _bll = new CustomerBll();
+            _bll = new CustomerBll(MainProgram.log);
             LoadData();
 
             InitGridList();

@@ -48,7 +48,7 @@ namespace OpenRetail.App.Transaksi
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
 
-            _bll = new BeliProdukBll();
+            _bll = new BeliProdukBll(MainProgram.log);
 
             LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
 

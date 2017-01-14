@@ -188,6 +188,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmLookupStandard";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmLookupStandard";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmLookupStandard_KeyPress);

@@ -16,6 +16,7 @@ Prerequisites
     * [Dapper](http://www.nuget.org/packages/Dapper/)
     * [Dapper.Contrib](http://www.nuget.org/packages/Dapper.Contrib/)
     * [Npgsql 2.2.7](http://www.nuget.org/packages/Npgsql/2.2.72)
+    * [Apache log4net](https://www.nuget.org/packages/log4net/)
     * [CrashReporter.NET](http://www.nuget.org/packages/CrashReporter.NET.Official/)
     * [AutoUpdater.NET](https://www.nuget.org/packages/Autoupdater.NET.Official/)
     * [DockPanel Suite](https://www.nuget.org/packages/DockPanelSuite/)

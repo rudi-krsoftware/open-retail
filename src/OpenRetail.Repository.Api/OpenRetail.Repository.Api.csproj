@@ -51,6 +51,7 @@
     <Compile Include="IJabatanRepository.cs" />
     <Compile Include="IJenisPengeluaranRepository.cs" />
     <Compile Include="IKaryawanRepository.cs" />
+    <Compile Include="ILog4NetRepository.cs" />
     <Compile Include="IPembayaranHutangProdukRepository.cs" />
     <Compile Include="IProdukRepository.cs" />
     <Compile Include="ISupplierRepository.cs" />

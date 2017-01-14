@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,22 +20,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
- 
-namespace OpenRetail.Repository.Api
-{    
-    public interface IUnitOfWork
+
+using Dapper.Contrib.Extensions;
+
+namespace OpenRetail.Model
+{
+    /// <summary>
+    /// Class model untuk library log4net
+    /// </summary>
+    [Table("t_logs")]
+    public class Log
     {
-        IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
-        IJabatanRepository JabatanRepository { get; }
-        IJenisPengeluaranRepository JenisPengeluaranRepository { get; }
-        IGolonganRepository GolonganRepository { get; }
-        IProdukRepository ProdukRepository { get; }
-        ICustomerRepository CustomerRepository { get; }
-        ISupplierRepository SupplierRepository { get; }
-        IKaryawanRepository KaryawanRepository { get; }
-        IBeliProdukRepository BeliProdukRepository { get; }
-        IPembayaranHutangProdukRepository PembayaranHutangProdukRepository { get; }
-        ILog4NetRepository Log4NetRepository { get; }                
+        public string app_name { get; set; }
+        public string thread { get; set; }
+        public string level { get; set; }
+        public string location { get; set; }
+        public string message { get; set; }
+        public string exception { get; set; }
+        public string created_by { get; set; }
     }
-}     
+}

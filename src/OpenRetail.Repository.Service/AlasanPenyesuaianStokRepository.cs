@@ -22,7 +22,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using log4net;
 using Dapper.Contrib.Extensions;
+
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
  
@@ -31,22 +33,25 @@ namespace OpenRetail.Repository.Service
     public class AlasanPenyesuaianStokRepository : IAlasanPenyesuaianStokRepository
     {
         private IDapperContext _context;
+        private ILog _log;
 
-        public AlasanPenyesuaianStokRepository(IDapperContext context)
+        public AlasanPenyesuaianStokRepository(IDapperContext context, ILog log)
         {
             this._context = context;
+            this._log = log;
         }
 
         public AlasanPenyesuaianStok GetByID(string id)
         {
             AlasanPenyesuaianStok obj = null;
-
+            
             try
             {
                 obj = _context.db.Get<AlasanPenyesuaianStok>(id);
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return obj;
@@ -67,8 +72,9 @@ namespace OpenRetail.Repository.Service
                                 .OrderBy(f => f.alasan)
                                 .ToList();
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return oList;
@@ -85,8 +91,9 @@ namespace OpenRetail.Repository.Service
                 _context.db.Insert<AlasanPenyesuaianStok>(obj);
                 result = 1;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -100,8 +107,9 @@ namespace OpenRetail.Repository.Service
             {
                 result = _context.db.Update<AlasanPenyesuaianStok>(obj) ? 1 : 0;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -115,8 +123,9 @@ namespace OpenRetail.Repository.Service
             {
                 result = _context.db.Delete<AlasanPenyesuaianStok>(obj) ? 1 : 0;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;

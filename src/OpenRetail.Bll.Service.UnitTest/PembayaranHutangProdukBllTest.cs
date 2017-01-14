@@ -21,36 +21,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
- 
+
 namespace OpenRetail.Bll.Service.UnitTest
 {    
     [TestClass]
     public class PembayaranHutangProdukBllTest
     {
-        private IPembayaranHutangProdukBll bll = null;
+        private ILog _log;
+        private IPembayaranHutangProdukBll _bll;
 
         [TestInitialize]
         public void Init()
         {
-            bll = new PembayaranHutangProdukBll();
+            _log = LogManager.GetLogger(typeof(PembayaranHutangProdukBllTest));
+            _bll = new PembayaranHutangProdukBll(_log);
         }
 
         [TestCleanup]
         public void CleanUp()
         {
-            bll = null;
+            _bll = null;
         }
 
         [TestMethod]
         public void GetByBeliIDTest()
         {
             var id = "0983d9b8-7abe-4be2-9383-16607fcfc91a";
-            var obj = bll.GetByBeliID(id);
+            var obj = _bll.GetByBeliID(id);
 
             Assert.IsNotNull(obj);
             Assert.AreEqual("6d1c2bb2-1e08-4c9c-b740-e12f2e6dbcfa", obj.item_pembayaran_hutang_produk_id);
@@ -67,7 +72,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         public void GetAllTest()
         {            
             var index = 0;
-            var oList = bll.GetAll();
+            var oList = _bll.GetAll();
             var obj = oList[index];
                  
             Assert.IsNotNull(obj);
@@ -91,7 +96,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var tglMulai = new DateTime(2017, 1, 1);
             var tglSelesai = new DateTime(2017, 1, 9);
 
-            var oList = bll.GetByTanggal(tglMulai, tglSelesai);
+            var oList = _bll.GetByTanggal(tglMulai, tglSelesai);
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
@@ -129,12 +134,12 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var validationError = new ValidationError();
 
-            var result = bll.Save(obj, false, ref validationError);
+            var result = _bll.Save(obj, false, ref validationError);
             Console.WriteLine("Error : " + validationError.Message);
 
             Assert.IsTrue(result != 0);
 
-            var newObj = bll.GetByID(obj.pembayaran_hutang_produk_id);
+            var newObj = _bll.GetByID(obj.pembayaran_hutang_produk_id);
 			Assert.IsNotNull(newObj);
 			Assert.AreEqual(obj.pembayaran_hutang_produk_id, newObj.pembayaran_hutang_produk_id);                                
             Assert.AreEqual(obj.supplier_id, newObj.supplier_id);                                
@@ -149,7 +154,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         [TestMethod]
         public void UpdateTest()
         {
-            var obj = bll.GetByID("d4e66a6c-c0b2-49e1-be4d-b33e7b1bd565");
+            var obj = _bll.GetByID("d4e66a6c-c0b2-49e1-be4d-b33e7b1bd565");
             obj.tanggal = new DateTime(2017, 1, 9);
             obj.keterangan = "ket header";
             obj.nota = "BB-123456";
@@ -162,12 +167,12 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var validationError = new ValidationError();
 
-            var result = bll.Update(obj, false, ref validationError);
+            var result = _bll.Update(obj, false, ref validationError);
             Console.WriteLine("Error : " + validationError.Message);
 
             Assert.IsTrue(result != 0);
 
-            var updatedObj = bll.GetByID(obj.pembayaran_hutang_produk_id);
+            var updatedObj = _bll.GetByID(obj.pembayaran_hutang_produk_id);
             Assert.IsNotNull(updatedObj);
             Assert.AreEqual(obj.pembayaran_hutang_produk_id, updatedObj.pembayaran_hutang_produk_id);
             Assert.AreEqual(obj.supplier_id, updatedObj.supplier_id);
@@ -187,10 +192,10 @@ namespace OpenRetail.Bll.Service.UnitTest
                 pembayaran_hutang_produk_id = "d4e66a6c-c0b2-49e1-be4d-b33e7b1bd565"
             };
 
-            var result = bll.Delete(obj);
+            var result = _bll.Delete(obj);
             Assert.IsTrue(result != 0);
 
-            var deletedObj = bll.GetByID(obj.pembayaran_hutang_produk_id);
+            var deletedObj = _bll.GetByID(obj.pembayaran_hutang_produk_id);
 			Assert.IsNull(deletedObj);
         }
     }

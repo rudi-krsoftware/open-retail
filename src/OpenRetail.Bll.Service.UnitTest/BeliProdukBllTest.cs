@@ -21,38 +21,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
- 
+
 namespace OpenRetail.Bll.Service.UnitTest
 {    
     [TestClass]
     public class BeliProdukBllTest
     {
-        private IBeliProdukBll bll = null;
+        private ILog _log;
+        private IBeliProdukBll _bll;
 
         [TestInitialize]
         public void Init()
         {
-            bll = new BeliProdukBll();
+            _log = LogManager.GetLogger(typeof(BeliProdukBllTest));
+            _bll = new BeliProdukBll(_log);
         }
 
         [TestCleanup]
         public void CleanUp()
         {
-            bll = null;
+            _bll = null;
         }
 
         [TestMethod]
         public void GetLastNotaTest()
         {
-            var lastNota = bll.GetLastNota();
+            var lastNota = _bll.GetLastNota();
             Assert.AreEqual("201701100003", lastNota);
 
-            lastNota = bll.GetLastNota();
+            lastNota = _bll.GetLastNota();
             Assert.AreEqual("201701100004", lastNota);
         }
 
@@ -62,7 +67,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var name = "pix";
 
             var index = 0;
-            var oList = bll.GetByName(name);
+            var oList = _bll.GetByName(name);
             var obj = oList[index];
             
             // tes header table beli                 
@@ -102,7 +107,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         public void GetAllTest()
         {            
             var index = 0;
-            var oList = bll.GetAll();
+            var oList = _bll.GetAll();
             var obj = oList[index];
 
             // tes header table (beli)     
@@ -140,7 +145,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         public void GetAllAndNameTest()
         {
             var index = 0;
-            var oList = bll.GetAll("xyz");
+            var oList = _bll.GetAll("xyz");
             var obj = oList[index];
 
             // tes header table (beli)
@@ -180,7 +185,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         {
             var index = 0;
             var supplierId = "7560fd72-0538-4307-8f15-14ef32cf5158";
-            var oList = bll.GetNotaSupplier(supplierId, "123");
+            var oList = _bll.GetNotaSupplier(supplierId, "123");
 
             var obj = oList[index];
 
@@ -223,7 +228,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var tglMulai = new DateTime(2017, 1, 1);
             var tglSelesai = new DateTime(2017, 1, 10);
 
-            var oList = bll.GetByTanggal(tglMulai, tglSelesai);
+            var oList = _bll.GetByTanggal(tglMulai, tglSelesai);
 
             var obj = oList[index];
 
@@ -267,7 +272,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var tglSelesai = new DateTime(2017, 1, 10);
             var name = "komputer";
 
-            var oList = bll.GetByTanggal(tglMulai, tglSelesai, name);
+            var oList = _bll.GetByTanggal(tglMulai, tglSelesai, name);
 
             var obj = oList[index];
 
@@ -308,7 +313,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         {
             var index = 0;
             var supplierId = "e6201c8e-74e3-467c-a463-c8ea1763668e";
-            var oList = bll.GetNotaKreditBySupplier(supplierId, false);
+            var oList = _bll.GetNotaKreditBySupplier(supplierId, false);
 
             var obj = oList[index];
 
@@ -338,7 +343,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 2;
             var beliId = "70c46d69-ca7c-46b2-bd18-ebf03a28d02b";
 
-            var oList = bll.GetItemBeli(beliId);
+            var oList = _bll.GetItemBeli(beliId);
 
             var itemBeli = oList[index];
             Assert.AreEqual("7f09a4aa-e660-4de3-a3aa-4b3244675f9f", itemBeli.Produk.produk_id);
@@ -373,13 +378,13 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var validationError = new ValidationError();
 
-            var result = bll.Save(obj, ref validationError);
+            var result = _bll.Save(obj, ref validationError);
             Console.WriteLine("Error : " + validationError.Message);
 
             Assert.IsTrue(result != 0);
 
             // tes hasil penyimpanan ke tabel beli
-            var newObj = bll.GetByID(obj.beli_produk_id);
+            var newObj = _bll.GetByID(obj.beli_produk_id);
 			Assert.IsNotNull(newObj);
 			Assert.AreEqual(obj.beli_produk_id, newObj.beli_produk_id);                                
             Assert.AreEqual(obj.pengguna_id, newObj.pengguna_id);                                
@@ -411,7 +416,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         [TestMethod]
         public void UpdateTest()
         {
-            var obj = bll.GetByID("70c46d69-ca7c-46b2-bd18-ebf03a28d02b");
+            var obj = _bll.GetByID("70c46d69-ca7c-46b2-bd18-ebf03a28d02b");
             obj.nota = "22222";
             obj.tanggal = new DateTime(2017, 1, 1);
             obj.tanggal_tempo = new DateTime(2017, 1, 25);
@@ -429,12 +434,12 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var validationError = new ValidationError();
 
-            var result = bll.Update(obj, ref validationError);
+            var result = _bll.Update(obj, ref validationError);
             Console.WriteLine("Error : " + validationError.Message);
 
             Assert.IsTrue(result != 0);
 
-            var updatedObj = bll.GetByID(obj.beli_produk_id);
+            var updatedObj = _bll.GetByID(obj.beli_produk_id);
             Assert.IsNotNull(updatedObj);
             Assert.AreEqual(obj.beli_produk_id, updatedObj.beli_produk_id);
             Assert.AreEqual(obj.pengguna_id, updatedObj.pengguna_id);
@@ -472,10 +477,10 @@ namespace OpenRetail.Bll.Service.UnitTest
                 beli_produk_id = "9fdd5459-f9cb-4361-bce7-7edd32f4eb13"
             };
 
-            var result = bll.Delete(obj);
+            var result = _bll.Delete(obj);
             Assert.IsTrue(result != 0);
 
-            var deletedObj = bll.GetByID(obj.beli_produk_id);
+            var deletedObj = _bll.GetByID(obj.beli_produk_id);
 			Assert.IsNull(deletedObj);
         }
     }

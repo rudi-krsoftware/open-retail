@@ -50,7 +50,7 @@ namespace OpenRetail.App.Referensi
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
 
-            _bll = new ProdukBll();
+            _bll = new ProdukBll(MainProgram.log);
 
             LoadDataGolongan();
 
@@ -59,7 +59,7 @@ namespace OpenRetail.App.Referensi
 
         private void LoadDataGolongan()
         {
-            IGolonganBll golonganBll = new GolonganBll();
+            IGolonganBll golonganBll = new GolonganBll(MainProgram.log);
 
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {

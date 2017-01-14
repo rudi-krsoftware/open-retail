@@ -45,7 +45,7 @@ namespace OpenRetail.App.Referensi
         {
             InitializeComponent();
 
-            _bll = new GolonganBll();
+            _bll = new GolonganBll(MainProgram.log);
             LoadData();
 
             InitGridList();
