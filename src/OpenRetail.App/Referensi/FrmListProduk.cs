@@ -117,7 +117,7 @@ namespace OpenRetail.App.Referensi
             gridListProperties.Add(new GridListControlProperties { Header = "Satuan", Width = 130 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga Beli", Width = 110 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 110 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Stok", Width = 90 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Stok Etalase", Width = 90 });
             gridListProperties.Add(new GridListControlProperties { Header = "Stok Gudang", Width = 90 });
             gridListProperties.Add(new GridListControlProperties { Header = "Min. Stok Gudang", Width = 110 });
 

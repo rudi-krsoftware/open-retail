@@ -37,6 +37,7 @@ namespace OpenRetail.App.Main
     {
         private FrmListGolongan _frmListGolongan;
         private FrmListProduk _frmListProduk;
+        private FrmListPenyesuaianStok _frmListPenyesuaianStok;
 
         private FrmListCustomer _frmListCustomer;
         private FrmListSupplier _frmListSupplier;
@@ -78,6 +79,7 @@ namespace OpenRetail.App.Main
         {
             tbGolongan.Click += mnuGolongan_Click;
             tbProduk.Click += mnuProduk_Click;
+            tbPenyesuaianStok.Click += mnuPenyesuaianStok_Click;
             tbSupplier.Click += mnuSupplier_Click;
             tbCustomer.Click += mnuCustomer_Click;
             tbPembelian.Click += mnuPembelianProduk_Click;
@@ -89,7 +91,7 @@ namespace OpenRetail.App.Main
             sbJam.Text = string.Format("{0:HH:mm:ss}", DateTime.Now);
         }
 
-        private static bool IsChildFormExists(Form frm)
+        private bool IsChildFormExists(Form frm)
         {
             return !(frm == null || frm.IsDisposed);
         }
@@ -217,6 +219,16 @@ namespace OpenRetail.App.Main
                 _frmListKaryawan = new FrmListKaryawan(header);
 
             _frmListKaryawan.Show(this.mainDock);
+        }
+
+        private void mnuPenyesuaianStok_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+
+            if (!IsChildFormExists(_frmListPenyesuaianStok))
+                _frmListPenyesuaianStok = new FrmListPenyesuaianStok(header);
+
+            _frmListPenyesuaianStok.Show(this.mainDock);
         }
     }
 }
