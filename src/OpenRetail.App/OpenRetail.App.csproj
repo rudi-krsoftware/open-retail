@@ -423,6 +423,36 @@
   <ItemGroup>
     <None Include="Resources\calendar32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\laporan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pengeluaran.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\penggajian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\product.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supplier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\golongan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\penyesuaian_stok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pembelian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\penjualan.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
