@@ -42,6 +42,7 @@ namespace OpenRetail.App.Main
         private FrmListSupplier _frmListSupplier;
 
         private FrmListJabatan _frmListJabatan;
+        private FrmListKaryawan _frmListKaryawan;
 
         private FrmListJenisPengeluaran _frmListJenisPengeluaran;
 
@@ -165,6 +166,14 @@ namespace OpenRetail.App.Main
                 _frmListJenisPengeluaran = new FrmListJenisPengeluaran(((ToolStripMenuItem)sender).Text);
 
             _frmListJenisPengeluaran.Show(this.mainDock);
+        }
+
+        private void karyawanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!IsChildFormExists(_frmListKaryawan))
+                _frmListKaryawan = new FrmListKaryawan(((ToolStripMenuItem)sender).Text);
+
+            _frmListKaryawan.Show(this.mainDock);
         }
     }
 }

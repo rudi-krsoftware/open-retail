@@ -260,6 +260,7 @@
             this.karyawanToolStripMenuItem.Name = "karyawanToolStripMenuItem";
             this.karyawanToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.karyawanToolStripMenuItem.Text = "Karyawan";
+            this.karyawanToolStripMenuItem.Click += new System.EventHandler(this.karyawanToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
