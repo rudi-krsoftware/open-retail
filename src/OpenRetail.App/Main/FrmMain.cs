@@ -52,6 +52,7 @@ namespace OpenRetail.App.Main
         {
             InitializeComponent();
             InitializeStatusBar();
+            AddEventToolbar();
         }
 
         private void InitializeStatusBar()
@@ -71,6 +72,16 @@ namespace OpenRetail.App.Main
 
             this.Text = appName;
             sbNamaAplikasi.Text = appName.Replace("&", "&&");
+        }
+
+        private void AddEventToolbar()
+        {
+            tbGolongan.Click += mnuGolongan_Click;
+            tbProduk.Click += mnuProduk_Click;
+            tbSupplier.Click += mnuSupplier_Click;
+            tbCustomer.Click += mnuCustomer_Click;
+            tbPembelian.Click += mnuPembelianProduk_Click;
+            tbPenjualan.Click += mnuPembelianProduk_Click;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -98,42 +109,68 @@ namespace OpenRetail.App.Main
             }
         }
 
+        private string GetTitleMenu(object sender)
+        {
+            var title = string.Empty;
+
+            if (sender is ToolStripMenuItem)
+            {
+                title = ((ToolStripMenuItem)sender).Text;
+            }
+            else
+            {
+                title = ((ToolStripButton)sender).Text;
+            }
+
+            return title;
+        }
+
         private void mnuGolongan_Click(object sender, EventArgs e)
         {
+            var header = GetTitleMenu(sender);
+
             if (!IsChildFormExists(_frmListGolongan))
-                _frmListGolongan = new FrmListGolongan(((ToolStripMenuItem)sender).Text);
+                _frmListGolongan = new FrmListGolongan(header);
 
             _frmListGolongan.Show(this.mainDock);
         }
 
         private void mnuProduk_Click(object sender, EventArgs e)
         {
+            var header = GetTitleMenu(sender);
+
             if (!IsChildFormExists(_frmListProduk))
-                _frmListProduk = new FrmListProduk(((ToolStripMenuItem)sender).Text);
+                _frmListProduk = new FrmListProduk(header);
 
             _frmListProduk.Show(this.mainDock);
         }
 
         private void mnuSupplier_Click(object sender, EventArgs e)
         {
+            var header = GetTitleMenu(sender);
+
             if (!IsChildFormExists(_frmListSupplier))
-                _frmListSupplier = new FrmListSupplier(((ToolStripMenuItem)sender).Text);
+                _frmListSupplier = new FrmListSupplier(header);
 
             _frmListSupplier.Show(this.mainDock);
         }
 
         private void mnuCustomer_Click(object sender, EventArgs e)
         {
+            var header = GetTitleMenu(sender);
+
             if (!IsChildFormExists(_frmListCustomer))
-                _frmListCustomer = new FrmListCustomer(((ToolStripMenuItem)sender).Text);
+                _frmListCustomer = new FrmListCustomer(header);
 
             _frmListCustomer.Show(this.mainDock);
         }
 
         private void mnuJabatan_Click(object sender, EventArgs e)
         {
+            var header = GetTitleMenu(sender);
+
             if (!IsChildFormExists(_frmListJabatan))
-                _frmListJabatan = new FrmListJabatan(((ToolStripMenuItem)sender).Text);
+                _frmListJabatan = new FrmListJabatan(header);
 
             _frmListJabatan.Show(this.mainDock);
         }
@@ -154,24 +191,30 @@ namespace OpenRetail.App.Main
 
         private void mnuPembelianProduk_Click(object sender, EventArgs e)
         {
+            var header = GetTitleMenu(sender);
+
             if (!IsChildFormExists(_frmListPembelianProduk))
-                _frmListPembelianProduk = new FrmListPembelianProduk(((ToolStripMenuItem)sender).Text);
+                _frmListPembelianProduk = new FrmListPembelianProduk(header);
 
             _frmListPembelianProduk.Show(this.mainDock);
         }
 
         private void mnuJenisPengeluaran_Click(object sender, EventArgs e)
         {
+            var header = GetTitleMenu(sender);
+
             if (!IsChildFormExists(_frmListJenisPengeluaran))
-                _frmListJenisPengeluaran = new FrmListJenisPengeluaran(((ToolStripMenuItem)sender).Text);
+                _frmListJenisPengeluaran = new FrmListJenisPengeluaran(header);
 
             _frmListJenisPengeluaran.Show(this.mainDock);
         }
 
         private void karyawanToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var header = GetTitleMenu(sender);
+
             if (!IsChildFormExists(_frmListKaryawan))
-                _frmListKaryawan = new FrmListKaryawan(((ToolStripMenuItem)sender).Text);
+                _frmListKaryawan = new FrmListKaryawan(header);
 
             _frmListKaryawan.Show(this.mainDock);
         }
