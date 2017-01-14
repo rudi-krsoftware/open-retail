@@ -66,6 +66,7 @@
     <Compile Include="KaryawanRepository.cs" />
     <Compile Include="Log4NetRepository.cs" />
     <Compile Include="PembayaranHutangProdukRepository.cs" />
+    <Compile Include="PenyesuaianStokRepository.cs" />
     <Compile Include="ProdukRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierRepository.cs" />

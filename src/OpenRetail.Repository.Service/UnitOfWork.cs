@@ -43,6 +43,7 @@ namespace OpenRetail.Repository.Service
         private IBeliProdukRepository _beliprodukRepository;
         private IPembayaranHutangProdukRepository _pembayaranhutangprodukRepository;
         private ILog4NetRepository _log4NetRepository;
+        private IPenyesuaianStokRepository _penyesuaianstokRepository;
 
         public UnitOfWork(IDapperContext context, ILog log)
         {
@@ -103,6 +104,11 @@ namespace OpenRetail.Repository.Service
         public ILog4NetRepository Log4NetRepository
         {
             get { return _log4NetRepository ?? (_log4NetRepository = new Log4NetRepository(_context)); }
+        }
+
+        public IPenyesuaianStokRepository PenyesuaianStokRepository
+        {
+            get { return _penyesuaianstokRepository ?? (_penyesuaianstokRepository = new PenyesuaianStokRepository(_context, _log)); }
         }
     }
 }     

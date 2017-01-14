@@ -21,22 +21,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using OpenRetail.Model;
  
 namespace OpenRetail.Repository.Api
-{    
-    public interface IUnitOfWork
+{        
+    public interface IPenyesuaianStokRepository : IBaseRepository<PenyesuaianStok>
     {
-        IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
-        IJabatanRepository JabatanRepository { get; }
-        IJenisPengeluaranRepository JenisPengeluaranRepository { get; }
-        IGolonganRepository GolonganRepository { get; }
-        IProdukRepository ProdukRepository { get; }
-        ICustomerRepository CustomerRepository { get; }
-        ISupplierRepository SupplierRepository { get; }
-        IKaryawanRepository KaryawanRepository { get; }
-        IBeliProdukRepository BeliProdukRepository { get; }
-        IPembayaranHutangProdukRepository PembayaranHutangProdukRepository { get; }
-        ILog4NetRepository Log4NetRepository { get; }
-        IPenyesuaianStokRepository PenyesuaianStokRepository { get; }                
+		PenyesuaianStok GetByID(string id);            
+        IList<PenyesuaianStok> GetByName(string name);
+        IList<PenyesuaianStok> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 }     

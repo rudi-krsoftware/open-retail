@@ -58,6 +58,7 @@
     <Compile Include="JenisPengeluaranBll.cs" />
     <Compile Include="KaryawanBll.cs" />
     <Compile Include="PembayaranHutangProdukBll.cs" />
+    <Compile Include="PenyesuaianStokBll.cs" />
     <Compile Include="ProdukBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierBll.cs" />
