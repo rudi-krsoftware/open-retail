@@ -568,6 +568,7 @@
             this.mnuHakAksesAplikasi.Name = "mnuHakAksesAplikasi";
             this.mnuHakAksesAplikasi.Size = new System.Drawing.Size(187, 22);
             this.mnuHakAksesAplikasi.Text = "Hak Akses Aplikasi";
+            this.mnuHakAksesAplikasi.Click += new System.EventHandler(this.mnuHakAksesAplikasi_Click);
             // 
             // mnuManajemenOperator
             // 

@@ -35,7 +35,7 @@ namespace OpenRetail.Model
 		[Display(Name = "role_id")]		
 		public string role_id { get; set; }
 		
-		[Display(Name = "Role")]
+		[Display(Name = "Hak Akses")]
 		public string nama_role { get; set; }
 		
 		[Display(Name = "is_active")]

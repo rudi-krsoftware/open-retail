@@ -50,6 +50,7 @@ namespace OpenRetail.App.Main
 
         private FrmListPembelianProduk _frmListPembelianProduk;
 
+        private FrmListHakAkses _frmListHakAkses;
         private FrmListOperator _frmListOperator;
 
         public FrmMain()
@@ -242,6 +243,16 @@ namespace OpenRetail.App.Main
                 _frmListOperator = new FrmListOperator(header);
 
             _frmListOperator.Show(this.mainDock);
+        }
+
+        private void mnuHakAksesAplikasi_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+
+            if (!IsChildFormExists(_frmListHakAkses))
+                _frmListHakAkses = new FrmListHakAkses(header);
+
+            _frmListHakAkses.Show(this.mainDock);
         }
     }
 }
