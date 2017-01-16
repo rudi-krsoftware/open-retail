@@ -177,7 +177,7 @@ namespace OpenRetail.App.Main
             _frmListJabatan.Show(this.mainDock);
         }
 
-        private void mnuKeluar_Click(object sender, EventArgs e)
+        private void mnuKeluarDariProgram_Click(object sender, EventArgs e)
         {
             if (MsgHelper.MsgKonfirmasi("Apakah proses ingin dilanjutkan ?"))
             {
