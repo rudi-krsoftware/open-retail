@@ -27,7 +27,12 @@ using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
+{
+    public enum GrantState
+    {
+        SELECT, CREATE, UPDATE, DELETE
+    }
+
 	[Table("m_pengguna")]
     public class Pengguna
     {
@@ -41,18 +46,51 @@ namespace OpenRetail.Model
 		[Write(false)]
         public Role Role { get; set; }
 
-		[Display(Name = "nama_pengguna")]
+		[Display(Name = "Nama")]
 		public string nama_pengguna { get; set; }
 		
-		[Display(Name = "pass_pengguna")]
+		[Display(Name = "Password")]
 		public string pass_pengguna { get; set; }
 		
-		[Display(Name = "is_active")]
+		[Display(Name = "Aktif")]
 		public bool is_active { get; set; }
-		
-		[Display(Name = "status_user")]
+
+        [Write(false)]
+		[Display(Name = "Status User")]
 		public int status_user { get; set; }
-		
+
+        [Write(false)]
+        public bool is_administrator
+        {
+            get
+            {
+                if (this.Role != null)
+                {
+                    return this.Role.nama_role.ToLower() == "administrator";
+                }
+                else
+                    return false;
+            }
+        }
+
+        [Write(false)]
+        public IList<RolePrivilege> role_privileges { get; set; }
+
+        public IList<RolePrivilege> GetRoleByMenu(string menuId)
+        {
+            var oList = this.role_privileges.Where(f => f.role_id == this.role_id && f.menu_id == menuId)
+                                            .ToList();
+
+            return oList;
+        }
+
+        public RolePrivilege GetRoleByMenuAndGrant(string menuId, GrantState grantState)
+        {
+            var obj = this.role_privileges.Where(f => f.role_id == this.role_id && f.menu_id == menuId && f.grant_id == Convert.ToInt32(grantState))
+                                          .SingleOrDefault();
+
+            return obj;
+        }
 	}
 
     public class PenggunaValidator : AbstractValidator<Pengguna>
