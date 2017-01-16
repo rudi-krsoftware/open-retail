@@ -40,6 +40,8 @@ namespace OpenRetail.Repository.Api
         IPenyesuaianStokRepository PenyesuaianStokRepository { get; }
         IPenggunaRepository PenggunaRepository { get; }
         IRoleRepository RoleRepository { get; }
-        IRolePrivilegeRepository RolePrivilegeRepository { get; }                
+        IRolePrivilegeRepository RolePrivilegeRepository { get; }
+        IMenuRepository MenuRepository { get; }
+        IItemMenuRepository ItemMenuRepository { get; }                
     }
 }     

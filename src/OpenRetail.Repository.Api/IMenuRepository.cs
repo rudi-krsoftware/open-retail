@@ -22,33 +22,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
-
-namespace OpenRetail.Model
-{        
-	[Table("m_role_privilege")]
-    public class RolePrivilege
+using OpenRetail.Model;
+ 
+namespace OpenRetail.Repository.Api
+{
+    public interface IMenuRepository : IBaseRepository<MenuAplikasi>
     {
-        [ExplicitKey]
-		[Display(Name = "role_id")]
-		public string role_id { get; set; }
-
-		[Write(false)]
-        public Role Role { get; set; }
-
-		[Display(Name = "menu_id")]
-		public string menu_id { get; set; }
-
-		[Write(false)]
-        public MenuAplikasi Menu { get; set; }
-
-		[Display(Name = "grant_id")]		
-		public int grant_id { get; set; }
-		
-		[Display(Name = "is_grant")]
-		public bool is_grant { get; set; }
-		
-	}
-}
+        MenuAplikasi GetByID(string id);
+        MenuAplikasi GetByName(string name);
+    }
+}     

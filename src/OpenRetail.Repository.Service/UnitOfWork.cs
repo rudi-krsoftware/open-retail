@@ -47,6 +47,8 @@ namespace OpenRetail.Repository.Service
         private IPenggunaRepository _penggunaRepository;
         private IRoleRepository _roleRepository;
         private IRolePrivilegeRepository _roleprivilegeRepository;
+        private IMenuRepository _menuRepository;
+        private IItemMenuRepository _itemmenuRepository;
 
         public UnitOfWork(IDapperContext context, ILog log)
         {
@@ -127,6 +129,16 @@ namespace OpenRetail.Repository.Service
         public IRolePrivilegeRepository RolePrivilegeRepository
         {
             get { return _roleprivilegeRepository ?? (_roleprivilegeRepository = new RolePrivilegeRepository(_context, _log)); }
+        }
+
+        public IMenuRepository MenuRepository
+        {
+            get { return _menuRepository ?? (_menuRepository = new MenuRepository(_context, _log)); }
+        }
+
+        public IItemMenuRepository ItemMenuRepository
+        {
+            get { return _itemmenuRepository ?? (_itemmenuRepository = new ItemMenuRepository(_context, _log)); }
         }
     }
 }     

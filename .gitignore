@@ -1,6 +1,7 @@
 Thumbs.db
 license.txt
 App.config
+GenerateMenu.cs
 *.obj
 *.exe
 *.pdb

@@ -28,27 +28,23 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
 {        
-	[Table("m_role_privilege")]
-    public class RolePrivilege
+	[Table("m_item_menu")]
+    public class ItemMenu
     {
-        [ExplicitKey]
-		[Display(Name = "role_id")]
-		public string role_id { get; set; }
-
-		[Write(false)]
-        public Role Role { get; set; }
-
+		[ExplicitKey]
+		[Display(Name = "item_menu_id")]		
+		public string item_menu_id { get; set; }
+		
 		[Display(Name = "menu_id")]
 		public string menu_id { get; set; }
 
 		[Write(false)]
         public MenuAplikasi Menu { get; set; }
 
-		[Display(Name = "grant_id")]		
+		[Display(Name = "grant_id")]
 		public int grant_id { get; set; }
 		
-		[Display(Name = "is_grant")]
-		public bool is_grant { get; set; }
-		
+		[Display(Name = "keterangan")]
+		public string keterangan { get; set; }
 	}
 }

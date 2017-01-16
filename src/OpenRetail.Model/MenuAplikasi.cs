@@ -28,27 +28,32 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
 {        
-	[Table("m_role_privilege")]
-    public class RolePrivilege
+	[Table("m_menu")]
+    public class MenuAplikasi
     {
-        [ExplicitKey]
-		[Display(Name = "role_id")]
-		public string role_id { get; set; }
-
-		[Write(false)]
-        public Role Role { get; set; }
-
-		[Display(Name = "menu_id")]
+		[ExplicitKey]
+		[Display(Name = "menu_id")]		
 		public string menu_id { get; set; }
-
-		[Write(false)]
-        public MenuAplikasi Menu { get; set; }
-
-		[Display(Name = "grant_id")]		
-		public int grant_id { get; set; }
 		
-		[Display(Name = "is_grant")]
-		public bool is_grant { get; set; }
+		[Display(Name = "nama_menu")]
+		public string nama_menu { get; set; }
 		
-	}
+		[Display(Name = "judul_menu")]
+		public string judul_menu { get; set; }
+		
+		[Display(Name = "parent_id")]
+		public string parent_id { get; set; }
+		
+		[Display(Name = "order_number")]
+		public int order_number { get; set; }
+		
+		[Display(Name = "is_active")]
+		public bool is_active { get; set; }
+		
+		[Display(Name = "nama_form")]
+		public string nama_form { get; set; }
+		
+		[Display(Name = "is_enabled")]
+		public bool is_enabled { get; set; }
+	}    
 }
