@@ -28,31 +28,27 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
 {        
-	[Table("m_role")]
-    public class Role
+	[Table("m_role_privilege")]
+    public class RolePrivilege
     {
-		[ExplicitKey]
-		[Display(Name = "role_id")]		
+        [ExplicitKey]
+		[Display(Name = "role_id")]
 		public string role_id { get; set; }
-		
-		[Display(Name = "Role")]
-		public string nama_role { get; set; }
-		
-		[Display(Name = "is_active")]
-		public bool is_active { get; set; }
-		
-	}
 
-    public class RoleValidator : AbstractValidator<Role>
-    {
-        public RoleValidator()
-        {
-            CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
+		[Write(false)]
+        public Role Role { get; set; }
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
-            var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
+		[Display(Name = "menu_id")]
+		public string menu_id { get; set; }
 
-			RuleFor(c => c.nama_role).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
-		}
+		[Write(false)]
+        public Menu Menu { get; set; }
+
+		[Display(Name = "grant_id")]		
+		public int grant_id { get; set; }
+		
+		[Display(Name = "is_grant")]
+		public bool is_grant { get; set; }
+		
 	}
 }

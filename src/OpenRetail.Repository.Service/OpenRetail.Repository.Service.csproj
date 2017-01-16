@@ -66,9 +66,12 @@
     <Compile Include="KaryawanRepository.cs" />
     <Compile Include="Log4NetRepository.cs" />
     <Compile Include="PembayaranHutangProdukRepository.cs" />
+    <Compile Include="PenggunaRepository.cs" />
     <Compile Include="PenyesuaianStokRepository.cs" />
     <Compile Include="ProdukRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolePrivilegeRepository.cs" />
+    <Compile Include="RoleRepository.cs" />
     <Compile Include="SupplierRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>

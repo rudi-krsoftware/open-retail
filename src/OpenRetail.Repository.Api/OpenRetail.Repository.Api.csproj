@@ -53,8 +53,11 @@
     <Compile Include="IKaryawanRepository.cs" />
     <Compile Include="ILog4NetRepository.cs" />
     <Compile Include="IPembayaranHutangProdukRepository.cs" />
+    <Compile Include="IPenggunaRepository.cs" />
     <Compile Include="IPenyesuaianStokRepository.cs" />
     <Compile Include="IProdukRepository.cs" />
+    <Compile Include="IRolePrivilegeRepository.cs" />
+    <Compile Include="IRoleRepository.cs" />
     <Compile Include="ISupplierRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

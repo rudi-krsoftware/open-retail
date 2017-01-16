@@ -44,6 +44,9 @@ namespace OpenRetail.Repository.Service
         private IPembayaranHutangProdukRepository _pembayaranhutangprodukRepository;
         private ILog4NetRepository _log4NetRepository;
         private IPenyesuaianStokRepository _penyesuaianstokRepository;
+        private IPenggunaRepository _penggunaRepository;
+        private IRoleRepository _roleRepository;
+        private IRolePrivilegeRepository _roleprivilegeRepository;
 
         public UnitOfWork(IDapperContext context, ILog log)
         {
@@ -109,6 +112,21 @@ namespace OpenRetail.Repository.Service
         public IPenyesuaianStokRepository PenyesuaianStokRepository
         {
             get { return _penyesuaianstokRepository ?? (_penyesuaianstokRepository = new PenyesuaianStokRepository(_context, _log)); }
+        }
+
+        public IPenggunaRepository PenggunaRepository
+        {
+            get { return _penggunaRepository ?? (_penggunaRepository = new PenggunaRepository(_context, _log)); }
+        }
+
+        public IRoleRepository RoleRepository
+        {
+            get { return _roleRepository ?? (_roleRepository = new RoleRepository(_context, _log)); }
+        }
+
+        public IRolePrivilegeRepository RolePrivilegeRepository
+        {
+            get { return _roleprivilegeRepository ?? (_roleprivilegeRepository = new RolePrivilegeRepository(_context, _log)); }
         }
     }
 }     

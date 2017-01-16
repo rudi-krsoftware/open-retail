@@ -37,6 +37,9 @@ namespace OpenRetail.Repository.Api
         IBeliProdukRepository BeliProdukRepository { get; }
         IPembayaranHutangProdukRepository PembayaranHutangProdukRepository { get; }
         ILog4NetRepository Log4NetRepository { get; }
-        IPenyesuaianStokRepository PenyesuaianStokRepository { get; }                
+        IPenyesuaianStokRepository PenyesuaianStokRepository { get; }
+        IPenggunaRepository PenggunaRepository { get; }
+        IRoleRepository RoleRepository { get; }
+        IRolePrivilegeRepository RolePrivilegeRepository { get; }                
     }
 }     

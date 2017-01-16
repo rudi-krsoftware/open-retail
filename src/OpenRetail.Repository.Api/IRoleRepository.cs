@@ -22,37 +22,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
-
-namespace OpenRetail.Model
+using OpenRetail.Model;
+ 
+namespace OpenRetail.Repository.Api
 {        
-	[Table("m_role")]
-    public class Role
+    public interface IRoleRepository : IBaseRepository<Role>
     {
-		[ExplicitKey]
-		[Display(Name = "role_id")]		
-		public string role_id { get; set; }
-		
-		[Display(Name = "Role")]
-		public string nama_role { get; set; }
-		
-		[Display(Name = "is_active")]
-		public bool is_active { get; set; }
-		
-	}
-
-    public class RoleValidator : AbstractValidator<Role>
-    {
-        public RoleValidator()
-        {
-            CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
-
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
-            var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
-
-			RuleFor(c => c.nama_role).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
-		}
-	}
-}
+		Role GetByID(string id);            
+        IList<Role> GetByName(string name);
+        IList<Role> GetByStatus(bool isActive);
+    }
+}     

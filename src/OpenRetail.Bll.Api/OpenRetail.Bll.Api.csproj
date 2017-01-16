@@ -51,8 +51,11 @@
     <Compile Include="IJenisPengeluaranBll.cs" />
     <Compile Include="IKaryawanBll.cs" />
     <Compile Include="IPembayaranHutangProdukBll.cs" />
+    <Compile Include="IPenggunaBll.cs" />
     <Compile Include="IPenyesuaianStokBll.cs" />
     <Compile Include="IProdukBll.cs" />
+    <Compile Include="IRoleBll.cs" />
+    <Compile Include="IRolePrivilegeBll.cs" />
     <Compile Include="ISupplierBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
