@@ -86,12 +86,12 @@ namespace OpenRetail.App.Transaksi
                         {
                             double totalNota = 0;
 
-                            var obj = _listOfBeli[rowIndex];
-                            if (obj != null)
-                                totalNota = obj.total_nota_setelah_diskon_dan_ppn;
+                            var beli = _listOfBeli[rowIndex];
+                            if (beli != null)
+                                totalNota = beli.total_nota_setelah_diskon_dan_ppn;
 
 
-                            var isRetur = obj.retur_beli_produk_id != null;
+                            var isRetur = beli.retur_beli_produk_id != null;
 
                             if (isRetur)
                                 e.Style.BackColor = Color.Red;
@@ -100,26 +100,26 @@ namespace OpenRetail.App.Transaksi
                             {
                                 case 2:
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
-                                    e.Style.CellValue = DateTimeHelper.DateToString(obj.tanggal);
+                                    e.Style.CellValue = DateTimeHelper.DateToString(beli.tanggal);
                                     break;
 
                                 case 3:
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
-                                    e.Style.CellValue = DateTimeHelper.DateToString(obj.tanggal_tempo);
+                                    e.Style.CellValue = DateTimeHelper.DateToString(beli.tanggal_tempo);
                                     break;
 
                                 case 4:
-                                    e.Style.CellValue = obj.nota;
+                                    e.Style.CellValue = beli.nota;
                                     break;
 
                                 case 5:
-                                    if (obj.Supplier != null)
-                                        e.Style.CellValue = obj.Supplier.nama_supplier;
+                                    if (beli.Supplier != null)
+                                        e.Style.CellValue = beli.Supplier.nama_supplier;
 
                                     break;
 
                                 case 6:
-                                    e.Style.CellValue = obj.keterangan;
+                                    e.Style.CellValue = beli.keterangan;
                                     break;
 
                                 case 7:
@@ -129,7 +129,7 @@ namespace OpenRetail.App.Transaksi
 
                                 case 8:
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
-                                    e.Style.CellValue = NumberHelper.NumberToString(totalNota - obj.total_pelunasan);
+                                    e.Style.CellValue = NumberHelper.NumberToString(totalNota - beli.total_pelunasan);
                                     break;
 
                                 default:
@@ -202,12 +202,12 @@ namespace OpenRetail.App.Transaksi
 
             if (MsgHelper.MsgDelete())
             {
-                var obj = _listOfBeli[index];
+                var beli = _listOfBeli[index];
 
-                var result = _bll.Delete(obj);
+                var result = _bll.Delete(beli);
                 if (result > 0)
                 {
-                    GridListControlHelper.RemoveObject<BeliProduk>(this.gridList, _listOfBeli, obj);
+                    GridListControlHelper.RemoveObject<BeliProduk>(this.gridList, _listOfBeli, beli);
                     ResetButton();
                 }
                 else

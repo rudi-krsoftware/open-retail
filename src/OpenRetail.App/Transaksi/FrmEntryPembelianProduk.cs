@@ -144,11 +144,11 @@ namespace OpenRetail.App.Transaksi
                         return;
                     }
 
-                    var obj = _listOfItemBeli[e.RowIndex - 1];
-                    obj.entity_state = EntityState.Deleted;
+                    var itemBeli = _listOfItemBeli[e.RowIndex - 1];
+                    itemBeli.entity_state = EntityState.Deleted;
 
-                    _listOfItemBeliDeleted.Add(obj);
-                    _listOfItemBeli.Remove(obj);
+                    _listOfItemBeliDeleted.Add(itemBeli);
+                    _listOfItemBeli.Remove(itemBeli);
 
                     grid.RowCount = _listOfItemBeli.Count();
                     grid.Refresh();

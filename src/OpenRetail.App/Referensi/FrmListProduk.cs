@@ -138,49 +138,49 @@ namespace OpenRetail.App.Referensi
 
                         if (rowIndex < _listOfProduk.Count)
                         {
-                            var obj = _listOfProduk[rowIndex];
+                            var produk = _listOfProduk[rowIndex];
 
                             switch (e.ColIndex)
                             {
                                 case 2:
-                                    e.Style.CellValue = obj.kode_produk;
+                                    e.Style.CellValue = produk.kode_produk;
                                     break;
 
                                 case 3:
-                                    e.Style.CellValue = obj.nama_produk;
+                                    e.Style.CellValue = produk.nama_produk;
                                     break;
 
                                 case 4:
                                     var satuan = string.Empty;
 
-                                    if (obj.satuan.Length > 0)
-                                        satuan = obj.satuan;
+                                    if (produk.satuan.Length > 0)
+                                        satuan = produk.satuan;
 
                                     e.Style.CellValue = satuan;
                                     break;
 
                                 case 5:
-                                    e.Style.CellValue = NumberHelper.NumberToString(obj.harga_beli);
+                                    e.Style.CellValue = NumberHelper.NumberToString(produk.harga_beli);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;
 
                                 case 6:
-                                    e.Style.CellValue = NumberHelper.NumberToString(obj.harga_jual);
+                                    e.Style.CellValue = NumberHelper.NumberToString(produk.harga_jual);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;
 
                                 case 7:
-                                    e.Style.CellValue = obj.stok;
+                                    e.Style.CellValue = produk.stok;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
                                 case 8:
-                                    e.Style.CellValue = obj.stok_gudang;
+                                    e.Style.CellValue = produk.stok_gudang;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
                                 case 9:
-                                    e.Style.CellValue = obj.minimal_stok_gudang;
+                                    e.Style.CellValue = produk.minimal_stok_gudang;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
