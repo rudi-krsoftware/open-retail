@@ -40,6 +40,11 @@ namespace OpenRetail.App
         public static readonly string appName = "Open Retail Versi {0} - Copyright © 2017 Kamarudin";
 
         /// <summary>
+        /// unik kode untuk enkripsi password menggunakan metode md5
+        /// </summary>
+        public static readonly string securityCode = "BhGr7YwZpdX7ubFuZCuU";
+
+        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]

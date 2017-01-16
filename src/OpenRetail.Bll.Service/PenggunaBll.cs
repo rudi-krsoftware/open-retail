@@ -112,12 +112,15 @@ namespace OpenRetail.Bll.Service
                 }
             }
 
+            obj.pass_pengguna = obj.konf_pass_pengguna;
             return Save(obj);
         }
 
 		public int Update(Pengguna obj)
         {
             var result = 0;
+
+            obj.pass_pengguna = obj.konf_pass_pengguna;
 
             using (IDapperContext context = new DapperContext())
             {
@@ -126,23 +129,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return result;
-        }
-
-        public int Update(Pengguna obj, ref ValidationError validationError)
-        {
-            var validatorResults = _validator.Validate(obj);
-
-            if (!validatorResults.IsValid)
-            {
-                foreach (var failure in validatorResults.Errors)
-                {
-                    validationError.Message = failure.ErrorMessage;
-                    validationError.PropertyName = failure.PropertyName;
-                    return 0;
-                }
-            }
-
-            return Update(obj);
         }
 
         public int Delete(Pengguna obj)

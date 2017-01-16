@@ -33,6 +33,5 @@ namespace OpenRetail.Bll.Api
         bool IsValidPengguna(string userName, string password);
 
 		int Save(Pengguna obj, ref ValidationError validationError);
-		int Update(Pengguna obj, ref ValidationError validationError);
     }
 }     

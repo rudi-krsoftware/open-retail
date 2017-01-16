@@ -84,6 +84,7 @@
     <Compile Include="JabatanBllTest.cs" />
     <Compile Include="JenisPengeluaranBllTest.cs" />
     <Compile Include="KaryawanBllTest.cs" />
+    <Compile Include="MenuBllTest.cs" />
     <Compile Include="PembayaranHutangProdukBllTest.cs" />
     <Compile Include="PenggunaBllTest.cs" />
     <Compile Include="PenyesuaianStokBllTest.cs" />

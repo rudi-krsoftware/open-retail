@@ -150,7 +150,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                // password sudah dienkripsi dari aplikasi klien
+                // password sudah dienkripsi dari aplikasi
                 if (obj.pass_pengguna != null && obj.pass_pengguna.Length > 0)
                 {
                     _sql = @"UPDATE m_pengguna SET nama_pengguna = @nama_pengguna, pass_pengguna = @pass_pengguna, role_id = @role_id, is_active = @is_active,

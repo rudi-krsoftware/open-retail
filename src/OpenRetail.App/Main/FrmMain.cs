@@ -30,6 +30,7 @@ using OpenRetail.App.Referensi;
 using OpenRetail.App.Transaksi;
 using OpenRetail.App.Helper;
 using ConceptCave.WaitCursor;
+using OpenRetail.App.Pengaturan;
 
 namespace OpenRetail.App.Main
 {
@@ -48,6 +49,8 @@ namespace OpenRetail.App.Main
         private FrmListJenisPengeluaran _frmListJenisPengeluaran;
 
         private FrmListPembelianProduk _frmListPembelianProduk;
+
+        private FrmListOperator _frmListOperator;
 
         public FrmMain()
         {
@@ -229,6 +232,16 @@ namespace OpenRetail.App.Main
                 _frmListPenyesuaianStok = new FrmListPenyesuaianStok(header);
 
             _frmListPenyesuaianStok.Show(this.mainDock);
+        }
+
+        private void mnuManajemenOperator_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+
+            if (!IsChildFormExists(_frmListOperator))
+                _frmListOperator = new FrmListOperator(header);
+
+            _frmListOperator.Show(this.mainDock);
         }
     }
 }

@@ -122,10 +122,7 @@ namespace OpenRetail.Bll.Service.UnitTest
                 is_active = false
             };
 
-            var validationError = new ValidationError();
-
-            var result = _bll.Update(obj, ref validationError);
-            Console.WriteLine("Error : " + validationError.Message);
+            var result = _bll.Update(obj);
 
             Assert.IsTrue(result != 0);
 

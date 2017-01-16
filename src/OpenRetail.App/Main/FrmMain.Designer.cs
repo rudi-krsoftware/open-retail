@@ -574,6 +574,7 @@
             this.mnuManajemenOperator.Name = "mnuManajemenOperator";
             this.mnuManajemenOperator.Size = new System.Drawing.Size(187, 22);
             this.mnuManajemenOperator.Text = "Manajemen Operator";
+            this.mnuManajemenOperator.Click += new System.EventHandler(this.mnuManajemenOperator_Click);
             // 
             // mnuKeluar
             // 

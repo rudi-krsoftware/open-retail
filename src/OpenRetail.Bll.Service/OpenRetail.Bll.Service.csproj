@@ -54,9 +54,11 @@
     <Compile Include="BeliProdukBll.cs" />
     <Compile Include="CustomerBll.cs" />
     <Compile Include="GolonganBll.cs" />
+    <Compile Include="ItemMenuBll.cs" />
     <Compile Include="JabatanBll.cs" />
     <Compile Include="JenisPengeluaranBll.cs" />
     <Compile Include="KaryawanBll.cs" />
+    <Compile Include="MenuBll.cs" />
     <Compile Include="PembayaranHutangProdukBll.cs" />
     <Compile Include="PenggunaBll.cs" />
     <Compile Include="PenyesuaianStokBll.cs" />

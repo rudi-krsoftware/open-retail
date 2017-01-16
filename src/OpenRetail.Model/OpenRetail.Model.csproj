@@ -68,7 +68,7 @@
     <Compile Include="JenisPengeluaran.cs" />
     <Compile Include="Karyawan.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="Menu.cs" />
+    <Compile Include="MenuAplikasi.cs" />
     <Compile Include="ModelExtension.cs" />
     <Compile Include="PembayaranHutangProduk.cs" />
     <Compile Include="Pengguna.cs" />

@@ -51,7 +51,11 @@ namespace OpenRetail.Model
 		
 		[Display(Name = "Password")]
 		public string pass_pengguna { get; set; }
-		
+
+        [Write(false)]
+        [Display(Name = "Konfirmasi Password")]
+        public string konf_pass_pengguna { get; set; }
+
 		[Display(Name = "Aktif")]
 		public bool is_active { get; set; }
 
@@ -105,6 +109,7 @@ namespace OpenRetail.Model
 			RuleFor(c => c.role_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
 			RuleFor(c => c.nama_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
 			RuleFor(c => c.pass_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 32).WithMessage(msgError2);
+            RuleFor(c => c.konf_pass_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 32).WithMessage(msgError2);
 		}
 	}
 }
