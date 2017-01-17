@@ -156,7 +156,7 @@ namespace OpenRetail.App.Pengaturan
 
             treeViewAdv.Nodes.Clear();
 
-            var menuChild = _listOfMenuAplikasi.Where(f => f.parent_id == menuParentId && f.is_active == true)
+            var menuChild = _listOfMenuAplikasi.Where(f => f.parent_id == menuParentId && f.is_active == true && f.nama_form.Length > 0)
                                                .OrderBy(f => f.order_number)
                                                .ToList();
 

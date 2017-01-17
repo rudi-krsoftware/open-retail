@@ -58,6 +58,7 @@ namespace OpenRetail.App.Main
             InitializeComponent();
             InitializeStatusBar();
             AddEventToolbar();
+        }
 
         private void InitializeStatusBar()
         {
