@@ -324,6 +324,8 @@ namespace OpenRetail.Repository.Service
         {
             var total = obj.item_beli.Where(f => f.Produk != null && f.entity_state != EntityState.Deleted)
                                      .Sum(f => f.jumlah * f.harga);
+
+            total = Math.Ceiling(total);
             return total;
         }
 
@@ -364,7 +366,7 @@ namespace OpenRetail.Repository.Service
                 {
                     result = SavePembayaranHutang(obj);
                     if (result > 0)
-                        obj.total_pelunasan = obj.total_nota_setelah_diskon_dan_ppn;
+                        obj.total_pelunasan = obj.grand_total;
 
                 }
                 
@@ -434,7 +436,7 @@ namespace OpenRetail.Repository.Service
                 {
                     result = SavePembayaranHutang(obj);
                     if (result > 0)
-                        obj.total_pelunasan = obj.total_nota_setelah_diskon_dan_ppn;
+                        obj.total_pelunasan = obj.grand_total;
                 }
 
                 _context.Commit();
@@ -465,7 +467,7 @@ namespace OpenRetail.Repository.Service
             itemPembayaranHutang = pembayaranHutangRepo.GetByBeliID(obj.beli_produk_id);
             if (itemPembayaranHutang != null) // sudah ada pelunasan
             {
-                itemPembayaranHutang.nominal = obj.total_nota_setelah_diskon_dan_ppn;
+                itemPembayaranHutang.nominal = obj.grand_total;
                 itemPembayaranHutang.BeliProduk = new BeliProduk { beli_produk_id = itemPembayaranHutang.beli_produk_id };
                 itemPembayaranHutang.entity_state = EntityState.Modified;
 
@@ -493,7 +495,7 @@ namespace OpenRetail.Repository.Service
                 itemPembayaranHutang = new ItemPembayaranHutangProduk();
                 itemPembayaranHutang.beli_produk_id = obj.beli_produk_id;
                 itemPembayaranHutang.BeliProduk = obj;
-                itemPembayaranHutang.nominal = obj.total_nota_setelah_diskon_dan_ppn; // GetTotalNotaSetelahDiskonDanPPN(obj);
+                itemPembayaranHutang.nominal = obj.grand_total; // GetTotalNotaSetelahDiskonDanPPN(obj);
                 itemPembayaranHutang.keterangan = string.Empty;
 
                 // set item pembayaran

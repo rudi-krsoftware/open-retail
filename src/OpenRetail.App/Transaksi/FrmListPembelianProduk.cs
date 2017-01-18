@@ -88,7 +88,7 @@ namespace OpenRetail.App.Transaksi
 
                             var beli = _listOfBeli[rowIndex];
                             if (beli != null)
-                                totalNota = beli.total_nota_setelah_diskon_dan_ppn;
+                                totalNota = beli.grand_total;
 
 
                             var isRetur = beli.retur_beli_produk_id != null;
