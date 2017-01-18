@@ -112,6 +112,7 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelian = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualan = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -575,6 +576,7 @@
             // 
             this.mnuPengaturan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuProfilPerusahaan,
+            this.toolStripSeparator13,
             this.mnuHakAksesAplikasi,
             this.mnuManajemenOperator});
             this.mnuPengaturan.Name = "mnuPengaturan";
@@ -802,6 +804,11 @@
             this.tbLapPenjualan.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualan.Text = "Laporan Penjualan";
             // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(184, 6);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -911,5 +918,6 @@
         private System.Windows.Forms.ToolStripButton tbLapPenjualan;
         private System.Windows.Forms.ToolStripButton tbPenyesuaianStok;
         private System.Windows.Forms.ToolStripMenuItem mnuAbout;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
     }
 }
