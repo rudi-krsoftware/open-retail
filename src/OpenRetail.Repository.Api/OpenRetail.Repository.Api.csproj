@@ -51,10 +51,12 @@
     <Compile Include="IItemMenuRepository.cs" />
     <Compile Include="IJabatanRepository.cs" />
     <Compile Include="IJenisPengeluaranRepository.cs" />
+    <Compile Include="IJualProdukRepository.cs" />
     <Compile Include="IKaryawanRepository.cs" />
     <Compile Include="ILog4NetRepository.cs" />
     <Compile Include="IMenuRepository.cs" />
     <Compile Include="IPembayaranHutangProdukRepository.cs" />
+    <Compile Include="IPembayaranPiutangProdukRepository.cs" />
     <Compile Include="IPenggunaRepository.cs" />
     <Compile Include="IPenyesuaianStokRepository.cs" />
     <Compile Include="IProdukRepository.cs" />

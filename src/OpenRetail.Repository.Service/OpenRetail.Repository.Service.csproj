@@ -64,10 +64,12 @@
     <Compile Include="ItemMenuRepository.cs" />
     <Compile Include="JabatanRepository.cs" />
     <Compile Include="JenisPengeluaranRepository.cs" />
+    <Compile Include="JualProdukRepository.cs" />
     <Compile Include="KaryawanRepository.cs" />
     <Compile Include="Log4NetRepository.cs" />
     <Compile Include="MenuRepository.cs" />
     <Compile Include="PembayaranHutangProdukRepository.cs" />
+    <Compile Include="PembayaranPiutangProdukRepository.cs" />
     <Compile Include="PenggunaRepository.cs" />
     <Compile Include="PenyesuaianStokRepository.cs" />
     <Compile Include="ProdukRepository.cs" />

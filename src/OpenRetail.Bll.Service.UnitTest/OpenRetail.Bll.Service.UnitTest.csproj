@@ -83,6 +83,7 @@
     <Compile Include="GolonganBllTest.cs" />
     <Compile Include="JabatanBllTest.cs" />
     <Compile Include="JenisPengeluaranBllTest.cs" />
+    <Compile Include="JualProdukBllTest.cs" />
     <Compile Include="KaryawanBllTest.cs" />
     <Compile Include="MenuBllTest.cs" />
     <Compile Include="PembayaranHutangProdukBllTest.cs" />

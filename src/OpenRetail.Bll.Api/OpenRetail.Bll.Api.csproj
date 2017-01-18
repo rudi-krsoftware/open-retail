@@ -50,9 +50,11 @@
     <Compile Include="IItemMenuBll.cs" />
     <Compile Include="IJabatanBll.cs" />
     <Compile Include="IJenisPengeluaranBll.cs" />
+    <Compile Include="IJualProdukBll.cs" />
     <Compile Include="IKaryawanBll.cs" />
     <Compile Include="IMenuBll.cs" />
     <Compile Include="IPembayaranHutangProdukBll.cs" />
+    <Compile Include="IPembayaranPiutangProdukBll.cs" />
     <Compile Include="IPenggunaBll.cs" />
     <Compile Include="IPenyesuaianStokBll.cs" />
     <Compile Include="IProdukBll.cs" />
