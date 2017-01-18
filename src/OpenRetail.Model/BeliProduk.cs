@@ -96,26 +96,15 @@ namespace OpenRetail.Model
         public double total_pelunasan_old { get; set; }
 
         [Computed]
-        public double total_nota_setelah_diskon_dan_ppn
+        public double grand_total
         {
-            get
-            {
-                double totalNotaSetelahDiskonDanPPN = total_nota;
-
-                if (totalNotaSetelahDiskonDanPPN > 0)
-                {
-                    totalNotaSetelahDiskonDanPPN -= diskon;
-                    totalNotaSetelahDiskonDanPPN += ppn;
-                }
-
-                return totalNotaSetelahDiskonDanPPN;
-            }
+            get { return total_nota - diskon + ppn; }
         }
 
         [Computed]
         public double sisa_nota
         {
-            get { return total_nota_setelah_diskon_dan_ppn - total_pelunasan; }
+            get { return grand_total - total_pelunasan; }
         }
 
         [Write(false)]
