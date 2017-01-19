@@ -144,16 +144,19 @@ namespace OpenRetail.App.Transaksi
                         return;
                     }
 
-                    var itemBeli = _listOfItemBeli[e.RowIndex - 1];
-                    itemBeli.entity_state = EntityState.Deleted;
+                    if (MsgHelper.MsgDelete())
+                    {
+                        var itemBeli = _listOfItemBeli[e.RowIndex - 1];
+                        itemBeli.entity_state = EntityState.Deleted;
 
-                    _listOfItemBeliDeleted.Add(itemBeli);
-                    _listOfItemBeli.Remove(itemBeli);
+                        _listOfItemBeliDeleted.Add(itemBeli);
+                        _listOfItemBeli.Remove(itemBeli);
 
-                    grid.RowCount = _listOfItemBeli.Count();
-                    grid.Refresh();
+                        grid.RowCount = _listOfItemBeli.Count();
+                        grid.Refresh();
 
-                    RefreshTotal();
+                        RefreshTotal();
+                    }                    
                 }
             };
 
