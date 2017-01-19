@@ -226,14 +226,86 @@ namespace OpenRetail.Repository.Service
             return result;
         }
 
+        /// <summary>
+        /// Method khusus untuk menyimpan pembayaran penjualan tunai
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private int SavePembayaranPiutang(JualProduk obj)
         {
-            throw new NotImplementedException();
+            PembayaranPiutangProduk pembayaranPiutang;
+            ItemPembayaranPiutangProduk itemPembayaranPiutang;
+            IPembayaranPiutangProdukRepository pembayaranPiutangRepo = new PembayaranPiutangProdukRepository(_context, _log);
+
+            var result = 0;
+
+            // set detail            
+            itemPembayaranPiutang = pembayaranPiutangRepo.GetByJualID(obj.jual_id);
+            if (itemPembayaranPiutang != null) // sudah ada pelunasan
+            {
+                itemPembayaranPiutang.nominal = obj.grand_total; // GetTotalNotaSetelahDiskonDanPPN(obj);
+                itemPembayaranPiutang.JualProduk = new JualProduk { jual_id = itemPembayaranPiutang.jual_id };
+                itemPembayaranPiutang.entity_state = EntityState.Modified;
+
+                // set header by detail
+                pembayaranPiutang = itemPembayaranPiutang.PembayaranPiutangProduk;
+                pembayaranPiutang.is_tunai = obj.is_tunai;
+
+                // set item pembayaran
+                pembayaranPiutang.item_pembayaran_piutang.Add(itemPembayaranPiutang);
+
+                result = pembayaranPiutangRepo.Update(pembayaranPiutang, true);
+            }
+            else // belum ada pelunasan hutang
+            {
+                pembayaranPiutang = new PembayaranPiutangProduk();
+
+                // set header
+                pembayaranPiutang.customer_id = obj.customer_id;
+                pembayaranPiutang.pengguna_id = obj.pengguna_id;
+                pembayaranPiutang.tanggal = obj.tanggal;
+                pembayaranPiutang.keterangan = "Penjualan tunai produk";
+                pembayaranPiutang.is_tunai = obj.is_tunai;
+
+                // set item
+                itemPembayaranPiutang = new ItemPembayaranPiutangProduk();
+                itemPembayaranPiutang.jual_id = obj.jual_id;
+                itemPembayaranPiutang.JualProduk = obj;
+                itemPembayaranPiutang.nominal = obj.grand_total; // GetTotalNotaSetelahDiskonDanPPN(obj);
+                itemPembayaranPiutang.keterangan = string.Empty;
+
+                // set item pembayaran
+                pembayaranPiutang.item_pembayaran_piutang.Add(itemPembayaranPiutang);
+
+                // simpan item pembayaran
+                result = pembayaranPiutangRepo.Save(pembayaranPiutang, true);
+            }
+
+            return result;
         }
 
+        /// <summary>
+        /// Method untuk menghapus pembayaran piutang jika terjadi perubahan status nota dari tunai ke kredit
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private int HapusPembayaranPiutang(JualProduk obj)
         {
-            throw new NotImplementedException();
+            PembayaranPiutangProduk pembayaranHutang;
+            ItemPembayaranPiutangProduk itemPembayaranHutang;
+            IPembayaranPiutangProdukRepository pembayaranHutangRepo = new PembayaranPiutangProdukRepository(_context, _log);
+
+            var result = 0;
+
+            // set detail
+            itemPembayaranHutang = pembayaranHutangRepo.GetByJualID(obj.jual_id);
+            if (itemPembayaranHutang != null)
+            {
+                pembayaranHutang = itemPembayaranHutang.PembayaranPiutangProduk;
+                result = pembayaranHutangRepo.Delete(pembayaranHutang);
+            }
+
+            return result;
         }
 
         public int Update(JualProduk obj)
