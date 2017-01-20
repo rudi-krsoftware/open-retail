@@ -205,6 +205,19 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
+        public IList<BeliProduk> GetNotaKreditByNota(string id, string nota)
+        {
+            IList<BeliProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.BeliProdukRepository.GetNotaKreditByNota(id, nota);
+            }
+
+            return oList;
+        }
+
         public IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
             IList<BeliProduk> oList = null;
@@ -242,6 +255,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return oList;
-        }
+        }        
     }
 }     

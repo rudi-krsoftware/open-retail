@@ -34,6 +34,7 @@ namespace OpenRetail.Bll.Api
         IList<BeliProduk> GetAll(string name);
         IList<BeliProduk> GetNotaSupplier(string id, string nota);
         IList<BeliProduk> GetNotaKreditBySupplier(string id, bool isLunas);
+        IList<BeliProduk> GetNotaKreditByNota(string id, string nota);
         IList<BeliProduk> GetByName(string name);
         IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
         IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);

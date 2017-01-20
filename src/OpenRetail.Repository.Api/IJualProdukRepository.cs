@@ -49,6 +49,14 @@ namespace OpenRetail.Repository.Api
         /// <returns></returns>
         IList<JualProduk> GetNotaKreditByCustomer(string id, bool isLunas);
 
+        /// <summary>
+        /// Method untuk mendapatkan informasi pembelian kredit yang lunas/belum masing-masing customer berdasarkan nota
+        /// </summary>
+        /// <param name="id">customer id</param>
+        /// <param name="nota"></param>
+        /// <returns></returns>
+        IList<JualProduk> GetNotaKreditByNota(string id, string nota);
+
         IList<JualProduk> GetByName(string name);
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);

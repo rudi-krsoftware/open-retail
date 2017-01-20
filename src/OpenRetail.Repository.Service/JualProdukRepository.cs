@@ -498,6 +498,32 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
+        public IList<JualProduk> GetNotaKreditByNota(string id, string nota)
+        {
+            IList<JualProduk> oList = new List<JualProduk>();
+
+            try
+            {
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_customer.customer_id = @id AND LOWER(t_jual_produk.nota) LIKE @nota AND t_jual_produk.tanggal_tempo IS NOT NULL AND (t_jual_produk.total_nota - t_jual_produk.diskon + t_jual_produk.ppn) > t_jual_produk.total_pelunasan");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal, t_jual_produk.nota");
+
+                nota = nota.ToLower() + "%";
+                oList = MappingRecordToObject(_sql, new { id, nota }).ToList();
+
+                // load item jual, aktifkan perintah berikut
+                //foreach (var item in oList)
+                //{
+                //    item.item_jual = GetItemJual(item.jual_id);
+                //}
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
         public IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
             IList<JualProduk> oList = new List<JualProduk>();
