@@ -33,6 +33,7 @@ using OpenRetail.App.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using OpenRetail.App.UserControl;
+using log4net;
 
 namespace OpenRetail.App.Referensi
 {
@@ -41,6 +42,7 @@ namespace OpenRetail.App.Referensi
         private IProdukBll _bll; // deklarasi objek business logic layer 
         private IList<Produk> _listOfProduk = new List<Produk>();
         private IList<Golongan> _listOfGolongan = new List<Golongan>();
+        private ILog _log;
 
         public FrmListProduk(string header)
             : base()
@@ -50,7 +52,8 @@ namespace OpenRetail.App.Referensi
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
 
-            _bll = new ProdukBll(MainProgram.log);
+            _log = MainProgram.log;
+            _bll = new ProdukBll(_log);
 
             LoadDataGolongan();
 
@@ -59,7 +62,7 @@ namespace OpenRetail.App.Referensi
 
         private void LoadDataGolongan()
         {
-            IGolonganBll golonganBll = new GolonganBll(MainProgram.log);
+            IGolonganBll golonganBll = new GolonganBll(_log);
 
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {

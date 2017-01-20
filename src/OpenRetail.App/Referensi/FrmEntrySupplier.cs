@@ -37,7 +37,7 @@ namespace OpenRetail.App.Referensi
         private ISupplierBll _bll = null; // deklarasi objek business logic layer 
         private Supplier _supplier = null;
         private bool _isNewData = false;
-        
+
         public IListener Listener { private get; set; }
 
         public FrmEntrySupplier(string header, ISupplierBll bll)
@@ -47,7 +47,6 @@ namespace OpenRetail.App.Referensi
 
             base.SetHeader(header);
             this._bll = bll;
-
             this._isNewData = true;
         }
 

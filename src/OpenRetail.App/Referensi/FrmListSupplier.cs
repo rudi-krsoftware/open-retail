@@ -32,6 +32,7 @@ using OpenRetail.App.UI.Template;
 using OpenRetail.App.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
+using log4net;
 
 namespace OpenRetail.App.Referensi
 {
@@ -39,13 +40,15 @@ namespace OpenRetail.App.Referensi
     {        
         private ISupplierBll _bll; // deklarasi objek business logic layer 
         private IList<Supplier> _listOfSupplier = new List<Supplier>();
-        
+        private ILog _log;
+
         public FrmListSupplier(string header)
             : base(header)
         {
             InitializeComponent();
 
-            _bll = new SupplierBll(MainProgram.log);
+            _log = MainProgram.log;
+            _bll = new SupplierBll(_log);
             LoadData();
 
             InitGridList();

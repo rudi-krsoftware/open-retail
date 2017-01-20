@@ -32,6 +32,7 @@ using OpenRetail.App.UI.Template;
 using OpenRetail.App.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
+using log4net;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -39,7 +40,8 @@ namespace OpenRetail.App.Transaksi
     {
         private IBeliProdukBll _bll; // deklarasi objek business logic layer 
         private IList<BeliProduk> _listOfBeli = new List<BeliProduk>();
-        
+        private ILog _log;
+
         public FrmListPembelianProduk(string header)
             : base()
         {
@@ -48,7 +50,8 @@ namespace OpenRetail.App.Transaksi
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
 
-            _bll = new BeliProdukBll(MainProgram.log);
+            _log = MainProgram.log;
+            _bll = new BeliProdukBll(_log);
 
             LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
 

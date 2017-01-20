@@ -32,6 +32,7 @@ using OpenRetail.App.Helper;
 using OpenRetail.Bll.Service;
 using OpenRetail.App.UserControl;
 using OpenRetail.App.Lookup;
+using log4net;
 
 namespace OpenRetail.App.Referensi
 {
@@ -43,6 +44,7 @@ namespace OpenRetail.App.Referensi
         private IList<AlasanPenyesuaianStok> _listOfAlasanPenyesuaian;
 
         private bool _isNewData = false;
+        private ILog _log;
 
         public IListener Listener { private get; set; }
 
@@ -53,8 +55,9 @@ namespace OpenRetail.App.Referensi
 
             base.SetHeader(header);
             this._bll = bll;
-
             this._isNewData = true;
+            this._log = MainProgram.log;
+
             LoadAlasanPenyesuaianStok();
         }
 
@@ -67,6 +70,7 @@ namespace OpenRetail.App.Referensi
             base.SetButtonSelesaiToBatal();
             this._bll = bll;
             this._penyesuaianStok = penyesuaianStok;
+            this._log = MainProgram.log;
 
             this._produk = this._penyesuaianStok.Produk;
             txtKodeProduk.Text = this._produk.kode_produk;
@@ -93,7 +97,7 @@ namespace OpenRetail.App.Referensi
 
         private void LoadAlasanPenyesuaianStok()
         {
-            IAlasanPenyesuaianStokBll bll = new AlasanPenyesuaianStokBll(MainProgram.log);
+            IAlasanPenyesuaianStokBll bll = new AlasanPenyesuaianStokBll(_log);
             _listOfAlasanPenyesuaian = bll.GetAll();
 
             cmbAlasanPenyesuaian.Items.Clear();
@@ -193,7 +197,7 @@ namespace OpenRetail.App.Referensi
             {
                 var keyword = ((AdvancedTextbox)sender).Text;
 
-                IProdukBll produkBll = new ProdukBll(MainProgram.log);
+                IProdukBll produkBll = new ProdukBll(_log);
                 this._produk = produkBll.GetByKode(keyword);
 
                 if (this._produk == null)

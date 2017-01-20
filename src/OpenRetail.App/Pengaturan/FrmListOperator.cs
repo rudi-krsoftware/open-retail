@@ -32,6 +32,7 @@ using OpenRetail.App.UI.Template;
 using OpenRetail.App.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
+using log4net;
 
 namespace OpenRetail.App.Pengaturan
 {
@@ -40,13 +41,15 @@ namespace OpenRetail.App.Pengaturan
         private IPenggunaBll _bll; // deklarasi objek business logic layer 
         private IList<Pengguna> _listOfOperator = new List<Pengguna>();
         private IList<Role> _listOfRole = new List<Role>();
+        private ILog _log;
 
         public FrmListOperator(string header)
             : base(header)
         {
             InitializeComponent();
 
-            _bll = new PenggunaBll(MainProgram.log);
+            _log = MainProgram.log;
+            _bll = new PenggunaBll(_log);
             LoadData();
 
             InitGridList();
@@ -114,7 +117,7 @@ namespace OpenRetail.App.Pengaturan
             {
                 _listOfOperator = _bll.GetAll();
 
-                IRoleBll roleBll = new RoleBll(MainProgram.log);
+                IRoleBll roleBll = new RoleBll(_log);
                 _listOfRole = roleBll.GetByStatus(true);
             }
 

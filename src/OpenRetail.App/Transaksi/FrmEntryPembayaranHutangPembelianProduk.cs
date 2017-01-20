@@ -35,6 +35,7 @@ using Syncfusion.Windows.Forms.Grid;
 using OpenRetail.App.UserControl;
 using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
+using log4net;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -51,6 +52,7 @@ namespace OpenRetail.App.Transaksi
         private int _colIndex = 0;
 
         private bool _isNewData = false;
+        private ILog _log;
 
         public IListener Listener { private get; set; }
 
@@ -62,6 +64,7 @@ namespace OpenRetail.App.Transaksi
             base.SetHeader(header);
             this._bll = bll;
             this._isNewData = true;
+            this._log = MainProgram.log;
 
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
@@ -81,6 +84,7 @@ namespace OpenRetail.App.Transaksi
             this._bll = bll;
             this._pembayaranHutang = pembayaranHutang;
             this._supplier = pembayaranHutang.Supplier;
+            this._log = MainProgram.log;
 
             txtNota.Text = this._pembayaranHutang.nota;
             dtpTanggal.Value = (DateTime)this._pembayaranHutang.tanggal;
@@ -414,7 +418,7 @@ namespace OpenRetail.App.Transaksi
             {
                 var name = ((TextBox)sender).Text;
 
-                ISupplierBll bll = new SupplierBll(MainProgram.log);
+                ISupplierBll bll = new SupplierBll(_log);
                 var listOfSupplier = bll.GetByName(name);
 
                 if (listOfSupplier.Count == 0)
@@ -470,7 +474,7 @@ namespace OpenRetail.App.Transaksi
                         var nota = cc.Renderer.ControlValue.ToString();
 
                         IList<BeliProduk> listOfBeli = null;
-                        IBeliProdukBll bll = new BeliProdukBll(MainProgram.log);
+                        IBeliProdukBll bll = new BeliProdukBll(_log);
 
                         if (nota.Length > 0) // menampilkan nota kredit berdasarkan nota
                         {

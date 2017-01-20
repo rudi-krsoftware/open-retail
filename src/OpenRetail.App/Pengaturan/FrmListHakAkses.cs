@@ -34,6 +34,7 @@ using OpenRetail.App.UserControl;
 using ConceptCave.WaitCursor;
 using Syncfusion.Windows.Forms.Grid;
 using Syncfusion.Windows.Forms.Tools;
+using log4net;
 
 namespace OpenRetail.App.Pengaturan
 {
@@ -43,6 +44,7 @@ namespace OpenRetail.App.Pengaturan
         private IList<Role> _listOfRole = new List<Role>();
         private IList<RolePrivilege> _listOfRolePrivilege = null;
         private IList<MenuAplikasi> _listOfMenuAplikasi = null;
+        private ILog _log;
 
         public FrmListHakAkses(string header)
             : base()
@@ -52,7 +54,8 @@ namespace OpenRetail.App.Pengaturan
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
 
-            _bll = new RoleBll(MainProgram.log);
+            _log = MainProgram.log;
+            _bll = new RoleBll(_log);
 
             LoadMenuParent();
             SetMenuParent(cmbMenu);
@@ -136,7 +139,7 @@ namespace OpenRetail.App.Pengaturan
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                IMenuBll menuBll = new MenuBll(MainProgram.log);
+                IMenuBll menuBll = new MenuBll(_log);
                 _listOfMenuAplikasi = menuBll.GetAll();
             }
         }
@@ -169,7 +172,7 @@ namespace OpenRetail.App.Pengaturan
                 nodeChild.InteractiveCheckBox = true;
                 nodeChild.ExpandAll();
 
-                IItemMenuBll itemMenuBll = new ItemMenuBll(MainProgram.log);
+                IItemMenuBll itemMenuBll = new ItemMenuBll(_log);
                 var listOfItemMenu = itemMenuBll.GetByMenu(itemMenuChild.menu_id);
                 foreach (var itemMenu in listOfItemMenu)
                 {
@@ -208,7 +211,7 @@ namespace OpenRetail.App.Pengaturan
                         is_grant = treeNode.CheckState == CheckState.Checked
                     };
 
-                    IRolePrivilegeBll rolePrivilegeBll = new RolePrivilegeBll(MainProgram.log);
+                    IRolePrivilegeBll rolePrivilegeBll = new RolePrivilegeBll(_log);
                     var result = rolePrivilegeBll.Save(rolePrivilege);
                 }
             }
@@ -272,7 +275,7 @@ namespace OpenRetail.App.Pengaturan
 
                 lblRole.Text = string.Format("Hak akses : {0}", role.nama_role);
 
-                IRolePrivilegeBll rolePrivilegeBll = new RolePrivilegeBll(MainProgram.log);
+                IRolePrivilegeBll rolePrivilegeBll = new RolePrivilegeBll(_log);
                 _listOfRolePrivilege = rolePrivilegeBll.GetByRole(role.role_id);
 
                 foreach (TreeNodeAdv node in treeViewAdv.Nodes)

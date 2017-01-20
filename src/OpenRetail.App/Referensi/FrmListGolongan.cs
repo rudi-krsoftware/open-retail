@@ -32,6 +32,7 @@ using OpenRetail.App.UI.Template;
 using OpenRetail.App.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
+using log4net;
 
 namespace OpenRetail.App.Referensi
 {
@@ -39,13 +40,15 @@ namespace OpenRetail.App.Referensi
     {
         private IGolonganBll _bll; // deklarasi objek business logic layer 
         private IList<Golongan> _listOfGolongan = new List<Golongan>();
+        private ILog _log;
 
         public FrmListGolongan(string header)
             : base(header)
         {
             InitializeComponent();
 
-            _bll = new GolonganBll(MainProgram.log);
+            _log = MainProgram.log;
+            _bll = new GolonganBll(_log);
             LoadData();
 
             InitGridList();

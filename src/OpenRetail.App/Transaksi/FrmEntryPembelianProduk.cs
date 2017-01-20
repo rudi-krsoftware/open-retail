@@ -35,6 +35,7 @@ using Syncfusion.Windows.Forms.Grid;
 using OpenRetail.App.UserControl;
 using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
+using log4net;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -52,6 +53,7 @@ namespace OpenRetail.App.Transaksi
         private bool _isValidKodeProduk = false;
 
         private bool _isNewData = false;
+        private ILog _log;
 
         public IListener Listener { private get; set; }
 
@@ -59,10 +61,11 @@ namespace OpenRetail.App.Transaksi
             : base()
         {            
             InitializeComponent();            
-
+            
             base.SetHeader(header);
             this._bll = bll;
             this._isNewData = true;
+            this._log = MainProgram.log;
 
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
@@ -83,6 +86,7 @@ namespace OpenRetail.App.Transaksi
             this._bll = bll;
             this._beli = beli;
             this._supplier = beli.Supplier;
+            this._log = MainProgram.log;
 
             txtNota.Text = this._beli.nota;
             dtpTanggal.Value = (DateTime)this._beli.tanggal;
@@ -487,7 +491,7 @@ namespace OpenRetail.App.Transaksi
             {
                 var supplierName = ((AdvancedTextbox)sender).Text;
 
-                ISupplierBll bll = new SupplierBll(MainProgram.log);
+                ISupplierBll bll = new SupplierBll(_log);
                 var listOfSupplier = bll.GetByName(supplierName);
 
                 if (listOfSupplier.Count == 0)
@@ -554,7 +558,7 @@ namespace OpenRetail.App.Transaksi
                 var rowIndex = grid.CurrentCell.RowIndex;
                 var colIndex = grid.CurrentCell.ColIndex;
 
-                IProdukBll bll = new ProdukBll(MainProgram.log);
+                IProdukBll bll = new ProdukBll(_log);
                 Produk produk = null;
                 GridCurrentCell cc;
 
@@ -734,14 +738,14 @@ namespace OpenRetail.App.Transaksi
         {
             // TODO: pengecekan hak akses
 
-            IGolonganBll golonganBll = new GolonganBll(MainProgram.log);
+            IGolonganBll golonganBll = new GolonganBll(_log);
             var listOfGolongan = golonganBll.GetAll();
 
             Golongan golongan = null;
             if (listOfGolongan.Count > 0)
                 golongan = listOfGolongan[0];
 
-            IProdukBll produkBll = new ProdukBll(MainProgram.log);
+            IProdukBll produkBll = new ProdukBll(_log);
             var frmEntryProduk = new FrmEntryProduk("Tambah Data Produk", golongan, listOfGolongan, produkBll);
             frmEntryProduk.Listener = this;
             frmEntryProduk.ShowDialog();
@@ -751,7 +755,7 @@ namespace OpenRetail.App.Transaksi
         {
             // TODO: pengecekan hak akses
 
-            ISupplierBll supplierBll = new SupplierBll(MainProgram.log);
+            ISupplierBll supplierBll = new SupplierBll(_log);
             var frmEntrySupplier = new FrmEntrySupplier("Tambah Data Supplier", supplierBll);
             frmEntrySupplier.Listener = this;
             frmEntrySupplier.ShowDialog();

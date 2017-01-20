@@ -32,6 +32,7 @@ using OpenRetail.App.UI.Template;
 using OpenRetail.App.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
+using log4net;
 
 namespace OpenRetail.App.Referensi
 {
@@ -39,13 +40,15 @@ namespace OpenRetail.App.Referensi
     {
         private IPenyesuaianStokBll _bll; // deklarasi objek business logic layer 
         private IList<PenyesuaianStok> _listOfPenyesuaianStok = new List<PenyesuaianStok>();
+        private ILog _log;
 
         public FrmListPenyesuaianStok(string header)
             : base(header)
         {
             InitializeComponent();
 
-            _bll = new PenyesuaianStokBll(MainProgram.log);
+            _log = MainProgram.log;
+            _bll = new PenyesuaianStokBll(_log);
             LoadData();
 
             InitGridList();
