@@ -25,6 +25,9 @@ namespace OpenRetail.Model
 {
     public enum ReferencesType
     {
-        Supplier = 1, Produk = 2
+        Supplier = 1, 
+        Produk = 2,
+        NotaBeliProduk = 3,
+        NotaJualProduk = 4
     }
 }
