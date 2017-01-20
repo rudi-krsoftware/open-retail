@@ -88,6 +88,7 @@
             this.mnuLapPenggajian = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPengaturan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProfilPerusahaan = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuHakAksesAplikasi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuManajemenOperator = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKeluar = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,7 +113,6 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelian = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualan = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -332,6 +332,7 @@
             this.mnuPembayaranHutangPembelianProduk.Size = new System.Drawing.Size(283, 22);
             this.mnuPembayaranHutangPembelianProduk.Tag = "FrmListPembayaranHutangPembelianProduk";
             this.mnuPembayaranHutangPembelianProduk.Text = "Pembayaran Hutang Pembelian Produk";
+            this.mnuPembayaranHutangPembelianProduk.Click += new System.EventHandler(this.mnuPembayaranHutangPembelianProduk_Click);
             // 
             // mnuReturPembelianProduk
             // 
@@ -590,6 +591,11 @@
             this.mnuProfilPerusahaan.Tag = "FrmProfilPerusahaan";
             this.mnuProfilPerusahaan.Text = "Profil Perusahaan";
             // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(184, 6);
+            // 
             // mnuHakAksesAplikasi
             // 
             this.mnuHakAksesAplikasi.Name = "mnuHakAksesAplikasi";
@@ -803,11 +809,6 @@
             this.tbLapPenjualan.Size = new System.Drawing.Size(36, 36);
             this.tbLapPenjualan.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualan.Text = "Laporan Penjualan";
-            // 
-            // toolStripSeparator13
-            // 
-            this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(184, 6);
             // 
             // FrmMain
             // 

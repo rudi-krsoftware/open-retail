@@ -133,6 +133,12 @@
     <Compile Include="Helper\NumberHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Helper\Utils.cs" />
+    <Compile Include="Lookup\FrmLookupNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lookup\FrmLookupNota.Designer.cs">
+      <DependentUpon>FrmLookupNota.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lookup\FrmLookupReferensi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,11 +273,23 @@
     <Compile Include="Referensi\FrmListGolongan.Designer.cs">
       <DependentUpon>FrmListGolongan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transaksi\FrmEntryPembayaranHutangPembelianProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FrmEntryPembayaranHutangPembelianProduk.Designer.cs">
+      <DependentUpon>FrmEntryPembayaranHutangPembelianProduk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transaksi\FrmEntryPembelianProduk.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Transaksi\FrmEntryPembelianProduk.Designer.cs">
       <DependentUpon>FrmEntryPembelianProduk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaksi\FrmListPembayaranHutangPembelianProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FrmListPembayaranHutangPembelianProduk.Designer.cs">
+      <DependentUpon>FrmListPembayaranHutangPembelianProduk.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaksi\FrmListPembelianProduk.cs">
       <SubType>Form</SubType>
@@ -318,6 +336,9 @@
     <Compile Include="UserControl\FilterRangeTanggal.Designer.cs">
       <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Lookup\FrmLookupNota.resx">
+      <DependentUpon>FrmLookupNota.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lookup\FrmLookupReferensi.resx">
       <DependentUpon>FrmLookupReferensi.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,8 +415,14 @@
     <EmbeddedResource Include="Referensi\FrmListGolongan.resx">
       <DependentUpon>FrmListGolongan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FrmEntryPembayaranHutangPembelianProduk.resx">
+      <DependentUpon>FrmEntryPembayaranHutangPembelianProduk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmEntryPembelianProduk.resx">
       <DependentUpon>FrmEntryPembelianProduk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FrmListPembayaranHutangPembelianProduk.resx">
+      <DependentUpon>FrmListPembayaranHutangPembelianProduk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmListPembelianProduk.resx">
       <DependentUpon>FrmListPembelianProduk.cs</DependentUpon>
