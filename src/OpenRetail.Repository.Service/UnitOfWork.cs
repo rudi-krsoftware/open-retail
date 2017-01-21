@@ -41,6 +41,7 @@ namespace OpenRetail.Repository.Service
         private ISupplierRepository _supplierRepository;
         private IKaryawanRepository _karyawanRepository;
         private IBeliProdukRepository _beliprodukRepository;
+        private IReturBeliProdukRepository _returbeliprodukRepository;
         private IJualProdukRepository _jualprodukRepository;
         private IPembayaranHutangProdukRepository _pembayaranhutangprodukRepository;
         private IPembayaranPiutangProdukRepository _pembayaranpiutangprodukRepository;
@@ -101,6 +102,11 @@ namespace OpenRetail.Repository.Service
         public IBeliProdukRepository BeliProdukRepository
         {
             get { return _beliprodukRepository ?? (_beliprodukRepository = new BeliProdukRepository(_context, _log)); }
+        }
+
+        public IReturBeliProdukRepository ReturBeliProdukRepository
+        {
+            get { return _returbeliprodukRepository ?? (_returbeliprodukRepository = new ReturBeliProdukRepository(_context, _log)); }
         }
 
         public IJualProdukRepository JualProdukRepository

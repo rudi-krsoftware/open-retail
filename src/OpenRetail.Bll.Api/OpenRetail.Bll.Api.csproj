@@ -58,6 +58,7 @@
     <Compile Include="IPenggunaBll.cs" />
     <Compile Include="IPenyesuaianStokBll.cs" />
     <Compile Include="IProdukBll.cs" />
+    <Compile Include="IReturBeliProdukBll.cs" />
     <Compile Include="IRoleBll.cs" />
     <Compile Include="IRolePrivilegeBll.cs" />
     <Compile Include="ISupplierBll.cs" />

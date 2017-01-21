@@ -26,20 +26,28 @@ namespace OpenRetail.Repository.Api
 {    
     public interface IUnitOfWork
     {
-        IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
-        IJabatanRepository JabatanRepository { get; }
         IJenisPengeluaranRepository JenisPengeluaranRepository { get; }
+
         IGolonganRepository GolonganRepository { get; }
         IProdukRepository ProdukRepository { get; }
+        IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
+        IPenyesuaianStokRepository PenyesuaianStokRepository { get; }
+
         ICustomerRepository CustomerRepository { get; }
         ISupplierRepository SupplierRepository { get; }
+        
+        IJabatanRepository JabatanRepository { get; }
         IKaryawanRepository KaryawanRepository { get; }
+        
         IBeliProdukRepository BeliProdukRepository { get; }
-        IJualProdukRepository JualProdukRepository { get; }                
         IPembayaranHutangProdukRepository PembayaranHutangProdukRepository { get; }
+        IReturBeliProdukRepository ReturBeliProdukRepository { get; }              
+  
+        IJualProdukRepository JualProdukRepository { get; }                
         IPembayaranPiutangProdukRepository PembayaranPiutangProdukRepository { get; }                
+
         ILog4NetRepository Log4NetRepository { get; }
-        IPenyesuaianStokRepository PenyesuaianStokRepository { get; }
+        
         IPenggunaRepository PenggunaRepository { get; }
         IRoleRepository RoleRepository { get; }
         IRolePrivilegeRepository RolePrivilegeRepository { get; }

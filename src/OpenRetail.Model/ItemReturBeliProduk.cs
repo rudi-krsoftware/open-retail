@@ -28,24 +28,23 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
 {        
-	[Table("t_retur_beli_produk")]
-    public class ReturBeliProduk
+	[Table("t_item_retur_beli_produk")]
+    public class ItemReturBeliProduk
     {
-        public ReturBeliProduk()
+        public ItemReturBeliProduk()
         {
-            item_retur = new List<ItemReturBeliProduk>();
-            item_retur_deleted = new List<ItemReturBeliProduk>();
+            entity_state = EntityState.Added;
         }
 
 		[ExplicitKey]
-		[Display(Name = "retur_beli_produk_id")]		
-		public string retur_beli_produk_id { get; set; }
+		[Display(Name = "item_retur_beli_produk_id")]		
+		public string item_retur_beli_produk_id { get; set; }
 		
-		[Display(Name = "beli_produk_id")]
-		public string beli_produk_id { get; set; }
+		[Display(Name = "retur_beli_produk_id")]
+		public string retur_beli_produk_id { get; set; }
 
 		[Write(false)]
-        public BeliProduk BeliProduk { get; set; }
+        public ReturBeliProduk ReturBeliProduk { get; set; }
 
 		[Display(Name = "pengguna_id")]
 		public string pengguna_id { get; set; }
@@ -53,51 +52,53 @@ namespace OpenRetail.Model
 		[Write(false)]
         public Pengguna Pengguna { get; set; }
 
-		[Display(Name = "Supplier")]
-		public string supplier_id { get; set; }
+		[Display(Name = "Produk")]
+		public string produk_id { get; set; }
 
 		[Write(false)]
-        public Supplier Supplier { get; set; }
+        public Produk Produk { get; set; }
 
-		[Display(Name = "Nota")]
-		public string nota { get; set; }
+		[Display(Name = "Harga")]
+		public double harga { get; set; }
 		
-		[Display(Name = "Tanggal")]
-		public Nullable<DateTime> tanggal { get; set; }
-		
-		[Display(Name = "Keterangan")]
-		public string keterangan { get; set; }
+        /// <summary>
+        /// Jumlah penjualan sebelum retur
+        /// </summary>
+		[Display(Name = "Jumlah")]
+		public double jumlah { get; set; }
+
+        [Display(Name = "Jumlah Retur")]
+        public double jumlah_retur { get; set; }
 
         [Write(false)]
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
+			
 		
-        [Computed]
-		[Display(Name = "total_nota")]
-		public double total_nota { get; set; }
+		[Display(Name = "Item Beli Id")]
+		public string item_beli_id { get; set; }
+
+		[Write(false)]
+        public ItemBeliProduk ItemBeliProduk { get; set; }
 
         [Write(false)]
-        public IList<ItemReturBeliProduk> item_retur { get; set; }
-
-        [Write(false)]
-        public IList<ItemReturBeliProduk> item_retur_deleted { get; set; }
+        public EntityState entity_state { get; set; }
 	}
 
-    public class ReturBeliProdukValidator : AbstractValidator<ReturBeliProduk>
+    public class ItemReturBeliProdukValidator : AbstractValidator<ItemReturBeliProduk>
     {
-        public ReturBeliProdukValidator()
+        public ItemReturBeliProdukValidator()
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
 			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.beli_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+			RuleFor(c => c.retur_beli_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
             // TODO: fix me (diaktifkan kembali jika module pengguna sudah selesai)
 			//RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.supplier_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
-			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
+			RuleFor(c => c.produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+			RuleFor(c => c.item_beli_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
 		}
 	}
 }
