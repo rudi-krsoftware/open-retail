@@ -35,7 +35,7 @@ namespace OpenRetail.App
         /// <summary>
         /// Instance log4net
         /// </summary>
-        public static readonly ILog log = LogManager.GetLogger(typeof(MainProgram));
+        public static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static readonly string appName = "Open Retail Versi {0} - Copyright © 2017 Kamarudin";
 
@@ -50,8 +50,7 @@ namespace OpenRetail.App
         [STAThread]
         static void Main()
         {
-            log4net.GlobalContext.Properties["AppName"] = Assembly.GetExecutingAssembly().FullName;
-            log4net.GlobalContext.Properties["Operator"] = "Kamarudin"; // TODO: fix me (ganti dengan user yang login)
+            log4net.GlobalContext.Properties["UserName"] = "Admin"; // TODO: fix me (ganti dengan user yang login)
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

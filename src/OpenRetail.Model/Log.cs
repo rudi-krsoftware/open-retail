@@ -31,12 +31,13 @@ namespace OpenRetail.Model
     [Table("t_logs")]
     public class Log
     {
-        public string app_name { get; set; }
-        public string thread { get; set; }
         public string level { get; set; }
-        public string location { get; set; }
+        public string class_name { get; set; }
+        public string method_name { get; set; }
         public string message { get; set; }
+        public string new_value { get; set; }
+        public string old_value { get; set; }
         public string exception { get; set; }
-        public string created_by { get; set; }
+        public string created_by { get; set; }        
     }
 }

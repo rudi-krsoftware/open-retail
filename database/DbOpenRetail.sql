@@ -723,7 +723,7 @@ DECLARE
 	var_total_nota 			t_harga;
   	var_jumlah_retur_lama 	t_jumlah;
     var_jumlah_retur_baru 	t_jumlah;
-    var_tahun_tempo			INTEGER;    
+    var_tanggal_tempo		DATE;  
     is_retur				t_bool;
     
 BEGIN
@@ -752,13 +752,9 @@ BEGIN
 			is_retur := TRUE;
 			
             var_retur_beli_id := (SELECT retur_beli_produk_id FROM t_retur_beli_produk WHERE beli_produk_id = var_beli_produk_id LIMIT 1);
-            var_tahun_tempo := (SELECT EXTRACT(YEAR FROM tanggal_tempo) FROM t_beli_produk WHERE beli_produk_id = var_beli_produk_id);                                    
+			var_tanggal_tempo := (SELECT tanggal_tempo FROM t_beli_produk WHERE beli_produk_id = var_beli_produk_id);                                    
             
-			IF var_tahun_tempo IS NULL THEN
-                var_tahun_tempo := 0;  
-            END IF;            
-            
-            IF var_tahun_tempo < 2010 THEN -- nota tunai            	
+            IF var_tanggal_tempo IS NULL THEN -- nota tunai            	
                 UPDATE t_beli_produk SET total_nota = var_total_nota, retur_beli_produk_id = var_retur_beli_id 
                 WHERE beli_produk_id = var_beli_produk_id;                
                 
@@ -808,7 +804,8 @@ BEGIN
     -- hitung total hutang dan pelunasan pembelian produk
     SELECT SUM(total_nota - diskon + ppn) AS total_hutang, SUM(total_pelunasan) AS total_pelunasan
     INTO var_total_hutang_produk, var_total_pelunasan_produk
-    FROM t_beli_produk WHERE EXTRACT(YEAR FROM tanggal_tempo) > 2010 AND supplier_id = var_supplier_id;
+    FROM t_beli_produk 
+    WHERE tanggal_tempo IS NOT NULL AND supplier_id = var_supplier_id;
 
     IF var_total_hutang_produk IS NULL THEN
         var_total_hutang_produk := 0;  
@@ -828,7 +825,8 @@ BEGIN
             -- hitung total hutang dan pelunasan pembelian produk
             SELECT SUM(total_nota - diskon + ppn) AS total_hutang, SUM(total_pelunasan) AS total_pelunasan
             INTO var_total_hutang_produk, var_total_pelunasan_produk
-            FROM t_beli_produk WHERE EXTRACT(YEAR FROM tanggal_tempo) > 2010 AND supplier_id = var_supplier_id_old;
+            FROM t_beli_produk             
+            WHERE tanggal_tempo IS NOT NULL AND supplier_id = var_supplier_id_old;
 
             IF var_total_hutang_produk IS NULL THEN
                 var_total_hutang_produk := 0;  
@@ -867,7 +865,7 @@ DECLARE
 	var_total_nota 			t_harga;        
     var_jumlah_retur_lama 	t_jumlah;
     var_jumlah_retur_baru 	t_jumlah;
-    var_tahun_tempo			INTEGER;
+    var_tanggal_tempo		DATE;
     is_retur				t_bool;
     
 BEGIN
@@ -898,13 +896,9 @@ BEGIN
 			is_retur := TRUE;
 			
             var_retur_jual_id := (SELECT retur_jual_id FROM t_retur_jual_produk WHERE jual_id = var_jual_id LIMIT 1);
-            var_tahun_tempo := (SELECT EXTRACT(YEAR FROM tanggal_tempo) FROM t_jual_produk WHERE jual_id = var_jual_id);                                    
+            var_tanggal_tempo := (SELECT tanggal_tempo FROM t_jual_produk WHERE jual_id = var_jual_id);                                                
             
-			IF var_tahun_tempo IS NULL THEN
-                var_tahun_tempo := 0;  
-            END IF;            
-            
-            IF var_tahun_tempo < 2010 THEN -- nota tunai            	
+            IF var_tanggal_tempo IS NULL THEN -- nota tunai            	
                 UPDATE t_jual_produk SET total_nota = var_total_nota, retur_jual_id = var_retur_jual_id 
                 WHERE jual_id = var_jual_id;                
                 
@@ -1024,9 +1018,10 @@ BEGIN
         var_customer_id_old = OLD.customer_id;
     END IF;
 	    	            
-	SELECT SUM(total_nota - diskon + transport + ppn), SUM(total_pelunasan)
+	SELECT SUM(total_nota - diskon + ppn), SUM(total_pelunasan)
     INTO var_total_piutang, var_total_pelunasan
-	FROM t_jual_produk WHERE EXTRACT(YEAR FROM tanggal_tempo) > 2010 AND customer_id = var_customer_id;
+	FROM t_jual_produk     
+    WHERE tanggal_tempo IS NOT NULL AND customer_id = var_customer_id;
     
     IF var_total_piutang IS NULL THEN
         var_total_piutang := 0;  
@@ -1043,9 +1038,10 @@ BEGIN
 		var_customer_id_old = OLD.customer_id;
 		
         IF var_customer_id <> var_customer_id_old THEN
-        	SELECT SUM(total_nota - diskon + transport + ppn), SUM(total_pelunasan)
+        	SELECT SUM(total_nota - diskon + ppn), SUM(total_pelunasan)
             INTO var_total_piutang, var_total_pelunasan
-            FROM t_jual_produk WHERE EXTRACT(YEAR FROM tanggal_tempo) > 2010 AND customer_id = var_customer_id_old;
+            FROM t_jual_produk             
+            WHERE tanggal_tempo IS NOT NULL AND customer_id = var_customer_id_old;
             
             IF var_total_piutang IS NULL THEN
                 var_total_piutang := 0;  
@@ -1059,7 +1055,7 @@ BEGIN
             WHERE customer_id = var_customer_id_old;
             
             UPDATE t_pembayaran_piutang_produk SET customer_id = var_customer_id 
-            WHERE pembayaran_piutang_id IN (SELECT pembayaran_piutang_id FROM t_item_pembayaran_piutang WHERE jual_id = NEW.jual_id);
+            WHERE pembayaran_piutang_id IN (SELECT pembayaran_piutang_id FROM t_item_pembayaran_piutang_produk WHERE jual_id = NEW.jual_id);
         END IF;
     END IF;
     
@@ -1699,10 +1695,10 @@ CREATE TABLE t_jual_produk (
 ALTER TABLE t_jual_produk OWNER TO postgres;
 
 --
--- Name: t_jual_produk_jual_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: t_jual_produk_jual_produk_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE t_jual_produk_jual_id_seq
+CREATE SEQUENCE t_jual_produk_jual_produk_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1710,7 +1706,7 @@ CREATE SEQUENCE t_jual_produk_jual_id_seq
     CACHE 1;
 
 
-ALTER TABLE t_jual_produk_jual_id_seq OWNER TO postgres;
+ALTER TABLE t_jual_produk_jual_produk_id_seq OWNER TO postgres;
 
 --
 -- Name: t_logs; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1718,25 +1714,19 @@ ALTER TABLE t_jual_produk_jual_id_seq OWNER TO postgres;
 
 CREATE TABLE t_logs (
     log_id bigint DEFAULT nextval(('public.t_logs_log_id_seq'::text)::regclass) NOT NULL,
-    app_name text,
-    thread character varying(255),
     level character varying(10),
-    location text,
-    message text,
-    exception text,
-    log_date timestamp without time zone DEFAULT now(),
-    created_by character varying(50)
+    class_name character varying(200),
+    method_name character varying(100),
+    message character varying(100),
+    new_value character varying(1000),
+    old_value character varying(1000),
+    exception character varying(5000),
+    created_by character varying(50),
+    log_date timestamp(0) without time zone DEFAULT now()
 );
 
 
 ALTER TABLE t_logs OWNER TO postgres;
-
---
--- Name: COLUMN t_logs.created_by; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN t_logs.created_by IS 'nama operator';
-
 
 --
 -- Name: t_logs_log_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -2294,24 +2284,73 @@ ALTER TABLE ONLY t_retur_jual_produk
 
 
 --
+-- Name: m_customer_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_customer_idx ON m_customer USING btree (nama_customer);
+
+
+--
 -- Name: m_produk_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
-CREATE INDEX m_produk_idx ON m_produk USING btree (nama_produk, kode_produk);
+CREATE INDEX m_produk_idx ON m_produk USING btree (nama_produk);
+
+
+--
+-- Name: m_produk_idx1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_produk_idx1 ON m_produk USING btree (kode_produk);
+
+
+--
+-- Name: m_supplier_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_supplier_idx ON m_supplier USING btree (nama_supplier);
 
 
 --
 -- Name: t_beli_produk_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
-CREATE INDEX t_beli_produk_idx ON t_beli_produk USING btree (supplier_id, tanggal);
+CREATE INDEX t_beli_produk_idx ON t_beli_produk USING btree (tanggal);
 
 
 --
--- Name: t_jual_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_beli_produk_idx1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
-CREATE INDEX t_jual_idx ON t_jual_produk USING btree (pengguna_id, tanggal);
+CREATE INDEX t_beli_produk_idx1 ON t_beli_produk USING btree (nota);
+
+
+--
+-- Name: t_gaji_karyawan_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_gaji_karyawan_idx ON t_gaji_karyawan USING btree (bulan, tahun);
+
+
+--
+-- Name: t_gaji_karyawan_idx1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_gaji_karyawan_idx1 ON t_gaji_karyawan USING btree (tanggal);
+
+
+--
+-- Name: t_jual_produk_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_jual_produk_idx ON t_jual_produk USING btree (nota);
+
+
+--
+-- Name: t_jual_produk_idx1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_jual_produk_idx1 ON t_jual_produk USING btree (tanggal);
 
 
 --

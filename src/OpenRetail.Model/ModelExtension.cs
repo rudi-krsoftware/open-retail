@@ -20,6 +20,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using Newtonsoft.Json;
 using Dapper.Contrib.Extensions;
 
 namespace OpenRetail.Model
@@ -65,6 +67,17 @@ namespace OpenRetail.Model
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Method untuk mengkonversi nilai object ke format json
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string ToJson<T>(this T obj)
+        {
+            return JsonConvert.SerializeObject(obj);
         }
     }
 }

@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using log4net;
 using log4net.Core;
 using log4net.Appender;
 
@@ -75,22 +76,27 @@ namespace OpenRetail.Repository.Service
     {
         protected override void Append(LoggingEvent loggingEvent)
         {
-            var appName = (loggingEvent.LookupProperty("AppName") != null) ? loggingEvent.LookupProperty("AppName").ToString() : string.Empty;
-            var createdBy = (loggingEvent.LookupProperty("Operator") != null) ? loggingEvent.LookupProperty("Operator").ToString() : string.Empty;
+            // cek nilai custom properties
+            var newValue = (loggingEvent.LookupProperty("NewValue") != null) ? loggingEvent.LookupProperty("NewValue").ToString() : string.Empty;
+            var oldValue = (loggingEvent.LookupProperty("OldValue") != null) ? loggingEvent.LookupProperty("OldValue").ToString() : string.Empty;
+            var createdBy = (loggingEvent.LookupProperty("UserName") != null) ? loggingEvent.LookupProperty("UserName").ToString() : string.Empty;
 
             var log = new Log
             {
-                app_name = appName,
-                thread = loggingEvent.ThreadName,
                 level = loggingEvent.Level.ToString(),
-                location = loggingEvent.LocationInformation.FullInfo,
+                class_name = loggingEvent.LocationInformation.ClassName,
+                method_name = loggingEvent.LocationInformation.MethodName,
                 message = loggingEvent.RenderedMessage,
+                new_value = newValue,
+                old_value = oldValue,
                 exception = loggingEvent.GetExceptionString(),
                 created_by = createdBy
             };
 
-            var result = 0;
+            // reset nilai property NewValue dan OldValue
+            LogicalThreadContext.Properties.Clear();
 
+            var result = 0;
             using (IDapperContext context = new DapperContext())
             {
                 IUnitOfWork uow = new UnitOfWork(context, null);
