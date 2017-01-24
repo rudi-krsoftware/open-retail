@@ -340,6 +340,7 @@
             this.mnuReturPembelianProduk.Size = new System.Drawing.Size(283, 22);
             this.mnuReturPembelianProduk.Tag = "FrmListReturPembelianProduk";
             this.mnuReturPembelianProduk.Text = "Retur Pembelian Produk";
+            this.mnuReturPembelianProduk.Click += new System.EventHandler(this.mnuReturPembelianProduk_Click);
             // 
             // toolStripSeparator4
             // 
