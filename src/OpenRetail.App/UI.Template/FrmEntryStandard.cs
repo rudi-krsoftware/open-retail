@@ -27,6 +27,8 @@ using System.Windows.Forms;
 
 using OpenRetail.App.Helper;
 using OpenRetail.App.UserControl;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace OpenRetail.App.UI.Template
 {
@@ -38,7 +40,8 @@ namespace OpenRetail.App.UI.Template
         public FrmEntryStandard()
         {
             InitializeComponent();
-        }
+            ColorManagerHelper.SetTheme(this, this);
+        }        
 
         #region protected dan override method
 

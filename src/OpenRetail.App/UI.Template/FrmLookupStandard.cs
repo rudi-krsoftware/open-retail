@@ -38,6 +38,7 @@ namespace OpenRetail.App.UI.Template
         public FrmLookupStandard()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);            
         }
 
         public FrmLookupStandard(string header)

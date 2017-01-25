@@ -38,6 +38,7 @@ namespace OpenRetail.App.UI.Template
         public FrmLookupEmptyBody()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);            
         }
 
         #region protected dan override method

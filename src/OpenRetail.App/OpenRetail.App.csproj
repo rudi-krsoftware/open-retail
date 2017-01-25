@@ -98,6 +98,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
@@ -121,6 +122,7 @@
       <Link>VersionInfo.cs</Link>
     </Compile>
     <Compile Include="Helper\ColorCollection.cs" />
+    <Compile Include="Helper\ColorManagerHelper.cs" />
     <Compile Include="Helper\CryptoHelper.cs" />
     <Compile Include="Helper\DateTimeHelper.cs" />
     <Compile Include="Helper\DayMonthHelper.cs" />

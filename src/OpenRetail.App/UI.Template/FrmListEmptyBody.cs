@@ -35,6 +35,7 @@ namespace OpenRetail.App.UI.Template
         public FrmListEmptyBody()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);            
         }
 
         #region protected method

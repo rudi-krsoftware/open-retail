@@ -37,6 +37,7 @@ namespace OpenRetail.App.UI.Template
         public FrmListStandard()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
         }
 
         public FrmListStandard(string header) 
