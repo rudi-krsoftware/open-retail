@@ -317,6 +317,12 @@
     <Compile Include="Transaksi\FrmListPembelianProduk.Designer.cs">
       <DependentUpon>FrmListPembelianProduk.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI.Template\BaseFrmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\BaseFrmLookup.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI.Template\FrmLookupEmptyBody.cs">
       <SubType>Form</SubType>
     </Compile>

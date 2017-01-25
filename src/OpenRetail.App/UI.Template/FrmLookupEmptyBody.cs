@@ -33,87 +33,34 @@ namespace OpenRetail.App.UI.Template
     /// <summary>
     /// Base class form untuk entry data
     /// </summary>
-    public partial class FrmLookupEmptyBody : Form
+    public partial class FrmLookupEmptyBody : BaseFrmLookup
     {
         public FrmLookupEmptyBody()
         {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);            
         }
-
-        #region protected dan override method
-
-        /// <summary>
-        /// Status tombol pilihan aktif atau enggak
-        /// </summary>
-        public bool IsButtonPilihEnabled
+        
+        public override bool IsButtonPilihEnabled
         {
-            get
-            {
-                return this.btnPilih.Enabled;
-            }
+            get { return this.btnPilih.Enabled; }
         }
 
-        /// <summary>
-        /// Method override untuk menghandle item yang dipilih
-        /// </summary>
-        /// <param name="index">Diisi dengan index grid list</param>
-        /// <param name="prompt">Informasi data yang dipilih</param>
-        /// <returns></returns>
-        protected bool IsSelectedItem(int index, string prompt)
-        {
-            if (index < 0)
-            {
-                var msg = "Maaf '" + prompt + "' belum dipilih.";
-                MsgHelper.MsgWarning(msg);
-
-                return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Method protected untuk mengeset header form lookup
-        /// </summary>
-        /// <param name="header"></param>
-        protected void SetHeader(string header)
+        protected override void SetHeader(string header)
         {
             this.Text = header;
             this.lblHeader.Text = header;
         }
 
-        protected void SetTitleBtnPilih(string title)
+        protected override void SetTitleBtnPilih(string title)
         {
             btnPilih.Text = title;
         }
 
-        /// <summary>
-        /// Method protected untuk mengaktifkan/menonaktifkan tombol pilih
-        /// </summary>
-        /// <param name="status"></param>
-        protected void SetActiveBtnPilih(bool status)
+        protected override void SetActiveBtnPilih(bool status)
         {
             btnPilih.Enabled = status;
         }
-
-
-        /// <summary>
-        /// Method override untuk menghandle proses pilih
-        /// </summary>
-        protected virtual void Pilih()
-        {
-        }
-
-        /// <summary>
-        /// Method override untuk menghandle proses selesai
-        /// </summary>
-        protected virtual void Batal()
-        {
-            this.Close();
-        }
-
-        #endregion
 
         private void btnPilih_Click(object sender, EventArgs e)
         {

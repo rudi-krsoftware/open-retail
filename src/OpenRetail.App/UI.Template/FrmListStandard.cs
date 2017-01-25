@@ -32,7 +32,7 @@ namespace OpenRetail.App.UI.Template
     /// <summary>
     /// Base class form untuk menampilkan data
     /// </summary>
-    public partial class FrmListStandard : DockContent
+    public partial class FrmListStandard : BaseFrmList
     {
         public FrmListStandard()
         {
@@ -48,69 +48,11 @@ namespace OpenRetail.App.UI.Template
             this.lblHeader.Text = header;
         }
 
-        #region protected dan override method
-
-        /// <summary>
-        /// Method protected untuk mengaktifkan/menonaktifkan tombol Perbaiki dan Hapus
-        /// </summary>
-        /// <param name="status"></param>
-        protected void SetActiveBtnPerbaikiAndHapus(bool status)
+        protected override void SetActiveBtnPerbaikiAndHapus(bool status)
         {
             btnPerbaiki.Enabled = status;
             btnHapus.Enabled = status;
         }
-
-        /// <summary>
-        /// Method override untuk menghandle proses tambah
-        /// </summary>
-        protected virtual void Tambah()
-        {
-        }
-
-        /// <summary>
-        /// Method override untuk menghandle proses perbaiki
-        /// </summary>
-        protected virtual void Perbaiki()
-        {
-        }
-
-        /// <summary>
-        /// Method override untuk menghandle proses Hapus
-        /// </summary>
-        protected virtual void Hapus()
-        {
-        }
-
-        /// <summary>
-        /// Method override untuk menghandle proses selesai
-        /// </summary>
-        protected virtual void Selesai()
-        {
-            this.Close();
-        }
-
-        /// <summary>
-        /// Method override untuk menghandle item yang dipilih
-        /// </summary>
-        /// <param name="index">Diisi dengan index grid list</param>
-        /// <param name="prompt">Informasi data yang dipilih</param>
-        /// <returns></returns>
-        protected bool IsSelectedItem(int index, string prompt)
-        {
-            if (index < 0)
-            {
-                var msg = "Maaf data '" + prompt + "' belum dipilih.";
-                MsgHelper.MsgWarning(msg);
-
-                return false;
-            }
-
-            return true;
-        }
-
-        #endregion
-
-        #region event form
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
@@ -131,9 +73,7 @@ namespace OpenRetail.App.UI.Template
         {
             if (btnPerbaiki.Enabled)
                 Perbaiki();
-        }
-
-        #endregion
+        }        
 
         private void btnSelesai_Click(object sender, EventArgs e)
         {

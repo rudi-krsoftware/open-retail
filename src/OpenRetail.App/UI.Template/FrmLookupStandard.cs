@@ -33,7 +33,7 @@ namespace OpenRetail.App.UI.Template
     /// <summary>
     /// Base class form untuk entry data
     /// </summary>
-    public partial class FrmLookupStandard : Form
+    public partial class FrmLookupStandard : BaseFrmLookup
     {
         public FrmLookupStandard()
         {
@@ -48,48 +48,15 @@ namespace OpenRetail.App.UI.Template
             this.lblHeader.Text = header;
         }
 
-        #region protected dan override method
-
-        /// <summary>
-        /// Status tombol piliah aktif atau enggak
-        /// </summary>
-        public bool IsEnabled
+        public override bool IsButtonPilihEnabled
         {
-            get
-            {
-                return this.btnPilih.Enabled;
-            }
+            get { return this.btnPilih.Enabled; }
         }
 
-        /// <summary>
-        /// Method protected untuk mengaktifkan/menonaktifkan tombol pilih
-        /// </summary>
-        /// <param name="status"></param>
-        protected void SetActiveBtnPilih(bool status)
+        protected override void SetActiveBtnPilih(bool status)
         {
             btnPilih.Enabled = status;
         }
-
-        /// <summary>
-        /// Method override untuk menghandle proses pilih
-        /// </summary>
-        protected virtual void Pilih()
-        {
-        }
-
-        protected virtual void PilihSemua()
-        {
-        }
-
-        /// <summary>
-        /// Method override untuk menghandle proses selesai
-        /// </summary>
-        protected virtual void Batal()
-        {
-            this.Close();
-        }
-
-        #endregion
 
         private void btnPilih_Click(object sender, EventArgs e)
         {
