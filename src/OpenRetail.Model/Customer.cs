@@ -57,7 +57,12 @@ namespace OpenRetail.Model
         [Computed]
 		[Display(Name = "total_pembayaran_piutang")]
 		public double total_pembayaran_piutang { get; set; }
-		
+
+        [Computed]
+        public double sisa_piutang
+        {
+            get { return total_piutang - total_pembayaran_piutang; }
+        }
 	}
 
     public class CustomerValidator : AbstractValidator<Customer>

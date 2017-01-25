@@ -52,6 +52,8 @@ namespace OpenRetail.App.Main
         private FrmListPembayaranHutangPembelianProduk _frmListPembayaranHutangPembelianProduk;
         private FrmListReturPembelianProduk _frmListReturPembelianProduk;
 
+        private FrmListPenjualanProduk _frmListPenjualanProduk;
+
         private FrmListHakAkses _frmListHakAkses;
         private FrmListOperator _frmListOperator;
 
@@ -275,6 +277,16 @@ namespace OpenRetail.App.Main
                 _frmListReturPembelianProduk = new FrmListReturPembelianProduk(header);
 
             _frmListReturPembelianProduk.Show(this.mainDock);
+        }
+
+        private void mnuPenjualanProduk_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+
+            if (!IsChildFormExists(_frmListPenjualanProduk))
+                _frmListPenjualanProduk = new FrmListPenjualanProduk(header);
+
+            _frmListPenjualanProduk.Show(this.mainDock);
         }
     }
 }

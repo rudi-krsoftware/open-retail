@@ -35,6 +35,7 @@ namespace OpenRetail.App.Lookup
     public partial class FrmLookupReferensi : FrmLookupEmptyBody
     {
         private IList<Supplier> _listOfSupplier = null;
+        private IList<Customer> _listOfCustomer = null;
         private IList<Produk> _listOfProduk = null;
 
         private ReferencesType _referensiType = ReferencesType.Supplier;
@@ -51,6 +52,19 @@ namespace OpenRetail.App.Lookup
 
             InitGridList();
             base.SetActiveBtnPilih(listOfSupplier.Count > 0);
+        }
+
+        public FrmLookupReferensi(string header, IList<Customer> listOfCustomer)
+            : base()
+        {
+            InitializeComponent();
+
+            base.SetHeader(header);
+            this._listOfCustomer = listOfCustomer;
+            this._referensiType = ReferencesType.Customer;
+
+            InitGridList();
+            base.SetActiveBtnPilih(listOfCustomer.Count > 0);
         }
 
         public FrmLookupReferensi(string header, IList<Produk> listOfProduk)
@@ -76,6 +90,17 @@ namespace OpenRetail.App.Lookup
 
             switch (this._referensiType)
             {
+                case ReferencesType.Customer:
+                    gridListProperties.Add(new GridListControlProperties { Header = "Nama Customer", Width = 200 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Alamat" });
+
+                    GridListControlHelper.InitializeGridListControl<Customer>(this.gridList, _listOfCustomer, gridListProperties);
+                    this.gridList.Grid.QueryCellInfo += GridCustomer_QueryCellInfo;
+
+                    listCount = _listOfCustomer.Count;
+
+                    break;
+
                 case ReferencesType.Supplier:
                     gridListProperties.Add(new GridListControlProperties { Header = "Nama Supplier", Width = 200 });
                     gridListProperties.Add(new GridListControlProperties { Header = "Alamat" });
@@ -101,6 +126,39 @@ namespace OpenRetail.App.Lookup
 
             if (listCount > 0)
                 this.gridList.SetSelected(0, true);
+        }
+
+        private void GridCustomer_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
+        {
+            if (_listOfCustomer.Count > 0)
+            {
+                if (e.RowIndex > 0)
+                {
+                    var rowIndex = e.RowIndex - 1;
+
+                    if (rowIndex < _listOfCustomer.Count)
+                    {
+                        var customer = _listOfCustomer[rowIndex];
+
+                        switch (e.ColIndex)
+                        {
+                            case 2:
+                                e.Style.CellValue = customer.nama_customer;
+                                break;
+
+                            case 3:
+                                e.Style.CellValue = customer.alamat;
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        // we handled it, let the grid know
+                        e.Handled = true;
+                    }
+                }
+            }
         }
 
         private void GridProduk_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
@@ -189,6 +247,11 @@ namespace OpenRetail.App.Lookup
                     this.Listener.Ok(this, supplier);
                     break;
 
+                case ReferencesType.Customer:
+                    var customer = _listOfCustomer[rowIndex];
+                    this.Listener.Ok(this, customer);
+                    break;
+    
                 case ReferencesType.Produk:
                     var produk = _listOfProduk[rowIndex];
                     this.Listener.Ok(this, produk);
