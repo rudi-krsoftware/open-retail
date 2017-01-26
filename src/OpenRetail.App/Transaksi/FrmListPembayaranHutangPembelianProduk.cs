@@ -64,7 +64,7 @@ namespace OpenRetail.App.Transaksi
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Tanggal", Width = 100 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nota Pembayaran", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nota Pembayaran", Width = 120 });
             gridListProperties.Add(new GridListControlProperties { Header = "Supplier", Width = 300 });
             gridListProperties.Add(new GridListControlProperties { Header = "Pembayaran", Width = 150 });
             gridListProperties.Add(new GridListControlProperties { Header = "Keterangan" });            
@@ -185,10 +185,15 @@ namespace OpenRetail.App.Transaksi
             if (!base.IsSelectedItem(index, this.Text))
                 return;
 
-            if (MsgHelper.MsgDelete())
+            var pembayaran = _listOfPembayaranHutang[index];
+            if (pembayaran.is_tunai)
             {
-                var pembayaran = _listOfPembayaranHutang[index];
+                MsgHelper.MsgWarning("Maaf pembayaran hutang pembelian tunai tidak bisa dihapus");
+                return;
+            }
 
+            if (MsgHelper.MsgDelete())
+            {                
                 var result = _bll.Delete(pembayaran);
                 if (result > 0)
                 {
