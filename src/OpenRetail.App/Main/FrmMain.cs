@@ -31,6 +31,9 @@ using OpenRetail.App.Transaksi;
 using OpenRetail.App.Helper;
 using ConceptCave.WaitCursor;
 using OpenRetail.App.Pengaturan;
+using OpenRetail.Model;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
 
 namespace OpenRetail.App.Main
 {
@@ -60,8 +63,74 @@ namespace OpenRetail.App.Main
         public FrmMain()
         {
             InitializeComponent();
+
             InitializeStatusBar();
             AddEventToolbar();
+            SetDisabledMenuAndToolbar(menuStrip1, toolStrip1);
+        }
+
+        private void WriteOutput(string s)
+        {
+            System.Diagnostics.Debug.Print(s);
+        }
+
+        private IEnumerable<ToolStripMenuItem> GetItems(ToolStripMenuItem menuItem)
+        {
+            foreach (var item in menuItem.DropDownItems)
+            {
+                if (item is ToolStripMenuItem)
+                {
+                    var dropDownItem = (ToolStripMenuItem)item;
+
+                    if (dropDownItem.HasDropDownItems)
+                    {
+                        foreach (ToolStripMenuItem subItem in GetItems(dropDownItem))
+                            yield return subItem;
+                    }
+
+                    yield return (ToolStripMenuItem)item;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Method untuk menonaktifkan menu dan toolbar yang belum aktif (membaca setting tabel m_menu)
+        /// </summary>
+        /// <param name="menuStrip"></param>
+        /// <param name="toolStrip"></param>
+        private void SetDisabledMenuAndToolbar(MenuStrip menuStrip, ToolStrip toolStrip)
+        {
+            IMenuBll menuBll = new MenuBll(MainProgram.log);
+            var listOfMenu = menuBll.GetAll()
+                                    .Where(f => f.parent_id != null && f.nama_form.Length > 0)
+                                    .ToList();
+            
+            // perulangan untuk mengecek menu dan sub menu
+            foreach (ToolStripMenuItem parentMenu in menuStrip.Items)
+            {
+                var listOfChildMenu = GetItems(parentMenu);
+
+                foreach (var childMenu in listOfChildMenu)
+                {
+                    var menu = listOfMenu.Where(f => f.nama_menu == childMenu.Name)
+                                         .SingleOrDefault();
+                    if (menu != null)
+                    {
+                        childMenu.Enabled = menu.is_enabled;
+                    }
+                }
+            }
+
+            // perulangan untuk mengecek item toolbar
+            foreach (ToolStripItem item in toolStrip.Items)
+            {
+                var menu = listOfMenu.Where(f => f.nama_menu.Substring(3) == item.Name.Substring(2))
+                                     .SingleOrDefault();
+                if (menu != null)
+                {
+                    item.Enabled = menu.is_enabled;
+                }
+            }
         }
 
         private void InitializeStatusBar()
@@ -90,8 +159,8 @@ namespace OpenRetail.App.Main
             tbPenyesuaianStok.Click += mnuPenyesuaianStok_Click;
             tbSupplier.Click += mnuSupplier_Click;
             tbCustomer.Click += mnuCustomer_Click;
-            tbPembelian.Click += mnuPembelianProduk_Click;
-            tbPenjualan.Click += mnuPembelianProduk_Click;
+            tbPembelianProduk.Click += mnuPembelianProduk_Click;
+            tbPenjualanProduk.Click += mnuPenjualanProduk_Click;
         }
 
         private void timer1_Tick(object sender, EventArgs e)

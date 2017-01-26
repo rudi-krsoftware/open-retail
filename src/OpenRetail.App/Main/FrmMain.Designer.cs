@@ -105,14 +105,14 @@
             this.tbSupplier = new System.Windows.Forms.ToolStripButton();
             this.tbCustomer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbPembelian = new System.Windows.Forms.ToolStripButton();
-            this.tbPenjualan = new System.Windows.Forms.ToolStripButton();
+            this.tbPembelianProduk = new System.Windows.Forms.ToolStripButton();
+            this.tbPenjualanProduk = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbPengeluaran = new System.Windows.Forms.ToolStripButton();
+            this.tbPengeluaranBiaya = new System.Windows.Forms.ToolStripButton();
             this.tbPenggajian = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbLapPembelian = new System.Windows.Forms.ToolStripButton();
-            this.tbLapPenjualan = new System.Windows.Forms.ToolStripButton();
+            this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
+            this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -668,14 +668,14 @@
             this.tbSupplier,
             this.tbCustomer,
             this.toolStripSeparator10,
-            this.tbPembelian,
-            this.tbPenjualan,
+            this.tbPembelianProduk,
+            this.tbPenjualanProduk,
             this.toolStripSeparator11,
-            this.tbPengeluaran,
+            this.tbPengeluaranBiaya,
             this.tbPenggajian,
             this.toolStripSeparator12,
-            this.tbLapPembelian,
-            this.tbLapPenjualan});
+            this.tbLapPembelianProduk,
+            this.tbLapPenjualanProduk});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(827, 39);
@@ -742,40 +742,40 @@
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             this.toolStripSeparator10.Size = new System.Drawing.Size(6, 39);
             // 
-            // tbPembelian
+            // tbPembelianProduk
             // 
-            this.tbPembelian.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbPembelian.Image = global::OpenRetail.App.Properties.Resources.pembelian;
-            this.tbPembelian.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbPembelian.Name = "tbPembelian";
-            this.tbPembelian.Size = new System.Drawing.Size(36, 36);
-            this.tbPembelian.Tag = "FrmListPembelianProduk";
-            this.tbPembelian.Text = "Pembelian";
+            this.tbPembelianProduk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbPembelianProduk.Image = global::OpenRetail.App.Properties.Resources.pembelian;
+            this.tbPembelianProduk.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbPembelianProduk.Name = "tbPembelianProduk";
+            this.tbPembelianProduk.Size = new System.Drawing.Size(36, 36);
+            this.tbPembelianProduk.Tag = "FrmListPembelianProduk";
+            this.tbPembelianProduk.Text = "Pembelian Produk";
             // 
-            // tbPenjualan
+            // tbPenjualanProduk
             // 
-            this.tbPenjualan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbPenjualan.Image = global::OpenRetail.App.Properties.Resources.penjualan;
-            this.tbPenjualan.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbPenjualan.Name = "tbPenjualan";
-            this.tbPenjualan.Size = new System.Drawing.Size(36, 36);
-            this.tbPenjualan.Tag = "FrmListPenjualanProduk";
-            this.tbPenjualan.Text = "Penjualan";
+            this.tbPenjualanProduk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbPenjualanProduk.Image = global::OpenRetail.App.Properties.Resources.penjualan;
+            this.tbPenjualanProduk.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbPenjualanProduk.Name = "tbPenjualanProduk";
+            this.tbPenjualanProduk.Size = new System.Drawing.Size(36, 36);
+            this.tbPenjualanProduk.Tag = "FrmListPenjualanProduk";
+            this.tbPenjualanProduk.Text = "Penjualan Produk";
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
             this.toolStripSeparator11.Size = new System.Drawing.Size(6, 39);
             // 
-            // tbPengeluaran
+            // tbPengeluaranBiaya
             // 
-            this.tbPengeluaran.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbPengeluaran.Image = global::OpenRetail.App.Properties.Resources.pengeluaran;
-            this.tbPengeluaran.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbPengeluaran.Name = "tbPengeluaran";
-            this.tbPengeluaran.Size = new System.Drawing.Size(36, 36);
-            this.tbPengeluaran.Tag = "FrmListPengeluaranBiaya";
-            this.tbPengeluaran.Text = "Pengeluaran Biaya";
+            this.tbPengeluaranBiaya.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbPengeluaranBiaya.Image = global::OpenRetail.App.Properties.Resources.pengeluaran;
+            this.tbPengeluaranBiaya.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbPengeluaranBiaya.Name = "tbPengeluaranBiaya";
+            this.tbPengeluaranBiaya.Size = new System.Drawing.Size(36, 36);
+            this.tbPengeluaranBiaya.Tag = "FrmListPengeluaranBiaya";
+            this.tbPengeluaranBiaya.Text = "Pengeluaran Biaya";
             // 
             // tbPenggajian
             // 
@@ -792,25 +792,25 @@
             this.toolStripSeparator12.Name = "toolStripSeparator12";
             this.toolStripSeparator12.Size = new System.Drawing.Size(6, 39);
             // 
-            // tbLapPembelian
+            // tbLapPembelianProduk
             // 
-            this.tbLapPembelian.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbLapPembelian.Image = ((System.Drawing.Image)(resources.GetObject("tbLapPembelian.Image")));
-            this.tbLapPembelian.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbLapPembelian.Name = "tbLapPembelian";
-            this.tbLapPembelian.Size = new System.Drawing.Size(36, 36);
-            this.tbLapPembelian.Tag = "FrmLapPembelianProduk";
-            this.tbLapPembelian.Text = "Laporan Pembelian";
+            this.tbLapPembelianProduk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbLapPembelianProduk.Image = ((System.Drawing.Image)(resources.GetObject("tbLapPembelianProduk.Image")));
+            this.tbLapPembelianProduk.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbLapPembelianProduk.Name = "tbLapPembelianProduk";
+            this.tbLapPembelianProduk.Size = new System.Drawing.Size(36, 36);
+            this.tbLapPembelianProduk.Tag = "FrmLapPembelianProduk";
+            this.tbLapPembelianProduk.Text = "Laporan Pembelian Produk";
             // 
-            // tbLapPenjualan
+            // tbLapPenjualanProduk
             // 
-            this.tbLapPenjualan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbLapPenjualan.Image = ((System.Drawing.Image)(resources.GetObject("tbLapPenjualan.Image")));
-            this.tbLapPenjualan.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tbLapPenjualan.Name = "tbLapPenjualan";
-            this.tbLapPenjualan.Size = new System.Drawing.Size(36, 36);
-            this.tbLapPenjualan.Tag = "FrmLapPenjualanProduk";
-            this.tbLapPenjualan.Text = "Laporan Penjualan";
+            this.tbLapPenjualanProduk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbLapPenjualanProduk.Image = ((System.Drawing.Image)(resources.GetObject("tbLapPenjualanProduk.Image")));
+            this.tbLapPenjualanProduk.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbLapPenjualanProduk.Name = "tbLapPenjualanProduk";
+            this.tbLapPenjualanProduk.Size = new System.Drawing.Size(36, 36);
+            this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
+            this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
             // FrmMain
             // 
@@ -911,14 +911,14 @@
         private System.Windows.Forms.ToolStripButton tbSupplier;
         private System.Windows.Forms.ToolStripButton tbCustomer;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.ToolStripButton tbPembelian;
-        private System.Windows.Forms.ToolStripButton tbPenjualan;
+        private System.Windows.Forms.ToolStripButton tbPembelianProduk;
+        private System.Windows.Forms.ToolStripButton tbPenjualanProduk;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
-        private System.Windows.Forms.ToolStripButton tbPengeluaran;
+        private System.Windows.Forms.ToolStripButton tbPengeluaranBiaya;
         private System.Windows.Forms.ToolStripButton tbPenggajian;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
-        private System.Windows.Forms.ToolStripButton tbLapPembelian;
-        private System.Windows.Forms.ToolStripButton tbLapPenjualan;
+        private System.Windows.Forms.ToolStripButton tbLapPembelianProduk;
+        private System.Windows.Forms.ToolStripButton tbLapPenjualanProduk;
         private System.Windows.Forms.ToolStripButton tbPenyesuaianStok;
         private System.Windows.Forms.ToolStripMenuItem mnuAbout;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
