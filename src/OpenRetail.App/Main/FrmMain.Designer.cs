@@ -361,6 +361,7 @@
             this.mnuPembayaranPiutangPenjualanProduk.Size = new System.Drawing.Size(283, 22);
             this.mnuPembayaranPiutangPenjualanProduk.Tag = "FrmListPembayaranPiutangPenjualanProduk";
             this.mnuPembayaranPiutangPenjualanProduk.Text = "Pembayaran Piutang Penjualan Produk";
+            this.mnuPembayaranPiutangPenjualanProduk.Click += new System.EventHandler(this.mnuPembayaranPiutangPenjualanProduk_Click);
             // 
             // mnuReturPenjualanProduk
             // 

@@ -281,6 +281,12 @@
     <Compile Include="Referensi\FrmListGolongan.Designer.cs">
       <DependentUpon>FrmListGolongan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transaksi\FrmEntryPembayaranPiutangPenjualanProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FrmEntryPembayaranPiutangPenjualanProduk.Designer.cs">
+      <DependentUpon>FrmEntryPembayaranPiutangPenjualanProduk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transaksi\FrmEntryPenjualanProduk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,12 @@
     </Compile>
     <Compile Include="Transaksi\FrmEntryPembelianProduk.Designer.cs">
       <DependentUpon>FrmEntryPembelianProduk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaksi\FrmListPembayaranPiutangPenjualanProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FrmListPembayaranPiutangPenjualanProduk.Designer.cs">
+      <DependentUpon>FrmListPembayaranPiutangPenjualanProduk.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaksi\FrmListPenjualanProduk.cs">
       <SubType>Form</SubType>
@@ -456,6 +468,9 @@
     <EmbeddedResource Include="Referensi\FrmListGolongan.resx">
       <DependentUpon>FrmListGolongan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FrmEntryPembayaranPiutangPenjualanProduk.resx">
+      <DependentUpon>FrmEntryPembayaranPiutangPenjualanProduk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmEntryPenjualanProduk.resx">
       <DependentUpon>FrmEntryPenjualanProduk.cs</DependentUpon>
     </EmbeddedResource>
@@ -467,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmEntryPembelianProduk.resx">
       <DependentUpon>FrmEntryPembelianProduk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FrmListPembayaranPiutangPenjualanProduk.resx">
+      <DependentUpon>FrmListPembayaranPiutangPenjualanProduk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmListPenjualanProduk.resx">
       <DependentUpon>FrmListPenjualanProduk.cs</DependentUpon>
