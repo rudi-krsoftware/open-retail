@@ -60,7 +60,7 @@ namespace OpenRetail.Model
             try
             {
                 result = tanggal == DateTime.MinValue || tanggal == new DateTime(1753, 1, 1) ||
-                         tanggal == new DateTime(0001, 1, 1);
+                         tanggal == new DateTime(0001, 1, 1) || tanggal == null;
             }
             catch
             {
