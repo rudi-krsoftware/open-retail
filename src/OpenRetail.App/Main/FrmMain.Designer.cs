@@ -369,6 +369,7 @@
             this.mnuReturPenjualanProduk.Size = new System.Drawing.Size(283, 22);
             this.mnuReturPenjualanProduk.Tag = "FrmListReturPenjualanProduk";
             this.mnuReturPenjualanProduk.Text = "Retur Penjualan Produk";
+            this.mnuReturPenjualanProduk.Click += new System.EventHandler(this.mnuReturPenjualanProduk_Click);
             // 
             // mnuPengeluaran
             // 

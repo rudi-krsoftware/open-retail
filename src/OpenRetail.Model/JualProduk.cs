@@ -31,6 +31,8 @@ namespace OpenRetail.Model
 	[Table("t_jual_produk")]
     public class JualProduk
     {
+        private Nullable<DateTime> _tanggal_tempo;
+
         public JualProduk()
         {
             item_jual = new List<ItemJualProduk>();
@@ -57,10 +59,14 @@ namespace OpenRetail.Model
 		public string nota { get; set; }
 		
 		[Display(Name = "Tanggal")]
-		public Nullable<DateTime> tanggal { get; set; }
-		
-		[Display(Name = "Tanggal Tempo")]
-		public Nullable<DateTime> tanggal_tempo { get; set; }
+		public Nullable<DateTime> tanggal { get; set; }        
+
+		[Display(Name = "Tanggal Tempo")]        
+        public Nullable<DateTime> tanggal_tempo
+        {
+            get { return _tanggal_tempo.IsNull() ? null : _tanggal_tempo; }
+            set { _tanggal_tempo = value; }
+        }
 
         [Write(false)]
         public Nullable<DateTime> tanggal_tempo_old { get; set; }

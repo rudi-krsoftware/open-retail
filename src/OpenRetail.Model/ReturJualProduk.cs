@@ -97,7 +97,7 @@ namespace OpenRetail.Model
 			//RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
 			RuleFor(c => c.customer_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
 			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
-			RuleFor(c => c.keterangan).Length(1, 100).WithMessage(msgError2);
+			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
 		}
 	}
 }

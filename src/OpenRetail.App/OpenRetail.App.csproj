@@ -293,6 +293,12 @@
     <Compile Include="Transaksi\FrmEntryPenjualanProduk.Designer.cs">
       <DependentUpon>FrmEntryPenjualanProduk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transaksi\FrmEntryReturPenjualanProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FrmEntryReturPenjualanProduk.Designer.cs">
+      <DependentUpon>FrmEntryReturPenjualanProduk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transaksi\FrmEntryReturPembelianProduk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +328,12 @@
     </Compile>
     <Compile Include="Transaksi\FrmListPenjualanProduk.Designer.cs">
       <DependentUpon>FrmListPenjualanProduk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaksi\FrmListReturPenjualanProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FrmListReturPenjualanProduk.Designer.cs">
+      <DependentUpon>FrmListReturPenjualanProduk.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaksi\FrmListReturPembelianProduk.cs">
       <SubType>Form</SubType>
@@ -474,6 +486,9 @@
     <EmbeddedResource Include="Transaksi\FrmEntryPenjualanProduk.resx">
       <DependentUpon>FrmEntryPenjualanProduk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FrmEntryReturPenjualanProduk.resx">
+      <DependentUpon>FrmEntryReturPenjualanProduk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmEntryReturPembelianProduk.resx">
       <DependentUpon>FrmEntryReturPembelianProduk.cs</DependentUpon>
     </EmbeddedResource>
@@ -488,6 +503,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmListPenjualanProduk.resx">
       <DependentUpon>FrmListPenjualanProduk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FrmListReturPenjualanProduk.resx">
+      <DependentUpon>FrmListReturPenjualanProduk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmListReturPembelianProduk.resx">
       <DependentUpon>FrmListReturPembelianProduk.cs</DependentUpon>

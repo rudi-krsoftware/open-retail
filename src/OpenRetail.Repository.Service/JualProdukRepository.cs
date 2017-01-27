@@ -271,7 +271,7 @@ namespace OpenRetail.Repository.Service
                 itemPembayaranPiutang = new ItemPembayaranPiutangProduk();
                 itemPembayaranPiutang.jual_id = obj.jual_id;
                 itemPembayaranPiutang.JualProduk = obj;
-                itemPembayaranPiutang.nominal = obj.grand_total; // GetTotalNotaSetelahDiskonDanPPN(obj);
+                itemPembayaranPiutang.nominal = obj.grand_total;
                 itemPembayaranPiutang.keterangan = string.Empty;
 
                 // set item pembayaran
