@@ -53,6 +53,7 @@ namespace OpenRetail.Repository.Service
         private IRolePrivilegeRepository _roleprivilegeRepository;
         private IMenuRepository _menuRepository;
         private IItemMenuRepository _itemmenuRepository;
+        private IProfilRepository _profilRepository;
 
         public UnitOfWork(IDapperContext context, ILog log)
         {
@@ -163,6 +164,11 @@ namespace OpenRetail.Repository.Service
         public IItemMenuRepository ItemMenuRepository
         {
             get { return _itemmenuRepository ?? (_itemmenuRepository = new ItemMenuRepository(_context, _log)); }
+        }
+
+        public IProfilRepository ProfilRepository
+        {
+            get { return _profilRepository ?? (_profilRepository = new ProfilRepository(_context, _log)); }
         }
     }
 }     

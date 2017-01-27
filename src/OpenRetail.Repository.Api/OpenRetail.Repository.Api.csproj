@@ -60,6 +60,7 @@
     <Compile Include="IPenggunaRepository.cs" />
     <Compile Include="IPenyesuaianStokRepository.cs" />
     <Compile Include="IProdukRepository.cs" />
+    <Compile Include="IProfilRepository.cs" />
     <Compile Include="IReturBeliProdukRepository.cs" />
     <Compile Include="IReturJualProdukRepository.cs" />
     <Compile Include="IRolePrivilegeRepository.cs" />

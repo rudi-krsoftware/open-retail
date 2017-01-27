@@ -84,6 +84,7 @@
     <Compile Include="Pengguna.cs" />
     <Compile Include="PenyesuaianStok.cs" />
     <Compile Include="Produk.cs" />
+    <Compile Include="Profil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReferencesType.cs" />
     <Compile Include="ReturBeliProduk.cs" />

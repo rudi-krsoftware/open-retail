@@ -91,6 +91,7 @@
     <Compile Include="PenggunaBllTest.cs" />
     <Compile Include="PenyesuaianStokBllTest.cs" />
     <Compile Include="ProdukBllTest.cs" />
+    <Compile Include="ProfilBllTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturBeliProdukBllTest.cs" />
     <Compile Include="ReturJualProdukBllTest.cs" />
