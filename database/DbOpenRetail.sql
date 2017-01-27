@@ -720,6 +720,8 @@ CREATE FUNCTION f_update_total_beli_produk() RETURNS trigger
 DECLARE 
 	var_beli_produk_id 		t_guid;
     var_retur_beli_id		t_guid;
+    var_diskon				t_harga;
+    var_ppn					t_harga;
 	var_total_nota 			t_harga;
   	var_jumlah_retur_lama 	t_jumlah;
     var_jumlah_retur_baru 	t_jumlah;
@@ -741,7 +743,18 @@ BEGIN
 	
     IF var_total_nota IS NULL THEN
     	var_total_nota := 0;  
-	END IF;                         
+	END IF;              
+    
+    SELECT ppn, diskon INTO var_ppn, var_diskon
+    FROM t_beli_produk WHERE beli_produk_id = var_beli_produk_id;            
+    
+    IF var_ppn IS NULL THEN
+    	var_ppn := 0;  
+	END IF;
+    
+    IF var_diskon IS NULL THEN
+    	var_diskon := 0;  
+	END IF;           
 
 	IF TG_OP = 'UPDATE' THEN -- pengecekan retur
     	-- jumlah retur
@@ -758,7 +771,7 @@ BEGIN
                 UPDATE t_beli_produk SET total_nota = var_total_nota, retur_beli_produk_id = var_retur_beli_id 
                 WHERE beli_produk_id = var_beli_produk_id;                
                 
-                UPDATE t_item_pembayaran_hutang_produk SET nominal = var_total_nota 
+                UPDATE t_item_pembayaran_hutang_produk SET nominal = var_total_nota - var_diskon + var_ppn
                 WHERE beli_produk_id = var_beli_produk_id;
             ELSE
             	UPDATE t_beli_produk SET total_nota = var_total_nota, retur_beli_produk_id = var_retur_beli_id 
@@ -862,6 +875,8 @@ CREATE FUNCTION f_update_total_jual_produk() RETURNS trigger
 DECLARE 
 	var_jual_id 			t_guid;
     var_retur_jual_id		t_guid;
+    var_diskon				t_harga;
+    var_ppn					t_harga;
 	var_total_nota 			t_harga;        
     var_jumlah_retur_lama 	t_jumlah;
     var_jumlah_retur_baru 	t_jumlah;
@@ -880,12 +895,22 @@ BEGIN
     var_total_nota := (SELECT SUM((jumlah - jumlah_retur) * (harga_jual - (diskon / 100 * harga_jual))) 
     				   FROM t_item_jual_produk
 					   WHERE jual_id = var_jual_id);	    
-
-    IF var_total_nota IS NULL THEN
+	IF var_total_nota IS NULL THEN
     	var_total_nota := 0;  
 	END IF;     
     
     var_total_nota := ROUND(var_total_nota, 0);      
+    
+	SELECT ppn, diskon INTO var_ppn, var_diskon
+    FROM t_jual_produk WHERE jual_id = var_jual_id;            
+    
+    IF var_ppn IS NULL THEN
+    	var_ppn := 0;  
+	END IF;
+    
+    IF var_diskon IS NULL THEN
+    	var_diskon := 0;  
+	END IF;
     
     IF TG_OP = 'UPDATE' THEN -- pengecekan retur
     	-- jumlah retur
@@ -902,7 +927,7 @@ BEGIN
                 UPDATE t_jual_produk SET total_nota = var_total_nota, retur_jual_id = var_retur_jual_id 
                 WHERE jual_id = var_jual_id;                
                 
-                UPDATE t_item_pembayaran_piutang_produk SET nominal = var_total_nota 
+                UPDATE t_item_pembayaran_piutang_produk SET nominal = var_total_nota - var_diskon + var_ppn
                 WHERE jual_id = var_jual_id;
             ELSE
             	UPDATE t_jual_produk SET total_nota = var_total_nota, retur_jual_id = var_retur_jual_id 
@@ -1810,20 +1835,6 @@ CREATE SEQUENCE t_pembayaran_hutang_produk_pembayaran_hutang_produk_id_seq
 ALTER TABLE t_pembayaran_hutang_produk_pembayaran_hutang_produk_id_seq OWNER TO postgres;
 
 --
--- Name: t_pembayaran_piutang_pembayaran_piutang_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE t_pembayaran_piutang_pembayaran_piutang_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE t_pembayaran_piutang_pembayaran_piutang_id_seq OWNER TO postgres;
-
---
 -- Name: t_pembayaran_piutang_produk; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1840,6 +1851,20 @@ CREATE TABLE t_pembayaran_piutang_produk (
 
 
 ALTER TABLE t_pembayaran_piutang_produk OWNER TO postgres;
+
+--
+-- Name: t_pembayaran_piutang_produk_pembayaran_piutang_produk_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE t_pembayaran_piutang_produk_pembayaran_piutang_produk_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE t_pembayaran_piutang_produk_pembayaran_piutang_produk_id_seq OWNER TO postgres;
 
 --
 -- Name: t_pengeluaran; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1960,10 +1985,10 @@ CREATE TABLE t_retur_jual_produk (
 ALTER TABLE t_retur_jual_produk OWNER TO postgres;
 
 --
--- Name: t_retur_jual_retur_jual_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: t_retur_jual_produk_retur_jual_produk_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE t_retur_jual_retur_jual_id_seq
+CREATE SEQUENCE t_retur_jual_produk_retur_jual_produk_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1971,7 +1996,7 @@ CREATE SEQUENCE t_retur_jual_retur_jual_id_seq
     CACHE 1;
 
 
-ALTER TABLE t_retur_jual_retur_jual_id_seq OWNER TO postgres;
+ALTER TABLE t_retur_jual_produk_retur_jual_produk_id_seq OWNER TO postgres;
 
 --
 -- Name: t_sppd_sppd_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres

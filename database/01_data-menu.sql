@@ -16,49 +16,49 @@ SET search_path = public, pg_catalog;
 --
 
 COPY m_menu (menu_id, nama_menu, judul_menu, parent_id, order_number, is_active, nama_form, is_enabled) FROM stdin;
+5a114aab-28cc-4655-b676-d08075bae831	mnuLapPembelian	Pembelian	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	6	t		t
+6f13d6e5-4322-4b4b-8fca-2278b04bd4eb	mnuLapPenjualan	Penjualan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	13	t		t
+07b24b4b-cf52-4b3c-ab06-51f7312e4813	mnuReferensi	Referensi	\N	1	t	\N	t
+73e32548-da86-4db9-b3f9-f2ecd81ea3c9	mnuTransaksi	Transaksi	\N	2	t	\N	t
+d1bd5f93-996c-46a3-b80f-f4f50681a1f9	mnuPengeluaran	Pengeluaran	\N	3	t	\N	t
+3a62ea0b-0f48-495c-947b-ad5aa9af77f7	mnuLaporan	Laporan	\N	4	t	\N	t
+593c989d-be87-42bf-a11d-f177afcc2180	mnuPengaturan	Pengaturan	\N	5	t	\N	t
 8a0ba72f-67d2-481f-9e10-a188f09effa5	mnuProduk	Produk	07b24b4b-cf52-4b3c-ab06-51f7312e4813	2	t	FrmListProduk	t
 95e9e230-c4f3-4fbc-9652-78cf4155d7ea	mnuPenyesuaianStok	Penyesuaian Stok	07b24b4b-cf52-4b3c-ab06-51f7312e4813	3	t	FrmListPenyesuaianStok	t
 fd48562f-9096-4cec-ad9c-37229fc072a3	mnuSupplier	Supplier	07b24b4b-cf52-4b3c-ab06-51f7312e4813	4	t	FrmListSupplier	t
 5ab9c82d-a116-4032-8891-cbfb7b71b8e3	mnuCustomer	Customer	07b24b4b-cf52-4b3c-ab06-51f7312e4813	5	t	FrmListCustomer	t
-07b24b4b-cf52-4b3c-ab06-51f7312e4813	mnuReferensi	Referensi	\N	1	t	\N	f
 8a8c6d23-963b-4819-819d-b9cdeaad7718	mnuGolongan	Golongan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	1	t	FrmListGolongan	t
 e7be0d85-9f96-4095-be35-1da049028cef	mnuJabatan	Jabatan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	6	t	FrmListJabatan	t
 b7ade8cc-22aa-43c8-be9c-af6cb71d11a6	mnuKaryawan	Karyawan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	7	t	FrmListKaryawan	t
 b52e8eac-3bf6-4ebf-95a0-46ab9e7b0888	mnuJenisPengeluaran	Jenis Pengeluaran	07b24b4b-cf52-4b3c-ab06-51f7312e4813	8	t	FrmListJenisPengeluaran	t
-73e32548-da86-4db9-b3f9-f2ecd81ea3c9	mnuTransaksi	Transaksi	\N	2	t	\N	f
 a6043b21-18d0-4fcd-9ea9-f146542081d5	mnuPembelianProduk	Pembelian Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	1	t	FrmListPembelianProduk	t
 084488a3-092d-4e8c-8bf2-72dcf90262b4	mnuPembayaranHutangPembelianProduk	Pembayaran Hutang Pembelian Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	2	t	FrmListPembayaranHutangPembelianProduk	t
 870ec1d3-5b71-47dc-b241-1b0ae933217c	mnuReturPembelianProduk	Retur Pembelian Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	3	t	FrmListReturPembelianProduk	t
 b4be7b7c-4587-4af4-af07-fce34df723df	mnuPenjualanProduk	Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	4	t	FrmListPenjualanProduk	t
-99302348-4d3c-48dd-8d67-c422e3061f1c	mnuPembayaranPiutangPenjualanProduk	Pembayaran Piutang Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	5	t	FrmListPembayaranPiutangPenjualanProduk	t
-576b9f00-c29d-4c2c-9a6b-5a563344de93	mnuReturPenjualanProduk	Retur Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	6	t	FrmListReturPenjualanProduk	t
-d1bd5f93-996c-46a3-b80f-f4f50681a1f9	mnuPengeluaran	Pengeluaran	\N	3	t	\N	f
-08392673-2e61-4266-a6ae-5cb75fdf42e8	mnuPengeluaranBiaya	Pengeluaran Biaya	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	1	t	FrmListPengeluaranBiaya	t
-13b929f3-d349-4686-b803-b350732003c8	mnuKasbon	Kasbon	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	2	t	FrmListKasbon	t
-d5bd3b31-7feb-4c55-9fed-8d67ac18fef4	mnuPenggajian	Penggajian Karyawan	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	3	t	FrmListPenggajianKaryawan	t
-3a62ea0b-0f48-495c-947b-ad5aa9af77f7	mnuLaporan	Laporan	\N	4	t	\N	f
-295f6ddd-b934-4215-8e44-74905efd2273	mnuLapPembelianProduk	Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	1	t	FrmLapPembelianProduk	t
-335e115b-8f25-4cad-96cf-22481c98c525	mnuLapHutangPembelianProduk	Hutang Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	2	t	FrmLapHutangPembelianProduk	t
-42a3ffaa-da90-44d8-ae9b-cfcb7a7bdac6	mnuLapPembayaranHutangPembelianProduk	Pembayaran Hutang Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	3	t	FrmLapPembayaranHutangPembelianProduk	t
-b0b538ba-3535-4308-8012-9e2fa0daa0b0	mnuLapKartuHutangPembelianProduk	Kartu Hutang Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	4	t	FrmLapKartuHutangPembelianProduk	t
-5a4b0eab-0a7b-463a-bcf8-0cca0fbddded	mnuLapReturPembelianProduk	Retur Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	5	t	FrmLapReturPembelianProduk	t
-5a114aab-28cc-4655-b676-d08075bae831	mnuLapPembelian	Pembelian	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	6	t		t
-6a593127-4efb-4d7e-be38-53894c4828d0	mnuLapPenjualanProduk	Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	7	t	FrmLapPenjualanProduk	t
-f87b0496-d9cb-4aef-b9dd-b7fe62ac3a18	mnuLapPenjualanPerProduk	Penjualan Per Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	8	t	FrmLapPenjualanPerProduk	t
-942cf428-3e36-48d2-8932-7e55cde20b32	mnuLapPiutangPenjualanProduk	Piutang Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	9	t	FrmLapPiutangPenjualanProduk	t
-5b99b5c4-91a8-4492-80a2-71cd9b800f00	mnuLapPembayaranPiutangPenjualanProduk	Pembayaran Piutang Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	10	t	FrmLapPembayaranPiutangPenjualanProduk	t
-01803718-15d1-4ef4-9574-b9bb161c1638	mnuLapKartuPiutangPenjualanProduk	Kartu Piutang Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	11	t	FrmLapKartuPiutangPenjualanProduk	t
-56bd7e72-5e17-4105-bf4d-5f698e94a7fb	mnuLapReturPenjualanProduk	Retur Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	12	t	FrmLapReturPenjualanProduk	t
-6f13d6e5-4322-4b4b-8fca-2278b04bd4eb	mnuLapPenjualan	Penjualan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	13	t		t
-d62d3352-56e7-4802-973e-32d590febdab	mnuLapStokProduk	Stok Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	14	t	FrmLapStokProduk	t
-986182a1-8b33-457b-9151-38676f0f0869	mnuLapPenyesuaianStok	Penyesuaian Stok	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	15	t	FrmLapPenyesuaianStok	t
-5c336652-4465-4b62-8de1-dac26fc696b6	mnuLapPengeluaranBiaya	Pengeluaran Biaya	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	16	t	FrmLapPengeluaranBiaya	t
-e9e7ff66-d302-49a3-a9e5-8a02ff87e016	mnuLapKasbon	Kasbon	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	17	t	FrmLapKasbon	t
-8c46f173-f586-402d-b54a-ac2e4ba57f1e	mnuLapPenggajian	Penggajian Karyawan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	18	t	FrmLapPenggajianKaryawan	t
-593c989d-be87-42bf-a11d-f177afcc2180	mnuPengaturan	Pengaturan	\N	5	t	\N	f
-36aabcfa-60bc-48f5-9af6-30aa7600eb5b	mnuProfilPerusahaan	Profil Perusahaan	593c989d-be87-42bf-a11d-f177afcc2180	1	t	FrmProfilPerusahaan	t
+08392673-2e61-4266-a6ae-5cb75fdf42e8	mnuPengeluaranBiaya	Pengeluaran Biaya	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	1	t	FrmListPengeluaranBiaya	f
+13b929f3-d349-4686-b803-b350732003c8	mnuKasbon	Kasbon	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	2	t	FrmListKasbon	f
+d5bd3b31-7feb-4c55-9fed-8d67ac18fef4	mnuPenggajian	Penggajian Karyawan	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	3	t	FrmListPenggajianKaryawan	f
+295f6ddd-b934-4215-8e44-74905efd2273	mnuLapPembelianProduk	Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	1	t	FrmLapPembelianProduk	f
+335e115b-8f25-4cad-96cf-22481c98c525	mnuLapHutangPembelianProduk	Hutang Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	2	t	FrmLapHutangPembelianProduk	f
+42a3ffaa-da90-44d8-ae9b-cfcb7a7bdac6	mnuLapPembayaranHutangPembelianProduk	Pembayaran Hutang Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	3	t	FrmLapPembayaranHutangPembelianProduk	f
+b0b538ba-3535-4308-8012-9e2fa0daa0b0	mnuLapKartuHutangPembelianProduk	Kartu Hutang Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	4	t	FrmLapKartuHutangPembelianProduk	f
+5a4b0eab-0a7b-463a-bcf8-0cca0fbddded	mnuLapReturPembelianProduk	Retur Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	5	t	FrmLapReturPembelianProduk	f
+6a593127-4efb-4d7e-be38-53894c4828d0	mnuLapPenjualanProduk	Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	7	t	FrmLapPenjualanProduk	f
+f87b0496-d9cb-4aef-b9dd-b7fe62ac3a18	mnuLapPenjualanPerProduk	Penjualan Per Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	8	t	FrmLapPenjualanPerProduk	f
+942cf428-3e36-48d2-8932-7e55cde20b32	mnuLapPiutangPenjualanProduk	Piutang Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	9	t	FrmLapPiutangPenjualanProduk	f
+5b99b5c4-91a8-4492-80a2-71cd9b800f00	mnuLapPembayaranPiutangPenjualanProduk	Pembayaran Piutang Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	10	t	FrmLapPembayaranPiutangPenjualanProduk	f
+01803718-15d1-4ef4-9574-b9bb161c1638	mnuLapKartuPiutangPenjualanProduk	Kartu Piutang Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	11	t	FrmLapKartuPiutangPenjualanProduk	f
+56bd7e72-5e17-4105-bf4d-5f698e94a7fb	mnuLapReturPenjualanProduk	Retur Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	12	t	FrmLapReturPenjualanProduk	f
+d62d3352-56e7-4802-973e-32d590febdab	mnuLapStokProduk	Stok Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	14	t	FrmLapStokProduk	f
+986182a1-8b33-457b-9151-38676f0f0869	mnuLapPenyesuaianStok	Penyesuaian Stok	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	15	t	FrmLapPenyesuaianStok	f
+5c336652-4465-4b62-8de1-dac26fc696b6	mnuLapPengeluaranBiaya	Pengeluaran Biaya	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	16	t	FrmLapPengeluaranBiaya	f
+e9e7ff66-d302-49a3-a9e5-8a02ff87e016	mnuLapKasbon	Kasbon	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	17	t	FrmLapKasbon	f
+8c46f173-f586-402d-b54a-ac2e4ba57f1e	mnuLapPenggajian	Penggajian Karyawan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	18	t	FrmLapPenggajianKaryawan	f
+36aabcfa-60bc-48f5-9af6-30aa7600eb5b	mnuProfilPerusahaan	Profil Perusahaan	593c989d-be87-42bf-a11d-f177afcc2180	1	t	FrmProfilPerusahaan	f
 0702e90c-cb7c-42a4-a447-478fba5a7443	mnuHakAksesAplikasi	Hak Akses Aplikasi	593c989d-be87-42bf-a11d-f177afcc2180	2	t	FrmListHakAkses	t
 e8f83478-a577-4cff-a06f-8d921f9367c7	mnuManajemenOperator	Manajemen Operator	593c989d-be87-42bf-a11d-f177afcc2180	3	t	FrmListOperator	t
+99302348-4d3c-48dd-8d67-c422e3061f1c	mnuPembayaranPiutangPenjualanProduk	Pembayaran Piutang Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	5	t	FrmListPembayaranPiutangPenjualanProduk	t
+576b9f00-c29d-4c2c-9a6b-5a563344de93	mnuReturPenjualanProduk	Retur Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	6	t	FrmListReturPenjualanProduk	t
 \.
 
 
