@@ -36,7 +36,7 @@ namespace OpenRetail.Repository.Service
         private const string SQL_TEMPLATE = @"SELECT t_jual_produk.jual_id, t_jual_produk.pengguna_id, t_jual_produk.retur_jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, 
                                               t_jual_produk.ppn, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan, t_jual_produk.total_pelunasan AS total_pelunasan_old, t_jual_produk.keterangan, t_jual_produk.tanggal_sistem, 
                                               m_customer.customer_id, m_customer.nama_customer, m_customer.alamat, m_customer.plafon_piutang
-                                              FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
+                                              FROM public.t_jual_produk INNER JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
                                               {WHERE}
                                               {ORDER BY}";
         private IDapperContext _context;
