@@ -31,6 +31,12 @@ namespace OpenRetail.Model
 	[Table("t_retur_jual_produk")]
     public class ReturJualProduk
     {
+        public ReturJualProduk()
+        {
+            item_retur = new List<ItemReturJualProduk>();
+            item_retur_deleted = new List<ItemReturJualProduk>();
+        }
+
 		[ExplicitKey]
 		[Display(Name = "retur_jual_id")]		
 		public string retur_jual_id { get; set; }
@@ -47,27 +53,34 @@ namespace OpenRetail.Model
 		[Write(false)]
         public Pengguna Pengguna { get; set; }
 
-		[Display(Name = "customer_id")]
+		[Display(Name = "Customer")]
 		public string customer_id { get; set; }
 
 		[Write(false)]
         public Customer Customer { get; set; }
 
-		[Display(Name = "nota")]
+		[Display(Name = "Nota")]
 		public string nota { get; set; }
 		
-		[Display(Name = "tanggal")]
+		[Display(Name = "Tanggal")]
 		public Nullable<DateTime> tanggal { get; set; }
 		
-		[Display(Name = "keterangan")]
+		[Display(Name = "Keterangan")]
 		public string keterangan { get; set; }
-		
+
+        [Write(false)]
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
-		
+
+        [Computed]
 		[Display(Name = "total_nota")]
 		public double total_nota { get; set; }
-		
+
+        [Write(false)]
+        public IList<ItemReturJualProduk> item_retur { get; set; }
+
+        [Write(false)]
+        public IList<ItemReturJualProduk> item_retur_deleted { get; set; }		
 	}
 
     public class ReturJualProdukValidator : AbstractValidator<ReturJualProduk>
@@ -79,13 +92,12 @@ namespace OpenRetail.Model
 			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			// TODO : non aktifkan validasi yang tidak perlu
-
 			RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            // TODO: fix me (diaktifkan kembali jika module pengguna sudah selesai)
+			//RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
 			RuleFor(c => c.customer_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
 			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
-			RuleFor(c => c.keterangan).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
+			RuleFor(c => c.keterangan).Length(1, 100).WithMessage(msgError2);
 		}
 	}
 }

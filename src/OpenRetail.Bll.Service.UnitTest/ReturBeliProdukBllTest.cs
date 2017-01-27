@@ -157,8 +157,8 @@ namespace OpenRetail.Bll.Service.UnitTest
             };
 
             var listOfItemBeli = new List<ItemReturBeliProduk>();
-            listOfItemBeli.Add(new ItemReturBeliProduk { Produk = new Produk { produk_id = "6e587b32-9d87-4ec3-8e7c-ce15c7b0aecd" }, produk_id = "6e587b32-9d87-4ec3-8e7c-ce15c7b0aecd", harga = 50000, jumlah = 4, jumlah_retur = 2 });
-            listOfItemBeli.Add(new ItemReturBeliProduk { Produk = new Produk { produk_id = "d7e888eb-6f9b-43ef-9a72-212588d2fb38" }, produk_id = "d7e888eb-6f9b-43ef-9a72-212588d2fb38", harga = 2500,jumlah = 2, jumlah_retur = 1 });
+            listOfItemBeli.Add(new ItemReturBeliProduk { item_beli_id = "a53a632c-2759-4d85-acc6-0cbb18a0c88b", Produk = new Produk { produk_id = "6e587b32-9d87-4ec3-8e7c-ce15c7b0aecd" }, produk_id = "6e587b32-9d87-4ec3-8e7c-ce15c7b0aecd", harga = 50000, jumlah = 4, jumlah_retur = 2 });
+            listOfItemBeli.Add(new ItemReturBeliProduk { item_beli_id = "c414c56c-fd01-4e88-bae1-96bfe0f8196a", Produk = new Produk { produk_id = "d7e888eb-6f9b-43ef-9a72-212588d2fb38" }, produk_id = "d7e888eb-6f9b-43ef-9a72-212588d2fb38", harga = 2500,jumlah = 2, jumlah_retur = 1 });
 
             obj.item_retur = listOfItemBeli; // menghubungkan retur dan item retur
             

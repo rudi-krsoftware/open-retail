@@ -62,7 +62,7 @@ namespace OpenRetail.Model
 		public double harga { get; set; }
 		
         /// <summary>
-        /// Jumlah penjualan sebelum retur
+        /// Jumlah pembelian sebelum retur
         /// </summary>
 		[Display(Name = "Jumlah")]
 		public double jumlah { get; set; }
