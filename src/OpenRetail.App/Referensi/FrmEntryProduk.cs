@@ -46,6 +46,7 @@ namespace OpenRetail.App.Referensi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             this._listOfGolongan = listOfGolongan;
@@ -64,6 +65,7 @@ namespace OpenRetail.App.Referensi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();

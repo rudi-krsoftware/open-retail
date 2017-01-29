@@ -141,8 +141,7 @@ namespace OpenRetail.Model
 			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-            // TODO: fix me (diaktifkan kembali jika module pengguna sudah selesai)
-			//RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
 			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
 			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
 		}

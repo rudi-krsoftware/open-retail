@@ -130,13 +130,13 @@
             this.txtNamaRole.Tag = "nama_role";
             this.txtNamaRole.ThousandSeparator = false;
             // 
-            // FrmEntryRole
+            // FrmEntryHakAkses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(317, 131);
             this.Controls.Add(this.tableLayoutPanel3);
-            this.Name = "FrmEntryRole";
+            this.Name = "FrmEntryHakAkses";
             this.Text = "FrmEntryRole";
             this.Controls.SetChildIndex(this.tableLayoutPanel3, 0);
             this.tableLayoutPanel3.ResumeLayout(false);

@@ -46,6 +46,7 @@
     <Compile Include="IBaseBll.cs" />
     <Compile Include="IBeliProdukBll.cs" />
     <Compile Include="ICustomerBll.cs" />
+    <Compile Include="IDbConnectionHelper.cs" />
     <Compile Include="IGolonganBll.cs" />
     <Compile Include="IItemMenuBll.cs" />
     <Compile Include="IJabatanBll.cs" />

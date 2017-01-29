@@ -26,6 +26,7 @@ using log4net;
 using OpenRetail.App.Referensi;
 using OpenRetail.App.Transaksi;
 using OpenRetail.App.Main;
+using OpenRetail.Model;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace OpenRetail.App
@@ -40,21 +41,51 @@ namespace OpenRetail.App
         public static readonly string appName = "Open Retail Versi {0} - Copyright © 2017 Kamarudin";
 
         /// <summary>
-        /// unik kode untuk enkripsi password menggunakan metode md5
+        /// Kode unik untuk enkripsi password menggunakan metode md5
+        /// Untuk alasan keamanan, sebaiknya nilai ini diganti
         /// </summary>
         public static readonly string securityCode = "BhGr7YwZpdX7ubFuZCuU";
+
+        public static Profil profil = null;
+        public static Pengguna pengguna = null;
+
+        private static bool _isLogout;
 
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
-        {
-            log4net.GlobalContext.Properties["UserName"] = "Admin"; // TODO: fix me (ganti dengan user yang login)
-
+        {            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+
+            Login();
+        }
+
+        private static void Login()
+        {
+            var frmMain = new FrmMain();
+            frmMain.FormClosed -= frmMain_FormClosed;
+            frmMain.FormClosed += frmMain_FormClosed;
+
+            var frmLogin = new FrmLogin();
+            if (frmLogin.ShowDialog(frmMain) == DialogResult.OK)
+            {
+                Application.Run(frmMain);
+
+                if (_isLogout)
+                    Login();
+                else
+                    Application.Exit();
+            }
+            else
+                Application.Exit();
+        }
+
+        static void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _isLogout = ((FrmMain)sender).IsLogout;
         }
     }
 }

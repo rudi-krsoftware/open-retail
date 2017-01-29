@@ -42,7 +42,7 @@ namespace OpenRetail.App.Referensi
         private IList<Jabatan> _listOfJabatan = new List<Jabatan>();
         private ILog _log;
 
-        public FrmListJabatan(string header)
+        public FrmListJabatan(string header, Pengguna pengguna, string menuId)
             : base(header)
         {
             InitializeComponent();
@@ -50,9 +50,16 @@ namespace OpenRetail.App.Referensi
             _log = MainProgram.log;
             _bll = new JabatanBll(_log);
 
-            LoadData();
+            // set hak akses untuk SELECT
+            var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
+            if (role != null)
+                if (role.is_grant)
+                    LoadData();
 
             InitGridList();
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, pengguna, menuId, _listOfJabatan.Count);
         }
 
         private void InitGridList()

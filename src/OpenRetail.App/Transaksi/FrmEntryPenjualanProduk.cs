@@ -54,18 +54,21 @@ namespace OpenRetail.App.Transaksi
 
         private bool _isNewData = false;
         private ILog _log;
+        private Pengguna _pengguna;
 
         public IListener Listener { private get; set; }
 
         public FrmEntryPenjualanProduk(string header, IJualProdukBll bll) 
             : base()
         {            
-            InitializeComponent();            
-            
+            InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
+
             base.SetHeader(header);
             this._bll = bll;
             this._isNewData = true;
             this._log = MainProgram.log;
+            this._pengguna = MainProgram.pengguna;
 
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
@@ -80,6 +83,7 @@ namespace OpenRetail.App.Transaksi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();
@@ -87,6 +91,7 @@ namespace OpenRetail.App.Transaksi
             this._jual = jual;
             this._customer = jual.Customer;
             this._log = MainProgram.log;
+            this._pengguna = MainProgram.pengguna;
 
             txtNota.Text = this._jual.nota;
             dtpTanggal.Value = (DateTime)this._jual.tanggal;
@@ -367,9 +372,8 @@ namespace OpenRetail.App.Transaksi
             if (_isNewData)
                 _jual = new JualProduk();
 
-            // TODO: fix me
-            //_jual.pengguna_id = this.Pengguna.pengguna_id;
-
+            _jual.pengguna_id = this._pengguna.pengguna_id;
+            _jual.Pengguna = this._pengguna;
             _jual.customer_id = this._customer.customer_id;
             _jual.Customer = this._customer;
             _jual.nota = txtNota.Text;
@@ -780,7 +784,12 @@ namespace OpenRetail.App.Transaksi
 
         private void ShowEntryProduk()
         {
-            // TODO: pengecekan hak akses
+            var isGrant = RolePrivilegeHelper.IsHaveHakAkses("mnuProduk", _pengguna);
+            if (!isGrant)
+            {
+                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+                return;
+            }
 
             IGolonganBll golonganBll = new GolonganBll(_log);
             var listOfGolongan = golonganBll.GetAll();
@@ -797,7 +806,12 @@ namespace OpenRetail.App.Transaksi
 
         private void ShowEntryCustomer()
         {
-            // TODO: pengecekan hak akses
+            var isGrant = RolePrivilegeHelper.IsHaveHakAkses("mnuCustomer", _pengguna);
+            if (!isGrant)
+            {
+                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+                return;
+            }
 
             ICustomerBll customerBll = new CustomerBll(_log);
             var frmEntryCustomer = new FrmEntryCustomer("Tambah Data Customer", customerBll);

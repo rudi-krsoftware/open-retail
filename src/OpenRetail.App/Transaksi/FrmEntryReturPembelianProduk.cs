@@ -57,18 +57,21 @@ namespace OpenRetail.App.Transaksi
         private bool _isValidKodeProduk = false;
 
         private ILog _log;
+        private Pengguna _pengguna;
 
         public IListener Listener { private get; set; }
 
         public FrmEntryReturPembelianProduk(string header, IReturBeliProdukBll bll) 
             : base()
         {            
-            InitializeComponent();            
+            InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             this._bll = bll;
             this._isNewData = true;
             this._log = MainProgram.log;
+            this._pengguna = MainProgram.pengguna;
 
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
@@ -82,6 +85,7 @@ namespace OpenRetail.App.Transaksi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();
@@ -90,6 +94,7 @@ namespace OpenRetail.App.Transaksi
             this._supplier = retur.Supplier;
             this._beli = retur.BeliProduk;
             this._log = MainProgram.log;
+            this._pengguna = MainProgram.pengguna;
 
             txtNota.Text = this._retur.nota;
             txtNota.Enabled = false;
@@ -285,8 +290,8 @@ namespace OpenRetail.App.Transaksi
 
             _retur.beli_produk_id = this._beli.beli_produk_id;
             _retur.BeliProduk = this._beli;
-            //_retur.pengguna_id = this.Pengguna.pengguna_id; // TODO: fix me
-            //_retur.Pengguna = this.Pengguna;
+            _retur.pengguna_id = this._pengguna.pengguna_id;
+            _retur.Pengguna = this._pengguna;
             _retur.supplier_id = this._supplier.supplier_id;
             _retur.Supplier = this._supplier;
             _retur.nota = txtNota.Text;

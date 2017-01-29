@@ -39,8 +39,7 @@ namespace OpenRetail.App.UI.Template
     {
         public FrmEntryStandard()
         {
-            InitializeComponent();
-            ColorManagerHelper.SetTheme(this, this);
+            InitializeComponent();            
         }        
 
         #region protected dan override method

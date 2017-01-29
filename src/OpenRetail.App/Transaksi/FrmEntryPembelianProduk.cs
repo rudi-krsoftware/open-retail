@@ -54,18 +54,21 @@ namespace OpenRetail.App.Transaksi
 
         private bool _isNewData = false;
         private ILog _log;
+        private Pengguna _pengguna;
 
         public IListener Listener { private get; set; }
 
         public FrmEntryPembelianProduk(string header, IBeliProdukBll bll) 
             : base()
         {            
-            InitializeComponent();            
-            
+            InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
+
             base.SetHeader(header);
             this._bll = bll;
             this._isNewData = true;
             this._log = MainProgram.log;
+            this._pengguna = MainProgram.pengguna;
 
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
@@ -80,6 +83,7 @@ namespace OpenRetail.App.Transaksi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();
@@ -87,6 +91,7 @@ namespace OpenRetail.App.Transaksi
             this._beli = beli;
             this._supplier = beli.Supplier;
             this._log = MainProgram.log;
+            this._pengguna = MainProgram.pengguna;
 
             txtNota.Text = this._beli.nota;
             dtpTanggal.Value = (DateTime)this._beli.tanggal;
@@ -327,9 +332,8 @@ namespace OpenRetail.App.Transaksi
             if (_isNewData)
                 _beli = new BeliProduk();
 
-            // TODO: fix me
-            //_beli.pengguna_id = this.Pengguna.pengguna_id;
-
+            _beli.pengguna_id = this._pengguna.pengguna_id;
+            _beli.Pengguna = this._pengguna;
             _beli.supplier_id = this._supplier.supplier_id;
             _beli.Supplier = this._supplier;
             _beli.nota = txtNota.Text;
@@ -736,7 +740,12 @@ namespace OpenRetail.App.Transaksi
 
         private void ShowEntryProduk()
         {
-            // TODO: pengecekan hak akses
+            var isGrant = RolePrivilegeHelper.IsHaveHakAkses("mnuProduk", _pengguna);
+            if (!isGrant)
+            {
+                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+                return;
+            }
 
             IGolonganBll golonganBll = new GolonganBll(_log);
             var listOfGolongan = golonganBll.GetAll();
@@ -753,7 +762,12 @@ namespace OpenRetail.App.Transaksi
 
         private void ShowEntrySupplier()
         {
-            // TODO: pengecekan hak akses
+            var isGrant = RolePrivilegeHelper.IsHaveHakAkses("mnuSupplier", _pengguna);
+            if (!isGrant)
+            {
+                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+                return;
+            }
 
             ISupplierBll supplierBll = new SupplierBll(_log);
             var frmEntrySupplier = new FrmEntrySupplier("Tambah Data Supplier", supplierBll);

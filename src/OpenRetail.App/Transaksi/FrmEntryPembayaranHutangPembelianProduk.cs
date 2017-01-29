@@ -53,18 +53,21 @@ namespace OpenRetail.App.Transaksi
 
         private bool _isNewData = false;
         private ILog _log;
+        private Pengguna _pengguna;
 
         public IListener Listener { private get; set; }
 
         public FrmEntryPembayaranHutangPembelianProduk(string header, IPembayaranHutangProdukBll bll) 
             : base()
         {            
-            InitializeComponent();            
+            InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             this._bll = bll;
             this._isNewData = true;
             this._log = MainProgram.log;
+            this._pengguna = MainProgram.pengguna;
 
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
@@ -78,6 +81,7 @@ namespace OpenRetail.App.Transaksi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();
@@ -85,6 +89,7 @@ namespace OpenRetail.App.Transaksi
             this._pembayaranHutang = pembayaranHutang;
             this._supplier = pembayaranHutang.Supplier;
             this._log = MainProgram.log;
+            this._pengguna = MainProgram.pengguna;
 
             txtNota.Text = this._pembayaranHutang.nota;
             dtpTanggal.Value = (DateTime)this._pembayaranHutang.tanggal;
@@ -285,8 +290,8 @@ namespace OpenRetail.App.Transaksi
             if (_isNewData)
                 _pembayaranHutang = new PembayaranHutangProduk();
 
-
-            //_pembayaranHutang.pengguna_id = this.penggunaId; // TODO: fix me
+            _pembayaranHutang.pengguna_id = this._pengguna.pengguna_id;
+            _pembayaranHutang.Pengguna = this._pengguna;
             _pembayaranHutang.supplier_id = this._supplier.supplier_id;
             _pembayaranHutang.Supplier = this._supplier;
             _pembayaranHutang.nota = txtNota.Text;

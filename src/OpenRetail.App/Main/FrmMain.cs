@@ -34,11 +34,15 @@ using OpenRetail.App.Pengaturan;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
+using log4net;
 
 namespace OpenRetail.App.Main
 {
-    public partial class FrmMain : Form
+    public partial class FrmMain : Form, IListener
     {
+        //Disable close button
+        private const int CP_DISABLE_CLOSE_BUTTON = 0x200;
+
         private FrmListGolongan _frmListGolongan;
         private FrmListProduk _frmListProduk;
         private FrmListPenyesuaianStok _frmListPenyesuaianStok;
@@ -62,13 +66,51 @@ namespace OpenRetail.App.Main
         private FrmListHakAkses _frmListHakAkses;
         private FrmListOperator _frmListOperator;
 
+        /// <summary>
+        /// Variabel lokal untuk menampung menu id. 
+        /// Menu id digunakan untuk mengeset hak akses masing-masing form yang diakses
+        /// </summary>
+        private Dictionary<string, string> _getMenuID;
+        private ILog _log;
+
+        public bool IsLogout { get; private set; }
+
         public FrmMain()
         {
             InitializeComponent();
 
-            InitializeStatusBar();
+            _log = MainProgram.log;
+
             AddEventToolbar();
+            SetMenuId();
             SetDisabledMenuAndToolbar(menuStrip1, toolStrip1);
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            InitializeStatusBar();
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                if (Utils.IsRunningUnderIDE())
+                {
+                    return base.CreateParams;
+                }
+                else
+                {
+                    var cp = base.CreateParams;
+                    cp.ClassStyle = cp.ClassStyle | CP_DISABLE_CLOSE_BUTTON;
+
+                    // bug fixed: flicker
+                    // http://stackoverflow.com/questions/2612487/how-to-fix-the-flickering-in-user-controls
+                    //cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+
+                    return cp;
+                }
+            }
         }
 
         private void WriteOutput(string s)
@@ -95,6 +137,19 @@ namespace OpenRetail.App.Main
             }
         }
 
+        private void SetMenuId()
+        {
+            IMenuBll menuBll = new MenuBll(_log);
+            var listOfMenu = menuBll.GetAll().Where(f => f.parent_id != null && f.nama_form.Length > 0)
+                                             .ToList();
+            _getMenuID = new Dictionary<string, string>();
+
+            foreach (var item in listOfMenu)
+            {
+                _getMenuID.Add(item.nama_form, item.menu_id);
+            }
+        }
+
         /// <summary>
         /// Method untuk menonaktifkan menu dan toolbar yang belum aktif (membaca setting tabel m_menu)
         /// </summary>
@@ -102,7 +157,7 @@ namespace OpenRetail.App.Main
         /// <param name="toolStrip"></param>
         private void SetDisabledMenuAndToolbar(MenuStrip menuStrip, ToolStrip toolStrip)
         {
-            IMenuBll menuBll = new MenuBll(MainProgram.log);
+            IMenuBll menuBll = new MenuBll(_log);
             var listOfMenu = menuBll.GetAll()
                                     .Where(f => f.parent_id != null && f.nama_form.Length > 0)
                                     .ToList();
@@ -135,17 +190,16 @@ namespace OpenRetail.App.Main
             }
         }
 
-        private void InitializeStatusBar()
+        public void InitializeStatusBar()
         {
             var dt = DateTime.Now;
 
             sbJam.Text = string.Format("{0:HH:mm:ss}", dt);
             sbTanggal.Text = string.Format("{0}, {1}", DayMonthHelper.GetHariIndonesia(dt), dt.Day + " " + DayMonthHelper.GetBulanIndonesia(dt.Month) + " " + dt.Year);
 
-            // TODO: fix me (di aktifkan lagi setelah module pengguna selesai)
-            //if (MainProgram.pengguna != null)
-            //    sbUser.Text = string.Format("Operator : {0}", MainProgram.pengguna.nama_pengguna);
-
+            if (MainProgram.pengguna != null)
+                sbOperator.Text = string.Format("Operator : {0}", MainProgram.pengguna.nama_pengguna);
+            
             var versi = Utils.GetCurrentVersion("OpenRetail");
 
             var appName = string.Format(MainProgram.appName, versi);
@@ -206,12 +260,29 @@ namespace OpenRetail.App.Main
             return title;
         }
 
+        private string GetFormName(object sender)
+        {
+            var formName = string.Empty;
+
+            if (sender is ToolStripMenuItem)
+            {
+                formName = ((ToolStripMenuItem)sender).Tag.ToString();
+            }
+            else
+            {
+                formName = ((ToolStripButton)sender).Tag.ToString();
+            }
+
+            return formName;
+        }
+
         private void mnuGolongan_Click(object sender, EventArgs e)
         {
             var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListGolongan))
-                _frmListGolongan = new FrmListGolongan(header);
+                _frmListGolongan = new FrmListGolongan(header, MainProgram.pengguna, menuId);
 
             _frmListGolongan.Show(this.mainDock);
         }
@@ -219,9 +290,10 @@ namespace OpenRetail.App.Main
         private void mnuProduk_Click(object sender, EventArgs e)
         {
             var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListProduk))
-                _frmListProduk = new FrmListProduk(header);
+                _frmListProduk = new FrmListProduk(header, MainProgram.pengguna, menuId);
 
             _frmListProduk.Show(this.mainDock);
         }
@@ -229,9 +301,10 @@ namespace OpenRetail.App.Main
         private void mnuSupplier_Click(object sender, EventArgs e)
         {
             var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListSupplier))
-                _frmListSupplier = new FrmListSupplier(header);
+                _frmListSupplier = new FrmListSupplier(header, MainProgram.pengguna, menuId);
 
             _frmListSupplier.Show(this.mainDock);
         }
@@ -239,9 +312,10 @@ namespace OpenRetail.App.Main
         private void mnuCustomer_Click(object sender, EventArgs e)
         {
             var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListCustomer))
-                _frmListCustomer = new FrmListCustomer(header);
+                _frmListCustomer = new FrmListCustomer(header, MainProgram.pengguna, menuId);
 
             _frmListCustomer.Show(this.mainDock);
         }
@@ -249,11 +323,183 @@ namespace OpenRetail.App.Main
         private void mnuJabatan_Click(object sender, EventArgs e)
         {
             var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListJabatan))
-                _frmListJabatan = new FrmListJabatan(header);
+                _frmListJabatan = new FrmListJabatan(header, MainProgram.pengguna, menuId);
 
             _frmListJabatan.Show(this.mainDock);
+        }        
+
+        private void mnuPembelianProduk_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListPembelianProduk))
+                _frmListPembelianProduk = new FrmListPembelianProduk(header, MainProgram.pengguna, menuId);
+
+            _frmListPembelianProduk.Show(this.mainDock);
+        }
+
+        private void mnuJenisPengeluaran_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListJenisPengeluaran))
+                _frmListJenisPengeluaran = new FrmListJenisPengeluaran(header, MainProgram.pengguna, menuId);
+
+            _frmListJenisPengeluaran.Show(this.mainDock);
+        }
+
+        private void mnuKaryawan_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListKaryawan))
+                _frmListKaryawan = new FrmListKaryawan(header, MainProgram.pengguna, menuId);
+
+            _frmListKaryawan.Show(this.mainDock);
+        }
+
+        private void mnuPenyesuaianStok_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListPenyesuaianStok))
+                _frmListPenyesuaianStok = new FrmListPenyesuaianStok(header, MainProgram.pengguna, menuId);
+
+            _frmListPenyesuaianStok.Show(this.mainDock);
+        }
+
+        private void mnuManajemenOperator_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListOperator))
+                _frmListOperator = new FrmListOperator(header, MainProgram.pengguna, menuId);
+
+            _frmListOperator.Show(this.mainDock);
+        }
+
+        private void mnuHakAksesAplikasi_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListHakAkses))
+                _frmListHakAkses = new FrmListHakAkses(header, MainProgram.pengguna, menuId);
+
+            _frmListHakAkses.Show(this.mainDock);
+        }
+
+        private void mnuPembayaranHutangPembelianProduk_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListPembayaranHutangPembelianProduk))
+                _frmListPembayaranHutangPembelianProduk = new FrmListPembayaranHutangPembelianProduk(header, MainProgram.pengguna, menuId);
+
+            _frmListPembayaranHutangPembelianProduk.Show(this.mainDock);
+        }
+
+        private void mnuReturPembelianProduk_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListReturPembelianProduk))
+                _frmListReturPembelianProduk = new FrmListReturPembelianProduk(header, MainProgram.pengguna, menuId);
+
+            _frmListReturPembelianProduk.Show(this.mainDock);
+        }
+
+        private void mnuPenjualanProduk_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListPenjualanProduk))
+                _frmListPenjualanProduk = new FrmListPenjualanProduk(header, MainProgram.pengguna, menuId);
+
+            _frmListPenjualanProduk.Show(this.mainDock);
+        }
+
+        private void mnuPembayaranPiutangPenjualanProduk_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListPembayaranPiutangPenjualanProduk))
+                _frmListPembayaranPiutangPenjualanProduk = new FrmListPembayaranPiutangPenjualanProduk(header, MainProgram.pengguna, menuId);
+
+            _frmListPembayaranPiutangPenjualanProduk.Show(this.mainDock);
+        }
+
+        private void mnuReturPenjualanProduk_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            if (!IsChildFormExists(_frmListReturPenjualanProduk))
+                _frmListReturPenjualanProduk = new FrmListReturPenjualanProduk(header, MainProgram.pengguna, menuId);
+
+            _frmListReturPenjualanProduk.Show(this.mainDock);
+        }
+
+        private void mnuProfilPerusahaan_Click(object sender, EventArgs e)
+        {
+            var header = GetTitleMenu(sender);
+            var menuId = _getMenuID[GetFormName(sender)];
+
+            var role = MainProgram.pengguna.GetRoleByMenuAndGrant(menuId, GrantState.UPDATE);
+            if (role != null)
+            {
+                if (!role.is_grant)
+                {
+                    MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+                    return;
+                }
+
+                var frmProfil = new FrmProfilPerusahaan(header, MainProgram.profil);
+                frmProfil.Listener = this;
+                frmProfil.ShowDialog();
+            }
+            else
+                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+        }
+
+        public void Ok(object sender, object data)
+        {
+            if (data is Profil)
+            {
+                MainProgram.profil = (Profil)data;
+                InitializeStatusBar();
+            }
+        }
+
+        public void Ok(object sender, bool isNewData, object data)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void mnuGantiUser_Click(object sender, EventArgs e)
+        {            
+            if (MsgHelper.MsgKonfirmasi("Apakah proses ingin dilanjutkan ?"))
+            {
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                {
+                    CloseAllDocuments();
+
+                    this.IsLogout = true;
+                    this.Close();
+                }
+            }
         }
 
         private void mnuKeluarDariProgram_Click(object sender, EventArgs e)
@@ -263,121 +509,9 @@ namespace OpenRetail.App.Main
                 using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
                     CloseAllDocuments();
-
-                    //this.FrmMain_Load(sender, null);
-                    Application.Exit();
+                    this.Close();
                 }
-            } 
-        }
-
-        private void mnuPembelianProduk_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListPembelianProduk))
-                _frmListPembelianProduk = new FrmListPembelianProduk(header);
-
-            _frmListPembelianProduk.Show(this.mainDock);
-        }
-
-        private void mnuJenisPengeluaran_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListJenisPengeluaran))
-                _frmListJenisPengeluaran = new FrmListJenisPengeluaran(header);
-
-            _frmListJenisPengeluaran.Show(this.mainDock);
-        }
-
-        private void karyawanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListKaryawan))
-                _frmListKaryawan = new FrmListKaryawan(header);
-
-            _frmListKaryawan.Show(this.mainDock);
-        }
-
-        private void mnuPenyesuaianStok_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListPenyesuaianStok))
-                _frmListPenyesuaianStok = new FrmListPenyesuaianStok(header);
-
-            _frmListPenyesuaianStok.Show(this.mainDock);
-        }
-
-        private void mnuManajemenOperator_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListOperator))
-                _frmListOperator = new FrmListOperator(header);
-
-            _frmListOperator.Show(this.mainDock);
-        }
-
-        private void mnuHakAksesAplikasi_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListHakAkses))
-                _frmListHakAkses = new FrmListHakAkses(header);
-
-            _frmListHakAkses.Show(this.mainDock);
-        }
-
-        private void mnuPembayaranHutangPembelianProduk_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListPembayaranHutangPembelianProduk))
-                _frmListPembayaranHutangPembelianProduk = new FrmListPembayaranHutangPembelianProduk(header);
-
-            _frmListPembayaranHutangPembelianProduk.Show(this.mainDock);
-        }
-
-        private void mnuReturPembelianProduk_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListReturPembelianProduk))
-                _frmListReturPembelianProduk = new FrmListReturPembelianProduk(header);
-
-            _frmListReturPembelianProduk.Show(this.mainDock);
-        }
-
-        private void mnuPenjualanProduk_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListPenjualanProduk))
-                _frmListPenjualanProduk = new FrmListPenjualanProduk(header);
-
-            _frmListPenjualanProduk.Show(this.mainDock);
-        }
-
-        private void mnuPembayaranPiutangPenjualanProduk_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListPembayaranPiutangPenjualanProduk))
-                _frmListPembayaranPiutangPenjualanProduk = new FrmListPembayaranPiutangPenjualanProduk(header);
-
-            _frmListPembayaranPiutangPenjualanProduk.Show(this.mainDock);
-        }
-
-        private void mnuReturPenjualanProduk_Click(object sender, EventArgs e)
-        {
-            var header = GetTitleMenu(sender);
-
-            if (!IsChildFormExists(_frmListReturPenjualanProduk))
-                _frmListReturPenjualanProduk = new FrmListReturPenjualanProduk(header);
-
-            _frmListReturPenjualanProduk.Show(this.mainDock);
-        }
+            }
+        }        
     }
 }

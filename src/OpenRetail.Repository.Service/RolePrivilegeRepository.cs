@@ -33,13 +33,30 @@ namespace OpenRetail.Repository.Service
 {        
     public class RolePrivilegeRepository : IRolePrivilegeRepository
     {
+        private const string SQL_TEMPLATE = @"SELECT m_role_privilege.role_id, m_role_privilege.grant_id, m_role_privilege.is_grant, m_menu.menu_id, m_menu.nama_menu
+                                              FROM public.m_role_privilege INNER JOIN public.m_menu ON m_role_privilege.menu_id = m_menu.menu_id
+                                              {WHERE}
+                                              {ORDER BY}";
         private IDapperContext _context;
-		private ILog _log;
+        private ILog _log;
+
+        private string _sql;
 		
         public RolePrivilegeRepository(IDapperContext context, ILog log)
         {
             this._context = context;
             this._log = log;
+        }
+
+        private IEnumerable<RolePrivilege> MappingRecordToObject(string sql, object param = null)
+        {
+            IEnumerable<RolePrivilege> oList = _context.db.Query<RolePrivilege, MenuAplikasi, RolePrivilege>(sql, (rp, m) =>
+            {
+                rp.menu_id = m.menu_id; rp.Menu = m;
+                return rp;
+            }, param, splitOn: "menu_id");
+
+            return oList;
         }
 
         public RolePrivilege GetByID(string id)
@@ -58,9 +75,10 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                oList = _context.db.GetAll<RolePrivilege>()
-                                .Where(f => f.role_id == roleId)
-                                .ToList();
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_role_privilege.role_id = @roleId");
+                _sql = _sql.Replace("{ORDER BY}", "");
+
+                oList = MappingRecordToObject(_sql, new { roleId }).ToList();
             }
             catch (Exception ex)
             {
@@ -76,9 +94,10 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                oList = _context.db.GetAll<RolePrivilege>()
-                                .Where(f => f.role_id == roleId && f.menu_id == menuId)
-                                .ToList();
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_role_privilege.role_id = @roleId AND m_menu.menu_id = @menuId");
+                _sql = _sql.Replace("{ORDER BY}", "");
+
+                oList = MappingRecordToObject(_sql, new { roleId, menuId }).ToList();
             }
             catch (Exception ex)
             {
@@ -94,8 +113,10 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                oList = _context.db.GetAll<RolePrivilege>()
-                                .ToList();
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
+                _sql = _sql.Replace("{ORDER BY}", "");
+
+                oList = MappingRecordToObject(_sql).ToList();
             }
             catch (Exception ex)
             {

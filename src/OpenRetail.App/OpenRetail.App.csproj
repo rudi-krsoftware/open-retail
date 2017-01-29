@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -27,7 +27,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -121,6 +121,7 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Helper\AppConfigHelper.cs" />
     <Compile Include="Helper\ColorCollection.cs" />
     <Compile Include="Helper\ColorManagerHelper.cs" />
     <Compile Include="Helper\CryptoHelper.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Helper\KeyPressHelper.cs" />
     <Compile Include="Helper\MsgHelper.cs" />
     <Compile Include="Helper\NumberHelper.cs" />
+    <Compile Include="Helper\RolePrivilegeHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Helper\Utils.cs" />
     <Compile Include="Lookup\FrmLookupItemNota.cs">
@@ -153,6 +155,12 @@
     <Compile Include="Lookup\FrmLookupReferensi.Designer.cs">
       <DependentUpon>FrmLookupReferensi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +168,12 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="MainProgram.cs" />
+    <Compile Include="Pengaturan\FrmProfilPerusahaan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengaturan\FrmProfilPerusahaan.Designer.cs">
+      <DependentUpon>FrmProfilPerusahaan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pengaturan\FrmEntryOperator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -407,8 +421,14 @@
     <EmbeddedResource Include="Lookup\FrmLookupReferensi.resx">
       <DependentUpon>FrmLookupReferensi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pengaturan\FrmProfilPerusahaan.resx">
+      <DependentUpon>FrmProfilPerusahaan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pengaturan\FrmEntryOperator.resx">
       <DependentUpon>FrmEntryOperator.cs</DependentUpon>
@@ -604,6 +624,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\penjualan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -43,19 +43,26 @@ namespace OpenRetail.App.Pengaturan
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();
             this._profil = profil;
 
-            txtNamaPerusahaan.Text = this._profil.nama_profil;
-            txtAlamat.Text = this._profil.alamat;
-            txtKota.Text = this._profil.kota;
-            txtTelepon.Text = this._profil.telepon;
+            if (this._profil != null)
+            {
+                txtNamaPerusahaan.Text = this._profil.nama_profil;
+                txtAlamat.Text = this._profil.alamat;
+                txtKota.Text = this._profil.kota;
+                txtTelepon.Text = this._profil.telepon;
+            }            
         }
 
         protected override void Simpan()
         {
+            if (this._profil == null)
+                this._profil = new Profil();
+
             _profil.nama_profil = txtNamaPerusahaan.Text;
             _profil.alamat = txtAlamat.Text;
             _profil.kota = txtKota.Text;

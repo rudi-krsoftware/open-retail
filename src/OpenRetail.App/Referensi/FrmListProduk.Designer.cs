@@ -121,7 +121,7 @@
             this.btnCari.Image = global::OpenRetail.App.Properties.Resources.search16;
             this.btnCari.Location = new System.Drawing.Point(611, 3);
             this.btnCari.Name = "btnCari";
-            this.btnCari.Size = new System.Drawing.Size(37, 24);
+            this.btnCari.Size = new System.Drawing.Size(37, 21);
             this.btnCari.TabIndex = 0;
             this.btnCari.UseVisualStyleBackColor = true;
             this.btnCari.Click += new System.EventHandler(this.btnCari_Click);

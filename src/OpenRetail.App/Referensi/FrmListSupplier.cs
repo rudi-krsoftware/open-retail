@@ -42,16 +42,24 @@ namespace OpenRetail.App.Referensi
         private IList<Supplier> _listOfSupplier = new List<Supplier>();
         private ILog _log;
 
-        public FrmListSupplier(string header)
+        public FrmListSupplier(string header, Pengguna pengguna, string menuId)
             : base(header)
         {
             InitializeComponent();
 
             _log = MainProgram.log;
             _bll = new SupplierBll(_log);
-            LoadData();
+
+            // set hak akses untuk SELECT
+            var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
+            if (role != null)
+                if (role.is_grant)
+                    LoadData();
 
             InitGridList();
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, pengguna, menuId, _listOfSupplier.Count);
         }
 
         private void InitGridList()

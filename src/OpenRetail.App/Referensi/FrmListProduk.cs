@@ -44,7 +44,7 @@ namespace OpenRetail.App.Referensi
         private IList<Golongan> _listOfGolongan = new List<Golongan>();
         private ILog _log;
 
-        public FrmListProduk(string header)
+        public FrmListProduk(string header, Pengguna pengguna, string menuId)
             : base()
         {
             InitializeComponent();
@@ -54,10 +54,22 @@ namespace OpenRetail.App.Referensi
 
             _log = MainProgram.log;
             _bll = new ProdukBll(_log);
+            
+            // set hak akses untuk SELECT
+            var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
+            if (role != null)
+            {
+                if (role.is_grant)
+                    LoadDataGolongan();                    
 
-            LoadDataGolongan();
+                txtNamaProduk.Enabled = role.is_grant;
+                btnCari.Enabled = role.is_grant;
+            }                
 
             InitGridList();
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, pengguna, menuId, _listOfGolongan.Count);
         }
 
         private void LoadDataGolongan()

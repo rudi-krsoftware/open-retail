@@ -45,6 +45,7 @@ namespace OpenRetail.App.Pengaturan
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             this._bll = bll;
@@ -58,6 +59,7 @@ namespace OpenRetail.App.Pengaturan
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();

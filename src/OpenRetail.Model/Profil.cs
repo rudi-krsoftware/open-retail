@@ -35,7 +35,7 @@ namespace OpenRetail.Model
 		[Display(Name = "profil_id")]		
 		public string profil_id { get; set; }
 		
-		[Display(Name = "Profil")]
+		[Display(Name = "Nama Perusahaan")]
 		public string nama_profil { get; set; }
 		
 		[Display(Name = "Alamat")]

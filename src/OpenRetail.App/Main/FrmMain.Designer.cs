@@ -289,7 +289,7 @@
             this.mnuKaryawan.Size = new System.Drawing.Size(168, 22);
             this.mnuKaryawan.Tag = "FrmListKaryawan";
             this.mnuKaryawan.Text = "Karyawan";
-            this.mnuKaryawan.Click += new System.EventHandler(this.karyawanToolStripMenuItem_Click);
+            this.mnuKaryawan.Click += new System.EventHandler(this.mnuKaryawan_Click);
             // 
             // toolStripSeparator3
             // 
@@ -594,6 +594,7 @@
             this.mnuProfilPerusahaan.Size = new System.Drawing.Size(187, 22);
             this.mnuProfilPerusahaan.Tag = "FrmProfilPerusahaan";
             this.mnuProfilPerusahaan.Text = "Profil Perusahaan";
+            this.mnuProfilPerusahaan.Click += new System.EventHandler(this.mnuProfilPerusahaan_Click);
             // 
             // toolStripSeparator13
             // 
@@ -630,6 +631,7 @@
             this.mnuGantiUser.Name = "mnuGantiUser";
             this.mnuGantiUser.Size = new System.Drawing.Size(174, 22);
             this.mnuGantiUser.Text = "Ganti User";
+            this.mnuGantiUser.Click += new System.EventHandler(this.mnuGantiUser_Click);
             // 
             // mnuKeluarDariProgram
             // 
@@ -829,6 +831,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.statusStripEx1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

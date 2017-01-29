@@ -53,6 +53,7 @@
     <Compile Include="AlasanPenyesuaianStokBll.cs" />
     <Compile Include="BeliProdukBll.cs" />
     <Compile Include="CustomerBll.cs" />
+    <Compile Include="DbConnectionHelper.cs" />
     <Compile Include="GolonganBll.cs" />
     <Compile Include="ItemMenuBll.cs" />
     <Compile Include="JabatanBll.cs" />

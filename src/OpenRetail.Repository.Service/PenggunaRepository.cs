@@ -72,6 +72,12 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{ORDER BY}", "");
 
                 obj = MappingRecordToObject(_sql, new { userName }).SingleOrDefault();
+
+                if (obj != null)
+                {
+                    IRolePrivilegeRepository rolePrivilegeRepository = new RolePrivilegeRepository(_context, _log);
+                    obj.role_privileges = rolePrivilegeRepository.GetByRole(obj.role_id);
+                }
             }
             catch (Exception ex)
             {

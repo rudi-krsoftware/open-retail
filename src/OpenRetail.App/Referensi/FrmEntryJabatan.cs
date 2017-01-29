@@ -44,6 +44,7 @@ namespace OpenRetail.App.Referensi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             this._bll = bll;
@@ -55,6 +56,7 @@ namespace OpenRetail.App.Referensi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();

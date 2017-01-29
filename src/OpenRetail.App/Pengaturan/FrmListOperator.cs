@@ -43,16 +43,24 @@ namespace OpenRetail.App.Pengaturan
         private IList<Role> _listOfRole = new List<Role>();
         private ILog _log;
 
-        public FrmListOperator(string header)
+        public FrmListOperator(string header, Pengguna pengguna, string menuId)
             : base(header)
         {
             InitializeComponent();
 
             _log = MainProgram.log;
             _bll = new PenggunaBll(_log);
-            LoadData();
+
+            // set hak akses untuk SELECT
+            var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
+            if (role != null)
+                if (role.is_grant)
+                    LoadData();
 
             InitGridList();
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, pengguna, menuId, _listOfOperator.Count);
         }
 
         private void InitGridList()

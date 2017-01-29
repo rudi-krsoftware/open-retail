@@ -46,7 +46,7 @@ namespace OpenRetail.Model
 		[Write(false)]
         public Role Role { get; set; }
 
-		[Display(Name = "Nama")]
+		[Display(Name = "User Name")]
 		public string nama_pengguna { get; set; }
 		
 		[Display(Name = "Password")]
@@ -95,6 +95,15 @@ namespace OpenRetail.Model
 
             return obj;
         }
+
+        public RolePrivilege GetRoleByMenuNameAndGrant(string menuName, GrantState grantState)
+        {
+            var obj = this.role_privileges.Where(f => f.role_id == this.role_id && f.Menu.nama_menu == menuName && f.grant_id == Convert.ToInt32(grantState))
+                                          .SingleOrDefault();
+
+            return obj;
+        }
+
 	}
 
     public class PenggunaValidator : AbstractValidator<Pengguna>

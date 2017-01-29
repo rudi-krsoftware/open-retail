@@ -41,8 +41,10 @@ namespace OpenRetail.App.Transaksi
         private IPembayaranHutangProdukBll _bll; // deklarasi objek business logic layer 
         private IList<PembayaranHutangProduk> _listOfPembayaranHutang = new List<PembayaranHutangProduk>();
         private ILog _log;
+        private Pengguna _pengguna;
+        private string _menuId;
 
-        public FrmListPembayaranHutangPembelianProduk(string header)
+        public FrmListPembayaranHutangPembelianProduk(string header, Pengguna pengguna, string menuId)
             : base()
         {
             InitializeComponent();
@@ -52,10 +54,23 @@ namespace OpenRetail.App.Transaksi
 
             _log = MainProgram.log;
             _bll = new PembayaranHutangProdukBll(_log);
+            _pengguna = pengguna;
+            _menuId = menuId;
 
-            LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
+            // set hak akses untuk SELECT
+            var role = _pengguna.GetRoleByMenuAndGrant(_menuId, GrantState.SELECT);
+            if (role != null)
+            {
+                if (role.is_grant)
+                    LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
+
+                filterRangeTanggal.Enabled = role.is_grant;
+            }
 
             InitGridList();
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfPembayaranHutang.Count);
         }
 
         private void InitGridList()
@@ -155,6 +170,9 @@ namespace OpenRetail.App.Transaksi
         private void ResetButton()
         {
             base.SetActiveBtnPerbaikiAndHapus(_listOfPembayaranHutang.Count > 0);
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfPembayaranHutang.Count);
         }
 
         protected override void Tambah()

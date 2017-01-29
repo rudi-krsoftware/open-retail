@@ -46,7 +46,7 @@ namespace OpenRetail.App.Pengaturan
         private IList<MenuAplikasi> _listOfMenuAplikasi = null;
         private ILog _log;
 
-        public FrmListHakAkses(string header)
+        public FrmListHakAkses(string header, Pengguna pengguna, string menuId)
             : base()
         {
             InitializeComponent();
@@ -55,14 +55,29 @@ namespace OpenRetail.App.Pengaturan
             base.WindowState = FormWindowState.Maximized;
 
             _log = MainProgram.log;
-            _bll = new RoleBll(_log);
+            _bll = new RoleBll(_log);            
 
-            LoadMenuParent();
-            SetMenuParent(cmbMenu);
+            // set hak akses untuk SELECT
+            var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
+            if (role != null)
+            {
+                if (role.is_grant)
+                {
+                    LoadMenuParent();
+                    SetMenuParent(cmbMenu);
 
-            LoadData();
+                    LoadData();
+                }
+
+                cmbMenu.Enabled = role.is_grant;
+                chkPilihSemua.Enabled = role.is_grant;
+                btnSimpan.Enabled = role.is_grant;
+            }    
 
             InitGridList();
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, pengguna, menuId, _listOfRole.Count);
         }                
 
         private void InitGridList()
