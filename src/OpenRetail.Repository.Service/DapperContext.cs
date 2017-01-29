@@ -22,6 +22,7 @@ using System.Data.Common;
 using System.Configuration;
 using OpenRetail.Repository.Api;
 using Dapper;
+using log4net;
 
 namespace OpenRetail.Repository.Service
 {    
@@ -29,6 +30,7 @@ namespace OpenRetail.Repository.Service
     {
         private IDbConnection _db;
         private IDbTransaction _transaction;
+        private readonly ILog _log = LogManager.GetLogger(typeof(DapperContext));
 
         private readonly string _providerName;
         private readonly string _connectionString;
@@ -75,8 +77,9 @@ namespace OpenRetail.Repository.Service
             {
                 _db.Execute(sql);
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
         }
 
@@ -143,8 +146,9 @@ namespace OpenRetail.Repository.Service
                 var strSql = String.Format("SELECT NEXTVAL('{0}')", generatorName);
 				result = _db.QuerySingleOrDefault<int>(strSql, transaction);
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
@@ -166,8 +170,9 @@ namespace OpenRetail.Repository.Service
             {
                 result = Guid.NewGuid().ToString();
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
             }
 
             return result;
