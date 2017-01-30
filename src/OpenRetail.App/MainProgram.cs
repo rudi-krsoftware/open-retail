@@ -27,6 +27,8 @@ using OpenRetail.App.Referensi;
 using OpenRetail.App.Transaksi;
 using OpenRetail.App.Main;
 using OpenRetail.Model;
+using System.Globalization;
+using System.Threading;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace OpenRetail.App
@@ -63,7 +65,12 @@ namespace OpenRetail.App
             Login();
         }
 
-        private static void Login()
+        static void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _isLogout = ((FrmMain)sender).IsLogout;
+        }
+
+        static void Login()
         {
             var frmMain = new FrmMain();
             frmMain.FormClosed -= frmMain_FormClosed;
@@ -72,6 +79,9 @@ namespace OpenRetail.App
             var frmLogin = new FrmLogin();
             if (frmLogin.ShowDialog(frmMain) == DialogResult.OK)
             {
+                // set Default RegionalSetting menggunakan United States
+                SetDefaultRegionalSetting();
+
                 Application.Run(frmMain);
 
                 if (_isLogout)
@@ -83,9 +93,23 @@ namespace OpenRetail.App
                 Application.Exit();
         }
 
-        static void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        static void SetDefaultRegionalSetting()
         {
-            _isLogout = ((FrmMain)sender).IsLogout;
+            var cultureInfo = Thread.CurrentThread.CurrentCulture;
+            var regionInfo = new RegionInfo(cultureInfo.LCID);
+
+            string englishName = regionInfo.EnglishName;
+
+            if (!(englishName == "United States"))
+            {
+                try
+                {
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+                }
+                catch
+                {
+                }
+            }
         }
     }
 }
