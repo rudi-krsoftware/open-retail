@@ -655,6 +655,8 @@
             // mainDock
             // 
             this.mainDock.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.mainDock.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainDock.BackgroundImage")));
+            this.mainDock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mainDock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDock.Location = new System.Drawing.Point(0, 24);
             this.mainDock.Name = "mainDock";
@@ -825,6 +827,7 @@
             this.Controls.Add(this.mainDock);
             this.Controls.Add(this.statusStripEx1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";

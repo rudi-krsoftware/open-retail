@@ -43,12 +43,13 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtUserName = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtPassword = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtServer = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.txtUserName = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtPassword = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtServer = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.tableLayoutPanel2.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -60,6 +61,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -68,11 +70,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.pnlFooter, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 202);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 268);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(391, 41);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(364, 41);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // pnlFooter
@@ -84,14 +86,14 @@
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFooter.Location = new System.Drawing.Point(3, 3);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(385, 35);
+            this.pnlFooter.Size = new System.Drawing.Size(358, 35);
             this.pnlFooter.TabIndex = 0;
             // 
             // btnLogin
             // 
             this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogin.Location = new System.Drawing.Point(218, 6);
+            this.btnLogin.Location = new System.Drawing.Point(191, 6);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 0;
@@ -103,7 +105,7 @@
             // 
             this.btnBatal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBatal.Location = new System.Drawing.Point(299, 6);
+            this.btnBatal.Location = new System.Drawing.Point(272, 6);
             this.btnBatal.Name = "btnBatal";
             this.btnBatal.Size = new System.Drawing.Size(75, 23);
             this.btnBatal.TabIndex = 1;
@@ -121,7 +123,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(391, 41);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(364, 41);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // pnlHeader
@@ -132,7 +134,7 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHeader.Location = new System.Drawing.Point(3, 3);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(385, 35);
+            this.pnlHeader.Size = new System.Drawing.Size(358, 35);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblHeader
@@ -150,14 +152,16 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
-            this.tableLayoutPanel3.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.tabControl, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.pictureBox1, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tabControl, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(391, 161);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(364, 227);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // pictureBox1
@@ -165,9 +169,9 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::OpenRetail.App.Properties.Resources.login2;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 67);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(130, 155);
+            this.pictureBox1.Size = new System.Drawing.Size(121, 157);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -177,10 +181,10 @@
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(139, 3);
+            this.tabControl.Location = new System.Drawing.Point(130, 67);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(249, 155);
+            this.tabControl.Size = new System.Drawing.Size(231, 157);
             this.tabControl.TabIndex = 0;
             this.tabControl.TabStop = false;
             this.tabControl.Click += new System.EventHandler(this.tabControl_Click);
@@ -191,7 +195,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(241, 129);
+            this.tabPage1.Size = new System.Drawing.Size(223, 131);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -212,7 +216,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(235, 123);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(217, 125);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label1
@@ -237,47 +241,13 @@
             this.label2.Text = "Password";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtUserName
-            // 
-            this.txtUserName.AutoEnter = true;
-            this.txtUserName.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtUserName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtUserName.EnterFocusColor = System.Drawing.Color.White;
-            this.txtUserName.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtUserName.LetterOnly = false;
-            this.txtUserName.Location = new System.Drawing.Point(69, 3);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.NumericOnly = false;
-            this.txtUserName.SelectionText = false;
-            this.txtUserName.Size = new System.Drawing.Size(163, 20);
-            this.txtUserName.TabIndex = 0;
-            this.txtUserName.ThousandSeparator = false;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.AutoEnter = false;
-            this.txtPassword.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPassword.EnterFocusColor = System.Drawing.Color.White;
-            this.txtPassword.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtPassword.LetterOnly = false;
-            this.txtPassword.Location = new System.Drawing.Point(69, 28);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.NumericOnly = false;
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.SelectionText = false;
-            this.txtPassword.Size = new System.Drawing.Size(163, 20);
-            this.txtPassword.TabIndex = 1;
-            this.txtPassword.ThousandSeparator = false;
-            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tableLayoutPanel5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(241, 129);
+            this.tabPage2.Size = new System.Drawing.Size(223, 141);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Connection";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -295,8 +265,66 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(235, 123);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(217, 135);
             this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 25);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Server";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tableLayoutPanel3.SetColumnSpan(this.pictureBox2, 2);
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(358, 58);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.AutoEnter = true;
+            this.txtUserName.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtUserName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtUserName.EnterFocusColor = System.Drawing.Color.White;
+            this.txtUserName.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtUserName.LetterOnly = false;
+            this.txtUserName.Location = new System.Drawing.Point(69, 3);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.NumericOnly = false;
+            this.txtUserName.SelectionText = false;
+            this.txtUserName.Size = new System.Drawing.Size(145, 20);
+            this.txtUserName.TabIndex = 0;
+            this.txtUserName.ThousandSeparator = false;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.AutoEnter = false;
+            this.txtPassword.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPassword.EnterFocusColor = System.Drawing.Color.White;
+            this.txtPassword.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtPassword.LetterOnly = false;
+            this.txtPassword.Location = new System.Drawing.Point(69, 28);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.NumericOnly = false;
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.SelectionText = false;
+            this.txtPassword.Size = new System.Drawing.Size(145, 20);
+            this.txtPassword.TabIndex = 1;
+            this.txtPassword.ThousandSeparator = false;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // txtServer
             // 
@@ -310,26 +338,15 @@
             this.txtServer.Name = "txtServer";
             this.txtServer.NumericOnly = false;
             this.txtServer.SelectionText = false;
-            this.txtServer.Size = new System.Drawing.Size(185, 20);
+            this.txtServer.Size = new System.Drawing.Size(167, 20);
             this.txtServer.TabIndex = 0;
             this.txtServer.ThousandSeparator = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 25);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Server";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 243);
+            this.ClientSize = new System.Drawing.Size(364, 309);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -355,6 +372,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -369,7 +387,6 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -381,5 +398,7 @@
         private UserControl.AdvancedTextbox txtPassword;
         private UserControl.AdvancedTextbox txtServer;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

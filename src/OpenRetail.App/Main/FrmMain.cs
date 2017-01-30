@@ -78,6 +78,7 @@ namespace OpenRetail.App.Main
         public FrmMain()
         {
             InitializeComponent();
+            mainDock.BackColor = Color.FromArgb(255, 255, 255);
 
             _log = MainProgram.log;
 

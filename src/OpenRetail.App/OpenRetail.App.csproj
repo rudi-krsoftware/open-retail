@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>main-icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -677,6 +680,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\login2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logofix-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logofix.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="main-icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

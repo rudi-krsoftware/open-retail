@@ -123,6 +123,26 @@ namespace OpenRetail.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logofix {
+            get {
+                object obj = ResourceManager.GetObject("logofix", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logofix_small {
+            get {
+                object obj = ResourceManager.GetObject("logofix_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pembelian {
             get {
                 object obj = ResourceManager.GetObject("pembelian", resourceCulture);
