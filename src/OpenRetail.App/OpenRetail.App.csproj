@@ -32,6 +32,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\CrystalDecisions.ReportSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\CrystalDecisions.Shared.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\CrystalDecisions.Windows.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\lib\Dapper.1.50.2\lib\net40\Dapper.dll</HintPath>
       <Private>True</Private>
@@ -40,6 +60,7 @@
       <HintPath>..\..\lib\Dapper.Contrib.1.50.0\lib\net40\Dapper.Contrib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\lib\log4net.2.0.7\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -101,6 +122,8 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -403,6 +426,24 @@
     <Compile Include="UI.Template\FrmListStandard.Designer.cs">
       <DependentUpon>FrmListStandard.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI.Template\FrmPreviewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmPreviewReport.Designer.cs">
+      <DependentUpon>FrmPreviewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmSettingReportEmptyBody.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmSettingReportEmptyBody.Designer.cs">
+      <DependentUpon>FrmSettingReportEmptyBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmSettingReportStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmSettingReportStandard.Designer.cs">
+      <DependentUpon>FrmSettingReportStandard.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\AdvancedTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -550,6 +591,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI.Template\FrmListStandard.resx">
       <DependentUpon>FrmListStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmPreviewReport.resx">
+      <DependentUpon>FrmPreviewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmSettingReportEmptyBody.resx">
+      <DependentUpon>FrmSettingReportEmptyBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmSettingReportStandard.resx">
+      <DependentUpon>FrmSettingReportStandard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\FilterRangeTanggal.resx">
       <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
