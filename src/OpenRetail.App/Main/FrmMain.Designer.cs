@@ -645,6 +645,7 @@
             this.mnuAbout.Name = "mnuAbout";
             this.mnuAbout.Size = new System.Drawing.Size(52, 20);
             this.mnuAbout.Text = "About";
+            this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
             // timer1
             // 

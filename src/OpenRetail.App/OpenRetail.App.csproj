@@ -181,6 +181,12 @@
     <Compile Include="Lookup\FrmLookupReferensi.Designer.cs">
       <DependentUpon>FrmLookupReferensi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -464,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lookup\FrmLookupReferensi.resx">
       <DependentUpon>FrmLookupReferensi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

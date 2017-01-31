@@ -513,6 +513,12 @@ namespace OpenRetail.App.Main
                     this.Close();
                 }
             }
+        }
+
+        private void mnuAbout_Click(object sender, EventArgs e)
+        {
+            var frmAbout = new FrmAbout();
+            frmAbout.ShowDialog();
         }        
     }
 }
