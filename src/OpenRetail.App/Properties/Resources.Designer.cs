@@ -63,6 +63,16 @@ namespace OpenRetail.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background_fix {
+            get {
+                object obj = ResourceManager.GetObject("background_fix", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendar32 {
             get {
                 object obj = ResourceManager.GetObject("calendar32", resourceCulture);

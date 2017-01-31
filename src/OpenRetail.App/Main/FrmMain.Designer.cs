@@ -656,7 +656,7 @@
             // mainDock
             // 
             this.mainDock.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.mainDock.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainDock.BackgroundImage")));
+            this.mainDock.BackgroundImage = global::OpenRetail.App.Properties.Resources.background_fix;
             this.mainDock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mainDock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDock.Location = new System.Drawing.Point(0, 24);
