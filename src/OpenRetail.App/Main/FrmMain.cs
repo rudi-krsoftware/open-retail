@@ -200,10 +200,13 @@ namespace OpenRetail.App.Main
 
             if (MainProgram.pengguna != null)
                 sbOperator.Text = string.Format("Operator : {0}", MainProgram.pengguna.nama_pengguna);
-            
-            var versi = Utils.GetCurrentVersion("OpenRetail");
 
-            var appName = string.Format(MainProgram.appName, versi);
+            var firstReleaseYear = 2017;
+            var currentYear = DateTime.Today.Year;
+            var copyright = currentYear > firstReleaseYear ? string.Format("{0} - {1}", firstReleaseYear, currentYear) : firstReleaseYear.ToString();
+
+            var versi = Utils.GetCurrentVersion("OpenRetail");
+            var appName = string.Format(MainProgram.appName, versi, copyright);
 
             this.Text = appName;
             sbNamaAplikasi.Text = appName.Replace("&", "&&");
