@@ -31,11 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.statusStripEx1 = new Syncfusion.Windows.Forms.Tools.StatusStripEx();
-            this.sbJam = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
             this.statusStripLabel2 = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
-            this.sbTanggal = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
             this.statusStripLabel4 = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
-            this.sbOperator = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
             this.statusStripLabel6 = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
             this.sbNamaAplikasi = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -98,21 +95,24 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.mainDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbGolongan = new System.Windows.Forms.ToolStripButton();
             this.tbProduk = new System.Windows.Forms.ToolStripButton();
             this.tbPenyesuaianStok = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.tbSupplier = new System.Windows.Forms.ToolStripButton();
             this.tbCustomer = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.tbPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbPenjualanProduk = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.tbPengeluaranBiaya = new System.Windows.Forms.ToolStripButton();
             this.tbPenggajian = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
+            this.sbJam = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
+            this.sbTanggal = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
+            this.sbOperator = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -139,14 +139,6 @@
             this.statusStripEx1.TabIndex = 3;
             this.statusStripEx1.Text = "statusStripEx1";
             // 
-            // sbJam
-            // 
-            this.sbJam.Image = global::OpenRetail.App.Properties.Resources.clock32;
-            this.sbJam.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
-            this.sbJam.Name = "sbJam";
-            this.sbJam.Size = new System.Drawing.Size(65, 16);
-            this.sbJam.Text = "00:00:00";
-            // 
             // statusStripLabel2
             // 
             this.statusStripLabel2.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
@@ -154,28 +146,12 @@
             this.statusStripLabel2.Size = new System.Drawing.Size(10, 15);
             this.statusStripLabel2.Text = "|";
             // 
-            // sbTanggal
-            // 
-            this.sbTanggal.Image = global::OpenRetail.App.Properties.Resources.calendar32;
-            this.sbTanggal.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
-            this.sbTanggal.Name = "sbTanggal";
-            this.sbTanggal.Size = new System.Drawing.Size(60, 16);
-            this.sbTanggal.Text = "Hari, ...";
-            // 
             // statusStripLabel4
             // 
             this.statusStripLabel4.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
             this.statusStripLabel4.Name = "statusStripLabel4";
             this.statusStripLabel4.Size = new System.Drawing.Size(10, 15);
             this.statusStripLabel4.Text = "|";
-            // 
-            // sbOperator
-            // 
-            this.sbOperator.Image = global::OpenRetail.App.Properties.Resources.user32;
-            this.sbOperator.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
-            this.sbOperator.Name = "sbOperator";
-            this.sbOperator.Size = new System.Drawing.Size(77, 16);
-            this.sbOperator.Text = "operator...";
             // 
             // statusStripLabel6
             // 
@@ -656,7 +632,7 @@
             // mainDock
             // 
             this.mainDock.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.mainDock.BackgroundImage = global::OpenRetail.App.Properties.Resources.background_fix;
+            this.mainDock.BackgroundImage = global::OpenRetail.App.Properties.Resources.background;
             this.mainDock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mainDock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDock.Location = new System.Drawing.Point(0, 24);
@@ -689,6 +665,26 @@
             this.toolStrip1.TabIndex = 19;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 39);
+            // 
             // tbGolongan
             // 
             this.tbGolongan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -719,11 +715,6 @@
             this.tbPenyesuaianStok.Tag = "FrmListPenyesuaianStok";
             this.tbPenyesuaianStok.Text = "Penyesuaian Stok";
             // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 39);
-            // 
             // tbSupplier
             // 
             this.tbSupplier.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -743,11 +734,6 @@
             this.tbCustomer.Size = new System.Drawing.Size(36, 36);
             this.tbCustomer.Tag = "FrmListCustomer";
             this.tbCustomer.Text = "Customer";
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 39);
             // 
             // tbPembelianProduk
             // 
@@ -769,11 +755,6 @@
             this.tbPenjualanProduk.Tag = "FrmListPenjualanProduk";
             this.tbPenjualanProduk.Text = "Penjualan Produk";
             // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 39);
-            // 
             // tbPengeluaranBiaya
             // 
             this.tbPengeluaranBiaya.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -794,11 +775,6 @@
             this.tbPenggajian.Tag = "FrmListPenggajianKaryawan";
             this.tbPenggajian.Text = "Penggajian Karyawan";
             // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 39);
-            // 
             // tbLapPembelianProduk
             // 
             this.tbLapPembelianProduk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -818,6 +794,30 @@
             this.tbLapPenjualanProduk.Size = new System.Drawing.Size(36, 36);
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
+            // 
+            // sbJam
+            // 
+            this.sbJam.Image = global::OpenRetail.App.Properties.Resources.clock32;
+            this.sbJam.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
+            this.sbJam.Name = "sbJam";
+            this.sbJam.Size = new System.Drawing.Size(65, 16);
+            this.sbJam.Text = "00:00:00";
+            // 
+            // sbTanggal
+            // 
+            this.sbTanggal.Image = global::OpenRetail.App.Properties.Resources.calendar32;
+            this.sbTanggal.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
+            this.sbTanggal.Name = "sbTanggal";
+            this.sbTanggal.Size = new System.Drawing.Size(60, 16);
+            this.sbTanggal.Text = "Hari, ...";
+            // 
+            // sbOperator
+            // 
+            this.sbOperator.Image = global::OpenRetail.App.Properties.Resources.user32;
+            this.sbOperator.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
+            this.sbOperator.Name = "sbOperator";
+            this.sbOperator.Size = new System.Drawing.Size(77, 16);
+            this.sbOperator.Text = "operator...";
             // 
             // FrmMain
             // 
