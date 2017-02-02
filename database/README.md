@@ -20,6 +20,7 @@ Sama seperti meng-import database OpenRetail, kita juga bisa menggunakan tool [p
 ```
 psql -U postgres DbOpenRetail < 01_data-menu.sql
 psql -U postgres DbOpenRetail < 02_data-item_menu.sql
-psql -U postgres DbOpenRetail < 03_data-role.sql
-psql -U postgres DbOpenRetail < 04_data-role_privilege.sql
+psql -U postgres DbOpenRetail < 03_data-pengguna.sql
+psql -U postgres DbOpenRetail < 04_data-role.sql
+psql -U postgres DbOpenRetail < 05_data-role_privilege.sql
 ```

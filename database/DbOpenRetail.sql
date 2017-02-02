@@ -744,7 +744,7 @@ BEGIN
     IF var_total_nota IS NULL THEN
     	var_total_nota := 0;  
 	END IF;              
-    
+    --
     SELECT ppn, diskon INTO var_ppn, var_diskon
     FROM t_beli_produk WHERE beli_produk_id = var_beli_produk_id;            
     
@@ -891,7 +891,7 @@ BEGIN
     ELSE
     	var_jual_id := OLD.jual_id;        
     END IF;	    	          
-    
+
     var_total_nota := (SELECT SUM((jumlah - jumlah_retur) * (harga_jual - (diskon / 100 * harga_jual))) 
     				   FROM t_item_jual_produk
 					   WHERE jual_id = var_jual_id);	    
@@ -2011,6 +2011,46 @@ CREATE SEQUENCE t_sppd_sppd_id_seq
 
 
 ALTER TABLE t_sppd_sppd_id_seq OWNER TO postgres;
+
+--
+-- Name: test_tg; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE test_tg (
+    id integer NOT NULL,
+    value character varying(100)
+);
+
+
+ALTER TABLE test_tg OWNER TO postgres;
+
+--
+-- Name: test_tg_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE test_tg_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE test_tg_id_seq OWNER TO postgres;
+
+--
+-- Name: test_tg_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE test_tg_id_seq OWNED BY test_tg.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY test_tg ALTER COLUMN id SET DEFAULT nextval('test_tg_id_seq'::regclass);
+
 
 --
 -- Name: m_alasan_penyesuaian_stok_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
