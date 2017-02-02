@@ -108,7 +108,6 @@
             // 
             this.btnPreview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPreview.Enabled = false;
             this.btnPreview.Location = new System.Drawing.Point(497, 6);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(75, 23);
@@ -191,6 +190,7 @@
             this.chkPilihSemua.TabIndex = 2;
             this.chkPilihSemua.Text = "Pilihan semua";
             this.chkPilihSemua.UseVisualStyleBackColor = true;
+            this.chkPilihSemua.CheckedChanged += new System.EventHandler(this.chkPilihSemua_CheckedChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -296,14 +296,14 @@
             this.cmbBulan.FormattingEnabled = true;
             this.cmbBulan.Location = new System.Drawing.Point(3, 3);
             this.cmbBulan.Name = "cmbBulan";
-            this.cmbBulan.Size = new System.Drawing.Size(121, 21);
+            this.cmbBulan.Size = new System.Drawing.Size(100, 21);
             this.cmbBulan.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(130, 0);
+            this.label2.Location = new System.Drawing.Point(109, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 27);
             this.label2.TabIndex = 1;
@@ -314,9 +314,9 @@
             // 
             this.cmbTahun.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTahun.FormattingEnabled = true;
-            this.cmbTahun.Location = new System.Drawing.Point(174, 3);
+            this.cmbTahun.Location = new System.Drawing.Point(153, 3);
             this.cmbTahun.Name = "cmbTahun";
-            this.cmbTahun.Size = new System.Drawing.Size(80, 21);
+            this.cmbTahun.Size = new System.Drawing.Size(83, 21);
             this.cmbTahun.TabIndex = 1;
             // 
             // chkTampilkanNota
@@ -350,6 +350,8 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSettingReportStandard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSettingReportStandard";

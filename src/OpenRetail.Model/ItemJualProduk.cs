@@ -68,7 +68,7 @@ namespace OpenRetail.Model
 		public double jumlah { get; set; }
 		
 		[Display(Name = "Diskon")]
-		public double diskon { get; set; }
+		public double diskon { get; set; }        
 
         [Write(false)]
 		[Display(Name = "tanggal_sistem")]
@@ -77,6 +77,24 @@ namespace OpenRetail.Model
         [Write(false)]
 		[Display(Name = "jumlah_retur")]
 		public double jumlah_retur { get; set; }
+
+        [Computed]
+        public double diskon_rupiah
+        {
+            get { return diskon / 100 * harga_jual; }
+        }
+
+        [Computed]
+        public double harga_setelah_diskon
+        {
+            get { return harga_jual - diskon_rupiah; }
+        }		
+
+        [Computed]
+        public double sub_total
+        {
+            get { return (jumlah - jumlah_retur) * harga_setelah_diskon; }
+        }
 
         [Write(false)]
         public EntityState entity_state { get; set; }

@@ -88,6 +88,10 @@ namespace OpenRetail.App.Helper
                         ((RadioButton)ctl).FlatStyle = FlatStyle.Flat;
                         break;
 
+                    case "CheckBox":
+                        ((CheckBox)ctl).FlatStyle = FlatStyle.Flat;
+                        break;
+
                     case "Panel":
                         var objPanel = (Panel)ctl;
                         objPanel.BorderStyle = BorderStyle.FixedSingle;

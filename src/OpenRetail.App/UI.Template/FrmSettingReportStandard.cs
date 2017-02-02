@@ -40,8 +40,7 @@ namespace OpenRetail.App.UI.Template
             dtpTanggalSelesai.Value = DateTime.Today;
         }
 
-        public FrmSettingReportStandard(string header)
-            : this()
+        protected void SetHeader(string header)
         {
             this.Text = header;
             this.lblHeader.Text = header;
@@ -50,6 +49,15 @@ namespace OpenRetail.App.UI.Template
         protected void SetCheckBoxTitle(string title)
         {
             this.chkBoxTitle.Text = title;
+        }
+
+        /// <summary>
+        /// Method protected untuk mengeset ulang ukuran form
+        /// </summary>
+        /// <param name="newSize"></param>
+        protected void ReSize(int newSize)
+        {
+            this.Size = new Size(this.Width - newSize, this.Height);
         }
 
         /// <summary>
@@ -75,6 +83,16 @@ namespace OpenRetail.App.UI.Template
         {
             chkListBox.Enabled = chkBoxTitle.Checked;
             chkPilihSemua.Enabled = chkBoxTitle.Checked;
+
+            if (!chkBoxTitle.Checked)
+            {
+                for (int i = 0; i < chkListBox.Items.Count; i++)
+                {
+                    chkListBox.SetItemChecked(i, false);
+                }
+
+                chkPilihSemua.Checked = false;
+            }
         }
 
         /// <summary>
@@ -109,6 +127,11 @@ namespace OpenRetail.App.UI.Template
         {
             if (KeyPressHelper.IsEsc(e))
                 Selesai();
+        }
+
+        private void chkPilihSemua_CheckedChanged(object sender, EventArgs e)
+        {
+            PilihSemua();
         }
     }
 }
