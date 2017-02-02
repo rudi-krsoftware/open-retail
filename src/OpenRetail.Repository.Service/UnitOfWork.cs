@@ -24,6 +24,8 @@ using System.Threading.Tasks;
 
 using log4net;
 using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Api.Report;
+using OpenRetail.Repository.Service.Report;
  
 namespace OpenRetail.Repository.Service
 {    
@@ -54,6 +56,7 @@ namespace OpenRetail.Repository.Service
         private IMenuRepository _menuRepository;
         private IItemMenuRepository _itemmenuRepository;
         private IProfilRepository _profilRepository;
+        private IReportBeliProdukRepository _reportBeliProdukRepository;
 
         public UnitOfWork(IDapperContext context, ILog log)
         {
@@ -169,6 +172,11 @@ namespace OpenRetail.Repository.Service
         public IProfilRepository ProfilRepository
         {
             get { return _profilRepository ?? (_profilRepository = new ProfilRepository(_context, _log)); }
+        }
+
+        public IReportBeliProdukRepository ReportBeliProdukRepository
+        {
+            get { return _reportBeliProdukRepository ?? (_reportBeliProdukRepository = new ReportBeliProdukRepository(_context, _log)); }
         }
     }
 }     

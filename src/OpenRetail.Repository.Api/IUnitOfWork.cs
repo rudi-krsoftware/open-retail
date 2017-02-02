@@ -22,6 +22,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
  
+using OpenRetail.Repository.Api.Report;
+
 namespace OpenRetail.Repository.Api
 {    
     public interface IUnitOfWork
@@ -55,6 +57,8 @@ namespace OpenRetail.Repository.Api
         IMenuRepository MenuRepository { get; }
         IItemMenuRepository ItemMenuRepository { get; }
 
-        IProfilRepository ProfilRepository { get; }                
+        IProfilRepository ProfilRepository { get; }
+
+        IReportBeliProdukRepository ReportBeliProdukRepository { get; }
     }
 }     

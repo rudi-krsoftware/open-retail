@@ -28,9 +28,10 @@ using WeifenLuo.WinFormsUI.Docking;
 
 using OpenRetail.App.Referensi;
 using OpenRetail.App.Transaksi;
+using OpenRetail.App.Laporan;
+using OpenRetail.App.Pengaturan;
 using OpenRetail.App.Helper;
 using ConceptCave.WaitCursor;
-using OpenRetail.App.Pengaturan;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
@@ -248,7 +249,7 @@ namespace OpenRetail.App.Main
             }
         }
 
-        private string GetTitleMenu(object sender)
+        private string GetMenuTitle(object sender)
         {
             var title = string.Empty;
 
@@ -259,6 +260,23 @@ namespace OpenRetail.App.Main
             else
             {
                 title = ((ToolStripButton)sender).Text;
+            }
+
+            return title;
+        }
+
+        private string GetMenuName(object sender)
+        {
+            var title = string.Empty;
+
+            if (sender is ToolStripMenuItem)
+            {
+                title = ((ToolStripMenuItem)sender).Name;
+            }
+            else
+            {
+                title = ((ToolStripButton)sender).Name;
+                title = string.Format("mnu{0}", title.Substring(2));
             }
 
             return title;
@@ -282,8 +300,10 @@ namespace OpenRetail.App.Main
 
         private void mnuGolongan_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
+
+            MsgHelper.MsgInfo(GetMenuName(sender));
 
             if (!IsChildFormExists(_frmListGolongan))
                 _frmListGolongan = new FrmListGolongan(header, MainProgram.pengguna, menuId);
@@ -293,7 +313,7 @@ namespace OpenRetail.App.Main
 
         private void mnuProduk_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListProduk))
@@ -304,7 +324,7 @@ namespace OpenRetail.App.Main
 
         private void mnuSupplier_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListSupplier))
@@ -315,7 +335,7 @@ namespace OpenRetail.App.Main
 
         private void mnuCustomer_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListCustomer))
@@ -326,7 +346,7 @@ namespace OpenRetail.App.Main
 
         private void mnuJabatan_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListJabatan))
@@ -337,7 +357,7 @@ namespace OpenRetail.App.Main
 
         private void mnuPembelianProduk_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListPembelianProduk))
@@ -348,7 +368,7 @@ namespace OpenRetail.App.Main
 
         private void mnuJenisPengeluaran_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListJenisPengeluaran))
@@ -359,7 +379,7 @@ namespace OpenRetail.App.Main
 
         private void mnuKaryawan_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListKaryawan))
@@ -370,7 +390,7 @@ namespace OpenRetail.App.Main
 
         private void mnuPenyesuaianStok_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListPenyesuaianStok))
@@ -381,7 +401,7 @@ namespace OpenRetail.App.Main
 
         private void mnuManajemenOperator_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListOperator))
@@ -392,7 +412,7 @@ namespace OpenRetail.App.Main
 
         private void mnuHakAksesAplikasi_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListHakAkses))
@@ -403,7 +423,7 @@ namespace OpenRetail.App.Main
 
         private void mnuPembayaranHutangPembelianProduk_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListPembayaranHutangPembelianProduk))
@@ -414,7 +434,7 @@ namespace OpenRetail.App.Main
 
         private void mnuReturPembelianProduk_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListReturPembelianProduk))
@@ -425,7 +445,7 @@ namespace OpenRetail.App.Main
 
         private void mnuPenjualanProduk_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListPenjualanProduk))
@@ -436,7 +456,7 @@ namespace OpenRetail.App.Main
 
         private void mnuPembayaranPiutangPenjualanProduk_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListPembayaranPiutangPenjualanProduk))
@@ -447,7 +467,7 @@ namespace OpenRetail.App.Main
 
         private void mnuReturPenjualanProduk_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
+            var header = GetMenuTitle(sender);
             var menuId = _getMenuID[GetFormName(sender)];
 
             if (!IsChildFormExists(_frmListReturPenjualanProduk))
@@ -458,18 +478,11 @@ namespace OpenRetail.App.Main
 
         private void mnuProfilPerusahaan_Click(object sender, EventArgs e)
         {
-            var header = GetTitleMenu(sender);
-            var menuId = _getMenuID[GetFormName(sender)];
+            var header = GetMenuTitle(sender);
+            var menuName = GetMenuName(sender);
 
-            var role = MainProgram.pengguna.GetRoleByMenuAndGrant(menuId, GrantState.UPDATE);
-            if (role != null)
+            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.UPDATE))
             {
-                if (!role.is_grant)
-                {
-                    MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
-                    return;
-                }
-
                 var frmProfil = new FrmProfilPerusahaan(header, MainProgram.profil);
                 frmProfil.Listener = this;
                 frmProfil.ShowDialog();
@@ -522,6 +535,20 @@ namespace OpenRetail.App.Main
         {
             var frmAbout = new FrmAbout();
             frmAbout.ShowDialog();
+        }
+
+        private void mnuLapPembelianProduk_Click(object sender, EventArgs e)
+        {
+            var header = GetMenuTitle(sender);
+            var menuName = GetMenuName(sender);
+
+            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
+            {
+                var frmLaporan = new FrmLapPembelianProduk(header);
+                frmLaporan.ShowDialog();
+            }
+            else
+                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
         }        
     }
 }

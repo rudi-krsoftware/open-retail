@@ -63,6 +63,8 @@
     <Compile Include="AlasanPenyesuaianStok.cs" />
     <Compile Include="BeliProduk.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="DTO\BeliProdukDto.cs" />
+    <Compile Include="DTO\ItemBeliProdukDto.cs" />
     <Compile Include="EntityState.cs" />
     <Compile Include="Golongan.cs" />
     <Compile Include="ItemBeliProduk.cs" />
