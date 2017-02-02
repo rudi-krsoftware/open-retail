@@ -41,6 +41,7 @@
             this.lblCopyright = new System.Windows.Forms.Label();
             this.lblUrl1 = new System.Windows.Forms.LinkLabel();
             this.lblUrl2 = new System.Windows.Forms.LinkLabel();
+            this.lblUrl3 = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -89,7 +90,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.pnlFooter, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 263);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 278);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -128,10 +129,11 @@
             this.tableLayoutPanel3.Controls.Add(this.lblCopyright, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.lblUrl1, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.lblUrl2, 0, 5);
+            this.tableLayoutPanel3.Controls.Add(this.lblUrl3, 0, 6);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 7;
+            this.tableLayoutPanel3.RowCount = 8;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -139,7 +141,8 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(454, 222);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(454, 237);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // pictureBox1
@@ -198,14 +201,26 @@
             this.lblUrl2.Size = new System.Drawing.Size(448, 20);
             this.lblUrl2.TabIndex = 2;
             this.lblUrl2.TabStop = true;
-            this.lblUrl2.Text = "lblUrl";
+            this.lblUrl2.Text = "lblUrl2";
             this.lblUrl2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblUrl3
+            // 
+            this.lblUrl3.AutoSize = true;
+            this.lblUrl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblUrl3.Location = new System.Drawing.Point(3, 213);
+            this.lblUrl3.Name = "lblUrl3";
+            this.lblUrl3.Size = new System.Drawing.Size(448, 20);
+            this.lblUrl3.TabIndex = 3;
+            this.lblUrl3.TabStop = true;
+            this.lblUrl3.Text = "lblUrl3";
+            this.lblUrl3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 304);
+            this.ClientSize = new System.Drawing.Size(454, 319);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -242,6 +257,7 @@
         private System.Windows.Forms.Label lblCopyright;
         private System.Windows.Forms.LinkLabel lblUrl1;
         private System.Windows.Forms.LinkLabel lblUrl2;
+        private System.Windows.Forms.LinkLabel lblUrl3;
 
     }
 }

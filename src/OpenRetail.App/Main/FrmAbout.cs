@@ -49,12 +49,16 @@ namespace OpenRetail.App.Main
             
             lblVersion.Text = string.Format("Version {0}", version);
             lblCopyright.Text = string.Format("Copyright © {0} Kamarudin (rudi.krsoftware@gmail.com)", copyright);
-                        
-            lblUrl1.Text = "http://coding4ever.net/";
+
+
+            lblUrl1.Text = "https://openretailblog.wordpress.com";
             lblUrl1.LinkClicked += lblUrl_LinkClicked;
 
             lblUrl2.Text = "https://github.com/rudi-krsoftware/open-retail";
             lblUrl2.LinkClicked += lblUrl_LinkClicked;
+
+            lblUrl3.Text = "http://coding4ever.net/";
+            lblUrl3.LinkClicked += lblUrl_LinkClicked;
         }
 
         private void lblUrl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
