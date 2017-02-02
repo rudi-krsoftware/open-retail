@@ -189,6 +189,13 @@ namespace OpenRetail.App.Pengaturan
 
                 IItemMenuBll itemMenuBll = new ItemMenuBll(_log);
                 var listOfItemMenu = itemMenuBll.GetByMenu(itemMenuChild.menu_id);
+
+                // filter menu laporan yg ditampilkan hanya hak akses SELECT
+                if (itemMenuChild.nama_menu.Substring(0, 6) == "mnuLap")
+                {
+                    listOfItemMenu = listOfItemMenu.Where(f => f.grant_id == Convert.ToInt32(GrantState.SELECT)).ToList();
+                }
+
                 foreach (var itemMenu in listOfItemMenu)
                 {
                     var nodeTag = new TreeNodeAdv();
