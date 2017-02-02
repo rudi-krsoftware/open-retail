@@ -539,7 +539,7 @@ namespace OpenRetail.App.Main
 
         private void mnuLapPembelianProduk_Click(object sender, EventArgs e)
         {
-            var header = GetMenuTitle(sender);
+            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
             var menuName = GetMenuName(sender);
 
             if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
