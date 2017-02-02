@@ -75,6 +75,22 @@ namespace OpenRetail.App.Laporan
             }
         }
 
+        private IList<string> GetSupplierId(IList<Supplier> listOfSupplier)
+        {
+            var listOfSupplierId = new List<string>();
+
+            for (var i = 0; i < chkListBox.Items.Count; i++)
+            {
+                if (chkListBox.GetItemChecked(i))
+                {
+                    var supplier = listOfSupplier[i];
+                    listOfSupplierId.Add(supplier.supplier_id);
+                }
+            }
+
+            return listOfSupplierId;
+        }
+
         private void PreviewReportHeader()
         {
             var periode = string.Empty;
@@ -82,18 +98,11 @@ namespace OpenRetail.App.Laporan
             IReportBeliProdukBll reportBll = new ReportBeliProdukBll(_log);
 
             IList<BeliProduk> listOfBeli = new List<BeliProduk>();
-            var listOfSupplierId = new List<string>();
+            IList<string> listOfSupplierId = new List<string>();
 
             if (chkBoxTitle.Checked)
             {
-                for (int i = 0; i < chkListBox.Items.Count; i++)
-                {
-                    if (chkListBox.GetItemChecked(i))
-                    {
-                        var supplier = _listOfSupplier[i];
-                        listOfSupplierId.Add(supplier.supplier_id);
-                    }
-                }
+                listOfSupplierId = GetSupplierId(_listOfSupplier);
 
                 if (listOfSupplierId.Count == 0)
                 {
@@ -110,10 +119,10 @@ namespace OpenRetail.App.Laporan
                     return;
                 }
 
-                if (dtpTanggalMulai.Value == dtpTanggalSelesai.Value)
-                    periode = string.Format("Periode : {0}", DateTimeHelper.DateToString(dtpTanggalMulai.Value));
-                else
-                    periode = string.Format("Periode : {0} s.d {1}", DateTimeHelper.DateToString(dtpTanggalMulai.Value), DateTimeHelper.DateToString(dtpTanggalSelesai.Value));
+                var tanggalMulai = DateTimeHelper.DateToString(dtpTanggalMulai.Value);
+                var tanggalSelesai = DateTimeHelper.DateToString(dtpTanggalSelesai.Value);
+
+                periode = dtpTanggalMulai.Value == dtpTanggalSelesai.Value ? string.Format("Periode : {0}", tanggalMulai) : string.Format("Periode : {0} s.d {1}", tanggalMulai, tanggalSelesai);
 
                 listOfBeli = reportBll.GetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
             }
@@ -168,18 +177,11 @@ namespace OpenRetail.App.Laporan
             IList<BeliProduk> listOfBeli = new List<BeliProduk>();
             IList<ItemBeliProduk> listOfItemBeli = new List<ItemBeliProduk>();
 
-            var listOfSupplierId = new List<string>();
+            IList<string> listOfSupplierId = new List<string>();
 
             if (chkBoxTitle.Checked)
             {
-                for (int i = 0; i < chkListBox.Items.Count; i++)
-                {
-                    if (chkListBox.GetItemChecked(i))
-                    {
-                        var supplier = _listOfSupplier[i];
-                        listOfSupplierId.Add(supplier.supplier_id);
-                    }
-                }
+                listOfSupplierId = GetSupplierId(_listOfSupplier);
 
                 if (listOfSupplierId.Count == 0)
                 {
@@ -196,10 +198,10 @@ namespace OpenRetail.App.Laporan
                     return;
                 }
 
-                if (dtpTanggalMulai.Value == dtpTanggalSelesai.Value)
-                    periode = string.Format("Periode : {0}", DateTimeHelper.DateToString(dtpTanggalMulai.Value));
-                else
-                    periode = string.Format("Periode : {0} s.d {1}", DateTimeHelper.DateToString(dtpTanggalMulai.Value), DateTimeHelper.DateToString(dtpTanggalSelesai.Value));
+                var tanggalMulai = DateTimeHelper.DateToString(dtpTanggalMulai.Value);
+                var tanggalSelesai = DateTimeHelper.DateToString(dtpTanggalSelesai.Value);
+
+                periode = dtpTanggalMulai.Value == dtpTanggalSelesai.Value ? string.Format("Periode : {0}", tanggalMulai) : string.Format("Periode : {0} s.d {1}", tanggalMulai, tanggalSelesai);
 
                 listOfBeli = reportBll.GetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
                 listOfItemBeli = reportBll.DetailGetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
