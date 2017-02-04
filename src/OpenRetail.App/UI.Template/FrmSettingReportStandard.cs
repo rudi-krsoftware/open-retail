@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using OpenRetail.App.Helper;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace OpenRetail.App.UI.Template
 {
@@ -58,6 +59,12 @@ namespace OpenRetail.App.UI.Template
         protected void ReSize(int newSize)
         {
             this.Size = new Size(this.Width - newSize, this.Height);
+        }
+
+        protected void ShowReport(string header, ReportClass reportSource)
+        {
+            var frmPreview = new FrmPreviewReport(header, reportSource);
+            frmPreview.ShowDialog();
         }
 
         /// <summary>

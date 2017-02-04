@@ -159,8 +159,7 @@ namespace OpenRetail.App.Laporan
 
                 rpt.SetParameterValue("periode", periode);
 
-                var frmPreview = new FrmPreviewReport(this.Text, rpt);
-                frmPreview.ShowDialog();
+                base.ShowReport(this.Text, rpt);
             }
             else
             {
@@ -241,8 +240,7 @@ namespace OpenRetail.App.Laporan
                 rpt.Database.Tables["ItemBeliProduk"].SetDataSource(listOfItemBeliDto);
                 rpt.SetParameterValue("periode", periode);
 
-                var frmPreview = new FrmPreviewReport(this.Text, rpt);
-                frmPreview.ShowDialog();
+                base.ShowReport(this.Text, rpt);
             }
             else
             {
