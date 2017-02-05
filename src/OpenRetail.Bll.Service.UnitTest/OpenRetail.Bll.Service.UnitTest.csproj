@@ -94,6 +94,7 @@
     <Compile Include="ProfilBllTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\ReportBeliProdukBllTest.cs" />
+    <Compile Include="Report\ReportHutangBeliProdukBllTest.cs" />
     <Compile Include="ReturBeliProdukBllTest.cs" />
     <Compile Include="ReturJualProdukBllTest.cs" />
     <Compile Include="RoleBllTest.cs" />

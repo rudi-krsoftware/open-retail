@@ -60,5 +60,6 @@ namespace OpenRetail.Repository.Api
         IProfilRepository ProfilRepository { get; }
 
         IReportBeliProdukRepository ReportBeliProdukRepository { get; }
+        IReportHutangBeliProdukRepository ReportHutangBeliProdukRepository { get; }
     }
 }     

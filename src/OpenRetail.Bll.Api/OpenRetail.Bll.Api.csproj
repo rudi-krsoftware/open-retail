@@ -68,6 +68,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\IBaseReportBll.cs" />
     <Compile Include="Report\IReportBeliProdukBll.cs" />
+    <Compile Include="Report\IReportHutangBeliProdukBll.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">

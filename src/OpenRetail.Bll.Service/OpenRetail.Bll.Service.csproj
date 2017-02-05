@@ -69,6 +69,7 @@
     <Compile Include="ProfilBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\ReportBeliProdukBll.cs" />
+    <Compile Include="Report\ReportHutangBeliProdukBll.cs" />
     <Compile Include="ReturBeliProdukBll.cs" />
     <Compile Include="ReturJualProdukBll.cs" />
     <Compile Include="RoleBll.cs" />

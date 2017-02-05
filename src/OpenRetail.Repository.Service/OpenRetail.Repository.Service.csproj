@@ -76,6 +76,7 @@
     <Compile Include="ProfilRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\ReportBeliProdukRepository.cs" />
+    <Compile Include="Report\ReportHutangBeliProdukRepository.cs" />
     <Compile Include="ReturBeliProdukRepository.cs" />
     <Compile Include="ReturJualProdukRepository.cs" />
     <Compile Include="RolePrivilegeRepository.cs" />
