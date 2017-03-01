@@ -46,8 +46,8 @@ namespace OpenRetail.App.Main
             var firstReleaseYear = 2017;
             var currentYear = DateTime.Today.Year;
             var copyright = currentYear > firstReleaseYear ? string.Format("{0} - {1}", firstReleaseYear, currentYear) : firstReleaseYear.ToString();
-            
-            lblVersion.Text = string.Format("Version {0}", version);
+
+            lblVersion.Text = string.Format("Version {0}{1}", version, MainProgram.stageOfDevelopment);
             lblCopyright.Text = string.Format("Copyright © {0} Kamarudin (rudi.krsoftware@gmail.com)", copyright);
 
 

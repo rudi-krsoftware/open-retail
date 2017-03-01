@@ -42,7 +42,8 @@ namespace OpenRetail.App
         /// </summary>
         public static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public static readonly string appName = "Open Retail Versi {0} - Copyright © {1} Kamarudin";
+        public static readonly string stageOfDevelopment = "-pre-alpha";
+        public static readonly string appName = "Open Retail Versi {0}{1} - Copyright © {2} Kamarudin";
 
         /// <summary>
         /// Kode unik untuk enkripsi password menggunakan metode md5
