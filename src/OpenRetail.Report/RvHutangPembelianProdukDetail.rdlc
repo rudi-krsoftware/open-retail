@@ -90,6 +90,7 @@
                                   <Value>=RunningValue(Fields!supplier_id.Value, CountDistinct, Nothing)</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -123,6 +124,7 @@
                                   <Value>=Fields!nama_supplier.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -131,7 +133,7 @@
                           </Paragraphs>
                           <rd:DefaultName>nama_supplier</rd:DefaultName>
                           <Top>0cm</Top>
-                          <Left>1.42558cm</Left>
+                          <Left>1.39383cm</Left>
                           <Height>0.6cm</Height>
                           <Width>6.04542cm</Width>
                           <ZIndex>1</ZIndex>
@@ -622,7 +624,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>ReportHutangPembelianProdukDetail</DataSetName>
-        <Top>3.41199cm</Top>
+        <Top>3.06274cm</Top>
         <Left>0.02646cm</Left>
         <Height>1.62333cm</Height>
         <Width>19.13607cm</Width>
@@ -653,7 +655,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>grand_total2</rd:DefaultName>
-        <Top>5.11442cm</Top>
+        <Top>4.76517cm</Top>
         <Left>9.31845cm</Left>
         <Height>0.6cm</Height>
         <Width>3.36955cm</Width>
@@ -688,7 +690,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>total_pelunasan2</rd:DefaultName>
-        <Top>5.11442cm</Top>
+        <Top>4.76517cm</Top>
         <Left>12.69536cm</Left>
         <Height>0.6cm</Height>
         <Width>3.36955cm</Width>
@@ -723,7 +725,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>sisa_nota2</rd:DefaultName>
-        <Top>5.11442cm</Top>
+        <Top>4.76517cm</Top>
         <Left>16.10019cm</Left>
         <Height>0.6cm</Height>
         <Width>3.00942cm</Width>
@@ -758,7 +760,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>5.11442cm</Top>
+        <Top>4.76517cm</Top>
         <Left>5.99153cm</Left>
         <Height>0.6cm</Height>
         <Width>2.83303cm</Width>
@@ -792,7 +794,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>2.03356cm</Top>
+        <Top>1.93831cm</Top>
         <Left>0.02646cm</Left>
         <Height>0.6cm</Height>
         <Width>1.07125cm</Width>
@@ -824,7 +826,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>2.03356cm</Top>
+        <Top>1.93831cm</Top>
         <Left>1.42558cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
@@ -856,7 +858,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox18</rd:DefaultName>
-        <Top>2.70412cm</Top>
+        <Top>2.41837cm</Top>
         <Left>1.42558cm</Left>
         <Height>0.6cm</Height>
         <Width>2.15604cm</Width>
@@ -888,7 +890,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>2.66884cm</Top>
+        <Top>2.41837cm</Top>
         <Left>3.58162cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
@@ -920,7 +922,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>2.66884cm</Top>
+        <Top>2.41837cm</Top>
         <Left>6.08162cm</Left>
         <Height>0.6cm</Height>
         <Width>2.15604cm</Width>
@@ -954,7 +956,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>2.70412cm</Top>
+        <Top>2.41837cm</Top>
         <Left>8.23766cm</Left>
         <Height>0.6cm</Height>
         <Width>3.14917cm</Width>
@@ -988,7 +990,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>2.03356cm</Top>
+        <Top>1.93831cm</Top>
         <Left>9.17787cm</Left>
         <Height>0.6cm</Height>
         <Width>3.51013cm</Width>
@@ -1022,7 +1024,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox14</rd:DefaultName>
-        <Top>2.70412cm</Top>
+        <Top>2.41837cm</Top>
         <Left>11.45046cm</Left>
         <Height>0.6cm</Height>
         <Width>3.55277cm</Width>
@@ -1056,7 +1058,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>2.03356cm</Top>
+        <Top>1.93831cm</Top>
         <Left>12.82911cm</Left>
         <Height>0.6cm</Height>
         <Width>3.20052cm</Width>
@@ -1090,7 +1092,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox11</rd:DefaultName>
-        <Top>2.03356cm</Top>
+        <Top>1.93831cm</Top>
         <Left>16.10019cm</Left>
         <Height>0.6cm</Height>
         <Width>3.00942cm</Width>
@@ -1124,7 +1126,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>2.70412cm</Top>
+        <Top>2.41837cm</Top>
         <Left>16.10019cm</Left>
         <Height>0.6cm</Height>
         <Width>3.00942cm</Width>
@@ -1140,7 +1142,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>5.84142cm</Height>
+    <Height>5.36517cm</Height>
     <Style />
   </Body>
   <Width>19.16253cm</Width>

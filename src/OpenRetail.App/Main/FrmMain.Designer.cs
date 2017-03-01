@@ -445,6 +445,7 @@
             this.mnuLapHutangPembelianProduk.Size = new System.Drawing.Size(283, 22);
             this.mnuLapHutangPembelianProduk.Tag = "FrmLapHutangPembelianProduk";
             this.mnuLapHutangPembelianProduk.Text = "Hutang Pembelian Produk";
+            this.mnuLapHutangPembelianProduk.Click += new System.EventHandler(this.mnuLapHutangPembelianProduk_Click);
             // 
             // mnuLapPembayaranHutangPembelianProduk
             // 

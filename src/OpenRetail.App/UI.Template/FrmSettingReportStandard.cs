@@ -55,7 +55,7 @@ namespace OpenRetail.App.UI.Template
         /// <summary>
         /// Method protected untuk mengeset ulang ukuran form
         /// </summary>
-        /// <param name="newSize"></param>
+        /// <param name="newSize">Ukuran form standar dikurangi dengan nilai newSize</param>
         protected void ReSize(int newSize)
         {
             this.Size = new Size(this.Width - newSize, this.Height);

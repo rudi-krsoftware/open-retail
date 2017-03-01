@@ -202,7 +202,7 @@ namespace OpenRetail.App.Main
             var copyright = currentYear > firstReleaseYear ? string.Format("{0} - {1}", firstReleaseYear, currentYear) : firstReleaseYear.ToString();
 
             var versi = Utils.GetCurrentVersion("OpenRetail");
-            var appName = string.Format(MainProgram.appName, versi, copyright);
+            var appName = string.Format(MainProgram.appName, versi, MainProgram.stageOfDevelopment, copyright);
 
             this.Text = appName;
             sbNamaAplikasi.Text = appName.Replace("&", "&&");
@@ -450,6 +450,20 @@ namespace OpenRetail.App.Main
         public void Ok(object sender, bool isNewData, object data)
         {
             throw new NotImplementedException();
+        }
+
+        private void mnuLapHutangPembelianProduk_Click(object sender, EventArgs e)
+        {
+            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
+            var menuName = GetMenuName(sender);
+
+            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
+            {
+                var frmLaporan = new FrmLapHutangPembelianProduk(header);
+                frmLaporan.ShowDialog();
+            }
+            else
+                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
         }
     }
 }
