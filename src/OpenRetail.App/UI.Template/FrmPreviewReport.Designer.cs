@@ -51,10 +51,9 @@
             // 
             this.reportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.Location = new System.Drawing.Point(10, 10);
-            this.reportViewer1.Margin = new System.Windows.Forms.Padding(10);
+            this.reportViewer1.Location = new System.Drawing.Point(3, 3);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(549, 405);
+            this.reportViewer1.Size = new System.Drawing.Size(563, 419);
             this.reportViewer1.TabIndex = 0;
             // 
             // FrmPreviewReport
@@ -69,6 +68,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPreviewReport";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmPreviewReport_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmPreviewReport_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

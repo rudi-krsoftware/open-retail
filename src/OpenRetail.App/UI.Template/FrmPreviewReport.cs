@@ -40,6 +40,11 @@ namespace OpenRetail.App.UI.Template
         public FrmPreviewReport()
         {
             InitializeComponent();
+            this.reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
+            this.reportViewer1.ZoomMode = ZoomMode.Percent;
+            this.reportViewer1.ZoomPercent = 100;
+
+            ColorManagerHelper.SetTheme(this, this);
             _assemblyReport = Assembly.LoadFrom("OpenRetail.Report.dll");
         }
 
@@ -57,10 +62,7 @@ namespace OpenRetail.App.UI.Template
 
             if (!(parameters == null))
                 this.reportViewer1.LocalReport.SetParameters(parameters);
-
-            this.reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
-            this.reportViewer1.ZoomMode = ZoomMode.Percent;
-            this.reportViewer1.ZoomPercent = 100;
+            
             this.reportViewer1.RefreshReport();
         }
 
@@ -84,9 +86,6 @@ namespace OpenRetail.App.UI.Template
             if (!(parameters == null))
                 this.reportViewer1.LocalReport.SetParameters(parameters);
 
-            this.reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
-            this.reportViewer1.ZoomMode = ZoomMode.Percent;
-            this.reportViewer1.ZoomPercent = 100;
             this.reportViewer1.RefreshReport();
         }
 
@@ -94,6 +93,12 @@ namespace OpenRetail.App.UI.Template
         {
             if (KeyPressHelper.IsEsc(e))
                 this.Close();
+        }
+
+        private void FrmPreviewReport_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
         }
     }
 }
