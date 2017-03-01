@@ -29,8 +29,7 @@ using OpenRetail.App.Main;
 using OpenRetail.Model;
 using System.Globalization;
 using System.Threading;
-using AutoMapper;
-using OpenRetail.Model.DTO;
+using OpenRetail.Model.Report;
 using OpenRetail.App.Laporan;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
@@ -65,14 +64,7 @@ namespace OpenRetail.App
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            CreateAutoMapperMaps();
             Login();
-        }
-
-        static void CreateAutoMapperMaps()
-        {
-            Mapper.CreateMap<BeliProduk, BeliProdukDto>();
-            Mapper.CreateMap<ItemBeliProduk, ItemBeliProdukDto>();
         }
 
         static void frmMain_FormClosed(object sender, FormClosedEventArgs e)

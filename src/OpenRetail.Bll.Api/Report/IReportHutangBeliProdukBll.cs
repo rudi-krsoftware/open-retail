@@ -21,14 +21,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using OpenRetail.Model;
+using OpenRetail.Model.Report;
 
 namespace OpenRetail.Bll.Api.Report
 {
-    public interface IReportHutangBeliProdukBll : IBaseReportBll<BeliProduk>
+    public interface IReportHutangBeliProdukBll : IBaseReportBll<ReportHutangPembelianProdukHeader>
     {
-        IList<BeliProduk> DetailGetByBulan(int bulan, int tahun);
-        IList<BeliProduk> DetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
-        IList<BeliProduk> DetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+        IList<ReportHutangPembelianProdukDetail> DetailGetByBulan(int bulan, int tahun);
+        IList<ReportHutangPembelianProdukDetail> DetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+        IList<ReportHutangPembelianProdukDetail> DetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 }

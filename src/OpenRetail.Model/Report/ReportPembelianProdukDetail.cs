@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpenRetail.Model.DTO
+namespace OpenRetail.Model.Report
 {
-    public class ItemBeliProdukDto
+    public class ReportPembelianProdukDetail
     {
-        public string item_beli_produk_id { get; set; }
-        public string beli_produk_id { get; set; }
-        public string pengguna_id { get; set; }
+        public string supplier_id { get; set; }
+        public string nama_supplier { get; set; }
+        public string nota { get; set; }
+        public DateTime tanggal { get; set; }
         public string produk_id { get; set; }
-        public double harga { get; set; }
+        public string nama_produk { get; set; }
+        public string satuan { get; set; }
         public double jumlah { get; set; }
         public double diskon { get; set; }
         public double jumlah_retur { get; set; }
-        
+        public double harga { get; set; }
+
         public double diskon_rupiah
         {
             get { return diskon / 100 * harga; }

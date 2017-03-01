@@ -22,7 +22,7 @@ using System.Linq;
 using System.Text;
 
 using log4net;
-using OpenRetail.Model;
+using OpenRetail.Model.Report;
 using OpenRetail.Bll.Api.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
@@ -38,9 +38,9 @@ namespace OpenRetail.Bll.Service.Report
             _log = log;
         }
 
-        public IList<BeliProduk> GetByBulan(int bulan, int tahun)
+        public IList<ReportHutangPembelianProdukHeader> GetByBulan(int bulan, int tahun)
         {
-            IList<BeliProduk> oList = null;
+            IList<ReportHutangPembelianProdukHeader> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
@@ -51,9 +51,9 @@ namespace OpenRetail.Bll.Service.Report
             return oList;
         }
 
-        public IList<BeliProduk> GetByBulan(int bulanAwal, int bulanAkhir, int tahun)
+        public IList<ReportHutangPembelianProdukHeader> GetByBulan(int bulanAwal, int bulanAkhir, int tahun)
         {
-            IList<BeliProduk> oList = null;
+            IList<ReportHutangPembelianProdukHeader> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
@@ -64,9 +64,9 @@ namespace OpenRetail.Bll.Service.Report
             return oList;
         }
 
-        public IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
+        public IList<ReportHutangPembelianProdukHeader> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
-            IList<BeliProduk> oList = null;
+            IList<ReportHutangPembelianProdukHeader> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
@@ -77,9 +77,9 @@ namespace OpenRetail.Bll.Service.Report
             return oList;
         }
 
-        public IList<BeliProduk> DetailGetByBulan(int bulan, int tahun)
+        public IList<ReportHutangPembelianProdukDetail> DetailGetByBulan(int bulan, int tahun)
         {
-            IList<BeliProduk> oList = null;
+            IList<ReportHutangPembelianProdukDetail> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
@@ -90,9 +90,9 @@ namespace OpenRetail.Bll.Service.Report
             return oList;
         }
 
-        public IList<BeliProduk> DetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun)
+        public IList<ReportHutangPembelianProdukDetail> DetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun)
         {
-            IList<BeliProduk> oList = null;
+            IList<ReportHutangPembelianProdukDetail> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
@@ -103,9 +103,9 @@ namespace OpenRetail.Bll.Service.Report
             return oList;
         }
 
-        public IList<BeliProduk> DetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
+        public IList<ReportHutangPembelianProdukDetail> DetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
-            IList<BeliProduk> oList = null;
+            IList<ReportHutangPembelianProdukDetail> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {

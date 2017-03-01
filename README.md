@@ -18,14 +18,12 @@ Prerequisites
     * [Dapper](http://www.nuget.org/packages/Dapper/)
     * [Dapper.Contrib](http://www.nuget.org/packages/Dapper.Contrib/)
     * [Npgsql 2.2.7](http://www.nuget.org/packages/Npgsql/2.2.72)
-	* [AutoMapper 4.1.1](https://www.nuget.org/packages/AutoMapper/4.1.1)
     * [Apache log4net](https://www.nuget.org/packages/log4net/)
 	* [Json.NET](http://www.nuget.org/packages/Newtonsoft.Json/9.0.1)	
     * [CrashReporter.NET](http://www.nuget.org/packages/CrashReporter.NET.Official/)
     * [AutoUpdater.NET](https://www.nuget.org/packages/Autoupdater.NET.Official/)
     * [DockPanel Suite](https://www.nuget.org/packages/DockPanelSuite/)
     * [Syncfusion Community Edition](https://www.syncfusion.com/products/communitylicense/) versi 13.3.0.12
-    * [Crystal Reports .NET](http://downloads.businessobjects.com/akdlm/cr4vs2010/CRforVS_13_0_15.exe) versi 13.0.15
 
 * Database [PostgreSQL](https://www.postgresql.org/) versi 9.4.1 atau yang lebih tinggi
 

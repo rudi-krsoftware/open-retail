@@ -62,7 +62,7 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
-            Assert.AreEqual("8302b39d-7f5a-436f-849c-38c3c8cc0e07", obj.beli_produk_id);
+            Assert.AreEqual("Pixel Computer", obj.nama_supplier);
             Assert.AreEqual("201701310072", obj.nota);
             Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
             Assert.IsNull(obj.tanggal_tempo);
@@ -71,14 +71,6 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(952000, obj.total_nota);
             Assert.AreEqual(952000, obj.total_pelunasan);
             Assert.AreEqual("beli tunai", obj.keterangan);
-
-            // cek supplier
-            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.Supplier.supplier_id);
-            Assert.AreEqual("Pixel Computer", obj.Supplier.nama_supplier);
-
-            // cek pengguna
-            Assert.AreEqual("00b5acfa-b533-454b-8dfd-e7881edd180f", obj.Pengguna.pengguna_id);
-            Assert.AreEqual("admin", obj.Pengguna.nama_pengguna);
         }
 
         [TestMethod]
@@ -94,8 +86,8 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
-            Assert.AreEqual("8302b39d-7f5a-436f-849c-38c3c8cc0e07", obj.beli_produk_id);
-            Assert.AreEqual("201701310072", obj.nota);
+            Assert.AreEqual("Pixel Computer", obj.nama_supplier);
+            Assert.AreEqual("201701310072", obj.nota);            
             Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
             Assert.IsNull(obj.tanggal_tempo);
             Assert.AreEqual(0, obj.ppn);
@@ -103,14 +95,6 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(952000, obj.total_nota);
             Assert.AreEqual(952000, obj.total_pelunasan);
             Assert.AreEqual("beli tunai", obj.keterangan);
-
-            // cek supplier
-            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.Supplier.supplier_id);
-            Assert.AreEqual("Pixel Computer", obj.Supplier.nama_supplier);
-
-            // cek pengguna
-            Assert.AreEqual("00b5acfa-b533-454b-8dfd-e7881edd180f", obj.Pengguna.pengguna_id);
-            Assert.AreEqual("admin", obj.Pengguna.nama_pengguna);
         }
 
         [TestMethod]
@@ -125,7 +109,7 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
-            Assert.AreEqual("8302b39d-7f5a-436f-849c-38c3c8cc0e07", obj.beli_produk_id);
+            Assert.AreEqual("Pixel Computer", obj.nama_supplier);
             Assert.AreEqual("201701310072", obj.nota);
             Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
             Assert.IsNull(obj.tanggal_tempo);
@@ -134,14 +118,6 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(952000, obj.total_nota);
             Assert.AreEqual(952000, obj.total_pelunasan);
             Assert.AreEqual("beli tunai", obj.keterangan);
-
-            // cek supplier
-            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.Supplier.supplier_id);
-            Assert.AreEqual("Pixel Computer", obj.Supplier.nama_supplier);
-
-            // cek pengguna
-            Assert.AreEqual("00b5acfa-b533-454b-8dfd-e7881edd180f", obj.Pengguna.pengguna_id);
-            Assert.AreEqual("admin", obj.Pengguna.nama_pengguna);
         }
 
         [TestMethod]
@@ -158,24 +134,22 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.IsNotNull(obj);
 
             // cek item beli
-            Assert.AreEqual("a6642756-33cd-4136-ad27-9020f0473f1e", obj.item_beli_produk_id);
             Assert.AreEqual(3, obj.jumlah);
             Assert.AreEqual(0, obj.jumlah_retur);
             Assert.AreEqual(200000, obj.harga);
             Assert.AreEqual(0, obj.diskon);
 
-            Assert.AreEqual("53b63dc2-4505-4276-9886-3639b53b7458", obj.Produk.produk_id);
-            Assert.AreEqual("Access Point TPLINK TL-MR3220 3,5G", obj.Produk.nama_produk);
-            Assert.AreEqual("", obj.Produk.satuan);
+            Assert.AreEqual("53b63dc2-4505-4276-9886-3639b53b7458", obj.produk_id);
+            Assert.AreEqual("Access Point TPLINK TL-MR3220 3,5G", obj.nama_produk);
+            Assert.AreEqual("", obj.satuan);
 
             // cek beli
-            Assert.AreEqual("8302b39d-7f5a-436f-849c-38c3c8cc0e07", obj.BeliProduk.beli_produk_id);
-            Assert.AreEqual(new DateTime(2017, 1, 31), obj.BeliProduk.tanggal);
-            Assert.AreEqual("201701310072", obj.BeliProduk.nota);
+            Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
+            Assert.AreEqual("201701310072", obj.nota);
 
             // cek supplier
-            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.BeliProduk.Supplier.supplier_id);
-            Assert.AreEqual("Pixel Computer", obj.BeliProduk.Supplier.nama_supplier);
+            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.supplier_id);
+            Assert.AreEqual("Pixel Computer", obj.nama_supplier);
         }
 
         [TestMethod]
@@ -193,24 +167,22 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.IsNotNull(obj);
 
             // cek item beli
-            Assert.AreEqual("a6642756-33cd-4136-ad27-9020f0473f1e", obj.item_beli_produk_id);
             Assert.AreEqual(3, obj.jumlah);
             Assert.AreEqual(0, obj.jumlah_retur);
             Assert.AreEqual(200000, obj.harga);
             Assert.AreEqual(0, obj.diskon);
 
-            Assert.AreEqual("53b63dc2-4505-4276-9886-3639b53b7458", obj.Produk.produk_id);
-            Assert.AreEqual("Access Point TPLINK TL-MR3220 3,5G", obj.Produk.nama_produk);
-            Assert.AreEqual("", obj.Produk.satuan);
+            Assert.AreEqual("53b63dc2-4505-4276-9886-3639b53b7458", obj.produk_id);
+            Assert.AreEqual("Access Point TPLINK TL-MR3220 3,5G", obj.nama_produk);
+            Assert.AreEqual("", obj.satuan);
 
             // cek beli
-            Assert.AreEqual("8302b39d-7f5a-436f-849c-38c3c8cc0e07", obj.BeliProduk.beli_produk_id);
-            Assert.AreEqual(new DateTime(2017, 1, 31), obj.BeliProduk.tanggal);
-            Assert.AreEqual("201701310072", obj.BeliProduk.nota);
+            Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
+            Assert.AreEqual("201701310072", obj.nota);
 
             // cek supplier
-            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.BeliProduk.Supplier.supplier_id);
-            Assert.AreEqual("Pixel Computer", obj.BeliProduk.Supplier.nama_supplier);
+            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.supplier_id);
+            Assert.AreEqual("Pixel Computer", obj.nama_supplier);
         }
 
         [TestMethod]
@@ -227,24 +199,22 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.IsNotNull(obj);
 
             // cek item beli
-            Assert.AreEqual("a6642756-33cd-4136-ad27-9020f0473f1e", obj.item_beli_produk_id);
             Assert.AreEqual(3, obj.jumlah);
             Assert.AreEqual(0, obj.jumlah_retur);
             Assert.AreEqual(200000, obj.harga);
             Assert.AreEqual(0, obj.diskon);
 
-            Assert.AreEqual("53b63dc2-4505-4276-9886-3639b53b7458", obj.Produk.produk_id);
-            Assert.AreEqual("Access Point TPLINK TL-MR3220 3,5G", obj.Produk.nama_produk);
-            Assert.AreEqual("", obj.Produk.satuan);
+            Assert.AreEqual("53b63dc2-4505-4276-9886-3639b53b7458", obj.produk_id);
+            Assert.AreEqual("Access Point TPLINK TL-MR3220 3,5G", obj.nama_produk);
+            Assert.AreEqual("", obj.satuan);
 
             // cek beli
-            Assert.AreEqual("8302b39d-7f5a-436f-849c-38c3c8cc0e07", obj.BeliProduk.beli_produk_id);
-            Assert.AreEqual(new DateTime(2017, 1, 31), obj.BeliProduk.tanggal);
-            Assert.AreEqual("201701310072", obj.BeliProduk.nota);
+            Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
+            Assert.AreEqual("201701310072", obj.nota);
 
             // cek supplier
-            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.BeliProduk.Supplier.supplier_id);
-            Assert.AreEqual("Pixel Computer", obj.BeliProduk.Supplier.nama_supplier);
+            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.supplier_id);
+            Assert.AreEqual("Pixel Computer", obj.nama_supplier);
         }
     }
 }

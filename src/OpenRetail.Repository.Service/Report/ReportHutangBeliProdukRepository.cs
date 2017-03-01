@@ -23,7 +23,7 @@ using System.Text;
 
 using log4net;
 using Dapper;
-using OpenRetail.Model;
+using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
 
@@ -31,8 +31,7 @@ namespace OpenRetail.Repository.Service.Report
 {
     public class ReportHutangBeliProdukRepository : IReportHutangBeliProdukRepository
     {
-        private const string SQL_TEMPLATE_HEADER = @"SELECT SUM(t_beli_produk.ppn) AS ppn, SUM(t_beli_produk.diskon) AS diskon, SUM(t_beli_produk.total_nota) AS total_nota, SUM(t_beli_produk.total_pelunasan) AS total_pelunasan,
-                                                     m_supplier.supplier_id, m_supplier.nama_supplier
+        private const string SQL_TEMPLATE_HEADER = @"SELECT m_supplier.supplier_id, m_supplier.nama_supplier, SUM(t_beli_produk.ppn) AS ppn, SUM(t_beli_produk.diskon) AS diskon, SUM(t_beli_produk.total_nota) AS total_nota, SUM(t_beli_produk.total_pelunasan) AS total_pelunasan
                                                      FROM public.m_supplier INNER JOIN public.t_beli_produk ON t_beli_produk.supplier_id = m_supplier.supplier_id                                                     
                                                      {WHERE}
                                                      GROUP BY m_supplier.supplier_id, m_supplier.nama_supplier
@@ -56,42 +55,31 @@ namespace OpenRetail.Repository.Service.Report
             this._log = log;
         }
 
-        private IEnumerable<BeliProduk> MappingRecordToObject(string sql, object param = null)
+        public IList<ReportHutangPembelianProdukHeader> GetByBulan(int bulan, int tahun)
         {
-            IEnumerable<BeliProduk> oList = _context.db.Query<BeliProduk, Supplier, BeliProduk>(sql, (b, s) =>
+            IList<ReportHutangPembelianProdukHeader> oList = new List<ReportHutangPembelianProdukHeader>();
+
+            try
             {
-                b.supplier_id = s.supplier_id; b.Supplier = s;
-
-                return b;
-            }, param, splitOn: "supplier_id");
-
-            return oList;
-        }
-
-        public IList<BeliProduk> GetByBulan(int bulan, int tahun)
-        {
-            IList<BeliProduk> oList = new List<BeliProduk>();
-
-            //try
-            //{
                 _where = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND 
                            EXTRACT(MONTH FROM t_beli_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_beli_produk.tanggal) = @tahun";
 
                 _sql = SQL_TEMPLATE_HEADER.Replace("{WHERE}", _where);
 
-                oList = MappingRecordToObject(_sql, new { bulan, tahun }).ToList();
-            //}
-            //catch (Exception ex)
-            //{
-            //    _log.Error("Error:", ex);
-            //}
+                oList = _context.db.Query<ReportHutangPembelianProdukHeader>(_sql, new { bulan, tahun })
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
 
             return oList;
         }
 
-        public IList<BeliProduk> GetByBulan(int bulanAwal, int bulanAkhir, int tahun)
+        public IList<ReportHutangPembelianProdukHeader> GetByBulan(int bulanAwal, int bulanAkhir, int tahun)
         {
-            IList<BeliProduk> oList = new List<BeliProduk>();
+            IList<ReportHutangPembelianProdukHeader> oList = new List<ReportHutangPembelianProdukHeader>();
 
             try
             {
@@ -100,7 +88,8 @@ namespace OpenRetail.Repository.Service.Report
 
                 _sql = SQL_TEMPLATE_HEADER.Replace("{WHERE}", _where);
 
-                oList = MappingRecordToObject(_sql, new { bulanAwal, bulanAkhir, tahun }).ToList();
+                oList = _context.db.Query<ReportHutangPembelianProdukHeader>(_sql, new { bulanAwal, bulanAkhir, tahun })
+                                .ToList();
             }
             catch (Exception ex)
             {
@@ -110,9 +99,9 @@ namespace OpenRetail.Repository.Service.Report
             return oList;
         }
 
-        public IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
+        public IList<ReportHutangPembelianProdukHeader> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
-            IList<BeliProduk> oList = new List<BeliProduk>();
+            IList<ReportHutangPembelianProdukHeader> oList = new List<ReportHutangPembelianProdukHeader>();
 
             try
             {
@@ -121,7 +110,8 @@ namespace OpenRetail.Repository.Service.Report
 
                 _sql = SQL_TEMPLATE_HEADER.Replace("{WHERE}", _where);
 
-                oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai }).ToList();
+                oList = _context.db.Query<ReportHutangPembelianProdukHeader>(_sql, new { tanggalMulai, tanggalSelesai })
+                                .ToList();
             }
             catch (Exception ex)
             {
@@ -131,9 +121,9 @@ namespace OpenRetail.Repository.Service.Report
             return oList;
         }
 
-        public IList<BeliProduk> DetailGetByBulan(int bulan, int tahun)
+        public IList<ReportHutangPembelianProdukDetail> DetailGetByBulan(int bulan, int tahun)
         {
-            IList<BeliProduk> oList = new List<BeliProduk>();
+            IList<ReportHutangPembelianProdukDetail> oList = new List<ReportHutangPembelianProdukDetail>();
 
             try
             {
@@ -143,7 +133,8 @@ namespace OpenRetail.Repository.Service.Report
 
                 _sql = SQL_TEMPLATE_DETAIL.Replace("{WHERE}", _where);
 
-                oList = MappingRecordToObject(_sql, new { bulan, tahun }).ToList();
+                oList = _context.db.Query<ReportHutangPembelianProdukDetail>(_sql, new { bulan, tahun })
+                                .ToList();
             }
             catch (Exception ex)
             {
@@ -153,9 +144,9 @@ namespace OpenRetail.Repository.Service.Report
             return oList;
         }
 
-        public IList<BeliProduk> DetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun)
+        public IList<ReportHutangPembelianProdukDetail> DetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun)
         {
-            IList<BeliProduk> oList = new List<BeliProduk>();
+            IList<ReportHutangPembelianProdukDetail> oList = new List<ReportHutangPembelianProdukDetail>();
 
             try
             {
@@ -165,7 +156,8 @@ namespace OpenRetail.Repository.Service.Report
 
                 _sql = SQL_TEMPLATE_DETAIL.Replace("{WHERE}", _where);
 
-                oList = MappingRecordToObject(_sql, new { bulanAwal, bulanAkhir, tahun }).ToList();
+                oList = _context.db.Query<ReportHutangPembelianProdukDetail>(_sql, new { bulanAwal, bulanAkhir, tahun })
+                                .ToList();
             }
             catch (Exception ex)
             {
@@ -175,9 +167,9 @@ namespace OpenRetail.Repository.Service.Report
             return oList;
         }
 
-        public IList<BeliProduk> DetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
+        public IList<ReportHutangPembelianProdukDetail> DetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
-            IList<BeliProduk> oList = new List<BeliProduk>();
+            IList<ReportHutangPembelianProdukDetail> oList = new List<ReportHutangPembelianProdukDetail>();
 
             try
             {
@@ -187,7 +179,8 @@ namespace OpenRetail.Repository.Service.Report
 
                 _sql = SQL_TEMPLATE_DETAIL.Replace("{WHERE}", _where);
 
-                oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai }).ToList();
+                oList = _context.db.Query<ReportHutangPembelianProdukDetail>(_sql, new { tanggalMulai, tanggalSelesai })
+                                .ToList();
             }
             catch (Exception ex)
             {

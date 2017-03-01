@@ -65,8 +65,8 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(0, obj.diskon);
             Assert.AreEqual(980000, obj.total_nota);
             Assert.AreEqual(0, obj.total_pelunasan);
-            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.Supplier.supplier_id);
-            Assert.AreEqual("Sigma komputer", obj.Supplier.nama_supplier);
+            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
+            Assert.AreEqual("Sigma komputer", obj.nama_supplier);
         }
 
         [TestMethod]
@@ -86,8 +86,8 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(0, obj.diskon);
             Assert.AreEqual(980000, obj.total_nota);
             Assert.AreEqual(0, obj.total_pelunasan);
-            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.Supplier.supplier_id);
-            Assert.AreEqual("Sigma komputer", obj.Supplier.nama_supplier);
+            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
+            Assert.AreEqual("Sigma komputer", obj.nama_supplier);
         }
 
         [TestMethod]
@@ -106,8 +106,8 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(0, obj.diskon);
             Assert.AreEqual(980000, obj.total_nota);
             Assert.AreEqual(0, obj.total_pelunasan);
-            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.Supplier.supplier_id);
-            Assert.AreEqual("Sigma komputer", obj.Supplier.nama_supplier);
+            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
+            Assert.AreEqual("Sigma komputer", obj.nama_supplier);
         }
 
         [TestMethod]
@@ -123,7 +123,6 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
 
             Assert.IsNotNull(obj);
 
-            Assert.AreEqual("6f59a7de-70d0-4aeb-8d8a-042041290a3f", obj.beli_produk_id);
             Assert.AreEqual("201701310073", obj.nota);
             Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
             Assert.AreEqual(new DateTime(2017, 2, 4), obj.tanggal_tempo);
@@ -132,8 +131,8 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(980000, obj.total_nota);
             Assert.AreEqual(0, obj.total_pelunasan);
 
-            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.Supplier.supplier_id);
-            Assert.AreEqual("Sigma komputer", obj.Supplier.nama_supplier);
+            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
+            Assert.AreEqual("Sigma komputer", obj.nama_supplier);
             
         }
 
@@ -151,7 +150,6 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
 
             Assert.IsNotNull(obj);
 
-            Assert.AreEqual("6f59a7de-70d0-4aeb-8d8a-042041290a3f", obj.beli_produk_id);
             Assert.AreEqual("201701310073", obj.nota);
             Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
             Assert.AreEqual(new DateTime(2017, 2, 4), obj.tanggal_tempo);
@@ -160,8 +158,8 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(980000, obj.total_nota);
             Assert.AreEqual(0, obj.total_pelunasan);
 
-            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.Supplier.supplier_id);
-            Assert.AreEqual("Sigma komputer", obj.Supplier.nama_supplier);
+            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
+            Assert.AreEqual("Sigma komputer", obj.nama_supplier);
         }
 
         [TestMethod]
@@ -177,7 +175,6 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
 
             Assert.IsNotNull(obj);
 
-            Assert.AreEqual("6f59a7de-70d0-4aeb-8d8a-042041290a3f", obj.beli_produk_id);
             Assert.AreEqual("201701310073", obj.nota);
             Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
             Assert.AreEqual(new DateTime(2017, 2, 4), obj.tanggal_tempo);
@@ -186,8 +183,8 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(980000, obj.total_nota);
             Assert.AreEqual(0, obj.total_pelunasan);
 
-            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.Supplier.supplier_id);
-            Assert.AreEqual("Sigma komputer", obj.Supplier.nama_supplier);
+            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
+            Assert.AreEqual("Sigma komputer", obj.nama_supplier);
         }
     }
 }

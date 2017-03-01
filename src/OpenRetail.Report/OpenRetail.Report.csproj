@@ -30,15 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -52,18 +43,6 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
-    <Compile Include="CrPembelianProdukDetail.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrPembelianProdukDetail.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CrPembelianProdukHeader.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrPembelianProdukHeader.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="DataSet\DsPembelian.cs">
       <DependentUpon>DsPembelian.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -76,14 +55,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CrPembelianProdukDetail.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrPembelianProdukDetail.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CrPembelianProdukHeader.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrPembelianProdukHeader.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="RvHutangPembelianProdukDetail.rdlc" />
+    <EmbeddedResource Include="RvPembelianProdukDetail.rdlc" />
+    <EmbeddedResource Include="RvHutangPembelianProdukHeader.rdlc" />
+    <EmbeddedResource Include="RvPembelianProdukHeader.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataSet\DsPembelian.xsc">

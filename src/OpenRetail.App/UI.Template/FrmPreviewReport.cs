@@ -26,54 +26,74 @@ using System.Text;
 using System.Windows.Forms;
 
 using OpenRetail.App.Helper;
-using CrystalDecisions.CrystalReports.Engine;
+using Microsoft.Reporting.WinForms;
+using System.Reflection;
+using System.IO;
 
 namespace OpenRetail.App.UI.Template
 {
     public partial class FrmPreviewReport : Form
     {
+        private string _reportNameSpace = @"OpenRetail.Report.{0}.rdlc";
+        private Assembly _assemblyReport;
+
         public FrmPreviewReport()
         {
             InitializeComponent();
+            _assemblyReport = Assembly.LoadFrom("OpenRetail.Report.dll");
         }
 
-        public FrmPreviewReport(string header, ReportClass reportSource)
+        public FrmPreviewReport(string header, string reportName, ReportDataSource reportDataSource, IEnumerable<ReportParameter> parameters = null)
             : this()
         {
             this.Text = header;
-            crViewer.ReportSource = reportSource;
-            crViewer.RemoveMainTab();
+
+            reportName = string.Format(_reportNameSpace, reportName);
+            var stream = _assemblyReport.GetManifestResourceStream(reportName);
+
+            this.reportViewer1.LocalReport.DataSources.Clear();
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource);
+            this.reportViewer1.LocalReport.LoadReportDefinition(stream);
+
+            if (!(parameters == null))
+                this.reportViewer1.LocalReport.SetParameters(parameters);
+
+            this.reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
+            this.reportViewer1.ZoomMode = ZoomMode.Percent;
+            this.reportViewer1.ZoomPercent = 100;
+            this.reportViewer1.RefreshReport();
+        }
+
+        public FrmPreviewReport(string header, string reportName, IList<ReportDataSource> reportDataSources, IEnumerable<ReportParameter> parameters = null)
+            : this()
+        {
+            this.Text = header;
+
+            reportName = string.Format(_reportNameSpace, reportName);
+            var stream = _assemblyReport.GetManifestResourceStream(reportName);
+
+            this.reportViewer1.LocalReport.DataSources.Clear();
+
+            foreach (var reportDataSource in reportDataSources)
+            {
+                this.reportViewer1.LocalReport.DataSources.Add(reportDataSource);
+            }
+
+            this.reportViewer1.LocalReport.LoadReportDefinition(stream);
+
+            if (!(parameters == null))
+                this.reportViewer1.LocalReport.SetParameters(parameters);
+
+            this.reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
+            this.reportViewer1.ZoomMode = ZoomMode.Percent;
+            this.reportViewer1.ZoomPercent = 100;
+            this.reportViewer1.RefreshReport();
         }
 
         private void FrmPreviewReport_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEsc(e))
                 this.Close();
-        }
-    }
-
-    internal static class CrViewerExtensions
-    {
-        public static void RemoveMainTab(this CrystalDecisions.Windows.Forms.CrystalReportViewer crv)
-        {
-            foreach (System.Windows.Forms.Control ct in crv.Controls)
-            {
-                if (ct is CrystalDecisions.Windows.Forms.PageView)
-                {
-                    foreach (var c in ct.Controls)
-                    {
-                        if (c is System.Windows.Forms.TabControl)
-                        {
-                            var tab = (ct as CrystalDecisions.Windows.Forms.PageView).Controls[0] as System.Windows.Forms.TabControl;
-                            tab.ItemSize = new System.Drawing.Size(0, 1);
-                            tab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-                            tab.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-
-                            break;
-                        }
-                    }
-                }
-            }
         }
     }
 }

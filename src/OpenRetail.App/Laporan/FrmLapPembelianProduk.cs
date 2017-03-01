@@ -10,15 +10,15 @@ using System.Windows.Forms;
 using log4net;
 using OpenRetail.App.UI.Template;
 using OpenRetail.Model;
-using OpenRetail.Model.DTO;
+using OpenRetail.Model.Report;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using OpenRetail.App.Helper;
 using OpenRetail.Report;
 using OpenRetail.Bll.Api.Report;
 using OpenRetail.Bll.Service.Report;
-using AutoMapper;
 using ConceptCave.WaitCursor;
+using Microsoft.Reporting.WinForms;
 
 namespace OpenRetail.App.Laporan
 {
@@ -96,8 +96,8 @@ namespace OpenRetail.App.Laporan
             var periode = string.Empty;
 
             IReportBeliProdukBll reportBll = new ReportBeliProdukBll(_log);
-
-            IList<BeliProduk> listOfBeli = new List<BeliProduk>();
+            
+            IList<ReportPembelianProdukHeader> listOfReportPembelian = new List<ReportPembelianProdukHeader>();
             IList<string> listOfSupplierId = new List<string>();
 
             if (chkBoxTitle.Checked)
@@ -124,7 +124,7 @@ namespace OpenRetail.App.Laporan
 
                 periode = dtpTanggalMulai.Value == dtpTanggalSelesai.Value ? string.Format("Periode : {0}", tanggalMulai) : string.Format("Periode : {0} s.d {1}", tanggalMulai, tanggalSelesai);
 
-                listOfBeli = reportBll.GetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
+                listOfReportPembelian = reportBll.GetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
             }
             else
             {
@@ -133,33 +133,27 @@ namespace OpenRetail.App.Laporan
                 var bulan = cmbBulan.SelectedIndex + 1;
                 var tahun = int.Parse(cmbTahun.Text);
 
-                listOfBeli = reportBll.GetByBulan(bulan, tahun);
+                listOfReportPembelian = reportBll.GetByBulan(bulan, tahun);
             }
 
-            if (listOfSupplierId.Count > 0 && listOfBeli.Count > 0)
+            if (listOfSupplierId.Count > 0 && listOfReportPembelian.Count > 0)
             {
-                listOfBeli = listOfBeli.Where(f => f.Supplier != null && listOfSupplierId.Contains(f.supplier_id))
-                                       .ToList();
+                listOfReportPembelian = listOfReportPembelian.Where(f => listOfSupplierId.Contains(f.supplier_id))
+                                                             .ToList();
             }
 
-            if (listOfBeli.Count > 0)
+            if (listOfReportPembelian.Count > 0)
             {
-                var listOfSupplier = listOfBeli.Select(f => f.Supplier).ToList()
-                                               .GroupBy(gb => gb.supplier_id).Select(g => g.First()).ToList();
+                var reportDataSource = new ReportDataSource
+                {
+                    Name = "ReportPembelianProdukHeader",
+                    Value = listOfReportPembelian
+                };
 
-                var listOfPengguna = listOfBeli.Select(f => f.Supplier).ToList()
-                                               .GroupBy(gb => gb.supplier_id).Select(g => g.First()).ToList();
+                var parameters = new List<ReportParameter>();
+                parameters.Add(new ReportParameter("periode", periode));
 
-                var listOfBeliDto = Mapper.Map<IList<BeliProdukDto>>(listOfBeli);
-
-                var rpt = new CrPembelianProdukHeader();
-                rpt.Database.Tables["Supplier"].SetDataSource(listOfSupplier);
-                rpt.Database.Tables["Pengguna"].SetDataSource(listOfPengguna);
-                rpt.Database.Tables["BeliProduk"].SetDataSource(listOfBeliDto);
-
-                rpt.SetParameterValue("periode", periode);
-
-                base.ShowReport(this.Text, rpt);
+                base.ShowReport(this.Text, "RvPembelianProdukHeader", reportDataSource, parameters);
             }
             else
             {
@@ -173,8 +167,7 @@ namespace OpenRetail.App.Laporan
 
             IReportBeliProdukBll reportBll = new ReportBeliProdukBll(_log);
 
-            IList<BeliProduk> listOfBeli = new List<BeliProduk>();
-            IList<ItemBeliProduk> listOfItemBeli = new List<ItemBeliProduk>();
+            IList<ReportPembelianProdukDetail> listOfReportPembelian = new List<ReportPembelianProdukDetail>();
 
             IList<string> listOfSupplierId = new List<string>();
 
@@ -202,8 +195,7 @@ namespace OpenRetail.App.Laporan
 
                 periode = dtpTanggalMulai.Value == dtpTanggalSelesai.Value ? string.Format("Periode : {0}", tanggalMulai) : string.Format("Periode : {0} s.d {1}", tanggalMulai, tanggalSelesai);
 
-                listOfBeli = reportBll.GetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
-                listOfItemBeli = reportBll.DetailGetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
+                listOfReportPembelian = reportBll.DetailGetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
             }
             else
             {
@@ -212,35 +204,27 @@ namespace OpenRetail.App.Laporan
                 var bulan = cmbBulan.SelectedIndex + 1;
                 var tahun = int.Parse(cmbTahun.Text);
 
-                listOfBeli = reportBll.GetByBulan(bulan, tahun);
-                listOfItemBeli = reportBll.DetailGetByBulan(bulan, tahun);
+                listOfReportPembelian = reportBll.DetailGetByBulan(bulan, tahun);
             }
 
-            if (listOfSupplierId.Count > 0 && listOfBeli.Count > 0)
+            if (listOfSupplierId.Count > 0 && listOfReportPembelian.Count > 0)
             {
-                listOfBeli = listOfBeli.Where(f => f.Supplier != null && listOfSupplierId.Contains(f.supplier_id))
-                                       .ToList();
+                listOfReportPembelian = listOfReportPembelian.Where(f => listOfSupplierId.Contains(f.supplier_id))
+                                                             .ToList();
             }
 
-            if (listOfBeli.Count > 0)
+            if (listOfReportPembelian.Count > 0)
             {
-                var listOfSupplier = listOfBeli.Select(f => f.Supplier).ToList()
-                                               .GroupBy(gb => gb.supplier_id).Select(g => g.First()).ToList();
+                var reportDataSource = new ReportDataSource
+                {
+                    Name = "ReportPembelianProdukDetail",
+                    Value = listOfReportPembelian
+                };
 
-                var listOfProduk = listOfItemBeli.Select(f => f.Produk).ToList()
-                                                 .GroupBy(gb => gb.produk_id).Select(g => g.First()).ToList();
+                var parameters = new List<ReportParameter>();
+                parameters.Add(new ReportParameter("periode", periode));
 
-                var listOfBeliDto = Mapper.Map<IList<BeliProdukDto>>(listOfBeli);
-                var listOfItemBeliDto = Mapper.Map<IList<ItemBeliProdukDto>>(listOfItemBeli);
-
-                var rpt = new CrPembelianProdukDetail();
-                rpt.Database.Tables["Supplier"].SetDataSource(listOfSupplier);
-                rpt.Database.Tables["Produk"].SetDataSource(listOfProduk);
-                rpt.Database.Tables["BeliProduk"].SetDataSource(listOfBeliDto);
-                rpt.Database.Tables["ItemBeliProduk"].SetDataSource(listOfItemBeliDto);
-                rpt.SetParameterValue("periode", periode);
-
-                base.ShowReport(this.Text, rpt);
+                base.ShowReport(this.Text, "RvPembelianProdukDetail", reportDataSource, parameters);
             }
             else
             {

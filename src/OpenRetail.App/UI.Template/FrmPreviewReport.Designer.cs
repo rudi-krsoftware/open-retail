@@ -29,34 +29,40 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPreviewReport));
-            this.crViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // crViewer
+            // tableLayoutPanel1
             // 
-            this.crViewer.ActiveViewIndex = -1;
-            this.crViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crViewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crViewer.DisplayStatusBar = false;
-            this.crViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crViewer.EnableDrillDown = false;
-            this.crViewer.Location = new System.Drawing.Point(0, 0);
-            this.crViewer.Name = "crViewer";
-            this.crViewer.ShowCloseButton = false;
-            this.crViewer.ShowGroupTreeButton = false;
-            this.crViewer.ShowLogo = false;
-            this.crViewer.ShowParameterPanelButton = false;
-            this.crViewer.ShowRefreshButton = false;
-            this.crViewer.Size = new System.Drawing.Size(471, 353);
-            this.crViewer.TabIndex = 6;
-            this.crViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.reportViewer1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(569, 425);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.Location = new System.Drawing.Point(10, 10);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(10);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(549, 405);
+            this.reportViewer1.TabIndex = 0;
             // 
             // FrmPreviewReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 353);
-            this.Controls.Add(this.crViewer);
+            this.ClientSize = new System.Drawing.Size(569, 425);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FrmPreviewReport";
@@ -64,12 +70,16 @@
             this.Text = "FrmPreviewReport";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmPreviewReport_KeyPress);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crViewer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+
+
     }
 }
