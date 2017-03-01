@@ -105,13 +105,6 @@ namespace OpenRetail.App.Main
 
                     SetProfil();
 
-                    //TODO: fix me, aktifkan jika module report sudah selesai
-                    /*
-                    if (!Utils.IsRunningUnderIDE())
-                    {
-                        LoadCrystalReportLib();
-                    }*/
-
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }

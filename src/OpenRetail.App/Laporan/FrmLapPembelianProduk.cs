@@ -40,7 +40,7 @@ namespace OpenRetail.App.Laporan
 
             chkTampilkanRincianNota.Visible = true;
             chkTampilkanRincianNota.Enabled = true;
-            chkTampilkanRincianNota.Text = "Tampilkan rincian penjualan";
+            chkTampilkanRincianNota.Text = "Tampilkan rincian pembelian";
 
             LoadSupplier();
             LoadBulanDanTahun();            
