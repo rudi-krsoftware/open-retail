@@ -75,6 +75,12 @@ namespace OpenRetail.App.Main
         private void btnOk_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmAbout_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEsc(e))
+                btnOk_Click(sender, e);
         }        
     }
 }
