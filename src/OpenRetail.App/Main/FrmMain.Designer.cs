@@ -453,6 +453,7 @@
             this.mnuLapPembayaranHutangPembelianProduk.Size = new System.Drawing.Size(283, 22);
             this.mnuLapPembayaranHutangPembelianProduk.Tag = "FrmLapPembayaranHutangPembelianProduk";
             this.mnuLapPembayaranHutangPembelianProduk.Text = "Pembayaran Hutang Pembelian Produk";
+            this.mnuLapPembayaranHutangPembelianProduk.Click += new System.EventHandler(this.mnuLapPembayaranHutangPembelianProduk_Click);
             // 
             // toolStripSeparator7
             // 

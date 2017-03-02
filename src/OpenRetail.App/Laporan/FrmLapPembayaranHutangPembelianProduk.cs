@@ -22,25 +22,21 @@ using Microsoft.Reporting.WinForms;
 
 namespace OpenRetail.App.Laporan
 {
-    public partial class FrmLapPembelianProduk : FrmSettingReportStandard
+    public partial class FrmLapPembayaranHutangPembelianProduk : FrmSettingReportStandard
     {
         private IList<Supplier> _listOfSupplier = new List<Supplier>();
         private ILog _log;
 
-        public FrmLapPembelianProduk(string header)
+        public FrmLapPembayaranHutangPembelianProduk(string header)
         {
             InitializeComponent();
             base.SetHeader(header);
             base.SetCheckBoxTitle("Pilih Supplier");
-            base.ReSize(120);
+            base.ReSize(30);
 
             _log = MainProgram.log;
-            
-            chkTampilkanNota.Visible = false;
 
-            chkTampilkanRincianNota.Visible = true;
-            chkTampilkanRincianNota.Enabled = true;
-            chkTampilkanRincianNota.Text = "Tampilkan rincian pembelian";
+            chkTampilkanNota.Text = "Tampilkan nota beli";
 
             LoadSupplier();
             LoadBulanDanTahun();            
@@ -64,7 +60,7 @@ namespace OpenRetail.App.Laporan
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                if (chkTampilkanRincianNota.Checked)
+                if (chkTampilkanNota.Checked)
                 {
                     PreviewReportDetail();
                 }
@@ -94,10 +90,10 @@ namespace OpenRetail.App.Laporan
         private void PreviewReportHeader()
         {
             var periode = string.Empty;
-
-            IReportBeliProdukBll reportBll = new ReportBeliProdukBll(_log);
-            
-            IList<ReportPembelianProdukHeader> listOfReportPembelian = new List<ReportPembelianProdukHeader>();
+                                                
+            IReportPembayaranHutangBeliProdukBll reportBll = new ReportPembayaranHutangBeliProdukBll(_log);
+                                    
+            IList<ReportPembayaranHutangPembelianProdukHeader> listOfReportPembayaranHutangPembelian = new List<ReportPembayaranHutangPembelianProdukHeader>();
             IList<string> listOfSupplierId = new List<string>();
 
             if (chkBoxTitle.Checked)
@@ -124,7 +120,7 @@ namespace OpenRetail.App.Laporan
 
                 periode = dtpTanggalMulai.Value == dtpTanggalSelesai.Value ? string.Format("Periode : {0}", tanggalMulai) : string.Format("Periode : {0} s.d {1}", tanggalMulai, tanggalSelesai);
 
-                listOfReportPembelian = reportBll.GetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
+                listOfReportPembayaranHutangPembelian = reportBll.GetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
             }
             else
             {
@@ -133,31 +129,31 @@ namespace OpenRetail.App.Laporan
                 var bulan = cmbBulan.SelectedIndex + 1;
                 var tahun = int.Parse(cmbTahun.Text);
 
-                listOfReportPembelian = reportBll.GetByBulan(bulan, tahun);
+                listOfReportPembayaranHutangPembelian = reportBll.GetByBulan(bulan, tahun);
             }
 
-            if (listOfSupplierId.Count > 0 && listOfReportPembelian.Count > 0)
+            if (listOfSupplierId.Count > 0 && listOfReportPembayaranHutangPembelian.Count > 0)
             {
-                listOfReportPembelian = listOfReportPembelian.Where(f => listOfSupplierId.Contains(f.supplier_id))
+                listOfReportPembayaranHutangPembelian = listOfReportPembayaranHutangPembelian.Where(f => listOfSupplierId.Contains(f.supplier_id))
                                                              .ToList();
             }
 
-            if (listOfReportPembelian.Count > 0)
+            if (listOfReportPembayaranHutangPembelian.Count > 0)
             {
                 var reportDataSource = new ReportDataSource
                 {
-                    Name = "ReportPembelianProdukHeader",
-                    Value = listOfReportPembelian
+                    Name = "ReportPembayaranHutangPembelianProdukHeader",
+                    Value = listOfReportPembayaranHutangPembelian
                 };
 
                 var parameters = new List<ReportParameter>();
                 parameters.Add(new ReportParameter("periode", periode));
 
-                base.ShowReport(this.Text, "RvPembelianProdukHeader", reportDataSource, parameters);
+                base.ShowReport(this.Text, "RvPembayaranHutangPembelianProdukHeader", reportDataSource, parameters);
             }
             else
             {
-                MsgHelper.MsgInfo("Maaf laporan data pembelian tidak ditemukan");
+                MsgHelper.MsgInfo("Maaf laporan data pembayaran hutang pembelian tidak ditemukan");
             }
         }
 
@@ -165,9 +161,9 @@ namespace OpenRetail.App.Laporan
         {
             var periode = string.Empty;
 
-            IReportBeliProdukBll reportBll = new ReportBeliProdukBll(_log);
-
-            IList<ReportPembelianProdukDetail> listOfReportPembelian = new List<ReportPembelianProdukDetail>();
+            IReportPembayaranHutangBeliProdukBll reportBll = new ReportPembayaranHutangBeliProdukBll(_log);
+            
+            IList<ReportPembayaranHutangPembelianProdukDetail> listOfReportPembayaranHutangPembelian = new List<ReportPembayaranHutangPembelianProdukDetail>();
 
             IList<string> listOfSupplierId = new List<string>();
 
@@ -195,7 +191,7 @@ namespace OpenRetail.App.Laporan
 
                 periode = dtpTanggalMulai.Value == dtpTanggalSelesai.Value ? string.Format("Periode : {0}", tanggalMulai) : string.Format("Periode : {0} s.d {1}", tanggalMulai, tanggalSelesai);
 
-                listOfReportPembelian = reportBll.DetailGetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
+                listOfReportPembayaranHutangPembelian = reportBll.DetailGetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
             }
             else
             {
@@ -204,31 +200,31 @@ namespace OpenRetail.App.Laporan
                 var bulan = cmbBulan.SelectedIndex + 1;
                 var tahun = int.Parse(cmbTahun.Text);
 
-                listOfReportPembelian = reportBll.DetailGetByBulan(bulan, tahun);
+                listOfReportPembayaranHutangPembelian = reportBll.DetailGetByBulan(bulan, tahun);
             }
 
-            if (listOfSupplierId.Count > 0 && listOfReportPembelian.Count > 0)
+            if (listOfSupplierId.Count > 0 && listOfReportPembayaranHutangPembelian.Count > 0)
             {
-                listOfReportPembelian = listOfReportPembelian.Where(f => listOfSupplierId.Contains(f.supplier_id))
+                listOfReportPembayaranHutangPembelian = listOfReportPembayaranHutangPembelian.Where(f => listOfSupplierId.Contains(f.supplier_id))
                                                              .ToList();
             }
 
-            if (listOfReportPembelian.Count > 0)
+            if (listOfReportPembayaranHutangPembelian.Count > 0)
             {
                 var reportDataSource = new ReportDataSource
                 {
-                    Name = "ReportPembelianProdukDetail",
-                    Value = listOfReportPembelian
+                    Name = "ReportPembayaranHutangPembelianProdukDetail",
+                    Value = listOfReportPembayaranHutangPembelian
                 };
 
                 var parameters = new List<ReportParameter>();
                 parameters.Add(new ReportParameter("periode", periode));
 
-                base.ShowReport(this.Text, "RvPembelianProdukDetail", reportDataSource, parameters);
+                base.ShowReport(this.Text, "RvPembayaranHutangPembelianProdukDetail", reportDataSource, parameters);
             }
             else
             {
-                MsgHelper.MsgInfo("Maaf laporan data pembelian tidak ditemukan");
+                MsgHelper.MsgInfo("Maaf laporan data pembayaran hutang pembelian tidak ditemukan");
             }
         }
     }

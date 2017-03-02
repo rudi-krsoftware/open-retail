@@ -9,7 +9,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>LAPORAN RINCIAN HUTANG PEMBELIAN PRODUK</Value>
+                <Value>LAPORAN RINCIAN PEMBAYARAN HUTANG PEMBELIAN PRODUK</Value>
                 <Style>
                   <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -74,7 +74,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>1.62333cm</Height>
+              <Height>1.30583cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -87,7 +87,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=RunningValue(Fields!supplier_id.Value, CountDistinct, Nothing)</Value>
+                                  <Value>=RunningValue(Fields!nota_bayar.Value, CountDistinct, Nothing)</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -103,7 +103,7 @@
                           <Top>0cm</Top>
                           <Left>0.02646cm</Left>
                           <Height>0.6cm</Height>
-                          <Width>1.07125cm</Width>
+                          <Width>1.00069cm</Width>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -114,14 +114,14 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <Textbox Name="nama_supplier">
+                        <Textbox Name="tanggal">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!nama_supplier.Value</Value>
+                                  <Value>=Format(First(Fields!tanggal.Value), "dd-MM-yyyy")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -131,11 +131,11 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>nama_supplier</rd:DefaultName>
+                          <rd:DefaultName>tanggal</rd:DefaultName>
                           <Top>0cm</Top>
-                          <Left>1.39383cm</Left>
+                          <Left>1.10477cm</Left>
                           <Height>0.6cm</Height>
-                          <Width>6.04542cm</Width>
+                          <Width>2.76789cm</Width>
                           <ZIndex>1</ZIndex>
                           <Style>
                             <Border>
@@ -147,14 +147,14 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <Textbox Name="grand_total">
+                        <Textbox Name="pelunasan">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=FormatNumber(Sum(Fields!grand_total.Value, "list_group_supplier"), 2)</Value>
+                                  <Value>=FormatNumber(Sum(Fields!pelunasan.Value), 2)</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -166,82 +166,12 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>grand_total</rd:DefaultName>
+                          <rd:DefaultName>pelunasan</rd:DefaultName>
                           <Top>0cm</Top>
-                          <Left>9.31845cm</Left>
+                          <Left>16.41769cm</Left>
                           <Height>0.6cm</Height>
-                          <Width>3.36955cm</Width>
+                          <Width>2.71838cm</Width>
                           <ZIndex>2</ZIndex>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <Textbox Name="total_pelunasan">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=FormatNumber(Sum(Fields!total_pelunasan.Value, "list_group_supplier"), 2)</Value>
-                                  <Style>
-                                    <FontSize>9pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>total_pelunasan</rd:DefaultName>
-                          <Top>0cm</Top>
-                          <Left>13.23124cm</Left>
-                          <Height>0.6cm</Height>
-                          <Width>2.82486cm</Width>
-                          <ZIndex>3</ZIndex>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <Textbox Name="sisa_nota">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=FormatNumber(Sum(Fields!sisa_nota.Value, "list_group_supplier"), 2)</Value>
-                                  <Style>
-                                    <FontSize>9pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>sisa_nota</rd:DefaultName>
-                          <Top>0cm</Top>
-                          <Left>16.12665cm</Left>
-                          <Height>0.6cm</Height>
-                          <Width>3.00942cm</Width>
-                          <ZIndex>4</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -256,22 +186,22 @@
                           <TablixBody>
                             <TablixColumns>
                               <TablixColumn>
-                                <Width>2.1825cm</Width>
+                                <Width>2.75695cm</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>2.5758cm</Width>
+                                <Width>2.5435cm</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>2.08024cm</Width>
+                                <Width>2.00541cm</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>3.18634cm</Width>
+                                <Width>3.3334cm</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>3.55277cm</Width>
+                                <Width>4.63507cm</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>4.13284cm</Width>
+                                <Width>2.78012cm</Width>
                               </TablixColumn>
                             </TablixColumns>
                             <TablixRows>
@@ -280,14 +210,14 @@
                                 <TablixCells>
                                   <TablixCell>
                                     <CellContents>
-                                      <Textbox Name="tanggal">
+                                      <Textbox Name="nota_beli">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Format(Fields!tanggal.Value, "dd-MM-yyyy")</Value>
+                                                <Value>="*** " &amp; Fields!nota_beli.Value</Value>
                                                 <Style>
                                                   <FontSize>9pt</FontSize>
                                                 </Style>
@@ -296,7 +226,7 @@
                                             <Style />
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>tanggal</rd:DefaultName>
+                                        <rd:DefaultName>nota_beli</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>LightGrey</Color>
@@ -324,14 +254,14 @@
                                   </TablixCell>
                                   <TablixCell>
                                     <CellContents>
-                                      <Textbox Name="nota">
+                                      <Textbox Name="Textbox4">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Fields!nota.Value</Value>
+                                                <Value />
                                                 <Style>
                                                   <FontSize>9pt</FontSize>
                                                 </Style>
@@ -340,7 +270,7 @@
                                             <Style />
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>nota</rd:DefaultName>
+                                        <rd:DefaultName>Textbox4</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>LightGrey</Color>
@@ -375,7 +305,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Format(Fields!tanggal_tempo.Value, "dd-MM-yyyy")</Value>
+                                                <Value EvaluationMode="Constant" />
                                                 <Style>
                                                   <FontSize>9pt</FontSize>
                                                 </Style>
@@ -412,7 +342,7 @@
                                   </TablixCell>
                                   <TablixCell>
                                     <CellContents>
-                                      <Textbox Name="grand_total1">
+                                      <Textbox Name="grand_total">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
@@ -430,7 +360,7 @@
                                             </Style>
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>grand_total1</rd:DefaultName>
+                                        <rd:DefaultName>grand_total</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>LightGrey</Color>
@@ -458,25 +388,25 @@
                                   </TablixCell>
                                   <TablixCell>
                                     <CellContents>
-                                      <Textbox Name="total_pelunasan1">
+                                      <Textbox Name="keterangan_beli">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=FormatNumber(Fields!total_pelunasan.Value, 2)</Value>
+                                                <Value>=Iif(Len(Fields!keterangan_beli.Value) &gt; 0, "*** " &amp; Fields!keterangan_beli.Value, "")</Value>
                                                 <Style>
                                                   <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
                                             <Style>
-                                              <TextAlign>Right</TextAlign>
+                                              <TextAlign>Left</TextAlign>
                                             </Style>
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>total_pelunasan1</rd:DefaultName>
+                                        <rd:DefaultName>keterangan_beli</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>LightGrey</Color>
@@ -504,14 +434,14 @@
                                   </TablixCell>
                                   <TablixCell>
                                     <CellContents>
-                                      <Textbox Name="sisa_nota1">
+                                      <Textbox Name="pelunasan2">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=FormatNumber(Fields!sisa_nota.Value, 2)</Value>
+                                                <Value>=FormatNumber(Fields!pelunasan.Value, 2) &amp; " ***"</Value>
                                                 <Style>
                                                   <FontSize>9pt</FontSize>
                                                 </Style>
@@ -522,7 +452,7 @@
                                             </Style>
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>sisa_nota1</rd:DefaultName>
+                                        <rd:DefaultName>pelunasan2</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>LightGrey</Color>
@@ -569,12 +499,12 @@
                               </TablixMember>
                             </TablixMembers>
                           </TablixRowHierarchy>
-                          <DataSetName>ReportHutangPembelianProdukDetail</DataSetName>
+                          <DataSetName>ReportPembayaranHutangPembelianProdukDetail</DataSetName>
                           <Top>0.70583cm</Top>
-                          <Left>1.39912cm</Left>
+                          <Left>1.08162cm</Left>
                           <Height>0.6cm</Height>
-                          <Width>17.71049cm</Width>
-                          <ZIndex>5</ZIndex>
+                          <Width>18.05445cm</Width>
+                          <ZIndex>3</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -593,6 +523,102 @@
                             </RightBorder>
                           </Style>
                         </Tablix>
+                        <Textbox Name="nota_bayar1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=First(Fields!nota_bayar.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>nota_bayar1</rd:DefaultName>
+                          <Top>0cm</Top>
+                          <Left>4.15312cm</Left>
+                          <Height>0.6cm</Height>
+                          <Width>2.76458cm</Width>
+                          <ZIndex>4</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <Textbox Name="nama_supplier">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=First(Fields!nama_supplier.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>nama_supplier</rd:DefaultName>
+                          <Top>0.02619cm</Top>
+                          <Left>7.39572cm</Left>
+                          <Height>0.6cm</Height>
+                          <Width>4.28215cm</Width>
+                          <ZIndex>5</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <Textbox Name="keterangan_bayar">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=First(Fields!keterangan_bayar.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>keterangan_bayar</rd:DefaultName>
+                          <Top>0.02619cm</Top>
+                          <Left>11.7415cm</Left>
+                          <Height>0.6cm</Height>
+                          <Width>4.61445cm</Width>
+                          <ZIndex>6</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
                       </ReportItems>
                       <KeepTogether>true</KeepTogether>
                       <Style>
@@ -618,15 +644,16 @@
               <Group Name="list_group_supplier">
                 <GroupExpressions>
                   <GroupExpression>=Fields!supplier_id.Value</GroupExpression>
+                  <GroupExpression>=Fields!nota_bayar.Value</GroupExpression>
                 </GroupExpressions>
               </Group>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>ReportHutangPembelianProdukDetail</DataSetName>
+        <DataSetName>ReportPembayaranHutangPembelianProdukDetail</DataSetName>
         <Top>3.06274cm</Top>
         <Left>0.02646cm</Left>
-        <Height>1.62333cm</Height>
+        <Height>1.30583cm</Height>
         <Width>19.13607cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
@@ -635,30 +662,29 @@
           </Border>
         </Style>
       </Tablix>
-      <Textbox Name="grand_total2">
+      <Textbox Name="Textbox3">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(Sum(Fields!grand_total.Value, "ReportHutangPembelianProdukDetail"), 2)</Value>
+                <Value>No</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Right</TextAlign>
+              <TextAlign>Center</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>grand_total2</rd:DefaultName>
-        <Top>4.76517cm</Top>
-        <Left>9.31845cm</Left>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>1.77956cm</Top>
+        <Left>0.02646cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.36955cm</Width>
+        <Width>1.07125cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -670,30 +696,27 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="total_pelunasan2">
+      <Textbox Name="Textbox5">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(Sum(Fields!total_pelunasan.Value, "ReportHutangPembelianProdukDetail"), 2)</Value>
+                <Value>Tanggal</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
+            <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>total_pelunasan2</rd:DefaultName>
-        <Top>4.76517cm</Top>
-        <Left>12.69536cm</Left>
+        <rd:DefaultName>Textbox5</rd:DefaultName>
+        <Top>1.77956cm</Top>
+        <Left>1.10808cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.36955cm</Width>
+        <Width>2.79104cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -705,17 +728,112 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="sisa_nota2">
+      <Textbox Name="Textbox18">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(Sum(Fields!sisa_nota.Value, "ReportHutangPembelianProdukDetail"), 2)</Value>
+                <Value>*** Nota Beli</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox18</rd:DefaultName>
+        <Top>2.41837cm</Top>
+        <Left>1.10808cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.79104cm</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox17">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Nota Pembayaran</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox17</rd:DefaultName>
+        <Top>1.77956cm</Top>
+        <Left>4.18487cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.79104cm</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox16">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Supplier</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox16</rd:DefaultName>
+        <Top>1.77956cm</Top>
+        <Left>7.42218cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.28215cm</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox15">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Total Nota Beli</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -724,12 +842,148 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>sisa_nota2</rd:DefaultName>
-        <Top>4.76517cm</Top>
-        <Left>16.10019cm</Left>
+        <rd:DefaultName>Textbox15</rd:DefaultName>
+        <Top>2.41837cm</Top>
+        <Left>9.05787cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.00942cm</Width>
-        <ZIndex>5</ZIndex>
+        <Width>2.64646cm</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox7">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Keterangan</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox7</rd:DefaultName>
+        <Top>1.77956cm</Top>
+        <Left>11.76796cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.61445cm</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox14">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>*** Keterangan</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox14</rd:DefaultName>
+        <Top>2.41837cm</Top>
+        <Left>11.76796cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.61445cm</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Total Pelunasan</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox9</rd:DefaultName>
+        <Top>1.77956cm</Top>
+        <Left>16.44415cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.69192cm</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox13">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Pelunasan ***</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox13</rd:DefaultName>
+        <Top>2.41837cm</Top>
+        <Left>16.44415cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.66546cm</Width>
+        <ZIndex>12</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -760,240 +1014,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>4.76517cm</Top>
-        <Left>5.99153cm</Left>
+        <Top>4.54496cm</Top>
+        <Left>6.10137cm</Left>
         <Height>0.6cm</Height>
         <Width>2.83303cm</Width>
-        <ZIndex>6</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox3">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>No</Value>
-                <Style>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>1.77956cm</Top>
-        <Left>0.02646cm</Left>
-        <Height>0.6cm</Height>
-        <Width>1.07125cm</Width>
-        <ZIndex>7</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox5">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Supplier</Value>
-                <Style>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>1.77956cm</Top>
-        <Left>1.42558cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
-        <ZIndex>8</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox18">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>*** Tanggal</Value>
-                <Style>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox18</rd:DefaultName>
-        <Top>2.41837cm</Top>
-        <Left>1.42558cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.15604cm</Width>
-        <ZIndex>9</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox17">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Nota Beli</Value>
-                <Style>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>2.41837cm</Top>
-        <Left>3.58162cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
-        <ZIndex>10</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox16">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Tempo</Value>
-                <Style>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>2.41837cm</Top>
-        <Left>6.08162cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.15604cm</Width>
-        <ZIndex>11</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox15">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Hutang</Value>
-                <Style>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>2.41837cm</Top>
-        <Left>8.23766cm</Left>
-        <Height>0.6cm</Height>
-        <Width>3.14917cm</Width>
-        <ZIndex>12</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox7">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Total Hutang</Value>
-                <Style>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>1.77956cm</Top>
-        <Left>9.17787cm</Left>
-        <Height>0.6cm</Height>
-        <Width>3.51013cm</Width>
         <ZIndex>13</ZIndex>
         <Style>
           <Border>
@@ -1005,16 +1029,16 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox14">
+      <Textbox Name="grand_total1">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Bayar</Value>
+                <Value>=FormatNumber(Sum(Fields!grand_total.Value, "ReportPembayaranHutangPembelianProdukDetail"), 2)</Value>
                 <Style>
-                  <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1023,11 +1047,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Textbox14</rd:DefaultName>
-        <Top>2.41837cm</Top>
-        <Left>11.45046cm</Left>
+        <rd:DefaultName>grand_total1</rd:DefaultName>
+        <Top>4.54496cm</Top>
+        <Left>9.11079cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.55277cm</Width>
+        <Width>2.68947cm</Width>
         <ZIndex>14</ZIndex>
         <Style>
           <Border>
@@ -1039,16 +1063,16 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox9">
+      <Textbox Name="pelunasan1">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total Bayar</Value>
+                <Value>=FormatNumber(Sum(Fields!pelunasan.Value, "ReportPembayaranHutangPembelianProdukDetail"), 2)</Value>
                 <Style>
-                  <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1057,11 +1081,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>1.77956cm</Top>
-        <Left>12.82911cm</Left>
+        <rd:DefaultName>pelunasan1</rd:DefaultName>
+        <Top>4.58024cm</Top>
+        <Left>16.20603cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.20052cm</Width>
+        <Width>2.9565cm</Width>
         <ZIndex>15</ZIndex>
         <Style>
           <Border>
@@ -1073,76 +1097,56 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox11">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Total Sisa</Value>
-                <Style>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox11</rd:DefaultName>
-        <Top>1.77956cm</Top>
-        <Left>16.10019cm</Left>
-        <Height>0.6cm</Height>
-        <Width>3.00942cm</Width>
+      <Line Name="Line1">
+        <Top>5.20912cm</Top>
+        <Left>0.04974cm</Left>
+        <Height>0cm</Height>
+        <Width>19.05987cm</Width>
         <ZIndex>16</ZIndex>
         <Style>
           <Border>
-            <Style>None</Style>
+            <Style>Solid</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
-      </Textbox>
-      <Textbox Name="Textbox13">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Sisa ***</Value>
-                <Style>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>2.41837cm</Top>
-        <Left>16.10019cm</Left>
-        <Height>0.6cm</Height>
-        <Width>3.00942cm</Width>
+      </Line>
+      <Line Name="Line2">
+        <Top>4.52687cm</Top>
+        <Left>0.01958cm</Left>
+        <Height>0cm</Height>
+        <Width>19.05987cm</Width>
         <ZIndex>17</ZIndex>
         <Style>
           <Border>
-            <Style>None</Style>
+            <Style>Solid</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
-      </Textbox>
+      </Line>
+      <Line Name="Line3">
+        <Top>1.75279cm</Top>
+        <Left>0.03625cm</Left>
+        <Height>0cm</Height>
+        <Width>19.05987cm</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line4">
+        <Top>3.03829cm</Top>
+        <Left>0.06641cm</Left>
+        <Height>0cm</Height>
+        <Width>19.05987cm</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
     </ReportItems>
-    <Height>5.36517cm</Height>
+    <Height>5.20912cm</Height>
     <Style />
   </Body>
   <Width>19.16253cm</Width>
@@ -1167,7 +1171,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="ReportHutangPembelianProdukDetail">
+    <DataSet Name="ReportPembayaranHutangPembelianProdukDetail">
       <Query>
         <DataSourceName>DsPembelian</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -1181,17 +1185,17 @@
           <DataField>nama_supplier</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="nota">
-          <DataField>nota</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="tanggal">
           <DataField>tanggal</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="tanggal_tempo">
-          <DataField>tanggal_tempo</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+        <Field Name="nota_beli">
+          <DataField>nota_beli</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nota_bayar">
+          <DataField>nota_bayar</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ppn">
           <DataField>ppn</DataField>
@@ -1205,23 +1209,27 @@
           <DataField>total_nota</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="total_pelunasan">
-          <DataField>total_pelunasan</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
         <Field Name="grand_total">
           <DataField>grand_total</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="sisa_nota">
-          <DataField>sisa_nota</DataField>
+        <Field Name="keterangan_beli">
+          <DataField>keterangan_beli</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="keterangan_bayar">
+          <DataField>keterangan_bayar</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="pelunasan">
+          <DataField>pelunasan</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DsPembelian</rd:DataSetName>
         <rd:SchemaPath>D:\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPembelian.xsd</rd:SchemaPath>
-        <rd:TableName>ReportHutangPembelianProdukDetail</rd:TableName>
+        <rd:TableName>ReportPembayaranHutangPembelianProdukDetail</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

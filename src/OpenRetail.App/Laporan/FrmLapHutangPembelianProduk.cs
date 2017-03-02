@@ -153,7 +153,7 @@ namespace OpenRetail.App.Laporan
             }
             else
             {
-                MsgHelper.MsgInfo("Maaf data pembelian tidak ditemukan");
+                MsgHelper.MsgInfo("Maaf laporan data hutang pembelian tidak ditemukan");
             }
         }
 
@@ -224,7 +224,7 @@ namespace OpenRetail.App.Laporan
             }
             else
             {
-                MsgHelper.MsgInfo("Maaf data pembelian tidak ditemukan");
+                MsgHelper.MsgInfo("Maaf laporan data hutang pembelian tidak ditemukan");
             }
         }
     }
