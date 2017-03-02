@@ -31,16 +31,16 @@ using OpenRetail.Bll.Service.Report;
 namespace OpenRetail.Bll.Service.UnitTest.Report
 {
     [TestClass]
-    public class ReportHutangBeliProdukBllTest
+    public class ReportPembayaranHutangBeliProdukBllTest
     {
         private ILog _log;
-        private IReportHutangBeliProdukBll _bll;
+        private IReportPembayaranHutangBeliProdukBll _bll;
 
         [TestInitialize]
         public void Init()
         {
-            _log = LogManager.GetLogger(typeof(ReportHutangBeliProdukBllTest));
-            _bll = new ReportHutangBeliProdukBll(_log);
+            _log = LogManager.GetLogger(typeof(ReportPembayaranHutangBeliProdukBllTest));
+            _bll = new ReportPembayaranHutangBeliProdukBll(_log);
         }
 
         [TestCleanup]
@@ -52,21 +52,20 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
         [TestMethod]
         public void GetByBulanAndTahunTest()
         {
-            var bulan = 1;
+            var bulan = 2;
             var tahun = 2017;
 
             var oList = _bll.GetByBulan(bulan, tahun);
 
-            var index = 0;
+            var index = 2;
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
-            Assert.AreEqual(0, obj.ppn);
-            Assert.AreEqual(0, obj.diskon);
-            Assert.AreEqual(980000, obj.total_nota);
-            Assert.AreEqual(0, obj.total_pelunasan);
-            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
-            Assert.AreEqual("Sigma komputer", obj.nama_supplier);
+            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.supplier_id);
+            Assert.AreEqual("Pixel Computer", obj.nama_supplier);
+            Assert.AreEqual(new DateTime(2017, 2, 4), obj.tanggal);
+            Assert.AreEqual(1825000, obj.total_pembayaran);
+            Assert.AreEqual("Pembelian tunai produk", obj.keterangan);
         }
 
         [TestMethod]
@@ -78,62 +77,60 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
 
             var oList = _bll.GetByBulan(bulanAwal, bulanAkhir, tahun);
 
-            var index = 0;
+            var index = 5;
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
-            Assert.AreEqual(0, obj.ppn);
-            Assert.AreEqual(0, obj.diskon);
-            Assert.AreEqual(980000, obj.total_nota);
-            Assert.AreEqual(0, obj.total_pelunasan);
-            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
-            Assert.AreEqual("Sigma komputer", obj.nama_supplier);
+            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.supplier_id);
+            Assert.AreEqual("Pixel Computer", obj.nama_supplier);
+            Assert.AreEqual(new DateTime(2017, 2, 4), obj.tanggal);
+            Assert.AreEqual(1825000, obj.total_pembayaran);
+            Assert.AreEqual("Pembelian tunai produk", obj.keterangan);
         }
 
         [TestMethod]
         public void GetByTanggalTest()
         {
-            var tanggalMulai = new DateTime(2017, 1, 1);
-            var tanggalSelesai = new DateTime(2017, 1, 31);
+            var tanggalMulai = new DateTime(2017, 2, 1);
+            var tanggalSelesai = new DateTime(2017, 2, 28);
 
             var oList = _bll.GetByTanggal(tanggalMulai, tanggalSelesai);
 
-            var index = 0;
+            var index = 2;
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
-            Assert.AreEqual(0, obj.ppn);
-            Assert.AreEqual(0, obj.diskon);
-            Assert.AreEqual(980000, obj.total_nota);
-            Assert.AreEqual(0, obj.total_pelunasan);
-            Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
-            Assert.AreEqual("Sigma komputer", obj.nama_supplier);
+            Assert.AreEqual("e6201c8e-74e3-467c-a463-c8ea1763668e", obj.supplier_id);
+            Assert.AreEqual("Pixel Computer", obj.nama_supplier);
+            Assert.AreEqual(new DateTime(2017, 2, 4), obj.tanggal);
+            Assert.AreEqual(1825000, obj.total_pembayaran);
+            Assert.AreEqual("Pembelian tunai produk", obj.keterangan);
         }
 
         [TestMethod]
         public void DetailGetByBulanAndTahunTest()
         {
-            var bulan = 1;
+            var bulan = 2;
             var tahun = 2017;
 
             var oList = _bll.DetailGetByBulan(bulan, tahun);
 
-            var index = 0;
+            var index = 4;
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
 
-            Assert.AreEqual("201701310073", obj.nota);
-            Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
-            Assert.AreEqual(new DateTime(2017, 2, 4), obj.tanggal_tempo);
-            Assert.AreEqual(0, obj.ppn);
-            Assert.AreEqual(0, obj.diskon);
-            Assert.AreEqual(980000, obj.total_nota);
-            Assert.AreEqual(0, obj.total_pelunasan);
-
             Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
             Assert.AreEqual("Sigma komputer", obj.nama_supplier);
-            
+            Assert.AreEqual("201702010080", obj.nota_beli);
+            Assert.AreEqual("201702010047", obj.nota_bayar);
+            Assert.AreEqual(new DateTime(2017, 2, 1), obj.tanggal);
+            Assert.AreEqual(100000, obj.ppn);
+            Assert.AreEqual(150000, obj.diskon);
+            Assert.AreEqual(1651000, obj.total_nota);
+            Assert.AreEqual(1601000, obj.pelunasan);            
+            Assert.AreEqual("", obj.keterangan_beli);
+            Assert.AreEqual("Pembelian tunai produk", obj.keterangan_bayar);            
         }
 
         [TestMethod]
@@ -145,46 +142,48 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
 
             var oList = _bll.DetailGetByBulan(bulanAwal, bulanAkhir, tahun);
 
-            var index = 0;
+            var index = 5;
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
 
-            Assert.AreEqual("201701310073", obj.nota);
-            Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
-            Assert.AreEqual(new DateTime(2017, 2, 4), obj.tanggal_tempo);
-            Assert.AreEqual(0, obj.ppn);
-            Assert.AreEqual(0, obj.diskon);
-            Assert.AreEqual(980000, obj.total_nota);
-            Assert.AreEqual(0, obj.total_pelunasan);
-
             Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
             Assert.AreEqual("Sigma komputer", obj.nama_supplier);
+            Assert.AreEqual("201702010080", obj.nota_beli);
+            Assert.AreEqual("201702010047", obj.nota_bayar);
+            Assert.AreEqual(new DateTime(2017, 2, 1), obj.tanggal);
+            Assert.AreEqual(100000, obj.ppn);
+            Assert.AreEqual(150000, obj.diskon);
+            Assert.AreEqual(1651000, obj.total_nota);
+            Assert.AreEqual(1601000, obj.pelunasan);
+            Assert.AreEqual("", obj.keterangan_beli);
+            Assert.AreEqual("Pembelian tunai produk", obj.keterangan_bayar);         
         }
 
         [TestMethod]
         public void DetailGetByTanggalTest()
         {
             var tanggalMulai = new DateTime(2017, 1, 1);
-            var tanggalSelesai = new DateTime(2017, 1, 31);
+            var tanggalSelesai = new DateTime(2017, 2, 28);
 
             var oList = _bll.DetailGetByTanggal(tanggalMulai, tanggalSelesai);
 
-            var index = 0;
+            var index = 5;
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
 
-            Assert.AreEqual("201701310073", obj.nota);
-            Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
-            Assert.AreEqual(new DateTime(2017, 2, 4), obj.tanggal_tempo);
-            Assert.AreEqual(0, obj.ppn);
-            Assert.AreEqual(0, obj.diskon);
-            Assert.AreEqual(980000, obj.total_nota);
-            Assert.AreEqual(0, obj.total_pelunasan);
-
             Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
             Assert.AreEqual("Sigma komputer", obj.nama_supplier);
+            Assert.AreEqual("201702010080", obj.nota_beli);
+            Assert.AreEqual("201702010047", obj.nota_bayar);
+            Assert.AreEqual(new DateTime(2017, 2, 1), obj.tanggal);
+            Assert.AreEqual(100000, obj.ppn);
+            Assert.AreEqual(150000, obj.diskon);
+            Assert.AreEqual(1651000, obj.total_nota);
+            Assert.AreEqual(1601000, obj.pelunasan);
+            Assert.AreEqual("", obj.keterangan_beli);
+            Assert.AreEqual("Pembelian tunai produk", obj.keterangan_bayar);        
         }
     }
 }

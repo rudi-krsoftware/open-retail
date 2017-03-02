@@ -71,6 +71,7 @@
     <Compile Include="Report\IBaseReportRepository.cs" />
     <Compile Include="Report\IReportBeliProdukRepository.cs" />
     <Compile Include="Report\IReportHutangBeliProdukRepository.cs" />
+    <Compile Include="Report\IReportPembayaranHutangBeliProdukRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">
