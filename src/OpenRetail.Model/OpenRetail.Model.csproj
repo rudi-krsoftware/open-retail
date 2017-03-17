@@ -65,6 +65,7 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukHeader.cs" />
+    <Compile Include="Report\ReportKartuHutang.cs" />
     <Compile Include="Report\ReportPembayaranHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportPembayaranHutangPembelianProdukHeader.cs" />
     <Compile Include="Report\ReportPembelianProdukDetail.cs" />

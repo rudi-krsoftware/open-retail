@@ -95,6 +95,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\ReportBeliProdukBllTest.cs" />
     <Compile Include="Report\ReportHutangBeliProdukBllTest.cs" />
+    <Compile Include="Report\ReportKartuHutangBllTest.cs" />
     <Compile Include="Report\ReportPembayaranHutangBeliProdukBllTest.cs" />
     <Compile Include="ReturBeliProdukBllTest.cs" />
     <Compile Include="ReturJualProdukBllTest.cs" />
