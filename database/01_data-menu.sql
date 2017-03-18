@@ -38,7 +38,6 @@ b4be7b7c-4587-4af4-af07-fce34df723df	mnuPenjualanProduk	Penjualan Produk	73e3254
 08392673-2e61-4266-a6ae-5cb75fdf42e8	mnuPengeluaranBiaya	Pengeluaran Biaya	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	1	t	FrmListPengeluaranBiaya	f
 13b929f3-d349-4686-b803-b350732003c8	mnuKasbon	Kasbon	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	2	t	FrmListKasbon	f
 d5bd3b31-7feb-4c55-9fed-8d67ac18fef4	mnuPenggajian	Penggajian Karyawan	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	3	t	FrmListPenggajianKaryawan	f
-b0b538ba-3535-4308-8012-9e2fa0daa0b0	mnuLapKartuHutangPembelianProduk	Kartu Hutang Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	4	t	FrmLapKartuHutangPembelianProduk	f
 5a4b0eab-0a7b-463a-bcf8-0cca0fbddded	mnuLapReturPembelianProduk	Retur Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	5	t	FrmLapReturPembelianProduk	f
 6a593127-4efb-4d7e-be38-53894c4828d0	mnuLapPenjualanProduk	Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	7	t	FrmLapPenjualanProduk	f
 f87b0496-d9cb-4aef-b9dd-b7fe62ac3a18	mnuLapPenjualanPerProduk	Penjualan Per Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	8	t	FrmLapPenjualanPerProduk	f
@@ -59,6 +58,7 @@ e8f83478-a577-4cff-a06f-8d921f9367c7	mnuManajemenOperator	Manajemen Operator	593
 295f6ddd-b934-4215-8e44-74905efd2273	mnuLapPembelianProduk	Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	1	t	FrmLapPembelianProduk	t
 335e115b-8f25-4cad-96cf-22481c98c525	mnuLapHutangPembelianProduk	Hutang Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	2	t	FrmLapHutangPembelianProduk	t
 42a3ffaa-da90-44d8-ae9b-cfcb7a7bdac6	mnuLapPembayaranHutangPembelianProduk	Pembayaran Hutang Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	3	t	FrmLapPembayaranHutangPembelianProduk	t
+b0b538ba-3535-4308-8012-9e2fa0daa0b0	mnuLapKartuHutangPembelianProduk	Kartu Hutang Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	4	t	FrmLapKartuHutangPembelianProduk	t
 \.
 
 

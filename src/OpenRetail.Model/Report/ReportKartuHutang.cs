@@ -7,7 +7,6 @@ namespace OpenRetail.Model.Report
 {
     public class ReportKartuHutang
     {
-        public int no_urut { get; set; }
         public string supplier_id { get; set; }
         public string nama_supplier { get; set; }
         public DateTime tanggal { get; set; }
@@ -15,6 +14,9 @@ namespace OpenRetail.Model.Report
         public string satuan { get; set; }
         public double jumlah { get; set; }
         public double total { get; set; }
+        public double saldo_awal { get; set; }
+        public double saldo { get; set; }
+        public double saldo_akhir { get; set; }
         public int jenis { get; set; }
     }
 }

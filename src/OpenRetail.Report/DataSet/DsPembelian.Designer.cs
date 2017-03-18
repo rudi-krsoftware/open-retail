@@ -2743,8 +2743,6 @@ namespace OpenRetail.Report.DataSet {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ReportKartuHutangDataTable : global::System.Data.TypedTableBase<ReportKartuHutangRow> {
             
-            private global::System.Data.DataColumn columnno_urut;
-            
             private global::System.Data.DataColumn columnsupplier_id;
             
             private global::System.Data.DataColumn columnnama_supplier;
@@ -2758,6 +2756,12 @@ namespace OpenRetail.Report.DataSet {
             private global::System.Data.DataColumn columnjumlah;
             
             private global::System.Data.DataColumn columntotal;
+            
+            private global::System.Data.DataColumn columnsaldo_awal;
+            
+            private global::System.Data.DataColumn columnsaldo;
+            
+            private global::System.Data.DataColumn columnsaldo_akhir;
             
             private global::System.Data.DataColumn columnjenis;
             
@@ -2792,14 +2796,6 @@ namespace OpenRetail.Report.DataSet {
             protected ReportKartuHutangDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn no_urutColumn {
-                get {
-                    return this.columnno_urut;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2860,6 +2856,30 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn saldo_awalColumn {
+                get {
+                    return this.columnsaldo_awal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn saldoColumn {
+                get {
+                    return this.columnsaldo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn saldo_akhirColumn {
+                get {
+                    return this.columnsaldo_akhir;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn jenisColumn {
                 get {
                     return this.columnjenis;
@@ -2903,10 +2923,9 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ReportKartuHutangRow AddReportKartuHutangRow(int no_urut, string supplier_id, string nama_supplier, System.DateTime tanggal, string nama_produk, string satuan, double jumlah, double total, int jenis) {
+            public ReportKartuHutangRow AddReportKartuHutangRow(string supplier_id, string nama_supplier, System.DateTime tanggal, string nama_produk, string satuan, double jumlah, double total, double saldo_awal, double saldo, double saldo_akhir, int jenis) {
                 ReportKartuHutangRow rowReportKartuHutangRow = ((ReportKartuHutangRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        no_urut,
                         supplier_id,
                         nama_supplier,
                         tanggal,
@@ -2914,6 +2933,9 @@ namespace OpenRetail.Report.DataSet {
                         satuan,
                         jumlah,
                         total,
+                        saldo_awal,
+                        saldo,
+                        saldo_akhir,
                         jenis};
                 rowReportKartuHutangRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReportKartuHutangRow);
@@ -2937,7 +2959,6 @@ namespace OpenRetail.Report.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnno_urut = base.Columns["no_urut"];
                 this.columnsupplier_id = base.Columns["supplier_id"];
                 this.columnnama_supplier = base.Columns["nama_supplier"];
                 this.columntanggal = base.Columns["tanggal"];
@@ -2945,14 +2966,15 @@ namespace OpenRetail.Report.DataSet {
                 this.columnsatuan = base.Columns["satuan"];
                 this.columnjumlah = base.Columns["jumlah"];
                 this.columntotal = base.Columns["total"];
+                this.columnsaldo_awal = base.Columns["saldo_awal"];
+                this.columnsaldo = base.Columns["saldo"];
+                this.columnsaldo_akhir = base.Columns["saldo_akhir"];
                 this.columnjenis = base.Columns["jenis"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnno_urut = new global::System.Data.DataColumn("no_urut", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnno_urut);
                 this.columnsupplier_id = new global::System.Data.DataColumn("supplier_id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsupplier_id);
                 this.columnnama_supplier = new global::System.Data.DataColumn("nama_supplier", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2967,6 +2989,12 @@ namespace OpenRetail.Report.DataSet {
                 base.Columns.Add(this.columnjumlah);
                 this.columntotal = new global::System.Data.DataColumn("total", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotal);
+                this.columnsaldo_awal = new global::System.Data.DataColumn("saldo_awal", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsaldo_awal);
+                this.columnsaldo = new global::System.Data.DataColumn("saldo", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsaldo);
+                this.columnsaldo_akhir = new global::System.Data.DataColumn("saldo_akhir", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsaldo_akhir);
                 this.columnjenis = new global::System.Data.DataColumn("jenis", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnjenis);
             }
@@ -4960,22 +4988,6 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int no_urut {
-                get {
-                    try {
-                        return ((int)(this[this.tableReportKartuHutang.no_urutColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'no_urut\' in table \'ReportKartuHutang\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableReportKartuHutang.no_urutColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string supplier_id {
                 get {
                     try {
@@ -5088,6 +5100,54 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double saldo_awal {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKartuHutang.saldo_awalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'saldo_awal\' in table \'ReportKartuHutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuHutang.saldo_awalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double saldo {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKartuHutang.saldoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'saldo\' in table \'ReportKartuHutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuHutang.saldoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double saldo_akhir {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKartuHutang.saldo_akhirColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'saldo_akhir\' in table \'ReportKartuHutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuHutang.saldo_akhirColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int jenis {
                 get {
                     try {
@@ -5100,18 +5160,6 @@ namespace OpenRetail.Report.DataSet {
                 set {
                     this[this.tableReportKartuHutang.jenisColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isno_urutNull() {
-                return this.IsNull(this.tableReportKartuHutang.no_urutColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setno_urutNull() {
-                this[this.tableReportKartuHutang.no_urutColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5196,6 +5244,42 @@ namespace OpenRetail.Report.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SettotalNull() {
                 this[this.tableReportKartuHutang.totalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issaldo_awalNull() {
+                return this.IsNull(this.tableReportKartuHutang.saldo_awalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsaldo_awalNull() {
+                this[this.tableReportKartuHutang.saldo_awalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssaldoNull() {
+                return this.IsNull(this.tableReportKartuHutang.saldoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsaldoNull() {
+                this[this.tableReportKartuHutang.saldoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issaldo_akhirNull() {
+                return this.IsNull(this.tableReportKartuHutang.saldo_akhirColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsaldo_akhirNull() {
+                this[this.tableReportKartuHutang.saldo_akhirColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

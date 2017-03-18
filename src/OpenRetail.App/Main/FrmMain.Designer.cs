@@ -466,6 +466,7 @@
             this.mnuLapKartuHutangPembelianProduk.Size = new System.Drawing.Size(283, 22);
             this.mnuLapKartuHutangPembelianProduk.Tag = "FrmLapKartuHutangPembelianProduk";
             this.mnuLapKartuHutangPembelianProduk.Text = "Kartu Hutang Pembelian Produk";
+            this.mnuLapKartuHutangPembelianProduk.Click += new System.EventHandler(this.mnuLapKartuHutangPembelianProduk_Click);
             // 
             // mnuLapReturPembelianProduk
             // 

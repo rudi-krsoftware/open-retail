@@ -38,6 +38,105 @@ namespace OpenRetail.Bll.Service.Report
             _log = log;
         }
 
+        private void HitungSaldoAwal(IList<ReportKartuHutang> oList)
+        {
+            var currentSupplierId = string.Empty;
+            double saldo = 0;
+
+            foreach (var item in oList)
+            {
+                if (currentSupplierId != item.supplier_id)
+                {
+                    if (currentSupplierId.Length > 0)
+                    {
+                        var oldSupplier = oList.LastOrDefault(f => f.supplier_id == currentSupplierId);
+                        oldSupplier.saldo_akhir = oldSupplier.saldo;
+                    }
+
+                    currentSupplierId = item.supplier_id;
+                    saldo = 0;
+                }
+
+                if (item.jenis == 1) // pembelian kredit
+                {
+                    saldo += item.total;
+                }
+                else // pembayaran hutang
+                {
+                    saldo -= item.total;
+                }
+
+                item.saldo = saldo;
+            }
+
+            var lastSupplier = oList.LastOrDefault();
+            if (lastSupplier != null)
+                lastSupplier.saldo_akhir = lastSupplier.saldo;
+        }
+
+        private void HitungSaldoAkhir(IList<ReportKartuHutang> listOfSaldoAwal, IList<ReportKartuHutang> listOfSaldoAkhir)
+        {
+            var currentSupplierId = string.Empty;
+            double saldo = 0;
+            var noUrut = 1;
+
+            foreach (var item in listOfSaldoAkhir)
+            {
+                if (currentSupplierId != item.supplier_id)
+                {
+                    if (currentSupplierId.Length > 0)
+                    {
+                        var oldSupplier = listOfSaldoAkhir.LastOrDefault(f => f.supplier_id == currentSupplierId);
+                        oldSupplier.saldo_akhir = oldSupplier.saldo;
+                    }
+
+                    currentSupplierId = item.supplier_id;
+                    saldo = 0;
+                    noUrut = 1;
+                }
+
+                if (noUrut == 1)
+                {
+                    // copy saldo awal
+                    var supplierSaldoAwal = listOfSaldoAwal.LastOrDefault(f => f.supplier_id == currentSupplierId);
+                    if (supplierSaldoAwal != null)
+                    {
+                        item.saldo_awal = supplierSaldoAwal.saldo_akhir;
+                        saldo = item.saldo_awal;
+                    }
+                }
+
+                if (item.jenis == 1) // pembelian kredit
+                {
+                    saldo += item.total;
+                }
+                else // pembayaran hutang
+                {
+                    saldo -= item.total;
+                }
+
+                item.saldo = saldo;
+                noUrut++;
+            }
+
+            var lastSupplier = listOfSaldoAkhir.LastOrDefault();
+            if (lastSupplier != null)
+                lastSupplier.saldo_akhir = lastSupplier.saldo;
+        }
+
+        private IList<ReportKartuHutang> GetSaldoAwal(DateTime tanggal)
+        {
+            IList<ReportKartuHutang> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportKartuHutangRepository.GetSaldoAwal(tanggal);
+            }
+
+            return oList;
+        }
+
         public IList<ReportKartuHutang> GetByBulan(int bulan, int tahun)
         {
             IList<ReportKartuHutang> oList = null;
@@ -46,6 +145,18 @@ namespace OpenRetail.Bll.Service.Report
             {
                 IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.ReportKartuHutangRepository.GetByBulan(bulan, tahun);
+            }
+
+            if (oList.Count > 0)
+            {
+                var tanggalAwal = oList.Min(f => f.tanggal);
+
+                // hitung saldo awal masing-masing supplier
+                var listOfSaldoAwal = GetSaldoAwal(tanggalAwal);
+                HitungSaldoAwal(listOfSaldoAwal);
+
+                // hitung saldo akhir
+                HitungSaldoAkhir(listOfSaldoAwal, oList);
             }
 
             return oList;
@@ -61,6 +172,18 @@ namespace OpenRetail.Bll.Service.Report
                 oList = uow.ReportKartuHutangRepository.GetByBulan(bulanAwal, bulanAkhir, tahun);
             }
 
+            if (oList.Count > 0)
+            {
+                var tanggalAwal = oList.Min(f => f.tanggal);
+
+                // hitung saldo awal masing-masing supplier
+                var listOfSaldoAwal = GetSaldoAwal(tanggalAwal);
+                HitungSaldoAwal(listOfSaldoAwal);
+
+                // hitung saldo akhir
+                HitungSaldoAkhir(listOfSaldoAwal, oList);
+            }
+
             return oList;
         }
 
@@ -74,7 +197,19 @@ namespace OpenRetail.Bll.Service.Report
                 oList = uow.ReportKartuHutangRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
             }
 
+            if (oList.Count > 0)
+            {
+                var tanggalAwal = oList.Min(f => f.tanggal);
+
+                // hitung saldo awal masing-masing supplier
+                var listOfSaldoAwal = GetSaldoAwal(tanggalAwal);
+                HitungSaldoAwal(listOfSaldoAwal);
+
+                // hitung saldo akhir
+                HitungSaldoAkhir(listOfSaldoAwal, oList);
+            }
+
             return oList;
-        }
+        }        
     }
 }

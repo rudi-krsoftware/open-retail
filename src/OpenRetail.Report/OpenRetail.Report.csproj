@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RvKartuHutangPembelianProduk.rdlc" />
     <EmbeddedResource Include="RvPembayaranHutangPembelianProdukDetail.rdlc" />
     <EmbeddedResource Include="RvHutangPembelianProdukDetail.rdlc" />
     <EmbeddedResource Include="RvPembayaranHutangPembelianProdukHeader.rdlc" />

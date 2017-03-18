@@ -27,6 +27,7 @@ namespace OpenRetail.Repository.Api.Report
 {
     public interface IReportKartuHutangRepository
     {
+        IList<ReportKartuHutang> GetSaldoAwal(DateTime tanggal);
         IList<ReportKartuHutang> GetByBulan(int bulan, int tahun);
         IList<ReportKartuHutang> GetByBulan(int bulanAwal, int bulanAkhir, int tahun);
         IList<ReportKartuHutang> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);

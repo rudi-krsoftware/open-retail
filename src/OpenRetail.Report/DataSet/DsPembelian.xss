@@ -12,7 +12,7 @@
     <Shape ID="DesignTable:ReportHutangPembelianProdukDetail" ZOrder="2" X="289" Y="72" Height="68" Width="286" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
     <Shape ID="DesignTable:ReportPembayaranHutangPembelianProdukHeader" ZOrder="7" X="0" Y="167" Height="49" Width="368" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="45" />
     <Shape ID="DesignTable:ReportPembayaranHutangPembelianProdukDetail" ZOrder="6" X="3" Y="231" Height="68" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:ReportKartuHutang" ZOrder="1" X="423" Y="175" Height="258" Width="191" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:ReportKartuHutang" ZOrder="1" X="423" Y="175" Height="238" Width="181" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="234" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

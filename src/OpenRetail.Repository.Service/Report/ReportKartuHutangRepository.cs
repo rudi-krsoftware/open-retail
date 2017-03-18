@@ -56,6 +56,31 @@ namespace OpenRetail.Repository.Service.Report
         {
             this._context = context;
             this._log = log;
+        }        
+
+        public IList<ReportKartuHutang> GetSaldoAwal(DateTime tanggal)
+        {
+            IList<ReportKartuHutang> oList = new List<ReportKartuHutang>();
+
+            try
+            {
+                _where1 = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND t_beli_produk.tanggal < @tanggal";
+
+                _where2 = @"WHERE t_pembayaran_hutang_produk.tanggal < @tanggal AND t_pembayaran_hutang_produk.is_tunai = 'f'";
+
+                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where1);
+                _sql = _sql.Replace("{WHERE_2}", _where2);
+
+                oList = _context.db.Query<ReportKartuHutang>(_sql, new { tanggal })
+                                .ToList();
+
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
         }
 
         public IList<ReportKartuHutang> GetByBulan(int bulan, int tahun)
@@ -74,7 +99,7 @@ namespace OpenRetail.Repository.Service.Report
                 _sql = _sql.Replace("{WHERE_2}", _where2);
 
                 oList = _context.db.Query<ReportKartuHutang>(_sql, new { bulan, tahun })
-                                .ToList();
+                                .ToList();                
             }
             catch (Exception ex)
             {
@@ -82,14 +107,14 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }
+        }        
 
         public IList<ReportKartuHutang> GetByBulan(int bulanAwal, int bulanAkhir, int tahun)
         {
             IList<ReportKartuHutang> oList = new List<ReportKartuHutang>();
 
             try
-            {
+            {                
                 _where1 = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND 
                             (EXTRACT(MONTH FROM t_beli_produk.tanggal) BETWEEN @bulanAwal AND @bulanAkhir) AND EXTRACT(YEAR FROM t_beli_produk.tanggal) = @tahun";
 
@@ -100,7 +125,7 @@ namespace OpenRetail.Repository.Service.Report
                 _sql = _sql.Replace("{WHERE_2}", _where2);
 
                 oList = _context.db.Query<ReportKartuHutang>(_sql, new { bulanAwal, bulanAkhir, tahun })
-                                .ToList();
+                                .ToList();                                
             }
             catch (Exception ex)
             {
@@ -108,7 +133,7 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }
+        }        
 
         public IList<ReportKartuHutang> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
@@ -124,7 +149,7 @@ namespace OpenRetail.Repository.Service.Report
                 _sql = _sql.Replace("{WHERE_2}", _where2);
 
                 oList = _context.db.Query<ReportKartuHutang>(_sql, new { tanggalMulai, tanggalSelesai })
-                                .ToList();
+                                .ToList();                
             }
             catch (Exception ex)
             {
@@ -132,6 +157,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }
+        }        
     }
 }
