@@ -1591,22 +1591,6 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <Code>Public Function GetGender(ByVal val as String) As String
-   Dim retVal as String = ""
-
-   If(val = "1")
-    retVal = "Male"
-   Else If (val = "2")
-    retVal = "???"
-   Else If (val = "3")
-    retVal = "???"
-   Else
-    retVal = "???"
-   End If
-
-   Return retVal
-
-End Function</Code>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>58cd9b19-713d-4e02-ac71-28784cb68531</rd:ReportID>
 </Report>
