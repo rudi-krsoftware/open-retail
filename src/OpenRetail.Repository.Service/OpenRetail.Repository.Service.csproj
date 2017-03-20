@@ -79,6 +79,7 @@
     <Compile Include="Report\ReportHutangBeliProdukRepository.cs" />
     <Compile Include="Report\ReportKartuHutangRepository.cs" />
     <Compile Include="Report\ReportPembayaranHutangBeliProdukRepository.cs" />
+    <Compile Include="Report\ReportReturBeliProdukRepository.cs" />
     <Compile Include="ReturBeliProdukRepository.cs" />
     <Compile Include="ReturJualProdukRepository.cs" />
     <Compile Include="RolePrivilegeRepository.cs" />

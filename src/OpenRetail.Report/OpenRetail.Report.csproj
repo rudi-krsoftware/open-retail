@@ -61,6 +61,8 @@
     <EmbeddedResource Include="RvPembayaranHutangPembelianProdukHeader.rdlc" />
     <EmbeddedResource Include="RvPembelianProdukDetail.rdlc" />
     <EmbeddedResource Include="RvHutangPembelianProdukHeader.rdlc" />
+    <EmbeddedResource Include="RvReturPembelianProdukDetail.rdlc" />
+    <EmbeddedResource Include="RvReturPembelianProdukHeader.rdlc" />
     <EmbeddedResource Include="RvPembelianProdukHeader.rdlc" />
   </ItemGroup>
   <ItemGroup>

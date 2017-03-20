@@ -38,6 +38,10 @@ namespace OpenRetail.Report.DataSet {
         
         private ReportKartuHutangDataTable tableReportKartuHutang;
         
+        private ReportReturPembelianProdukHeaderDataTable tableReportReturPembelianProdukHeader;
+        
+        private ReportReturPembelianProdukDetailDataTable tableReportReturPembelianProdukDetail;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -86,6 +90,12 @@ namespace OpenRetail.Report.DataSet {
                 }
                 if ((ds.Tables["ReportKartuHutang"] != null)) {
                     base.Tables.Add(new ReportKartuHutangDataTable(ds.Tables["ReportKartuHutang"]));
+                }
+                if ((ds.Tables["ReportReturPembelianProdukHeader"] != null)) {
+                    base.Tables.Add(new ReportReturPembelianProdukHeaderDataTable(ds.Tables["ReportReturPembelianProdukHeader"]));
+                }
+                if ((ds.Tables["ReportReturPembelianProdukDetail"] != null)) {
+                    base.Tables.Add(new ReportReturPembelianProdukDetailDataTable(ds.Tables["ReportReturPembelianProdukDetail"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -177,6 +187,26 @@ namespace OpenRetail.Report.DataSet {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportReturPembelianProdukHeaderDataTable ReportReturPembelianProdukHeader {
+            get {
+                return this.tableReportReturPembelianProdukHeader;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportReturPembelianProdukDetailDataTable ReportReturPembelianProdukDetail {
+            get {
+                return this.tableReportReturPembelianProdukDetail;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -263,6 +293,12 @@ namespace OpenRetail.Report.DataSet {
                 if ((ds.Tables["ReportKartuHutang"] != null)) {
                     base.Tables.Add(new ReportKartuHutangDataTable(ds.Tables["ReportKartuHutang"]));
                 }
+                if ((ds.Tables["ReportReturPembelianProdukHeader"] != null)) {
+                    base.Tables.Add(new ReportReturPembelianProdukHeaderDataTable(ds.Tables["ReportReturPembelianProdukHeader"]));
+                }
+                if ((ds.Tables["ReportReturPembelianProdukDetail"] != null)) {
+                    base.Tables.Add(new ReportReturPembelianProdukDetailDataTable(ds.Tables["ReportReturPembelianProdukDetail"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -338,6 +374,18 @@ namespace OpenRetail.Report.DataSet {
                     this.tableReportKartuHutang.InitVars();
                 }
             }
+            this.tableReportReturPembelianProdukHeader = ((ReportReturPembelianProdukHeaderDataTable)(base.Tables["ReportReturPembelianProdukHeader"]));
+            if ((initTable == true)) {
+                if ((this.tableReportReturPembelianProdukHeader != null)) {
+                    this.tableReportReturPembelianProdukHeader.InitVars();
+                }
+            }
+            this.tableReportReturPembelianProdukDetail = ((ReportReturPembelianProdukDetailDataTable)(base.Tables["ReportReturPembelianProdukDetail"]));
+            if ((initTable == true)) {
+                if ((this.tableReportReturPembelianProdukDetail != null)) {
+                    this.tableReportReturPembelianProdukDetail.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -362,6 +410,10 @@ namespace OpenRetail.Report.DataSet {
             base.Tables.Add(this.tableReportPembayaranHutangPembelianProdukDetail);
             this.tableReportKartuHutang = new ReportKartuHutangDataTable();
             base.Tables.Add(this.tableReportKartuHutang);
+            this.tableReportReturPembelianProdukHeader = new ReportReturPembelianProdukHeaderDataTable();
+            base.Tables.Add(this.tableReportReturPembelianProdukHeader);
+            this.tableReportReturPembelianProdukDetail = new ReportReturPembelianProdukDetailDataTable();
+            base.Tables.Add(this.tableReportReturPembelianProdukDetail);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -403,6 +455,18 @@ namespace OpenRetail.Report.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeReportKartuHutang() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeReportReturPembelianProdukHeader() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeReportReturPembelianProdukDetail() {
             return false;
         }
         
@@ -481,6 +545,12 @@ namespace OpenRetail.Report.DataSet {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ReportKartuHutangRowChangeEventHandler(object sender, ReportKartuHutangRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ReportReturPembelianProdukHeaderRowChangeEventHandler(object sender, ReportReturPembelianProdukHeaderRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ReportReturPembelianProdukDetailRowChangeEventHandler(object sender, ReportReturPembelianProdukDetailRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3124,6 +3194,696 @@ namespace OpenRetail.Report.DataSet {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportReturPembelianProdukHeaderDataTable : global::System.Data.TypedTableBase<ReportReturPembelianProdukHeaderRow> {
+            
+            private global::System.Data.DataColumn columnsupplier_id;
+            
+            private global::System.Data.DataColumn columnnama_supplier;
+            
+            private global::System.Data.DataColumn columnnota_beli;
+            
+            private global::System.Data.DataColumn columnnota_retur;
+            
+            private global::System.Data.DataColumn columntanggal_retur;
+            
+            private global::System.Data.DataColumn columntotal_retur;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukHeaderDataTable() {
+                this.TableName = "ReportReturPembelianProdukHeader";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportReturPembelianProdukHeaderDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ReportReturPembelianProdukHeaderDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn supplier_idColumn {
+                get {
+                    return this.columnsupplier_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_supplierColumn {
+                get {
+                    return this.columnnama_supplier;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nota_beliColumn {
+                get {
+                    return this.columnnota_beli;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nota_returColumn {
+                get {
+                    return this.columnnota_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tanggal_returColumn {
+                get {
+                    return this.columntanggal_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn total_returColumn {
+                get {
+                    return this.columntotal_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukHeaderRow this[int index] {
+                get {
+                    return ((ReportReturPembelianProdukHeaderRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPembelianProdukHeaderRowChangeEventHandler ReportReturPembelianProdukHeaderRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPembelianProdukHeaderRowChangeEventHandler ReportReturPembelianProdukHeaderRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPembelianProdukHeaderRowChangeEventHandler ReportReturPembelianProdukHeaderRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPembelianProdukHeaderRowChangeEventHandler ReportReturPembelianProdukHeaderRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddReportReturPembelianProdukHeaderRow(ReportReturPembelianProdukHeaderRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukHeaderRow AddReportReturPembelianProdukHeaderRow(string supplier_id, string nama_supplier, string nota_beli, string nota_retur, System.DateTime tanggal_retur, double total_retur) {
+                ReportReturPembelianProdukHeaderRow rowReportReturPembelianProdukHeaderRow = ((ReportReturPembelianProdukHeaderRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        supplier_id,
+                        nama_supplier,
+                        nota_beli,
+                        nota_retur,
+                        tanggal_retur,
+                        total_retur};
+                rowReportReturPembelianProdukHeaderRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportReturPembelianProdukHeaderRow);
+                return rowReportReturPembelianProdukHeaderRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ReportReturPembelianProdukHeaderDataTable cln = ((ReportReturPembelianProdukHeaderDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportReturPembelianProdukHeaderDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnsupplier_id = base.Columns["supplier_id"];
+                this.columnnama_supplier = base.Columns["nama_supplier"];
+                this.columnnota_beli = base.Columns["nota_beli"];
+                this.columnnota_retur = base.Columns["nota_retur"];
+                this.columntanggal_retur = base.Columns["tanggal_retur"];
+                this.columntotal_retur = base.Columns["total_retur"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnsupplier_id = new global::System.Data.DataColumn("supplier_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsupplier_id);
+                this.columnnama_supplier = new global::System.Data.DataColumn("nama_supplier", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_supplier);
+                this.columnnota_beli = new global::System.Data.DataColumn("nota_beli", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota_beli);
+                this.columnnota_retur = new global::System.Data.DataColumn("nota_retur", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota_retur);
+                this.columntanggal_retur = new global::System.Data.DataColumn("tanggal_retur", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntanggal_retur);
+                this.columntotal_retur = new global::System.Data.DataColumn("total_retur", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_retur);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukHeaderRow NewReportReturPembelianProdukHeaderRow() {
+                return ((ReportReturPembelianProdukHeaderRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportReturPembelianProdukHeaderRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportReturPembelianProdukHeaderRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportReturPembelianProdukHeaderRowChanged != null)) {
+                    this.ReportReturPembelianProdukHeaderRowChanged(this, new ReportReturPembelianProdukHeaderRowChangeEvent(((ReportReturPembelianProdukHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportReturPembelianProdukHeaderRowChanging != null)) {
+                    this.ReportReturPembelianProdukHeaderRowChanging(this, new ReportReturPembelianProdukHeaderRowChangeEvent(((ReportReturPembelianProdukHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportReturPembelianProdukHeaderRowDeleted != null)) {
+                    this.ReportReturPembelianProdukHeaderRowDeleted(this, new ReportReturPembelianProdukHeaderRowChangeEvent(((ReportReturPembelianProdukHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportReturPembelianProdukHeaderRowDeleting != null)) {
+                    this.ReportReturPembelianProdukHeaderRowDeleting(this, new ReportReturPembelianProdukHeaderRowChangeEvent(((ReportReturPembelianProdukHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveReportReturPembelianProdukHeaderRow(ReportReturPembelianProdukHeaderRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsPembelian ds = new DsPembelian();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportReturPembelianProdukHeaderDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportReturPembelianProdukDetailDataTable : global::System.Data.TypedTableBase<ReportReturPembelianProdukDetailRow> {
+            
+            private global::System.Data.DataColumn columnsupplier_id;
+            
+            private global::System.Data.DataColumn columnnama_supplier;
+            
+            private global::System.Data.DataColumn columnnota_beli;
+            
+            private global::System.Data.DataColumn columnnota_retur;
+            
+            private global::System.Data.DataColumn columntanggal_retur;
+            
+            private global::System.Data.DataColumn columnnama_produk;
+            
+            private global::System.Data.DataColumn columnsatuan;
+            
+            private global::System.Data.DataColumn columnjumlah_retur;
+            
+            private global::System.Data.DataColumn columnharga;
+            
+            private global::System.Data.DataColumn columnsub_total;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukDetailDataTable() {
+                this.TableName = "ReportReturPembelianProdukDetail";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportReturPembelianProdukDetailDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ReportReturPembelianProdukDetailDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn supplier_idColumn {
+                get {
+                    return this.columnsupplier_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_supplierColumn {
+                get {
+                    return this.columnnama_supplier;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nota_beliColumn {
+                get {
+                    return this.columnnota_beli;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nota_returColumn {
+                get {
+                    return this.columnnota_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tanggal_returColumn {
+                get {
+                    return this.columntanggal_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_produkColumn {
+                get {
+                    return this.columnnama_produk;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn satuanColumn {
+                get {
+                    return this.columnsatuan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn jumlah_returColumn {
+                get {
+                    return this.columnjumlah_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn hargaColumn {
+                get {
+                    return this.columnharga;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sub_totalColumn {
+                get {
+                    return this.columnsub_total;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukDetailRow this[int index] {
+                get {
+                    return ((ReportReturPembelianProdukDetailRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPembelianProdukDetailRowChangeEventHandler ReportReturPembelianProdukDetailRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPembelianProdukDetailRowChangeEventHandler ReportReturPembelianProdukDetailRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPembelianProdukDetailRowChangeEventHandler ReportReturPembelianProdukDetailRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPembelianProdukDetailRowChangeEventHandler ReportReturPembelianProdukDetailRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddReportReturPembelianProdukDetailRow(ReportReturPembelianProdukDetailRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukDetailRow AddReportReturPembelianProdukDetailRow(string supplier_id, string nama_supplier, string nota_beli, string nota_retur, System.DateTime tanggal_retur, string nama_produk, string satuan, double jumlah_retur, double harga, double sub_total) {
+                ReportReturPembelianProdukDetailRow rowReportReturPembelianProdukDetailRow = ((ReportReturPembelianProdukDetailRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        supplier_id,
+                        nama_supplier,
+                        nota_beli,
+                        nota_retur,
+                        tanggal_retur,
+                        nama_produk,
+                        satuan,
+                        jumlah_retur,
+                        harga,
+                        sub_total};
+                rowReportReturPembelianProdukDetailRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportReturPembelianProdukDetailRow);
+                return rowReportReturPembelianProdukDetailRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ReportReturPembelianProdukDetailDataTable cln = ((ReportReturPembelianProdukDetailDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportReturPembelianProdukDetailDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnsupplier_id = base.Columns["supplier_id"];
+                this.columnnama_supplier = base.Columns["nama_supplier"];
+                this.columnnota_beli = base.Columns["nota_beli"];
+                this.columnnota_retur = base.Columns["nota_retur"];
+                this.columntanggal_retur = base.Columns["tanggal_retur"];
+                this.columnnama_produk = base.Columns["nama_produk"];
+                this.columnsatuan = base.Columns["satuan"];
+                this.columnjumlah_retur = base.Columns["jumlah_retur"];
+                this.columnharga = base.Columns["harga"];
+                this.columnsub_total = base.Columns["sub_total"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnsupplier_id = new global::System.Data.DataColumn("supplier_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsupplier_id);
+                this.columnnama_supplier = new global::System.Data.DataColumn("nama_supplier", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_supplier);
+                this.columnnota_beli = new global::System.Data.DataColumn("nota_beli", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota_beli);
+                this.columnnota_retur = new global::System.Data.DataColumn("nota_retur", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota_retur);
+                this.columntanggal_retur = new global::System.Data.DataColumn("tanggal_retur", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntanggal_retur);
+                this.columnnama_produk = new global::System.Data.DataColumn("nama_produk", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_produk);
+                this.columnsatuan = new global::System.Data.DataColumn("satuan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsatuan);
+                this.columnjumlah_retur = new global::System.Data.DataColumn("jumlah_retur", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjumlah_retur);
+                this.columnharga = new global::System.Data.DataColumn("harga", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnharga);
+                this.columnsub_total = new global::System.Data.DataColumn("sub_total", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsub_total);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukDetailRow NewReportReturPembelianProdukDetailRow() {
+                return ((ReportReturPembelianProdukDetailRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportReturPembelianProdukDetailRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportReturPembelianProdukDetailRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportReturPembelianProdukDetailRowChanged != null)) {
+                    this.ReportReturPembelianProdukDetailRowChanged(this, new ReportReturPembelianProdukDetailRowChangeEvent(((ReportReturPembelianProdukDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportReturPembelianProdukDetailRowChanging != null)) {
+                    this.ReportReturPembelianProdukDetailRowChanging(this, new ReportReturPembelianProdukDetailRowChangeEvent(((ReportReturPembelianProdukDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportReturPembelianProdukDetailRowDeleted != null)) {
+                    this.ReportReturPembelianProdukDetailRowDeleted(this, new ReportReturPembelianProdukDetailRowChangeEvent(((ReportReturPembelianProdukDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportReturPembelianProdukDetailRowDeleting != null)) {
+                    this.ReportReturPembelianProdukDetailRowDeleting(this, new ReportReturPembelianProdukDetailRowChangeEvent(((ReportReturPembelianProdukDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveReportReturPembelianProdukDetailRow(ReportReturPembelianProdukDetailRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsPembelian ds = new DsPembelian();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportReturPembelianProdukDetailDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ReportPembelianProdukHeaderRow : global::System.Data.DataRow {
@@ -5296,6 +6056,500 @@ namespace OpenRetail.Report.DataSet {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ReportReturPembelianProdukHeaderRow : global::System.Data.DataRow {
+            
+            private ReportReturPembelianProdukHeaderDataTable tableReportReturPembelianProdukHeader;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportReturPembelianProdukHeaderRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportReturPembelianProdukHeader = ((ReportReturPembelianProdukHeaderDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string supplier_id {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPembelianProdukHeader.supplier_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'supplier_id\' in table \'ReportReturPembelianProdukHeader\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukHeader.supplier_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_supplier {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPembelianProdukHeader.nama_supplierColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_supplier\' in table \'ReportReturPembelianProdukHeader\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukHeader.nama_supplierColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota_beli {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPembelianProdukHeader.nota_beliColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota_beli\' in table \'ReportReturPembelianProdukHeader\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukHeader.nota_beliColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota_retur {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPembelianProdukHeader.nota_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota_retur\' in table \'ReportReturPembelianProdukHeader\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukHeader.nota_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime tanggal_retur {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportReturPembelianProdukHeader.tanggal_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tanggal_retur\' in table \'ReportReturPembelianProdukHeader\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukHeader.tanggal_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double total_retur {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportReturPembelianProdukHeader.total_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_retur\' in table \'ReportReturPembelianProdukHeader\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukHeader.total_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issupplier_idNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukHeader.supplier_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsupplier_idNull() {
+                this[this.tableReportReturPembelianProdukHeader.supplier_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_supplierNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukHeader.nama_supplierColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_supplierNull() {
+                this[this.tableReportReturPembelianProdukHeader.nama_supplierColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnota_beliNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukHeader.nota_beliColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnota_beliNull() {
+                this[this.tableReportReturPembelianProdukHeader.nota_beliColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnota_returNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukHeader.nota_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnota_returNull() {
+                this[this.tableReportReturPembelianProdukHeader.nota_returColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istanggal_returNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukHeader.tanggal_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settanggal_returNull() {
+                this[this.tableReportReturPembelianProdukHeader.tanggal_returColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istotal_returNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukHeader.total_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settotal_returNull() {
+                this[this.tableReportReturPembelianProdukHeader.total_returColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ReportReturPembelianProdukDetailRow : global::System.Data.DataRow {
+            
+            private ReportReturPembelianProdukDetailDataTable tableReportReturPembelianProdukDetail;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportReturPembelianProdukDetailRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportReturPembelianProdukDetail = ((ReportReturPembelianProdukDetailDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string supplier_id {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPembelianProdukDetail.supplier_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'supplier_id\' in table \'ReportReturPembelianProdukDetail\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukDetail.supplier_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_supplier {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPembelianProdukDetail.nama_supplierColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_supplier\' in table \'ReportReturPembelianProdukDetail\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukDetail.nama_supplierColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota_beli {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPembelianProdukDetail.nota_beliColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota_beli\' in table \'ReportReturPembelianProdukDetail\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukDetail.nota_beliColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota_retur {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPembelianProdukDetail.nota_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota_retur\' in table \'ReportReturPembelianProdukDetail\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukDetail.nota_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime tanggal_retur {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportReturPembelianProdukDetail.tanggal_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tanggal_retur\' in table \'ReportReturPembelianProdukDetail\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukDetail.tanggal_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_produk {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPembelianProdukDetail.nama_produkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_produk\' in table \'ReportReturPembelianProdukDetail\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukDetail.nama_produkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string satuan {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPembelianProdukDetail.satuanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'satuan\' in table \'ReportReturPembelianProdukDetail\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukDetail.satuanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double jumlah_retur {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportReturPembelianProdukDetail.jumlah_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jumlah_retur\' in table \'ReportReturPembelianProdukDetail\' i" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukDetail.jumlah_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double harga {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportReturPembelianProdukDetail.hargaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'harga\' in table \'ReportReturPembelianProdukDetail\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukDetail.hargaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double sub_total {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportReturPembelianProdukDetail.sub_totalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sub_total\' in table \'ReportReturPembelianProdukDetail\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPembelianProdukDetail.sub_totalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issupplier_idNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukDetail.supplier_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsupplier_idNull() {
+                this[this.tableReportReturPembelianProdukDetail.supplier_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_supplierNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukDetail.nama_supplierColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_supplierNull() {
+                this[this.tableReportReturPembelianProdukDetail.nama_supplierColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnota_beliNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukDetail.nota_beliColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnota_beliNull() {
+                this[this.tableReportReturPembelianProdukDetail.nota_beliColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnota_returNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukDetail.nota_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnota_returNull() {
+                this[this.tableReportReturPembelianProdukDetail.nota_returColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istanggal_returNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukDetail.tanggal_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settanggal_returNull() {
+                this[this.tableReportReturPembelianProdukDetail.tanggal_returColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_produkNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukDetail.nama_produkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_produkNull() {
+                this[this.tableReportReturPembelianProdukDetail.nama_produkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssatuanNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukDetail.satuanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsatuanNull() {
+                this[this.tableReportReturPembelianProdukDetail.satuanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isjumlah_returNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukDetail.jumlah_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setjumlah_returNull() {
+                this[this.tableReportReturPembelianProdukDetail.jumlah_returColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IshargaNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukDetail.hargaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SethargaNull() {
+                this[this.tableReportReturPembelianProdukDetail.hargaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issub_totalNull() {
+                return this.IsNull(this.tableReportReturPembelianProdukDetail.sub_totalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsub_totalNull() {
+                this[this.tableReportReturPembelianProdukDetail.sub_totalColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -5519,6 +6773,74 @@ namespace OpenRetail.Report.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReportKartuHutangRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ReportReturPembelianProdukHeaderRowChangeEvent : global::System.EventArgs {
+            
+            private ReportReturPembelianProdukHeaderRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukHeaderRowChangeEvent(ReportReturPembelianProdukHeaderRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukHeaderRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ReportReturPembelianProdukDetailRowChangeEvent : global::System.EventArgs {
+            
+            private ReportReturPembelianProdukDetailRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukDetailRowChangeEvent(ReportReturPembelianProdukDetailRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPembelianProdukDetailRow Row {
                 get {
                     return this.eventRow;
                 }
