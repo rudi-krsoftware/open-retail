@@ -27,6 +27,7 @@ using System.Windows.Forms;
 
 using OpenRetail.App.Helper;
 using Microsoft.Reporting.WinForms;
+using OpenRetail.Model;
 
 namespace OpenRetail.App.UI.Template
 {
@@ -71,6 +72,38 @@ namespace OpenRetail.App.UI.Template
         {
             var frmPreview = new FrmPreviewReport(header, reportName, reportDataSources, parameters);
             frmPreview.ShowDialog();
+        }
+
+        protected IList<string> GetSupplierId(IList<Supplier> listOfSupplier)
+        {
+            var listOfSupplierId = new List<string>();
+
+            for (var i = 0; i < chkListBox.Items.Count; i++)
+            {
+                if (chkListBox.GetItemChecked(i))
+                {
+                    var supplier = listOfSupplier[i];
+                    listOfSupplierId.Add(supplier.supplier_id);
+                }
+            }
+
+            return listOfSupplierId;
+        }
+
+        protected IList<string> GetCustomerId(IList<Customer> listOfCustomer)
+        {
+            var listOfCustomerId = new List<string>();
+
+            for (var i = 0; i < chkListBox.Items.Count; i++)
+            {
+                if (chkListBox.GetItemChecked(i))
+                {
+                    var customer = listOfCustomer[i];
+                    listOfCustomerId.Add(customer.customer_id);
+                }
+            }
+
+            return listOfCustomerId;
         }
 
         /// <summary>

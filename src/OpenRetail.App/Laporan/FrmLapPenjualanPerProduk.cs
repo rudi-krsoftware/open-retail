@@ -64,22 +64,6 @@ namespace OpenRetail.App.Laporan
             }
         }
 
-        private IList<string> GetCustomerId(IList<Customer> listOfCustomer)
-        {
-            var listOfCustomerId = new List<string>();
-
-            for (var i = 0; i < chkListBox.Items.Count; i++)
-            {
-                if (chkListBox.GetItemChecked(i))
-                {
-                    var customer = listOfCustomer[i];
-                    listOfCustomerId.Add(customer.customer_id);
-                }
-            }
-
-            return listOfCustomerId;
-        }
-
         private void PreviewReport()
         {
             var periode = string.Empty;
@@ -91,7 +75,7 @@ namespace OpenRetail.App.Laporan
 
             if (chkBoxTitle.Checked)
             {
-                listOfCustomerId = GetCustomerId(_listOfCustomer);
+                listOfCustomerId = base.GetCustomerId(_listOfCustomer);
 
                 if (listOfCustomerId.Count == 0)
                 {

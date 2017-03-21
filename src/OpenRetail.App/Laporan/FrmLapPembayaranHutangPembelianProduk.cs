@@ -71,22 +71,6 @@ namespace OpenRetail.App.Laporan
             }
         }
 
-        private IList<string> GetSupplierId(IList<Supplier> listOfSupplier)
-        {
-            var listOfSupplierId = new List<string>();
-
-            for (var i = 0; i < chkListBox.Items.Count; i++)
-            {
-                if (chkListBox.GetItemChecked(i))
-                {
-                    var supplier = listOfSupplier[i];
-                    listOfSupplierId.Add(supplier.supplier_id);
-                }
-            }
-
-            return listOfSupplierId;
-        }
-
         private void PreviewReportHeader()
         {
             var periode = string.Empty;
@@ -98,7 +82,7 @@ namespace OpenRetail.App.Laporan
 
             if (chkBoxTitle.Checked)
             {
-                listOfSupplierId = GetSupplierId(_listOfSupplier);
+                listOfSupplierId = base.GetSupplierId(_listOfSupplier);
 
                 if (listOfSupplierId.Count == 0)
                 {
@@ -169,7 +153,7 @@ namespace OpenRetail.App.Laporan
 
             if (chkBoxTitle.Checked)
             {
-                listOfSupplierId = GetSupplierId(_listOfSupplier);
+                listOfSupplierId = base.GetSupplierId(_listOfSupplier);
 
                 if (listOfSupplierId.Count == 0)
                 {
