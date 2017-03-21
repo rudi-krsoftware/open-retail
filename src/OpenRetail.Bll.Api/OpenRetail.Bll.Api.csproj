@@ -69,6 +69,7 @@
     <Compile Include="Report\IBaseReportBll.cs" />
     <Compile Include="Report\IReportBeliProdukBll.cs" />
     <Compile Include="Report\IReportHutangBeliProdukBll.cs" />
+    <Compile Include="Report\IReportJualProdukBll.cs" />
     <Compile Include="Report\IReportKartuHutangBll.cs" />
     <Compile Include="Report\IReportPembayaranHutangBeliProdukBll.cs" />
     <Compile Include="Report\IReportReturBeliProdukBll.cs" />

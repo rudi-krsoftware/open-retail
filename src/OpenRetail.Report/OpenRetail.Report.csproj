@@ -52,6 +52,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsPembelian.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DsPenjualan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsPenjualan.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,8 +64,11 @@
     <EmbeddedResource Include="RvPembayaranHutangPembelianProdukDetail.rdlc" />
     <EmbeddedResource Include="RvHutangPembelianProdukDetail.rdlc" />
     <EmbeddedResource Include="RvPembayaranHutangPembelianProdukHeader.rdlc" />
+    <EmbeddedResource Include="RvPenjualanProduk.rdlc" />
+    <EmbeddedResource Include="RvPenjualanProdukDetail.rdlc" />
     <EmbeddedResource Include="RvPembelianProdukDetail.rdlc" />
     <EmbeddedResource Include="RvHutangPembelianProdukHeader.rdlc" />
+    <EmbeddedResource Include="RvPenjualanProdukHeader.rdlc" />
     <EmbeddedResource Include="RvReturPembelianProdukDetail.rdlc" />
     <EmbeddedResource Include="RvReturPembelianProdukHeader.rdlc" />
     <EmbeddedResource Include="RvPembelianProdukHeader.rdlc" />
@@ -76,6 +84,17 @@
     </None>
     <None Include="DataSet\DsPembelian.xss">
       <DependentUpon>DsPembelian.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DsPenjualan.xsc">
+      <DependentUpon>DsPenjualan.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DsPenjualan.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsPenjualan.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\DsPenjualan.xss">
+      <DependentUpon>DsPenjualan.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

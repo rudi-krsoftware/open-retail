@@ -94,6 +94,9 @@
     <Compile Include="Profil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReferencesType.cs" />
+    <Compile Include="Report\ReportPenjualanProduk.cs" />
+    <Compile Include="Report\ReportPenjualanProdukDetail.cs" />
+    <Compile Include="Report\ReportPenjualanProdukHeader.cs" />
     <Compile Include="Report\ReportReturPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportReturPembelianProdukHeader.cs" />
     <Compile Include="ReturBeliProduk.cs" />

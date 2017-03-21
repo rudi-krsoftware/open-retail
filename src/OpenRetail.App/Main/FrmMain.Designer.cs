@@ -496,6 +496,7 @@
             this.mnuLapPenjualanProduk.Size = new System.Drawing.Size(280, 22);
             this.mnuLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.mnuLapPenjualanProduk.Text = "Penjualan Produk";
+            this.mnuLapPenjualanProduk.Click += new System.EventHandler(this.mnuLapPenjualanProduk_Click);
             // 
             // mnuLapPenjualanPerProduk
             // 
@@ -503,6 +504,7 @@
             this.mnuLapPenjualanPerProduk.Size = new System.Drawing.Size(280, 22);
             this.mnuLapPenjualanPerProduk.Tag = "FrmLapPenjualanPerProduk";
             this.mnuLapPenjualanPerProduk.Text = "Penjualan Per Produk";
+            this.mnuLapPenjualanPerProduk.Click += new System.EventHandler(this.mnuLapPenjualanPerProduk_Click);
             // 
             // mnuLapPiutangPenjualanProduk
             // 

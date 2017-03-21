@@ -6,28 +6,31 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.36111in</Width>
+              <Width>0.34606in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.67361in</Width>
+              <Width>0.65856in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.83334in</Width>
+              <Width>0.81829in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.45834in</Width>
+              <Width>0.42754in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.03817in</Width>
+              <Width>1.33912in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.51042in</Width>
+              <Width>1.8722in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.82292in</Width>
+              <Width>0.49537in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.875in</Width>
+              <Width>0.75579in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.85995in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -201,6 +204,61 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox5">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Status</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>Silver</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox11">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -208,7 +266,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Supplier</Value>
+                              <Value>Customer</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -638,14 +696,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="nama_supplier">
+                    <Textbox Name="tanggal_tempo">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!nama_supplier.Value</Value>
+                              <Value>=IIf(Format(Fields!tanggal_tempo.Value, "dd-MM-yyyy") = "01-01-0001", "Tunai", "Kredit")</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -654,7 +712,58 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>nama_supplier</rd:DefaultName>
+                      <rd:DefaultName>tanggal_tempo</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="nama_customer">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!nama_customer.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>nama_customer</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -749,7 +858,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=FormatNumber(Fields!jumlah.Value-Fields!jumlah_retur.Value, 2)</Value>
+                              <Value>=FormatNumber(Fields!jumlah.Value, 2)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -802,7 +911,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=FormatNumber(Fields!harga_setelah_diskon.Value, 2)</Value>
+                              <Value>=FormatNumber(Fields!harga_jual_setelah_diskon.Value, 2)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1004,6 +1113,42 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox10</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox20">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox20</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -1259,6 +1404,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -1274,7 +1420,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>ReportPembelianProdukDetail</DataSetName>
+        <DataSetName>ReportPenjualanProdukDetail</DataSetName>
         <Top>0.67931in</Top>
         <Height>0.65289in</Height>
         <Width>7.57291in</Width>
@@ -1291,7 +1437,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>LAPORAN RINCIAN PEMBELIAN PRODUK</Value>
+                <Value>LAPORAN RINCIAN PENJUALAN PRODUK</Value>
                 <Style>
                   <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -1352,7 +1498,7 @@
     <Height>3.38379cm</Height>
     <Style />
   </Body>
-  <Width>19.23522cm</Width>
+  <Width>19.23519cm</Width>
   <Page>
     <PageHeight>27.94cm</PageHeight>
     <PageWidth>21.59cm</PageWidth>
@@ -1374,18 +1520,18 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="ReportPembelianProdukDetail">
+    <DataSet Name="ReportPenjualanProdukDetail">
       <Query>
         <DataSourceName>DsPembelian</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="supplier_id">
-          <DataField>supplier_id</DataField>
+        <Field Name="customer_id">
+          <DataField>customer_id</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="nama_supplier">
-          <DataField>nama_supplier</DataField>
+        <Field Name="nama_customer">
+          <DataField>nama_customer</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="nota">
@@ -1394,6 +1540,10 @@
         </Field>
         <Field Name="tanggal">
           <DataField>tanggal</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="tanggal_tempo">
+          <DataField>tanggal_tempo</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="produk_id">
@@ -1416,20 +1566,24 @@
           <DataField>jumlah_retur</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="harga">
-          <DataField>harga</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
         <Field Name="diskon">
           <DataField>diskon</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="diskon_rupiah">
-          <DataField>diskon_rupiah</DataField>
+        <Field Name="harga_beli">
+          <DataField>harga_beli</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="harga_setelah_diskon">
-          <DataField>harga_setelah_diskon</DataField>
+        <Field Name="harga_jual">
+          <DataField>harga_jual</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="diskon_rupiah_harga_jual">
+          <DataField>diskon_rupiah_harga_jual</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="harga_jual_setelah_diskon">
+          <DataField>harga_jual_setelah_diskon</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="sub_total">
@@ -1438,9 +1592,9 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>DsPembelian</rd:DataSetName>
-        <rd:SchemaPath>D:\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPembelian.xsd</rd:SchemaPath>
-        <rd:TableName>ReportPembelianProdukDetail</rd:TableName>
+        <rd:DataSetName>DsPenjualan</rd:DataSetName>
+        <rd:SchemaPath>D:\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPenjualan.xsd</rd:SchemaPath>
+        <rd:TableName>ReportPenjualanProdukDetail</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
