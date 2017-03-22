@@ -49,8 +49,7 @@ namespace OpenRetail.Repository.Service.Report
         private IDapperContext _context;
         private ILog _log;
         private string _sql;
-        private string _where1;
-        private string _where2;
+        private string _where;
 
         public ReportKartuHutangRepository(IDapperContext context, ILog log)
         {
@@ -64,12 +63,11 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                _where1 = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND t_beli_produk.tanggal < @tanggal";
+                _where = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND t_beli_produk.tanggal < @tanggal";
+                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where);
 
-                _where2 = @"WHERE t_pembayaran_hutang_produk.tanggal < @tanggal AND t_pembayaran_hutang_produk.is_tunai = 'f'";
-
-                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where1);
-                _sql = _sql.Replace("{WHERE_2}", _where2);
+                _where = @"WHERE t_pembayaran_hutang_produk.tanggal < @tanggal AND t_pembayaran_hutang_produk.is_tunai = 'f'";                
+                _sql = _sql.Replace("{WHERE_2}", _where);
 
                 oList = _context.db.Query<ReportKartuHutang>(_sql, new { tanggal })
                                 .ToList();
@@ -89,14 +87,13 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                _where1 = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND 
-                            EXTRACT(MONTH FROM t_beli_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_beli_produk.tanggal) = @tahun";
+                _where = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND 
+                           EXTRACT(MONTH FROM t_beli_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_beli_produk.tanggal) = @tahun";
+                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where);
 
-                _where2 = @"WHERE EXTRACT(MONTH FROM t_pembayaran_hutang_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_pembayaran_hutang_produk.tanggal) = @tahun AND 
-                            t_pembayaran_hutang_produk.is_tunai = 'f'";
-
-                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where1);
-                _sql = _sql.Replace("{WHERE_2}", _where2);
+                _where = @"WHERE EXTRACT(MONTH FROM t_pembayaran_hutang_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_pembayaran_hutang_produk.tanggal) = @tahun AND 
+                           t_pembayaran_hutang_produk.is_tunai = 'f'";
+                _sql = _sql.Replace("{WHERE_2}", _where);
 
                 oList = _context.db.Query<ReportKartuHutang>(_sql, new { bulan, tahun })
                                 .ToList();                
@@ -115,14 +112,13 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {                
-                _where1 = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND 
-                            (EXTRACT(MONTH FROM t_beli_produk.tanggal) BETWEEN @bulanAwal AND @bulanAkhir) AND EXTRACT(YEAR FROM t_beli_produk.tanggal) = @tahun";
+                _where = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND 
+                           (EXTRACT(MONTH FROM t_beli_produk.tanggal) BETWEEN @bulanAwal AND @bulanAkhir) AND EXTRACT(YEAR FROM t_beli_produk.tanggal) = @tahun";
+                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where);
 
-                _where2 = @"WHERE (EXTRACT(MONTH FROM t_pembayaran_hutang_produk.tanggal) BETWEEN @bulanAwal AND @bulanAkhir) AND EXTRACT(YEAR FROM t_pembayaran_hutang_produk.tanggal) = @tahun AND 
-                            t_pembayaran_hutang_produk.is_tunai = 'f'";
-
-                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where1);
-                _sql = _sql.Replace("{WHERE_2}", _where2);
+                _where = @"WHERE (EXTRACT(MONTH FROM t_pembayaran_hutang_produk.tanggal) BETWEEN @bulanAwal AND @bulanAkhir) AND EXTRACT(YEAR FROM t_pembayaran_hutang_produk.tanggal) = @tahun AND 
+                           t_pembayaran_hutang_produk.is_tunai = 'f'";
+                _sql = _sql.Replace("{WHERE_2}", _where);
 
                 oList = _context.db.Query<ReportKartuHutang>(_sql, new { bulanAwal, bulanAkhir, tahun })
                                 .ToList();                                
@@ -141,12 +137,11 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                _where1 = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND t_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai";
+                _where = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND t_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai";
+                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where);
 
-                _where2 = @"WHERE t_pembayaran_hutang_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai AND t_pembayaran_hutang_produk.is_tunai = 'f'";
-
-                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where1);
-                _sql = _sql.Replace("{WHERE_2}", _where2);
+                _where = @"WHERE t_pembayaran_hutang_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai AND t_pembayaran_hutang_produk.is_tunai = 'f'";
+                _sql = _sql.Replace("{WHERE_2}", _where);
 
                 oList = _context.db.Query<ReportKartuHutang>(_sql, new { tanggalMulai, tanggalSelesai })
                                 .ToList();                

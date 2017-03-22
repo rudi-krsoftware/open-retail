@@ -50,7 +50,6 @@ namespace OpenRetail.Repository.Service.Report
 
         private IDapperContext _context;
         private ILog _log;
-        private string _sql;
 
         public ReportReturBeliProdukRepository(IDapperContext context, ILog log)
         {
@@ -64,9 +63,12 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                _sql = SQL_TEMPLATE_HEADER.Replace("{WHERE}", "WHERE EXTRACT(MONTH FROM t_retur_beli_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_retur_beli_produk.tanggal) = @tahun");
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_HEADER);
 
-                oList = _context.db.Query<ReportReturPembelianProdukHeader>(_sql, new { bulan, tahun })
+                whereBuilder.Add("EXTRACT(MONTH FROM t_retur_beli_produk.tanggal) = @bulan");
+                whereBuilder.Add("EXTRACT(YEAR FROM t_retur_beli_produk.tanggal) = @tahun");
+
+                oList = _context.db.Query<ReportReturPembelianProdukHeader>(whereBuilder.ToSql(), new { bulan, tahun })
                                 .ToList();
             }
             catch (Exception ex)
@@ -83,9 +85,12 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                _sql = SQL_TEMPLATE_HEADER.Replace("{WHERE}", "WHERE (EXTRACT(MONTH FROM t_retur_beli_produk.tanggal) BETWEEN @bulanAwal AND @bulanAkhir) AND EXTRACT(YEAR FROM t_retur_beli_produk.tanggal) = @tahun");
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_HEADER);
 
-                oList = _context.db.Query<ReportReturPembelianProdukHeader>(_sql, new { bulanAwal, bulanAkhir, tahun })
+                whereBuilder.Add("(EXTRACT(MONTH FROM t_retur_beli_produk.tanggal) BETWEEN @bulanAwal AND @bulanAkhir)");
+                whereBuilder.Add("EXTRACT(YEAR FROM t_retur_beli_produk.tanggal) = @tahun");
+
+                oList = _context.db.Query<ReportReturPembelianProdukHeader>(whereBuilder.ToSql(), new { bulanAwal, bulanAkhir, tahun })
                                 .ToList();
             }
             catch (Exception ex)
@@ -102,9 +107,11 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                _sql = SQL_TEMPLATE_HEADER.Replace("{WHERE}", "WHERE t_retur_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_HEADER);
 
-                oList = _context.db.Query<ReportReturPembelianProdukHeader>(_sql, new { tanggalMulai, tanggalSelesai })
+                whereBuilder.Add("t_retur_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+
+                oList = _context.db.Query<ReportReturPembelianProdukHeader>(whereBuilder.ToSql(), new { tanggalMulai, tanggalSelesai })
                                 .ToList();
             }
             catch (Exception ex)
@@ -121,9 +128,12 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                _sql = SQL_TEMPLATE_DETAIL.Replace("{WHERE}", "WHERE EXTRACT(MONTH FROM t_retur_beli_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_retur_beli_produk.tanggal) = @tahun");
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_DETAIL);
 
-                oList = _context.db.Query<ReportReturPembelianProdukDetail>(_sql, new { bulan, tahun })
+                whereBuilder.Add("EXTRACT(MONTH FROM t_retur_beli_produk.tanggal) = @bulan");
+                whereBuilder.Add("EXTRACT(YEAR FROM t_retur_beli_produk.tanggal) = @tahun");
+
+                oList = _context.db.Query<ReportReturPembelianProdukDetail>(whereBuilder.ToSql(), new { bulan, tahun })
                                 .ToList();
             }
             catch (Exception ex)
@@ -140,9 +150,12 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                _sql = SQL_TEMPLATE_DETAIL.Replace("{WHERE}", "WHERE (EXTRACT(MONTH FROM t_retur_beli_produk.tanggal) BETWEEN @bulanAwal AND @bulanAkhir) AND EXTRACT(YEAR FROM t_retur_beli_produk.tanggal) = @tahun");
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_DETAIL);
 
-                oList = _context.db.Query<ReportReturPembelianProdukDetail>(_sql, new { bulanAwal, bulanAkhir, tahun })
+                whereBuilder.Add("(EXTRACT(MONTH FROM t_retur_beli_produk.tanggal) BETWEEN @bulanAwal AND @bulanAkhir)");
+                whereBuilder.Add("EXTRACT(YEAR FROM t_retur_beli_produk.tanggal) = @tahun");
+
+                oList = _context.db.Query<ReportReturPembelianProdukDetail>(whereBuilder.ToSql(), new { bulanAwal, bulanAkhir, tahun })
                                 .ToList();
             }
             catch (Exception ex)
@@ -159,9 +172,11 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                _sql = SQL_TEMPLATE_DETAIL.Replace("{WHERE}", "WHERE t_retur_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_DETAIL);
 
-                oList = _context.db.Query<ReportReturPembelianProdukDetail>(_sql, new { tanggalMulai, tanggalSelesai })
+                whereBuilder.Add("t_retur_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+
+                oList = _context.db.Query<ReportReturPembelianProdukDetail>(whereBuilder.ToSql(), new { tanggalMulai, tanggalSelesai })
                                 .ToList();
             }
             catch (Exception ex)
