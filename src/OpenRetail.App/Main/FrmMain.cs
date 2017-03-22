@@ -535,5 +535,19 @@ namespace OpenRetail.App.Main
             else
                 MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
         }
+
+        private void mnuLapPiutangPenjualanProduk_Click(object sender, EventArgs e)
+        {
+            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
+            var menuName = GetMenuName(sender);
+
+            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
+            {
+                var frmLaporan = new FrmLapPiutangPenjualanProduk(header);
+                frmLaporan.ShowDialog();
+            }
+            else
+                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+        }
     }
 }

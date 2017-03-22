@@ -58,7 +58,7 @@ namespace OpenRetail.Repository.Service.Report
         public IList<ReportHutangPembelianProdukHeader> GetByBulan(int bulan, int tahun)
         {
             IList<ReportHutangPembelianProdukHeader> oList = new List<ReportHutangPembelianProdukHeader>();
-
+            
             try
             {
                 _where = @"WHERE t_beli_produk.tanggal_tempo IS NOT NULL AND 

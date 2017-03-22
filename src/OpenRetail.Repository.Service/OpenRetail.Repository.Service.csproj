@@ -80,6 +80,7 @@
     <Compile Include="Report\ReportJualProdukRepository.cs" />
     <Compile Include="Report\ReportKartuHutangRepository.cs" />
     <Compile Include="Report\ReportPembayaranHutangBeliProdukRepository.cs" />
+    <Compile Include="Report\ReportPiutangJualProdukRepository.cs" />
     <Compile Include="Report\ReportReturBeliProdukRepository.cs" />
     <Compile Include="ReturBeliProdukRepository.cs" />
     <Compile Include="ReturJualProdukRepository.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="RoleRepository.cs" />
     <Compile Include="SupplierRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
+    <Compile Include="WhereBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -512,6 +512,7 @@
             this.mnuLapPiutangPenjualanProduk.Size = new System.Drawing.Size(280, 22);
             this.mnuLapPiutangPenjualanProduk.Tag = "FrmLapPiutangPenjualanProduk";
             this.mnuLapPiutangPenjualanProduk.Text = "Piutang Penjualan Produk";
+            this.mnuLapPiutangPenjualanProduk.Click += new System.EventHandler(this.mnuLapPiutangPenjualanProduk_Click);
             // 
             // mnuLapPembayaranPiutangPenjualanProduk
             // 
