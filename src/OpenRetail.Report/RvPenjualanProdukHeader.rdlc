@@ -1392,7 +1392,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -1516,18 +1515,18 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DsPembelian">
+    <DataSource Name="DsPenjualan">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>cc1db13e-699d-4688-b996-fb8ee2285258</rd:DataSourceID>
+      <rd:DataSourceID>3ed590b4-475a-43a9-840b-8dfb4c0a9f78</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="ReportPenjualanProdukHeader">
       <Query>
-        <DataSourceName>DsPembelian</DataSourceName>
+        <DataSourceName>DsPenjualan</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>

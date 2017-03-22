@@ -1428,18 +1428,18 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DsPembelian">
+    <DataSource Name="DsPenjualan">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>cc1db13e-699d-4688-b996-fb8ee2285258</rd:DataSourceID>
+      <rd:DataSourceID>913963f9-54ea-4ea5-a8ce-7ceb2dbdffaa</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="ReportPenjualanProduk">
       <Query>
-        <DataSourceName>DsPembelian</DataSourceName>
+        <DataSourceName>DsPenjualan</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>

@@ -1423,7 +1423,7 @@
         <DataSetName>ReportPenjualanProdukDetail</DataSetName>
         <Top>0.67931in</Top>
         <Height>0.65289in</Height>
-        <Width>7.57291in</Width>
+        <Width>7.57288in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1511,18 +1511,18 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DsPembelian">
+    <DataSource Name="DsPenjualan">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>cc1db13e-699d-4688-b996-fb8ee2285258</rd:DataSourceID>
+      <rd:DataSourceID>4595db07-9a67-4a2c-801e-ddf7f960210a</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="ReportPenjualanProdukDetail">
       <Query>
-        <DataSourceName>DsPembelian</DataSourceName>
+        <DataSourceName>DsPenjualan</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
