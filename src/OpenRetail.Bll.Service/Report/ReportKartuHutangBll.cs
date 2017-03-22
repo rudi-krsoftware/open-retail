@@ -77,8 +77,8 @@ namespace OpenRetail.Bll.Service.Report
         private void HitungSaldoAkhir(IList<ReportKartuHutang> listOfSaldoAwal, IList<ReportKartuHutang> listOfSaldoAkhir)
         {
             var currentSupplierId = string.Empty;
-            double saldo = 0;
-            var noUrut = 1;
+            var isFirstRecord = false;
+            double saldo = 0;            
 
             foreach (var item in listOfSaldoAkhir)
             {
@@ -90,12 +90,12 @@ namespace OpenRetail.Bll.Service.Report
                         oldSupplier.saldo_akhir = oldSupplier.saldo;
                     }
 
-                    currentSupplierId = item.supplier_id;
                     saldo = 0;
-                    noUrut = 1;
+                    currentSupplierId = item.supplier_id;                    
+                    isFirstRecord = true;
                 }
 
-                if (noUrut == 1)
+                if (isFirstRecord)
                 {
                     // copy saldo awal
                     var supplierSaldoAwal = listOfSaldoAwal.LastOrDefault(f => f.supplier_id == currentSupplierId);
@@ -104,6 +104,8 @@ namespace OpenRetail.Bll.Service.Report
                         item.saldo_awal = supplierSaldoAwal.saldo_akhir;
                         saldo = item.saldo_awal;
                     }
+
+                    isFirstRecord = false;
                 }
 
                 if (item.jenis == 1) // pembelian kredit
@@ -116,7 +118,6 @@ namespace OpenRetail.Bll.Service.Report
                 }
 
                 item.saldo = saldo;
-                noUrut++;
             }
 
             var lastSupplier = listOfSaldoAkhir.LastOrDefault();
