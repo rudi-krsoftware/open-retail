@@ -32,7 +32,8 @@ namespace OpenRetail.Repository.Service.Report
     public class ReportKartuHutangRepository : IReportKartuHutangRepository
     {
         private const string SQL_TEMPLATE = @"SELECT m_supplier.supplier_id, m_supplier.nama_supplier, t_beli_produk.tanggal, m_produk.nama_produk, m_produk.satuan, 
-                                              SUM(t_item_beli_produk.jumlah) AS jumlah, (SUM(t_item_beli_produk.harga * t_item_beli_produk.jumlah) - t_beli_produk.diskon) + t_beli_produk.ppn AS total, 1 AS jenis
+                                              SUM(t_item_beli_produk.jumlah - t_item_beli_produk.jumlah_retur) AS jumlah, 
+                                              (SUM((t_item_beli_produk.harga - (t_item_beli_produk.harga * t_item_beli_produk.diskon / 100)) * (t_item_beli_produk.jumlah - t_item_beli_produk.jumlah_retur)) - t_beli_produk.diskon) + t_beli_produk.ppn AS total, 1 AS jenis
                                               FROM public.t_item_beli_produk INNER JOIN public.m_produk ON t_item_beli_produk.produk_id = m_produk.produk_id
                                               INNER JOIN public.t_beli_produk ON t_item_beli_produk.beli_produk_id = t_beli_produk.beli_produk_id
                                               INNER JOIN public.m_supplier ON m_supplier.supplier_id = t_beli_produk.supplier_id
