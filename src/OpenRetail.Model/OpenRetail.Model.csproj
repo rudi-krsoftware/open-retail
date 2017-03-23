@@ -68,6 +68,8 @@
     <Compile Include="Report\ReportKartuHutang.cs" />
     <Compile Include="Report\ReportPembayaranHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportPembayaranHutangPembelianProdukHeader.cs" />
+    <Compile Include="Report\ReportPembayaranPiutangPenjualanProdukDetail.cs" />
+    <Compile Include="Report\ReportPembayaranPiutangPenjualanProdukHeader.cs" />
     <Compile Include="Report\ReportPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportPembelianProdukHeader.cs" />
     <Compile Include="EntityState.cs" />
