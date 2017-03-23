@@ -25,7 +25,7 @@ Prerequisites
     * [DockPanel Suite](https://www.nuget.org/packages/DockPanelSuite/)
     * [Syncfusion Community Edition](https://www.syncfusion.com/products/communitylicense/) versi 13.3.0.12
 
-* Database [PostgreSQL](https://www.postgresql.org/) versi 9.4.1 atau yang lebih tinggi
+* Database [PostgreSQL](https://www.postgresql.org/) versi 9.3.16 atau yang lebih tinggi
 
 Tool Development Lainnya
 -----------------------------------------------
