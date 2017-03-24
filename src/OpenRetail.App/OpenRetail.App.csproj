@@ -164,6 +164,12 @@
     <Compile Include="Laporan\FrmLapKartuPiutangPenjualanProduk.Designer.cs">
       <DependentUpon>FrmLapKartuPiutangPenjualanProduk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Laporan\FrmLapReturPenjualanProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapReturPenjualanProduk.Designer.cs">
+      <DependentUpon>FrmLapReturPenjualanProduk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\FrmLapPiutangPenjualanProduk.cs">
       <SubType>Form</SubType>
     </Compile>

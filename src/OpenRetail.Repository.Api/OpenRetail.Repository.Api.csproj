@@ -78,6 +78,7 @@
     <Compile Include="Report\IReportPembayaranPiutangJualProdukRepository.cs" />
     <Compile Include="Report\IReportPiutangJualProdukRepository.cs" />
     <Compile Include="Report\IReportReturBeliProdukRepository.cs" />
+    <Compile Include="Report\IReportReturJualProdukRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">

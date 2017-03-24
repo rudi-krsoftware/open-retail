@@ -67,6 +67,7 @@ namespace OpenRetail.Repository.Service
         private IReportPiutangJualProdukRepository _reportPiutangJualProdukRepository;
         private IReportPembayaranPiutangJualProdukRepository _reportPembayaranPiutangJualProdukRepository;
         private IReportKartuPiutangRepository _reportKartuPiutangRepository;
+        private IReportReturJualProdukRepository _reportReturJualProdukRepository;
 
         public UnitOfWork(IDapperContext context, ILog log)
         {
@@ -227,6 +228,11 @@ namespace OpenRetail.Repository.Service
         public IReportKartuPiutangRepository ReportKartuPiutangRepository
         {
             get { return _reportKartuPiutangRepository ?? (_reportKartuPiutangRepository = new ReportKartuPiutangRepository(_context, _log)); }
+        }
+
+        public IReportReturJualProdukRepository ReportReturJualProdukRepository
+        {
+            get { return _reportReturJualProdukRepository ?? (_reportReturJualProdukRepository = new ReportReturJualProdukRepository(_context, _log)); }
         }
     }
 }     

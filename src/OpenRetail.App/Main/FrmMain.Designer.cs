@@ -541,6 +541,7 @@
             this.mnuLapReturPenjualanProduk.Size = new System.Drawing.Size(280, 22);
             this.mnuLapReturPenjualanProduk.Tag = "FrmLapReturPenjualanProduk";
             this.mnuLapReturPenjualanProduk.Text = "Retur Penjualan Produk";
+            this.mnuLapReturPenjualanProduk.Click += new System.EventHandler(this.mnuLapReturPenjualanProduk_Click);
             // 
             // toolStripSeparator6
             // 

@@ -42,6 +42,10 @@ namespace OpenRetail.Report.DataSet {
         
         private ReportKartuPiutangDataTable tableReportKartuPiutang;
         
+        private ReportReturPenjualanProdukHeaderDataTable tableReportReturPenjualanProdukHeader;
+        
+        private ReportReturPenjualanProdukDetailDataTable tableReportReturPenjualanProdukDetail;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -96,6 +100,12 @@ namespace OpenRetail.Report.DataSet {
                 }
                 if ((ds.Tables["ReportKartuPiutang"] != null)) {
                     base.Tables.Add(new ReportKartuPiutangDataTable(ds.Tables["ReportKartuPiutang"]));
+                }
+                if ((ds.Tables["ReportReturPenjualanProdukHeader"] != null)) {
+                    base.Tables.Add(new ReportReturPenjualanProdukHeaderDataTable(ds.Tables["ReportReturPenjualanProdukHeader"]));
+                }
+                if ((ds.Tables["ReportReturPenjualanProdukDetail"] != null)) {
+                    base.Tables.Add(new ReportReturPenjualanProdukDetailDataTable(ds.Tables["ReportReturPenjualanProdukDetail"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -207,6 +217,26 @@ namespace OpenRetail.Report.DataSet {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportReturPenjualanProdukHeaderDataTable ReportReturPenjualanProdukHeader {
+            get {
+                return this.tableReportReturPenjualanProdukHeader;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportReturPenjualanProdukDetailDataTable ReportReturPenjualanProdukDetail {
+            get {
+                return this.tableReportReturPenjualanProdukDetail;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -299,6 +329,12 @@ namespace OpenRetail.Report.DataSet {
                 if ((ds.Tables["ReportKartuPiutang"] != null)) {
                     base.Tables.Add(new ReportKartuPiutangDataTable(ds.Tables["ReportKartuPiutang"]));
                 }
+                if ((ds.Tables["ReportReturPenjualanProdukHeader"] != null)) {
+                    base.Tables.Add(new ReportReturPenjualanProdukHeaderDataTable(ds.Tables["ReportReturPenjualanProdukHeader"]));
+                }
+                if ((ds.Tables["ReportReturPenjualanProdukDetail"] != null)) {
+                    base.Tables.Add(new ReportReturPenjualanProdukDetailDataTable(ds.Tables["ReportReturPenjualanProdukDetail"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -386,6 +422,18 @@ namespace OpenRetail.Report.DataSet {
                     this.tableReportKartuPiutang.InitVars();
                 }
             }
+            this.tableReportReturPenjualanProdukHeader = ((ReportReturPenjualanProdukHeaderDataTable)(base.Tables["ReportReturPenjualanProdukHeader"]));
+            if ((initTable == true)) {
+                if ((this.tableReportReturPenjualanProdukHeader != null)) {
+                    this.tableReportReturPenjualanProdukHeader.InitVars();
+                }
+            }
+            this.tableReportReturPenjualanProdukDetail = ((ReportReturPenjualanProdukDetailDataTable)(base.Tables["ReportReturPenjualanProdukDetail"]));
+            if ((initTable == true)) {
+                if ((this.tableReportReturPenjualanProdukDetail != null)) {
+                    this.tableReportReturPenjualanProdukDetail.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -414,6 +462,10 @@ namespace OpenRetail.Report.DataSet {
             base.Tables.Add(this.tableReportPembayaranPiutangPenjualanProdukHeader);
             this.tableReportKartuPiutang = new ReportKartuPiutangDataTable();
             base.Tables.Add(this.tableReportKartuPiutang);
+            this.tableReportReturPenjualanProdukHeader = new ReportReturPenjualanProdukHeaderDataTable();
+            base.Tables.Add(this.tableReportReturPenjualanProdukHeader);
+            this.tableReportReturPenjualanProdukDetail = new ReportReturPenjualanProdukDetailDataTable();
+            base.Tables.Add(this.tableReportReturPenjualanProdukDetail);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -467,6 +519,18 @@ namespace OpenRetail.Report.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeReportKartuPiutang() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeReportReturPenjualanProdukHeader() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeReportReturPenjualanProdukDetail() {
             return false;
         }
         
@@ -551,6 +615,12 @@ namespace OpenRetail.Report.DataSet {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ReportKartuPiutangRowChangeEventHandler(object sender, ReportKartuPiutangRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ReportReturPenjualanProdukHeaderRowChangeEventHandler(object sender, ReportReturPenjualanProdukHeaderRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ReportReturPenjualanProdukDetailRowChangeEventHandler(object sender, ReportReturPenjualanProdukDetailRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -4296,6 +4366,697 @@ namespace OpenRetail.Report.DataSet {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportReturPenjualanProdukHeaderDataTable : global::System.Data.TypedTableBase<ReportReturPenjualanProdukHeaderRow> {
+            
+            private global::System.Data.DataColumn columncustomer_id;
+            
+            private global::System.Data.DataColumn columnnama_customer;
+            
+            private global::System.Data.DataColumn columnnota_jual;
+            
+            private global::System.Data.DataColumn columnnota_retur;
+            
+            private global::System.Data.DataColumn columntanggal_retur;
+            
+            private global::System.Data.DataColumn columntotal_retur;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukHeaderDataTable() {
+                this.TableName = "ReportReturPenjualanProdukHeader";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportReturPenjualanProdukHeaderDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ReportReturPenjualanProdukHeaderDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn customer_idColumn {
+                get {
+                    return this.columncustomer_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_customerColumn {
+                get {
+                    return this.columnnama_customer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nota_jualColumn {
+                get {
+                    return this.columnnota_jual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nota_returColumn {
+                get {
+                    return this.columnnota_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tanggal_returColumn {
+                get {
+                    return this.columntanggal_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn total_returColumn {
+                get {
+                    return this.columntotal_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukHeaderRow this[int index] {
+                get {
+                    return ((ReportReturPenjualanProdukHeaderRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPenjualanProdukHeaderRowChangeEventHandler ReportReturPenjualanProdukHeaderRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPenjualanProdukHeaderRowChangeEventHandler ReportReturPenjualanProdukHeaderRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPenjualanProdukHeaderRowChangeEventHandler ReportReturPenjualanProdukHeaderRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPenjualanProdukHeaderRowChangeEventHandler ReportReturPenjualanProdukHeaderRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddReportReturPenjualanProdukHeaderRow(ReportReturPenjualanProdukHeaderRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukHeaderRow AddReportReturPenjualanProdukHeaderRow(string customer_id, string nama_customer, string nota_jual, string nota_retur, System.DateTime tanggal_retur, double total_retur) {
+                ReportReturPenjualanProdukHeaderRow rowReportReturPenjualanProdukHeaderRow = ((ReportReturPenjualanProdukHeaderRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        customer_id,
+                        nama_customer,
+                        nota_jual,
+                        nota_retur,
+                        tanggal_retur,
+                        total_retur};
+                rowReportReturPenjualanProdukHeaderRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportReturPenjualanProdukHeaderRow);
+                return rowReportReturPenjualanProdukHeaderRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ReportReturPenjualanProdukHeaderDataTable cln = ((ReportReturPenjualanProdukHeaderDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportReturPenjualanProdukHeaderDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columncustomer_id = base.Columns["customer_id"];
+                this.columnnama_customer = base.Columns["nama_customer"];
+                this.columnnota_jual = base.Columns["nota_jual"];
+                this.columnnota_retur = base.Columns["nota_retur"];
+                this.columntanggal_retur = base.Columns["tanggal_retur"];
+                this.columntotal_retur = base.Columns["total_retur"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columncustomer_id = new global::System.Data.DataColumn("customer_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustomer_id);
+                this.columnnama_customer = new global::System.Data.DataColumn("nama_customer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_customer);
+                this.columnnota_jual = new global::System.Data.DataColumn("nota_jual", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota_jual);
+                this.columnnota_retur = new global::System.Data.DataColumn("nota_retur", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota_retur);
+                this.columntanggal_retur = new global::System.Data.DataColumn("tanggal_retur", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntanggal_retur);
+                this.columntotal_retur = new global::System.Data.DataColumn("total_retur", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_retur);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukHeaderRow NewReportReturPenjualanProdukHeaderRow() {
+                return ((ReportReturPenjualanProdukHeaderRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportReturPenjualanProdukHeaderRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportReturPenjualanProdukHeaderRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportReturPenjualanProdukHeaderRowChanged != null)) {
+                    this.ReportReturPenjualanProdukHeaderRowChanged(this, new ReportReturPenjualanProdukHeaderRowChangeEvent(((ReportReturPenjualanProdukHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportReturPenjualanProdukHeaderRowChanging != null)) {
+                    this.ReportReturPenjualanProdukHeaderRowChanging(this, new ReportReturPenjualanProdukHeaderRowChangeEvent(((ReportReturPenjualanProdukHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportReturPenjualanProdukHeaderRowDeleted != null)) {
+                    this.ReportReturPenjualanProdukHeaderRowDeleted(this, new ReportReturPenjualanProdukHeaderRowChangeEvent(((ReportReturPenjualanProdukHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportReturPenjualanProdukHeaderRowDeleting != null)) {
+                    this.ReportReturPenjualanProdukHeaderRowDeleting(this, new ReportReturPenjualanProdukHeaderRowChangeEvent(((ReportReturPenjualanProdukHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveReportReturPenjualanProdukHeaderRow(ReportReturPenjualanProdukHeaderRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsPenjualan ds = new DsPenjualan();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportReturPenjualanProdukHeaderDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportReturPenjualanProdukDetailDataTable : global::System.Data.TypedTableBase<ReportReturPenjualanProdukDetailRow> {
+            
+            private global::System.Data.DataColumn columncustomer_id;
+            
+            private global::System.Data.DataColumn columnnama_customer;
+            
+            private global::System.Data.DataColumn columnnota_jual;
+            
+            private global::System.Data.DataColumn columnnota_retur;
+            
+            private global::System.Data.DataColumn columntanggal_retur;
+            
+            private global::System.Data.DataColumn columnjumlah_retur;
+            
+            private global::System.Data.DataColumn columnharga;
+            
+            private global::System.Data.DataColumn columnnama_produk;
+            
+            private global::System.Data.DataColumn columnsatuan;
+            
+            private global::System.Data.DataColumn columnsub_total;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukDetailDataTable() {
+                this.TableName = "ReportReturPenjualanProdukDetail";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportReturPenjualanProdukDetailDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ReportReturPenjualanProdukDetailDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn customer_idColumn {
+                get {
+                    return this.columncustomer_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_customerColumn {
+                get {
+                    return this.columnnama_customer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nota_jualColumn {
+                get {
+                    return this.columnnota_jual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nota_returColumn {
+                get {
+                    return this.columnnota_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tanggal_returColumn {
+                get {
+                    return this.columntanggal_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn jumlah_returColumn {
+                get {
+                    return this.columnjumlah_retur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn hargaColumn {
+                get {
+                    return this.columnharga;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_produkColumn {
+                get {
+                    return this.columnnama_produk;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn satuanColumn {
+                get {
+                    return this.columnsatuan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sub_totalColumn {
+                get {
+                    return this.columnsub_total;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukDetailRow this[int index] {
+                get {
+                    return ((ReportReturPenjualanProdukDetailRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPenjualanProdukDetailRowChangeEventHandler ReportReturPenjualanProdukDetailRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPenjualanProdukDetailRowChangeEventHandler ReportReturPenjualanProdukDetailRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPenjualanProdukDetailRowChangeEventHandler ReportReturPenjualanProdukDetailRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportReturPenjualanProdukDetailRowChangeEventHandler ReportReturPenjualanProdukDetailRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddReportReturPenjualanProdukDetailRow(ReportReturPenjualanProdukDetailRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukDetailRow AddReportReturPenjualanProdukDetailRow(string customer_id, string nama_customer, string nota_jual, string nota_retur, System.DateTime tanggal_retur, double jumlah_retur, double harga, string nama_produk, string satuan, double sub_total) {
+                ReportReturPenjualanProdukDetailRow rowReportReturPenjualanProdukDetailRow = ((ReportReturPenjualanProdukDetailRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        customer_id,
+                        nama_customer,
+                        nota_jual,
+                        nota_retur,
+                        tanggal_retur,
+                        jumlah_retur,
+                        harga,
+                        nama_produk,
+                        satuan,
+                        sub_total};
+                rowReportReturPenjualanProdukDetailRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportReturPenjualanProdukDetailRow);
+                return rowReportReturPenjualanProdukDetailRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ReportReturPenjualanProdukDetailDataTable cln = ((ReportReturPenjualanProdukDetailDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportReturPenjualanProdukDetailDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columncustomer_id = base.Columns["customer_id"];
+                this.columnnama_customer = base.Columns["nama_customer"];
+                this.columnnota_jual = base.Columns["nota_jual"];
+                this.columnnota_retur = base.Columns["nota_retur"];
+                this.columntanggal_retur = base.Columns["tanggal_retur"];
+                this.columnjumlah_retur = base.Columns["jumlah_retur"];
+                this.columnharga = base.Columns["harga"];
+                this.columnnama_produk = base.Columns["nama_produk"];
+                this.columnsatuan = base.Columns["satuan"];
+                this.columnsub_total = base.Columns["sub_total"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columncustomer_id = new global::System.Data.DataColumn("customer_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustomer_id);
+                this.columnnama_customer = new global::System.Data.DataColumn("nama_customer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_customer);
+                this.columnnota_jual = new global::System.Data.DataColumn("nota_jual", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota_jual);
+                this.columnnota_retur = new global::System.Data.DataColumn("nota_retur", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota_retur);
+                this.columntanggal_retur = new global::System.Data.DataColumn("tanggal_retur", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntanggal_retur);
+                this.columnjumlah_retur = new global::System.Data.DataColumn("jumlah_retur", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjumlah_retur);
+                this.columnharga = new global::System.Data.DataColumn("harga", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnharga);
+                this.columnnama_produk = new global::System.Data.DataColumn("nama_produk", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_produk);
+                this.columnsatuan = new global::System.Data.DataColumn("satuan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsatuan);
+                this.columnsub_total = new global::System.Data.DataColumn("sub_total", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsub_total);
+                this.columnjumlah_retur.Caption = "total_retur";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukDetailRow NewReportReturPenjualanProdukDetailRow() {
+                return ((ReportReturPenjualanProdukDetailRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportReturPenjualanProdukDetailRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportReturPenjualanProdukDetailRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportReturPenjualanProdukDetailRowChanged != null)) {
+                    this.ReportReturPenjualanProdukDetailRowChanged(this, new ReportReturPenjualanProdukDetailRowChangeEvent(((ReportReturPenjualanProdukDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportReturPenjualanProdukDetailRowChanging != null)) {
+                    this.ReportReturPenjualanProdukDetailRowChanging(this, new ReportReturPenjualanProdukDetailRowChangeEvent(((ReportReturPenjualanProdukDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportReturPenjualanProdukDetailRowDeleted != null)) {
+                    this.ReportReturPenjualanProdukDetailRowDeleted(this, new ReportReturPenjualanProdukDetailRowChangeEvent(((ReportReturPenjualanProdukDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportReturPenjualanProdukDetailRowDeleting != null)) {
+                    this.ReportReturPenjualanProdukDetailRowDeleting(this, new ReportReturPenjualanProdukDetailRowChangeEvent(((ReportReturPenjualanProdukDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveReportReturPenjualanProdukDetailRow(ReportReturPenjualanProdukDetailRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsPenjualan ds = new DsPenjualan();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportReturPenjualanProdukDetailDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ReportPenjualanProdukHeaderRow : global::System.Data.DataRow {
@@ -7700,6 +8461,500 @@ namespace OpenRetail.Report.DataSet {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ReportReturPenjualanProdukHeaderRow : global::System.Data.DataRow {
+            
+            private ReportReturPenjualanProdukHeaderDataTable tableReportReturPenjualanProdukHeader;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportReturPenjualanProdukHeaderRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportReturPenjualanProdukHeader = ((ReportReturPenjualanProdukHeaderDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string customer_id {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPenjualanProdukHeader.customer_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'customer_id\' in table \'ReportReturPenjualanProdukHeader\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukHeader.customer_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_customer {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPenjualanProdukHeader.nama_customerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_customer\' in table \'ReportReturPenjualanProdukHeader\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukHeader.nama_customerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota_jual {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPenjualanProdukHeader.nota_jualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota_jual\' in table \'ReportReturPenjualanProdukHeader\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukHeader.nota_jualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota_retur {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPenjualanProdukHeader.nota_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota_retur\' in table \'ReportReturPenjualanProdukHeader\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukHeader.nota_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime tanggal_retur {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportReturPenjualanProdukHeader.tanggal_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tanggal_retur\' in table \'ReportReturPenjualanProdukHeader\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukHeader.tanggal_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double total_retur {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportReturPenjualanProdukHeader.total_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_retur\' in table \'ReportReturPenjualanProdukHeader\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukHeader.total_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscustomer_idNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukHeader.customer_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcustomer_idNull() {
+                this[this.tableReportReturPenjualanProdukHeader.customer_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_customerNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukHeader.nama_customerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_customerNull() {
+                this[this.tableReportReturPenjualanProdukHeader.nama_customerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnota_jualNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukHeader.nota_jualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnota_jualNull() {
+                this[this.tableReportReturPenjualanProdukHeader.nota_jualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnota_returNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukHeader.nota_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnota_returNull() {
+                this[this.tableReportReturPenjualanProdukHeader.nota_returColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istanggal_returNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukHeader.tanggal_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settanggal_returNull() {
+                this[this.tableReportReturPenjualanProdukHeader.tanggal_returColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istotal_returNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukHeader.total_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settotal_returNull() {
+                this[this.tableReportReturPenjualanProdukHeader.total_returColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ReportReturPenjualanProdukDetailRow : global::System.Data.DataRow {
+            
+            private ReportReturPenjualanProdukDetailDataTable tableReportReturPenjualanProdukDetail;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportReturPenjualanProdukDetailRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportReturPenjualanProdukDetail = ((ReportReturPenjualanProdukDetailDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string customer_id {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPenjualanProdukDetail.customer_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'customer_id\' in table \'ReportReturPenjualanProdukDetail\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukDetail.customer_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_customer {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPenjualanProdukDetail.nama_customerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_customer\' in table \'ReportReturPenjualanProdukDetail\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukDetail.nama_customerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota_jual {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPenjualanProdukDetail.nota_jualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota_jual\' in table \'ReportReturPenjualanProdukDetail\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukDetail.nota_jualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota_retur {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPenjualanProdukDetail.nota_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota_retur\' in table \'ReportReturPenjualanProdukDetail\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukDetail.nota_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime tanggal_retur {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportReturPenjualanProdukDetail.tanggal_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tanggal_retur\' in table \'ReportReturPenjualanProdukDetail\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukDetail.tanggal_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double jumlah_retur {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportReturPenjualanProdukDetail.jumlah_returColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jumlah_retur\' in table \'ReportReturPenjualanProdukDetail\' i" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukDetail.jumlah_returColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double harga {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportReturPenjualanProdukDetail.hargaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'harga\' in table \'ReportReturPenjualanProdukDetail\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukDetail.hargaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_produk {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPenjualanProdukDetail.nama_produkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_produk\' in table \'ReportReturPenjualanProdukDetail\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukDetail.nama_produkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string satuan {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportReturPenjualanProdukDetail.satuanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'satuan\' in table \'ReportReturPenjualanProdukDetail\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukDetail.satuanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double sub_total {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportReturPenjualanProdukDetail.sub_totalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sub_total\' in table \'ReportReturPenjualanProdukDetail\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportReturPenjualanProdukDetail.sub_totalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscustomer_idNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukDetail.customer_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcustomer_idNull() {
+                this[this.tableReportReturPenjualanProdukDetail.customer_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_customerNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukDetail.nama_customerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_customerNull() {
+                this[this.tableReportReturPenjualanProdukDetail.nama_customerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnota_jualNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukDetail.nota_jualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnota_jualNull() {
+                this[this.tableReportReturPenjualanProdukDetail.nota_jualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnota_returNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukDetail.nota_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnota_returNull() {
+                this[this.tableReportReturPenjualanProdukDetail.nota_returColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istanggal_returNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukDetail.tanggal_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settanggal_returNull() {
+                this[this.tableReportReturPenjualanProdukDetail.tanggal_returColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isjumlah_returNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukDetail.jumlah_returColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setjumlah_returNull() {
+                this[this.tableReportReturPenjualanProdukDetail.jumlah_returColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IshargaNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukDetail.hargaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SethargaNull() {
+                this[this.tableReportReturPenjualanProdukDetail.hargaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_produkNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukDetail.nama_produkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_produkNull() {
+                this[this.tableReportReturPenjualanProdukDetail.nama_produkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssatuanNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukDetail.satuanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsatuanNull() {
+                this[this.tableReportReturPenjualanProdukDetail.satuanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issub_totalNull() {
+                return this.IsNull(this.tableReportReturPenjualanProdukDetail.sub_totalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsub_totalNull() {
+                this[this.tableReportReturPenjualanProdukDetail.sub_totalColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -7991,6 +9246,74 @@ namespace OpenRetail.Report.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReportKartuPiutangRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ReportReturPenjualanProdukHeaderRowChangeEvent : global::System.EventArgs {
+            
+            private ReportReturPenjualanProdukHeaderRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukHeaderRowChangeEvent(ReportReturPenjualanProdukHeaderRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukHeaderRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ReportReturPenjualanProdukDetailRowChangeEvent : global::System.EventArgs {
+            
+            private ReportReturPenjualanProdukDetailRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukDetailRowChangeEvent(ReportReturPenjualanProdukDetailRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportReturPenjualanProdukDetailRow Row {
                 get {
                     return this.eventRow;
                 }

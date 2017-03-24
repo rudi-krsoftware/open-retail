@@ -105,6 +105,8 @@
     <Compile Include="Report\ReportPiutangPenjualanProduk.cs" />
     <Compile Include="Report\ReportReturPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportReturPembelianProdukHeader.cs" />
+    <Compile Include="Report\ReportReturPenjualanProdukDetail.cs" />
+    <Compile Include="Report\ReportReturPenjualanProdukHeader.cs" />
     <Compile Include="ReturBeliProduk.cs" />
     <Compile Include="ReturJualProduk.cs" />
     <Compile Include="Role.cs" />

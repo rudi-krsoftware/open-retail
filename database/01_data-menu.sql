@@ -38,8 +38,6 @@ b4be7b7c-4587-4af4-af07-fce34df723df	mnuPenjualanProduk	Penjualan Produk	73e3254
 08392673-2e61-4266-a6ae-5cb75fdf42e8	mnuPengeluaranBiaya	Pengeluaran Biaya	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	1	t	FrmListPengeluaranBiaya	f
 13b929f3-d349-4686-b803-b350732003c8	mnuKasbon	Kasbon	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	2	t	FrmListKasbon	f
 d5bd3b31-7feb-4c55-9fed-8d67ac18fef4	mnuPenggajian	Penggajian Karyawan	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	3	t	FrmListPenggajianKaryawan	f
-01803718-15d1-4ef4-9574-b9bb161c1638	mnuLapKartuPiutangPenjualanProduk	Kartu Piutang Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	11	t	FrmLapKartuPiutangPenjualanProduk	f
-56bd7e72-5e17-4105-bf4d-5f698e94a7fb	mnuLapReturPenjualanProduk	Retur Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	12	t	FrmLapReturPenjualanProduk	f
 d62d3352-56e7-4802-973e-32d590febdab	mnuLapStokProduk	Stok Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	14	t	FrmLapStokProduk	f
 986182a1-8b33-457b-9151-38676f0f0869	mnuLapPenyesuaianStok	Penyesuaian Stok	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	15	t	FrmLapPenyesuaianStok	f
 5c336652-4465-4b62-8de1-dac26fc696b6	mnuLapPengeluaranBiaya	Pengeluaran Biaya	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	16	t	FrmLapPengeluaranBiaya	f
@@ -59,6 +57,8 @@ b0b538ba-3535-4308-8012-9e2fa0daa0b0	mnuLapKartuHutangPembelianProduk	Kartu Huta
 f87b0496-d9cb-4aef-b9dd-b7fe62ac3a18	mnuLapPenjualanPerProduk	Penjualan Per Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	8	t	FrmLapPenjualanPerProduk	t
 942cf428-3e36-48d2-8932-7e55cde20b32	mnuLapPiutangPenjualanProduk	Piutang Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	9	t	FrmLapPiutangPenjualanProduk	t
 5b99b5c4-91a8-4492-80a2-71cd9b800f00	mnuLapPembayaranPiutangPenjualanProduk	Pembayaran Piutang Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	10	t	FrmLapPembayaranPiutangPenjualanProduk	t
+01803718-15d1-4ef4-9574-b9bb161c1638	mnuLapKartuPiutangPenjualanProduk	Kartu Piutang Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	11	t	FrmLapKartuPiutangPenjualanProduk	t
+56bd7e72-5e17-4105-bf4d-5f698e94a7fb	mnuLapReturPenjualanProduk	Retur Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	12	t	FrmLapReturPenjualanProduk	t
 \.
 
 
