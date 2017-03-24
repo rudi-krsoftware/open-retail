@@ -94,11 +94,5 @@ namespace OpenRetail.App.UI.Template
             if (KeyPressHelper.IsEsc(e))
                 this.Close();
         }
-
-        private void FrmPreviewReport_Load(object sender, EventArgs e)
-        {
-
-            this.reportViewer1.RefreshReport();
-        }
     }
 }

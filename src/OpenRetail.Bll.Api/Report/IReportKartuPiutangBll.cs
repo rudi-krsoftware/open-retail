@@ -21,24 +21,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpenRetail.Model.Report
-{
-    public class ReportKartuHutang
-    {
-        public string supplier_id { get; set; }
-        public string nama_supplier { get; set; }
-        public DateTime tanggal { get; set; }
-        public string nama_produk { get; set; }
-        public string satuan { get; set; }
-        public double jumlah { get; set; }
-        public double total { get; set; }
-        public double saldo_awal { get; set; }
-        public double saldo { get; set; }
-        public double saldo_akhir { get; set; }
+using OpenRetail.Model.Report;
 
-        /// <summary>
-        /// Jenis 1 untuk pembelian dan 2 untuk pembayaran/pelunasan
-        /// </summary>
-        public int jenis { get; set; }
+namespace OpenRetail.Bll.Api.Report
+{
+    public interface IReportKartuPiutangBll
+    {
+        IList<ReportKartuPiutang> GetByBulan(int bulan, int tahun);
+        IList<ReportKartuPiutang> GetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+        IList<ReportKartuPiutang> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 }

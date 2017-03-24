@@ -533,6 +533,7 @@
             this.mnuLapKartuPiutangPenjualanProduk.Size = new System.Drawing.Size(280, 22);
             this.mnuLapKartuPiutangPenjualanProduk.Tag = "FrmLapKartuPiutangPenjualanProduk";
             this.mnuLapKartuPiutangPenjualanProduk.Text = "Kartu Piutang Penjualan Produk";
+            this.mnuLapKartuPiutangPenjualanProduk.Click += new System.EventHandler(this.mnuLapKartuPiutangPenjualanProduk_Click);
             // 
             // mnuLapReturPenjualanProduk
             // 

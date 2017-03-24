@@ -40,6 +40,8 @@ namespace OpenRetail.Report.DataSet {
         
         private ReportPembayaranPiutangPenjualanProdukHeaderDataTable tableReportPembayaranPiutangPenjualanProdukHeader;
         
+        private ReportKartuPiutangDataTable tableReportKartuPiutang;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -91,6 +93,9 @@ namespace OpenRetail.Report.DataSet {
                 }
                 if ((ds.Tables["ReportPembayaranPiutangPenjualanProdukHeader"] != null)) {
                     base.Tables.Add(new ReportPembayaranPiutangPenjualanProdukHeaderDataTable(ds.Tables["ReportPembayaranPiutangPenjualanProdukHeader"]));
+                }
+                if ((ds.Tables["ReportKartuPiutang"] != null)) {
+                    base.Tables.Add(new ReportKartuPiutangDataTable(ds.Tables["ReportKartuPiutang"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -192,6 +197,16 @@ namespace OpenRetail.Report.DataSet {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportKartuPiutangDataTable ReportKartuPiutang {
+            get {
+                return this.tableReportKartuPiutang;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -281,6 +296,9 @@ namespace OpenRetail.Report.DataSet {
                 if ((ds.Tables["ReportPembayaranPiutangPenjualanProdukHeader"] != null)) {
                     base.Tables.Add(new ReportPembayaranPiutangPenjualanProdukHeaderDataTable(ds.Tables["ReportPembayaranPiutangPenjualanProdukHeader"]));
                 }
+                if ((ds.Tables["ReportKartuPiutang"] != null)) {
+                    base.Tables.Add(new ReportKartuPiutangDataTable(ds.Tables["ReportKartuPiutang"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -362,6 +380,12 @@ namespace OpenRetail.Report.DataSet {
                     this.tableReportPembayaranPiutangPenjualanProdukHeader.InitVars();
                 }
             }
+            this.tableReportKartuPiutang = ((ReportKartuPiutangDataTable)(base.Tables["ReportKartuPiutang"]));
+            if ((initTable == true)) {
+                if ((this.tableReportKartuPiutang != null)) {
+                    this.tableReportKartuPiutang.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -388,6 +412,8 @@ namespace OpenRetail.Report.DataSet {
             base.Tables.Add(this.tableReportPembayaranPiutangPenjualanProdukDetail);
             this.tableReportPembayaranPiutangPenjualanProdukHeader = new ReportPembayaranPiutangPenjualanProdukHeaderDataTable();
             base.Tables.Add(this.tableReportPembayaranPiutangPenjualanProdukHeader);
+            this.tableReportKartuPiutang = new ReportKartuPiutangDataTable();
+            base.Tables.Add(this.tableReportKartuPiutang);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -435,6 +461,12 @@ namespace OpenRetail.Report.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeReportPembayaranPiutangPenjualanProdukHeader() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeReportKartuPiutang() {
             return false;
         }
         
@@ -516,6 +548,9 @@ namespace OpenRetail.Report.DataSet {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ReportPembayaranPiutangPenjualanProdukHeaderRowChangeEventHandler(object sender, ReportPembayaranPiutangPenjualanProdukHeaderRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ReportKartuPiutangRowChangeEventHandler(object sender, ReportKartuPiutangRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3874,6 +3909,393 @@ namespace OpenRetail.Report.DataSet {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportKartuPiutangDataTable : global::System.Data.TypedTableBase<ReportKartuPiutangRow> {
+            
+            private global::System.Data.DataColumn columncustomer_id;
+            
+            private global::System.Data.DataColumn columnnama_customer;
+            
+            private global::System.Data.DataColumn columntanggal;
+            
+            private global::System.Data.DataColumn columnnama_produk;
+            
+            private global::System.Data.DataColumn columnsatuan;
+            
+            private global::System.Data.DataColumn columnjumlah;
+            
+            private global::System.Data.DataColumn columntotal;
+            
+            private global::System.Data.DataColumn columnsaldo_awal;
+            
+            private global::System.Data.DataColumn columnsaldo;
+            
+            private global::System.Data.DataColumn columnsaldo_akhir;
+            
+            private global::System.Data.DataColumn columnjenis;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKartuPiutangDataTable() {
+                this.TableName = "ReportKartuPiutang";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportKartuPiutangDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ReportKartuPiutangDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn customer_idColumn {
+                get {
+                    return this.columncustomer_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_customerColumn {
+                get {
+                    return this.columnnama_customer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tanggalColumn {
+                get {
+                    return this.columntanggal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_produkColumn {
+                get {
+                    return this.columnnama_produk;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn satuanColumn {
+                get {
+                    return this.columnsatuan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn jumlahColumn {
+                get {
+                    return this.columnjumlah;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn totalColumn {
+                get {
+                    return this.columntotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn saldo_awalColumn {
+                get {
+                    return this.columnsaldo_awal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn saldoColumn {
+                get {
+                    return this.columnsaldo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn saldo_akhirColumn {
+                get {
+                    return this.columnsaldo_akhir;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn jenisColumn {
+                get {
+                    return this.columnjenis;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKartuPiutangRow this[int index] {
+                get {
+                    return ((ReportKartuPiutangRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKartuPiutangRowChangeEventHandler ReportKartuPiutangRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKartuPiutangRowChangeEventHandler ReportKartuPiutangRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKartuPiutangRowChangeEventHandler ReportKartuPiutangRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKartuPiutangRowChangeEventHandler ReportKartuPiutangRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddReportKartuPiutangRow(ReportKartuPiutangRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKartuPiutangRow AddReportKartuPiutangRow(string customer_id, string nama_customer, System.DateTime tanggal, string nama_produk, string satuan, double jumlah, double total, double saldo_awal, double saldo, double saldo_akhir, string jenis) {
+                ReportKartuPiutangRow rowReportKartuPiutangRow = ((ReportKartuPiutangRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        customer_id,
+                        nama_customer,
+                        tanggal,
+                        nama_produk,
+                        satuan,
+                        jumlah,
+                        total,
+                        saldo_awal,
+                        saldo,
+                        saldo_akhir,
+                        jenis};
+                rowReportKartuPiutangRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportKartuPiutangRow);
+                return rowReportKartuPiutangRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ReportKartuPiutangDataTable cln = ((ReportKartuPiutangDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportKartuPiutangDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columncustomer_id = base.Columns["customer_id"];
+                this.columnnama_customer = base.Columns["nama_customer"];
+                this.columntanggal = base.Columns["tanggal"];
+                this.columnnama_produk = base.Columns["nama_produk"];
+                this.columnsatuan = base.Columns["satuan"];
+                this.columnjumlah = base.Columns["jumlah"];
+                this.columntotal = base.Columns["total"];
+                this.columnsaldo_awal = base.Columns["saldo_awal"];
+                this.columnsaldo = base.Columns["saldo"];
+                this.columnsaldo_akhir = base.Columns["saldo_akhir"];
+                this.columnjenis = base.Columns["jenis"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columncustomer_id = new global::System.Data.DataColumn("customer_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustomer_id);
+                this.columnnama_customer = new global::System.Data.DataColumn("nama_customer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_customer);
+                this.columntanggal = new global::System.Data.DataColumn("tanggal", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntanggal);
+                this.columnnama_produk = new global::System.Data.DataColumn("nama_produk", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_produk);
+                this.columnsatuan = new global::System.Data.DataColumn("satuan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsatuan);
+                this.columnjumlah = new global::System.Data.DataColumn("jumlah", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjumlah);
+                this.columntotal = new global::System.Data.DataColumn("total", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal);
+                this.columnsaldo_awal = new global::System.Data.DataColumn("saldo_awal", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsaldo_awal);
+                this.columnsaldo = new global::System.Data.DataColumn("saldo", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsaldo);
+                this.columnsaldo_akhir = new global::System.Data.DataColumn("saldo_akhir", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsaldo_akhir);
+                this.columnjenis = new global::System.Data.DataColumn("jenis", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjenis);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKartuPiutangRow NewReportKartuPiutangRow() {
+                return ((ReportKartuPiutangRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportKartuPiutangRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportKartuPiutangRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportKartuPiutangRowChanged != null)) {
+                    this.ReportKartuPiutangRowChanged(this, new ReportKartuPiutangRowChangeEvent(((ReportKartuPiutangRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportKartuPiutangRowChanging != null)) {
+                    this.ReportKartuPiutangRowChanging(this, new ReportKartuPiutangRowChangeEvent(((ReportKartuPiutangRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportKartuPiutangRowDeleted != null)) {
+                    this.ReportKartuPiutangRowDeleted(this, new ReportKartuPiutangRowChangeEvent(((ReportKartuPiutangRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportKartuPiutangRowDeleting != null)) {
+                    this.ReportKartuPiutangRowDeleting(this, new ReportKartuPiutangRowChangeEvent(((ReportKartuPiutangRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveReportKartuPiutangRow(ReportKartuPiutangRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsPenjualan ds = new DsPenjualan();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportKartuPiutangDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ReportPenjualanProdukHeaderRow : global::System.Data.DataRow {
@@ -6955,6 +7377,329 @@ namespace OpenRetail.Report.DataSet {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ReportKartuPiutangRow : global::System.Data.DataRow {
+            
+            private ReportKartuPiutangDataTable tableReportKartuPiutang;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportKartuPiutangRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportKartuPiutang = ((ReportKartuPiutangDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string customer_id {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKartuPiutang.customer_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'customer_id\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.customer_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_customer {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKartuPiutang.nama_customerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_customer\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.nama_customerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime tanggal {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportKartuPiutang.tanggalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tanggal\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.tanggalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_produk {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKartuPiutang.nama_produkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_produk\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.nama_produkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string satuan {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKartuPiutang.satuanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'satuan\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.satuanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double jumlah {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKartuPiutang.jumlahColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jumlah\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.jumlahColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double total {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKartuPiutang.totalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.totalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double saldo_awal {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKartuPiutang.saldo_awalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'saldo_awal\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.saldo_awalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double saldo {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKartuPiutang.saldoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'saldo\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.saldoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double saldo_akhir {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKartuPiutang.saldo_akhirColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'saldo_akhir\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.saldo_akhirColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string jenis {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKartuPiutang.jenisColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jenis\' in table \'ReportKartuPiutang\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKartuPiutang.jenisColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscustomer_idNull() {
+                return this.IsNull(this.tableReportKartuPiutang.customer_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcustomer_idNull() {
+                this[this.tableReportKartuPiutang.customer_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_customerNull() {
+                return this.IsNull(this.tableReportKartuPiutang.nama_customerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_customerNull() {
+                this[this.tableReportKartuPiutang.nama_customerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstanggalNull() {
+                return this.IsNull(this.tableReportKartuPiutang.tanggalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettanggalNull() {
+                this[this.tableReportKartuPiutang.tanggalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_produkNull() {
+                return this.IsNull(this.tableReportKartuPiutang.nama_produkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_produkNull() {
+                this[this.tableReportKartuPiutang.nama_produkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssatuanNull() {
+                return this.IsNull(this.tableReportKartuPiutang.satuanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsatuanNull() {
+                this[this.tableReportKartuPiutang.satuanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsjumlahNull() {
+                return this.IsNull(this.tableReportKartuPiutang.jumlahColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetjumlahNull() {
+                this[this.tableReportKartuPiutang.jumlahColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstotalNull() {
+                return this.IsNull(this.tableReportKartuPiutang.totalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettotalNull() {
+                this[this.tableReportKartuPiutang.totalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issaldo_awalNull() {
+                return this.IsNull(this.tableReportKartuPiutang.saldo_awalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsaldo_awalNull() {
+                this[this.tableReportKartuPiutang.saldo_awalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssaldoNull() {
+                return this.IsNull(this.tableReportKartuPiutang.saldoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsaldoNull() {
+                this[this.tableReportKartuPiutang.saldoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issaldo_akhirNull() {
+                return this.IsNull(this.tableReportKartuPiutang.saldo_akhirColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsaldo_akhirNull() {
+                this[this.tableReportKartuPiutang.saldo_akhirColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsjenisNull() {
+                return this.IsNull(this.tableReportKartuPiutang.jenisColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetjenisNull() {
+                this[this.tableReportKartuPiutang.jenisColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -7212,6 +7957,40 @@ namespace OpenRetail.Report.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReportPembayaranPiutangPenjualanProdukHeaderRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ReportKartuPiutangRowChangeEvent : global::System.EventArgs {
+            
+            private ReportKartuPiutangRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKartuPiutangRowChangeEvent(ReportKartuPiutangRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKartuPiutangRow Row {
                 get {
                     return this.eventRow;
                 }

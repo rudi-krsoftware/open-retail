@@ -68,7 +68,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPreviewReport";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmPreviewReport_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmPreviewReport_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

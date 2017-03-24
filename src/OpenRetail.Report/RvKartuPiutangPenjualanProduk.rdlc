@@ -9,7 +9,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>LAPORAN KARTU HUTANG PEMBELIAN PRODUK</Value>
+                <Value>LAPORAN KARTU PIUTANG PENJUALAN PRODUK</Value>
                 <Style>
                   <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -87,7 +87,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="Supplier : " &amp; First(Fields!nama_supplier.Value)</Value>
+                                  <Value>="Customer : " &amp; First(Fields!nama_customer.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -367,7 +367,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>Pembelian</Value>
+                                                <Value>Penjualan</Value>
                                                 <Style>
                                                   <FontSize>8pt</FontSize>
                                                   <FontWeight>Bold</FontWeight>
@@ -422,7 +422,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>Pelunasan</Value>
+                                                <Value>Pembayaran</Value>
                                                 <Style>
                                                   <FontSize>8pt</FontSize>
                                                   <FontWeight>Bold</FontWeight>
@@ -537,7 +537,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=RowNumber("list_group_supplier")</Value>
+                                                <Value>=RowNumber("list_group_customer")</Value>
                                                 <Style>
                                                   <FontSize>8pt</FontSize>
                                                 </Style>
@@ -643,7 +643,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Iif(Len(Fields!nama_produk.Value)=0 and Fields!jenis.Value=2, "Pembayaran hutang", Fields!nama_produk.Value)</Value>
+                                                <Value>=Iif(Len(Fields!nama_produk.Value)=0 and Fields!jenis.Value=2, "Pembayaran piutang", Fields!nama_produk.Value)</Value>
                                                 <Style>
                                                   <FontSize>8pt</FontSize>
                                                 </Style>
@@ -1228,7 +1228,7 @@
                               </TablixMember>
                             </TablixMembers>
                           </TablixRowHierarchy>
-                          <DataSetName>ReportKartuHutangPembelianProduk</DataSetName>
+                          <DataSetName>ReportKartuPiutangPenjualanProduk</DataSetName>
                           <Top>0.25011in</Top>
                           <Height>0.67036in</Height>
                           <Width>7.57291in</Width>
@@ -1334,15 +1334,15 @@
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
-              <Group Name="list_group_supplier">
+              <Group Name="list_group_customer">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!supplier_id.Value</GroupExpression>
+                  <GroupExpression>=Fields!customer_id.Value</GroupExpression>
                 </GroupExpressions>
               </Group>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>ReportKartuHutangPembelianProduk</DataSetName>
+        <DataSetName>ReportKartuPiutangPenjualanProduk</DataSetName>
         <Top>1.74307cm</Top>
         <Left>0cm</Left>
         <Height>2.65521cm</Height>
@@ -1361,7 +1361,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Grand Total : " &amp; FormatNumber(Sum(Fields!saldo_akhir.Value, "ReportKartuHutangPembelianProduk"), 0)</Value>
+                <Value>="Grand Total : " &amp; FormatNumber(Sum(Fields!saldo_akhir.Value, "ReportKartuPiutangPenjualanProduk"), 0)</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -1410,7 +1410,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>5.30141cm</Height>
+    <Height>5.13939cm</Height>
     <Style />
   </Body>
   <Width>19.30575cm</Width>
@@ -1426,31 +1426,27 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DsPembelian">
+    <DataSource Name="DsPenjualan">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>cc1db13e-699d-4688-b996-fb8ee2285258</rd:DataSourceID>
+      <rd:DataSourceID>30a8d2ae-1a5e-4fef-98b8-308205849a77</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="ReportKartuHutangPembelianProduk">
+    <DataSet Name="ReportKartuPiutangPenjualanProduk">
       <Query>
-        <DataSourceName>DsPembelian</DataSourceName>
+        <DataSourceName>DsPenjualan</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="no_urut">
-          <DataField>no_urut</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="supplier_id">
-          <DataField>supplier_id</DataField>
+        <Field Name="customer_id">
+          <DataField>customer_id</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="nama_supplier">
-          <DataField>nama_supplier</DataField>
+        <Field Name="nama_customer">
+          <DataField>nama_customer</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="tanggal">
@@ -1487,13 +1483,13 @@
         </Field>
         <Field Name="jenis">
           <DataField>jenis</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>DsPembelian</rd:DataSetName>
-        <rd:SchemaPath>D:\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPembelian.xsd</rd:SchemaPath>
-        <rd:TableName>ReportKartuHutang</rd:TableName>
+        <rd:DataSetName>DsPenjualan</rd:DataSetName>
+        <rd:SchemaPath>D:\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPenjualan.xsd</rd:SchemaPath>
+        <rd:TableName>ReportKartuPiutang</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

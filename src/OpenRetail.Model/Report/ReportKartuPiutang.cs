@@ -23,10 +23,10 @@ using System.Text;
 
 namespace OpenRetail.Model.Report
 {
-    public class ReportKartuHutang
+    public class ReportKartuPiutang
     {
-        public string supplier_id { get; set; }
-        public string nama_supplier { get; set; }
+        public string customer_id { get; set; }
+        public string nama_customer { get; set; }
         public DateTime tanggal { get; set; }
         public string nama_produk { get; set; }
         public string satuan { get; set; }
@@ -37,7 +37,7 @@ namespace OpenRetail.Model.Report
         public double saldo_akhir { get; set; }
 
         /// <summary>
-        /// Jenis 1 untuk pembelian dan 2 untuk pembayaran/pelunasan
+        /// Jenis 1 untuk penjualan dan 2 untuk pembayaran/pelunasan
         /// </summary>
         public int jenis { get; set; }
     }
