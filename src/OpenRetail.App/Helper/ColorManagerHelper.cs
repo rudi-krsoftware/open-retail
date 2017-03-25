@@ -64,7 +64,6 @@ namespace OpenRetail.App.Helper
 
                     case "MaskedTextBox":
                         var mask = (MaskedTextBox)ctl;
-                        mask.BorderStyle = BorderStyle.FixedSingle;
 
                         if (mask.Tag != null)
                         {
@@ -82,14 +81,6 @@ namespace OpenRetail.App.Helper
                             }
                         }
 
-                        break;
-
-                    case "RadioButton":
-                        ((RadioButton)ctl).FlatStyle = FlatStyle.Flat;
-                        break;
-
-                    case "CheckBox":
-                        ((CheckBox)ctl).FlatStyle = FlatStyle.Flat;
                         break;
 
                     case "Panel":
@@ -133,7 +124,6 @@ namespace OpenRetail.App.Helper
             var advTextBox = (AdvancedTextbox)obj;
 
             advTextBox.EnterFocusColor = GetRgbColor(ColorSection.TextFocusColor);
-            advTextBox.BorderStyle = BorderStyle.FixedSingle;
 
             if (!advTextBox.Enabled)
             {
