@@ -1,7 +1,7 @@
 Struktur Database OpenRetail
 ==============================================
 
-OpenRetail menggunakan database [PostgreSQL](https://www.postgresql.org/) versi 9.4.1, disarankan Anda menggunakan versi yang sama untuk meminimalkan issue kompatibilitas.
+OpenRetail menggunakan database [PostgreSQL](https://www.postgresql.org/) versi 9.3.16, disarankan Anda menggunakan versi yang sama untuk meminimalkan issue kompatibilitas.
 
 Import Database OpenRetail
 -----------------------------------------------
