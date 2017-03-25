@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsStok" targetNamespace="http://tempuri.org/DsStok.xsd" xmlns:mstns="http://tempuri.org/DsStok.xsd" xmlns="http://tempuri.org/DsStok.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsStok" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsStok" msprop:Generator_UserDSName="DsStok">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ReportProduk" msprop:Generator_TableClassName="ReportProdukDataTable" msprop:Generator_TableVarName="tableReportProduk" msprop:Generator_RowChangedName="ReportProdukRowChanged" msprop:Generator_TablePropName="ReportProduk" msprop:Generator_RowDeletingName="ReportProdukRowDeleting" msprop:Generator_RowChangingName="ReportProdukRowChanging" msprop:Generator_RowEvHandlerName="ReportProdukRowChangeEventHandler" msprop:Generator_RowDeletedName="ReportProdukRowDeleted" msprop:Generator_RowClassName="ReportProdukRow" msprop:Generator_UserTableName="ReportProduk" msprop:Generator_RowEvArgName="ReportProdukRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="golongan_id" msprop:Generator_ColumnVarNameInTable="columngolongan_id" msprop:Generator_ColumnPropNameInRow="golongan_id" msprop:Generator_ColumnPropNameInTable="golongan_idColumn" msprop:Generator_UserColumnName="golongan_id" type="xs:string" minOccurs="0" />
+              <xs:element name="nama_golongan" msprop:Generator_ColumnVarNameInTable="columnnama_golongan" msprop:Generator_ColumnPropNameInRow="nama_golongan" msprop:Generator_ColumnPropNameInTable="nama_golonganColumn" msprop:Generator_UserColumnName="nama_golongan" type="xs:string" minOccurs="0" />
+              <xs:element name="produk_id" msprop:Generator_ColumnVarNameInTable="columnproduk_id" msprop:Generator_ColumnPropNameInRow="produk_id" msprop:Generator_ColumnPropNameInTable="produk_idColumn" msprop:Generator_UserColumnName="produk_id" type="xs:string" minOccurs="0" />
+              <xs:element name="nama_produk" msprop:Generator_ColumnVarNameInTable="columnnama_produk" msprop:Generator_ColumnPropNameInRow="nama_produk" msprop:Generator_ColumnPropNameInTable="nama_produkColumn" msprop:Generator_UserColumnName="nama_produk" type="xs:string" minOccurs="0" />
+              <xs:element name="satuan" msprop:Generator_ColumnVarNameInTable="columnsatuan" msprop:Generator_ColumnPropNameInRow="satuan" msprop:Generator_ColumnPropNameInTable="satuanColumn" msprop:Generator_UserColumnName="satuan" type="xs:string" minOccurs="0" />
+              <xs:element name="stok" msprop:Generator_ColumnVarNameInTable="columnstok" msprop:Generator_ColumnPropNameInRow="stok" msprop:Generator_ColumnPropNameInTable="stokColumn" msprop:Generator_UserColumnName="stok" type="xs:double" minOccurs="0" />
+              <xs:element name="stok_gudang" msprop:Generator_ColumnVarNameInTable="columnstok_gudang" msprop:Generator_ColumnPropNameInRow="stok_gudang" msprop:Generator_ColumnPropNameInTable="stok_gudangColumn" msprop:Generator_UserColumnName="stok_gudang" type="xs:double" minOccurs="0" />
+              <xs:element name="harga_beli" msprop:Generator_ColumnVarNameInTable="columnharga_beli" msprop:Generator_ColumnPropNameInRow="harga_beli" msprop:Generator_ColumnPropNameInTable="harga_beliColumn" msprop:Generator_UserColumnName="harga_beli" type="xs:double" minOccurs="0" />
+              <xs:element name="harga_jual" msprop:Generator_ColumnVarNameInTable="columnharga_jual" msprop:Generator_ColumnPropNameInRow="harga_jual" msprop:Generator_ColumnPropNameInTable="harga_jualColumn" msprop:Generator_UserColumnName="harga_jual" type="xs:double" minOccurs="0" />
+              <xs:element name="asset" msprop:Generator_ColumnVarNameInTable="columnasset" msprop:Generator_ColumnPropNameInRow="asset" msprop:Generator_ColumnPropNameInTable="assetColumn" msprop:Generator_UserColumnName="asset" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReportPenyesuaianStok" msprop:Generator_TableClassName="ReportPenyesuaianStokDataTable" msprop:Generator_TableVarName="tableReportPenyesuaianStok" msprop:Generator_RowChangedName="ReportPenyesuaianStokRowChanged" msprop:Generator_TablePropName="ReportPenyesuaianStok" msprop:Generator_RowDeletingName="ReportPenyesuaianStokRowDeleting" msprop:Generator_RowChangingName="ReportPenyesuaianStokRowChanging" msprop:Generator_RowEvHandlerName="ReportPenyesuaianStokRowChangeEventHandler" msprop:Generator_RowDeletedName="ReportPenyesuaianStokRowDeleted" msprop:Generator_RowClassName="ReportPenyesuaianStokRow" msprop:Generator_UserTableName="ReportPenyesuaianStok" msprop:Generator_RowEvArgName="ReportPenyesuaianStokRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="penyesuaian_stok_id" msprop:Generator_ColumnVarNameInTable="columnpenyesuaian_stok_id" msprop:Generator_ColumnPropNameInRow="penyesuaian_stok_id" msprop:Generator_ColumnPropNameInTable="penyesuaian_stok_idColumn" msprop:Generator_UserColumnName="penyesuaian_stok_id" type="xs:string" minOccurs="0" />
+              <xs:element name="tanggal" msprop:Generator_ColumnVarNameInTable="columntanggal" msprop:Generator_ColumnPropNameInRow="tanggal" msprop:Generator_ColumnPropNameInTable="tanggalColumn" msprop:Generator_UserColumnName="tanggal" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="penambahan_stok" msprop:Generator_ColumnVarNameInTable="columnpenambahan_stok" msprop:Generator_ColumnPropNameInRow="penambahan_stok" msprop:Generator_ColumnPropNameInTable="penambahan_stokColumn" msprop:Generator_UserColumnName="penambahan_stok" type="xs:double" minOccurs="0" />
+              <xs:element name="pengurangan_stok" msprop:Generator_ColumnVarNameInTable="columnpengurangan_stok" msprop:Generator_ColumnPropNameInRow="pengurangan_stok" msprop:Generator_ColumnPropNameInTable="pengurangan_stokColumn" msprop:Generator_UserColumnName="pengurangan_stok" type="xs:double" minOccurs="0" />
+              <xs:element name="penambahan_stok_gudang" msprop:Generator_ColumnVarNameInTable="columnpenambahan_stok_gudang" msprop:Generator_ColumnPropNameInRow="penambahan_stok_gudang" msprop:Generator_ColumnPropNameInTable="penambahan_stok_gudangColumn" msprop:Generator_UserColumnName="penambahan_stok_gudang" type="xs:double" minOccurs="0" />
+              <xs:element name="pengurangan_stok_gudang" msprop:Generator_ColumnVarNameInTable="columnpengurangan_stok_gudang" msprop:Generator_ColumnPropNameInRow="pengurangan_stok_gudang" msprop:Generator_ColumnPropNameInTable="pengurangan_stok_gudangColumn" msprop:Generator_UserColumnName="pengurangan_stok_gudang" type="xs:double" minOccurs="0" />
+              <xs:element name="keterangan" msprop:Generator_ColumnVarNameInTable="columnketerangan" msprop:Generator_ColumnPropNameInRow="keterangan" msprop:Generator_ColumnPropNameInTable="keteranganColumn" msprop:Generator_UserColumnName="keterangan" type="xs:string" minOccurs="0" />
+              <xs:element name="produk_id" msprop:Generator_ColumnVarNameInTable="columnproduk_id" msprop:Generator_ColumnPropNameInRow="produk_id" msprop:Generator_ColumnPropNameInTable="produk_idColumn" msprop:Generator_UserColumnName="produk_id" type="xs:string" minOccurs="0" />
+              <xs:element name="nama_produk" msprop:Generator_ColumnVarNameInTable="columnnama_produk" msprop:Generator_ColumnPropNameInRow="nama_produk" msprop:Generator_ColumnPropNameInTable="nama_produkColumn" msprop:Generator_UserColumnName="nama_produk" type="xs:string" minOccurs="0" />
+              <xs:element name="alasan_penyesuaian_stok_id" msprop:Generator_ColumnVarNameInTable="columnalasan_penyesuaian_stok_id" msprop:Generator_ColumnPropNameInRow="alasan_penyesuaian_stok_id" msprop:Generator_ColumnPropNameInTable="alasan_penyesuaian_stok_idColumn" msprop:Generator_UserColumnName="alasan_penyesuaian_stok_id" type="xs:string" minOccurs="0" />
+              <xs:element name="alasan" msprop:Generator_ColumnVarNameInTable="columnalasan" msprop:Generator_ColumnPropNameInRow="alasan" msprop:Generator_ColumnPropNameInTable="alasanColumn" msprop:Generator_UserColumnName="alasan" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

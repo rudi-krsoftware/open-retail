@@ -27,7 +27,7 @@ using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
+{    
 	[Table("m_produk")]
     public class Produk
     {
@@ -70,6 +70,12 @@ namespace OpenRetail.Model
 
 		[Display(Name = "Minimal Stok Gudang")]
 		public double minimal_stok_gudang { get; set; }
+
+        [Computed]
+        public double asset
+        {
+            get { return (stok + stok_gudang) > 0 ? (stok + stok_gudang) * harga_jual : 0; }
+        }
 	}
 
     public class ProdukValidator : AbstractValidator<Produk>

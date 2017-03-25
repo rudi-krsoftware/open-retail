@@ -78,6 +78,7 @@
     <Compile Include="Report\ReportPiutangJualProdukBll.cs" />
     <Compile Include="Report\ReportReturBeliProdukBll.cs" />
     <Compile Include="Report\ReportReturJualProdukBll.cs" />
+    <Compile Include="Report\ReportStokProdukBll.cs" />
     <Compile Include="ReturBeliProdukBll.cs" />
     <Compile Include="ReturJualProdukBll.cs" />
     <Compile Include="RoleBll.cs" />

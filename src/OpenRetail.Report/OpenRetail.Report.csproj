@@ -57,12 +57,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsPenjualan.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DsStok.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsStok.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="RvKartuPiutangPenjualanProduk.rdlc" />
     <EmbeddedResource Include="RvPembayaranPiutangPenjualanProdukDetail.rdlc" />
     <EmbeddedResource Include="RvPembayaranPiutangPenjualanProdukHeader.rdlc" />
+    <EmbeddedResource Include="RvPenyesuaianStok.rdlc" />
+    <EmbeddedResource Include="RvStokProduk.rdlc" />
     <EmbeddedResource Include="RvPiutangPenjualanProduk.rdlc" />
     <EmbeddedResource Include="RvPiutangPenjualanProdukDetail.rdlc" />
     <EmbeddedResource Include="RvPiutangPenjualanProdukHeader.rdlc" />
@@ -103,6 +110,17 @@
     </None>
     <None Include="DataSet\DsPenjualan.xss">
       <DependentUpon>DsPenjualan.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DsStok.xsc">
+      <DependentUpon>DsStok.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DsStok.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsStok.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\DsStok.xss">
+      <DependentUpon>DsStok.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

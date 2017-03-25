@@ -554,6 +554,7 @@
             this.mnuLapStokProduk.Size = new System.Drawing.Size(187, 22);
             this.mnuLapStokProduk.Tag = "FrmLapStokProduk";
             this.mnuLapStokProduk.Text = "Stok Produk";
+            this.mnuLapStokProduk.Click += new System.EventHandler(this.mnuLapStokProduk_Click);
             // 
             // mnuLapPenyesuaianStok
             // 
@@ -561,6 +562,7 @@
             this.mnuLapPenyesuaianStok.Size = new System.Drawing.Size(187, 22);
             this.mnuLapPenyesuaianStok.Tag = "FrmLapPenyesuaianStok";
             this.mnuLapPenyesuaianStok.Text = "Penyesuaian Stok";
+            this.mnuLapPenyesuaianStok.Click += new System.EventHandler(this.mnuLapPenyesuaianStok_Click);
             // 
             // toolStripSeparator5
             // 

@@ -103,6 +103,7 @@
     <Compile Include="Report\ReportPiutangJualProdukBllTest.cs" />
     <Compile Include="Report\ReportReturBeliProdukBllTest.cs" />
     <Compile Include="Report\ReportReturJualProdukBllTest.cs" />
+    <Compile Include="Report\ReportStokProdukBllTest.cs" />
     <Compile Include="ReturBeliProdukBllTest.cs" />
     <Compile Include="ReturJualProdukBllTest.cs" />
     <Compile Include="RoleBllTest.cs" />

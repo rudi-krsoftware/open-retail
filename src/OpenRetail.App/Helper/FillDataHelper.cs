@@ -91,6 +91,16 @@ namespace OpenRetail.App.Helper
             }
         }
 
+        public static void FillAlasanPenyesuaianStok(CheckedListBox chkListbox, IList<AlasanPenyesuaianStok> listOfAlasanPenyesuaianStok)
+        {
+            chkListbox.Items.Clear();
+
+            foreach (var alasan in listOfAlasanPenyesuaianStok)
+            {
+                chkListbox.Items.Add(alasan.alasan);
+            }
+        }
+
         public static void FillBulan(ComboBox obj, bool isSetDefaultMonth = false)
         {
             obj.Items.Clear();

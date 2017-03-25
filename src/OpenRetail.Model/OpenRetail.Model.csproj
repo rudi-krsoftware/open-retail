@@ -100,6 +100,7 @@
     <Compile Include="Report\ReportPenjualanProduk.cs" />
     <Compile Include="Report\ReportPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportPenjualanProdukHeader.cs" />
+    <Compile Include="Report\ReportPenyesuaianStokProduk.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProdukHeader.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProduk.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Report\ReportReturPembelianProdukHeader.cs" />
     <Compile Include="Report\ReportReturPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportReturPenjualanProdukHeader.cs" />
+    <Compile Include="Report\ReportStokProduk.cs" />
     <Compile Include="ReturBeliProduk.cs" />
     <Compile Include="ReturJualProduk.cs" />
     <Compile Include="Role.cs" />

@@ -146,6 +146,12 @@
     <Compile Include="Helper\RolePrivilegeHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Helper\Utils.cs" />
+    <Compile Include="Laporan\FrmLapPenyesuaianStok.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapPenyesuaianStok.Designer.cs">
+      <DependentUpon>FrmLapPenyesuaianStok.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\FrmLapPenjualanPerProduk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,12 @@
     </Compile>
     <Compile Include="Laporan\FrmLapPembelianProduk.Designer.cs">
       <DependentUpon>FrmLapPembelianProduk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporan\FrmLapStokProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapStokProduk.Designer.cs">
+      <DependentUpon>FrmLapStokProduk.cs</DependentUpon>
     </Compile>
     <Compile Include="Lookup\FrmLookupItemNota.cs">
       <SubType>Form</SubType>
@@ -511,6 +523,9 @@
     <Compile Include="UserControl\FilterRangeTanggal.Designer.cs">
       <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Laporan\FrmLapStokProduk.resx">
+      <DependentUpon>FrmLapStokProduk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lookup\FrmLookupItemNota.resx">
       <DependentUpon>FrmLookupItemNota.cs</DependentUpon>
     </EmbeddedResource>

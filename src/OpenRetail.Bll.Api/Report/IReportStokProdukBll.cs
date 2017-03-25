@@ -16,20 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System.Reflection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-[assembly: AssemblyCopyright("Copyright © 2017. Kamarudin")]
-[assembly: AssemblyCompany("KR Software")]
+using OpenRetail.Model.Report;
 
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+namespace OpenRetail.Bll.Api.Report
+{
+    public interface IReportStokProdukBll
+    {
+        IList<ReportStokProduk> GetStokByStatus(StatusStok statusStok);
+        IList<ReportPenyesuaianStokProduk> GetPenyesuaianStokByBulan(int bulan, int tahun);
+        IList<ReportPenyesuaianStokProduk> GetPenyesuaianStokByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+    }
+}

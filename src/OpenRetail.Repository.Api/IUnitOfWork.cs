@@ -70,5 +70,7 @@ namespace OpenRetail.Repository.Api
         IReportPembayaranPiutangJualProdukRepository ReportPembayaranPiutangJualProdukRepository { get; }
         IReportKartuPiutangRepository ReportKartuPiutangRepository { get; }
         IReportReturJualProdukRepository ReportReturJualProdukRepository { get; }
+
+        IReportStokProdukRepository ReportStokProdukRepository { get; }
     }
 }     

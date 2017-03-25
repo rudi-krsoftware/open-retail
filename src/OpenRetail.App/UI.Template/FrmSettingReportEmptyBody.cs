@@ -35,6 +35,7 @@ namespace OpenRetail.App.UI.Template
         public FrmSettingReportEmptyBody()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
         }
 
         /// <summary>
@@ -56,9 +57,15 @@ namespace OpenRetail.App.UI.Template
             this.Size = new Size(this.Width - newSize, this.Height);
         }
 
-        protected void ShowReport(string header, string reportName, ReportDataSource reportDataSource)
+        protected void ShowReport(string header, string reportName, ReportDataSource reportDataSource, IEnumerable<ReportParameter> parameters = null)
         {
-            var frmPreview = new FrmPreviewReport(header, reportName, reportDataSource);
+            var frmPreview = new FrmPreviewReport(header, reportName, reportDataSource, parameters);
+            frmPreview.ShowDialog();
+        }
+
+        protected void ShowReport(string header, string reportName, IList<ReportDataSource> reportDataSources, IEnumerable<ReportParameter> parameters = null)
+        {
+            var frmPreview = new FrmPreviewReport(header, reportName, reportDataSources, parameters);
             frmPreview.ShowDialog();
         }
 

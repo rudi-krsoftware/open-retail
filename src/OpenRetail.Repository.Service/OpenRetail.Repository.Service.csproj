@@ -85,6 +85,7 @@
     <Compile Include="Report\ReportPiutangJualProdukRepository.cs" />
     <Compile Include="Report\ReportReturBeliProdukRepository.cs" />
     <Compile Include="Report\ReportReturJualProdukRepository.cs" />
+    <Compile Include="Report\ReportStokProdukRepository.cs" />
     <Compile Include="ReturBeliProdukRepository.cs" />
     <Compile Include="ReturJualProdukRepository.cs" />
     <Compile Include="RolePrivilegeRepository.cs" />
