@@ -163,5 +163,10 @@ namespace OpenRetail.App.Referensi
             if (KeyPressHelper.IsEnter(e))
                 Simpan();
         }
+
+        private void cmbJenisGaji_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label8.Text = ((ComboBox)sender).SelectedIndex == 0 ? "Gaji Per Hari" : "Gaji Bulanan";
+        }
     }
 }

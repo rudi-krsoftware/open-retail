@@ -306,6 +306,7 @@
             this.cmbJenisGaji.Size = new System.Drawing.Size(121, 21);
             this.cmbJenisGaji.TabIndex = 0;
             this.cmbJenisGaji.Tag = "ignore";
+            this.cmbJenisGaji.SelectedIndexChanged += new System.EventHandler(this.cmbJenisGaji_SelectedIndexChanged);
             // 
             // label8
             // 
