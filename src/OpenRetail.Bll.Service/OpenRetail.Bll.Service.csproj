@@ -63,6 +63,7 @@
     <Compile Include="MenuBll.cs" />
     <Compile Include="PembayaranHutangProdukBll.cs" />
     <Compile Include="PembayaranPiutangProdukBll.cs" />
+    <Compile Include="PengeluaranBiayaBll.cs" />
     <Compile Include="PenggunaBll.cs" />
     <Compile Include="PenyesuaianStokBll.cs" />
     <Compile Include="ProdukBll.cs" />

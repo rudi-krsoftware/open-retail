@@ -37,9 +37,23 @@ namespace OpenRetail.App.Lookup
         private IList<Supplier> _listOfSupplier = null;
         private IList<Customer> _listOfCustomer = null;
         private IList<Produk> _listOfProduk = null;
+        private IList<JenisPengeluaran> _listOfJenisPengeluaran = null;
 
         private ReferencesType _referensiType = ReferencesType.Supplier;
         public IListener Listener { private get; set; }
+
+        public FrmLookupReferensi(string header, IList<JenisPengeluaran> listOfJenisPengeluaran)
+            : base()
+        {
+            InitializeComponent();
+
+            base.SetHeader(header);
+            this._listOfJenisPengeluaran = listOfJenisPengeluaran;
+            this._referensiType = ReferencesType.JenisPengeluaran;
+
+            InitGridList();
+            base.SetActiveBtnPilih(listOfJenisPengeluaran.Count > 0);
+        }
 
         public FrmLookupReferensi(string header, IList<Supplier> listOfSupplier)
             : base()
@@ -90,6 +104,16 @@ namespace OpenRetail.App.Lookup
 
             switch (this._referensiType)
             {
+                case ReferencesType.JenisPengeluaran:
+                    gridListProperties.Add(new GridListControlProperties { Header = "Jenis Biaya" });
+
+                    GridListControlHelper.InitializeGridListControl<JenisPengeluaran>(this.gridList, _listOfJenisPengeluaran, gridListProperties);
+                    this.gridList.Grid.QueryCellInfo += GridJenisPengeluaran_QueryCellInfo;
+
+                    listCount = _listOfJenisPengeluaran.Count;
+
+                    break;
+
                 case ReferencesType.Customer:
                     gridListProperties.Add(new GridListControlProperties { Header = "Nama Customer", Width = 200 });
                     gridListProperties.Add(new GridListControlProperties { Header = "Alamat" });
@@ -126,6 +150,35 @@ namespace OpenRetail.App.Lookup
 
             if (listCount > 0)
                 this.gridList.SetSelected(0, true);
+        }
+
+        private void GridJenisPengeluaran_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
+        {            
+            if (_listOfJenisPengeluaran.Count > 0)
+            {
+                if (e.RowIndex > 0)
+                {
+                    var rowIndex = e.RowIndex - 1;
+
+                    if (rowIndex < _listOfJenisPengeluaran.Count)
+                    {
+                        var jenisPengeluaran = _listOfJenisPengeluaran[rowIndex];
+
+                        switch (e.ColIndex)
+                        {
+                            case 2:
+                                e.Style.CellValue = jenisPengeluaran.nama_jenis_pengeluaran;
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        // we handled it, let the grid know
+                        e.Handled = true;
+                    }
+                }
+            }
         }
 
         private void GridCustomer_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
@@ -242,6 +295,11 @@ namespace OpenRetail.App.Lookup
 
             switch (this._referensiType)
             {
+                case ReferencesType.JenisPengeluaran:
+                    var jenisPengeluaran = _listOfJenisPengeluaran[rowIndex];
+                    this.Listener.Ok(this, jenisPengeluaran);
+                    break;
+
                 case ReferencesType.Supplier:
                     var supplier = _listOfSupplier[rowIndex];
                     this.Listener.Ok(this, supplier);

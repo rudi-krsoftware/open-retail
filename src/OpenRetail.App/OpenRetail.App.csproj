@@ -291,6 +291,18 @@
     <Compile Include="Pengaturan\FrmListHakAkses.Designer.cs">
       <DependentUpon>FrmListHakAkses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pengeluaran\FrmEntryPengeluaranBiaya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmEntryPengeluaranBiaya.Designer.cs">
+      <DependentUpon>FrmEntryPengeluaranBiaya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmListPengeluaranBiaya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmListPengeluaranBiaya.Designer.cs">
+      <DependentUpon>FrmListPengeluaranBiaya.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Referensi\FrmEntryPenyesuaianStok.cs">
       <SubType>Form</SubType>
@@ -559,6 +571,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pengaturan\FrmListHakAkses.resx">
       <DependentUpon>FrmListHakAkses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pengeluaran\FrmEntryPengeluaranBiaya.resx">
+      <DependentUpon>FrmEntryPengeluaranBiaya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pengeluaran\FrmListPengeluaranBiaya.resx">
+      <DependentUpon>FrmListPengeluaranBiaya.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

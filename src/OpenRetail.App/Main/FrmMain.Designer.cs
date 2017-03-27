@@ -387,6 +387,7 @@
             this.mnuPengeluaranBiaya.Size = new System.Drawing.Size(187, 22);
             this.mnuPengeluaranBiaya.Tag = "FrmListPengeluaranBiaya";
             this.mnuPengeluaranBiaya.Text = "Pengeluaran Biaya";
+            this.mnuPengeluaranBiaya.Click += new System.EventHandler(this.mnuPengeluaranBiaya_Click);
             // 
             // mnuKasbon
             // 

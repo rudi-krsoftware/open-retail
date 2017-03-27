@@ -28,6 +28,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 using OpenRetail.App.Referensi;
 using OpenRetail.App.Transaksi;
+using OpenRetail.App.Pengeluaran;
 using OpenRetail.App.Laporan;
 using OpenRetail.App.Pengaturan;
 using OpenRetail.App.Helper;
@@ -63,6 +64,8 @@ namespace OpenRetail.App.Main
         private FrmListPenjualanProduk _frmListPenjualanProduk;
         private FrmListPembayaranPiutangPenjualanProduk _frmListPembayaranPiutangPenjualanProduk;
         private FrmListReturPenjualanProduk _frmListReturPenjualanProduk;
+
+        private FrmListPengeluaranBiaya _frmListPengeluaranBiaya;
 
         private FrmListHakAkses _frmListHakAkses;
         private FrmListOperator _frmListOperator;
@@ -618,6 +621,11 @@ namespace OpenRetail.App.Main
             }
             else
                 MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+        }
+
+        private void mnuPengeluaranBiaya_Click(object sender, EventArgs e)
+        {
+            ShowForm<FrmListPengeluaranBiaya>(sender, ref _frmListPengeluaranBiaya);
         }
     }
 }

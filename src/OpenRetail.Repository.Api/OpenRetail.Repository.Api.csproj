@@ -57,6 +57,7 @@
     <Compile Include="IMenuRepository.cs" />
     <Compile Include="IPembayaranHutangProdukRepository.cs" />
     <Compile Include="IPembayaranPiutangProdukRepository.cs" />
+    <Compile Include="IPengeluaranBiayaRepository.cs" />
     <Compile Include="IPenggunaRepository.cs" />
     <Compile Include="IPenyesuaianStokRepository.cs" />
     <Compile Include="IProdukRepository.cs" />

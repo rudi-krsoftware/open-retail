@@ -59,7 +59,21 @@ namespace OpenRetail.Repository.Service
 
         public IList<JenisPengeluaran> GetByName(string name)
         {
-            throw new NotImplementedException();
+            IList<JenisPengeluaran> oList = new List<JenisPengeluaran>();
+
+            try
+            {
+                oList = _context.db.GetAll<JenisPengeluaran>()
+                                .Where(f => f.nama_jenis_pengeluaran.ToLower().Contains(name.ToLower()))
+                                .OrderBy(f => f.nama_jenis_pengeluaran)
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
         }
 
         public IList<JenisPengeluaran> GetAll()

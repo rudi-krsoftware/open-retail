@@ -70,6 +70,7 @@
     <Compile Include="MenuRepository.cs" />
     <Compile Include="PembayaranHutangProdukRepository.cs" />
     <Compile Include="PembayaranPiutangProdukRepository.cs" />
+    <Compile Include="PengeluaranBiayaRepository.cs" />
     <Compile Include="PenggunaRepository.cs" />
     <Compile Include="PenyesuaianStokRepository.cs" />
     <Compile Include="ProdukRepository.cs" />

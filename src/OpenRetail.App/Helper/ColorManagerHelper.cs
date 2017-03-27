@@ -84,16 +84,17 @@ namespace OpenRetail.App.Helper
                         break;
 
                     case "Panel":
-                        var objPanel = (Panel)ctl;
-                        objPanel.BorderStyle = BorderStyle.FixedSingle;
+                        var objPanel = (Panel)ctl;                        
 
                         if (objPanel.Name == "pnlHeader")
                         {
                             color = GetRgbColor(ColorSection.PanelHeaderBackColor);
+                            objPanel.BorderStyle = BorderStyle.FixedSingle;
                         }
                         else if (objPanel.Name == "pnlFooter")
                         {
                             color = GetRgbColor(ColorSection.PanelFooterBackColor);
+                            objPanel.BorderStyle = BorderStyle.FixedSingle;
                         }
 
                         objPanel.BackColor = color;
