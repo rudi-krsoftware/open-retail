@@ -681,27 +681,27 @@ CREATE FUNCTION f_update_pelunasan_kasbon() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 DECLARE 
-	var_bon_id					t_guid;    
+	var_kasbon_id				t_guid;    
 	var_total_pelunasan_kasbon 	t_harga;
     
 BEGIN
 	IF TG_OP = 'INSERT' OR TG_OP = 'UPDATE' THEN
-    	var_bon_id := NEW.bon_id;        
+    	var_kasbon_id := NEW.kasbon_id;        
     ELSE
-    	var_bon_id := OLD.bon_id;
+    	var_kasbon_id := OLD.kasbon_id;
     END IF;
 	        
     -- pelunasan kasbon
-    var_total_pelunasan_kasbon := (SELECT SUM(nominal) FROM t_pembayaran_bon 
-    							   WHERE bon_id = var_bon_id);	    
+    var_total_pelunasan_kasbon := (SELECT SUM(nominal) FROM t_pembayaran_kasbon 
+    							   WHERE kasbon_id = var_kasbon_id);	    
 	
     IF var_total_pelunasan_kasbon IS NULL THEN
     	var_total_pelunasan_kasbon := 0;  
 	END IF;        
     
     -- kasbon
-    UPDATE t_bon SET total_pelunasan = var_total_pelunasan_kasbon 
-    WHERE bon_id = var_bon_id;    
+    UPDATE t_kasbon SET total_pelunasan = var_total_pelunasan_kasbon 
+    WHERE kasbon_id = var_kasbon_id;    
     
     RETURN NULL;
 END;
@@ -970,7 +970,7 @@ BEGIN
 	
     SELECT SUM(nominal), SUM(total_pelunasan)
     INTO var_total_kasbon, var_total_pelunasan
-	FROM t_bon WHERE karyawan_id = var_karyawan_id;
+	FROM t_kasbon WHERE karyawan_id = var_karyawan_id;
         
     IF var_total_kasbon IS NULL THEN
     	var_total_kasbon := 0;  
@@ -1007,14 +1007,14 @@ BEGIN
     	v_pengeluaran_id := OLD.pengeluaran_id;
     END IF;
         
-    v_total := (SELECT SUM(jumlah * harga) FROM t_item_pengeluaran
+    v_total := (SELECT SUM(jumlah * harga) FROM t_item_pengeluaran_biaya
 			    WHERE pengeluaran_id = v_pengeluaran_id);
 	
     IF v_total IS NULL THEN
     	v_total := 0;  
 	END IF;
     
-    UPDATE t_pengeluaran SET total = v_total WHERE pengeluaran_id = v_pengeluaran_id;                        
+    UPDATE t_pengeluaran_biaya SET total = v_total WHERE pengeluaran_id = v_pengeluaran_id;                        
     RETURN NULL;
 END;
 $$;
@@ -1507,39 +1507,6 @@ CREATE SEQUENCE t_beli_produk_beli_produk_id_seq
 ALTER TABLE t_beli_produk_beli_produk_id_seq OWNER TO postgres;
 
 --
--- Name: t_bon; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE t_bon (
-    bon_id t_guid NOT NULL,
-    karyawan_id t_guid,
-    pengguna_id t_guid,
-    nota t_nota,
-    tanggal date,
-    nominal t_harga,
-    keterangan t_keterangan,
-    tanggal_sistem timestamp without time zone DEFAULT now(),
-    total_pelunasan t_harga DEFAULT 0
-);
-
-
-ALTER TABLE t_bon OWNER TO postgres;
-
---
--- Name: t_bon_bon_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE t_bon_bon_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE t_bon_bon_id_seq OWNER TO postgres;
-
---
 -- Name: t_gaji_karyawan; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1563,11 +1530,26 @@ CREATE TABLE t_gaji_karyawan (
     jumlah_hari integer DEFAULT 0,
     tunjangan t_harga DEFAULT 0,
     kasbon t_harga DEFAULT 0,
-    tanggal date
+    tanggal date,
+    nota t_nota
 );
 
 
 ALTER TABLE t_gaji_karyawan OWNER TO postgres;
+
+--
+-- Name: t_gaji_karyawan_gaji_karyawan_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE t_gaji_karyawan_gaji_karyawan_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE t_gaji_karyawan_gaji_karyawan_id_seq OWNER TO postgres;
 
 --
 -- Name: t_item_beli_produk; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1641,10 +1623,10 @@ CREATE TABLE t_item_pembayaran_piutang_produk (
 ALTER TABLE t_item_pembayaran_piutang_produk OWNER TO postgres;
 
 --
--- Name: t_item_pengeluaran; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_item_pengeluaran_biaya; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
-CREATE TABLE t_item_pengeluaran (
+CREATE TABLE t_item_pengeluaran_biaya (
     item_pengeluaran_id t_guid NOT NULL,
     pengeluaran_id t_guid,
     pengguna_id t_guid,
@@ -1655,7 +1637,7 @@ CREATE TABLE t_item_pengeluaran (
 );
 
 
-ALTER TABLE t_item_pengeluaran OWNER TO postgres;
+ALTER TABLE t_item_pengeluaran_biaya OWNER TO postgres;
 
 --
 -- Name: t_item_retur_beli_produk; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1734,6 +1716,39 @@ CREATE SEQUENCE t_jual_produk_jual_produk_id_seq
 ALTER TABLE t_jual_produk_jual_produk_id_seq OWNER TO postgres;
 
 --
+-- Name: t_kasbon; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE t_kasbon (
+    kasbon_id t_guid NOT NULL,
+    karyawan_id t_guid,
+    pengguna_id t_guid,
+    nota t_nota,
+    tanggal date,
+    nominal t_harga,
+    keterangan t_keterangan,
+    tanggal_sistem timestamp without time zone DEFAULT now(),
+    total_pelunasan t_harga DEFAULT 0
+);
+
+
+ALTER TABLE t_kasbon OWNER TO postgres;
+
+--
+-- Name: t_kasbon_kasbon_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE t_kasbon_kasbon_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE t_kasbon_kasbon_id_seq OWNER TO postgres;
+
+--
 -- Name: t_logs; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1786,23 +1801,6 @@ CREATE TABLE t_mesin (
 ALTER TABLE t_mesin OWNER TO postgres;
 
 --
--- Name: t_pembayaran_bon; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE t_pembayaran_bon (
-    pembayaran_bon_id t_guid NOT NULL,
-    bon_id t_guid,
-    gaji_karyawan_id t_guid,
-    tanggal date,
-    nominal t_harga,
-    keterangan t_keterangan,
-    tanggal_sistem timestamp without time zone DEFAULT now()
-);
-
-
-ALTER TABLE t_pembayaran_bon OWNER TO postgres;
-
---
 -- Name: t_pembayaran_hutang_produk; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1833,6 +1831,38 @@ CREATE SEQUENCE t_pembayaran_hutang_produk_pembayaran_hutang_produk_id_seq
 
 
 ALTER TABLE t_pembayaran_hutang_produk_pembayaran_hutang_produk_id_seq OWNER TO postgres;
+
+--
+-- Name: t_pembayaran_kasbon; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE t_pembayaran_kasbon (
+    pembayaran_kasbon_id t_guid NOT NULL,
+    kasbon_id t_guid,
+    gaji_karyawan_id t_guid,
+    tanggal date,
+    nominal t_harga,
+    keterangan t_keterangan,
+    tanggal_sistem timestamp without time zone DEFAULT now(),
+    nota t_nota
+);
+
+
+ALTER TABLE t_pembayaran_kasbon OWNER TO postgres;
+
+--
+-- Name: t_pembayaran_kasbon_pembayaran_kasbon_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE t_pembayaran_kasbon_pembayaran_kasbon_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE t_pembayaran_kasbon_pembayaran_kasbon_id_seq OWNER TO postgres;
 
 --
 -- Name: t_pembayaran_piutang_produk; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1867,10 +1897,10 @@ CREATE SEQUENCE t_pembayaran_piutang_produk_pembayaran_piutang_produk_id_seq
 ALTER TABLE t_pembayaran_piutang_produk_pembayaran_piutang_produk_id_seq OWNER TO postgres;
 
 --
--- Name: t_pengeluaran; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_pengeluaran_biaya; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
-CREATE TABLE t_pengeluaran (
+CREATE TABLE t_pengeluaran_biaya (
     pengeluaran_id t_guid NOT NULL,
     pengguna_id t_guid,
     nota t_nota,
@@ -1881,13 +1911,13 @@ CREATE TABLE t_pengeluaran (
 );
 
 
-ALTER TABLE t_pengeluaran OWNER TO postgres;
+ALTER TABLE t_pengeluaran_biaya OWNER TO postgres;
 
 --
--- Name: t_pengeluaran_pengeluaran_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: t_pengeluaran_biaya_pengeluaran_biaya_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE t_pengeluaran_pengeluaran_id_seq
+CREATE SEQUENCE t_pengeluaran_biaya_pengeluaran_biaya_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1895,7 +1925,7 @@ CREATE SEQUENCE t_pengeluaran_pengeluaran_id_seq
     CACHE 1;
 
 
-ALTER TABLE t_pengeluaran_pengeluaran_id_seq OWNER TO postgres;
+ALTER TABLE t_pengeluaran_biaya_pengeluaran_biaya_id_seq OWNER TO postgres;
 
 --
 -- Name: t_penyesuaian_stok; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1917,20 +1947,6 @@ ALTER TABLE ONLY t_penyesuaian_stok ALTER COLUMN alasan_penyesuaian_id SET STATI
 
 
 ALTER TABLE t_penyesuaian_stok OWNER TO postgres;
-
---
--- Name: t_produksi_produksi_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE t_produksi_produksi_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE t_produksi_produksi_id_seq OWNER TO postgres;
 
 --
 -- Name: t_retur_beli_produk; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1997,60 +2013,6 @@ CREATE SEQUENCE t_retur_jual_produk_retur_jual_produk_id_seq
 
 
 ALTER TABLE t_retur_jual_produk_retur_jual_produk_id_seq OWNER TO postgres;
-
---
--- Name: t_sppd_sppd_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE t_sppd_sppd_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE t_sppd_sppd_id_seq OWNER TO postgres;
-
---
--- Name: test_tg; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE test_tg (
-    id integer NOT NULL,
-    value character varying(100)
-);
-
-
-ALTER TABLE test_tg OWNER TO postgres;
-
---
--- Name: test_tg_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE test_tg_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE test_tg_id_seq OWNER TO postgres;
-
---
--- Name: test_tg_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE test_tg_id_seq OWNED BY test_tg.id;
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY test_tg ALTER COLUMN id SET DEFAULT nextval('test_tg_id_seq'::regclass);
-
 
 --
 -- Name: m_alasan_penyesuaian_stok_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
@@ -2197,14 +2159,6 @@ ALTER TABLE ONLY t_beli_produk
 
 
 --
--- Name: t_bon_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY t_bon
-    ADD CONSTRAINT t_bon_pkey PRIMARY KEY (bon_id);
-
-
---
 -- Name: t_gaji_karyawan_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2248,7 +2202,7 @@ ALTER TABLE ONLY t_item_pembayaran_piutang_produk
 -- Name: t_item_pengeluaran_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
-ALTER TABLE ONLY t_item_pengeluaran
+ALTER TABLE ONLY t_item_pengeluaran_biaya
     ADD CONSTRAINT t_item_pengeluaran_pkey PRIMARY KEY (item_pengeluaran_id);
 
 
@@ -2277,6 +2231,14 @@ ALTER TABLE ONLY t_jual_produk
 
 
 --
+-- Name: t_kasbon_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY t_kasbon
+    ADD CONSTRAINT t_kasbon_pkey PRIMARY KEY (kasbon_id);
+
+
+--
 -- Name: t_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2296,8 +2258,8 @@ ALTER TABLE ONLY t_mesin
 -- Name: t_pembayaran_bon_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
-ALTER TABLE ONLY t_pembayaran_bon
-    ADD CONSTRAINT t_pembayaran_bon_pkey PRIMARY KEY (pembayaran_bon_id);
+ALTER TABLE ONLY t_pembayaran_kasbon
+    ADD CONSTRAINT t_pembayaran_bon_pkey PRIMARY KEY (pembayaran_kasbon_id);
 
 
 --
@@ -2320,7 +2282,7 @@ ALTER TABLE ONLY t_pembayaran_piutang_produk
 -- Name: t_pengeluaran_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
-ALTER TABLE ONLY t_pengeluaran
+ALTER TABLE ONLY t_pengeluaran_biaya
     ADD CONSTRAINT t_pengeluaran_pkey PRIMARY KEY (pengeluaran_id);
 
 
@@ -2471,7 +2433,7 @@ CREATE TRIGGER tr_update_pelunasan_jual_produk_aiud AFTER INSERT OR DELETE OR UP
 -- Name: tr_update_pelunasan_kasbon_aiud; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
-CREATE TRIGGER tr_update_pelunasan_kasbon_aiud AFTER INSERT OR DELETE OR UPDATE ON t_pembayaran_bon FOR EACH ROW EXECUTE PROCEDURE f_update_pelunasan_kasbon();
+CREATE TRIGGER tr_update_pelunasan_kasbon_aiud AFTER INSERT OR DELETE OR UPDATE ON t_pembayaran_kasbon FOR EACH ROW EXECUTE PROCEDURE f_update_pelunasan_kasbon();
 
 
 --
@@ -2513,14 +2475,14 @@ CREATE TRIGGER tr_update_total_jual_produk_aiud AFTER INSERT OR DELETE OR UPDATE
 -- Name: tr_update_total_kasbon_karyawan; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
-CREATE TRIGGER tr_update_total_kasbon_karyawan AFTER INSERT OR DELETE OR UPDATE ON t_bon FOR EACH ROW EXECUTE PROCEDURE f_update_total_kasbon_karyawan();
+CREATE TRIGGER tr_update_total_kasbon_karyawan AFTER INSERT OR DELETE OR UPDATE ON t_kasbon FOR EACH ROW EXECUTE PROCEDURE f_update_total_kasbon_karyawan();
 
 
 --
 -- Name: tr_update_total_pengeluaran_aiud; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
-CREATE TRIGGER tr_update_total_pengeluaran_aiud AFTER INSERT OR DELETE OR UPDATE ON t_item_pengeluaran FOR EACH ROW EXECUTE PROCEDURE f_update_total_pengeluaran();
+CREATE TRIGGER tr_update_total_pengeluaran_aiud AFTER INSERT OR DELETE OR UPDATE ON t_item_pengeluaran_biaya FOR EACH ROW EXECUTE PROCEDURE f_update_total_pengeluaran();
 
 
 --
@@ -2620,7 +2582,7 @@ ALTER TABLE ONLY t_beli_produk
 -- Name: t_bon_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY t_bon
+ALTER TABLE ONLY t_kasbon
     ADD CONSTRAINT t_bon_fk FOREIGN KEY (karyawan_id) REFERENCES m_karyawan(karyawan_id) ON UPDATE CASCADE;
 
 
@@ -2628,7 +2590,7 @@ ALTER TABLE ONLY t_bon
 -- Name: t_bon_fk1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY t_bon
+ALTER TABLE ONLY t_kasbon
     ADD CONSTRAINT t_bon_fk1 FOREIGN KEY (pengguna_id) REFERENCES m_pengguna(pengguna_id) ON UPDATE CASCADE;
 
 
@@ -2732,15 +2694,15 @@ ALTER TABLE ONLY t_item_pembayaran_piutang_produk
 -- Name: t_item_pengeluaran_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY t_item_pengeluaran
-    ADD CONSTRAINT t_item_pengeluaran_fk FOREIGN KEY (pengeluaran_id) REFERENCES t_pengeluaran(pengeluaran_id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE ONLY t_item_pengeluaran_biaya
+    ADD CONSTRAINT t_item_pengeluaran_fk FOREIGN KEY (pengeluaran_id) REFERENCES t_pengeluaran_biaya(pengeluaran_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
 -- Name: t_item_pengeluaran_fk1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY t_item_pengeluaran
+ALTER TABLE ONLY t_item_pengeluaran_biaya
     ADD CONSTRAINT t_item_pengeluaran_fk1 FOREIGN KEY (pengguna_id) REFERENCES m_pengguna(pengguna_id) ON UPDATE CASCADE;
 
 
@@ -2748,7 +2710,7 @@ ALTER TABLE ONLY t_item_pengeluaran
 -- Name: t_item_pengeluaran_fk2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY t_item_pengeluaran
+ALTER TABLE ONLY t_item_pengeluaran_biaya
     ADD CONSTRAINT t_item_pengeluaran_fk2 FOREIGN KEY (jenis_pengeluaran_id) REFERENCES m_jenis_pengeluaran(jenis_pengeluaran_id) ON UPDATE CASCADE;
 
 
@@ -2857,19 +2819,19 @@ ALTER TABLE ONLY t_mesin
 
 
 --
--- Name: t_pembayaran_bon_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY t_pembayaran_bon
-    ADD CONSTRAINT t_pembayaran_bon_fk FOREIGN KEY (bon_id) REFERENCES t_bon(bon_id) ON UPDATE CASCADE;
-
-
---
 -- Name: t_pembayaran_bon_fk1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY t_pembayaran_bon
+ALTER TABLE ONLY t_pembayaran_kasbon
     ADD CONSTRAINT t_pembayaran_bon_fk1 FOREIGN KEY (gaji_karyawan_id) REFERENCES t_gaji_karyawan(gaji_karyawan_id) ON UPDATE CASCADE;
+
+
+--
+-- Name: t_pembayaran_bon_fk2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY t_pembayaran_kasbon
+    ADD CONSTRAINT t_pembayaran_bon_fk2 FOREIGN KEY (kasbon_id) REFERENCES t_kasbon(kasbon_id) ON UPDATE CASCADE;
 
 
 --
@@ -2908,7 +2870,7 @@ ALTER TABLE ONLY t_pembayaran_piutang_produk
 -- Name: t_pengeluaran_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY t_pengeluaran
+ALTER TABLE ONLY t_pengeluaran_biaya
     ADD CONSTRAINT t_pengeluaran_fk FOREIGN KEY (pengguna_id) REFERENCES m_pengguna(pengguna_id) ON UPDATE CASCADE;
 
 
