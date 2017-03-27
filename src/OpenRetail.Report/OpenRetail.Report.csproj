@@ -52,6 +52,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsPembelian.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DsPengeluaranBiaya.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsPengeluaranBiaya.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DsPenjualan.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,6 +74,7 @@
     <EmbeddedResource Include="RvPembayaranPiutangPenjualanProdukDetail.rdlc" />
     <EmbeddedResource Include="RvPembayaranPiutangPenjualanProdukHeader.rdlc" />
     <EmbeddedResource Include="RvPenyesuaianStok.rdlc" />
+    <EmbeddedResource Include="RvPengeluaranBiaya.rdlc" />
     <EmbeddedResource Include="RvStokProduk.rdlc" />
     <EmbeddedResource Include="RvPiutangPenjualanProduk.rdlc" />
     <EmbeddedResource Include="RvPiutangPenjualanProdukDetail.rdlc" />
@@ -99,6 +105,17 @@
     </None>
     <None Include="DataSet\DsPembelian.xss">
       <DependentUpon>DsPembelian.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DsPengeluaranBiaya.xsc">
+      <DependentUpon>DsPengeluaranBiaya.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DsPengeluaranBiaya.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsPengeluaranBiaya.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\DsPengeluaranBiaya.xss">
+      <DependentUpon>DsPengeluaranBiaya.xsd</DependentUpon>
     </None>
     <None Include="DataSet\DsPenjualan.xsc">
       <DependentUpon>DsPenjualan.xsd</DependentUpon>

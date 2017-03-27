@@ -76,6 +76,7 @@
     <Compile Include="Report\ReportKartuPiutangBll.cs" />
     <Compile Include="Report\ReportPembayaranHutangBeliProdukBll.cs" />
     <Compile Include="Report\ReportPembayaranPiutangJualProdukBll.cs" />
+    <Compile Include="Report\ReportPengeluaranBiayaBll.cs" />
     <Compile Include="Report\ReportPiutangJualProdukBll.cs" />
     <Compile Include="Report\ReportReturBeliProdukBll.cs" />
     <Compile Include="Report\ReportReturJualProdukBll.cs" />

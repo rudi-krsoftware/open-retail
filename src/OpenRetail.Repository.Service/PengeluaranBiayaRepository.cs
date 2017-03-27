@@ -49,7 +49,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 var sql = @"SELECT t_item_pengeluaran_biaya.item_pengeluaran_id, t_item_pengeluaran_biaya.pengeluaran_id, t_item_pengeluaran_biaya.pengguna_id, 
-                            t_item_pengeluaran_biaya.jumlah, t_item_pengeluaran_biaya.harga, 
+                            t_item_pengeluaran_biaya.jumlah, t_item_pengeluaran_biaya.harga, 1 as entity_state,
                             m_jenis_pengeluaran.jenis_pengeluaran_id, m_jenis_pengeluaran.nama_jenis_pengeluaran
                             FROM public.t_item_pengeluaran_biaya INNER JOIN public.m_jenis_pengeluaran ON t_item_pengeluaran_biaya.jenis_pengeluaran_id = m_jenis_pengeluaran.jenis_pengeluaran_id
                             WHERE t_item_pengeluaran_biaya.pengeluaran_id = @pengeluaranBiayaId

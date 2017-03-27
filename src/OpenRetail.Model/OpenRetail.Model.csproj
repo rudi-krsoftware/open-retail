@@ -99,6 +99,7 @@
     <Compile Include="Profil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReferencesType.cs" />
+    <Compile Include="Report\ReportPengeluaranBiaya.cs" />
     <Compile Include="Report\ReportPenjualanProduk.cs" />
     <Compile Include="Report\ReportPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportPenjualanProdukHeader.cs" />

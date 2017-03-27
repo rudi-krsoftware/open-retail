@@ -66,7 +66,6 @@ namespace OpenRetail.App
             Application.SetCompatibleTextRenderingDefault(false);
 
             Login();
-            //new ReportTest().ReportPenyesuaianStokTest();
         }
 
         static void frmMain_FormClosed(object sender, FormClosedEventArgs e)

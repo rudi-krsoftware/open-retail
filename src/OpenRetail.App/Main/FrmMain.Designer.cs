@@ -576,6 +576,7 @@
             this.mnuLapPengeluaranBiaya.Size = new System.Drawing.Size(187, 22);
             this.mnuLapPengeluaranBiaya.Tag = "FrmLapPengeluaranBiaya";
             this.mnuLapPengeluaranBiaya.Text = "Pengeluaran Biaya";
+            this.mnuLapPengeluaranBiaya.Click += new System.EventHandler(this.mnuLapPengeluaranBiaya_Click);
             // 
             // mnuLapKasbon
             // 

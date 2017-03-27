@@ -101,6 +101,16 @@ namespace OpenRetail.App.Helper
             }
         }
 
+        public static void FillJenisPengeluaranBiaya(CheckedListBox chkListbox, IList<JenisPengeluaran> listOfJenisPengeluaranBiaya)
+        {
+            chkListbox.Items.Clear();
+
+            foreach (var jenisPengeluaran in listOfJenisPengeluaranBiaya)
+            {
+                chkListbox.Items.Add(jenisPengeluaran.nama_jenis_pengeluaran);
+            }
+        }
+
         public static void FillBulan(ComboBox obj, bool isSetDefaultMonth = false)
         {
             obj.Items.Clear();
