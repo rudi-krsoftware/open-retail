@@ -585,6 +585,7 @@
             this.mnuLapKasbon.Size = new System.Drawing.Size(187, 22);
             this.mnuLapKasbon.Tag = "FrmLapKasbon";
             this.mnuLapKasbon.Text = "Kasbon";
+            this.mnuLapKasbon.Click += new System.EventHandler(this.mnuLapKasbon_Click);
             // 
             // mnuLapPenggajian
             // 

@@ -1844,7 +1844,8 @@ CREATE TABLE t_pembayaran_kasbon (
     nominal t_harga,
     keterangan t_keterangan,
     tanggal_sistem timestamp without time zone DEFAULT now(),
-    nota t_nota
+    nota t_nota,
+    pengguna_id t_guid
 );
 
 
@@ -2848,6 +2849,14 @@ ALTER TABLE ONLY t_pembayaran_hutang_produk
 
 ALTER TABLE ONLY t_pembayaran_hutang_produk
     ADD CONSTRAINT t_pembayaran_hutang_produk_fk1 FOREIGN KEY (pengguna_id) REFERENCES m_pengguna(pengguna_id) ON UPDATE CASCADE;
+
+
+--
+-- Name: t_pembayaran_kasbon_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY t_pembayaran_kasbon
+    ADD CONSTRAINT t_pembayaran_kasbon_fk FOREIGN KEY (pengguna_id) REFERENCES m_pengguna(pengguna_id) ON UPDATE CASCADE;
 
 
 --

@@ -52,6 +52,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsPembelian.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DsPengeluaranBiaya.cs">
+      <DependentUpon>DsPengeluaranBiaya.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSet\DsPengeluaranBiaya.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,8 +75,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="RvKartuPiutangPenjualanProduk.rdlc" />
+    <EmbeddedResource Include="RvKasbonDetail.rdlc" />
     <EmbeddedResource Include="RvPembayaranPiutangPenjualanProdukDetail.rdlc" />
     <EmbeddedResource Include="RvPembayaranPiutangPenjualanProdukHeader.rdlc" />
+    <EmbeddedResource Include="RvKasbonHeader.rdlc" />
     <EmbeddedResource Include="RvPenyesuaianStok.rdlc" />
     <EmbeddedResource Include="RvPengeluaranBiaya.rdlc" />
     <EmbeddedResource Include="RvStokProduk.rdlc" />

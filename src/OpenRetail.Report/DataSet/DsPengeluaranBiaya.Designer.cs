@@ -26,6 +26,10 @@ namespace OpenRetail.Report.DataSet {
         
         private ReportPengeluaranBiayaDataTable tableReportPengeluaranBiaya;
         
+        private ReportKasbonHeaderDataTable tableReportKasbonHeader;
+        
+        private ReportKasbonDetailDataTable tableReportKasbonDetail;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +61,12 @@ namespace OpenRetail.Report.DataSet {
                 if ((ds.Tables["ReportPengeluaranBiaya"] != null)) {
                     base.Tables.Add(new ReportPengeluaranBiayaDataTable(ds.Tables["ReportPengeluaranBiaya"]));
                 }
+                if ((ds.Tables["ReportKasbonHeader"] != null)) {
+                    base.Tables.Add(new ReportKasbonHeaderDataTable(ds.Tables["ReportKasbonHeader"]));
+                }
+                if ((ds.Tables["ReportKasbonDetail"] != null)) {
+                    base.Tables.Add(new ReportKasbonDetailDataTable(ds.Tables["ReportKasbonDetail"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +92,26 @@ namespace OpenRetail.Report.DataSet {
         public ReportPengeluaranBiayaDataTable ReportPengeluaranBiaya {
             get {
                 return this.tableReportPengeluaranBiaya;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportKasbonHeaderDataTable ReportKasbonHeader {
+            get {
+                return this.tableReportKasbonHeader;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportKasbonDetailDataTable ReportKasbonDetail {
+            get {
+                return this.tableReportKasbonDetail;
             }
         }
         
@@ -155,6 +185,12 @@ namespace OpenRetail.Report.DataSet {
                 if ((ds.Tables["ReportPengeluaranBiaya"] != null)) {
                     base.Tables.Add(new ReportPengeluaranBiayaDataTable(ds.Tables["ReportPengeluaranBiaya"]));
                 }
+                if ((ds.Tables["ReportKasbonHeader"] != null)) {
+                    base.Tables.Add(new ReportKasbonHeaderDataTable(ds.Tables["ReportKasbonHeader"]));
+                }
+                if ((ds.Tables["ReportKasbonDetail"] != null)) {
+                    base.Tables.Add(new ReportKasbonDetailDataTable(ds.Tables["ReportKasbonDetail"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +230,18 @@ namespace OpenRetail.Report.DataSet {
                     this.tableReportPengeluaranBiaya.InitVars();
                 }
             }
+            this.tableReportKasbonHeader = ((ReportKasbonHeaderDataTable)(base.Tables["ReportKasbonHeader"]));
+            if ((initTable == true)) {
+                if ((this.tableReportKasbonHeader != null)) {
+                    this.tableReportKasbonHeader.InitVars();
+                }
+            }
+            this.tableReportKasbonDetail = ((ReportKasbonDetailDataTable)(base.Tables["ReportKasbonDetail"]));
+            if ((initTable == true)) {
+                if ((this.tableReportKasbonDetail != null)) {
+                    this.tableReportKasbonDetail.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +254,27 @@ namespace OpenRetail.Report.DataSet {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableReportPengeluaranBiaya = new ReportPengeluaranBiayaDataTable();
             base.Tables.Add(this.tableReportPengeluaranBiaya);
+            this.tableReportKasbonHeader = new ReportKasbonHeaderDataTable();
+            base.Tables.Add(this.tableReportKasbonHeader);
+            this.tableReportKasbonDetail = new ReportKasbonDetailDataTable();
+            base.Tables.Add(this.tableReportKasbonDetail);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeReportPengeluaranBiaya() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeReportKasbonHeader() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeReportKasbonDetail() {
             return false;
         }
         
@@ -271,6 +335,12 @@ namespace OpenRetail.Report.DataSet {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ReportPengeluaranBiayaRowChangeEventHandler(object sender, ReportPengeluaranBiayaRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ReportKasbonHeaderRowChangeEventHandler(object sender, ReportKasbonHeaderRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ReportKasbonDetailRowChangeEventHandler(object sender, ReportKasbonDetailRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -604,6 +674,756 @@ namespace OpenRetail.Report.DataSet {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportKasbonHeaderDataTable : global::System.Data.TypedTableBase<ReportKasbonHeaderRow> {
+            
+            private global::System.Data.DataColumn columnkaryawan_id;
+            
+            private global::System.Data.DataColumn columnnama_karyawan;
+            
+            private global::System.Data.DataColumn columntanggal;
+            
+            private global::System.Data.DataColumn columnnota;
+            
+            private global::System.Data.DataColumn columnnominal;
+            
+            private global::System.Data.DataColumn columntotal_pelunasan;
+            
+            private global::System.Data.DataColumn columnsisa;
+            
+            private global::System.Data.DataColumn columnketerangan;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonHeaderDataTable() {
+                this.TableName = "ReportKasbonHeader";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportKasbonHeaderDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ReportKasbonHeaderDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn karyawan_idColumn {
+                get {
+                    return this.columnkaryawan_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_karyawanColumn {
+                get {
+                    return this.columnnama_karyawan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tanggalColumn {
+                get {
+                    return this.columntanggal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn notaColumn {
+                get {
+                    return this.columnnota;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nominalColumn {
+                get {
+                    return this.columnnominal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn total_pelunasanColumn {
+                get {
+                    return this.columntotal_pelunasan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sisaColumn {
+                get {
+                    return this.columnsisa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn keteranganColumn {
+                get {
+                    return this.columnketerangan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonHeaderRow this[int index] {
+                get {
+                    return ((ReportKasbonHeaderRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKasbonHeaderRowChangeEventHandler ReportKasbonHeaderRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKasbonHeaderRowChangeEventHandler ReportKasbonHeaderRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKasbonHeaderRowChangeEventHandler ReportKasbonHeaderRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKasbonHeaderRowChangeEventHandler ReportKasbonHeaderRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddReportKasbonHeaderRow(ReportKasbonHeaderRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonHeaderRow AddReportKasbonHeaderRow(string karyawan_id, string nama_karyawan, System.DateTime tanggal, string nota, double nominal, double total_pelunasan, double sisa, string keterangan) {
+                ReportKasbonHeaderRow rowReportKasbonHeaderRow = ((ReportKasbonHeaderRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        karyawan_id,
+                        nama_karyawan,
+                        tanggal,
+                        nota,
+                        nominal,
+                        total_pelunasan,
+                        sisa,
+                        keterangan};
+                rowReportKasbonHeaderRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportKasbonHeaderRow);
+                return rowReportKasbonHeaderRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ReportKasbonHeaderDataTable cln = ((ReportKasbonHeaderDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportKasbonHeaderDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnkaryawan_id = base.Columns["karyawan_id"];
+                this.columnnama_karyawan = base.Columns["nama_karyawan"];
+                this.columntanggal = base.Columns["tanggal"];
+                this.columnnota = base.Columns["nota"];
+                this.columnnominal = base.Columns["nominal"];
+                this.columntotal_pelunasan = base.Columns["total_pelunasan"];
+                this.columnsisa = base.Columns["sisa"];
+                this.columnketerangan = base.Columns["keterangan"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnkaryawan_id = new global::System.Data.DataColumn("karyawan_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkaryawan_id);
+                this.columnnama_karyawan = new global::System.Data.DataColumn("nama_karyawan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_karyawan);
+                this.columntanggal = new global::System.Data.DataColumn("tanggal", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntanggal);
+                this.columnnota = new global::System.Data.DataColumn("nota", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota);
+                this.columnnominal = new global::System.Data.DataColumn("nominal", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnominal);
+                this.columntotal_pelunasan = new global::System.Data.DataColumn("total_pelunasan", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_pelunasan);
+                this.columnsisa = new global::System.Data.DataColumn("sisa", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsisa);
+                this.columnketerangan = new global::System.Data.DataColumn("keterangan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnketerangan);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonHeaderRow NewReportKasbonHeaderRow() {
+                return ((ReportKasbonHeaderRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportKasbonHeaderRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportKasbonHeaderRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportKasbonHeaderRowChanged != null)) {
+                    this.ReportKasbonHeaderRowChanged(this, new ReportKasbonHeaderRowChangeEvent(((ReportKasbonHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportKasbonHeaderRowChanging != null)) {
+                    this.ReportKasbonHeaderRowChanging(this, new ReportKasbonHeaderRowChangeEvent(((ReportKasbonHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportKasbonHeaderRowDeleted != null)) {
+                    this.ReportKasbonHeaderRowDeleted(this, new ReportKasbonHeaderRowChangeEvent(((ReportKasbonHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportKasbonHeaderRowDeleting != null)) {
+                    this.ReportKasbonHeaderRowDeleting(this, new ReportKasbonHeaderRowChangeEvent(((ReportKasbonHeaderRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveReportKasbonHeaderRow(ReportKasbonHeaderRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsPengeluaranBiaya ds = new DsPengeluaranBiaya();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportKasbonHeaderDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportKasbonDetailDataTable : global::System.Data.TypedTableBase<ReportKasbonDetailRow> {
+            
+            private global::System.Data.DataColumn columnkaryawan_id;
+            
+            private global::System.Data.DataColumn columnnama_karyawan;
+            
+            private global::System.Data.DataColumn columntanggal_kasbon;
+            
+            private global::System.Data.DataColumn columnnota_kasbon;
+            
+            private global::System.Data.DataColumn columnjumlah_kasbon;
+            
+            private global::System.Data.DataColumn columntotal_pelunasan;
+            
+            private global::System.Data.DataColumn columnsisa;
+            
+            private global::System.Data.DataColumn columnketerangan_kasbon;
+            
+            private global::System.Data.DataColumn columntanggal_pembayaran;
+            
+            private global::System.Data.DataColumn columnnota_pembayaran;
+            
+            private global::System.Data.DataColumn columnjumlah_pembayaran;
+            
+            private global::System.Data.DataColumn columnketerangan_pembayaran;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonDetailDataTable() {
+                this.TableName = "ReportKasbonDetail";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportKasbonDetailDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ReportKasbonDetailDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn karyawan_idColumn {
+                get {
+                    return this.columnkaryawan_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_karyawanColumn {
+                get {
+                    return this.columnnama_karyawan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tanggal_kasbonColumn {
+                get {
+                    return this.columntanggal_kasbon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nota_kasbonColumn {
+                get {
+                    return this.columnnota_kasbon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn jumlah_kasbonColumn {
+                get {
+                    return this.columnjumlah_kasbon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn total_pelunasanColumn {
+                get {
+                    return this.columntotal_pelunasan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sisaColumn {
+                get {
+                    return this.columnsisa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn keterangan_kasbonColumn {
+                get {
+                    return this.columnketerangan_kasbon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tanggal_pembayaranColumn {
+                get {
+                    return this.columntanggal_pembayaran;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nota_pembayaranColumn {
+                get {
+                    return this.columnnota_pembayaran;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn jumlah_pembayaranColumn {
+                get {
+                    return this.columnjumlah_pembayaran;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn keterangan_pembayaranColumn {
+                get {
+                    return this.columnketerangan_pembayaran;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonDetailRow this[int index] {
+                get {
+                    return ((ReportKasbonDetailRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKasbonDetailRowChangeEventHandler ReportKasbonDetailRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKasbonDetailRowChangeEventHandler ReportKasbonDetailRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKasbonDetailRowChangeEventHandler ReportKasbonDetailRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportKasbonDetailRowChangeEventHandler ReportKasbonDetailRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddReportKasbonDetailRow(ReportKasbonDetailRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonDetailRow AddReportKasbonDetailRow(string karyawan_id, string nama_karyawan, System.DateTime tanggal_kasbon, string nota_kasbon, double jumlah_kasbon, double total_pelunasan, double sisa, string keterangan_kasbon, System.DateTime tanggal_pembayaran, string nota_pembayaran, double jumlah_pembayaran, string keterangan_pembayaran) {
+                ReportKasbonDetailRow rowReportKasbonDetailRow = ((ReportKasbonDetailRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        karyawan_id,
+                        nama_karyawan,
+                        tanggal_kasbon,
+                        nota_kasbon,
+                        jumlah_kasbon,
+                        total_pelunasan,
+                        sisa,
+                        keterangan_kasbon,
+                        tanggal_pembayaran,
+                        nota_pembayaran,
+                        jumlah_pembayaran,
+                        keterangan_pembayaran};
+                rowReportKasbonDetailRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportKasbonDetailRow);
+                return rowReportKasbonDetailRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ReportKasbonDetailDataTable cln = ((ReportKasbonDetailDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportKasbonDetailDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnkaryawan_id = base.Columns["karyawan_id"];
+                this.columnnama_karyawan = base.Columns["nama_karyawan"];
+                this.columntanggal_kasbon = base.Columns["tanggal_kasbon"];
+                this.columnnota_kasbon = base.Columns["nota_kasbon"];
+                this.columnjumlah_kasbon = base.Columns["jumlah_kasbon"];
+                this.columntotal_pelunasan = base.Columns["total_pelunasan"];
+                this.columnsisa = base.Columns["sisa"];
+                this.columnketerangan_kasbon = base.Columns["keterangan_kasbon"];
+                this.columntanggal_pembayaran = base.Columns["tanggal_pembayaran"];
+                this.columnnota_pembayaran = base.Columns["nota_pembayaran"];
+                this.columnjumlah_pembayaran = base.Columns["jumlah_pembayaran"];
+                this.columnketerangan_pembayaran = base.Columns["keterangan_pembayaran"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnkaryawan_id = new global::System.Data.DataColumn("karyawan_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkaryawan_id);
+                this.columnnama_karyawan = new global::System.Data.DataColumn("nama_karyawan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_karyawan);
+                this.columntanggal_kasbon = new global::System.Data.DataColumn("tanggal_kasbon", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntanggal_kasbon);
+                this.columnnota_kasbon = new global::System.Data.DataColumn("nota_kasbon", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota_kasbon);
+                this.columnjumlah_kasbon = new global::System.Data.DataColumn("jumlah_kasbon", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjumlah_kasbon);
+                this.columntotal_pelunasan = new global::System.Data.DataColumn("total_pelunasan", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_pelunasan);
+                this.columnsisa = new global::System.Data.DataColumn("sisa", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsisa);
+                this.columnketerangan_kasbon = new global::System.Data.DataColumn("keterangan_kasbon", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnketerangan_kasbon);
+                this.columntanggal_pembayaran = new global::System.Data.DataColumn("tanggal_pembayaran", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntanggal_pembayaran);
+                this.columnnota_pembayaran = new global::System.Data.DataColumn("nota_pembayaran", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota_pembayaran);
+                this.columnjumlah_pembayaran = new global::System.Data.DataColumn("jumlah_pembayaran", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjumlah_pembayaran);
+                this.columnketerangan_pembayaran = new global::System.Data.DataColumn("keterangan_pembayaran", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnketerangan_pembayaran);
+                this.columntanggal_kasbon.Caption = "tanggal";
+                this.columnnota_kasbon.Caption = "nota";
+                this.columnjumlah_kasbon.Caption = "nominal";
+                this.columnketerangan_kasbon.Caption = "keterangan";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonDetailRow NewReportKasbonDetailRow() {
+                return ((ReportKasbonDetailRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportKasbonDetailRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportKasbonDetailRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportKasbonDetailRowChanged != null)) {
+                    this.ReportKasbonDetailRowChanged(this, new ReportKasbonDetailRowChangeEvent(((ReportKasbonDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportKasbonDetailRowChanging != null)) {
+                    this.ReportKasbonDetailRowChanging(this, new ReportKasbonDetailRowChangeEvent(((ReportKasbonDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportKasbonDetailRowDeleted != null)) {
+                    this.ReportKasbonDetailRowDeleted(this, new ReportKasbonDetailRowChangeEvent(((ReportKasbonDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportKasbonDetailRowDeleting != null)) {
+                    this.ReportKasbonDetailRowDeleting(this, new ReportKasbonDetailRowChangeEvent(((ReportKasbonDetailRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveReportKasbonDetailRow(ReportKasbonDetailRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsPengeluaranBiaya ds = new DsPengeluaranBiaya();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportKasbonDetailDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ReportPengeluaranBiayaRow : global::System.Data.DataRow {
@@ -817,6 +1637,600 @@ namespace OpenRetail.Report.DataSet {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ReportKasbonHeaderRow : global::System.Data.DataRow {
+            
+            private ReportKasbonHeaderDataTable tableReportKasbonHeader;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportKasbonHeaderRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportKasbonHeader = ((ReportKasbonHeaderDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string karyawan_id {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKasbonHeader.karyawan_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'karyawan_id\' in table \'ReportKasbonHeader\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonHeader.karyawan_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_karyawan {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKasbonHeader.nama_karyawanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_karyawan\' in table \'ReportKasbonHeader\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonHeader.nama_karyawanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime tanggal {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportKasbonHeader.tanggalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tanggal\' in table \'ReportKasbonHeader\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonHeader.tanggalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKasbonHeader.notaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota\' in table \'ReportKasbonHeader\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonHeader.notaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double nominal {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKasbonHeader.nominalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nominal\' in table \'ReportKasbonHeader\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonHeader.nominalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double total_pelunasan {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKasbonHeader.total_pelunasanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_pelunasan\' in table \'ReportKasbonHeader\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonHeader.total_pelunasanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double sisa {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKasbonHeader.sisaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sisa\' in table \'ReportKasbonHeader\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonHeader.sisaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string keterangan {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKasbonHeader.keteranganColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'keterangan\' in table \'ReportKasbonHeader\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonHeader.keteranganColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskaryawan_idNull() {
+                return this.IsNull(this.tableReportKasbonHeader.karyawan_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkaryawan_idNull() {
+                this[this.tableReportKasbonHeader.karyawan_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_karyawanNull() {
+                return this.IsNull(this.tableReportKasbonHeader.nama_karyawanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_karyawanNull() {
+                this[this.tableReportKasbonHeader.nama_karyawanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstanggalNull() {
+                return this.IsNull(this.tableReportKasbonHeader.tanggalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettanggalNull() {
+                this[this.tableReportKasbonHeader.tanggalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnotaNull() {
+                return this.IsNull(this.tableReportKasbonHeader.notaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnotaNull() {
+                this[this.tableReportKasbonHeader.notaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnominalNull() {
+                return this.IsNull(this.tableReportKasbonHeader.nominalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnominalNull() {
+                this[this.tableReportKasbonHeader.nominalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istotal_pelunasanNull() {
+                return this.IsNull(this.tableReportKasbonHeader.total_pelunasanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settotal_pelunasanNull() {
+                this[this.tableReportKasbonHeader.total_pelunasanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssisaNull() {
+                return this.IsNull(this.tableReportKasbonHeader.sisaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsisaNull() {
+                this[this.tableReportKasbonHeader.sisaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsketeranganNull() {
+                return this.IsNull(this.tableReportKasbonHeader.keteranganColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetketeranganNull() {
+                this[this.tableReportKasbonHeader.keteranganColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ReportKasbonDetailRow : global::System.Data.DataRow {
+            
+            private ReportKasbonDetailDataTable tableReportKasbonDetail;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportKasbonDetailRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportKasbonDetail = ((ReportKasbonDetailDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string karyawan_id {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKasbonDetail.karyawan_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'karyawan_id\' in table \'ReportKasbonDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.karyawan_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_karyawan {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKasbonDetail.nama_karyawanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_karyawan\' in table \'ReportKasbonDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.nama_karyawanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime tanggal_kasbon {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportKasbonDetail.tanggal_kasbonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tanggal_kasbon\' in table \'ReportKasbonDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.tanggal_kasbonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota_kasbon {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKasbonDetail.nota_kasbonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota_kasbon\' in table \'ReportKasbonDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.nota_kasbonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double jumlah_kasbon {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKasbonDetail.jumlah_kasbonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jumlah_kasbon\' in table \'ReportKasbonDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.jumlah_kasbonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double total_pelunasan {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKasbonDetail.total_pelunasanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_pelunasan\' in table \'ReportKasbonDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.total_pelunasanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double sisa {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKasbonDetail.sisaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sisa\' in table \'ReportKasbonDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.sisaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string keterangan_kasbon {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKasbonDetail.keterangan_kasbonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'keterangan_kasbon\' in table \'ReportKasbonDetail\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.keterangan_kasbonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime tanggal_pembayaran {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportKasbonDetail.tanggal_pembayaranColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tanggal_pembayaran\' in table \'ReportKasbonDetail\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.tanggal_pembayaranColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota_pembayaran {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKasbonDetail.nota_pembayaranColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota_pembayaran\' in table \'ReportKasbonDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.nota_pembayaranColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double jumlah_pembayaran {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportKasbonDetail.jumlah_pembayaranColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jumlah_pembayaran\' in table \'ReportKasbonDetail\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.jumlah_pembayaranColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string keterangan_pembayaran {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportKasbonDetail.keterangan_pembayaranColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'keterangan_pembayaran\' in table \'ReportKasbonDetail\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportKasbonDetail.keterangan_pembayaranColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskaryawan_idNull() {
+                return this.IsNull(this.tableReportKasbonDetail.karyawan_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkaryawan_idNull() {
+                this[this.tableReportKasbonDetail.karyawan_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_karyawanNull() {
+                return this.IsNull(this.tableReportKasbonDetail.nama_karyawanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_karyawanNull() {
+                this[this.tableReportKasbonDetail.nama_karyawanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istanggal_kasbonNull() {
+                return this.IsNull(this.tableReportKasbonDetail.tanggal_kasbonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settanggal_kasbonNull() {
+                this[this.tableReportKasbonDetail.tanggal_kasbonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnota_kasbonNull() {
+                return this.IsNull(this.tableReportKasbonDetail.nota_kasbonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnota_kasbonNull() {
+                this[this.tableReportKasbonDetail.nota_kasbonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isjumlah_kasbonNull() {
+                return this.IsNull(this.tableReportKasbonDetail.jumlah_kasbonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setjumlah_kasbonNull() {
+                this[this.tableReportKasbonDetail.jumlah_kasbonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istotal_pelunasanNull() {
+                return this.IsNull(this.tableReportKasbonDetail.total_pelunasanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settotal_pelunasanNull() {
+                this[this.tableReportKasbonDetail.total_pelunasanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssisaNull() {
+                return this.IsNull(this.tableReportKasbonDetail.sisaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsisaNull() {
+                this[this.tableReportKasbonDetail.sisaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isketerangan_kasbonNull() {
+                return this.IsNull(this.tableReportKasbonDetail.keterangan_kasbonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setketerangan_kasbonNull() {
+                this[this.tableReportKasbonDetail.keterangan_kasbonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istanggal_pembayaranNull() {
+                return this.IsNull(this.tableReportKasbonDetail.tanggal_pembayaranColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settanggal_pembayaranNull() {
+                this[this.tableReportKasbonDetail.tanggal_pembayaranColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnota_pembayaranNull() {
+                return this.IsNull(this.tableReportKasbonDetail.nota_pembayaranColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnota_pembayaranNull() {
+                this[this.tableReportKasbonDetail.nota_pembayaranColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isjumlah_pembayaranNull() {
+                return this.IsNull(this.tableReportKasbonDetail.jumlah_pembayaranColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setjumlah_pembayaranNull() {
+                this[this.tableReportKasbonDetail.jumlah_pembayaranColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isketerangan_pembayaranNull() {
+                return this.IsNull(this.tableReportKasbonDetail.keterangan_pembayaranColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setketerangan_pembayaranNull() {
+                this[this.tableReportKasbonDetail.keterangan_pembayaranColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -836,6 +2250,74 @@ namespace OpenRetail.Report.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReportPengeluaranBiayaRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ReportKasbonHeaderRowChangeEvent : global::System.EventArgs {
+            
+            private ReportKasbonHeaderRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonHeaderRowChangeEvent(ReportKasbonHeaderRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonHeaderRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ReportKasbonDetailRowChangeEvent : global::System.EventArgs {
+            
+            private ReportKasbonDetailRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonDetailRowChangeEvent(ReportKasbonDetailRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportKasbonDetailRow Row {
                 get {
                     return this.eventRow;
                 }
