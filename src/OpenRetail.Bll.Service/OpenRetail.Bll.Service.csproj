@@ -60,8 +60,10 @@
     <Compile Include="JenisPengeluaranBll.cs" />
     <Compile Include="JualProdukBll.cs" />
     <Compile Include="KaryawanBll.cs" />
+    <Compile Include="KasbonBll.cs" />
     <Compile Include="MenuBll.cs" />
     <Compile Include="PembayaranHutangProdukBll.cs" />
+    <Compile Include="PembayaranKasbonBll.cs" />
     <Compile Include="PembayaranPiutangProdukBll.cs" />
     <Compile Include="PengeluaranBiayaBll.cs" />
     <Compile Include="PenggunaBll.cs" />

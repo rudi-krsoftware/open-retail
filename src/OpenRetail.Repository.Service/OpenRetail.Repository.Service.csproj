@@ -66,9 +66,11 @@
     <Compile Include="JenisPengeluaranRepository.cs" />
     <Compile Include="JualProdukRepository.cs" />
     <Compile Include="KaryawanRepository.cs" />
+    <Compile Include="KasbonRepository.cs" />
     <Compile Include="Log4NetRepository.cs" />
     <Compile Include="MenuRepository.cs" />
     <Compile Include="PembayaranHutangProdukRepository.cs" />
+    <Compile Include="PembayaranKasbonRepository.cs" />
     <Compile Include="PembayaranPiutangProdukRepository.cs" />
     <Compile Include="PengeluaranBiayaRepository.cs" />
     <Compile Include="PenggunaRepository.cs" />

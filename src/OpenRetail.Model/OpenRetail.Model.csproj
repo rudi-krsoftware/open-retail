@@ -63,7 +63,10 @@
     <Compile Include="AlasanPenyesuaianStok.cs" />
     <Compile Include="BeliProduk.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="GajiKaryawan.cs" />
     <Compile Include="ItemPengeluaranBiaya.cs" />
+    <Compile Include="Kasbon.cs" />
+    <Compile Include="PembayaranKasbon.cs" />
     <Compile Include="PengeluaranBiaya.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukHeader.cs" />

@@ -81,12 +81,15 @@
     <Compile Include="BeliProdukBllTest.cs" />
     <Compile Include="CustomerBllTest.cs" />
     <Compile Include="GolonganBllTest.cs" />
+    <Compile Include="IKasbonBllTest.cs" />
     <Compile Include="JabatanBllTest.cs" />
     <Compile Include="JenisPengeluaranBllTest.cs" />
     <Compile Include="JualProdukBllTest.cs" />
     <Compile Include="KaryawanBllTest.cs" />
+    <Compile Include="KasbonBllTest.cs" />
     <Compile Include="MenuBllTest.cs" />
     <Compile Include="PembayaranHutangProdukBllTest.cs" />
+    <Compile Include="PembayaranKasbonBllTest.cs" />
     <Compile Include="PembayaranPiutangProdukBllTest.cs" />
     <Compile Include="PengeluaranBiayaBllTest.cs" />
     <Compile Include="PenggunaBllTest.cs" />

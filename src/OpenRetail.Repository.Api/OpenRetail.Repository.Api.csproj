@@ -53,9 +53,11 @@
     <Compile Include="IJenisPengeluaranRepository.cs" />
     <Compile Include="IJualProdukRepository.cs" />
     <Compile Include="IKaryawanRepository.cs" />
+    <Compile Include="IKasbonRepository.cs" />
     <Compile Include="ILog4NetRepository.cs" />
     <Compile Include="IMenuRepository.cs" />
     <Compile Include="IPembayaranHutangProdukRepository.cs" />
+    <Compile Include="IPembayaranKasbonRepository.cs" />
     <Compile Include="IPembayaranPiutangProdukRepository.cs" />
     <Compile Include="IPengeluaranBiayaRepository.cs" />
     <Compile Include="IPenggunaRepository.cs" />
