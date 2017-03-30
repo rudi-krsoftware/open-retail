@@ -66,6 +66,7 @@ namespace OpenRetail.App.Main
         private FrmListReturPenjualanProduk _frmListReturPenjualanProduk;
 
         private FrmListPengeluaranBiaya _frmListPengeluaranBiaya;
+        private FrmListKasbon _frmListKasbon;
 
         private FrmListHakAkses _frmListHakAkses;
         private FrmListOperator _frmListOperator;
@@ -640,6 +641,11 @@ namespace OpenRetail.App.Main
             }
             else
                 MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+        }
+
+        private void mnuKasbon_Click(object sender, EventArgs e)
+        {
+            ShowForm<FrmListKasbon>(sender, ref _frmListKasbon);
         }
     }
 }

@@ -297,11 +297,29 @@
     <Compile Include="Pengaturan\FrmListHakAkses.Designer.cs">
       <DependentUpon>FrmListHakAkses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pengeluaran\FrmEntryPembayaranKasbon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmEntryPembayaranKasbon.Designer.cs">
+      <DependentUpon>FrmEntryPembayaranKasbon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pengeluaran\FrmEntryPengeluaranBiaya.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pengeluaran\FrmEntryPengeluaranBiaya.Designer.cs">
       <DependentUpon>FrmEntryPengeluaranBiaya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmEntryKasbon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmEntryKasbon.Designer.cs">
+      <DependentUpon>FrmEntryKasbon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmListKasbon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmListKasbon.Designer.cs">
+      <DependentUpon>FrmListKasbon.cs</DependentUpon>
     </Compile>
     <Compile Include="Pengeluaran\FrmListPengeluaranBiaya.cs">
       <SubType>Form</SubType>
@@ -578,8 +596,17 @@
     <EmbeddedResource Include="Pengaturan\FrmListHakAkses.resx">
       <DependentUpon>FrmListHakAkses.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pengeluaran\FrmEntryPembayaranKasbon.resx">
+      <DependentUpon>FrmEntryPembayaranKasbon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pengeluaran\FrmEntryPengeluaranBiaya.resx">
       <DependentUpon>FrmEntryPengeluaranBiaya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pengeluaran\FrmEntryKasbon.resx">
+      <DependentUpon>FrmEntryKasbon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pengeluaran\FrmListKasbon.resx">
+      <DependentUpon>FrmListKasbon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pengeluaran\FrmListPengeluaranBiaya.resx">
       <DependentUpon>FrmListPengeluaranBiaya.cs</DependentUpon>

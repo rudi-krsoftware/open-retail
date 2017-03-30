@@ -395,6 +395,7 @@
             this.mnuKasbon.Size = new System.Drawing.Size(187, 22);
             this.mnuKasbon.Tag = "FrmListKasbon";
             this.mnuKasbon.Text = "Kasbon";
+            this.mnuKasbon.Click += new System.EventHandler(this.mnuKasbon_Click);
             // 
             // mnuPenggajian
             // 
