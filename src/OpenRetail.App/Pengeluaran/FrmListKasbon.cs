@@ -97,7 +97,7 @@ namespace OpenRetail.App.Pengeluaran
             if (_listOfKasbon.Count > 0)
             {
                 this.gridList.SetSelected(0, true);
-                HandleSelectionChanged(this.gridList);
+                GridListHandleSelectionChanged(this.gridList);
             }                
 
             this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
@@ -158,11 +158,11 @@ namespace OpenRetail.App.Pengeluaran
 
             this.gridList.SelectedValueChanged += delegate(object sender, EventArgs e)
             {
-                HandleSelectionChanged((GridListControl)sender);
+                GridListHandleSelectionChanged((GridListControl)sender);
             };
         }
 
-        private void HandleSelectionChanged(GridListControl gridList)
+        private void GridListHandleSelectionChanged(GridListControl gridList)
         {
             if (gridList.SelectedIndex < 0)
                 return;
@@ -174,15 +174,18 @@ namespace OpenRetail.App.Pengeluaran
                 {
                     _listOfHistoriPembayaranKasbon = kasbon.item_pembayaran_kasbon;
                     GridListControlHelper.Refresh<PembayaranKasbon>(this.gridListHistoriPembayaran, _listOfHistoriPembayaranKasbon);
+
+                    btnTambahPembayaran.Enabled = kasbon.sisa > 0;
+                    GridListHistoriPembayaranHandleSelectionChanged(this.gridListHistoriPembayaran);
                 }
             }
             else
             {
                 _listOfHistoriPembayaranKasbon.Clear();
                 GridListControlHelper.Refresh<PembayaranKasbon>(this.gridListHistoriPembayaran, _listOfHistoriPembayaranKasbon);
-            }
 
-            ResetButtonHistoriPembayaran(_listOfHistoriPembayaranKasbon.Count > 0);
+                ResetButtonHistoriPembayaran(false);
+            }
         }
 
         private void InitGridListHistoriPembayaran()
@@ -243,6 +246,35 @@ namespace OpenRetail.App.Pengeluaran
                     }
                 }
             };
+
+            this.gridListHistoriPembayaran.SelectedValueChanged += delegate(object sender, EventArgs e)
+            {
+                GridListHistoriPembayaranHandleSelectionChanged((GridListControl)sender);
+            };
+
+            this.gridListHistoriPembayaran.DoubleClick += delegate(object sender, EventArgs e)
+            {
+                if (btnPerbaikiPembayaran.Enabled)
+                    btnPerbaikiPembayaran_Click(sender, e);
+            };
+        }
+
+        private void GridListHistoriPembayaranHandleSelectionChanged(GridListControl gridList)
+        {
+            if (gridList.SelectedIndex < 0)
+                return;
+
+            if (_listOfHistoriPembayaranKasbon.Count > 0)
+            {
+                ResetButtonHistoriPembayaran(true);
+
+                var pembayaranKasbon = _listOfHistoriPembayaranKasbon[gridList.SelectedIndex];
+                if (pembayaranKasbon != null)
+                {
+                    // nonaktifkan tombol edit dan hapus jika pembayaran kasbon dari gaji
+                    ResetButtonHistoriPembayaran(pembayaranKasbon.gaji_karyawan_id == null);
+                }
+            }            
         }
 
         private void LoadDataKaryawan()
@@ -265,7 +297,7 @@ namespace OpenRetail.App.Pengeluaran
             ResetButton();
 
             btnTambahPembayaran.Enabled = _listOfKasbon.Count > 0;
-            HandleSelectionChanged(this.gridListHistoriPembayaran);
+            GridListHandleSelectionChanged(this.gridListHistoriPembayaran);
         }
 
         private void LoadData(DateTime tanggalMulai, DateTime tanggalSelesai)
@@ -279,7 +311,7 @@ namespace OpenRetail.App.Pengeluaran
             ResetButton();
 
             btnTambahPembayaran.Enabled = _listOfKasbon.Count > 0;
-            HandleSelectionChanged(this.gridListHistoriPembayaran);
+            GridListHandleSelectionChanged(this.gridListHistoriPembayaran);
         }
 
         private void ResetButton()
@@ -332,7 +364,7 @@ namespace OpenRetail.App.Pengeluaran
                 if (result > 0)
                 {
                     GridListControlHelper.RemoveObject<Kasbon>(this.gridList, _listOfKasbon, kasbon);
-                    HandleSelectionChanged(this.gridList);
+                    GridListHandleSelectionChanged(this.gridList);
 
                     ResetButton();
                 }
@@ -373,6 +405,8 @@ namespace OpenRetail.App.Pengeluaran
                     GridListControlHelper.UpdateObject<Kasbon>(this.gridList, _listOfKasbon, kasbon);
 
                     GridListControlHelper.AddObject<PembayaranKasbon>(this.gridListHistoriPembayaran, kasbon.item_pembayaran_kasbon, pembayaranKasbon);
+
+                    btnTambahPembayaran.Enabled = kasbon.sisa > 0;
                     ResetButtonHistoriPembayaran(_listOfHistoriPembayaranKasbon.Count > 0);
                 }
                 else
@@ -380,6 +414,7 @@ namespace OpenRetail.App.Pengeluaran
                     kasbon.total_pelunasan -= pembayaranKasbon.old_nominal;
                     kasbon.total_pelunasan += pembayaranKasbon.nominal;
 
+                    btnTambahPembayaran.Enabled = kasbon.sisa > 0;
                     GridListControlHelper.UpdateObject<Kasbon>(this.gridList, _listOfKasbon, kasbon);
                     GridListControlHelper.UpdateObject<PembayaranKasbon>(this.gridListHistoriPembayaran, kasbon.item_pembayaran_kasbon, pembayaranKasbon);
                 }                                    
@@ -471,6 +506,7 @@ namespace OpenRetail.App.Pengeluaran
                     GridListControlHelper.UpdateObject<Kasbon>(this.gridList, _listOfKasbon, kasbon);
                     GridListControlHelper.RemoveObject<PembayaranKasbon>(this.gridListHistoriPembayaran, _listOfHistoriPembayaranKasbon, pembayaranKasbon);
 
+                    btnTambahPembayaran.Enabled = kasbon.sisa > 0;
                     ResetButtonHistoriPembayaran(_listOfHistoriPembayaranKasbon.Count > 0);
                 }
                 else
