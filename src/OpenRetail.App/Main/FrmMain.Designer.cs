@@ -403,6 +403,7 @@
             this.mnuPenggajian.Size = new System.Drawing.Size(187, 22);
             this.mnuPenggajian.Tag = "FrmListPenggajianKaryawan";
             this.mnuPenggajian.Text = "Penggajian Karyawan";
+            this.mnuPenggajian.Click += new System.EventHandler(this.mnuPenggajian_Click);
             // 
             // mnuLaporan
             // 

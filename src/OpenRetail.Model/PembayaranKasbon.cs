@@ -31,6 +31,11 @@ namespace OpenRetail.Model
 	[Table("t_pembayaran_kasbon")]
     public class PembayaranKasbon
     {
+        public PembayaranKasbon()
+        {
+            entity_state = EntityState.Added;
+        }
+
 		[ExplicitKey]
 		[Display(Name = "pembayaran_kasbon_id")]		
 		public string pembayaran_kasbon_id { get; set; }
@@ -70,6 +75,9 @@ namespace OpenRetail.Model
 
 		[Display(Name = "Keterangan")]
 		public string keterangan { get; set; }
+
+        [Write(false)]
+        public EntityState entity_state { get; set; }
 
         [Write(false)]
 		[Display(Name = "tanggal_sistem")]

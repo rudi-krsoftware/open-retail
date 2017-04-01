@@ -31,11 +31,16 @@ namespace OpenRetail.Model
 	[Table("t_gaji_karyawan")]
     public class GajiKaryawan
     {
+        public GajiKaryawan()
+        {
+            item_pembayaran_kasbon = new List<PembayaranKasbon>();
+        }
+
 		[ExplicitKey]
 		[Display(Name = "gaji_karyawan_id")]		
 		public string gaji_karyawan_id { get; set; }
 		
-		[Display(Name = "karyawan_id")]
+		[Display(Name = "Karyawan")]
 		public string karyawan_id { get; set; }
 
 		[Write(false)]
@@ -47,60 +52,105 @@ namespace OpenRetail.Model
 		[Write(false)]
         public Pengguna Pengguna { get; set; }
 
-		[Display(Name = "bulan")]
+        [Display(Name = "Nota")]
+        public string nota { get; set; }
+
+        [Display(Name = "Tanggal")]
+        public Nullable<DateTime> tanggal { get; set; }
+      
+		[Display(Name = "Bulan")]
 		public int bulan { get; set; }
 		
-		[Display(Name = "tahun")]
+		[Display(Name = "Tahun")]
 		public int tahun { get; set; }
 		
-		[Display(Name = "kehadiran")]
+		[Display(Name = "Kehadiran")]
 		public int kehadiran { get; set; }
 		
-		[Display(Name = "absen")]
+		[Display(Name = "Absen")]
 		public int absen { get; set; }
 		
-		[Display(Name = "gaji_pokok")]
+		[Display(Name = "Gaji Pokok")]
 		public double gaji_pokok { get; set; }
 		
-		[Display(Name = "lembur")]
+		[Display(Name = "Lembur")]
 		public double lembur { get; set; }
 		
-		[Display(Name = "bonus")]
+		[Display(Name = "Bonus")]
 		public double bonus { get; set; }
 		
 		[Display(Name = "potongan")]
-		public double potongan { get; set; }
+		public double potongan { get; set; }        
 		
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
-		
-		[Display(Name = "minggu")]
+		[Display(Name = "Minggu")]
 		public int minggu { get; set; }
 		
-		[Display(Name = "jam")]
+		[Display(Name = "Jam")]
 		public int jam { get; set; }
 		
-		[Display(Name = "lainnya")]
+		[Display(Name = "Lainnya")]
 		public double lainnya { get; set; }
 		
-		[Display(Name = "keterangan")]
+		[Display(Name = "Keterangan")]
 		public string keterangan { get; set; }
 		
-		[Display(Name = "jumlah_hari")]
+		[Display(Name = "Jumlah Hari")]
 		public int jumlah_hari { get; set; }
 		
-		[Display(Name = "tunjangan")]
+		[Display(Name = "Tunjangan")]
 		public double tunjangan { get; set; }
 		
-		[Display(Name = "kasbon")]
+        [Computed]
+		[Display(Name = "Kasbon")]
 		public double kasbon { get; set; }
-		
-		[Display(Name = "tanggal")]
-		public Nullable<DateTime> tanggal { get; set; }
-		
-		[Display(Name = "nota")]
-		public string nota { get; set; }
-		
+
+        [Computed]
+        public double gaji_akhir
+        {
+            get
+            {
+                double result = 0;
+
+                if (Karyawan != null)
+                {
+                    result = Karyawan.jenis_gajian == JenisGajian.Mingguan ? jumlah_hari * gaji_pokok : gaji_pokok;
+                }
+
+                return result;
+            }
+        }
+
+        [Computed]
+        public double lembur_akhir
+        {
+            get
+            {
+                double result = 0;
+
+                if (Karyawan != null)
+                {
+                    result = Karyawan.jenis_gajian == JenisGajian.Mingguan ? jam * lembur : lembur;
+                }
+
+                return result;
+            }
+        }
+
+        [Computed]
+        public double total_gaji
+        {
+            get
+            {
+                return gaji_akhir + tunjangan + lembur_akhir + bonus - potongan - kasbon;
+            }
+        }
+
+        [Write(false)]
+        public IList<PembayaranKasbon> item_pembayaran_kasbon { get; set; }
+
+        [Write(false)]
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
 	}
 
     public class GajiKaryawanValidator : AbstractValidator<GajiKaryawan>
@@ -112,12 +162,11 @@ namespace OpenRetail.Model
 			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			// TODO : non aktifkan validasi yang tidak perlu
-
 			RuleFor(c => c.karyawan_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.keterangan).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
+			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);			
 			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
+            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.gaji_pokok).GreaterThan(0).WithMessage(msgError1);
 		}
 	}
 }

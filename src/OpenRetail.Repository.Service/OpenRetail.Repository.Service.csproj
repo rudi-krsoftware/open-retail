@@ -60,6 +60,7 @@
     <Compile Include="BeliProdukRepository.cs" />
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="DapperContext.cs" />
+    <Compile Include="GajiKaryawanRepository.cs" />
     <Compile Include="GolonganRepository.cs" />
     <Compile Include="ItemMenuRepository.cs" />
     <Compile Include="JabatanRepository.cs" />

@@ -54,6 +54,7 @@
     <Compile Include="BeliProdukBll.cs" />
     <Compile Include="CustomerBll.cs" />
     <Compile Include="DbConnectionHelper.cs" />
+    <Compile Include="GajiKaryawanBll.cs" />
     <Compile Include="GolonganBll.cs" />
     <Compile Include="ItemMenuBll.cs" />
     <Compile Include="JabatanBll.cs" />

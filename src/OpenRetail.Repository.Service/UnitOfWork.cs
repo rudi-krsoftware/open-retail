@@ -59,6 +59,7 @@ namespace OpenRetail.Repository.Service
         private IPengeluaranBiayaRepository _pengeluaranbiayaRepository;
         private IKasbonRepository _kasbonRepository;
         private IPembayaranKasbonRepository _pembayarankasbonRepository;
+        private IGajiKaryawanRepository _gajikaryawanRepository;
 
         private IReportBeliProdukRepository _reportBeliProdukRepository;
         private IReportHutangBeliProdukRepository _reportHutangBeliProdukRepository;
@@ -270,6 +271,11 @@ namespace OpenRetail.Repository.Service
         public IPembayaranKasbonRepository PembayaranKasbonRepository
         {
             get { return _pembayarankasbonRepository ?? (_pembayarankasbonRepository = new PembayaranKasbonRepository(_context, _log)); }
+        }
+
+        public IGajiKaryawanRepository GajiKaryawanRepository
+        {
+            get { return _gajikaryawanRepository ?? (_gajikaryawanRepository = new GajiKaryawanRepository(_context, _log)); }
         }
     }
 }     

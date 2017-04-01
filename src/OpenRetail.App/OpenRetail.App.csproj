@@ -303,6 +303,12 @@
     <Compile Include="Pengaturan\FrmListHakAkses.Designer.cs">
       <DependentUpon>FrmListHakAkses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pengeluaran\FrmEntryPenggajianKaryawan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmEntryPenggajianKaryawan.Designer.cs">
+      <DependentUpon>FrmEntryPenggajianKaryawan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pengeluaran\FrmEntryPembayaranKasbon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +332,12 @@
     </Compile>
     <Compile Include="Pengeluaran\FrmListKasbon.Designer.cs">
       <DependentUpon>FrmListKasbon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmListPenggajianKaryawan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengeluaran\FrmListPenggajianKaryawan.Designer.cs">
+      <DependentUpon>FrmListPenggajianKaryawan.cs</DependentUpon>
     </Compile>
     <Compile Include="Pengeluaran\FrmListPengeluaranBiaya.cs">
       <SubType>Form</SubType>
@@ -602,6 +614,9 @@
     <EmbeddedResource Include="Pengaturan\FrmListHakAkses.resx">
       <DependentUpon>FrmListHakAkses.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pengeluaran\FrmEntryPenggajianKaryawan.resx">
+      <DependentUpon>FrmEntryPenggajianKaryawan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pengeluaran\FrmEntryPembayaranKasbon.resx">
       <DependentUpon>FrmEntryPembayaranKasbon.cs</DependentUpon>
     </EmbeddedResource>
@@ -613,6 +628,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pengeluaran\FrmListKasbon.resx">
       <DependentUpon>FrmListKasbon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pengeluaran\FrmListPenggajianKaryawan.resx">
+      <DependentUpon>FrmListPenggajianKaryawan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pengeluaran\FrmListPengeluaranBiaya.resx">
       <DependentUpon>FrmListPengeluaranBiaya.cs</DependentUpon>

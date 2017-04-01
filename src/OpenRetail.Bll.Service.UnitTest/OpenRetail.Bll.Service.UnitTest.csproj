@@ -80,8 +80,8 @@
     <Compile Include="AlasanPenyesuaianStokBllTest.cs" />
     <Compile Include="BeliProdukBllTest.cs" />
     <Compile Include="CustomerBllTest.cs" />
+    <Compile Include="GajiKaryawanBllTest.cs" />
     <Compile Include="GolonganBllTest.cs" />
-    <Compile Include="IKasbonBllTest.cs" />
     <Compile Include="JabatanBllTest.cs" />
     <Compile Include="JenisPengeluaranBllTest.cs" />
     <Compile Include="JualProdukBllTest.cs" />

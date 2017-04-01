@@ -96,6 +96,11 @@ namespace OpenRetail.Repository.Service
                                 .Where(f => f.gaji_karyawan_id == gajiKaryawanId)
                                 .OrderBy(f => f.tanggal)
                                 .ToList();
+
+                foreach (var item in oList)
+                {
+                    item.entity_state = EntityState.Unchanged;
+                }
             }
             catch (Exception ex)
             {

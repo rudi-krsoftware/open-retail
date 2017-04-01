@@ -71,9 +71,10 @@ namespace OpenRetail.App.Helper
             }
         }
 
-        public static void FillKaryawan(ComboBox cmbBox, IList<Karyawan> listOfKaryawan)
+        public static void FillKaryawan(ComboBox cmbBox, IList<Karyawan> listOfKaryawan, bool isClearItem = true)
         {
-            cmbBox.Items.Clear();
+            if (isClearItem)
+                cmbBox.Items.Clear();
 
             foreach (var karyawan in listOfKaryawan)
             {
