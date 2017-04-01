@@ -59,6 +59,19 @@ namespace OpenRetail.Bll.Service
             throw new NotImplementedException();
         }
 
+        public IList<Kasbon> GetByStatus(bool isLunas)
+        {
+            IList<Kasbon> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.KasbonRepository.GetByStatus(isLunas);
+            }
+
+            return oList;
+        }
+
         public IList<Kasbon> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
             IList<Kasbon> oList = null;

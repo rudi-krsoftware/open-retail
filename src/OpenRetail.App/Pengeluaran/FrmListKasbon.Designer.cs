@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.filterRangeTanggal = new OpenRetail.App.UserControl.FilterRangeTanggal();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.gridList = new Syncfusion.Windows.Forms.Grid.GridListControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -39,6 +38,9 @@
             this.btnHapusPembayaran = new System.Windows.Forms.Button();
             this.btnPerbaikiPembayaran = new System.Windows.Forms.Button();
             this.btnTambahPembayaran = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.filterRangeTanggal = new OpenRetail.App.UserControl.FilterRangeTanggal();
+            this.chkTampilkanYangBelumLunas = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
@@ -46,14 +48,15 @@
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridListHistoriPembayaran)).BeginInit();
             this.pnlFooter2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.filterRangeTanggal, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -62,15 +65,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(789, 367);
             this.tableLayoutPanel3.TabIndex = 6;
-            // 
-            // filterRangeTanggal
-            // 
-            this.filterRangeTanggal.Location = new System.Drawing.Point(3, 3);
-            this.filterRangeTanggal.Name = "filterRangeTanggal";
-            this.filterRangeTanggal.Size = new System.Drawing.Size(469, 23);
-            this.filterRangeTanggal.TabIndex = 2;
-            this.filterRangeTanggal.BtnTampilkanClicked += new OpenRetail.App.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_BtnTampilkanClicked);
-            this.filterRangeTanggal.ChkTampilkanSemuaDataClicked += new OpenRetail.App.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_ChkTampilkanSemuaDataClicked);
             // 
             // tableLayoutPanel4
             // 
@@ -194,6 +188,40 @@
             this.btnTambahPembayaran.UseVisualStyleBackColor = true;
             this.btnTambahPembayaran.Click += new System.EventHandler(this.btnTambahPembayaran_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.filterRangeTanggal);
+            this.flowLayoutPanel1.Controls.Add(this.chkTampilkanYangBelumLunas);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(789, 29);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // filterRangeTanggal
+            // 
+            this.filterRangeTanggal.Location = new System.Drawing.Point(3, 3);
+            this.filterRangeTanggal.Name = "filterRangeTanggal";
+            this.filterRangeTanggal.Size = new System.Drawing.Size(469, 23);
+            this.filterRangeTanggal.TabIndex = 2;
+            this.filterRangeTanggal.BtnTampilkanClicked += new OpenRetail.App.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_BtnTampilkanClicked);
+            this.filterRangeTanggal.ChkTampilkanSemuaDataClicked += new OpenRetail.App.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_ChkTampilkanSemuaDataClicked);
+            // 
+            // chkTampilkanYangBelumLunas
+            // 
+            this.chkTampilkanYangBelumLunas.AutoSize = true;
+            this.chkTampilkanYangBelumLunas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkTampilkanYangBelumLunas.Location = new System.Drawing.Point(478, 6);
+            this.chkTampilkanYangBelumLunas.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.chkTampilkanYangBelumLunas.Name = "chkTampilkanYangBelumLunas";
+            this.chkTampilkanYangBelumLunas.Size = new System.Drawing.Size(160, 20);
+            this.chkTampilkanYangBelumLunas.TabIndex = 3;
+            this.chkTampilkanYangBelumLunas.Text = "Tampilkan yang belum lunas";
+            this.chkTampilkanYangBelumLunas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkTampilkanYangBelumLunas.UseVisualStyleBackColor = true;
+            this.chkTampilkanYangBelumLunas.CheckedChanged += new System.EventHandler(this.chkTampilkanYangBelumLunas_CheckedChanged);
+            // 
             // FrmListKasbon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,6 +238,8 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridListHistoriPembayaran)).EndInit();
             this.pnlFooter2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -227,5 +257,7 @@
         private System.Windows.Forms.Button btnTambahPembayaran;
         private System.Windows.Forms.Button btnHapusPembayaran;
         private System.Windows.Forms.Button btnPerbaikiPembayaran;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.CheckBox chkTampilkanYangBelumLunas;
     }
 }

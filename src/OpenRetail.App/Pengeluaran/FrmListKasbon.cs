@@ -300,6 +300,20 @@ namespace OpenRetail.App.Pengeluaran
             GridListHandleSelectionChanged(this.gridListHistoriPembayaran);
         }
 
+        private void LoadData(bool isLunas)
+        {
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                _listOfKasbon = _bll.GetByStatus(isLunas);
+                GridListControlHelper.Refresh<Kasbon>(this.gridList, _listOfKasbon);
+            }
+
+            ResetButton();
+
+            btnTambahPembayaran.Enabled = _listOfKasbon.Count > 0;
+            GridListHandleSelectionChanged(this.gridListHistoriPembayaran);
+        }
+
         private void LoadData(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
@@ -511,6 +525,20 @@ namespace OpenRetail.App.Pengeluaran
                 }
                 else
                     MsgHelper.MsgDeleteError();
+            }
+        }
+
+        private void chkTampilkanYangBelumLunas_CheckedChanged(object sender, EventArgs e)
+        {
+            filterRangeTanggal.Enabled = !((CheckBox)sender).Checked;
+
+            if (!filterRangeTanggal.Enabled)
+            {
+                LoadData(false);
+            }
+            else
+            {
+                filterRangeTanggal_BtnTampilkanClicked(sender, e);
             }
         }
     }

@@ -103,6 +103,43 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
+        public IList<Kasbon> GetByStatus(bool isLunas)
+        {
+            IList<Kasbon> oList = new List<Kasbon>();
+
+            try
+            {
+                if (isLunas)
+                {
+                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE (t_kasbon.nominal  - t_kasbon.total_pelunasan) <= 0");
+                }
+                else
+                {
+                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE (t_kasbon.nominal  - t_kasbon.total_pelunasan) > 0");
+                }
+                
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_kasbon.tanggal");
+
+                oList = MappingRecordToObject(_sql).ToList();
+
+                if (oList.Count > 0)
+                {
+                    IPembayaranKasbonRepository pembayaranKasbonRepo = new PembayaranKasbonRepository(_context, _log);
+
+                    foreach (var kasbon in oList)
+                    {
+                        kasbon.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByKasbonId(kasbon.kasbon_id);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
         public IList<Kasbon> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
             IList<Kasbon> oList = new List<Kasbon>();

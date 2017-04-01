@@ -40,6 +40,11 @@ namespace OpenRetail.App.UserControl
 
             dtpTanggalMulai.Value = DateTime.Today;
             dtpTanggalSelesai.Value = DateTime.Today;
+
+            this.EnabledChanged += delegate(object sender, EventArgs e)
+            {
+                chkTampilkanSemuaData.Checked = false;
+            };
         }
 
         public DateTime TanggalMulai

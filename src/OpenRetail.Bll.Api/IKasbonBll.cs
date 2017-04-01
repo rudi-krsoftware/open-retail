@@ -32,6 +32,7 @@ namespace OpenRetail.Bll.Api
         Kasbon GetByID(string id);
         IList<Kasbon> GetByKaryawanId(string karyawanId);
         IList<Kasbon> GetByName(string name);
+        IList<Kasbon> GetByStatus(bool isLunas);
         IList<Kasbon> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
 
 		int Save(Kasbon obj, ref ValidationError validationError);
