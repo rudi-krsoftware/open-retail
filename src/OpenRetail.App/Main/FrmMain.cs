@@ -253,6 +253,25 @@ namespace OpenRetail.App.Main
             ((DockContent)(object)form).Show(this.mainDock);
         }
 
+        private void ShowFormDialog<T>(object sender)
+        {
+            var header = GetMenuTitle(sender);
+            var menuName = GetMenuName(sender);
+
+            if (menuName.Substring(0, 6) == "mnuLap")
+            {
+                header = string.Format("Laporan {0}", GetMenuTitle(sender));
+            }
+
+            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
+            {
+                var form = (T)Activator.CreateInstance(typeof(T), header);
+                ((Form)(object)form).ShowDialog();
+            }
+            else
+                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+        }
+
         private string GetMenuTitle(object sender)
         {
             var title = string.Empty;
@@ -431,16 +450,7 @@ namespace OpenRetail.App.Main
 
         private void mnuLapPembelianProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapPembelianProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapPembelianProduk>(sender);
         }
 
         public void Ok(object sender, object data)
@@ -459,170 +469,62 @@ namespace OpenRetail.App.Main
 
         private void mnuLapHutangPembelianProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapHutangPembelianProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapHutangPembelianProduk>(sender);
         }
 
         private void mnuLapPembayaranHutangPembelianProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapPembayaranHutangPembelianProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapPembayaranHutangPembelianProduk>(sender);
         }
 
         private void mnuLapKartuHutangPembelianProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapKartuHutangPembelianProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapKartuHutangPembelianProduk>(sender);
         }
 
         private void mnuLapReturPembelianProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapReturPembelianProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapReturPembelianProduk>(sender);
         }
 
         private void mnuLapPenjualanProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapPenjualanProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapPenjualanProduk>(sender);
         }
 
         private void mnuLapPenjualanPerProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapPenjualanPerProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapPenjualanPerProduk>(sender);
         }
 
         private void mnuLapPiutangPenjualanProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapPiutangPenjualanProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapPiutangPenjualanProduk>(sender);
         }
 
         private void mnuLapPembayaranPiutangPenjualanProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapPembayaranPiutangPenjualanProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapPembayaranPiutangPenjualanProduk>(sender);
         }
 
         private void mnuLapKartuPiutangPenjualanProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapKartuPiutangPenjualanProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapKartuPiutangPenjualanProduk>(sender);
         }
 
         private void mnuLapReturPenjualanProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapReturPenjualanProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapReturPenjualanProduk>(sender);
         }
 
         private void mnuLapStokProduk_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapStokProduk(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapStokProduk>(sender);
         }
 
         private void mnuLapPenyesuaianStok_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapPenyesuaianStok(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapPenyesuaianStok>(sender);
         }
 
         private void mnuPengeluaranBiaya_Click(object sender, EventArgs e)
@@ -632,16 +534,7 @@ namespace OpenRetail.App.Main
 
         private void mnuLapPengeluaranBiaya_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
-
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapPengeluaranBiaya(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapPengeluaranBiaya>(sender);
         }
 
         private void mnuKasbon_Click(object sender, EventArgs e)
@@ -651,16 +544,8 @@ namespace OpenRetail.App.Main
 
         private void mnuLapKasbon_Click(object sender, EventArgs e)
         {
-            var header = string.Format("Laporan {0}", GetMenuTitle(sender));
-            var menuName = GetMenuName(sender);
 
-            if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.SELECT))
-            {
-                var frmLaporan = new FrmLapKasbon(header);
-                frmLaporan.ShowDialog();
-            }
-            else
-                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+            ShowFormDialog<FrmLapKasbon>(sender);
         }
 
         private void mnuPenggajian_Click(object sender, EventArgs e)
