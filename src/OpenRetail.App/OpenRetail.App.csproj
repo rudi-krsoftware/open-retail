@@ -146,6 +146,12 @@
     <Compile Include="Helper\RolePrivilegeHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Helper\Utils.cs" />
+    <Compile Include="Laporan\FrmLapPenggajianKaryawan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapPenggajianKaryawan.Designer.cs">
+      <DependentUpon>FrmLapPenggajianKaryawan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\FrmLapPengeluaranBiaya.cs">
       <SubType>Form</SubType>
     </Compile>

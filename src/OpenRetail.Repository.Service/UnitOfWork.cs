@@ -76,6 +76,7 @@ namespace OpenRetail.Repository.Service
         private IReportStokProdukRepository _reportStokProdukRepository;
         private IReportPengeluaranBiayaRepository _reportPengeluaranBiayaRepository;
         private IReportKasbonRepository _reportKasbonRepository;
+        private IReportGajiKaryawanRepository _reportGajiKaryawanRepository;
 
         public UnitOfWork(IDapperContext context, ILog log)
         {
@@ -261,6 +262,11 @@ namespace OpenRetail.Repository.Service
         public IReportKasbonRepository ReportKasbonRepository
         {
             get { return _reportKasbonRepository ?? (_reportKasbonRepository = new ReportKasbonRepository(_context, _log)); }
+        }
+
+        public IReportGajiKaryawanRepository ReportGajiKaryawanRepository
+        {
+            get { return _reportGajiKaryawanRepository ?? (_reportGajiKaryawanRepository = new ReportGajiKaryawanRepository(_context, _log)); }
         }
 
         public IKasbonRepository KasbonRepository

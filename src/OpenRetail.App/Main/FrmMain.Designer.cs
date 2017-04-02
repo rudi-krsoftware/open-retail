@@ -594,6 +594,7 @@
             this.mnuLapPenggajian.Size = new System.Drawing.Size(187, 22);
             this.mnuLapPenggajian.Tag = "FrmLapPenggajianKaryawan";
             this.mnuLapPenggajian.Text = "Penggajian Karyawan";
+            this.mnuLapPenggajian.Click += new System.EventHandler(this.mnuLapPenggajian_Click);
             // 
             // mnuPengaturan
             // 

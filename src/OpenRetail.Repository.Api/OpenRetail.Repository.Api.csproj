@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\IBaseReportRepository.cs" />
     <Compile Include="Report\IReportBeliProdukRepository.cs" />
+    <Compile Include="Report\IReportGajiKaryawanRepository.cs" />
     <Compile Include="Report\IReportHutangBeliProdukRepository.cs" />
     <Compile Include="Report\IReportJualProdukRepository.cs" />
     <Compile Include="Report\IReportKartuHutangRepository.cs" />

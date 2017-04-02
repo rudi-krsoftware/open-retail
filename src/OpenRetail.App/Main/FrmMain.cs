@@ -544,13 +544,17 @@ namespace OpenRetail.App.Main
 
         private void mnuLapKasbon_Click(object sender, EventArgs e)
         {
-
             ShowFormDialog<FrmLapKasbon>(sender);
         }
 
         private void mnuPenggajian_Click(object sender, EventArgs e)
         {
             ShowForm<FrmListPenggajianKaryawan>(sender, ref _frmListPenggajianKaryawan);
+        }
+
+        private void mnuLapPenggajian_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapPenggajianKaryawan>(sender);
         }
     }
 }

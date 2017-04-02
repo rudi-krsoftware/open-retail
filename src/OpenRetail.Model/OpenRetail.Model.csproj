@@ -68,6 +68,7 @@
     <Compile Include="Kasbon.cs" />
     <Compile Include="PembayaranKasbon.cs" />
     <Compile Include="PengeluaranBiaya.cs" />
+    <Compile Include="Report\ReportGajiKaryawan.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukHeader.cs" />
     <Compile Include="Report\ReportKartuHutang.cs" />

@@ -98,6 +98,7 @@
     <Compile Include="ProfilBllTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\ReportBeliProdukBllTest.cs" />
+    <Compile Include="Report\ReportGajiKaryawanBllTest.cs" />
     <Compile Include="Report\ReportHutangBeliProdukBllTest.cs" />
     <Compile Include="Report\ReportJualProdukBllTest.cs" />
     <Compile Include="Report\ReportKartuHutangBllTest.cs" />

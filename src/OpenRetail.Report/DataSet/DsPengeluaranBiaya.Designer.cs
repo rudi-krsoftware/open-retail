@@ -30,6 +30,8 @@ namespace OpenRetail.Report.DataSet {
         
         private ReportKasbonDetailDataTable tableReportKasbonDetail;
         
+        private ReportGajiKaryawanDataTable tableReportGajiKaryawan;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -66,6 +68,9 @@ namespace OpenRetail.Report.DataSet {
                 }
                 if ((ds.Tables["ReportKasbonDetail"] != null)) {
                     base.Tables.Add(new ReportKasbonDetailDataTable(ds.Tables["ReportKasbonDetail"]));
+                }
+                if ((ds.Tables["ReportGajiKaryawan"] != null)) {
+                    base.Tables.Add(new ReportGajiKaryawanDataTable(ds.Tables["ReportGajiKaryawan"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -112,6 +117,16 @@ namespace OpenRetail.Report.DataSet {
         public ReportKasbonDetailDataTable ReportKasbonDetail {
             get {
                 return this.tableReportKasbonDetail;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportGajiKaryawanDataTable ReportGajiKaryawan {
+            get {
+                return this.tableReportGajiKaryawan;
             }
         }
         
@@ -191,6 +206,9 @@ namespace OpenRetail.Report.DataSet {
                 if ((ds.Tables["ReportKasbonDetail"] != null)) {
                     base.Tables.Add(new ReportKasbonDetailDataTable(ds.Tables["ReportKasbonDetail"]));
                 }
+                if ((ds.Tables["ReportGajiKaryawan"] != null)) {
+                    base.Tables.Add(new ReportGajiKaryawanDataTable(ds.Tables["ReportGajiKaryawan"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -242,6 +260,12 @@ namespace OpenRetail.Report.DataSet {
                     this.tableReportKasbonDetail.InitVars();
                 }
             }
+            this.tableReportGajiKaryawan = ((ReportGajiKaryawanDataTable)(base.Tables["ReportGajiKaryawan"]));
+            if ((initTable == true)) {
+                if ((this.tableReportGajiKaryawan != null)) {
+                    this.tableReportGajiKaryawan.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +282,8 @@ namespace OpenRetail.Report.DataSet {
             base.Tables.Add(this.tableReportKasbonHeader);
             this.tableReportKasbonDetail = new ReportKasbonDetailDataTable();
             base.Tables.Add(this.tableReportKasbonDetail);
+            this.tableReportGajiKaryawan = new ReportGajiKaryawanDataTable();
+            base.Tables.Add(this.tableReportGajiKaryawan);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -275,6 +301,12 @@ namespace OpenRetail.Report.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeReportKasbonDetail() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeReportGajiKaryawan() {
             return false;
         }
         
@@ -341,6 +373,9 @@ namespace OpenRetail.Report.DataSet {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ReportKasbonDetailRowChangeEventHandler(object sender, ReportKasbonDetailRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ReportGajiKaryawanRowChangeEventHandler(object sender, ReportGajiKaryawanRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1424,6 +1459,509 @@ namespace OpenRetail.Report.DataSet {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportGajiKaryawanDataTable : global::System.Data.TypedTableBase<ReportGajiKaryawanRow> {
+            
+            private global::System.Data.DataColumn columnkaryawan_id;
+            
+            private global::System.Data.DataColumn columnnama_karyawan;
+            
+            private global::System.Data.DataColumn columnnama_jabatan;
+            
+            private global::System.Data.DataColumn columntanggal;
+            
+            private global::System.Data.DataColumn columnjam;
+            
+            private global::System.Data.DataColumn columnjumlah_hari;
+            
+            private global::System.Data.DataColumn columnbulan;
+            
+            private global::System.Data.DataColumn columntahun;
+            
+            private global::System.Data.DataColumn columnkehadiran;
+            
+            private global::System.Data.DataColumn columnabsen;
+            
+            private global::System.Data.DataColumn columngaji_pokok;
+            
+            private global::System.Data.DataColumn columnlembur;
+            
+            private global::System.Data.DataColumn columnbonus;
+            
+            private global::System.Data.DataColumn columnpotongan;
+            
+            private global::System.Data.DataColumn columntunjangan;
+            
+            private global::System.Data.DataColumn columngaji_akhir;
+            
+            private global::System.Data.DataColumn columnlembur_akhir;
+            
+            private global::System.Data.DataColumn columntotal_gaji;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportGajiKaryawanDataTable() {
+                this.TableName = "ReportGajiKaryawan";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportGajiKaryawanDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ReportGajiKaryawanDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn karyawan_idColumn {
+                get {
+                    return this.columnkaryawan_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_karyawanColumn {
+                get {
+                    return this.columnnama_karyawan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nama_jabatanColumn {
+                get {
+                    return this.columnnama_jabatan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tanggalColumn {
+                get {
+                    return this.columntanggal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn jamColumn {
+                get {
+                    return this.columnjam;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn jumlah_hariColumn {
+                get {
+                    return this.columnjumlah_hari;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn bulanColumn {
+                get {
+                    return this.columnbulan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tahunColumn {
+                get {
+                    return this.columntahun;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kehadiranColumn {
+                get {
+                    return this.columnkehadiran;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn absenColumn {
+                get {
+                    return this.columnabsen;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn gaji_pokokColumn {
+                get {
+                    return this.columngaji_pokok;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn lemburColumn {
+                get {
+                    return this.columnlembur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn bonusColumn {
+                get {
+                    return this.columnbonus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn potonganColumn {
+                get {
+                    return this.columnpotongan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tunjanganColumn {
+                get {
+                    return this.columntunjangan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn gaji_akhirColumn {
+                get {
+                    return this.columngaji_akhir;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn lembur_akhirColumn {
+                get {
+                    return this.columnlembur_akhir;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn total_gajiColumn {
+                get {
+                    return this.columntotal_gaji;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportGajiKaryawanRow this[int index] {
+                get {
+                    return ((ReportGajiKaryawanRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportGajiKaryawanRowChangeEventHandler ReportGajiKaryawanRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportGajiKaryawanRowChangeEventHandler ReportGajiKaryawanRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportGajiKaryawanRowChangeEventHandler ReportGajiKaryawanRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportGajiKaryawanRowChangeEventHandler ReportGajiKaryawanRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddReportGajiKaryawanRow(ReportGajiKaryawanRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportGajiKaryawanRow AddReportGajiKaryawanRow(
+                        string karyawan_id, 
+                        string nama_karyawan, 
+                        string nama_jabatan, 
+                        System.DateTime tanggal, 
+                        int jam, 
+                        int jumlah_hari, 
+                        int bulan, 
+                        int tahun, 
+                        int kehadiran, 
+                        int absen, 
+                        double gaji_pokok, 
+                        double lembur, 
+                        double bonus, 
+                        double potongan, 
+                        double tunjangan, 
+                        double gaji_akhir, 
+                        double lembur_akhir, 
+                        double total_gaji) {
+                ReportGajiKaryawanRow rowReportGajiKaryawanRow = ((ReportGajiKaryawanRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        karyawan_id,
+                        nama_karyawan,
+                        nama_jabatan,
+                        tanggal,
+                        jam,
+                        jumlah_hari,
+                        bulan,
+                        tahun,
+                        kehadiran,
+                        absen,
+                        gaji_pokok,
+                        lembur,
+                        bonus,
+                        potongan,
+                        tunjangan,
+                        gaji_akhir,
+                        lembur_akhir,
+                        total_gaji};
+                rowReportGajiKaryawanRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportGajiKaryawanRow);
+                return rowReportGajiKaryawanRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ReportGajiKaryawanDataTable cln = ((ReportGajiKaryawanDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportGajiKaryawanDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnkaryawan_id = base.Columns["karyawan_id"];
+                this.columnnama_karyawan = base.Columns["nama_karyawan"];
+                this.columnnama_jabatan = base.Columns["nama_jabatan"];
+                this.columntanggal = base.Columns["tanggal"];
+                this.columnjam = base.Columns["jam"];
+                this.columnjumlah_hari = base.Columns["jumlah_hari"];
+                this.columnbulan = base.Columns["bulan"];
+                this.columntahun = base.Columns["tahun"];
+                this.columnkehadiran = base.Columns["kehadiran"];
+                this.columnabsen = base.Columns["absen"];
+                this.columngaji_pokok = base.Columns["gaji_pokok"];
+                this.columnlembur = base.Columns["lembur"];
+                this.columnbonus = base.Columns["bonus"];
+                this.columnpotongan = base.Columns["potongan"];
+                this.columntunjangan = base.Columns["tunjangan"];
+                this.columngaji_akhir = base.Columns["gaji_akhir"];
+                this.columnlembur_akhir = base.Columns["lembur_akhir"];
+                this.columntotal_gaji = base.Columns["total_gaji"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnkaryawan_id = new global::System.Data.DataColumn("karyawan_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkaryawan_id);
+                this.columnnama_karyawan = new global::System.Data.DataColumn("nama_karyawan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_karyawan);
+                this.columnnama_jabatan = new global::System.Data.DataColumn("nama_jabatan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnama_jabatan);
+                this.columntanggal = new global::System.Data.DataColumn("tanggal", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntanggal);
+                this.columnjam = new global::System.Data.DataColumn("jam", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjam);
+                this.columnjumlah_hari = new global::System.Data.DataColumn("jumlah_hari", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjumlah_hari);
+                this.columnbulan = new global::System.Data.DataColumn("bulan", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbulan);
+                this.columntahun = new global::System.Data.DataColumn("tahun", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntahun);
+                this.columnkehadiran = new global::System.Data.DataColumn("kehadiran", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkehadiran);
+                this.columnabsen = new global::System.Data.DataColumn("absen", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnabsen);
+                this.columngaji_pokok = new global::System.Data.DataColumn("gaji_pokok", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columngaji_pokok);
+                this.columnlembur = new global::System.Data.DataColumn("lembur", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlembur);
+                this.columnbonus = new global::System.Data.DataColumn("bonus", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbonus);
+                this.columnpotongan = new global::System.Data.DataColumn("potongan", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpotongan);
+                this.columntunjangan = new global::System.Data.DataColumn("tunjangan", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntunjangan);
+                this.columngaji_akhir = new global::System.Data.DataColumn("gaji_akhir", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columngaji_akhir);
+                this.columnlembur_akhir = new global::System.Data.DataColumn("lembur_akhir", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlembur_akhir);
+                this.columntotal_gaji = new global::System.Data.DataColumn("total_gaji", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_gaji);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportGajiKaryawanRow NewReportGajiKaryawanRow() {
+                return ((ReportGajiKaryawanRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportGajiKaryawanRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportGajiKaryawanRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportGajiKaryawanRowChanged != null)) {
+                    this.ReportGajiKaryawanRowChanged(this, new ReportGajiKaryawanRowChangeEvent(((ReportGajiKaryawanRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportGajiKaryawanRowChanging != null)) {
+                    this.ReportGajiKaryawanRowChanging(this, new ReportGajiKaryawanRowChangeEvent(((ReportGajiKaryawanRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportGajiKaryawanRowDeleted != null)) {
+                    this.ReportGajiKaryawanRowDeleted(this, new ReportGajiKaryawanRowChangeEvent(((ReportGajiKaryawanRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportGajiKaryawanRowDeleting != null)) {
+                    this.ReportGajiKaryawanRowDeleting(this, new ReportGajiKaryawanRowChangeEvent(((ReportGajiKaryawanRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveReportGajiKaryawanRow(ReportGajiKaryawanRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsPengeluaranBiaya ds = new DsPengeluaranBiaya();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportGajiKaryawanDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ReportPengeluaranBiayaRow : global::System.Data.DataRow {
@@ -2231,6 +2769,525 @@ namespace OpenRetail.Report.DataSet {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ReportGajiKaryawanRow : global::System.Data.DataRow {
+            
+            private ReportGajiKaryawanDataTable tableReportGajiKaryawan;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportGajiKaryawanRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportGajiKaryawan = ((ReportGajiKaryawanDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string karyawan_id {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportGajiKaryawan.karyawan_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'karyawan_id\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.karyawan_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_karyawan {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportGajiKaryawan.nama_karyawanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_karyawan\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.nama_karyawanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nama_jabatan {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportGajiKaryawan.nama_jabatanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_jabatan\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.nama_jabatanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime tanggal {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableReportGajiKaryawan.tanggalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tanggal\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.tanggalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int jam {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGajiKaryawan.jamColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jam\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.jamColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int jumlah_hari {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGajiKaryawan.jumlah_hariColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jumlah_hari\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.jumlah_hariColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int bulan {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGajiKaryawan.bulanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'bulan\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.bulanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int tahun {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGajiKaryawan.tahunColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tahun\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.tahunColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int kehadiran {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGajiKaryawan.kehadiranColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kehadiran\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.kehadiranColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int absen {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportGajiKaryawan.absenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'absen\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.absenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double gaji_pokok {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportGajiKaryawan.gaji_pokokColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'gaji_pokok\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.gaji_pokokColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double lembur {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportGajiKaryawan.lemburColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'lembur\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.lemburColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double bonus {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportGajiKaryawan.bonusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'bonus\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.bonusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double potongan {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportGajiKaryawan.potonganColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'potongan\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.potonganColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double tunjangan {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportGajiKaryawan.tunjanganColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tunjangan\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.tunjanganColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double gaji_akhir {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportGajiKaryawan.gaji_akhirColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'gaji_akhir\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.gaji_akhirColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double lembur_akhir {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportGajiKaryawan.lembur_akhirColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'lembur_akhir\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.lembur_akhirColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double total_gaji {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportGajiKaryawan.total_gajiColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_gaji\' in table \'ReportGajiKaryawan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportGajiKaryawan.total_gajiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskaryawan_idNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.karyawan_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkaryawan_idNull() {
+                this[this.tableReportGajiKaryawan.karyawan_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_karyawanNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.nama_karyawanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_karyawanNull() {
+                this[this.tableReportGajiKaryawan.nama_karyawanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnama_jabatanNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.nama_jabatanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnama_jabatanNull() {
+                this[this.tableReportGajiKaryawan.nama_jabatanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstanggalNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.tanggalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettanggalNull() {
+                this[this.tableReportGajiKaryawan.tanggalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsjamNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.jamColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetjamNull() {
+                this[this.tableReportGajiKaryawan.jamColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isjumlah_hariNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.jumlah_hariColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setjumlah_hariNull() {
+                this[this.tableReportGajiKaryawan.jumlah_hariColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsbulanNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.bulanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetbulanNull() {
+                this[this.tableReportGajiKaryawan.bulanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstahunNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.tahunColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettahunNull() {
+                this[this.tableReportGajiKaryawan.tahunColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IskehadiranNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.kehadiranColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetkehadiranNull() {
+                this[this.tableReportGajiKaryawan.kehadiranColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsabsenNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.absenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetabsenNull() {
+                this[this.tableReportGajiKaryawan.absenColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isgaji_pokokNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.gaji_pokokColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setgaji_pokokNull() {
+                this[this.tableReportGajiKaryawan.gaji_pokokColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IslemburNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.lemburColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetlemburNull() {
+                this[this.tableReportGajiKaryawan.lemburColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsbonusNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.bonusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetbonusNull() {
+                this[this.tableReportGajiKaryawan.bonusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IspotonganNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.potonganColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetpotonganNull() {
+                this[this.tableReportGajiKaryawan.potonganColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstunjanganNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.tunjanganColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettunjanganNull() {
+                this[this.tableReportGajiKaryawan.tunjanganColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isgaji_akhirNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.gaji_akhirColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setgaji_akhirNull() {
+                this[this.tableReportGajiKaryawan.gaji_akhirColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Islembur_akhirNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.lembur_akhirColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setlembur_akhirNull() {
+                this[this.tableReportGajiKaryawan.lembur_akhirColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istotal_gajiNull() {
+                return this.IsNull(this.tableReportGajiKaryawan.total_gajiColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settotal_gajiNull() {
+                this[this.tableReportGajiKaryawan.total_gajiColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2318,6 +3375,40 @@ namespace OpenRetail.Report.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReportKasbonDetailRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ReportGajiKaryawanRowChangeEvent : global::System.EventArgs {
+            
+            private ReportGajiKaryawanRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportGajiKaryawanRowChangeEvent(ReportGajiKaryawanRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportGajiKaryawanRow Row {
                 get {
                     return this.eventRow;
                 }

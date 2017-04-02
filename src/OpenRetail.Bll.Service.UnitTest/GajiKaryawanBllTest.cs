@@ -82,13 +82,11 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(1000, obj.lembur);
             Assert.AreEqual(150000, obj.bonus);
             Assert.AreEqual(50000, obj.potongan);
-            Assert.AreEqual(1, obj.minggu);
             Assert.AreEqual(1, obj.jam);
             Assert.AreEqual(0, obj.lainnya);
             Assert.AreEqual("tesss lagi", obj.keterangan);
             Assert.AreEqual(6, obj.jumlah_hari);
             Assert.AreEqual(0, obj.tunjangan);
-            Assert.AreEqual(0, obj.kasbon);
             Assert.AreEqual(new DateTime(2017, 3, 31), obj.tanggal);
             Assert.AreEqual("201703310004", obj.nota);
 
@@ -121,12 +119,10 @@ namespace OpenRetail.Bll.Service.UnitTest
                 lembur = 0,
                 bonus = 0,
                 potongan = 0,
-                minggu = 1,
                 jam = 1,
                 keterangan = "tesss",
                 jumlah_hari = 6,
-                tunjangan = 0,
-                kasbon = 0                
+                tunjangan = 0             
             };
 
             // item pembayaran kasbon
@@ -174,13 +170,11 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.lembur, newObj.lembur);
             Assert.AreEqual(obj.bonus, newObj.bonus);
             Assert.AreEqual(obj.potongan, newObj.potongan);
-            Assert.AreEqual(obj.minggu, newObj.minggu);
             Assert.AreEqual(obj.jam, newObj.jam);
             Assert.AreEqual(obj.lainnya, newObj.lainnya);
             Assert.AreEqual(obj.keterangan, newObj.keterangan);
             Assert.AreEqual(obj.jumlah_hari, newObj.jumlah_hari);
             Assert.AreEqual(obj.tunjangan, newObj.tunjangan);
-            Assert.AreEqual(obj.kasbon, newObj.kasbon);            
         }
 
         [TestMethod]
@@ -218,13 +212,11 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.lembur, updatedObj.lembur);
             Assert.AreEqual(obj.bonus, updatedObj.bonus);
             Assert.AreEqual(obj.potongan, updatedObj.potongan);
-            Assert.AreEqual(obj.minggu, updatedObj.minggu);
             Assert.AreEqual(obj.jam, updatedObj.jam);
             Assert.AreEqual(obj.lainnya, updatedObj.lainnya);
             Assert.AreEqual(obj.keterangan, updatedObj.keterangan);
             Assert.AreEqual(obj.jumlah_hari, updatedObj.jumlah_hari);
             Assert.AreEqual(obj.tunjangan, updatedObj.tunjangan);
-            Assert.AreEqual(obj.kasbon, updatedObj.kasbon);            
         }
 
         [TestMethod]

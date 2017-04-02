@@ -681,14 +681,17 @@ CREATE FUNCTION f_update_pelunasan_kasbon() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 DECLARE 
-	var_kasbon_id				t_guid;    
+	var_kasbon_id				t_guid;   
+    var_gaji_karyawan_id		t_guid; 
 	var_total_pelunasan_kasbon 	t_harga;
-    
+
 BEGIN
 	IF TG_OP = 'INSERT' OR TG_OP = 'UPDATE' THEN
-    	var_kasbon_id := NEW.kasbon_id;        
+    	var_kasbon_id := NEW.kasbon_id;    
+        var_gaji_karyawan_id := NEW.gaji_karyawan_id;
     ELSE
     	var_kasbon_id := OLD.kasbon_id;
+        var_gaji_karyawan_id := OLD.gaji_karyawan_id;
     END IF;
 	        
     -- pelunasan kasbon
@@ -702,6 +705,20 @@ BEGIN
     -- kasbon
     UPDATE t_kasbon SET total_pelunasan = var_total_pelunasan_kasbon 
     WHERE kasbon_id = var_kasbon_id;    
+    
+    -- hitung total pelunasan yang dibayar pake gaji (potongan gaji untuk kasbon) 
+    IF NOT (var_gaji_karyawan_id IS NULL) THEN
+    	-- pelunasan kasbon
+    	var_total_pelunasan_kasbon := (SELECT SUM(nominal) FROM t_pembayaran_kasbon 
+    							   	   WHERE gaji_karyawan_id = var_gaji_karyawan_id);	    
+	
+	    IF var_total_pelunasan_kasbon IS NULL THEN
+    		var_total_pelunasan_kasbon := 0;  
+		END IF;
+    	
+        UPDATE t_gaji_karyawan SET kasbon = var_total_pelunasan_kasbon 
+	    WHERE gaji_karyawan_id = var_gaji_karyawan_id;
+	END IF;
     
     RETURN NULL;
 END;
@@ -1523,7 +1540,6 @@ CREATE TABLE t_gaji_karyawan (
     bonus t_harga,
     potongan t_harga,
     tanggal_sistem timestamp without time zone DEFAULT now(),
-    minggu integer DEFAULT 1,
     jam integer DEFAULT 0,
     lainnya t_harga DEFAULT 0,
     keterangan t_keterangan,

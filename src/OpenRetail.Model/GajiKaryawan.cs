@@ -82,9 +82,6 @@ namespace OpenRetail.Model
 		[Display(Name = "potongan")]
 		public double potongan { get; set; }        
 		
-		[Display(Name = "Minggu")]
-		public int minggu { get; set; }
-		
 		[Display(Name = "Jam")]
 		public int jam { get; set; }
 		
@@ -100,10 +97,6 @@ namespace OpenRetail.Model
 		[Display(Name = "Tunjangan")]
 		public double tunjangan { get; set; }
 		
-        [Computed]
-		[Display(Name = "Kasbon")]
-		public double kasbon { get; set; }
-
         [Computed]
         public double gaji_akhir
         {
@@ -141,7 +134,7 @@ namespace OpenRetail.Model
         {
             get
             {
-                return gaji_akhir + tunjangan + lembur_akhir + bonus - potongan - kasbon;
+                return gaji_akhir + tunjangan + lembur_akhir + bonus - potongan;
             }
         }
 

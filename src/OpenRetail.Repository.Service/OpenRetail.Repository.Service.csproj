@@ -80,6 +80,7 @@
     <Compile Include="ProfilRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\ReportBeliProdukRepository.cs" />
+    <Compile Include="Report\ReportGajiKaryawanRepository.cs" />
     <Compile Include="Report\ReportHutangBeliProdukRepository.cs" />
     <Compile Include="Report\ReportJualProdukRepository.cs" />
     <Compile Include="Report\ReportKartuHutangRepository.cs" />
