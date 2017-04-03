@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -36,6 +37,7 @@ namespace OpenRetail.App.Main
     public partial class FrmLogin : Form
     {
         private ILog _log;
+        private const int DatabaseVersion = 1;
 
         public FrmLogin()
         {
@@ -80,6 +82,59 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", appConfigFile).ToLower() == "true" ? true : false;
         }
 
+        private void ExecSQL(string fileName)
+        {
+            var fileSql = string.Format(@"{0}\sql\{1}", Utils.GetAppPath(), fileName);
+
+            if (File.Exists(fileSql))
+            {
+                IDbConnectionHelper dbHelper = new DbConnectionHelper();
+
+                using (var reader = new StreamReader(fileSql))
+                {
+                    var sql = string.Empty;
+                    while ((sql = reader.ReadLine()) != null)
+                    {
+                        dbHelper.ExecSQL(sql);
+                    }
+                }
+            }
+        }
+
+        private void UpgradeDatabase(int newDatabaseVersion)
+        {
+            IDatabaseVersionBll bll = new DatabaseVersionBll(_log);
+
+            var dbVersion = bll.Get();
+            if (dbVersion != null)
+            {
+                var upgradeTo = dbVersion.version_number + 1;
+
+                while (upgradeTo <= newDatabaseVersion)
+                {
+                    switch (upgradeTo)
+                    {
+                        case 2:
+                            ExecSQL("patch_db_1_to_2.sql");
+                            break;
+
+                        case 3:
+                            ExecSQL("patch_db_2_to_3.sql");
+                            break;
+
+                        case 4:
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    upgradeTo++;
+                    bll.UpdateVersion();
+                }
+            }
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             var isConnected = false;
@@ -115,6 +170,9 @@ namespace OpenRetail.App.Main
 
                     SetProfil();
                     SetPengaturanUmum();
+
+                    // TODO: fix me (di aktifkan setelah rilis versi 1.0.0)
+                    // UpgradeDatabase(DatabaseVersion);
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();

@@ -28,6 +28,7 @@ namespace OpenRetail.Repository.Api
 {    
     public interface IUnitOfWork
     {
+        IDatabaseVersionRepository DatabaseVersionRepository { get; }
         IJenisPengeluaranRepository JenisPengeluaranRepository { get; }
 
         IGolonganRepository GolonganRepository { get; }

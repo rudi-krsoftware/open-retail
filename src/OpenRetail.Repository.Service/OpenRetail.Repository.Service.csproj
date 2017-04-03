@@ -61,6 +61,7 @@
     <Compile Include="CetakNotaRepository.cs" />
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="DapperContext.cs" />
+    <Compile Include="DatabaseVersionRepository.cs" />
     <Compile Include="GajiKaryawanRepository.cs" />
     <Compile Include="GolonganRepository.cs" />
     <Compile Include="ItemMenuRepository.cs" />

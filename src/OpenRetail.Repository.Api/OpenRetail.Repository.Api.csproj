@@ -48,6 +48,7 @@
     <Compile Include="ICetakNotaRepository.cs" />
     <Compile Include="ICustomerRepository.cs" />
     <Compile Include="IDapperContext.cs" />
+    <Compile Include="IDatabaseVersionRepository.cs" />
     <Compile Include="IGajiKaryawanRepository.cs" />
     <Compile Include="IGolonganRepository.cs" />
     <Compile Include="IItemMenuRepository.cs" />

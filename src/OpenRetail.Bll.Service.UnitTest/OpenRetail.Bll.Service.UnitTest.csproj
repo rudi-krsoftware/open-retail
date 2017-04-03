@@ -81,6 +81,7 @@
     <Compile Include="BeliProdukBllTest.cs" />
     <Compile Include="CetakNotaBllTest.cs" />
     <Compile Include="CustomerBllTest.cs" />
+    <Compile Include="DatabaseVersionBllTest.cs" />
     <Compile Include="GajiKaryawanBllTest.cs" />
     <Compile Include="GolonganBllTest.cs" />
     <Compile Include="JabatanBllTest.cs" />

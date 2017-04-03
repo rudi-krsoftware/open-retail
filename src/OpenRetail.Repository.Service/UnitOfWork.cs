@@ -34,6 +34,7 @@ namespace OpenRetail.Repository.Service
         private IDapperContext _context;
         private ILog _log;
 
+        private IDatabaseVersionRepository _databaseversionRepository;
         private IAlasanPenyesuaianStokRepository _alasanpenyesuaianstokRepository;
         private IJabatanRepository _jabatanRepository;
         private IJenisPengeluaranRepository _jenispengeluaranRepository;
@@ -83,6 +84,11 @@ namespace OpenRetail.Repository.Service
         {
             this._context = context;
             this._log = log;
+        }
+
+        public IDatabaseVersionRepository DatabaseVersionRepository
+        {
+            get { return _databaseversionRepository ?? (_databaseversionRepository = new DatabaseVersionRepository(_context, _log)); }
         }
 
         public IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository
