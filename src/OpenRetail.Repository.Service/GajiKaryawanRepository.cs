@@ -128,12 +128,26 @@ namespace OpenRetail.Repository.Service
             throw new NotImplementedException();
         }
 
+        private bool IsExist(string karyawanId, int bulan, int tahun)
+        {
+            var count = _context.db.GetAll<GajiKaryawan>()
+                                .Where(f => f.karyawan_id == karyawanId && f.bulan == bulan && f.tahun == tahun)
+                                .Count();
+
+            return count > 0;
+        }
+
         public int Save(GajiKaryawan obj)
         {
             var result = 0;
 
             try
             {
+                if (IsExist(obj.karyawan_id, obj.bulan, obj.tahun)) // data gaji karyawan sudah diinputkan
+                {
+                    return 0;
+                }
+
                 _context.BeginTransaction();
 
                 var transaction = _context.transaction;

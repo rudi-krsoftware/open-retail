@@ -217,6 +217,11 @@ namespace OpenRetail.App.Pengeluaran
                     MsgHelper.MsgWarning(validationError.Message);
                     base.SetFocusObject(validationError.PropertyName, this);
                 }
+                else
+                {
+                    var pesan = string.Format("Maaf, Data yang Anda masukkan gagal disimpan !\nCek apakah data gaji '{0}' sudah diinputkan.", _gaji.Karyawan.nama_karyawan);
+                    MsgHelper.MsgWarning(pesan);
+                }
             }                
         }
 

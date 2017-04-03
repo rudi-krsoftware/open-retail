@@ -30,6 +30,8 @@
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtKehadiran = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtBonus = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,9 +52,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtAbsen = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtTunjangan = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtBonus = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtTotal = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNota = new OpenRetail.App.UserControl.AdvancedTextbox();
@@ -63,6 +62,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtLembur = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtTunjangan = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
@@ -137,6 +137,35 @@
             this.txtKehadiran.Text = "0";
             this.txtKehadiran.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtKehadiran.ThousandSeparator = false;
+            // 
+            // txtBonus
+            // 
+            this.txtBonus.AutoEnter = true;
+            this.txtBonus.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtBonus.EnterFocusColor = System.Drawing.Color.White;
+            this.txtBonus.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtBonus.LetterOnly = false;
+            this.txtBonus.Location = new System.Drawing.Point(94, 253);
+            this.txtBonus.MaxLength = 20;
+            this.txtBonus.Name = "txtBonus";
+            this.txtBonus.NumericOnly = true;
+            this.txtBonus.SelectionText = false;
+            this.txtBonus.Size = new System.Drawing.Size(100, 20);
+            this.txtBonus.TabIndex = 10;
+            this.txtBonus.Text = "0";
+            this.txtBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBonus.ThousandSeparator = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Location = new System.Drawing.Point(3, 250);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(85, 25);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "Bonus";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
@@ -230,6 +259,7 @@
             this.txtJumlahHari.SelectionText = false;
             this.txtJumlahHari.Size = new System.Drawing.Size(43, 20);
             this.txtJumlahHari.TabIndex = 0;
+            this.txtJumlahHari.Tag = "jumlah_hari";
             this.txtJumlahHari.Text = "0";
             this.txtJumlahHari.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtJumlahHari.ThousandSeparator = false;
@@ -382,53 +412,6 @@
             this.txtAbsen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAbsen.ThousandSeparator = false;
             // 
-            // txtTunjangan
-            // 
-            this.txtTunjangan.AutoEnter = true;
-            this.txtTunjangan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtTunjangan.EnterFocusColor = System.Drawing.Color.White;
-            this.txtTunjangan.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtTunjangan.LetterOnly = false;
-            this.txtTunjangan.Location = new System.Drawing.Point(94, 228);
-            this.txtTunjangan.MaxLength = 20;
-            this.txtTunjangan.Name = "txtTunjangan";
-            this.txtTunjangan.NumericOnly = true;
-            this.txtTunjangan.SelectionText = false;
-            this.txtTunjangan.Size = new System.Drawing.Size(100, 20);
-            this.txtTunjangan.TabIndex = 9;
-            this.txtTunjangan.Text = "0";
-            this.txtTunjangan.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTunjangan.ThousandSeparator = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Location = new System.Drawing.Point(3, 250);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(85, 25);
-            this.label15.TabIndex = 11;
-            this.label15.Text = "Bonus";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtBonus
-            // 
-            this.txtBonus.AutoEnter = true;
-            this.txtBonus.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtBonus.EnterFocusColor = System.Drawing.Color.White;
-            this.txtBonus.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtBonus.LetterOnly = false;
-            this.txtBonus.Location = new System.Drawing.Point(94, 253);
-            this.txtBonus.MaxLength = 20;
-            this.txtBonus.Name = "txtBonus";
-            this.txtBonus.NumericOnly = true;
-            this.txtBonus.SelectionText = false;
-            this.txtBonus.Size = new System.Drawing.Size(100, 20);
-            this.txtBonus.TabIndex = 10;
-            this.txtBonus.Text = "0";
-            this.txtBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtBonus.ThousandSeparator = true;
-            // 
             // txtTotal
             // 
             this.txtTotal.AutoEnter = false;
@@ -574,6 +557,24 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Lembur";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtTunjangan
+            // 
+            this.txtTunjangan.AutoEnter = true;
+            this.txtTunjangan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtTunjangan.EnterFocusColor = System.Drawing.Color.White;
+            this.txtTunjangan.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtTunjangan.LetterOnly = false;
+            this.txtTunjangan.Location = new System.Drawing.Point(94, 228);
+            this.txtTunjangan.MaxLength = 20;
+            this.txtTunjangan.Name = "txtTunjangan";
+            this.txtTunjangan.NumericOnly = true;
+            this.txtTunjangan.SelectionText = false;
+            this.txtTunjangan.Size = new System.Drawing.Size(100, 20);
+            this.txtTunjangan.TabIndex = 9;
+            this.txtTunjangan.Text = "0";
+            this.txtTunjangan.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTunjangan.ThousandSeparator = true;
             // 
             // FrmEntryPenggajianKaryawan
             // 

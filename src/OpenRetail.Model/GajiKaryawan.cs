@@ -159,7 +159,8 @@ namespace OpenRetail.Model
 			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);			
 			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
             RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
-            RuleFor(c => c.gaji_pokok).GreaterThan(0).WithMessage(msgError1);
+            RuleFor(c => c.gaji_pokok).GreaterThan(0).WithMessage(msgError1).When(c => c.Karyawan.jenis_gajian == JenisGajian.Bulanan);
+            RuleFor(c => c.jumlah_hari).GreaterThan(0).WithMessage(msgError1).When(c => c.Karyawan.jenis_gajian == JenisGajian.Mingguan);
 		}
 	}
 }
