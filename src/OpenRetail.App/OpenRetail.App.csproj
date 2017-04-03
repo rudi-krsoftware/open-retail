@@ -48,8 +48,12 @@
       <HintPath>..\..\lib\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\..\lib\Npgsql.2.2.7\lib\net40\Mono.Security.dll</HintPath>
       <Private>True</Private>
@@ -860,6 +864,27 @@
     <None Include="Resources\background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Debug" goto skip
+
+echo set lokasi folder deploy
+set DeployDir="$(SolutionDir)..\deploy\bin"
+if not exist %25DeployDir%25 mkdir %25DeployDir%25
+
+echo copy hasil build ke folder deploy
+copy /Y "$(TargetDir)*.*" %25DeployDir%25
+
+echo hapus file build yang tidak diperlukan
+del /s /q %25DeployDir%25\*.xml
+del /s /q %25DeployDir%25\*.pdb
+
+goto exit
+
+:skip
+echo "do nothing"
+
+:exit</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
