@@ -372,7 +372,8 @@
             // chkCetakNotaBeli
             // 
             this.chkCetakNotaBeli.AutoSize = true;
-            this.chkCetakNotaBeli.Enabled = false;
+            this.chkCetakNotaBeli.Checked = true;
+            this.chkCetakNotaBeli.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkCetakNotaBeli.Location = new System.Drawing.Point(3, 28);
             this.chkCetakNotaBeli.Name = "chkCetakNotaBeli";
             this.chkCetakNotaBeli.Size = new System.Drawing.Size(100, 17);

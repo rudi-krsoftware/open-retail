@@ -36,6 +36,7 @@ using OpenRetail.App.UserControl;
 using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
 using log4net;
+using Microsoft.Reporting.WinForms;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -55,6 +56,7 @@ namespace OpenRetail.App.Transaksi
         private bool _isNewData = false;
         private ILog _log;
         private Pengguna _pengguna;
+        private Profil _profil;
 
         public IListener Listener { private get; set; }
 
@@ -69,6 +71,7 @@ namespace OpenRetail.App.Transaksi
             this._isNewData = true;
             this._log = MainProgram.log;
             this._pengguna = MainProgram.pengguna;
+            this._profil = MainProgram.profil;
 
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
@@ -92,6 +95,7 @@ namespace OpenRetail.App.Transaksi
             this._customer = jual.Customer;
             this._log = MainProgram.log;
             this._pengguna = MainProgram.pengguna;
+            this._profil = MainProgram.profil;
 
             txtNota.Text = this._jual.nota;
             dtpTanggal.Value = (DateTime)this._jual.tanggal;
@@ -419,9 +423,8 @@ namespace OpenRetail.App.Transaksi
 
                 if (result > 0)
                 {
-                    // TODO: fix me
-                    //if (chkCetakNotaJual.Checked)
-                    //    chkCetakNotaJual(_jual);                    
+                    if (chkCetakNotaJual.Checked)
+                        CetakNota(_jual.jual_id);
                     
                     Listener.Ok(this, _isNewData, _jual);
 
@@ -442,6 +445,30 @@ namespace OpenRetail.App.Transaksi
                         MsgHelper.MsgUpdateError();
                 }
             }            
+        }
+
+        private void CetakNota(string jualProdukId)
+        {
+            ICetakNotaBll cetakBll = new CetakNotaBll(_log);
+            var listOfItemNota = cetakBll.GetNotaPenjualan(jualProdukId);
+
+            if (listOfItemNota.Count > 0)
+            {
+                var reportDataSource = new ReportDataSource
+                {
+                    Name = "NotaPenjualan",
+                    Value = listOfItemNota
+                };
+
+                var parameters = new List<ReportParameter>();
+                parameters.Add(new ReportParameter("profil", _profil.nama_profil));
+                parameters.Add(new ReportParameter("alamat", _profil.alamat));
+                parameters.Add(new ReportParameter("kota", _profil.kota));
+                parameters.Add(new ReportParameter("telepon", _profil.telepon));
+
+                var printReport = new ReportViewerPrintHelper("RvNotaPenjualanProduk", reportDataSource, parameters);
+                printReport.Print();
+            }
         }
 
         protected override void Selesai()

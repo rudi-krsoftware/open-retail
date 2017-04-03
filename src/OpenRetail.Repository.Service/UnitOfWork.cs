@@ -60,6 +60,7 @@ namespace OpenRetail.Repository.Service
         private IKasbonRepository _kasbonRepository;
         private IPembayaranKasbonRepository _pembayarankasbonRepository;
         private IGajiKaryawanRepository _gajikaryawanRepository;
+        private ICetakNotaRepository _cetakNotaRepository;
 
         private IReportBeliProdukRepository _reportBeliProdukRepository;
         private IReportHutangBeliProdukRepository _reportHutangBeliProdukRepository;
@@ -282,6 +283,11 @@ namespace OpenRetail.Repository.Service
         public IGajiKaryawanRepository GajiKaryawanRepository
         {
             get { return _gajikaryawanRepository ?? (_gajikaryawanRepository = new GajiKaryawanRepository(_context, _log)); }
+        }
+
+        public ICetakNotaRepository CetakNotaRepository
+        {
+            get { return _cetakNotaRepository ?? (_cetakNotaRepository = new CetakNotaRepository(_context, _log)); }
         }
     }
 }     

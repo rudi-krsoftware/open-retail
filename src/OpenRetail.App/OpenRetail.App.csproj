@@ -130,6 +130,7 @@
       <Link>VersionInfo.cs</Link>
     </Compile>
     <Compile Include="Helper\AppConfigHelper.cs" />
+    <Compile Include="Helper\ReportViewerPrintHelper.cs" />
     <Compile Include="Helper\ColorCollection.cs" />
     <Compile Include="Helper\ColorManagerHelper.cs" />
     <Compile Include="Helper\CryptoHelper.cs" />
@@ -351,6 +352,7 @@
     <Compile Include="Pengeluaran\FrmListPengeluaranBiaya.Designer.cs">
       <DependentUpon>FrmListPengeluaranBiaya.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\PrintReportHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Referensi\FrmEntryPenyesuaianStok.cs">
       <SubType>Form</SubType>

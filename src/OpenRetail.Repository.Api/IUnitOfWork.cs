@@ -54,6 +54,8 @@ namespace OpenRetail.Repository.Api
         IPembayaranKasbonRepository PembayaranKasbonRepository { get; }
         IGajiKaryawanRepository GajiKaryawanRepository { get; }
 
+        ICetakNotaRepository CetakNotaRepository { get; }
+
         ILog4NetRepository Log4NetRepository { get; }
         
         IPenggunaRepository PenggunaRepository { get; }

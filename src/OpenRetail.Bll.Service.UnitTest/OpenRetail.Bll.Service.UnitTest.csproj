@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="AlasanPenyesuaianStokBllTest.cs" />
     <Compile Include="BeliProdukBllTest.cs" />
+    <Compile Include="CetakNotaBllTest.cs" />
     <Compile Include="CustomerBllTest.cs" />
     <Compile Include="GajiKaryawanBllTest.cs" />
     <Compile Include="GolonganBllTest.cs" />

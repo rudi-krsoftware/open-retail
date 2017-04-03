@@ -45,6 +45,7 @@
     <Compile Include="IAlasanPenyesuaianStokBll.cs" />
     <Compile Include="IBaseBll.cs" />
     <Compile Include="IBeliProdukBll.cs" />
+    <Compile Include="ICetakNotaBll.cs" />
     <Compile Include="ICustomerBll.cs" />
     <Compile Include="IDbConnectionHelper.cs" />
     <Compile Include="IGajiKaryawanBll.cs" />

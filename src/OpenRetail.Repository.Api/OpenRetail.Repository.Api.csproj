@@ -45,6 +45,7 @@
     <Compile Include="IAlasanPenyesuaianStokRepository.cs" />
     <Compile Include="IBaseRepository.cs" />
     <Compile Include="IBeliProdukRepository.cs" />
+    <Compile Include="ICetakNotaRepository.cs" />
     <Compile Include="ICustomerRepository.cs" />
     <Compile Include="IDapperContext.cs" />
     <Compile Include="IGajiKaryawanRepository.cs" />

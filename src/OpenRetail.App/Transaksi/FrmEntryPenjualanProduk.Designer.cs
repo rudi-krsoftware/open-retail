@@ -372,7 +372,8 @@
             // chkCetakNotaJual
             // 
             this.chkCetakNotaJual.AutoSize = true;
-            this.chkCetakNotaJual.Enabled = false;
+            this.chkCetakNotaJual.Checked = true;
+            this.chkCetakNotaJual.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkCetakNotaJual.Location = new System.Drawing.Point(3, 28);
             this.chkCetakNotaJual.Name = "chkCetakNotaJual";
             this.chkCetakNotaJual.Size = new System.Drawing.Size(102, 17);
