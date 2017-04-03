@@ -94,6 +94,8 @@
             this.mnuKeluar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGantiUser = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKeluarDariProgram = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBantuan = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRegistrasi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.mainDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
@@ -200,7 +202,7 @@
             this.mnuLaporan,
             this.mnuPengaturan,
             this.mnuKeluar,
-            this.mnuAbout});
+            this.mnuBantuan});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(827, 24);
@@ -659,10 +661,26 @@
             this.mnuKeluarDariProgram.Text = "Keluar dari Aplikasi";
             this.mnuKeluarDariProgram.Click += new System.EventHandler(this.mnuKeluarDariProgram_Click);
             // 
+            // mnuBantuan
+            // 
+            this.mnuBantuan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuRegistrasi,
+            this.mnuAbout});
+            this.mnuBantuan.Name = "mnuBantuan";
+            this.mnuBantuan.Size = new System.Drawing.Size(63, 20);
+            this.mnuBantuan.Text = "Bantuan";
+            // 
+            // mnuRegistrasi
+            // 
+            this.mnuRegistrasi.Name = "mnuRegistrasi";
+            this.mnuRegistrasi.Size = new System.Drawing.Size(179, 22);
+            this.mnuRegistrasi.Text = "Registrasi";
+            this.mnuRegistrasi.Click += new System.EventHandler(this.mnuRegistrasi_Click);
+            // 
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(52, 20);
+            this.mnuAbout.Size = new System.Drawing.Size(152, 22);
             this.mnuAbout.Text = "About";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
@@ -948,7 +966,9 @@
         private System.Windows.Forms.ToolStripButton tbLapPembelianProduk;
         private System.Windows.Forms.ToolStripButton tbLapPenjualanProduk;
         private System.Windows.Forms.ToolStripButton tbPenyesuaianStok;
-        private System.Windows.Forms.ToolStripMenuItem mnuAbout;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+        private System.Windows.Forms.ToolStripMenuItem mnuBantuan;
+        private System.Windows.Forms.ToolStripMenuItem mnuRegistrasi;
+        private System.Windows.Forms.ToolStripMenuItem mnuAbout;
     }
 }

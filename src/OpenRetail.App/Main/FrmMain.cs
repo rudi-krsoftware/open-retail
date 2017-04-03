@@ -222,6 +222,10 @@ namespace OpenRetail.App.Main
             tbCustomer.Click += mnuCustomer_Click;
             tbPembelianProduk.Click += mnuPembelianProduk_Click;
             tbPenjualanProduk.Click += mnuPenjualanProduk_Click;
+            tbPengeluaranBiaya.Click += mnuPengeluaranBiaya_Click;
+            tbPenggajian.Click += mnuPenggajian_Click;
+            tbLapPembelianProduk.Click += mnuLapPembelianProduk_Click;
+            tbLapPenjualanProduk.Click += mnuLapPenjualanProduk_Click;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -442,6 +446,12 @@ namespace OpenRetail.App.Main
             }
         }
 
+        private void mnuRegistrasi_Click(object sender, EventArgs e)
+        {
+            var link = "https://openretailblog.wordpress.com/registrasi/";
+            System.Diagnostics.Process.Start(link);
+        }
+
         private void mnuAbout_Click(object sender, EventArgs e)
         {
             var frmAbout = new FrmAbout();
@@ -555,6 +565,6 @@ namespace OpenRetail.App.Main
         private void mnuLapPenggajian_Click(object sender, EventArgs e)
         {
             ShowFormDialog<FrmLapPenggajianKaryawan>(sender);
-        }
+        }        
     }
 }
