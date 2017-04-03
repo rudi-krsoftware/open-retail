@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cmbKaryawan = new System.Windows.Forms.ComboBox();
@@ -41,10 +40,6 @@
             this.txtJumlahHari = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtGaji = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtJam = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtLembur = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label11 = new System.Windows.Forms.Label();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.cmbBulan = new System.Windows.Forms.ComboBox();
@@ -55,7 +50,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtAbsen = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtTunjangan = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtBonus = new OpenRetail.App.UserControl.AdvancedTextbox();
@@ -64,11 +58,15 @@
             this.txtNota = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtPotongan = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label6 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtJam = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtLembur = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -77,15 +75,15 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.txtKehadiran, 1, 5);
+            this.tableLayoutPanel3.Controls.Add(this.txtBonus, 1, 10);
+            this.tableLayoutPanel3.Controls.Add(this.label15, 0, 10);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 7);
-            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 8);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 9);
-            this.tableLayoutPanel3.Controls.Add(this.label7, 0, 11);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 9);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 0, 12);
             this.tableLayoutPanel3.Controls.Add(this.label8, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.cmbKaryawan, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 1, 7);
-            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel2, 1, 9);
             this.tableLayoutPanel3.Controls.Add(this.label11, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel4, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 2);
@@ -94,16 +92,18 @@
             this.tableLayoutPanel3.Controls.Add(this.label13, 0, 5);
             this.tableLayoutPanel3.Controls.Add(this.label14, 0, 6);
             this.tableLayoutPanel3.Controls.Add(this.txtAbsen, 1, 6);
-            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel5, 1, 8);
-            this.tableLayoutPanel3.Controls.Add(this.txtTotal, 1, 11);
+            this.tableLayoutPanel3.Controls.Add(this.txtTotal, 1, 12);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtNota, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txtPotongan, 1, 10);
-            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 10);
+            this.tableLayoutPanel3.Controls.Add(this.txtPotongan, 1, 11);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 11);
+            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel2, 1, 8);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 8);
+            this.tableLayoutPanel3.Controls.Add(this.txtTunjangan, 1, 9);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 13;
+            this.tableLayoutPanel3.RowCount = 14;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -117,7 +117,8 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(387, 302);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(387, 328);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // txtKehadiran
@@ -163,29 +164,18 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 200);
+            this.label3.Location = new System.Drawing.Point(3, 225);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 25);
             this.label3.TabIndex = 1;
             this.label3.Text = "Tunjangan";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 225);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 25);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Lembur";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(3, 275);
+            this.label7.Location = new System.Drawing.Point(3, 300);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 25);
             this.label7.TabIndex = 1;
@@ -273,64 +263,6 @@
             this.txtGaji.Text = "0";
             this.txtGaji.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtGaji.ThousandSeparator = true;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.txtJam);
-            this.flowLayoutPanel2.Controls.Add(this.label10);
-            this.flowLayoutPanel2.Controls.Add(this.txtLembur);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(91, 225);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(296, 25);
-            this.flowLayoutPanel2.TabIndex = 8;
-            // 
-            // txtJam
-            // 
-            this.txtJam.AutoEnter = true;
-            this.txtJam.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtJam.EnterFocusColor = System.Drawing.Color.White;
-            this.txtJam.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtJam.LetterOnly = false;
-            this.txtJam.Location = new System.Drawing.Point(3, 3);
-            this.txtJam.Name = "txtJam";
-            this.txtJam.NumericOnly = true;
-            this.txtJam.SelectionText = false;
-            this.txtJam.Size = new System.Drawing.Size(43, 20);
-            this.txtJam.TabIndex = 0;
-            this.txtJam.Text = "0";
-            this.txtJam.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtJam.ThousandSeparator = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(52, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 26);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Jam x";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtLembur
-            // 
-            this.txtLembur.AutoEnter = true;
-            this.txtLembur.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtLembur.EnterFocusColor = System.Drawing.Color.White;
-            this.txtLembur.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtLembur.LetterOnly = false;
-            this.txtLembur.Location = new System.Drawing.Point(92, 3);
-            this.txtLembur.MaxLength = 20;
-            this.txtLembur.Name = "txtLembur";
-            this.txtLembur.NumericOnly = true;
-            this.txtLembur.SelectionText = false;
-            this.txtLembur.Size = new System.Drawing.Size(100, 20);
-            this.txtLembur.TabIndex = 1;
-            this.txtLembur.Text = "0";
-            this.txtLembur.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtLembur.ThousandSeparator = true;
             // 
             // label11
             // 
@@ -450,18 +382,6 @@
             this.txtAbsen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAbsen.ThousandSeparator = false;
             // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.Controls.Add(this.txtTunjangan);
-            this.flowLayoutPanel5.Controls.Add(this.label15);
-            this.flowLayoutPanel5.Controls.Add(this.txtBonus);
-            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(91, 200);
-            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(296, 25);
-            this.flowLayoutPanel5.TabIndex = 7;
-            // 
             // txtTunjangan
             // 
             this.txtTunjangan.AutoEnter = true;
@@ -469,13 +389,13 @@
             this.txtTunjangan.EnterFocusColor = System.Drawing.Color.White;
             this.txtTunjangan.LeaveFocusColor = System.Drawing.Color.White;
             this.txtTunjangan.LetterOnly = false;
-            this.txtTunjangan.Location = new System.Drawing.Point(3, 3);
+            this.txtTunjangan.Location = new System.Drawing.Point(94, 228);
             this.txtTunjangan.MaxLength = 20;
             this.txtTunjangan.Name = "txtTunjangan";
             this.txtTunjangan.NumericOnly = true;
             this.txtTunjangan.SelectionText = false;
             this.txtTunjangan.Size = new System.Drawing.Size(100, 20);
-            this.txtTunjangan.TabIndex = 0;
+            this.txtTunjangan.TabIndex = 9;
             this.txtTunjangan.Text = "0";
             this.txtTunjangan.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTunjangan.ThousandSeparator = true;
@@ -484,9 +404,9 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Location = new System.Drawing.Point(109, 0);
+            this.label15.Location = new System.Drawing.Point(3, 250);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 26);
+            this.label15.Size = new System.Drawing.Size(85, 25);
             this.label15.TabIndex = 11;
             this.label15.Text = "Bonus";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -498,13 +418,13 @@
             this.txtBonus.EnterFocusColor = System.Drawing.Color.White;
             this.txtBonus.LeaveFocusColor = System.Drawing.Color.White;
             this.txtBonus.LetterOnly = false;
-            this.txtBonus.Location = new System.Drawing.Point(152, 3);
+            this.txtBonus.Location = new System.Drawing.Point(94, 253);
             this.txtBonus.MaxLength = 20;
             this.txtBonus.Name = "txtBonus";
             this.txtBonus.NumericOnly = true;
             this.txtBonus.SelectionText = false;
             this.txtBonus.Size = new System.Drawing.Size(100, 20);
-            this.txtBonus.TabIndex = 1;
+            this.txtBonus.TabIndex = 10;
             this.txtBonus.Text = "0";
             this.txtBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBonus.ThousandSeparator = true;
@@ -517,13 +437,13 @@
             this.txtTotal.EnterFocusColor = System.Drawing.Color.White;
             this.txtTotal.LeaveFocusColor = System.Drawing.Color.White;
             this.txtTotal.LetterOnly = false;
-            this.txtTotal.Location = new System.Drawing.Point(94, 278);
+            this.txtTotal.Location = new System.Drawing.Point(94, 303);
             this.txtTotal.MaxLength = 20;
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.NumericOnly = true;
             this.txtTotal.SelectionText = false;
             this.txtTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtTotal.TabIndex = 10;
+            this.txtTotal.TabIndex = 12;
             this.txtTotal.Text = "0";
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotal.ThousandSeparator = true;
@@ -563,13 +483,13 @@
             this.txtPotongan.EnterFocusColor = System.Drawing.Color.White;
             this.txtPotongan.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPotongan.LetterOnly = false;
-            this.txtPotongan.Location = new System.Drawing.Point(94, 253);
+            this.txtPotongan.Location = new System.Drawing.Point(94, 278);
             this.txtPotongan.MaxLength = 20;
             this.txtPotongan.Name = "txtPotongan";
             this.txtPotongan.NumericOnly = true;
             this.txtPotongan.SelectionText = false;
             this.txtPotongan.Size = new System.Drawing.Size(100, 20);
-            this.txtPotongan.TabIndex = 9;
+            this.txtPotongan.TabIndex = 11;
             this.txtPotongan.Text = "0";
             this.txtPotongan.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPotongan.ThousandSeparator = true;
@@ -579,18 +499,87 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label6.Location = new System.Drawing.Point(3, 250);
+            this.label6.Location = new System.Drawing.Point(3, 275);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 25);
             this.label6.TabIndex = 13;
             this.label6.Text = "Potongan";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.txtJam);
+            this.flowLayoutPanel2.Controls.Add(this.label10);
+            this.flowLayoutPanel2.Controls.Add(this.txtLembur);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(91, 200);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(296, 25);
+            this.flowLayoutPanel2.TabIndex = 8;
+            // 
+            // txtJam
+            // 
+            this.txtJam.AutoEnter = true;
+            this.txtJam.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJam.EnterFocusColor = System.Drawing.Color.White;
+            this.txtJam.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtJam.LetterOnly = false;
+            this.txtJam.Location = new System.Drawing.Point(3, 3);
+            this.txtJam.Name = "txtJam";
+            this.txtJam.NumericOnly = true;
+            this.txtJam.SelectionText = false;
+            this.txtJam.Size = new System.Drawing.Size(43, 20);
+            this.txtJam.TabIndex = 0;
+            this.txtJam.Text = "0";
+            this.txtJam.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtJam.ThousandSeparator = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Location = new System.Drawing.Point(52, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 26);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Jam x";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtLembur
+            // 
+            this.txtLembur.AutoEnter = true;
+            this.txtLembur.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtLembur.EnterFocusColor = System.Drawing.Color.White;
+            this.txtLembur.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtLembur.LetterOnly = false;
+            this.txtLembur.Location = new System.Drawing.Point(92, 3);
+            this.txtLembur.MaxLength = 20;
+            this.txtLembur.Name = "txtLembur";
+            this.txtLembur.NumericOnly = true;
+            this.txtLembur.SelectionText = false;
+            this.txtLembur.Size = new System.Drawing.Size(100, 20);
+            this.txtLembur.TabIndex = 1;
+            this.txtLembur.Text = "0";
+            this.txtLembur.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtLembur.ThousandSeparator = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(3, 200);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 25);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Lembur";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FrmEntryPenggajianKaryawan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 384);
+            this.ClientSize = new System.Drawing.Size(387, 410);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "FrmEntryPenggajianKaryawan";
             this.Text = "FrmEntryPenggajianKaryawan";
@@ -599,11 +588,9 @@
             this.tableLayoutPanel3.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -637,7 +624,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private UserControl.AdvancedTextbox txtAbsen;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private UserControl.AdvancedTextbox txtTunjangan;
         private System.Windows.Forms.Label label15;
         private UserControl.AdvancedTextbox txtBonus;
