@@ -702,6 +702,8 @@
             // 
             // mainDock
             // 
+            this.mainDock.AllowEndUserDocking = false;
+            this.mainDock.AllowEndUserNestedDocking = false;
             this.mainDock.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.mainDock.BackgroundImage = global::OpenRetail.App.Properties.Resources.background;
             this.mainDock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
