@@ -1215,6 +1215,17 @@ CREATE TABLE m_customer (
 ALTER TABLE m_customer OWNER TO postgres;
 
 --
+-- Name: m_database_version; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_database_version (
+    version_number integer NOT NULL
+);
+
+
+ALTER TABLE m_database_version OWNER TO postgres;
+
+--
 -- Name: m_golongan; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2045,6 +2056,14 @@ ALTER TABLE ONLY m_alasan_penyesuaian_stok
 
 ALTER TABLE ONLY m_customer
     ADD CONSTRAINT m_customer_pkey PRIMARY KEY (customer_id);
+
+
+--
+-- Name: m_database_version_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_database_version
+    ADD CONSTRAINT m_database_version_pkey PRIMARY KEY (version_number);
 
 
 --
