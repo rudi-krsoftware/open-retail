@@ -53,6 +53,7 @@ namespace OpenRetail.App
 
         public static Profil profil = null;
         public static Pengguna pengguna = null;
+        public static PengaturanUmum pengaturanUmum = null;
 
         private static bool _isLogout;
 

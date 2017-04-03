@@ -16,6 +16,7 @@ SET search_path = public, pg_catalog;
 --
 
 COPY m_menu (menu_id, nama_menu, judul_menu, parent_id, order_number, is_active, nama_form, is_enabled) FROM stdin;
+0a516b56-ed73-dafe-aaa0-332fadd2f088	mnuPengaturanUmum	Pengaturan Umum	593c989d-be87-42bf-a11d-f177afcc2180	2	t	FrmPengaturanUmum	t
 5a114aab-28cc-4655-b676-d08075bae831	mnuLapPembelian	Pembelian	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	6	t		t
 6f13d6e5-4322-4b4b-8fca-2278b04bd4eb	mnuLapPenjualan	Penjualan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	13	t		t
 07b24b4b-cf52-4b3c-ab06-51f7312e4813	mnuReferensi	Referensi	\N	1	t	\N	t
@@ -35,8 +36,6 @@ a6043b21-18d0-4fcd-9ea9-f146542081d5	mnuPembelianProduk	Pembelian Produk	73e3254
 084488a3-092d-4e8c-8bf2-72dcf90262b4	mnuPembayaranHutangPembelianProduk	Pembayaran Hutang Pembelian Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	2	t	FrmListPembayaranHutangPembelianProduk	t
 870ec1d3-5b71-47dc-b241-1b0ae933217c	mnuReturPembelianProduk	Retur Pembelian Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	3	t	FrmListReturPembelianProduk	t
 b4be7b7c-4587-4af4-af07-fce34df723df	mnuPenjualanProduk	Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	4	t	FrmListPenjualanProduk	t
-0702e90c-cb7c-42a4-a447-478fba5a7443	mnuHakAksesAplikasi	Hak Akses Aplikasi	593c989d-be87-42bf-a11d-f177afcc2180	2	t	FrmListHakAkses	t
-e8f83478-a577-4cff-a06f-8d921f9367c7	mnuManajemenOperator	Manajemen Operator	593c989d-be87-42bf-a11d-f177afcc2180	3	t	FrmListOperator	t
 99302348-4d3c-48dd-8d67-c422e3061f1c	mnuPembayaranPiutangPenjualanProduk	Pembayaran Piutang Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	5	t	FrmListPembayaranPiutangPenjualanProduk	t
 576b9f00-c29d-4c2c-9a6b-5a563344de93	mnuReturPenjualanProduk	Retur Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	6	t	FrmListReturPenjualanProduk	t
 36aabcfa-60bc-48f5-9af6-30aa7600eb5b	mnuProfilPerusahaan	Profil Perusahaan	593c989d-be87-42bf-a11d-f177afcc2180	1	t	FrmProfilPerusahaan	t
@@ -59,6 +58,8 @@ d62d3352-56e7-4802-973e-32d590febdab	mnuLapStokProduk	Stok Produk	3a62ea0b-0f48-
 e9e7ff66-d302-49a3-a9e5-8a02ff87e016	mnuLapKasbon	Kasbon	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	17	t	FrmLapKasbon	t
 d5bd3b31-7feb-4c55-9fed-8d67ac18fef4	mnuPenggajian	Penggajian Karyawan	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	3	t	FrmListPenggajianKaryawan	t
 8c46f173-f586-402d-b54a-ac2e4ba57f1e	mnuLapPenggajian	Penggajian Karyawan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	18	t	FrmLapPenggajianKaryawan	t
+0702e90c-cb7c-42a4-a447-478fba5a7443	mnuHakAksesAplikasi	Hak Akses Aplikasi	593c989d-be87-42bf-a11d-f177afcc2180	3	t	FrmListHakAkses	t
+e8f83478-a577-4cff-a06f-8d921f9367c7	mnuManajemenOperator	Manajemen Operator	593c989d-be87-42bf-a11d-f177afcc2180	4	t	FrmListOperator	t
 \.
 
 

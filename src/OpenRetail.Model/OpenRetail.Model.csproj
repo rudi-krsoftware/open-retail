@@ -69,6 +69,7 @@
     <Compile Include="Nota\NotaPembelian.cs" />
     <Compile Include="Nota\NotaPenjualan.cs" />
     <Compile Include="PembayaranKasbon.cs" />
+    <Compile Include="PengaturanUmum.cs" />
     <Compile Include="PengeluaranBiaya.cs" />
     <Compile Include="Report\ReportGajiKaryawan.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukDetail.cs" />

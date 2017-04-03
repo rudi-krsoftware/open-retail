@@ -18,7 +18,17 @@ namespace OpenRetail.App.Helper
             var configuration = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
             var section = (AppSettingsSection)configuration.GetSection(SECTION_NAME);
 
-            return section.Settings[sectionName].Value;
+            var result = string.Empty;
+
+            try
+            {
+                result = section.Settings[sectionName].Value;
+            }
+            catch
+            {
+            }
+
+            return result ;
         }
 
         public static void SaveValue(string sectionName, string value, string appConfigFile)

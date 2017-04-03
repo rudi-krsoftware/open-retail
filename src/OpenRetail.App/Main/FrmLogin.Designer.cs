@@ -281,7 +281,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(223, 131);
+            this.tabPage2.Size = new System.Drawing.Size(258, 118);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Connection";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -299,7 +299,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(217, 125);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(252, 112);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // txtServer
@@ -314,7 +314,7 @@
             this.txtServer.Name = "txtServer";
             this.txtServer.NumericOnly = false;
             this.txtServer.SelectionText = false;
-            this.txtServer.Size = new System.Drawing.Size(167, 20);
+            this.txtServer.Size = new System.Drawing.Size(202, 20);
             this.txtServer.TabIndex = 0;
             this.txtServer.ThousandSeparator = false;
             // 

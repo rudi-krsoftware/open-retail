@@ -16,6 +16,7 @@ SET search_path = public, pg_catalog;
 --
 
 COPY m_item_menu (item_menu_id, menu_id, grant_id, keterangan) FROM stdin;
+c4ffec93-ad1e-839a-ff41-4565e2e444bf	0a516b56-ed73-dafe-aaa0-332fadd2f088	2	Edit Data
 fb063166-8527-4a30-b22e-69b3b97b17c8	8a8c6d23-963b-4819-819d-b9cdeaad7718	0	Melihat Data
 6c5872a2-8ba5-4842-952a-3aa7f7fdae31	8a8c6d23-963b-4819-819d-b9cdeaad7718	1	Tambah Data
 7931d986-3f1f-4e23-9a11-4ffb7e122067	8a8c6d23-963b-4819-819d-b9cdeaad7718	2	Edit Data

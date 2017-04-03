@@ -21,6 +21,7 @@ using log4net;
 using OpenRetail.App.Helper;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,6 +71,15 @@ namespace OpenRetail.App.Main
             MainProgram.profil = profilBll.GetProfil();
         }
 
+        private void SetPengaturanUmum()
+        {
+            var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
+
+            MainProgram.pengaturanUmum = new PengaturanUmum();
+            MainProgram.pengaturanUmum.nama_printer = AppConfigHelper.GetValue("printerName", appConfigFile);
+            MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", appConfigFile).ToLower() == "true" ? true : false;
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             var isConnected = false;
@@ -104,6 +114,7 @@ namespace OpenRetail.App.Main
                     MainProgram.pengguna = penggunaBll.GetByID(txtUserName.Text);
 
                     SetProfil();
+                    SetPengaturanUmum();
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();

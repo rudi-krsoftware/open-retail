@@ -57,6 +57,7 @@ namespace OpenRetail.App.Transaksi
         private ILog _log;
         private Pengguna _pengguna;
         private Profil _profil;
+        private PengaturanUmum _pengaturanUmum;
 
         public IListener Listener { private get; set; }
 
@@ -72,10 +73,12 @@ namespace OpenRetail.App.Transaksi
             this._log = MainProgram.log;
             this._pengguna = MainProgram.pengguna;
             this._profil = MainProgram.profil;
+            this._pengaturanUmum = MainProgram.pengaturanUmum;
 
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
             dtpTanggalTempo.Value = dtpTanggal.Value;
+            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
 
             _listOfItemJual.Add(new ItemJualProduk()); // add dummy objek
 
@@ -96,10 +99,12 @@ namespace OpenRetail.App.Transaksi
             this._log = MainProgram.log;
             this._pengguna = MainProgram.pengguna;
             this._profil = MainProgram.profil;
+            this._pengaturanUmum = MainProgram.pengaturanUmum;
 
             txtNota.Text = this._jual.nota;
             dtpTanggal.Value = (DateTime)this._jual.tanggal;
             dtpTanggalTempo.Value = dtpTanggal.Value;
+            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
 
             if (!this._jual.tanggal_tempo.IsNull())
             {
@@ -466,7 +471,7 @@ namespace OpenRetail.App.Transaksi
                 parameters.Add(new ReportParameter("kota", _profil.kota));
                 parameters.Add(new ReportParameter("telepon", _profil.telepon));
 
-                var printReport = new ReportViewerPrintHelper("RvNotaPenjualanProduk", reportDataSource, parameters);
+                var printReport = new ReportViewerPrintHelper("RvNotaPenjualanProduk", reportDataSource, parameters, _pengaturanUmum.nama_printer);
                 printReport.Print();
             }
         }

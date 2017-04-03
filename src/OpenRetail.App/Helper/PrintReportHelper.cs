@@ -101,7 +101,7 @@ namespace OpenRetail.App.Helper
             }
             else
             {
-                if (!(printerName == null))
+                if (!(printerName == null || printerName.Length == 0))
                     printDoc.PrinterSettings.PrinterName = printerName;
 
                 printDoc.PrintPage += new PrintPageEventHandler(PrintPage);

@@ -280,6 +280,12 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="MainProgram.cs" />
+    <Compile Include="Pengaturan\FrmPengaturanUmum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengaturan\FrmPengaturanUmum.Designer.cs">
+      <DependentUpon>FrmPengaturanUmum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pengaturan\FrmProfilPerusahaan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -606,6 +612,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pengaturan\FrmPengaturanUmum.resx">
+      <DependentUpon>FrmPengaturanUmum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pengaturan\FrmProfilPerusahaan.resx">
       <DependentUpon>FrmProfilPerusahaan.cs</DependentUpon>
