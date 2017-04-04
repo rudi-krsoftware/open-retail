@@ -31,6 +31,8 @@ using System.Globalization;
 using System.Threading;
 using OpenRetail.Model.Report;
 using OpenRetail.App.Laporan;
+using CrashReporterDotNET;
+using OpenRetail.App.Helper;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace OpenRetail.App
@@ -62,11 +64,47 @@ namespace OpenRetail.App
         /// </summary>
         [STAThread]
         static void Main()
-        {            
+        {
+            if (!Utils.IsRunningUnderIDE())
+            {
+                Application.ThreadException += delegate(object sender, ThreadExceptionEventArgs e)
+                {
+                    ReportCrash(e.Exception);
+                };
+
+                AppDomain.CurrentDomain.UnhandledException += delegate(object sender, UnhandledExceptionEventArgs e)
+                {
+                    ReportCrash((Exception)e.ExceptionObject);
+                    Environment.Exit(0);
+                };
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             Login();
+        }
+
+        /// <summary>
+        /// Method untuk mengirim bug/error program via email menggunakan library CrashReporter.NET
+        /// </summary>
+        /// <param name="exception"></param>
+        static void ReportCrash(Exception exception)
+        {
+            // TODO: lengkapi property FromEmail, ToEmail, UserName dan Password
+            var reportCrash = new ReportCrash
+            {
+                FromEmail = "",
+                ToEmail = "",
+                SmtpHost = "smtp.gmail.com",
+                Port = 587,
+                EnableSSL = true,
+                UserName = "",
+                Password = "",                
+                AnalyzeWithDoctorDump = false
+            };
+
+            reportCrash.Send(exception);
         }
 
         static void frmMain_FormClosed(object sender, FormClosedEventArgs e)
