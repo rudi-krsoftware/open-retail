@@ -69,27 +69,6 @@ namespace OpenRetail.Bll.Service.UnitTest
         }
 
         [TestMethod]
-        public void GetByNameTest()
-        {
-            var name = ""; // TODO : ganti nilai name
-            
-            var index = 0; // TODO : ganti nilai index
-            var oList = _bll.GetByName(name);
-            var obj = oList[index];
-                 
-            Assert.IsNotNull(obj);
-            Assert.AreEqual("", obj.pembayaran_piutang_id);                                
-            Assert.AreEqual("", obj.customer_id);                                
-            Assert.AreEqual("", obj.pengguna_id);                                
-            Assert.AreEqual("", obj.tanggal);                                
-            Assert.AreEqual("", obj.keterangan);                                
-            Assert.AreEqual("", obj.tanggal_sistem);                                
-            Assert.AreEqual("", obj.nota);                                
-            Assert.AreEqual("", obj.is_tunai);                                
-                     
-        }
-
-        [TestMethod]
         public void GetByTanggalTest()
         {
             var index = 0;

@@ -107,7 +107,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         [TestMethod]
         public void GetAllTest()
         {            
-            var index = 0; // TODO : ganti nilai index
+            var index = 0;
             var oList = _bll.GetAll();
             var obj = oList[index];
                  

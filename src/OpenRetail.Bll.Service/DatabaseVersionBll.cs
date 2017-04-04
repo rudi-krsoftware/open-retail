@@ -33,12 +33,10 @@ namespace OpenRetail.Bll.Service
     public class DatabaseVersionBll : IDatabaseVersionBll
     {
 		private ILog _log;
-		private DatabaseVersionValidator _validator;
 
 		public DatabaseVersionBll(ILog log)
         {
 			_log = log;
-            _validator = new DatabaseVersionValidator();
         }
 
         public DatabaseVersion Get()

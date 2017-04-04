@@ -36,18 +36,4 @@ namespace OpenRetail.Model
 		public int version_number { get; set; }
 		
 	}
-
-    public class DatabaseVersionValidator : AbstractValidator<DatabaseVersion>
-    {
-        public DatabaseVersionValidator()
-        {
-            CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
-
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
-            var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
-
-			// TODO : non aktifkan validasi yang tidak perlu
-
-		}
-	}
 }

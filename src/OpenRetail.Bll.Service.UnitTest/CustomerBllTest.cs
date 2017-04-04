@@ -54,7 +54,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         [TestMethod]
         public void GetByIDTest()
         {
-            var id = "0b9940b5-33a9-415b-9d44-8ee1d47e706d"; // TODO : ganti nilai id
+            var id = "0b9940b5-33a9-415b-9d44-8ee1d47e706d";
             var obj = _bll.GetByID(id);
 
             Assert.IsNotNull(obj);

@@ -58,8 +58,6 @@ namespace OpenRetail.Model
 			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			// TODO : non aktifkan validasi yang tidak perlu
-
 			RuleFor(c => c.nama_shift).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
 		}
 	}

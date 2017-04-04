@@ -71,8 +71,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("00b5acfa-b533-454b-8dfd-e7881edd180f", obj.pengguna_id);                                
         }
 
-        //[TestMethod]
-        // TODO: fix me (belum di tes)
+        [TestMethod]
         public void GetByGajiKaryawanTest()
         {
             var gajiKaryawanId = "d6ba5c9e-b0ba-40ba-9dc8-f631fc499aab";

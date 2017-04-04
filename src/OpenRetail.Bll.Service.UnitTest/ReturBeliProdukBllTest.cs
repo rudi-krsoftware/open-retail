@@ -216,20 +216,5 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.total_nota, updatedObj.total_nota);
 
         }
-
-        //[TestMethod]
-        //public void DeleteTest()
-        //{
-        //    var obj = new ReturBeliProduk
-        //    {
-        //        retur_beli_produk_id = ""
-        //    };
-
-        //    var result = _bll.Delete(obj);
-        //    Assert.IsTrue(result != 0);
-
-        //    var deletedObj = _bll.GetByID(); // TODO : set parameter
-        //    Assert.IsNull(deletedObj);
-        //}
     }
 }     
