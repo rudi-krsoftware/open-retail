@@ -124,6 +124,10 @@ namespace OpenRetail.Repository.Service
                 obj.pembayaran_kasbon_id = _context.GetGUID();
 
                 _context.db.Insert<PembayaranKasbon>(obj);
+
+                LogicalThreadContext.Properties["NewValue"] = obj.ToJson();
+                _log.Info("Tambah data");
+
                 result = 1;
             }
             catch (Exception ex)
@@ -141,6 +145,12 @@ namespace OpenRetail.Repository.Service
             try
             {
                 result = _context.db.Update<PembayaranKasbon>(obj) ? 1 : 0;
+
+                if (result > 0)
+                {
+                    LogicalThreadContext.Properties["NewValue"] = obj.ToJson();
+                    _log.Info("Update data");
+                }
             }
             catch (Exception ex)
             {
@@ -157,6 +167,12 @@ namespace OpenRetail.Repository.Service
             try
             {
                 result = _context.db.Delete<PembayaranKasbon>(obj) ? 1 : 0;
+
+                if (result > 0)
+                {
+                    LogicalThreadContext.Properties["OldValue"] = obj.ToJson();
+                    _log.Info("Hapus data");
+                }
             }
             catch (Exception ex)
             {

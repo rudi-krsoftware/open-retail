@@ -199,6 +199,8 @@ namespace OpenRetail.App.Transaksi
 
             var retur = _listOfRetur[index];
 
+            LogicalThreadContext.Properties["OldValue"] = retur.ToJson();
+
             var frm = new FrmEntryReturPembelianProduk("Edit Data " + this.Text, retur, _bll);
             frm.Listener = this;
             frm.ShowDialog();

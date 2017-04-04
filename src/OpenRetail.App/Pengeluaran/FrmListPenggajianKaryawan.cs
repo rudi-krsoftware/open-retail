@@ -245,6 +245,8 @@ namespace OpenRetail.App.Pengeluaran
 
             var gaji = _listOfGaji[index];
 
+            LogicalThreadContext.Properties["OldValue"] = gaji.ToJson();
+
             var frm = new FrmEntryPenggajianKaryawan("Edit Data " + this.Text, cmbBulan.Text, cmbTahun.Text, gaji, _listOfKaryawan, _bll);
             frm.Listener = this;
             frm.ShowDialog();

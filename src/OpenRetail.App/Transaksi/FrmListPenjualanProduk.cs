@@ -209,6 +209,8 @@ namespace OpenRetail.App.Transaksi
             var jual = _listOfJual[index];
             jual.tanggal_tempo_old = jual.tanggal_tempo;
 
+            LogicalThreadContext.Properties["OldValue"] = jual.ToJson();
+
             var frm = new FrmEntryPenjualanProduk("Edit Data " + this.Text, jual, _bll);
             frm.Listener = this;
             frm.ShowDialog();

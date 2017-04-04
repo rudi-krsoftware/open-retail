@@ -358,6 +358,8 @@ namespace OpenRetail.App.Pengeluaran
 
             var kasbon = _listOfKasbon[index];
 
+            LogicalThreadContext.Properties["OldValue"] = kasbon.ToJson();
+
             var frm = new FrmEntryKasbon("Edit Data " + this.Text, kasbon, _listOfKaryawan, _bll);
             frm.Listener = this;
             frm.ShowDialog();
@@ -490,6 +492,8 @@ namespace OpenRetail.App.Pengeluaran
 
             var pembayaranKasbon = _listOfHistoriPembayaranKasbon[index];
             pembayaranKasbon.old_nominal = pembayaranKasbon.nominal;
+
+            LogicalThreadContext.Properties["OldValue"] = pembayaranKasbon.ToJson();
 
             var frm = new FrmEntryPembayaranKasbon("Edit Data Pembayaran Kasbon", kasbon, pembayaranKasbon);
             frm.Listener = this;

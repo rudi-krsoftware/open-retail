@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace OpenRetail.Model
 {        
@@ -44,18 +45,21 @@ namespace OpenRetail.Model
 		[Display(Name = "beli_produk_id")]
 		public string beli_produk_id { get; set; }
 
+        [JsonIgnore]
 		[Write(false)]
         public BeliProduk BeliProduk { get; set; }
 
 		[Display(Name = "pengguna_id")]
 		public string pengguna_id { get; set; }
 
+        [JsonIgnore]
 		[Write(false)]
         public Pengguna Pengguna { get; set; }
 
 		[Display(Name = "Supplier")]
 		public string supplier_id { get; set; }
 
+        [JsonIgnore]
 		[Write(false)]
         public Supplier Supplier { get; set; }
 
@@ -68,10 +72,12 @@ namespace OpenRetail.Model
 		[Display(Name = "Keterangan")]
 		public string keterangan { get; set; }
 
+        [JsonIgnore]
         [Write(false)]
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
-		
+
+        [JsonIgnore]
         [Computed]
 		[Display(Name = "total_nota")]
 		public double total_nota { get; set; }

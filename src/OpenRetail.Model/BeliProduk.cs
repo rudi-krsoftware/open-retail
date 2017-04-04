@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace OpenRetail.Model
 {        
@@ -46,18 +47,21 @@ namespace OpenRetail.Model
 		[Display(Name = "pengguna_id")]
 		public string pengguna_id { get; set; }
 
+        [JsonIgnore]
 		[Write(false)]
         public Pengguna Pengguna { get; set; }
 
 		[Display(Name = "Supplier")]
 		public string supplier_id { get; set; }
 
+        [JsonIgnore]
 		[Write(false)]
         public Supplier Supplier { get; set; }
 
 		[Display(Name = "retur_beli_produk_id")]
 		public string retur_beli_produk_id { get; set; }
 
+        [JsonIgnore]
 		[Write(false)]
         public ReturBeliProduk ReturBeliProduk { get; set; }
 
@@ -74,6 +78,7 @@ namespace OpenRetail.Model
             set { _tanggal_tempo = value; }
         }
 
+        [JsonIgnore]
         [Write(false)]
         public Nullable<DateTime> tanggal_tempo_old { get; set; }
 
@@ -94,25 +99,30 @@ namespace OpenRetail.Model
 		[Display(Name = "Keterangan")]
 		public string keterangan { get; set; }
 
+        [JsonIgnore]
         [Write(false)]
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
-	
+
+        [JsonIgnore]
         [Computed]
         public double total_pelunasan_old { get; set; }
 
+        [JsonIgnore]
         [Computed]
         public double grand_total
         {
             get { return total_nota - diskon + ppn; }
         }
 
+        [JsonIgnore]
         [Computed]
         public double sisa_nota
         {
             get { return grand_total - total_pelunasan; }
         }
 
+        [JsonIgnore]
         [Write(false)]
         public bool is_tunai { get; set; }
 

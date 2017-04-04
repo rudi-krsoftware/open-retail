@@ -207,6 +207,10 @@ namespace OpenRetail.Repository.Service
                 obj.kasbon_id = _context.GetGUID();
 
                 _context.db.Insert<Kasbon>(obj);
+
+                LogicalThreadContext.Properties["NewValue"] = obj.ToJson();
+                _log.Info("Tambah data");
+
                 result = 1;
             }
             catch (Exception ex)
@@ -224,6 +228,12 @@ namespace OpenRetail.Repository.Service
             try
             {
                 result = _context.db.Update<Kasbon>(obj) ? 1 : 0;
+
+                if (result > 0)
+                {
+                    LogicalThreadContext.Properties["NewValue"] = obj.ToJson();
+                    _log.Info("Update data");
+                }
             }
             catch (Exception ex)
             {
@@ -240,6 +250,12 @@ namespace OpenRetail.Repository.Service
             try
             {
                 result = _context.db.Delete<Kasbon>(obj) ? 1 : 0;
+
+                if (result > 0)
+                {
+                    LogicalThreadContext.Properties["OldValue"] = obj.ToJson();
+                    _log.Info("Hapus data");
+                }
             }
             catch (Exception ex)
             {

@@ -179,6 +179,8 @@ namespace OpenRetail.App.Pengeluaran
 
             var pengeluaran = _listOfPengeluaran[index];
 
+            LogicalThreadContext.Properties["OldValue"] = pengeluaran.ToJson();
+
             var frm = new FrmEntryPengeluaranBiaya("Edit Data " + this.Text, pengeluaran, _bll);
             frm.Listener = this;
             frm.ShowDialog();

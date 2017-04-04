@@ -191,6 +191,8 @@ namespace OpenRetail.App.Transaksi
 
             var pembayaran = _listOfPembayaranPiutang[index];
 
+            LogicalThreadContext.Properties["OldValue"] = pembayaran.ToJson();
+
             var frm = new FrmEntryPembayaranPiutangPenjualanProduk("Edit Data " + this.Text, pembayaran, _bll);
             frm.Listener = this;
             frm.ShowDialog();

@@ -209,6 +209,8 @@ namespace OpenRetail.App.Transaksi
             var beli = _listOfBeli[index];
             beli.tanggal_tempo_old = beli.tanggal_tempo;
 
+            LogicalThreadContext.Properties["OldValue"] = beli.ToJson();
+
             var frm = new FrmEntryPembelianProduk("Edit Data " + this.Text, beli, _bll);
             frm.Listener = this;
             frm.ShowDialog();

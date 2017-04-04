@@ -1785,8 +1785,8 @@ CREATE TABLE t_logs (
     class_name character varying(200),
     method_name character varying(100),
     message character varying(100),
-    new_value character varying(1000),
-    old_value character varying(1000),
+    new_value character varying(5000),
+    old_value character varying(5000),
     exception character varying(5000),
     created_by character varying(50),
     log_date timestamp(0) without time zone DEFAULT now()

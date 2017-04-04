@@ -216,6 +216,10 @@ namespace OpenRetail.Repository.Service
                 }
 
                 _context.Commit();
+
+                LogicalThreadContext.Properties["NewValue"] = obj.ToJson();
+                _log.Info("Tambah data");
+
                 result = 1;
             }
             catch (Exception ex)
@@ -367,6 +371,10 @@ namespace OpenRetail.Repository.Service
                 }
 
                 _context.Commit();
+
+                LogicalThreadContext.Properties["NewValue"] = obj.ToJson();
+                _log.Info("Update data");
+
                 result = 1;
             }
             catch (Exception ex)
@@ -384,6 +392,12 @@ namespace OpenRetail.Repository.Service
             try
             {
                 result = _context.db.Delete<JualProduk>(obj) ? 1 : 0;
+
+                if (result > 0)
+                {
+                    LogicalThreadContext.Properties["OldValue"] = obj.ToJson();
+                    _log.Info("Hapus data");
+                }
             }
             catch (Exception ex)
             {

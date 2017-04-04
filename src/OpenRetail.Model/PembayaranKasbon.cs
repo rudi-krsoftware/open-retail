@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace OpenRetail.Model
 {        
@@ -43,18 +44,21 @@ namespace OpenRetail.Model
         [Display(Name = "pengguna_id")]
         public string pengguna_id { get; set; }
 
+        [JsonIgnore]
         [Write(false)]
         public Pengguna Pengguna { get; set; }
 
 		[Display(Name = "kasbon_id")]
 		public string kasbon_id { get; set; }
 
+        [JsonIgnore]
 		[Write(false)]
         public Kasbon Kasbon { get; set; }
 
 		[Display(Name = "gaji_karyawan_id")]
 		public string gaji_karyawan_id { get; set; }
 
+        [JsonIgnore]
 		[Write(false)]
         public GajiKaryawan GajiKaryawan { get; set; }
 
@@ -67,18 +71,22 @@ namespace OpenRetail.Model
 		[Display(Name = "Jumlah")]
 		public double nominal { get; set; }
 
+        [JsonIgnore]
         [Write(false)]
         public double old_nominal { get; set; }
 
+        [JsonIgnore]
         [Write(false)]
         public double sisa_kasbon { get; set; }
 
 		[Display(Name = "Keterangan")]
 		public string keterangan { get; set; }
 
+        [JsonIgnore]
         [Write(false)]
         public EntityState entity_state { get; set; }
 
+        [JsonIgnore]
         [Write(false)]
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
