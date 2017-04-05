@@ -37,12 +37,18 @@ namespace OpenRetail.App.Helper
             configFileMap.ExeConfigFilename = appConfigFile;
 
             var configuration = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-            var section = (AppSettingsSection)configuration.GetSection(SECTION_NAME);
+            var section = (AppSettingsSection)configuration.GetSection(SECTION_NAME);           
 
-            section.Settings[sectionName].Value = value;
-            configuration.Save(ConfigurationSaveMode.Modified, false);
+            try
+            {
+                section.Settings[sectionName].Value = value;
 
-            ConfigurationManager.RefreshSection(SECTION_NAME);
+                configuration.Save(ConfigurationSaveMode.Modified, false);
+                ConfigurationManager.RefreshSection(SECTION_NAME);
+            }
+            catch
+            {
+            }            
         }
     }
 }
