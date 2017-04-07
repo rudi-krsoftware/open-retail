@@ -144,25 +144,20 @@ namespace OpenRetail.App.Pengeluaran
             cmbKaryawan.Items.Add("--- Pilih karyawan ---");
 
             FillDataHelper.FillKaryawan(cmbKaryawan, _listOfKaryawan, false);
-            if (_listOfKaryawan.Count > 0)
-                cmbKaryawan.SelectedIndex = 0;
+            cmbKaryawan.SelectedIndex = 0;
         }
 
         protected override void Simpan()
         {
             if (_isNewData)
-                _gaji = new GajiKaryawan();
-
-            if (_isNewData)
             {
+                _gaji = new GajiKaryawan();
+            
                 if (this._karyawan == null)
                 {
                     MsgHelper.MsgWarning("Karyawan belum dipilih");
                     return;
                 }
-
-                if (_gaji == null)
-                    _gaji = new GajiKaryawan();
 
                 _gaji.karyawan_id = _karyawan.karyawan_id;
                 _gaji.Karyawan = _karyawan;
