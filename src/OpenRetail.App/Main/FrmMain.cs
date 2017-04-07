@@ -89,8 +89,6 @@ namespace OpenRetail.App.Main
             _log = MainProgram.log;
 
             AddEventToolbar();
-            SetMenuId();
-            SetDisabledMenuAndToolbar(menuStrip1, toolStrip1);
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -137,6 +135,12 @@ namespace OpenRetail.App.Main
                     yield return (ToolStripMenuItem)item;
                 }
             }
+        }
+
+        public void InisialisasiData()
+        {
+            SetMenuId();
+            SetDisabledMenuAndToolbar(menuStrip1, toolStrip1);
         }
 
         private void SetMenuId()

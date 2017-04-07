@@ -124,6 +124,7 @@ namespace OpenRetail.App
                 // set Default RegionalSetting menggunakan United States
                 SetDefaultRegionalSetting();
 
+                frmMain.InisialisasiData();
                 Application.Run(frmMain);
 
                 if (_isLogout)
