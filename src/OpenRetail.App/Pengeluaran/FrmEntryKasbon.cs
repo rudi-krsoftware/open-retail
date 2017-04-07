@@ -86,22 +86,29 @@ namespace OpenRetail.App.Pengeluaran
 
         private void LoadDataKaryawan()
         {
-            FillDataHelper.FillKaryawan(cmbKaryawan, _listOfKaryawan);
-            if (_listOfKaryawan.Count > 0)
-                cmbKaryawan.SelectedIndex = 0;
+            cmbKaryawan.Items.Add("--- Pilih karyawan ---");
+
+            FillDataHelper.FillKaryawan(cmbKaryawan, _listOfKaryawan, false);
+            cmbKaryawan.SelectedIndex = 0;
         }
 
         protected override void Simpan()
         {
             if (_isNewData)
-                _kasbon = new Kasbon();
+                _kasbon = new Kasbon();                
+
+            if (cmbKaryawan.SelectedIndex == 0)
+            {
+                MsgHelper.MsgWarning("Karyawan belum dipilih");
+                return;
+            }
 
             _kasbon.nota = txtNota.Text;
             _kasbon.tanggal = dtpTanggal.Value;
             _kasbon.nominal = NumberHelper.StringToDouble(txtJumlah.Text);
             _kasbon.keterangan = txtKeterangan.Text;
 
-            var karyawan = _listOfKaryawan[cmbKaryawan.SelectedIndex];
+            var karyawan = _listOfKaryawan[cmbKaryawan.SelectedIndex - 1];
             _kasbon.karyawan_id = karyawan.karyawan_id;
             _kasbon.Karyawan = karyawan;
 
