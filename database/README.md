@@ -25,4 +25,6 @@ psql -U postgres DbOpenRetail < 04_data-role_privilege.sql
 psql -U postgres DbOpenRetail < 05_data-pengguna.sql
 psql -U postgres DbOpenRetail < 06_data-alasan_penyesuaian_stok.sql
 psql -U postgres DbOpenRetail < 07_data-database_version.sql
+psql -U postgres DbOpenRetail < 08_data-jenis_pengeluaran.sql
+psql -U postgres DbOpenRetail < 09_data-jabatan.sql
 ```

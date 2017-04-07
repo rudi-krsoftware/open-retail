@@ -23,6 +23,7 @@ b1ad1bca-b590-2231-06a3-8c3cc5445eaf	Saldo Awal (Stok awal barang)
 f227318c-72dc-5284-6b00-58005d511043	Stock Opname (Selisih stock buku dengan stok opname)
 f9b35798-6725-244f-fec0-fdee38c5ad44	Pindah stok gudang ke etalase
 7aa5ecff-4ed3-2e57-ead3-a493d822ab96	Lainnya
+7092373e-91df-4c3a-b98a-1fc8d09d91e8	Dipake sendiri
 \.
 
 
