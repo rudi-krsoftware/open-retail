@@ -464,10 +464,27 @@ namespace OpenRetail.App.Main
             }
         }
 
+        private void OpenUrl(string url)
+        {
+            System.Diagnostics.Process.Start(url);
+        }
+
         private void mnuRegistrasi_Click(object sender, EventArgs e)
         {
-            var link = "https://openretailblog.wordpress.com/registrasi/";
-            System.Diagnostics.Process.Start(link);
+            var url = "https://openretailblog.wordpress.com/registrasi/";
+            OpenUrl(url);
+        }
+
+        private void mnuBlogOpenRetail_Click(object sender, EventArgs e)
+        {
+            var url = "https://openretailblog.wordpress.com/";
+            OpenUrl(url);
+        }
+
+        private void mnuIkutBerkontribusi_Click(object sender, EventArgs e)
+        {
+            var url = "https://openretailblog.wordpress.com/kontribusi/";
+            OpenUrl(url);
         }
 
         private void mnuAbout_Click(object sender, EventArgs e)
@@ -583,6 +600,6 @@ namespace OpenRetail.App.Main
         private void mnuLapPenggajian_Click(object sender, EventArgs e)
         {
             ShowFormDialog<FrmLapPenggajianKaryawan>(sender);
-        }        
+        }                
     }
 }
