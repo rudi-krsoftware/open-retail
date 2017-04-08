@@ -44,7 +44,7 @@ namespace OpenRetail.App
         /// </summary>
         public static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public static readonly string stageOfDevelopment = "-pre-alpha";
+        public static readonly string stageOfDevelopment = "-beta";
         public static readonly string appName = "Open Retail Versi {0}{1} - Copyright © {2} Kamarudin";
 
         /// <summary>
