@@ -96,10 +96,10 @@
             this.mnuGantiUser = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKeluarDariProgram = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBantuan = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuRegistrasi = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuBlogOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuIkutBerkontribusi = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuRegistrasi = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDukungPengembanganOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -681,48 +681,48 @@
             this.mnuBlogOpenRetail,
             this.toolStripSeparator14,
             this.mnuRegistrasi,
-            this.mnuIkutBerkontribusi,
+            this.mnuDukungPengembanganOpenRetail,
             this.toolStripSeparator15,
             this.mnuAbout});
             this.mnuBantuan.Name = "mnuBantuan";
             this.mnuBantuan.Size = new System.Drawing.Size(63, 20);
             this.mnuBantuan.Text = "Bantuan";
             // 
-            // mnuRegistrasi
+            // mnuBlogOpenRetail
             // 
-            this.mnuRegistrasi.Name = "mnuRegistrasi";
-            this.mnuRegistrasi.Size = new System.Drawing.Size(167, 22);
-            this.mnuRegistrasi.Text = "Registrasi";
-            this.mnuRegistrasi.Click += new System.EventHandler(this.mnuRegistrasi_Click);
+            this.mnuBlogOpenRetail.Name = "mnuBlogOpenRetail";
+            this.mnuBlogOpenRetail.Size = new System.Drawing.Size(264, 22);
+            this.mnuBlogOpenRetail.Text = "Blog OpenRetail";
+            this.mnuBlogOpenRetail.Click += new System.EventHandler(this.mnuBlogOpenRetail_Click);
             // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
-            this.toolStripSeparator14.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator14.Size = new System.Drawing.Size(261, 6);
             // 
-            // mnuBlogOpenRetail
+            // mnuRegistrasi
             // 
-            this.mnuBlogOpenRetail.Name = "mnuBlogOpenRetail";
-            this.mnuBlogOpenRetail.Size = new System.Drawing.Size(167, 22);
-            this.mnuBlogOpenRetail.Text = "Blog OpenRetail";
-            this.mnuBlogOpenRetail.Click += new System.EventHandler(this.mnuBlogOpenRetail_Click);
+            this.mnuRegistrasi.Name = "mnuRegistrasi";
+            this.mnuRegistrasi.Size = new System.Drawing.Size(264, 22);
+            this.mnuRegistrasi.Text = "Registrasi";
+            this.mnuRegistrasi.Click += new System.EventHandler(this.mnuRegistrasi_Click);
             // 
-            // mnuIkutBerkontribusi
+            // mnuDukungPengembanganOpenRetail
             // 
-            this.mnuIkutBerkontribusi.Name = "mnuIkutBerkontribusi";
-            this.mnuIkutBerkontribusi.Size = new System.Drawing.Size(167, 22);
-            this.mnuIkutBerkontribusi.Text = "Ikut Berkontribusi";
-            this.mnuIkutBerkontribusi.Click += new System.EventHandler(this.mnuIkutBerkontribusi_Click);
+            this.mnuDukungPengembanganOpenRetail.Name = "mnuDukungPengembanganOpenRetail";
+            this.mnuDukungPengembanganOpenRetail.Size = new System.Drawing.Size(264, 22);
+            this.mnuDukungPengembanganOpenRetail.Text = "Dukung Pengembangan OpenRetail";
+            this.mnuDukungPengembanganOpenRetail.Click += new System.EventHandler(this.mnuDukungPengembanganOpenRetail_Click);
             // 
             // toolStripSeparator15
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
-            this.toolStripSeparator15.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator15.Size = new System.Drawing.Size(261, 6);
             // 
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(167, 22);
+            this.mnuAbout.Size = new System.Drawing.Size(264, 22);
             this.mnuAbout.Text = "About";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
@@ -1017,7 +1017,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuPengaturanUmum;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripMenuItem mnuBlogOpenRetail;
-        private System.Windows.Forms.ToolStripMenuItem mnuIkutBerkontribusi;
+        private System.Windows.Forms.ToolStripMenuItem mnuDukungPengembanganOpenRetail;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
     }
 }

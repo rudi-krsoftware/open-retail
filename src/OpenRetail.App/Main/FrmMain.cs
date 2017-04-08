@@ -481,7 +481,7 @@ namespace OpenRetail.App.Main
             OpenUrl(url);
         }
 
-        private void mnuIkutBerkontribusi_Click(object sender, EventArgs e)
+        private void mnuDukungPengembanganOpenRetail_Click(object sender, EventArgs e)
         {
             var url = "https://openretailblog.wordpress.com/kontribusi/";
             OpenUrl(url);
