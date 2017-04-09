@@ -103,9 +103,49 @@ namespace OpenRetail.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap excel16 {
+            get {
+                object obj = ResourceManager.GetObject("excel16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap golongan {
             get {
                 object obj = ResourceManager.GetObject("golongan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap import_data16 {
+            get {
+                object obj = ResourceManager.GetObject("import_data16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap import_excel16 {
+            get {
+                object obj = ResourceManager.GetObject("import_excel16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap import_excel32 {
+            get {
+                object obj = ResourceManager.GetObject("import_excel32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
