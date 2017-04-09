@@ -30,6 +30,7 @@ Prerequisites (Khusus software developer atau programmer)
     * Windows Server 2008 R2, Windows Server 2008 SP2, Windows Server 2012 atau versi yang lebih tinggi    
 
 * Library Pihak Ketiga
+    * [ClosedXML](https://www.nuget.org/packages/ClosedXML/)
     * [Dapper](http://www.nuget.org/packages/Dapper/)
     * [Dapper.Contrib](http://www.nuget.org/packages/Dapper.Contrib/)
     * [Npgsql 2.2.7](http://www.nuget.org/packages/Npgsql/2.2.72)
