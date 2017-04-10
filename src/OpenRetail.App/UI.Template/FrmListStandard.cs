@@ -79,5 +79,25 @@ namespace OpenRetail.App.UI.Template
         {
             Selesai();
         }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            var btnSender = (Button)sender;
+
+            Point ptLowerLeft = new Point(-mnuPopupImportData.Size.Width + btnSender.Size.Width, btnSender.Height);
+            ptLowerLeft = btnSender.PointToScreen(ptLowerLeft);
+
+            mnuPopupImportData.Show(ptLowerLeft);
+        }
+
+        private void mnuBukaFileMaster_Click(object sender, EventArgs e)
+        {
+            OpenFileMaster();
+        }
+
+        private void mnuImportFileMaster_Click(object sender, EventArgs e)
+        {
+            ImportData();
+        }
     }
 }

@@ -65,6 +65,20 @@ namespace OpenRetail.App.UI.Template
         }
 
         /// <summary>
+        /// Method override untuk menghandle proses buka file master
+        /// </summary>
+        protected virtual void OpenFileMaster()
+        {
+        }
+
+        /// <summary>
+        /// Method override untuk menghandle proses impor data
+        /// </summary>
+        protected virtual void ImportData()
+        {
+        }
+
+        /// <summary>
         /// Method override untuk menghandle item yang dipilih
         /// </summary>
         /// <param name="index">Diisi dengan index grid list</param>
