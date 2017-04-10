@@ -33,6 +33,8 @@ using OpenRetail.App.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using System.IO;
+using System.Diagnostics;
 
 namespace OpenRetail.App.Referensi
 {
@@ -46,15 +48,22 @@ namespace OpenRetail.App.Referensi
             : base(header)
         {
             InitializeComponent();
+            this.toolTip1.SetToolTip(this.btnImport, "Import Data Supplier");
+            this.mnuBukaFileMaster.Text = "Buka File Master Supplier";
+            this.mnuImportFileMaster.Text = "Import File Master Supplier";
 
             _log = MainProgram.log;
             _bll = new SupplierBll(_log);
-
+            
             // set hak akses untuk SELECT
             var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
             if (role != null)
                 if (role.is_grant)
+                {
                     LoadData();
+
+                    btnImport.Enabled = pengguna.is_administrator;
+                }                    
 
             InitGridList();
 
@@ -130,6 +139,8 @@ namespace OpenRetail.App.Referensi
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 _listOfSupplier = _bll.GetAll();
+
+                GridListControlHelper.Refresh<Supplier>(this.gridList, _listOfSupplier);
             }
 
             ResetButton();
@@ -181,6 +192,81 @@ namespace OpenRetail.App.Referensi
                 else
                     MsgHelper.MsgDeleteError();
             }
+        }
+
+        protected override void OpenFileMaster()
+        {
+            var msg = "Untuk membuka file master Supplier membutuhkan Ms Excel versi 2007 atau yang terbaru.\n\n" +
+                      "Apakah proses ingin dilanjutkan ?";
+
+            if (MsgHelper.MsgKonfirmasi(msg))
+            {
+                var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_supplier.xlsx";
+
+                if (!File.Exists(fileMaster))
+                {
+                    MsgHelper.MsgWarning("Maaf file master Supplier tidak ditemukan.");
+                    return;
+                }
+
+                try
+                {
+                    Process.Start(fileMaster);
+                }
+                catch
+                {
+                    msg = "Gagal membuka file master Supplier !!!.\n\n" +
+                          "Cek apakah Ms Excel versi 2007 atau yang terbaru sudah terinstall ?";
+
+                    MsgHelper.MsgError(msg);
+                }
+            }
+        }
+
+        protected override void ImportData()
+        {
+            var msg = string.Empty;
+            var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_supplier.xlsx";
+
+            IImportExportDataBll _importDataBll = new ImportExportDataSupplierBll(fileMaster, _log);
+
+            if (_importDataBll.IsOpened())
+            {
+                msg = "Maaf file master Supplier sedang dibuka, silahkan ditutup terlebih dulu.";
+                MsgHelper.MsgWarning(msg);
+
+                return;
+            }
+
+            if (!_importDataBll.IsValidFormat())
+            {
+                msg = "Maaf format file master Supplier tidak valid, proses import tidak bisa dilanjutkan.";
+                MsgHelper.MsgWarning(msg);
+
+                return;
+            }
+
+            if (MsgHelper.MsgKonfirmasi("Apakah proses ingin dilanjutkan ?"))
+            {
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                {
+                    var rowCount = 0;
+                    var result = _importDataBll.Import(ref rowCount);
+
+                    if (result)
+                    {
+                        MsgHelper.MsgInfo("Import data master Supplier berhasil.");
+                        LoadData();                        
+                    }
+                    else
+                    {
+                        if (rowCount == 0)
+                        {
+                            MsgHelper.MsgInfo("Data file master Supplier masih kosong.");
+                        }
+                    }
+                }
+            }            
         }
 
         public void Ok(object sender, object data)
