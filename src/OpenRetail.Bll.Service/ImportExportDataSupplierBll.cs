@@ -124,7 +124,6 @@ namespace OpenRetail.Bll.Service
                     alamat = row.Field("ALAMAT").GetString(),
                     kontak = row.Field("KONTAK").GetString(),
                     telepon = row.Field("TELEPON").GetString()
-
                 }).ToList();
 
                 if (listOfSupplier.Count == 1 && listOfSupplier[0].nama_supplier.Length == 0)
@@ -143,6 +142,18 @@ namespace OpenRetail.Bll.Service
                     {
                         if (supplier.nama_supplier.Length > 0)
                         {
+                            if (supplier.nama_supplier.Length > 50)
+                                supplier.nama_supplier = supplier.nama_supplier.Substring(0, 50);
+
+                            if (supplier.alamat.Length > 100)
+                                supplier.alamat = supplier.alamat.Substring(0, 100);
+
+                            if (supplier.kontak.Length > 50)
+                                supplier.kontak = supplier.kontak.Substring(0, 50);
+
+                            if (supplier.telepon.Length > 20)
+                                supplier.telepon = supplier.telepon.Substring(0, 20);
+
                             result = Convert.ToBoolean(uow.SupplierRepository.Save(supplier));
                         }                        
                     }                    
