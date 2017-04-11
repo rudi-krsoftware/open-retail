@@ -42,6 +42,8 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnImport
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
@@ -54,8 +56,8 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(947, 364);
-            this.tableLayoutPanel3.TabIndex = 7;
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(998, 364);
+            this.tableLayoutPanel3.TabIndex = 0;
             // 
             // gridList
             // 
@@ -71,8 +73,8 @@
             this.gridList.Properties.MarkColHeader = false;
             this.gridList.Properties.MarkRowHeader = false;
             this.gridList.SelectedIndex = -1;
-            this.gridList.Size = new System.Drawing.Size(941, 330);
-            this.gridList.TabIndex = 2;
+            this.gridList.Size = new System.Drawing.Size(992, 330);
+            this.gridList.TabIndex = 1;
             this.gridList.TopIndex = 0;
             this.gridList.DoubleClick += new System.EventHandler(this.gridList_DoubleClick);
             // 
@@ -91,8 +93,8 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(947, 28);
-            this.tableLayoutPanel4.TabIndex = 3;
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(998, 28);
+            this.tableLayoutPanel4.TabIndex = 0;
             // 
             // cmbGolongan
             // 
@@ -101,7 +103,7 @@
             this.cmbGolongan.Location = new System.Drawing.Point(62, 3);
             this.cmbGolongan.Name = "cmbGolongan";
             this.cmbGolongan.Size = new System.Drawing.Size(231, 21);
-            this.cmbGolongan.TabIndex = 1;
+            this.cmbGolongan.TabIndex = 0;
             this.cmbGolongan.SelectedIndexChanged += new System.EventHandler(this.cmbGolongan_SelectedIndexChanged);
             // 
             // flowLayoutPanel1
@@ -113,13 +115,13 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(296, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(651, 28);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(702, 28);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnCari
             // 
             this.btnCari.Image = global::OpenRetail.App.Properties.Resources.search16;
-            this.btnCari.Location = new System.Drawing.Point(611, 3);
+            this.btnCari.Location = new System.Drawing.Point(662, 3);
             this.btnCari.Name = "btnCari";
             this.btnCari.Size = new System.Drawing.Size(37, 21);
             this.btnCari.TabIndex = 0;
@@ -135,12 +137,12 @@
             this.txtNamaProduk.ForeColor = System.Drawing.Color.Gray;
             this.txtNamaProduk.LeaveFocusColor = System.Drawing.Color.White;
             this.txtNamaProduk.LetterOnly = false;
-            this.txtNamaProduk.Location = new System.Drawing.Point(368, 3);
+            this.txtNamaProduk.Location = new System.Drawing.Point(419, 3);
             this.txtNamaProduk.Name = "txtNamaProduk";
             this.txtNamaProduk.NumericOnly = false;
             this.txtNamaProduk.SelectionText = false;
             this.txtNamaProduk.Size = new System.Drawing.Size(237, 20);
-            this.txtNamaProduk.TabIndex = 1;
+            this.txtNamaProduk.TabIndex = 0;
             this.txtNamaProduk.Text = "Ketik nama produk ...";
             this.txtNamaProduk.ThousandSeparator = false;
             this.txtNamaProduk.Enter += new System.EventHandler(this.txtNamaProduk_Enter);
@@ -162,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 446);
+            this.ClientSize = new System.Drawing.Size(998, 446);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "FrmListProduk";
             this.Text = "FrmListProduk";

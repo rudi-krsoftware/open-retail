@@ -34,6 +34,8 @@ using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using OpenRetail.App.UserControl;
 using log4net;
+using System.IO;
+using System.Diagnostics;
 
 namespace OpenRetail.App.Referensi
 {
@@ -48,6 +50,10 @@ namespace OpenRetail.App.Referensi
             : base()
         {
             InitializeComponent();
+            this.btnImport.Visible = true;
+            this.toolTip1.SetToolTip(this.btnImport, "Import Data Produk");
+            this.mnuBukaFileMaster.Text = "Buka File Master Produk";
+            this.mnuImportFileMaster.Text = "Import File Master Produk";
 
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
@@ -127,11 +133,12 @@ namespace OpenRetail.App.Referensi
             var gridListProperties = new List<GridListControlProperties>();
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Golongan", Width = 130 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 540 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 450 });
             gridListProperties.Add(new GridListControlProperties { Header = "Satuan", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Harga Beli", Width = 110 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 110 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Harga Beli", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Stok Etalase", Width = 90 });
             gridListProperties.Add(new GridListControlProperties { Header = "Stok Gudang", Width = 90 });
             gridListProperties.Add(new GridListControlProperties { Header = "Min. Stok Gudang", Width = 110 });
@@ -158,14 +165,20 @@ namespace OpenRetail.App.Referensi
                             switch (e.ColIndex)
                             {
                                 case 2:
-                                    e.Style.CellValue = produk.kode_produk;
+                                    if (produk.Golongan != null)
+                                        e.Style.CellValue = produk.Golongan.nama_golongan;
+
                                     break;
 
                                 case 3:
-                                    e.Style.CellValue = produk.nama_produk;
+                                    e.Style.CellValue = produk.kode_produk;
                                     break;
 
                                 case 4:
+                                    e.Style.CellValue = produk.nama_produk;
+                                    break;
+
+                                case 5:
                                     var satuan = string.Empty;
 
                                     if (produk.satuan.Length > 0)
@@ -174,27 +187,27 @@ namespace OpenRetail.App.Referensi
                                     e.Style.CellValue = satuan;
                                     break;
 
-                                case 5:
+                                case 6:
                                     e.Style.CellValue = NumberHelper.NumberToString(produk.harga_beli);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;
 
-                                case 6:
+                                case 7:
                                     e.Style.CellValue = NumberHelper.NumberToString(produk.harga_jual);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;
 
-                                case 7:
+                                case 8:
                                     e.Style.CellValue = produk.stok;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
-                                case 8:
+                                case 9:
                                     e.Style.CellValue = produk.stok_gudang;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
-                                case 9:
+                                case 10:
                                     e.Style.CellValue = produk.minimal_stok_gudang;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
@@ -278,6 +291,88 @@ namespace OpenRetail.App.Referensi
                 else
                     MsgHelper.MsgDeleteError();
             }
+        }
+
+        protected override void OpenFileMaster()
+        {
+            var msg = "Untuk membuka file master Produk membutuhkan Ms Excel versi 2007 atau yang terbaru.\n\n" +
+                      "Apakah proses ingin dilanjutkan ?";
+
+            if (MsgHelper.MsgKonfirmasi(msg))
+            {
+                var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_produk.xlsx";
+
+                if (!File.Exists(fileMaster))
+                {
+                    MsgHelper.MsgWarning("Maaf file master Produk tidak ditemukan.");
+                    return;
+                }
+
+                try
+                {
+                    Process.Start(fileMaster);
+                }
+                catch
+                {
+                    msg = "Gagal membuka file master Produk !!!.\n\n" +
+                          "Cek apakah Ms Excel versi 2007 atau yang terbaru sudah terinstall ?";
+
+                    MsgHelper.MsgError(msg);
+                }
+            }
+        }
+
+        protected override void ImportData()
+        {
+            var msg = string.Empty;
+            var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_produk.xlsx";
+
+            IImportExportDataBll _importDataBll = new ImportExportDataProdukBll(fileMaster, _log);
+
+            if (_importDataBll.IsOpened())
+            {
+                msg = "Maaf file master Produk sedang dibuka, silahkan ditutup terlebih dulu.";
+                MsgHelper.MsgWarning(msg);
+
+                return;
+            }
+
+            if (!_importDataBll.IsValidFormat())
+            {
+                msg = "Maaf format file master Produk tidak valid, proses import tidak bisa dilanjutkan.";
+                MsgHelper.MsgWarning(msg);
+
+                return;
+            }
+
+            if (MsgHelper.MsgKonfirmasi("Apakah proses ingin dilanjutkan ?"))
+            {
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                {
+                    var rowCount = 0;
+                    var result = _importDataBll.Import(ref rowCount);
+
+                    if (result)
+                    {
+                        msg = "Import data master Produk berhasil.";
+                        MsgHelper.MsgInfo(msg);
+
+                        if (cmbGolongan.SelectedIndex == 0)
+                            LoadDataProduk();
+                        else
+                            cmbGolongan.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        if (rowCount == 0)
+                        {
+                            msg = "Data file master Produk masih kosong.\n" +
+                                  "Silahkan diisi terlebih dulu.";
+                            MsgHelper.MsgInfo(msg);
+                        }
+                    }
+                }
+            } 
         }
 
         public void Ok(object sender, object data)

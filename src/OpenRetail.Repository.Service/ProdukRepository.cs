@@ -35,7 +35,7 @@ namespace OpenRetail.Repository.Service
     {
         private const string SQL_TEMPLATE = @"SELECT m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.harga_beli, m_produk.harga_jual, 
                                               m_produk.minimal_stok, m_produk.stok_gudang, m_produk.minimal_stok_gudang, m_golongan.golongan_id, m_golongan.nama_golongan
-                                              FROM m_produk INNER JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id
+                                              FROM m_produk LEFT JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id
                                               {WHERE}
                                               {ORDER BY}";
         private IDapperContext _context;
@@ -53,7 +53,11 @@ namespace OpenRetail.Repository.Service
         {
             IEnumerable<Produk> oList = _context.db.Query<Produk, Golongan, Produk>(sql, (p, g) =>
             {
-                p.golongan_id = g.golongan_id; p.Golongan = g;
+                if (g != null)
+                {
+                    p.golongan_id = g.golongan_id; p.Golongan = g;
+                }
+                
                 return p;
             }, param, splitOn: "golongan_id");
 

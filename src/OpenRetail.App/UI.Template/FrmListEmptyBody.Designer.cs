@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.btnImport = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
@@ -37,10 +39,15 @@
             this.btnHapus = new System.Windows.Forms.Button();
             this.btnPerbaiki = new System.Windows.Forms.Button();
             this.btnTambah = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.mnuPopupImportData = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuBukaFileMaster = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuImportFileMaster = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.pnlFooter.SuspendLayout();
+            this.mnuPopupImportData.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -60,12 +67,27 @@
             // 
             this.pnlHeader.BackColor = System.Drawing.SystemColors.ControlDark;
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHeader.Controls.Add(this.btnImport);
             this.pnlHeader.Controls.Add(this.lblHeader);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHeader.Location = new System.Drawing.Point(3, 3);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(640, 35);
             this.pnlHeader.TabIndex = 0;
+            // 
+            // btnImport
+            // 
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImport.Image = global::OpenRetail.App.Properties.Resources.import_data16;
+            this.btnImport.Location = new System.Drawing.Point(591, 4);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(39, 23);
+            this.btnImport.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.btnImport, "Impor data dari excel");
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Visible = false;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // lblHeader
             // 
@@ -151,6 +173,33 @@
             this.btnTambah.UseVisualStyleBackColor = true;
             this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Informasi";
+            // 
+            // mnuPopupImportData
+            // 
+            this.mnuPopupImportData.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuBukaFileMaster,
+            this.mnuImportFileMaster});
+            this.mnuPopupImportData.Name = "mnuPopupImportData";
+            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 48);
+            // 
+            // mnuBukaFileMaster
+            // 
+            this.mnuBukaFileMaster.Name = "mnuBukaFileMaster";
+            this.mnuBukaFileMaster.Size = new System.Drawing.Size(188, 22);
+            this.mnuBukaFileMaster.Text = "Buka File Master ...";
+            this.mnuBukaFileMaster.Click += new System.EventHandler(this.mnuBukaFileMaster_Click);
+            // 
+            // mnuImportFileMaster
+            // 
+            this.mnuImportFileMaster.Name = "mnuImportFileMaster";
+            this.mnuImportFileMaster.Size = new System.Drawing.Size(188, 22);
+            this.mnuImportFileMaster.Text = "Import Data Master ...";
+            this.mnuImportFileMaster.Click += new System.EventHandler(this.mnuImportFileMaster_Click);
+            // 
             // FrmListEmptyBody
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,6 +215,7 @@
             this.pnlHeader.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pnlFooter.ResumeLayout(false);
+            this.mnuPopupImportData.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -181,5 +231,10 @@
         protected System.Windows.Forms.Button btnHapus;
         protected System.Windows.Forms.Button btnPerbaiki;
         protected System.Windows.Forms.Button btnTambah;
+        protected System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ContextMenuStrip mnuPopupImportData;
+        protected System.Windows.Forms.ToolStripMenuItem mnuBukaFileMaster;
+        protected System.Windows.Forms.ToolStripMenuItem mnuImportFileMaster;
+        protected System.Windows.Forms.Button btnImport;
     }
 }
