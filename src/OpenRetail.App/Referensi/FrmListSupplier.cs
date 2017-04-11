@@ -255,14 +255,17 @@ namespace OpenRetail.App.Referensi
 
                     if (result)
                     {
-                        MsgHelper.MsgInfo("Import data master Supplier berhasil.");
+                        msg = "Import data master Supplier berhasil.";
+                        MsgHelper.MsgInfo(msg);
                         LoadData();                        
                     }
                     else
                     {
                         if (rowCount == 0)
                         {
-                            MsgHelper.MsgInfo("Data file master Supplier masih kosong.");
+                            msg = "Data file master Supplier masih kosong.\n" +
+                                  "Silahkan diisi terlebih dulu.";
+                            MsgHelper.MsgInfo(msg);
                         }
                     }
                 }
