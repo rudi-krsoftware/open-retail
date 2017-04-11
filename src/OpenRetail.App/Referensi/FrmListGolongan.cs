@@ -33,6 +33,8 @@ using OpenRetail.App.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using System.IO;
+using System.Diagnostics;
 
 namespace OpenRetail.App.Referensi
 {
@@ -46,6 +48,10 @@ namespace OpenRetail.App.Referensi
             : base(header)
         {
             InitializeComponent();
+            this.btnImport.Visible = true;
+            this.toolTip1.SetToolTip(this.btnImport, "Import Data Golongan");
+            this.mnuBukaFileMaster.Text = "Buka File Master Golongan";
+            this.mnuImportFileMaster.Text = "Import File Master Golongan";
 
             _log = MainProgram.log;
             _bll = new GolonganBll(_log);
@@ -109,6 +115,8 @@ namespace OpenRetail.App.Referensi
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 _listOfGolongan = _bll.GetAll();
+
+                GridListControlHelper.Refresh<Golongan>(this.gridList, _listOfGolongan);
             }
 
             ResetButton();
@@ -160,6 +168,84 @@ namespace OpenRetail.App.Referensi
                 else
                     MsgHelper.MsgDeleteError();
             }
+        }
+
+        protected override void OpenFileMaster()
+        {
+            var msg = "Untuk membuka file master Golongan membutuhkan Ms Excel versi 2007 atau yang terbaru.\n\n" +
+                      "Apakah proses ingin dilanjutkan ?";
+
+            if (MsgHelper.MsgKonfirmasi(msg))
+            {
+                var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_golongan.xlsx";
+
+                if (!File.Exists(fileMaster))
+                {
+                    MsgHelper.MsgWarning("Maaf file master Golongan tidak ditemukan.");
+                    return;
+                }
+
+                try
+                {
+                    Process.Start(fileMaster);
+                }
+                catch
+                {
+                    msg = "Gagal membuka file master Golongan !!!.\n\n" +
+                          "Cek apakah Ms Excel versi 2007 atau yang terbaru sudah terinstall ?";
+
+                    MsgHelper.MsgError(msg);
+                }
+            }
+        }
+
+        protected override void ImportData()
+        {
+            var msg = string.Empty;
+            var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_golongan.xlsx";
+
+            IImportExportDataBll _importDataBll = new ImportExportDataGolonganBll(fileMaster, _log);
+
+            if (_importDataBll.IsOpened())
+            {
+                msg = "Maaf file master Golongan sedang dibuka, silahkan ditutup terlebih dulu.";
+                MsgHelper.MsgWarning(msg);
+
+                return;
+            }
+
+            if (!_importDataBll.IsValidFormat())
+            {
+                msg = "Maaf format file master Golongan tidak valid, proses import tidak bisa dilanjutkan.";
+                MsgHelper.MsgWarning(msg);
+
+                return;
+            }
+
+            if (MsgHelper.MsgKonfirmasi("Apakah proses ingin dilanjutkan ?"))
+            {
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                {
+                    var rowCount = 0;
+                    var result = _importDataBll.Import(ref rowCount);
+
+                    if (result)
+                    {
+                        msg = "Import data master Golongan berhasil.";
+                        MsgHelper.MsgInfo(msg);
+                        LoadData();
+                    }
+                    else
+                    {
+                        if (rowCount == 0)
+                        {
+                            msg = "Data file master Golongan masih kosong.\n" +
+                                  "Silahkan diisi terlebih dulu.";
+                            MsgHelper.MsgInfo(msg);
+                        }
+                    }
+                }
+            } 
         }
 
         public void Ok(object sender, object data)

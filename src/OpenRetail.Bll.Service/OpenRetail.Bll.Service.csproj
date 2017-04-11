@@ -66,6 +66,7 @@
     <Compile Include="GajiKaryawanBll.cs" />
     <Compile Include="GolonganBll.cs" />
     <Compile Include="ImportExportDataCustomerBll.cs" />
+    <Compile Include="ImportExportDataGolonganBll.cs" />
     <Compile Include="ImportExportDataSupplierBll.cs" />
     <Compile Include="ItemMenuBll.cs" />
     <Compile Include="JabatanBll.cs" />

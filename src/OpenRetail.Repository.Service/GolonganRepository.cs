@@ -57,14 +57,14 @@ namespace OpenRetail.Repository.Service
             return obj;
         }
 
-        public IList<Golongan> GetByName(string name)
+        public IList<Golongan> GetByName(string name, bool useLikeOperator = true)
         {
             IList<Golongan> oList = new List<Golongan>();
 
             try
             {
                 oList = _context.db.GetAll<Golongan>()
-                                .Where(f => f.nama_golongan.ToLower().Contains(name.ToLower()))
+                                .Where(f => useLikeOperator ? f.nama_golongan.ToLower().Contains(name.ToLower()) : f.nama_golongan.ToLower() == name.ToLower())
                                 .OrderBy(f => f.nama_golongan)
                                 .ToList();
             }

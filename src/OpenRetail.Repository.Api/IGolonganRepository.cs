@@ -28,7 +28,7 @@ namespace OpenRetail.Repository.Api
 {        
     public interface IGolonganRepository : IBaseRepository<Golongan>
     {
-		Golongan GetByID(string id);            
-        IList<Golongan> GetByName(string name);
+		Golongan GetByID(string id);
+        IList<Golongan> GetByName(string name, bool useLikeOperator = true);
     }
 }     
