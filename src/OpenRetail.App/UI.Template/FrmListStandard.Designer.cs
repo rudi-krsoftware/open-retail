@@ -91,6 +91,7 @@
             this.btnImport.TabIndex = 0;
             this.toolTip1.SetToolTip(this.btnImport, "Impor data dari excel");
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Visible = false;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // lblHeader

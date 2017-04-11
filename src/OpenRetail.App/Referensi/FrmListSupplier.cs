@@ -48,6 +48,7 @@ namespace OpenRetail.App.Referensi
             : base(header)
         {
             InitializeComponent();
+            this.btnImport.Visible = true;
             this.toolTip1.SetToolTip(this.btnImport, "Import Data Supplier");
             this.mnuBukaFileMaster.Text = "Buka File Master Supplier";
             this.mnuImportFileMaster.Text = "Import File Master Supplier";

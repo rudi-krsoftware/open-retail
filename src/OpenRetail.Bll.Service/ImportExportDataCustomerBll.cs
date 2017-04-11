@@ -70,7 +70,7 @@ namespace OpenRetail.Bll.Service
                 // Look for the first row used
                 var firstRowUsed = ws.FirstRowUsed();
 
-                var colums = new string[] { "NAMA", "ALAMAT", "KONTAK", "TELEPON", "PLAFON_PIUTANG" };
+                var colums = new string[] { "NAMA", "ALAMAT", "KONTAK", "TELEPON", "PLAFON PIUTANG" };
 
                 for (int i = 0; i < colums.Length; i++)
                 {
