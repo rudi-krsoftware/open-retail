@@ -70,7 +70,7 @@ namespace OpenRetail.Bll.Service
                 // Look for the first row used
                 var firstRowUsed = ws.FirstRowUsed();
 
-                var colums = new string[] { "GOLONGAN" };
+                var colums = new string[] { "GOLONGAN", "DISKON" };
 
                 for (int i = 0; i < colums.Length; i++)
                 {
@@ -120,7 +120,8 @@ namespace OpenRetail.Bll.Service
 
                 listOfGolongan = golonganTable.DataRange.Rows().Select(row => new Golongan
                 {
-                    nama_golongan = row.Field("GOLONGAN").GetString()
+                    nama_golongan = row.Field("GOLONGAN").GetString(),
+                    diskon = row.Field("DISKON").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("DISKON").GetString())
                 }).ToList();
 
                 if (listOfGolongan.Count == 1 && listOfGolongan[0].nama_golongan.Length == 0)

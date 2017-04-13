@@ -72,7 +72,7 @@ namespace OpenRetail.Bll.Service
 
                 var colums = new string[] { 
                                             "GOLONGAN", "KODE PRODUK", "NAMA PRODUK", "SATUAN",
-                                            "HARGA BELI", "HARGA JUAL", "STOK ETALASE", "STOK GUDANG", "MINIMAL STOK GUDANG"
+                                            "HARGA BELI", "HARGA JUAL", "DISKON", "STOK ETALASE", "STOK GUDANG", "MINIMAL STOK GUDANG"
                                           };
 
                 for (int i = 0; i < colums.Length; i++)
@@ -129,6 +129,7 @@ namespace OpenRetail.Bll.Service
                     satuan = row.Field("SATUAN").GetString(),
                     harga_beli = row.Field("HARGA BELI").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("HARGA BELI").GetString()),
                     harga_jual = row.Field("HARGA JUAL").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("HARGA JUAL").GetString()),
+                    diskon = row.Field("DISKON").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("DISKON").GetString()),
                     stok = row.Field("STOK ETALASE").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("STOK ETALASE").GetString()),
                     stok_gudang = row.Field("STOK GUDANG").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("STOK GUDANG").GetString()),
                     minimal_stok_gudang = row.Field("MINIMAL STOK GUDANG").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("MINIMAL STOK GUDANG").GetString())
