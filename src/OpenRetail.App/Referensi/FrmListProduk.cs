@@ -135,13 +135,14 @@ namespace OpenRetail.App.Referensi
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Golongan", Width = 130 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 450 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 400 });
             gridListProperties.Add(new GridListControlProperties { Header = "Satuan", Width = 130 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga Beli", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Stok Etalase", Width = 90 });
             gridListProperties.Add(new GridListControlProperties { Header = "Stok Gudang", Width = 90 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Min. Stok Gudang", Width = 110 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Min. Stok Gudang" });
 
             GridListControlHelper.InitializeGridListControl<Produk>(this.gridList, _listOfProduk, gridListProperties);
 
@@ -198,16 +199,21 @@ namespace OpenRetail.App.Referensi
                                     break;
 
                                 case 8:
-                                    e.Style.CellValue = produk.stok;
+                                    e.Style.CellValue = produk.diskon;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
                                 case 9:
-                                    e.Style.CellValue = produk.stok_gudang;
+                                    e.Style.CellValue = produk.stok;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
                                 case 10:
+                                    e.Style.CellValue = produk.stok_gudang;
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                    break;
+
+                                case 11:
                                     e.Style.CellValue = produk.minimal_stok_gudang;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;

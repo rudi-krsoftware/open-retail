@@ -47,6 +47,8 @@
             this.txtStok = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtStokGudang = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtMinStokGudang = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDiskon = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,25 +60,27 @@
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 4);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 6);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 7);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 5);
             this.tableLayoutPanel3.Controls.Add(this.label7, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 0, 7);
-            this.tableLayoutPanel3.Controls.Add(this.label9, 0, 8);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 0, 8);
+            this.tableLayoutPanel3.Controls.Add(this.label9, 0, 9);
             this.tableLayoutPanel3.Controls.Add(this.cmbGolongan, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtKodeProduk, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtNamaProduk, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.txtSatuan, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.txtHargaBeli, 1, 4);
             this.tableLayoutPanel3.Controls.Add(this.txtHargaJual, 1, 5);
-            this.tableLayoutPanel3.Controls.Add(this.txtStok, 1, 6);
-            this.tableLayoutPanel3.Controls.Add(this.txtStokGudang, 1, 7);
-            this.tableLayoutPanel3.Controls.Add(this.txtMinStokGudang, 1, 8);
+            this.tableLayoutPanel3.Controls.Add(this.txtStok, 1, 7);
+            this.tableLayoutPanel3.Controls.Add(this.txtStokGudang, 1, 8);
+            this.tableLayoutPanel3.Controls.Add(this.txtMinStokGudang, 1, 9);
+            this.tableLayoutPanel3.Controls.Add(this.label10, 0, 6);
+            this.tableLayoutPanel3.Controls.Add(this.txtDiskon, 1, 6);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 10;
+            this.tableLayoutPanel3.RowCount = 11;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -87,7 +91,8 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(392, 227);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(392, 252);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label1
@@ -127,7 +132,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 150);
+            this.label4.Location = new System.Drawing.Point(3, 175);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 25);
             this.label4.TabIndex = 0;
@@ -171,7 +176,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(3, 175);
+            this.label8.Location = new System.Drawing.Point(3, 200);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 25);
             this.label8.TabIndex = 7;
@@ -182,7 +187,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(3, 200);
+            this.label9.Location = new System.Drawing.Point(3, 225);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 25);
             this.label9.TabIndex = 7;
@@ -197,7 +202,7 @@
             this.cmbGolongan.Location = new System.Drawing.Point(102, 3);
             this.cmbGolongan.Name = "cmbGolongan";
             this.cmbGolongan.Size = new System.Drawing.Size(287, 21);
-            this.cmbGolongan.TabIndex = 8;
+            this.cmbGolongan.TabIndex = 9;
             this.cmbGolongan.Tag = "ignore";
             // 
             // txtKodeProduk
@@ -292,13 +297,13 @@
             this.txtStok.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtStok.LeaveFocusColor = System.Drawing.Color.White;
             this.txtStok.LetterOnly = false;
-            this.txtStok.Location = new System.Drawing.Point(102, 153);
+            this.txtStok.Location = new System.Drawing.Point(102, 178);
             this.txtStok.MaxLength = 8;
             this.txtStok.Name = "txtStok";
             this.txtStok.NumericOnly = true;
             this.txtStok.SelectionText = false;
             this.txtStok.Size = new System.Drawing.Size(59, 20);
-            this.txtStok.TabIndex = 5;
+            this.txtStok.TabIndex = 6;
             this.txtStok.Text = "0";
             this.txtStok.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStok.ThousandSeparator = false;
@@ -310,13 +315,13 @@
             this.txtStokGudang.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtStokGudang.LeaveFocusColor = System.Drawing.Color.White;
             this.txtStokGudang.LetterOnly = false;
-            this.txtStokGudang.Location = new System.Drawing.Point(102, 178);
+            this.txtStokGudang.Location = new System.Drawing.Point(102, 203);
             this.txtStokGudang.MaxLength = 8;
             this.txtStokGudang.Name = "txtStokGudang";
             this.txtStokGudang.NumericOnly = true;
             this.txtStokGudang.SelectionText = false;
             this.txtStokGudang.Size = new System.Drawing.Size(59, 20);
-            this.txtStokGudang.TabIndex = 6;
+            this.txtStokGudang.TabIndex = 7;
             this.txtStokGudang.Text = "0";
             this.txtStokGudang.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStokGudang.ThousandSeparator = false;
@@ -328,23 +333,52 @@
             this.txtMinStokGudang.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtMinStokGudang.LeaveFocusColor = System.Drawing.Color.White;
             this.txtMinStokGudang.LetterOnly = false;
-            this.txtMinStokGudang.Location = new System.Drawing.Point(102, 203);
+            this.txtMinStokGudang.Location = new System.Drawing.Point(102, 228);
             this.txtMinStokGudang.MaxLength = 8;
             this.txtMinStokGudang.Name = "txtMinStokGudang";
             this.txtMinStokGudang.NumericOnly = true;
             this.txtMinStokGudang.SelectionText = false;
             this.txtMinStokGudang.Size = new System.Drawing.Size(59, 20);
-            this.txtMinStokGudang.TabIndex = 7;
+            this.txtMinStokGudang.TabIndex = 8;
             this.txtMinStokGudang.Text = "0";
             this.txtMinStokGudang.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtMinStokGudang.ThousandSeparator = false;
             this.txtMinStokGudang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMinStokGudang_KeyPress);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label10.Location = new System.Drawing.Point(3, 150);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(40, 25);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Diskon";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtDiskon
+            // 
+            this.txtDiskon.AutoEnter = true;
+            this.txtDiskon.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDiskon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtDiskon.LetterOnly = false;
+            this.txtDiskon.Location = new System.Drawing.Point(102, 153);
+            this.txtDiskon.MaxLength = 8;
+            this.txtDiskon.Name = "txtDiskon";
+            this.txtDiskon.NumericOnly = true;
+            this.txtDiskon.SelectionText = false;
+            this.txtDiskon.Size = new System.Drawing.Size(40, 20);
+            this.txtDiskon.TabIndex = 5;
+            this.txtDiskon.Text = "0";
+            this.txtDiskon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDiskon.ThousandSeparator = false;
+            // 
             // FrmEntryProduk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 309);
+            this.ClientSize = new System.Drawing.Size(392, 334);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "FrmEntryProduk";
             this.Text = "FrmEntryProduk";
@@ -376,6 +410,8 @@
         private UserControl.AdvancedTextbox txtStok;
         private UserControl.AdvancedTextbox txtStokGudang;
         private UserControl.AdvancedTextbox txtMinStokGudang;
+        private System.Windows.Forms.Label label10;
+        private UserControl.AdvancedTextbox txtDiskon;
 
     }
 }

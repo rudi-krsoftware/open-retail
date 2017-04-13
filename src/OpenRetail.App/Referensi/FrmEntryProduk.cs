@@ -78,9 +78,9 @@ namespace OpenRetail.App.Referensi
             txtSatuan.Text = this._produk.satuan;
             txtHargaBeli.Text = this._produk.harga_beli.ToString();
             txtHargaJual.Text = this._produk.harga_jual.ToString();
+            txtDiskon.Text = this._produk.diskon.ToString();
             txtStok.Text = this._produk.stok.ToString();
             txtStokGudang.Text = this._produk.stok_gudang.ToString();
-
             txtMinStokGudang.Text = this._produk.minimal_stok_gudang.ToString();
 
             LoadDataGolongan();
@@ -114,9 +114,10 @@ namespace OpenRetail.App.Referensi
             _produk.satuan = txtSatuan.Text;
             _produk.harga_beli = NumberHelper.StringToDouble(txtHargaBeli.Text);
             _produk.harga_jual = NumberHelper.StringToDouble(txtHargaJual.Text);
-            _produk.stok = NumberHelper.StringToDouble(txtStok.Text);
-            _produk.stok_gudang = NumberHelper.StringToDouble(txtStokGudang.Text);
-            _produk.minimal_stok_gudang = NumberHelper.StringToDouble(txtMinStokGudang.Text);
+            _produk.diskon = NumberHelper.StringToDouble(txtDiskon.Text, true);
+            _produk.stok = NumberHelper.StringToDouble(txtStok.Text, true);
+            _produk.stok_gudang = NumberHelper.StringToDouble(txtStokGudang.Text, true);
+            _produk.minimal_stok_gudang = NumberHelper.StringToDouble(txtMinStokGudang.Text, true);
 
             var result = 0;
             var validationError = new ValidationError();

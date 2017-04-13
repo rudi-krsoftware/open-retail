@@ -49,7 +49,10 @@ namespace OpenRetail.Model
 		
 		[Display(Name = "Harga Jual")]
 		public double harga_jual { get; set; }
-		
+
+        [Display(Name = "Diskon")]
+        public double diskon { get; set; }
+
 		[Display(Name = "Kode Produk")]
 		public string kode_produk { get; set; }
 

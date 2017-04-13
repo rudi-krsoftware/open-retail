@@ -33,7 +33,7 @@ namespace OpenRetail.Repository.Service
 {        
     public class ProdukRepository : IProdukRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.harga_beli, m_produk.harga_jual, 
+        private const string SQL_TEMPLATE = @"SELECT m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon,
                                               m_produk.minimal_stok, m_produk.stok_gudang, m_produk.minimal_stok_gudang, m_golongan.golongan_id, m_golongan.nama_golongan
                                               FROM m_produk LEFT JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id
                                               {WHERE}
