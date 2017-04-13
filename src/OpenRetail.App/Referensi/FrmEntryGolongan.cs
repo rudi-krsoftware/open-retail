@@ -64,6 +64,7 @@ namespace OpenRetail.App.Referensi
             this._golongan = golongan;
 
             txtGolongan.Text = this._golongan.nama_golongan;
+            txtDiskon.Text = this._golongan.diskon.ToString();
         }
 
         protected override void Simpan()
@@ -72,6 +73,7 @@ namespace OpenRetail.App.Referensi
                 _golongan = new Golongan();
 
             _golongan.nama_golongan = txtGolongan.Text;
+            _golongan.diskon = NumberHelper.StringToDouble(txtDiskon.Text, true);
 
             var result = 0;
             var validationError = new ValidationError();
@@ -107,10 +109,10 @@ namespace OpenRetail.App.Referensi
             }                
         }
 
-        private void txtGolongan_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtDiskon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEnter(e))
                 Simpan();
-        }
+        }        
     }
 }

@@ -37,6 +37,9 @@ namespace OpenRetail.Model
 		
 		[Display(Name = "Golongan")]
 		public string nama_golongan { get; set; }
+
+        [Display(Name = "Diskon")]
+        public double diskon { get; set; }
 	}
 
     public class GolonganValidator : AbstractValidator<Golongan>

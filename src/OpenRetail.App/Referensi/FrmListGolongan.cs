@@ -73,7 +73,8 @@ namespace OpenRetail.App.Referensi
             var gridListProperties = new List<GridListControlProperties>();
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Golongan" });
+            gridListProperties.Add(new GridListControlProperties { Header = "Golongan", Width = 700 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Diskon" });
 
             GridListControlHelper.InitializeGridListControl<Golongan>(this.gridList, _listOfGolongan, gridListProperties);
 
@@ -96,6 +97,11 @@ namespace OpenRetail.App.Referensi
                             {
                                 case 2:
                                     e.Style.CellValue = golongan.nama_golongan;
+                                    break;
+
+                                case 3:
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                    e.Style.CellValue = golongan.diskon;
                                     break;
 
                                 default:
