@@ -12,13 +12,13 @@
               <Width>0.81759in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.42014in</Width>
+              <Width>2.30556in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.82824in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.14583in</Width>
+              <Width>1.26041in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -254,7 +254,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total Hutang</Value>
+                              <Value>Pembayaran Hutang</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
