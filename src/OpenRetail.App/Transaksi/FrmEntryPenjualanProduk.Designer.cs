@@ -83,7 +83,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(718, 468);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(755, 468);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -111,7 +111,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(712, 124);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(749, 124);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // label2
@@ -168,7 +168,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(68, 50);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(644, 25);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(681, 25);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // rdoTunai
@@ -283,7 +283,7 @@
             this.txtKeterangan.Name = "txtKeterangan";
             this.txtKeterangan.NumericOnly = false;
             this.txtKeterangan.SelectionText = false;
-            this.txtKeterangan.Size = new System.Drawing.Size(638, 20);
+            this.txtKeterangan.Size = new System.Drawing.Size(675, 20);
             this.txtKeterangan.TabIndex = 4;
             this.txtKeterangan.Tag = "keterangan";
             this.txtKeterangan.ThousandSeparator = false;
@@ -296,7 +296,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 186);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(712, 225);
+            this.panel1.Size = new System.Drawing.Size(749, 225);
             this.panel1.TabIndex = 1;
             // 
             // gridControl
@@ -305,7 +305,7 @@
             this.gridControl.Location = new System.Drawing.Point(5, 5);
             this.gridControl.Name = "gridControl";
             this.gridControl.SerializeCellsBehavior = Syncfusion.Windows.Forms.Grid.GridSerializeCellsBehavior.SerializeAsRangeStylesIntoCode;
-            this.gridControl.Size = new System.Drawing.Size(702, 215);
+            this.gridControl.Size = new System.Drawing.Size(739, 215);
             this.gridControl.SmartSizeBox = false;
             this.gridControl.TabIndex = 0;
             this.gridControl.Text = "gridControl1";
@@ -333,16 +333,16 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(712, 48);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(749, 48);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(306, 0);
+            this.label8.Location = new System.Drawing.Point(324, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(297, 25);
+            this.label8.Size = new System.Drawing.Size(315, 25);
             this.label8.TabIndex = 0;
             this.label8.Text = "Diskon";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -351,9 +351,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(306, 25);
+            this.label9.Location = new System.Drawing.Point(324, 25);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(297, 25);
+            this.label9.Size = new System.Drawing.Size(315, 25);
             this.label9.TabIndex = 0;
             this.label9.Text = "PPN";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -364,7 +364,7 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(297, 25);
+            this.label10.Size = new System.Drawing.Size(315, 25);
             this.label10.TabIndex = 2;
             this.label10.Text = "F1 : Tambah data produk  |  F2 : Tambah data customer";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -388,7 +388,7 @@
             this.txtDiskon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDiskon.LetterOnly = false;
-            this.txtDiskon.Location = new System.Drawing.Point(609, 3);
+            this.txtDiskon.Location = new System.Drawing.Point(645, 3);
             this.txtDiskon.MaxLength = 20;
             this.txtDiskon.Name = "txtDiskon";
             this.txtDiskon.NumericOnly = true;
@@ -407,7 +407,7 @@
             this.txtPPN.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPPN.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPPN.LetterOnly = false;
-            this.txtPPN.Location = new System.Drawing.Point(609, 28);
+            this.txtPPN.Location = new System.Drawing.Point(645, 28);
             this.txtPPN.MaxLength = 20;
             this.txtPPN.Name = "txtPPN";
             this.txtPPN.NumericOnly = true;
@@ -428,7 +428,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(712, 47);
+            this.panel2.Size = new System.Drawing.Size(749, 47);
             this.panel2.TabIndex = 4;
             // 
             // tableLayoutPanel6
@@ -443,7 +443,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(710, 45);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(747, 45);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // label1
@@ -464,7 +464,7 @@
             this.lblTotal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.Red;
-            this.lblTotal.Location = new System.Drawing.Point(671, 0);
+            this.lblTotal.Location = new System.Drawing.Point(708, 0);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(36, 45);
             this.lblTotal.TabIndex = 1;
@@ -475,7 +475,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 550);
+            this.ClientSize = new System.Drawing.Size(755, 550);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "FrmEntryPenjualanProduk";
             this.Text = "FrmEntryPenjualanProduk";

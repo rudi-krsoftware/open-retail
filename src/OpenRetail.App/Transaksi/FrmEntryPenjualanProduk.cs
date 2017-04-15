@@ -146,6 +146,7 @@ namespace OpenRetail.App.Transaksi
             gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 120 });
             gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 240 });
             gridListProperties.Add(new GridListControlProperties { Header = "Jumlah", Width = 50 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga", Width = 90 });
             gridListProperties.Add(new GridListControlProperties { Header = "Sub Total", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Aksi" });
@@ -154,7 +155,7 @@ namespace OpenRetail.App.Transaksi
 
             grid.PushButtonClick += delegate(object sender, GridCellPushButtonClickEventArgs e)
             {
-                if (e.ColIndex == 7)
+                if (e.ColIndex == 8)
                 {
                     if (grid.RowCount == 1)
                     {
@@ -229,7 +230,13 @@ namespace OpenRetail.App.Transaksi
 
                             break;
 
-                        case 5: // harga
+                        case 5: // diskon
+                            e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                            e.Style.CellValue = itemJual.diskon;
+
+                            break;
+
+                        case 6: // harga
                             e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
 
                             hargaBeli = itemJual.harga_beli;
@@ -248,14 +255,14 @@ namespace OpenRetail.App.Transaksi
 
                             break;
 
-                        case 6: // subtotal
+                        case 7: // subtotal
                             e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                             e.Style.Enabled = false;
 
                             jumlah = itemJual.jumlah - itemJual.jumlah_retur;
 
                             hargaBeli = itemJual.harga_beli;
-                            hargaJual = itemJual.harga_jual;
+                            hargaJual = itemJual.harga_setelah_diskon;                            
 
                             if (produk != null)
                             {
@@ -263,13 +270,22 @@ namespace OpenRetail.App.Transaksi
                                     hargaBeli = produk.harga_beli;
 
                                 if (!(hargaJual > 0))
-                                    hargaJual = produk.harga_jual;
-                            }
+                                {
+                                    double diskon = itemJual.diskon;
+                                    double diskonRupiah = 0;
 
+                                    if(!(diskon > 0))
+                                        diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+
+                                    diskonRupiah = diskon / 100 * produk.harga_jual;
+                                    hargaJual = produk.harga_jual - diskonRupiah;
+                                }                                    
+                            }
+                            
                             e.Style.CellValue = NumberHelper.NumberToString(jumlah * hargaJual);
                             break;
 
-                        case 7: // button hapus
+                        case 8: // button hapus
                             e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                             e.Style.CellType = GridCellTypeName.PushButton;
                             e.Style.Description = "Hapus";
@@ -295,11 +311,18 @@ namespace OpenRetail.App.Transaksi
                 double harga = 0;
 
                 if (item.harga_jual > 0)
-                    harga = item.harga_jual;
+                {
+                    // harga = item.harga_jual;
+                    harga = item.harga_setelah_diskon;
+                }                    
                 else
                 {
                     if (item.Produk != null)
-                        harga = item.Produk.harga_jual;
+                    {
+                        double diskonRupiah = item.diskon / 100 * item.Produk.harga_jual;
+
+                        harga = item.Produk.harga_jual - diskonRupiah;
+                    }                        
                 }
 
                 total += harga * (item.jumlah - item.jumlah_retur);
@@ -520,7 +543,9 @@ namespace OpenRetail.App.Transaksi
 
                 if (!IsExist(produk.produk_id))
                 {
-                    SetItemProduk(this.gridControl, _rowIndex, _colIndex + 1, produk);
+                    double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+
+                    SetItemProduk(this.gridControl, _rowIndex, _colIndex + 1, produk, diskon: diskon);
                     this.gridControl.Refresh();
                     RefreshTotal();
 
@@ -671,7 +696,9 @@ namespace OpenRetail.App.Transaksi
 
                             if (!IsExist(produk.produk_id))
                             {
-                                SetItemProduk(grid, rowIndex, colIndex, produk);
+                                double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+
+                                SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
                                 grid.Refresh();
                                 RefreshTotal();
 
@@ -706,7 +733,9 @@ namespace OpenRetail.App.Transaksi
 
                                 if (!IsExist(produk.produk_id))
                                 {
-                                    SetItemProduk(grid, rowIndex, colIndex, produk);
+                                    double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+
+                                    SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
                                     grid.Refresh();
                                     RefreshTotal();
 
@@ -735,11 +764,12 @@ namespace OpenRetail.App.Transaksi
 
                         break;
 
-                    case 4:
+                    case 4: // jumlah
+                    case 5: // diskon
                         GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
                         break;
 
-                    case 5:
+                    case 6:
                         if (grid.RowCount == rowIndex)
                         {
                             _listOfItemJual.Add(new ItemJualProduk());
@@ -764,7 +794,8 @@ namespace OpenRetail.App.Transaksi
             switch (cc.ColIndex)
             {
                 case 4: // jumlah
-                case 5: // harga
+                case 5: // diskon
+                case 6: // harga
                     e.Handled = KeyPressHelper.NumericOnly(e);
                     break;
 
@@ -790,7 +821,11 @@ namespace OpenRetail.App.Transaksi
                         itemJual.jumlah = Convert.ToDouble(cc.Renderer.ControlValue);
                         break;
 
-                    case 5: // kolom harga
+                    case 5: // kolom diskon
+                        itemJual.diskon = Convert.ToDouble(cc.Renderer.ControlValue);
+                        break;
+
+                    case 6: // kolom harga
                         itemJual.harga_jual = Convert.ToDouble(cc.Renderer.ControlValue);
                         break;
 
@@ -798,7 +833,7 @@ namespace OpenRetail.App.Transaksi
                         break;
                 }
 
-                SetItemProduk(grid, cc.RowIndex, cc.ColIndex, produk, itemJual.jumlah, itemJual.harga_jual);
+                SetItemProduk(grid, cc.RowIndex, cc.ColIndex, produk, itemJual.jumlah, itemJual.harga_jual, itemJual.diskon);
                 grid.Refresh();
 
                 RefreshTotal();
