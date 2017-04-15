@@ -380,6 +380,7 @@
                                                 <Value>=Format(Fields!tanggal_tempo.Value, "dd-MM-yyyy")</Value>
                                                 <Style>
                                                   <FontSize>9pt</FontSize>
+                                                  <Color>=IIf((Today() &gt;= Fields!tanggal_tempo.Value) And (Fields!sisa_nota.Value &gt; 0),"Red","Black")</Color>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -392,24 +393,13 @@
                                             <Color>LightGrey</Color>
                                             <Style>None</Style>
                                           </Border>
-                                          <TopBorder>
-                                            <Style>None</Style>
-                                          </TopBorder>
-                                          <BottomBorder>
-                                            <Style>None</Style>
-                                          </BottomBorder>
-                                          <LeftBorder>
-                                            <Style>None</Style>
-                                          </LeftBorder>
-                                          <RightBorder>
-                                            <Style>None</Style>
-                                          </RightBorder>
                                           <PaddingLeft>2pt</PaddingLeft>
                                           <PaddingRight>2pt</PaddingRight>
                                           <PaddingTop>2pt</PaddingTop>
                                           <PaddingBottom>2pt</PaddingBottom>
                                         </Style>
                                       </Textbox>
+                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                   <TablixCell>

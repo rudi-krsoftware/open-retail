@@ -496,7 +496,9 @@
                                                 <TextRuns>
                                                   <TextRun>
                                                     <Value>=Format(First(Fields!tanggal_tempo.Value), "dd-MM-yyyy")</Value>
-                                                    <Style />
+                                                    <Style>
+                                                      <Color>=IIf((Today() &gt;= Fields!tanggal_tempo.Value) And (Fields!sisa_nota.Value &gt; 0),"Red","Black")</Color>
+                                                    </Style>
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style />
@@ -683,7 +685,7 @@
                                             <Top>0.68114cm</Top>
                                             <Left>0.62183cm</Left>
                                             <Height>0.6cm</Height>
-                                            <Width>16.39523cm</Width>
+                                            <Width>16.39522cm</Width>
                                             <ZIndex>6</ZIndex>
                                             <Style>
                                               <Border>

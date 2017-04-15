@@ -444,6 +444,7 @@
                                                 <Value>=Format(Fields!tanggal_tempo.Value, "dd-MM-yyyy")</Value>
                                                 <Style>
                                                   <FontSize>9pt</FontSize>
+                                                  <Color>=IIf((Today() &gt;= Fields!tanggal_tempo.Value) And (Fields!sisa_nota.Value &gt; 0),"Red","Black")</Color>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -474,6 +475,7 @@
                                           <PaddingBottom>2pt</PaddingBottom>
                                         </Style>
                                       </Textbox>
+                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                   <TablixCell>
