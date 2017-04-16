@@ -22,7 +22,7 @@
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Left>2.80208in</Left>
         <Height>0.25in</Height>
-        <Width>3.69792in</Width>
+        <Width>3.94792in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -157,7 +157,7 @@
               <Width>0.41389in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.39304in</Width>
+              <Width>3.67362in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.6639in</Width>
@@ -737,7 +737,7 @@
         <DataSetName>NotaPembelian</DataSetName>
         <Top>1.64042in</Top>
         <Height>0.5in</Height>
-        <Width>6.5in</Width>
+        <Width>6.78058in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -821,7 +821,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>1.0925in</Top>
-        <Left>3.89583in</Left>
+        <Left>3.52083in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>8</ZIndex>
@@ -852,7 +852,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>1.32028in</Top>
-        <Left>3.89583in</Left>
+        <Left>3.52083in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>9</ZIndex>
@@ -887,7 +887,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>2.21667in</Top>
-        <Left>4.61806in</Left>
+        <Left>4.86806in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>10</ZIndex>
@@ -922,7 +922,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>2.44861in</Top>
-        <Left>4.61806in</Left>
+        <Left>4.86806in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>11</ZIndex>
@@ -957,7 +957,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>2.68055in</Top>
-        <Left>4.61806in</Left>
+        <Left>4.86806in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>12</ZIndex>
@@ -1023,7 +1023,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>3.09826in</Top>
-        <Left>4.62777in</Left>
+        <Left>4.87777in</Left>
         <Height>0.25in</Height>
         <Width>1.33057in</Width>
         <ZIndex>14</ZIndex>
@@ -1118,7 +1118,7 @@
         <Top>1.31889in</Top>
         <Left>2.18625in</Left>
         <Height>0.25in</Height>
-        <Width>1.64014in</Width>
+        <Width>1.27084in</Width>
         <ZIndex>17</ZIndex>
         <Style>
           <Border>
@@ -1147,9 +1147,9 @@
         </Paragraphs>
         <rd:DefaultName>nama_supplier</rd:DefaultName>
         <Top>1.0925in</Top>
-        <Left>4.62777in</Left>
+        <Left>4.25277in</Left>
         <Height>0.25in</Height>
-        <Width>1.84723in</Width>
+        <Width>2.49723in</Width>
         <ZIndex>18</ZIndex>
         <Style>
           <Border>
@@ -1178,9 +1178,9 @@
         </Paragraphs>
         <rd:DefaultName>alamat1</rd:DefaultName>
         <Top>1.32028in</Top>
-        <Left>4.62777in</Left>
+        <Left>4.25277in</Left>
         <Height>0.25in</Height>
-        <Width>1.84583in</Width>
+        <Width>2.49723in</Width>
         <ZIndex>19</ZIndex>
         <Style>
           <Border>
@@ -1213,7 +1213,7 @@
         </Paragraphs>
         <rd:DefaultName>ppn</rd:DefaultName>
         <Top>2.44861in</Top>
-        <Left>5.375in</Left>
+        <Left>5.625in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
         <ZIndex>20</ZIndex>
@@ -1248,7 +1248,7 @@
         </Paragraphs>
         <rd:DefaultName>diskon_nota</rd:DefaultName>
         <Top>2.21667in</Top>
-        <Left>5.375in</Left>
+        <Left>5.625in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
         <ZIndex>21</ZIndex>
@@ -1283,7 +1283,7 @@
         </Paragraphs>
         <rd:DefaultName>total_nota</rd:DefaultName>
         <Top>2.68055in</Top>
-        <Left>5.375in</Left>
+        <Left>5.625in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
         <ZIndex>22</ZIndex>
@@ -1312,7 +1312,7 @@
       </Line>
       <Line Name="Line2">
         <Top>4.03208in</Top>
-        <Left>4.62777in</Left>
+        <Left>4.87777in</Left>
         <Height>0in</Height>
         <Width>1.33057in</Width>
         <ZIndex>24</ZIndex>
@@ -1325,7 +1325,7 @@
       <Line Name="Line3">
         <Top>2.97188in</Top>
         <Height>0in</Height>
-        <Width>6.5in</Width>
+        <Width>6.75in</Width>
         <ZIndex>25</ZIndex>
         <Style>
           <Border>
@@ -1337,7 +1337,7 @@
     <Height>4.03208in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>6.78058in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
