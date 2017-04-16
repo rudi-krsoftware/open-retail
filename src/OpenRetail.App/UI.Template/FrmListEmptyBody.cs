@@ -90,5 +90,38 @@ namespace OpenRetail.App.UI.Template
         {
             ImportData();
         }
+
+        private void FrmListEmptyBody_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F8:
+                    if (btnTambah.Enabled)
+                        Tambah();
+
+                    break;
+
+                case Keys.F9:
+                    if (btnPerbaiki.Enabled)
+                        Perbaiki();
+
+                    break;
+
+                case Keys.F10:
+                    if (btnHapus.Enabled)
+                        Hapus();
+
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void FrmListEmptyBody_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEsc(e))
+                Selesai();
+        }
     }
 }

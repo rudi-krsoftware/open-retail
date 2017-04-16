@@ -60,7 +60,7 @@ namespace OpenRetail.App.UI.Template
         /// <param name="title"></param>
         protected void SetButtonSelesaiToBatal()
         {
-            btnSelesai.Text = "Batal";
+            btnSelesai.Text = "Esc Batal";
         }
 
         /// <summary>
@@ -222,6 +222,21 @@ namespace OpenRetail.App.UI.Template
         {
             if (KeyPressHelper.IsEsc(e))
                 Selesai();
+        }
+
+        private void FrmEntryStandard_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F11:
+                    if (btnSimpan.Enabled)
+                        Simpan();
+
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

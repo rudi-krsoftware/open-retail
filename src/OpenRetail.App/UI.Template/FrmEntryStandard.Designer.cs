@@ -108,7 +108,7 @@
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.Size = new System.Drawing.Size(75, 23);
             this.btnSimpan.TabIndex = 0;
-            this.btnSimpan.Text = "Simpan";
+            this.btnSimpan.Text = "F11 Simpan";
             this.btnSimpan.UseVisualStyleBackColor = true;
             this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
@@ -120,7 +120,7 @@
             this.btnSelesai.Name = "btnSelesai";
             this.btnSelesai.Size = new System.Drawing.Size(75, 23);
             this.btnSelesai.TabIndex = 1;
-            this.btnSelesai.Text = "Selesai";
+            this.btnSelesai.Text = "Esc Selesai";
             this.btnSelesai.UseVisualStyleBackColor = true;
             this.btnSelesai.Click += new System.EventHandler(this.btnSelesai_Click);
             // 
@@ -140,6 +140,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmEntryStandard";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmEntryStandard_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmEntryStandard_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);

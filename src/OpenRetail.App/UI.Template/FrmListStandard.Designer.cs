@@ -126,7 +126,7 @@
             this.btnSelesai.Name = "btnSelesai";
             this.btnSelesai.Size = new System.Drawing.Size(75, 23);
             this.btnSelesai.TabIndex = 3;
-            this.btnSelesai.Text = "Selesai";
+            this.btnSelesai.Text = "Esc Selesai";
             this.btnSelesai.UseVisualStyleBackColor = true;
             this.btnSelesai.Click += new System.EventHandler(this.btnSelesai_Click);
             // 
@@ -138,7 +138,7 @@
             this.btnHapus.Size = new System.Drawing.Size(75, 23);
             this.btnHapus.TabIndex = 2;
             this.btnHapus.Tag = "3";
-            this.btnHapus.Text = "Hapus";
+            this.btnHapus.Text = "F10 Hapus";
             this.btnHapus.UseVisualStyleBackColor = true;
             this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
@@ -150,7 +150,7 @@
             this.btnPerbaiki.Size = new System.Drawing.Size(75, 23);
             this.btnPerbaiki.TabIndex = 1;
             this.btnPerbaiki.Tag = "2";
-            this.btnPerbaiki.Text = "Perbaiki";
+            this.btnPerbaiki.Text = "F9 Perbaiki";
             this.btnPerbaiki.UseVisualStyleBackColor = true;
             this.btnPerbaiki.Click += new System.EventHandler(this.btnPerbaiki_Click);
             // 
@@ -161,7 +161,7 @@
             this.btnTambah.Size = new System.Drawing.Size(75, 23);
             this.btnTambah.TabIndex = 0;
             this.btnTambah.Tag = "1";
-            this.btnTambah.Text = "Tambah";
+            this.btnTambah.Text = "F8 Tambah";
             this.btnTambah.UseVisualStyleBackColor = true;
             this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
@@ -217,10 +217,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 433);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.KeyPreview = true;
             this.Name = "FrmListStandard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmListStandard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmListStandard_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmListStandard_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
