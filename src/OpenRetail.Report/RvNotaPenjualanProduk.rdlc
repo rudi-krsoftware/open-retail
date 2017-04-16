@@ -22,7 +22,7 @@
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Left>2.80208in</Left>
         <Height>0.25in</Height>
-        <Width>3.69792in</Width>
+        <Width>3.9785in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -157,19 +157,22 @@
               <Width>0.41389in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.79929in</Width>
+              <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.6639in</Width>
+              <Width>2.4125in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.59375in</Width>
+              <Width>0.61321in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.99028in</Width>
+              <Width>0.48889in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.03889in</Width>
+              <Width>0.83403in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.01806in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -187,6 +190,7 @@
                             <TextRun>
                               <Value>No</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -233,6 +237,62 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox5">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Kode Produk</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>Silver</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox8">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -242,6 +302,7 @@
                             <TextRun>
                               <Value>Produk</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -297,6 +358,7 @@
                             <TextRun>
                               <Value>Jumlah</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -352,6 +414,7 @@
                             <TextRun>
                               <Value>Diskon</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -407,6 +470,7 @@
                             <TextRun>
                               <Value>Harga</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -462,6 +526,7 @@
                             <TextRun>
                               <Value>Sub Total</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -521,7 +586,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=RowNumber(Nothing)</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -565,6 +632,58 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="kode_produk">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!kode_produk.Value</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>kode_produk</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="nama_produk">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -573,7 +692,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!nama_produk.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -623,7 +744,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!jumlah.Value - Fields!jumlah_retur.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -675,7 +798,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=FormatNumber(Fields!diskon.Value, 2)</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -727,7 +852,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=FormatNumber(Fields!harga.Value, 2)</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -779,7 +906,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=FormatNumber(Fields!sub_total.Value, 2)</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -833,6 +962,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -848,7 +978,7 @@
         <DataSetName>NotaPenjualan</DataSetName>
         <Top>1.64042in</Top>
         <Height>0.5in</Height>
-        <Width>6.5in</Width>
+        <Width>6.78058in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -932,7 +1062,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>1.0925in</Top>
-        <Left>3.89583in</Left>
+        <Left>3.57861in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>8</ZIndex>
@@ -962,8 +1092,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>1.32028in</Top>
-        <Left>3.89583in</Left>
+        <Top>1.31889in</Top>
+        <Left>3.57861in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>9</ZIndex>
@@ -998,7 +1128,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>2.21667in</Top>
-        <Left>4.61806in</Left>
+        <Left>4.86806in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>10</ZIndex>
@@ -1033,7 +1163,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>2.44861in</Top>
-        <Left>4.61806in</Left>
+        <Left>4.86806in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>11</ZIndex>
@@ -1068,7 +1198,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>2.68055in</Top>
-        <Left>4.61806in</Left>
+        <Left>4.86806in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>12</ZIndex>
@@ -1134,7 +1264,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>3.09826in</Top>
-        <Left>4.62777in</Left>
+        <Left>4.87777in</Left>
         <Height>0.25in</Height>
         <Width>1.33057in</Width>
         <ZIndex>14</ZIndex>
@@ -1229,7 +1359,7 @@
         <Top>1.31889in</Top>
         <Left>2.18625in</Left>
         <Height>0.25in</Height>
-        <Width>1.64014in</Width>
+        <Width>1.32292in</Width>
         <ZIndex>17</ZIndex>
         <Style>
           <Border>
@@ -1258,9 +1388,9 @@
         </Paragraphs>
         <rd:DefaultName>nama_supplier</rd:DefaultName>
         <Top>1.0925in</Top>
-        <Left>4.62777in</Left>
+        <Left>4.32777in</Left>
         <Height>0.25in</Height>
-        <Width>1.84723in</Width>
+        <Width>2.45281in</Width>
         <ZIndex>18</ZIndex>
         <Style>
           <Border>
@@ -1289,9 +1419,9 @@
         </Paragraphs>
         <rd:DefaultName>alamat1</rd:DefaultName>
         <Top>1.32028in</Top>
-        <Left>4.62777in</Left>
+        <Left>4.32777in</Left>
         <Height>0.25in</Height>
-        <Width>1.84583in</Width>
+        <Width>2.45281in</Width>
         <ZIndex>19</ZIndex>
         <Style>
           <Border>
@@ -1324,7 +1454,7 @@
         </Paragraphs>
         <rd:DefaultName>ppn</rd:DefaultName>
         <Top>2.44861in</Top>
-        <Left>5.375in</Left>
+        <Left>5.625in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
         <ZIndex>20</ZIndex>
@@ -1359,7 +1489,7 @@
         </Paragraphs>
         <rd:DefaultName>diskon_nota</rd:DefaultName>
         <Top>2.21667in</Top>
-        <Left>5.375in</Left>
+        <Left>5.625in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
         <ZIndex>21</ZIndex>
@@ -1394,7 +1524,7 @@
         </Paragraphs>
         <rd:DefaultName>total_nota</rd:DefaultName>
         <Top>2.68055in</Top>
-        <Left>5.375in</Left>
+        <Left>5.625in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
         <ZIndex>22</ZIndex>
@@ -1423,7 +1553,7 @@
       </Line>
       <Line Name="Line2">
         <Top>4.03208in</Top>
-        <Left>4.62777in</Left>
+        <Left>4.87777in</Left>
         <Height>0in</Height>
         <Width>1.33057in</Width>
         <ZIndex>24</ZIndex>
@@ -1436,7 +1566,7 @@
       <Line Name="Line3">
         <Top>2.97188in</Top>
         <Height>0in</Height>
-        <Width>6.5in</Width>
+        <Width>6.75in</Width>
         <ZIndex>25</ZIndex>
         <Style>
           <Border>
@@ -1448,8 +1578,9 @@
     <Height>4.03208in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>6.78058in</Width>
   <Page>
+    <PageWidth>8in</PageWidth>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
     <TopMargin>1in</TopMargin>

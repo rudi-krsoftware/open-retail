@@ -48,9 +48,9 @@ namespace OpenRetail.App.Helper
                                     <OutputFormat>EMF</OutputFormat>
                                     <PageWidth>8.5in</PageWidth>
                                     <PageHeight>11in</PageHeight>
-                                    <MarginTop>1in</MarginTop>
-                                    <MarginLeft>1in</MarginLeft>
-                                    <MarginRight>1in</MarginRight>
+                                    <MarginTop>0.75in</MarginTop>
+                                    <MarginLeft>0.80in</MarginLeft>
+                                    <MarginRight>0.80in</MarginRight>
                                     <MarginBottom>1in</MarginBottom>
                                </DeviceInfo>";
             Warning[] warnings;
