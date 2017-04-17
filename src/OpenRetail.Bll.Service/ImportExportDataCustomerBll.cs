@@ -70,7 +70,7 @@ namespace OpenRetail.Bll.Service
                 // Look for the first row used
                 var firstRowUsed = ws.FirstRowUsed();
 
-                var colums = new string[] { "NAMA", "ALAMAT", "KONTAK", "TELEPON", "PLAFON PIUTANG" };
+                var colums = new string[] { "NAMA", "ALAMAT", "KECAMATAN", "KELURAHAN", "KOTA", "KODE POS", "KONTAK", "TELEPON", "PLAFON PIUTANG" };
 
                 for (int i = 0; i < colums.Length; i++)
                 {
@@ -122,6 +122,10 @@ namespace OpenRetail.Bll.Service
                 {
                     nama_customer = row.Field("NAMA").GetString(),
                     alamat = row.Field("ALAMAT").GetString(),
+                    kecamatan = row.Field("KECAMATAN").GetString(),
+                    kelurahan = row.Field("KELURAHAN").GetString(),
+                    kota = row.Field("KOTA").GetString(),
+                    kode_pos = row.Field("KODE POS").GetString(),
                     kontak = row.Field("KONTAK").GetString(),
                     telepon = row.Field("TELEPON").GetString(),
                     plafon_piutang = row.Field("PLAFON_PIUTANG").GetDouble()

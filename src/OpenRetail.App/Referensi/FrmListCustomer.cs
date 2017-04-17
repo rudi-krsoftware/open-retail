@@ -73,12 +73,19 @@ namespace OpenRetail.App.Referensi
             var gridListProperties = new List<GridListControlProperties>();
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nama", Width = 250 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nama", Width = 170 });
+
             gridListProperties.Add(new GridListControlProperties { Header = "Alamat", Width = 300 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Kontak", Width = 250 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Telepon", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Plafon Piutang", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Kecamatan", Width = 120 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Kelurahan", Width = 120 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Kota", Width = 120 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Kode Pos", Width = 70 });
+
+            gridListProperties.Add(new GridListControlProperties { Header = "Kontak", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Telepon", Width = 100 });
+
+            gridListProperties.Add(new GridListControlProperties { Header = "Plafon Piutang", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang" });
 
             GridListControlHelper.InitializeGridListControl<Customer>(this.gridList, _listOfCustomer, gridListProperties);
 
@@ -107,20 +114,37 @@ namespace OpenRetail.App.Referensi
                                     e.Style.CellValue = customer.alamat;
                                     break;
 
+
                                 case 4:
-                                    e.Style.CellValue = customer.kontak;
+                                    e.Style.CellValue = customer.kecamatan;
                                     break;
 
                                 case 5:
-                                    e.Style.CellValue = customer.telepon;
+                                    e.Style.CellValue = customer.kelurahan;
                                     break;
 
                                 case 6:
+                                    e.Style.CellValue = customer.kota;
+                                    break;
+
+                                case 7:
+                                    e.Style.CellValue = customer.kode_pos;
+                                    break;
+
+                                case 8:
+                                    e.Style.CellValue = customer.kontak;
+                                    break;
+
+                                case 9:
+                                    e.Style.CellValue = customer.telepon;
+                                    break;
+
+                                case 10:
                                     e.Style.CellValue = NumberHelper.NumberToString(customer.plafon_piutang);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;
 
-                                case 7:
+                                case 11:
                                     e.Style.CellValue = NumberHelper.NumberToString(customer.total_piutang - customer.total_pembayaran_piutang);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;

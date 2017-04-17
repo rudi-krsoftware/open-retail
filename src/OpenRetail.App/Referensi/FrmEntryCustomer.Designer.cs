@@ -39,6 +39,14 @@
             this.txtKontak = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtTelepon = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtPlafonPiutang = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtKecamatan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKelurahan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKota = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKodePos = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,24 +58,36 @@
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtCustomer, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 6);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 7);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 8);
             this.tableLayoutPanel3.Controls.Add(this.txtAlamat, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.txtKontak, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.txtTelepon, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.txtPlafonPiutang, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.txtKontak, 1, 6);
+            this.tableLayoutPanel3.Controls.Add(this.txtTelepon, 1, 7);
+            this.tableLayoutPanel3.Controls.Add(this.txtPlafonPiutang, 1, 8);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.txtKecamatan, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.txtKelurahan, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.txtKota, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.txtKodePos, 1, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 0, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label9, 0, 5);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 6;
+            this.tableLayoutPanel3.RowCount = 10;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(347, 127);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(476, 228);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label1
@@ -93,7 +113,7 @@
             this.txtCustomer.Name = "txtCustomer";
             this.txtCustomer.NumericOnly = false;
             this.txtCustomer.SelectionText = false;
-            this.txtCustomer.Size = new System.Drawing.Size(259, 20);
+            this.txtCustomer.Size = new System.Drawing.Size(388, 20);
             this.txtCustomer.TabIndex = 0;
             this.txtCustomer.Tag = "nama_customer";
             this.txtCustomer.ThousandSeparator = false;
@@ -113,7 +133,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 50);
+            this.label3.Location = new System.Drawing.Point(3, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 25);
             this.label3.TabIndex = 1;
@@ -124,18 +144,18 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 75);
+            this.label4.Location = new System.Drawing.Point(3, 175);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 25);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Telepon";
+            this.label4.Text = "Telepon/HP";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(3, 100);
+            this.label5.Location = new System.Drawing.Point(3, 200);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 25);
             this.label5.TabIndex = 1;
@@ -154,7 +174,7 @@
             this.txtAlamat.Name = "txtAlamat";
             this.txtAlamat.NumericOnly = false;
             this.txtAlamat.SelectionText = false;
-            this.txtAlamat.Size = new System.Drawing.Size(259, 20);
+            this.txtAlamat.Size = new System.Drawing.Size(388, 20);
             this.txtAlamat.TabIndex = 1;
             this.txtAlamat.Tag = "alamat";
             this.txtAlamat.ThousandSeparator = false;
@@ -167,12 +187,12 @@
             this.txtKontak.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKontak.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKontak.LetterOnly = false;
-            this.txtKontak.Location = new System.Drawing.Point(85, 53);
+            this.txtKontak.Location = new System.Drawing.Point(85, 153);
             this.txtKontak.Name = "txtKontak";
             this.txtKontak.NumericOnly = false;
             this.txtKontak.SelectionText = false;
-            this.txtKontak.Size = new System.Drawing.Size(259, 20);
-            this.txtKontak.TabIndex = 2;
+            this.txtKontak.Size = new System.Drawing.Size(388, 20);
+            this.txtKontak.TabIndex = 6;
             this.txtKontak.Tag = "kontak";
             this.txtKontak.ThousandSeparator = false;
             // 
@@ -183,12 +203,12 @@
             this.txtTelepon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtTelepon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtTelepon.LetterOnly = false;
-            this.txtTelepon.Location = new System.Drawing.Point(85, 78);
+            this.txtTelepon.Location = new System.Drawing.Point(85, 178);
             this.txtTelepon.Name = "txtTelepon";
             this.txtTelepon.NumericOnly = false;
             this.txtTelepon.SelectionText = false;
             this.txtTelepon.Size = new System.Drawing.Size(115, 20);
-            this.txtTelepon.TabIndex = 3;
+            this.txtTelepon.TabIndex = 7;
             this.txtTelepon.Tag = "telepon";
             this.txtTelepon.ThousandSeparator = false;
             // 
@@ -199,23 +219,134 @@
             this.txtPlafonPiutang.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPlafonPiutang.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPlafonPiutang.LetterOnly = false;
-            this.txtPlafonPiutang.Location = new System.Drawing.Point(85, 103);
+            this.txtPlafonPiutang.Location = new System.Drawing.Point(85, 203);
             this.txtPlafonPiutang.MaxLength = 20;
             this.txtPlafonPiutang.Name = "txtPlafonPiutang";
             this.txtPlafonPiutang.NumericOnly = true;
             this.txtPlafonPiutang.SelectionText = false;
             this.txtPlafonPiutang.Size = new System.Drawing.Size(115, 20);
-            this.txtPlafonPiutang.TabIndex = 4;
+            this.txtPlafonPiutang.TabIndex = 8;
             this.txtPlafonPiutang.Text = "0";
             this.txtPlafonPiutang.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPlafonPiutang.ThousandSeparator = true;
             this.txtPlafonPiutang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPlafonPiutang_KeyPress);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label6.Location = new System.Drawing.Point(3, 50);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 25);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Kecamatan";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtKecamatan
+            // 
+            this.txtKecamatan.AutoEnter = true;
+            this.txtKecamatan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKecamatan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKecamatan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtKecamatan.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKecamatan.LetterOnly = false;
+            this.txtKecamatan.Location = new System.Drawing.Point(85, 53);
+            this.txtKecamatan.Name = "txtKecamatan";
+            this.txtKecamatan.NumericOnly = false;
+            this.txtKecamatan.SelectionText = false;
+            this.txtKecamatan.Size = new System.Drawing.Size(388, 20);
+            this.txtKecamatan.TabIndex = 2;
+            this.txtKecamatan.Tag = "kecamatan";
+            this.txtKecamatan.ThousandSeparator = false;
+            // 
+            // txtKelurahan
+            // 
+            this.txtKelurahan.AutoEnter = true;
+            this.txtKelurahan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKelurahan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKelurahan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtKelurahan.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKelurahan.LetterOnly = false;
+            this.txtKelurahan.Location = new System.Drawing.Point(85, 78);
+            this.txtKelurahan.Name = "txtKelurahan";
+            this.txtKelurahan.NumericOnly = false;
+            this.txtKelurahan.SelectionText = false;
+            this.txtKelurahan.Size = new System.Drawing.Size(388, 20);
+            this.txtKelurahan.TabIndex = 3;
+            this.txtKelurahan.Tag = "kelurahan";
+            this.txtKelurahan.ThousandSeparator = false;
+            // 
+            // txtKota
+            // 
+            this.txtKota.AutoEnter = true;
+            this.txtKota.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKota.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKota.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtKota.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKota.LetterOnly = false;
+            this.txtKota.Location = new System.Drawing.Point(85, 103);
+            this.txtKota.Name = "txtKota";
+            this.txtKota.NumericOnly = false;
+            this.txtKota.SelectionText = false;
+            this.txtKota.Size = new System.Drawing.Size(388, 20);
+            this.txtKota.TabIndex = 4;
+            this.txtKota.Tag = "kota";
+            this.txtKota.ThousandSeparator = false;
+            // 
+            // txtKodePos
+            // 
+            this.txtKodePos.AutoEnter = true;
+            this.txtKodePos.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKodePos.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtKodePos.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKodePos.LetterOnly = false;
+            this.txtKodePos.Location = new System.Drawing.Point(85, 128);
+            this.txtKodePos.Name = "txtKodePos";
+            this.txtKodePos.NumericOnly = true;
+            this.txtKodePos.SelectionText = false;
+            this.txtKodePos.Size = new System.Drawing.Size(66, 20);
+            this.txtKodePos.TabIndex = 5;
+            this.txtKodePos.Tag = "kode_pos";
+            this.txtKodePos.ThousandSeparator = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label7.Location = new System.Drawing.Point(3, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 25);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Kelurahan";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label8.Location = new System.Drawing.Point(3, 100);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 25);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Kota";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label9.Location = new System.Drawing.Point(3, 125);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 25);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Kode Pos";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FrmEntryCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 209);
+            this.ClientSize = new System.Drawing.Size(476, 310);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "FrmEntryCustomer";
             this.Text = "FrmEntryCustomer";
@@ -239,5 +370,13 @@
         private UserControl.AdvancedTextbox txtKontak;
         private UserControl.AdvancedTextbox txtTelepon;
         private UserControl.AdvancedTextbox txtPlafonPiutang;
+        private System.Windows.Forms.Label label6;
+        private UserControl.AdvancedTextbox txtKecamatan;
+        private UserControl.AdvancedTextbox txtKelurahan;
+        private UserControl.AdvancedTextbox txtKota;
+        private UserControl.AdvancedTextbox txtKodePos;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

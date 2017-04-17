@@ -89,6 +89,15 @@ CREATE DOMAIN t_keterangan AS character varying(100);
 ALTER DOMAIN t_keterangan OWNER TO postgres;
 
 --
+-- Name: t_kode_pos; Type: DOMAIN; Schema: public; Owner: postgres
+--
+
+CREATE DOMAIN t_kode_pos AS character varying(6);
+
+
+ALTER DOMAIN t_kode_pos OWNER TO postgres;
+
+--
 -- Name: t_kode_produk; Type: DOMAIN; Schema: public; Owner: postgres
 --
 
@@ -1208,7 +1217,11 @@ CREATE TABLE m_customer (
     telepon t_telepon,
     plafon_piutang t_harga,
     total_piutang t_harga,
-    total_pembayaran_piutang t_harga
+    total_pembayaran_piutang t_harga,
+    kecamatan t_alamat,
+    kelurahan t_alamat,
+    kota t_alamat,
+    kode_pos t_kode_pos
 );
 
 
@@ -1231,7 +1244,8 @@ ALTER TABLE m_database_version OWNER TO postgres;
 
 CREATE TABLE m_golongan (
     golongan_id t_guid NOT NULL,
-    nama_golongan t_nama
+    nama_golongan t_nama,
+    diskon t_jumlah
 );
 
 
@@ -1383,7 +1397,8 @@ CREATE TABLE m_produk (
     golongan_id t_guid,
     minimal_stok t_jumlah DEFAULT 0,
     stok_gudang t_jumlah,
-    minimal_stok_gudang t_jumlah
+    minimal_stok_gudang t_jumlah,
+    diskon t_jumlah
 );
 
 
