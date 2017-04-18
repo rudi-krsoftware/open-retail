@@ -1737,11 +1737,26 @@ CREATE TABLE t_jual_produk (
     keterangan t_keterangan,
     tanggal_sistem timestamp without time zone DEFAULT now(),
     retur_jual_id t_guid,
-    shift_id t_guid
+    shift_id t_guid,
+    is_sdac t_bool,
+    kirim_kecamatan t_alamat,
+    kirim_kelurahan t_alamat,
+    kirim_kota t_alamat,
+    kirim_kode_pos t_kode_pos,
+    kirim_kepada t_nama,
+    kirim_alamat t_alamat,
+    kirim_telepon t_telepon
 );
 
 
 ALTER TABLE t_jual_produk OWNER TO postgres;
+
+--
+-- Name: COLUMN t_jual_produk.is_sdac; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN t_jual_produk.is_sdac IS 'Sama dengan alamat customer';
+
 
 --
 -- Name: t_jual_produk_jual_produk_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres

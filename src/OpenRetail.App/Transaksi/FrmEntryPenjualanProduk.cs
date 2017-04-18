@@ -402,7 +402,10 @@ namespace OpenRetail.App.Transaksi
                 return;
 
             if (_isNewData)
-                _jual = new JualProduk();
+            {
+                if (this._jual == null)
+                    _jual = new JualProduk();
+            }                
 
             _jual.pengguna_id = this._pengguna.pengguna_id;
             _jual.Pengguna = this._pengguna;
@@ -452,7 +455,15 @@ namespace OpenRetail.App.Transaksi
                 if (result > 0)
                 {
                     if (chkCetakNotaJual.Checked)
-                        CetakNota(_jual.jual_id);
+                    {
+                        try
+                        {
+                            CetakNota(_jual.jual_id);
+                        }
+                        catch
+                        {
+                        }
+                    }                        
                     
                     Listener.Ok(this, _isNewData, _jual);
 
@@ -562,6 +573,22 @@ namespace OpenRetail.App.Transaksi
                 this._customer = (Customer)data;
                 txtCustomer.Text = this._customer.nama_customer;
                 KeyPressHelper.NextFocus();
+            }
+            else if (data is AlamatKirim)
+            {
+                var alamatKirim = (AlamatKirim)data;
+
+                if (this._jual == null)
+                    this._jual = new JualProduk();
+
+                this._jual.is_sdac = alamatKirim.is_sdac;
+                this._jual.kirim_kepada = alamatKirim.kepada;
+                this._jual.kirim_alamat = alamatKirim.alamat;
+                this._jual.kirim_kecamatan = alamatKirim.kecamatan;
+                this._jual.kirim_kelurahan = alamatKirim.kelurahan;
+                this._jual.kirim_kota = alamatKirim.kota;
+                this._jual.kirim_kode_pos = alamatKirim.kode_pos;
+                this._jual.kirim_telepon = alamatKirim.telepon;
             }
         }
 
@@ -927,6 +954,21 @@ namespace OpenRetail.App.Transaksi
         {
             if (KeyPressHelper.IsEnter(e))
                 Simpan();
+        }
+
+        private void btnSetAlamatKirim_Click(object sender, EventArgs e)
+        {
+            if (this._customer == null || txtCustomer.Text.Length == 0)
+            {
+                MsgHelper.MsgWarning("'Customer' tidak boleh kosong !");
+                txtCustomer.Focus();
+
+                return;
+            }
+
+            var frmEntryAlamatKirim = new FrmEntryAlamatKirim("Alamat Kirim", this._customer, this._jual);
+            frmEntryAlamatKirim.Listener = this;
+            frmEntryAlamatKirim.ShowDialog();
         }
     }
 }

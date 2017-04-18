@@ -57,6 +57,7 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="AlamatKirimBll.cs" />
     <Compile Include="AlasanPenyesuaianStokBll.cs" />
     <Compile Include="BeliProdukBll.cs" />
     <Compile Include="CetakNotaBll.cs" />

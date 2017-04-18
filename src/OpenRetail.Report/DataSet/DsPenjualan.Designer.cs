@@ -5102,9 +5102,33 @@ namespace OpenRetail.Report.DataSet {
             
             private global::System.Data.DataColumn columnalamat;
             
+            private global::System.Data.DataColumn columnkecamatan;
+            
+            private global::System.Data.DataColumn columnkelurahan;
+            
+            private global::System.Data.DataColumn columnkota;
+            
+            private global::System.Data.DataColumn columnkode_pos;
+            
             private global::System.Data.DataColumn columnkontak;
             
             private global::System.Data.DataColumn columntelepon;
+            
+            private global::System.Data.DataColumn columnis_sdac;
+            
+            private global::System.Data.DataColumn columnkirim_kepada;
+            
+            private global::System.Data.DataColumn columnkirim_alamat;
+            
+            private global::System.Data.DataColumn columnkirim_kecamatan;
+            
+            private global::System.Data.DataColumn columnkirim_kelurahan;
+            
+            private global::System.Data.DataColumn columnkirim_kota;
+            
+            private global::System.Data.DataColumn columnkirim_kode_pos;
+            
+            private global::System.Data.DataColumn columnkirim_telepon;
             
             private global::System.Data.DataColumn columnnota;
             
@@ -5189,6 +5213,38 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kecamatanColumn {
+                get {
+                    return this.columnkecamatan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kelurahanColumn {
+                get {
+                    return this.columnkelurahan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kotaColumn {
+                get {
+                    return this.columnkota;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kode_posColumn {
+                get {
+                    return this.columnkode_pos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn kontakColumn {
                 get {
                     return this.columnkontak;
@@ -5200,6 +5256,70 @@ namespace OpenRetail.Report.DataSet {
             public global::System.Data.DataColumn teleponColumn {
                 get {
                     return this.columntelepon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn is_sdacColumn {
+                get {
+                    return this.columnis_sdac;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kirim_kepadaColumn {
+                get {
+                    return this.columnkirim_kepada;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kirim_alamatColumn {
+                get {
+                    return this.columnkirim_alamat;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kirim_kecamatanColumn {
+                get {
+                    return this.columnkirim_kecamatan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kirim_kelurahanColumn {
+                get {
+                    return this.columnkirim_kelurahan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kirim_kotaColumn {
+                get {
+                    return this.columnkirim_kota;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kirim_kode_posColumn {
+                get {
+                    return this.columnkirim_kode_pos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kirim_teleponColumn {
+                get {
+                    return this.columnkirim_telepon;
                 }
             }
             
@@ -5371,8 +5491,20 @@ namespace OpenRetail.Report.DataSet {
             public NotaPenjualanRow AddNotaPenjualanRow(
                         string nama_customer, 
                         string alamat, 
+                        string kecamatan, 
+                        string kelurahan, 
+                        string kota, 
+                        string kode_pos, 
                         string kontak, 
                         string telepon, 
+                        string is_sdac, 
+                        string kirim_kepada, 
+                        string kirim_alamat, 
+                        string kirim_kecamatan, 
+                        string kirim_kelurahan, 
+                        string kirim_kota, 
+                        string kirim_kode_pos, 
+                        string kirim_telepon, 
                         string nota, 
                         System.DateTime tanggal, 
                         System.DateTime tanggal_tempo, 
@@ -5393,8 +5525,20 @@ namespace OpenRetail.Report.DataSet {
                 object[] columnValuesArray = new object[] {
                         nama_customer,
                         alamat,
+                        kecamatan,
+                        kelurahan,
+                        kota,
+                        kode_pos,
                         kontak,
                         telepon,
+                        is_sdac,
+                        kirim_kepada,
+                        kirim_alamat,
+                        kirim_kecamatan,
+                        kirim_kelurahan,
+                        kirim_kota,
+                        kirim_kode_pos,
+                        kirim_telepon,
                         nota,
                         tanggal,
                         tanggal_tempo,
@@ -5435,8 +5579,20 @@ namespace OpenRetail.Report.DataSet {
             internal void InitVars() {
                 this.columnnama_customer = base.Columns["nama_customer"];
                 this.columnalamat = base.Columns["alamat"];
+                this.columnkecamatan = base.Columns["kecamatan"];
+                this.columnkelurahan = base.Columns["kelurahan"];
+                this.columnkota = base.Columns["kota"];
+                this.columnkode_pos = base.Columns["kode_pos"];
                 this.columnkontak = base.Columns["kontak"];
                 this.columntelepon = base.Columns["telepon"];
+                this.columnis_sdac = base.Columns["is_sdac"];
+                this.columnkirim_kepada = base.Columns["kirim_kepada"];
+                this.columnkirim_alamat = base.Columns["kirim_alamat"];
+                this.columnkirim_kecamatan = base.Columns["kirim_kecamatan"];
+                this.columnkirim_kelurahan = base.Columns["kirim_kelurahan"];
+                this.columnkirim_kota = base.Columns["kirim_kota"];
+                this.columnkirim_kode_pos = base.Columns["kirim_kode_pos"];
+                this.columnkirim_telepon = base.Columns["kirim_telepon"];
                 this.columnnota = base.Columns["nota"];
                 this.columntanggal = base.Columns["tanggal"];
                 this.columntanggal_tempo = base.Columns["tanggal_tempo"];
@@ -5462,10 +5618,34 @@ namespace OpenRetail.Report.DataSet {
                 base.Columns.Add(this.columnnama_customer);
                 this.columnalamat = new global::System.Data.DataColumn("alamat", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnalamat);
+                this.columnkecamatan = new global::System.Data.DataColumn("kecamatan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkecamatan);
+                this.columnkelurahan = new global::System.Data.DataColumn("kelurahan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkelurahan);
+                this.columnkota = new global::System.Data.DataColumn("kota", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkota);
+                this.columnkode_pos = new global::System.Data.DataColumn("kode_pos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkode_pos);
                 this.columnkontak = new global::System.Data.DataColumn("kontak", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnkontak);
                 this.columntelepon = new global::System.Data.DataColumn("telepon", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntelepon);
+                this.columnis_sdac = new global::System.Data.DataColumn("is_sdac", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnis_sdac);
+                this.columnkirim_kepada = new global::System.Data.DataColumn("kirim_kepada", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkirim_kepada);
+                this.columnkirim_alamat = new global::System.Data.DataColumn("kirim_alamat", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkirim_alamat);
+                this.columnkirim_kecamatan = new global::System.Data.DataColumn("kirim_kecamatan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkirim_kecamatan);
+                this.columnkirim_kelurahan = new global::System.Data.DataColumn("kirim_kelurahan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkirim_kelurahan);
+                this.columnkirim_kota = new global::System.Data.DataColumn("kirim_kota", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkirim_kota);
+                this.columnkirim_kode_pos = new global::System.Data.DataColumn("kirim_kode_pos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkirim_kode_pos);
+                this.columnkirim_telepon = new global::System.Data.DataColumn("kirim_telepon", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkirim_telepon);
                 this.columnnota = new global::System.Data.DataColumn("nota", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnota);
                 this.columntanggal = new global::System.Data.DataColumn("tanggal", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -9571,6 +9751,70 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kecamatan {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kecamatanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kecamatan\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kecamatanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kelurahan {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kelurahanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kelurahan\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kelurahanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kota {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kotaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kota\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kotaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kode_pos {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kode_posColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kode_pos\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kode_posColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string kontak {
                 get {
                     try {
@@ -9598,6 +9842,134 @@ namespace OpenRetail.Report.DataSet {
                 }
                 set {
                     this[this.tableNotaPenjualan.teleponColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string is_sdac {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.is_sdacColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'is_sdac\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.is_sdacColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kirim_kepada {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kirim_kepadaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kirim_kepada\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kirim_kepadaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kirim_alamat {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kirim_alamatColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kirim_alamat\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kirim_alamatColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kirim_kecamatan {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kirim_kecamatanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kirim_kecamatan\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kirim_kecamatanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kirim_kelurahan {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kirim_kelurahanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kirim_kelurahan\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kirim_kelurahanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kirim_kota {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kirim_kotaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kirim_kota\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kirim_kotaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kirim_kode_pos {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kirim_kode_posColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kirim_kode_pos\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kirim_kode_posColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kirim_telepon {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.kirim_teleponColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kirim_telepon\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.kirim_teleponColumn] = value;
                 }
             }
             
@@ -9883,6 +10255,54 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IskecamatanNull() {
+                return this.IsNull(this.tableNotaPenjualan.kecamatanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetkecamatanNull() {
+                this[this.tableNotaPenjualan.kecamatanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IskelurahanNull() {
+                return this.IsNull(this.tableNotaPenjualan.kelurahanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetkelurahanNull() {
+                this[this.tableNotaPenjualan.kelurahanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IskotaNull() {
+                return this.IsNull(this.tableNotaPenjualan.kotaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetkotaNull() {
+                this[this.tableNotaPenjualan.kotaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskode_posNull() {
+                return this.IsNull(this.tableNotaPenjualan.kode_posColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkode_posNull() {
+                this[this.tableNotaPenjualan.kode_posColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IskontakNull() {
                 return this.IsNull(this.tableNotaPenjualan.kontakColumn);
             }
@@ -9903,6 +10323,102 @@ namespace OpenRetail.Report.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetteleponNull() {
                 this[this.tableNotaPenjualan.teleponColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isis_sdacNull() {
+                return this.IsNull(this.tableNotaPenjualan.is_sdacColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setis_sdacNull() {
+                this[this.tableNotaPenjualan.is_sdacColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskirim_kepadaNull() {
+                return this.IsNull(this.tableNotaPenjualan.kirim_kepadaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkirim_kepadaNull() {
+                this[this.tableNotaPenjualan.kirim_kepadaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskirim_alamatNull() {
+                return this.IsNull(this.tableNotaPenjualan.kirim_alamatColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkirim_alamatNull() {
+                this[this.tableNotaPenjualan.kirim_alamatColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskirim_kecamatanNull() {
+                return this.IsNull(this.tableNotaPenjualan.kirim_kecamatanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkirim_kecamatanNull() {
+                this[this.tableNotaPenjualan.kirim_kecamatanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskirim_kelurahanNull() {
+                return this.IsNull(this.tableNotaPenjualan.kirim_kelurahanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkirim_kelurahanNull() {
+                this[this.tableNotaPenjualan.kirim_kelurahanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskirim_kotaNull() {
+                return this.IsNull(this.tableNotaPenjualan.kirim_kotaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkirim_kotaNull() {
+                this[this.tableNotaPenjualan.kirim_kotaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskirim_kode_posNull() {
+                return this.IsNull(this.tableNotaPenjualan.kirim_kode_posColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkirim_kode_posNull() {
+                this[this.tableNotaPenjualan.kirim_kode_posColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskirim_teleponNull() {
+                return this.IsNull(this.tableNotaPenjualan.kirim_teleponColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkirim_teleponNull() {
+                this[this.tableNotaPenjualan.kirim_teleponColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

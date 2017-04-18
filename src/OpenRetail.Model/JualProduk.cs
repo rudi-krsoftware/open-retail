@@ -36,6 +36,7 @@ namespace OpenRetail.Model
 
         public JualProduk()
         {
+            is_sdac = true;
             item_jual = new List<ItemJualProduk>();
             item_jual_deleted = new List<ItemJualProduk>();
         }
@@ -91,6 +92,32 @@ namespace OpenRetail.Model
 		
 		[Display(Name = "keterangan")]
 		public string keterangan { get; set; }
+
+        /// <summary>
+        /// Property untuk menyimpan informasi apakah alamat kirim sama dengan alamat customer
+        /// </summary>
+        public bool is_sdac { get; set; }
+
+        [Display(Name = "Kepada")]
+        public string kirim_kepada { get; set; }
+
+        [Display(Name = "Alamat")]
+        public string kirim_alamat { get; set; }
+
+        [Display(Name = "Kecamatan")]
+        public string kirim_kecamatan { get; set; }
+
+        [Display(Name = "Kelurahan")]
+        public string kirim_kelurahan { get; set; }
+
+        [Display(Name = "Kota")]
+        public string kirim_kota { get; set; }
+
+        [Display(Name = "Kode Pos")]
+        public string kirim_kode_pos { get; set; }
+
+        [Display(Name = "Telepon")]
+        public string kirim_telepon { get; set; }
 
         [JsonIgnore]
         [Write(false)]

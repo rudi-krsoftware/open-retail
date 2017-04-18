@@ -472,6 +472,12 @@
     <Compile Include="Referensi\FrmListGolongan.Designer.cs">
       <DependentUpon>FrmListGolongan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transaksi\FrmEntryAlamatKirim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FrmEntryAlamatKirim.Designer.cs">
+      <DependentUpon>FrmEntryAlamatKirim.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transaksi\FrmEntryPembayaranPiutangPenjualanProduk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -726,6 +732,9 @@
     <EmbeddedResource Include="Referensi\FrmListGolongan.resx">
       <DependentUpon>FrmListGolongan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FrmEntryAlamatKirim.resx">
+      <DependentUpon>FrmEntryAlamatKirim.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmEntryPembayaranPiutangPenjualanProduk.resx">
       <DependentUpon>FrmEntryPembayaranPiutangPenjualanProduk.cs</DependentUpon>
     </EmbeddedResource>
@@ -873,6 +882,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main-icon.ico" />
+    <None Include="Resources\address16.png" />
     <None Include="Resources\import-data16.png" />
     <None Include="Resources\excel16.png" />
     <None Include="Resources\import-excel16.png" />

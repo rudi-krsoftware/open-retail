@@ -27,8 +27,25 @@ namespace OpenRetail.Model.Nota
     {
         public string nama_customer { get; set; }
         public string alamat { get; set; }
+        public string kecamatan { get; set; }
+        public string kelurahan { get; set; }
+        public string kota { get; set; }
+        public string kode_pos { get; set; }
+
         public string kontak { get; set; }
         public string telepon { get; set; }
+
+        /// <summary>
+        /// Property untuk menyimpan informasi apakah alamat kirim sama dengan alamat customer
+        /// </summary>
+        public bool is_sdac { get; set; }
+
+        public string kirim_kepada { get; set; }
+        public string kirim_alamat { get; set; }
+        public string kirim_kecamatan { get; set; }
+        public string kirim_kelurahan { get; set; }
+        public string kirim_kota { get; set; }
+        public string kirim_kode_pos { get; set; }
 
         public string nota { get; set; }
         public DateTime tanggal { get; set; }

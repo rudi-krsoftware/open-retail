@@ -72,8 +72,9 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT m_customer.nama_customer, m_customer.alamat, m_customer.kontak, m_customer.telepon, 
+                var sql = @"SELECT m_customer.nama_customer, m_customer.alamat, m_customer.kecamatan, m_customer.kelurahan, m_customer.kota, m_customer.kode_pos, m_customer.kontak, m_customer.telepon, 
                             t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, t_jual_produk.ppn, t_jual_produk.diskon AS diskon_nota, t_jual_produk.total_nota,
+                            t_jual_produk.is_sdac, t_jual_produk.kirim_kepada, t_jual_produk.kirim_alamat, t_jual_produk.kirim_kecamatan, t_jual_produk.kirim_kelurahan, t_jual_produk.kirim_kota, t_jual_produk.kirim_kode_pos, t_jual_produk.kirim_telepon,
                             m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan,
                             t_item_jual_produk.harga_jual AS harga, t_item_jual_produk.jumlah, t_item_jual_produk.jumlah_retur, t_item_jual_produk.diskon
                             FROM public.t_jual_produk INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id

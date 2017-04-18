@@ -59,6 +59,9 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="AlamatKirim.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="AlasanPenyesuaianStok.cs" />
     <Compile Include="BeliProduk.cs" />
     <Compile Include="Customer.cs" />

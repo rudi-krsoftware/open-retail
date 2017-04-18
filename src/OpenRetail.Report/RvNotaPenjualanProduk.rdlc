@@ -1612,12 +1612,60 @@
           <DataField>alamat</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="kecamatan">
+          <DataField>kecamatan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kelurahan">
+          <DataField>kelurahan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kota">
+          <DataField>kota</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kode_pos">
+          <DataField>kode_pos</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="kontak">
           <DataField>kontak</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="telepon">
           <DataField>telepon</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="is_sdac">
+          <DataField>is_sdac</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kirim_kepada">
+          <DataField>kirim_kepada</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kirim_alamat">
+          <DataField>kirim_alamat</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kirim_kecamatan">
+          <DataField>kirim_kecamatan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kirim_kelurahan">
+          <DataField>kirim_kelurahan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kirim_kota">
+          <DataField>kirim_kota</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kirim_kode_pos">
+          <DataField>kirim_kode_pos</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kirim_telepon">
+          <DataField>kirim_telepon</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="nota">

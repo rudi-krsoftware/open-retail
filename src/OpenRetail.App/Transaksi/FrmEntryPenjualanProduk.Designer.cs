@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,8 +43,10 @@
             this.dtpTanggal = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.txtNota = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtCustomer = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtKeterangan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtCustomer = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.btnSetAlamatKirim = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridControl = new Syncfusion.Windows.Forms.Grid.GridControl();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -57,9 +60,11 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
@@ -99,8 +104,8 @@
             this.tableLayoutPanel4.Controls.Add(this.dtpTanggal, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.label7, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.txtNota, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.txtCustomer, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.txtKeterangan, 1, 4);
+            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel2, 1, 3);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 56);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -254,23 +259,6 @@
             this.txtNota.Tag = "nota";
             this.txtNota.ThousandSeparator = false;
             // 
-            // txtCustomer
-            // 
-            this.txtCustomer.AutoEnter = false;
-            this.txtCustomer.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtCustomer.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtCustomer.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtCustomer.LetterOnly = false;
-            this.txtCustomer.Location = new System.Drawing.Point(71, 78);
-            this.txtCustomer.Name = "txtCustomer";
-            this.txtCustomer.NumericOnly = false;
-            this.txtCustomer.SelectionText = false;
-            this.txtCustomer.Size = new System.Drawing.Size(291, 20);
-            this.txtCustomer.TabIndex = 3;
-            this.txtCustomer.Tag = "";
-            this.txtCustomer.ThousandSeparator = false;
-            this.txtCustomer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomer_KeyPress);
-            // 
             // txtKeterangan
             // 
             this.txtKeterangan.AutoEnter = false;
@@ -288,6 +276,47 @@
             this.txtKeterangan.Tag = "keterangan";
             this.txtKeterangan.ThousandSeparator = false;
             this.txtKeterangan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKeterangan_KeyPress);
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.txtCustomer);
+            this.flowLayoutPanel2.Controls.Add(this.btnSetAlamatKirim);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(68, 75);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(681, 25);
+            this.flowLayoutPanel2.TabIndex = 3;
+            // 
+            // txtCustomer
+            // 
+            this.txtCustomer.AutoEnter = false;
+            this.txtCustomer.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCustomer.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtCustomer.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtCustomer.LetterOnly = false;
+            this.txtCustomer.Location = new System.Drawing.Point(3, 3);
+            this.txtCustomer.Name = "txtCustomer";
+            this.txtCustomer.NumericOnly = false;
+            this.txtCustomer.SelectionText = false;
+            this.txtCustomer.Size = new System.Drawing.Size(291, 20);
+            this.txtCustomer.TabIndex = 3;
+            this.txtCustomer.Tag = "";
+            this.txtCustomer.ThousandSeparator = false;
+            this.txtCustomer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomer_KeyPress);
+            // 
+            // btnSetAlamatKirim
+            // 
+            this.btnSetAlamatKirim.Image = global::OpenRetail.App.Properties.Resources.address16;
+            this.btnSetAlamatKirim.Location = new System.Drawing.Point(300, 2);
+            this.btnSetAlamatKirim.Margin = new System.Windows.Forms.Padding(3, 2, 3, 0);
+            this.btnSetAlamatKirim.Name = "btnSetAlamatKirim";
+            this.btnSetAlamatKirim.Size = new System.Drawing.Size(34, 23);
+            this.btnSetAlamatKirim.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.btnSetAlamatKirim, "Ganti alamat kirim");
+            this.btnSetAlamatKirim.UseVisualStyleBackColor = true;
+            this.btnSetAlamatKirim.Click += new System.EventHandler(this.btnSetAlamatKirim_Click);
             // 
             // panel1
             // 
@@ -471,6 +500,11 @@
             this.lblTotal.Text = "0";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Informasi";
+            // 
             // FrmEntryPenjualanProduk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,6 +521,8 @@
             this.tableLayoutPanel4.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -529,6 +565,9 @@
         private UserControl.AdvancedTextbox txtNota;
         private UserControl.AdvancedTextbox txtCustomer;
         private UserControl.AdvancedTextbox txtKeterangan;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Button btnSetAlamatKirim;
+        private System.Windows.Forms.ToolTip toolTip1;
 
     }
 }
