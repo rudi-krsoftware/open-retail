@@ -115,6 +115,7 @@ namespace OpenRetail.App.Transaksi
             txtCustomer.Text = this._customer.nama_customer;
             txtKeterangan.Text = this._jual.keterangan;
 
+            txtOngkosKirim.Text = this._jual.ongkos_kirim.ToString();
             txtDiskon.Text = this._jual.diskon.ToString();
             txtPPN.Text = this._jual.ppn.ToString();
 
@@ -331,6 +332,7 @@ namespace OpenRetail.App.Transaksi
             if (total > 0)
             {
                 total -= NumberHelper.StringToDouble(txtDiskon.Text);
+                total += NumberHelper.StringToDouble(txtOngkosKirim.Text);
                 total += NumberHelper.StringToDouble(txtPPN.Text);
             }
 
@@ -421,6 +423,7 @@ namespace OpenRetail.App.Transaksi
                 _jual.tanggal_tempo = dtpTanggalTempo.Value;
             }
 
+            _jual.ongkos_kirim = NumberHelper.StringToDouble(txtOngkosKirim.Text);
             _jual.ppn = NumberHelper.StringToDouble(txtPPN.Text);
             _jual.diskon = NumberHelper.StringToDouble(txtDiskon.Text);
             _jual.keterangan = txtKeterangan.Text;
@@ -925,6 +928,11 @@ namespace OpenRetail.App.Transaksi
             }
         }
 
+        private void txtOngkosKirim_TextChanged(object sender, EventArgs e)
+        {
+            RefreshTotal();
+        }
+
         private void txtDiskon_TextChanged(object sender, EventArgs e)
         {
             RefreshTotal();
@@ -969,6 +977,6 @@ namespace OpenRetail.App.Transaksi
             var frmEntryAlamatKirim = new FrmEntryAlamatKirim("Alamat Kirim", this._customer, this._jual);
             frmEntryAlamatKirim.Listener = this;
             frmEntryAlamatKirim.ShowDialog();
-        }
+        }        
     }
 }

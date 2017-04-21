@@ -52,7 +52,8 @@ namespace OpenRetail.Model.Nota
         public DateTime tanggal_tempo { get; set; }
         public double ppn { get; set; }
         public double diskon_nota { get; set; }
-        public double total_nota { get; set; }
+        public double ongkos_kirim { get; set; }
+        public double total_nota { get; set; }        
 
         public string kode_produk { get; set; }
         public string nama_produk { get; set; }

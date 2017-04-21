@@ -32,7 +32,7 @@ namespace OpenRetail.Repository.Service.Report
     public class ReportJualProdukRepository : IReportJualProdukRepository
     {
         private const string SQL_TEMPLATE_HEADER = @"SELECT t_jual_produk.retur_jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, 
-                                                     t_jual_produk.ppn, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan, t_jual_produk.keterangan, t_jual_produk.tanggal_sistem,
+                                                     t_jual_produk.ppn, t_jual_produk.ongkos_kirim, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan, t_jual_produk.keterangan, t_jual_produk.tanggal_sistem,
                                                      m_customer.customer_id, m_customer.nama_customer, m_pengguna.pengguna_id, m_pengguna.nama_pengguna,
                                                      m_role.role_id, m_role.nama_role, m_shift.shift_id, m_shift.nama_shift
                                                      FROM public.t_jual_produk INNER JOIN public.m_pengguna ON t_jual_produk.pengguna_id = m_pengguna.pengguna_id

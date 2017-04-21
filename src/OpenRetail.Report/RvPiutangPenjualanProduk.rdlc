@@ -1474,6 +1474,10 @@
           <DataField>ppn</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
+        <Field Name="ongkos_kirim">
+          <DataField>ongkos_kirim</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
         <Field Name="diskon_nota">
           <DataField>diskon_nota</DataField>
           <rd:TypeName>System.Double</rd:TypeName>

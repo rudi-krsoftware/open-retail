@@ -72,7 +72,7 @@ namespace OpenRetail.Repository.Service
             {
                 var sql = @"SELECT t_item_pembayaran_piutang_produk.item_pembayaran_piutang_id, t_item_pembayaran_piutang_produk.pembayaran_piutang_id, t_item_pembayaran_piutang_produk.nominal, t_item_pembayaran_piutang_produk.keterangan, 
                             t_item_pembayaran_piutang_produk.tanggal_sistem, 1 as entity_state, (SELECT COUNT(*) FROM t_item_pembayaran_piutang_produk WHERE jual_id = t_jual_produk.jual_id) AS jumlah_angsuran,
-                            t_jual_produk.jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, t_jual_produk.ppn, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan
+                            t_jual_produk.jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, t_jual_produk.ppn, t_jual_produk.ongkos_kirim, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan
                             FROM public.t_item_pembayaran_piutang_produk INNER JOIN public.t_jual_produk ON t_item_pembayaran_piutang_produk.jual_id = t_jual_produk.jual_id
                             WHERE t_item_pembayaran_piutang_produk.pembayaran_piutang_id = @id
                             ORDER BY t_item_pembayaran_piutang_produk.tanggal_sistem";

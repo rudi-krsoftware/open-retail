@@ -18,10 +18,10 @@
               <Width>0.42754in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.33912in</Width>
+              <Width>1.19329in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.8722in</Width>
+              <Width>2.01806in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.49537in</Width>
@@ -851,14 +851,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="jumlah">
+                    <Textbox Name="jumlah_retur">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=FormatNumber(Fields!jumlah.Value - Fields!jumlah_retur, 2)</Value>
+                              <Value>=FormatNumber(Fields!jumlah.Value-Fields!jumlah_retur.Value, 2)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -869,7 +869,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>jumlah</rd:DefaultName>
+                      <rd:DefaultName>jumlah_retur</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -1242,7 +1242,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox16">
+                    <Textbox Name="Textbox8">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -1260,7 +1260,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox16</rd:DefaultName>
+                      <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -1388,7 +1388,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -1424,7 +1423,7 @@
         <DataSetName>ReportPenjualanProdukDetail</DataSetName>
         <Top>0.67931in</Top>
         <Height>0.65289in</Height>
-        <Width>7.57288in</Width>
+        <Width>7.57291in</Width>
         <Style>
           <Border>
             <Style>None</Style>

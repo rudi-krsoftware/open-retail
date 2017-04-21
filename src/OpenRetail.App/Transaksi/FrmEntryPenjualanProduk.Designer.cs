@@ -61,6 +61,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.txtOngkosKirim = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -87,7 +89,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(755, 468);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
@@ -325,7 +327,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 186);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(749, 225);
+            this.panel1.Size = new System.Drawing.Size(749, 198);
             this.panel1.TabIndex = 1;
             // 
             // gridControl
@@ -334,7 +336,7 @@
             this.gridControl.Location = new System.Drawing.Point(5, 5);
             this.gridControl.Name = "gridControl";
             this.gridControl.SerializeCellsBehavior = Syncfusion.Windows.Forms.Grid.GridSerializeCellsBehavior.SerializeAsRangeStylesIntoCode;
-            this.gridControl.Size = new System.Drawing.Size(739, 215);
+            this.gridControl.Size = new System.Drawing.Size(739, 188);
             this.gridControl.SmartSizeBox = false;
             this.gridControl.TabIndex = 0;
             this.gridControl.Text = "gridControl1";
@@ -350,28 +352,31 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.Controls.Add(this.label8, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label9, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.chkCetakNotaJual, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.txtDiskon, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.txtPPN, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.txtPPN, 2, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label9, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label8, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.txtDiskon, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.txtOngkosKirim, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 417);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 390);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowCount = 3;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(749, 48);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(749, 75);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(324, 0);
+            this.label8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label8.Location = new System.Drawing.Point(599, 25);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(315, 25);
+            this.label8.Size = new System.Drawing.Size(40, 25);
             this.label8.TabIndex = 0;
             this.label8.Text = "Diskon";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -379,10 +384,10 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(324, 25);
+            this.label9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label9.Location = new System.Drawing.Point(610, 50);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(315, 25);
+            this.label9.Size = new System.Drawing.Size(29, 25);
             this.label9.TabIndex = 0;
             this.label9.Text = "PPN";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -417,13 +422,13 @@
             this.txtDiskon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDiskon.LetterOnly = false;
-            this.txtDiskon.Location = new System.Drawing.Point(645, 3);
+            this.txtDiskon.Location = new System.Drawing.Point(645, 28);
             this.txtDiskon.MaxLength = 20;
             this.txtDiskon.Name = "txtDiskon";
             this.txtDiskon.NumericOnly = true;
             this.txtDiskon.SelectionText = false;
             this.txtDiskon.Size = new System.Drawing.Size(100, 20);
-            this.txtDiskon.TabIndex = 0;
+            this.txtDiskon.TabIndex = 1;
             this.txtDiskon.Text = "0";
             this.txtDiskon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDiskon.ThousandSeparator = true;
@@ -436,13 +441,13 @@
             this.txtPPN.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPPN.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPPN.LetterOnly = false;
-            this.txtPPN.Location = new System.Drawing.Point(645, 28);
+            this.txtPPN.Location = new System.Drawing.Point(645, 53);
             this.txtPPN.MaxLength = 20;
             this.txtPPN.Name = "txtPPN";
             this.txtPPN.NumericOnly = true;
             this.txtPPN.SelectionText = false;
             this.txtPPN.Size = new System.Drawing.Size(100, 20);
-            this.txtPPN.TabIndex = 1;
+            this.txtPPN.TabIndex = 2;
             this.txtPPN.Text = "0";
             this.txtPPN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPPN.ThousandSeparator = true;
@@ -504,6 +509,36 @@
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Informasi";
+            // 
+            // txtOngkosKirim
+            // 
+            this.txtOngkosKirim.AutoEnter = true;
+            this.txtOngkosKirim.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtOngkosKirim.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtOngkosKirim.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtOngkosKirim.LetterOnly = false;
+            this.txtOngkosKirim.Location = new System.Drawing.Point(645, 3);
+            this.txtOngkosKirim.MaxLength = 20;
+            this.txtOngkosKirim.Name = "txtOngkosKirim";
+            this.txtOngkosKirim.NumericOnly = true;
+            this.txtOngkosKirim.SelectionText = false;
+            this.txtOngkosKirim.Size = new System.Drawing.Size(100, 20);
+            this.txtOngkosKirim.TabIndex = 0;
+            this.txtOngkosKirim.Text = "0";
+            this.txtOngkosKirim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtOngkosKirim.ThousandSeparator = true;
+            this.txtOngkosKirim.TextChanged += new System.EventHandler(this.txtOngkosKirim_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label11.Location = new System.Drawing.Point(570, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(69, 25);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Ongkos Kirim";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FrmEntryPenjualanProduk
             // 
@@ -568,6 +603,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btnSetAlamatKirim;
         private System.Windows.Forms.ToolTip toolTip1;
+        private UserControl.AdvancedTextbox txtOngkosKirim;
+        private System.Windows.Forms.Label label11;
 
     }
 }

@@ -32,13 +32,14 @@ namespace OpenRetail.Model.Report
         public DateTime tanggal { get; set; }
         public double ppn { get; set; }
         public double diskon { get; set; }
+        public double ongkos_kirim { get; set; }
         public double total_nota { get; set; }
         public string keterangan_jual { get; set; }
         public string keterangan_bayar { get; set; }
 
         public double grand_total
         {
-            get { return total_nota - diskon + ppn; }
+            get { return total_nota - diskon + ongkos_kirim + ppn; }
         }
 
         public double pelunasan { get; set; }

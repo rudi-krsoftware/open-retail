@@ -897,78 +897,83 @@ ALTER FUNCTION public.f_update_total_hutang_supplier() OWNER TO postgres;
 
 CREATE FUNCTION f_update_total_jual_produk() RETURNS trigger
     LANGUAGE plpgsql
-    AS $$
-DECLARE 
-	var_jual_id 			t_guid;
-    var_retur_jual_id		t_guid;
-    var_diskon				t_harga;
-    var_ppn					t_harga;
-	var_total_nota 			t_harga;        
-    var_jumlah_retur_lama 	t_jumlah;
-    var_jumlah_retur_baru 	t_jumlah;
-    var_tanggal_tempo		DATE;
-    is_retur				t_bool;
-    
-BEGIN
-	is_retur := FALSE;
-    
-	IF TG_OP = 'INSERT' OR TG_OP = 'UPDATE' THEN
-    	var_jual_id := NEW.jual_id;    
-    ELSE
-    	var_jual_id := OLD.jual_id;        
-    END IF;	    	          
-
-    var_total_nota := (SELECT SUM((jumlah - jumlah_retur) * (harga_jual - (diskon / 100 * harga_jual))) 
-    				   FROM t_item_jual_produk
-					   WHERE jual_id = var_jual_id);	    
-	IF var_total_nota IS NULL THEN
-    	var_total_nota := 0;  
-	END IF;     
-    
-    var_total_nota := ROUND(var_total_nota, 0);      
-    
-	SELECT ppn, diskon INTO var_ppn, var_diskon
-    FROM t_jual_produk WHERE jual_id = var_jual_id;            
-    
-    IF var_ppn IS NULL THEN
-    	var_ppn := 0;  
-	END IF;
-    
-    IF var_diskon IS NULL THEN
-    	var_diskon := 0;  
-	END IF;
-    
-    IF TG_OP = 'UPDATE' THEN -- pengecekan retur
-    	-- jumlah retur
-        var_jumlah_retur_baru = NEW.jumlah_retur;
-        var_jumlah_retur_lama = OLD.jumlah_retur;        
-        
-    	IF var_jumlah_retur_lama <> var_jumlah_retur_baru THEN
-			is_retur := TRUE;
-			
-            var_retur_jual_id := (SELECT retur_jual_id FROM t_retur_jual_produk WHERE jual_id = var_jual_id LIMIT 1);
-            var_tanggal_tempo := (SELECT tanggal_tempo FROM t_jual_produk WHERE jual_id = var_jual_id);                                                
-            
-            IF var_tanggal_tempo IS NULL THEN -- nota tunai            	
-                UPDATE t_jual_produk SET total_nota = var_total_nota, retur_jual_id = var_retur_jual_id 
-                WHERE jual_id = var_jual_id;                
-                
-                UPDATE t_item_pembayaran_piutang_produk SET nominal = var_total_nota - var_diskon + var_ppn
-                WHERE jual_id = var_jual_id;
-            ELSE
-            	UPDATE t_jual_produk SET total_nota = var_total_nota, retur_jual_id = var_retur_jual_id 
-                WHERE jual_id = var_jual_id;
-            END IF;        
-        END IF;        
-    END IF;              
-
-	IF (is_retur = FALSE) THEN -- bukan retur    	
-    	UPDATE t_jual_produk SET total_nota = var_total_nota, retur_jual_id = NULL 
-        WHERE jual_id = var_jual_id;
-    END IF;
-    
-    RETURN NULL;
-END;
+    AS $$
+DECLARE 
+	var_jual_id 			t_guid;
+    var_retur_jual_id		t_guid;
+    var_diskon				t_harga;
+    var_ppn					t_harga;
+	var_ongkos_kirim		t_harga;
+	var_total_nota 			t_harga;        
+    var_jumlah_retur_lama 	t_jumlah;
+    var_jumlah_retur_baru 	t_jumlah;
+    var_tanggal_tempo		DATE;
+    is_retur				t_bool;
+    
+BEGIN
+	is_retur := FALSE;
+    
+	IF TG_OP = 'INSERT' OR TG_OP = 'UPDATE' THEN
+    	var_jual_id := NEW.jual_id;    
+    ELSE
+    	var_jual_id := OLD.jual_id;        
+    END IF;	    	          
+
+    var_total_nota := (SELECT SUM((jumlah - jumlah_retur) * (harga_jual - (diskon / 100 * harga_jual))) 
+    				   FROM t_item_jual_produk
+					   WHERE jual_id = var_jual_id);	    
+	IF var_total_nota IS NULL THEN
+    	var_total_nota := 0;  
+	END IF;     
+    
+    var_total_nota := ROUND(var_total_nota, 0);      
+    
+	SELECT ppn, ongkos_kirim, diskon INTO var_ppn, var_ongkos_kirim, var_diskon
+    FROM t_jual_produk WHERE jual_id = var_jual_id;            
+    
+    IF var_ppn IS NULL THEN
+    	var_ppn := 0;  
+	END IF;
+    
+	IF var_ongkos_kirim IS NULL THEN
+    	var_ongkos_kirim := 0;  
+	END IF;
+	
+    IF var_diskon IS NULL THEN
+    	var_diskon := 0;  
+	END IF;
+    
+    IF TG_OP = 'UPDATE' THEN -- pengecekan retur
+    	-- jumlah retur
+        var_jumlah_retur_baru = NEW.jumlah_retur;
+        var_jumlah_retur_lama = OLD.jumlah_retur;        
+        
+    	IF var_jumlah_retur_lama <> var_jumlah_retur_baru THEN
+			is_retur := TRUE;
+			
+            var_retur_jual_id := (SELECT retur_jual_id FROM t_retur_jual_produk WHERE jual_id = var_jual_id LIMIT 1);
+            var_tanggal_tempo := (SELECT tanggal_tempo FROM t_jual_produk WHERE jual_id = var_jual_id);                                                
+            
+            IF var_tanggal_tempo IS NULL THEN -- nota tunai            	
+                UPDATE t_jual_produk SET total_nota = var_total_nota, retur_jual_id = var_retur_jual_id 
+                WHERE jual_id = var_jual_id;                
+                
+                UPDATE t_item_pembayaran_piutang_produk SET nominal = var_total_nota - var_diskon + var_ppn + var_ongkos_kirim
+                WHERE jual_id = var_jual_id;
+            ELSE
+            	UPDATE t_jual_produk SET total_nota = var_total_nota, retur_jual_id = var_retur_jual_id 
+                WHERE jual_id = var_jual_id;
+            END IF;        
+        END IF;        
+    END IF;              
+
+	IF (is_retur = FALSE) THEN -- bukan retur    	
+    	UPDATE t_jual_produk SET total_nota = var_total_nota, retur_jual_id = NULL 
+        WHERE jual_id = var_jual_id;
+    END IF;
+    
+    RETURN NULL;
+END;
 $$;
 
 
@@ -1054,64 +1059,64 @@ ALTER FUNCTION public.f_update_total_pengeluaran() OWNER TO postgres;
 
 CREATE FUNCTION f_update_total_piutang_customer() RETURNS trigger
     LANGUAGE plpgsql
-    AS $$
-DECLARE 	
-    var_total_piutang	t_harga;
-    var_total_pelunasan	t_harga;
-  	var_customer_id		t_guid;
-    var_customer_id_old	t_guid;
-    
-BEGIN
-	IF TG_OP = 'INSERT' OR TG_OP = 'UPDATE' THEN
-    	var_customer_id := NEW.customer_id;        
-    ELSE
-    	var_customer_id := OLD.customer_id;
-        var_customer_id_old = OLD.customer_id;
-    END IF;
-	    	            
-	SELECT SUM(total_nota - diskon + ppn), SUM(total_pelunasan)
-    INTO var_total_piutang, var_total_pelunasan
-	FROM t_jual_produk     
-    WHERE tanggal_tempo IS NOT NULL AND customer_id = var_customer_id;
-    
-    IF var_total_piutang IS NULL THEN
-        var_total_piutang := 0;  
-    END IF;
-    
-    IF var_total_pelunasan IS NULL THEN
-        var_total_pelunasan := 0;  
-    END IF;
-        
-    UPDATE m_customer SET total_piutang = var_total_piutang, total_pembayaran_piutang = var_total_pelunasan
-	WHERE customer_id = var_customer_id;        
-    
-    IF TG_OP = 'UPDATE' THEN
-		var_customer_id_old = OLD.customer_id;
-		
-        IF var_customer_id <> var_customer_id_old THEN
-        	SELECT SUM(total_nota - diskon + ppn), SUM(total_pelunasan)
-            INTO var_total_piutang, var_total_pelunasan
-            FROM t_jual_produk             
-            WHERE tanggal_tempo IS NOT NULL AND customer_id = var_customer_id_old;
-            
-            IF var_total_piutang IS NULL THEN
-                var_total_piutang := 0;  
-            END IF;
-            
-            IF var_total_pelunasan IS NULL THEN
-                var_total_pelunasan := 0;  
-            END IF;                           
-			
-			UPDATE m_customer SET total_piutang = var_total_piutang, total_pembayaran_piutang = var_total_pelunasan
-            WHERE customer_id = var_customer_id_old;
-            
-            UPDATE t_pembayaran_piutang_produk SET customer_id = var_customer_id 
-            WHERE pembayaran_piutang_id IN (SELECT pembayaran_piutang_id FROM t_item_pembayaran_piutang_produk WHERE jual_id = NEW.jual_id);
-        END IF;
-    END IF;
-    
-    RETURN NULL;
-END;
+    AS $$
+DECLARE 	
+    var_total_piutang	t_harga;
+    var_total_pelunasan	t_harga;
+  	var_customer_id		t_guid;
+    var_customer_id_old	t_guid;
+    
+BEGIN
+	IF TG_OP = 'INSERT' OR TG_OP = 'UPDATE' THEN
+    	var_customer_id := NEW.customer_id;        
+    ELSE
+    	var_customer_id := OLD.customer_id;
+        var_customer_id_old = OLD.customer_id;
+    END IF;
+	    	            
+	SELECT SUM(total_nota - diskon + ongkos_kirim + ppn), SUM(total_pelunasan)
+    INTO var_total_piutang, var_total_pelunasan
+	FROM t_jual_produk     
+    WHERE tanggal_tempo IS NOT NULL AND customer_id = var_customer_id;
+    
+    IF var_total_piutang IS NULL THEN
+        var_total_piutang := 0;  
+    END IF;
+    
+    IF var_total_pelunasan IS NULL THEN
+        var_total_pelunasan := 0;  
+    END IF;
+        
+    UPDATE m_customer SET total_piutang = var_total_piutang, total_pembayaran_piutang = var_total_pelunasan
+	WHERE customer_id = var_customer_id;        
+    
+    IF TG_OP = 'UPDATE' THEN
+		var_customer_id_old = OLD.customer_id;
+		
+        IF var_customer_id <> var_customer_id_old THEN
+        	SELECT SUM(total_nota - diskon + ongkos_kirim + ppn), SUM(total_pelunasan)
+            INTO var_total_piutang, var_total_pelunasan
+            FROM t_jual_produk             
+            WHERE tanggal_tempo IS NOT NULL AND customer_id = var_customer_id_old;
+            
+            IF var_total_piutang IS NULL THEN
+                var_total_piutang := 0;  
+            END IF;
+            
+            IF var_total_pelunasan IS NULL THEN
+                var_total_pelunasan := 0;  
+            END IF;                           
+			
+			UPDATE m_customer SET total_piutang = var_total_piutang, total_pembayaran_piutang = var_total_pelunasan
+            WHERE customer_id = var_customer_id_old;
+            
+            UPDATE t_pembayaran_piutang_produk SET customer_id = var_customer_id 
+            WHERE pembayaran_piutang_id IN (SELECT pembayaran_piutang_id FROM t_item_pembayaran_piutang_produk WHERE jual_id = NEW.jual_id);
+        END IF;
+    END IF;
+    
+    RETURN NULL;
+END;
 $$;
 
 
@@ -1745,7 +1750,8 @@ CREATE TABLE t_jual_produk (
     kirim_kode_pos t_kode_pos,
     kirim_kepada t_nama,
     kirim_alamat t_alamat,
-    kirim_telepon t_telepon
+    kirim_telepon t_telepon,
+    ongkos_kirim t_harga
 );
 
 

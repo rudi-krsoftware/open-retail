@@ -82,6 +82,9 @@ namespace OpenRetail.Model
 		[Display(Name = "Diskon")]
 		public double diskon { get; set; }
 
+        [Display(Name = "Ongkos Kirim")]
+        public double ongkos_kirim { get; set; }
+
         [Computed]
 		[Display(Name = "total_nota")]
 		public double total_nota { get; set; }
@@ -152,7 +155,7 @@ namespace OpenRetail.Model
         [Computed]
         public double grand_total
         {
-            get { return total_nota - diskon + ppn; }
+            get { return total_nota - diskon + ongkos_kirim + ppn; }
         }
 
         [JsonIgnore]

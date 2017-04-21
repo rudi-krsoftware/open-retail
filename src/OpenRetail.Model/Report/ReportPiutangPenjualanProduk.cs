@@ -32,7 +32,8 @@ namespace OpenRetail.Model.Report
         public DateTime tanggal { get; set; }
         public DateTime tanggal_tempo { get; set; }
         public double ppn { get; set; }
-        public double diskon_nota { get; set; }        
+        public double diskon_nota { get; set; }
+        public double ongkos_kirim { get; set; }
         public double total_nota { get; set; }
         public double total_pelunasan { get; set; }
         public double total_pelunasan_customer  { get; set; }
@@ -57,7 +58,7 @@ namespace OpenRetail.Model.Report
 
         public double grand_total
         {
-            get { return total_nota - diskon_nota + ppn; }
+            get { return total_nota - diskon_nota + ongkos_kirim + ppn; }
         }
 
         public double grand_total_customer { get; set; }

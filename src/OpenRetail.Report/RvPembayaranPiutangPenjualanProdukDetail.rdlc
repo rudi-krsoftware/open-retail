@@ -1205,6 +1205,10 @@
           <DataField>diskon</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
+        <Field Name="ongkos_kirim">
+          <DataField>ongkos_kirim</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
         <Field Name="total_nota">
           <DataField>total_nota</DataField>
           <rd:TypeName>System.Double</rd:TypeName>

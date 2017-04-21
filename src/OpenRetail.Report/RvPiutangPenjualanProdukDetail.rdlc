@@ -475,7 +475,6 @@
                                           <PaddingBottom>2pt</PaddingBottom>
                                         </Style>
                                       </Textbox>
-                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                   <TablixCell>
@@ -522,6 +521,7 @@
                                           <PaddingBottom>2pt</PaddingBottom>
                                         </Style>
                                       </Textbox>
+                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                   <TablixCell>
@@ -1267,6 +1267,10 @@
         </Field>
         <Field Name="diskon">
           <DataField>diskon</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ongkos_kirim">
+          <DataField>ongkos_kirim</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="total_nota">

@@ -33,12 +33,12 @@ namespace OpenRetail.Repository.Service.Report
     {
         private const string SQL_TEMPLATE = @"SELECT m_customer.customer_id, m_customer.nama_customer, t_jual_produk.tanggal, m_produk.nama_produk, m_produk.satuan, 
                                               SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur) AS jumlah, 
-                                              (SUM((t_item_jual_produk.harga_jual - (t_item_jual_produk.harga_jual * t_item_jual_produk.diskon / 100)) * (t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur)) - t_jual_produk.diskon) + t_jual_produk.ppn AS total, 1 AS jenis
+                                              (SUM((t_item_jual_produk.harga_jual - (t_item_jual_produk.harga_jual * t_item_jual_produk.diskon / 100)) * (t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur)) - t_jual_produk.diskon) + t_jual_produk.ppn + t_jual_produk.ongkos_kirim AS total, 1 AS jenis
                                               FROM public.t_item_jual_produk INNER JOIN public.m_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
                                               INNER JOIN public.t_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
                                               INNER JOIN public.m_customer ON m_customer.customer_id = t_jual_produk.customer_id
                                               {WHERE_1}
-                                              GROUP BY m_customer.customer_id, m_customer.nama_customer, t_jual_produk.tanggal, t_jual_produk.diskon, t_jual_produk.ppn, m_produk.nama_produk, m_produk.satuan                                                   
+                                              GROUP BY m_customer.customer_id, m_customer.nama_customer, t_jual_produk.tanggal, t_jual_produk.diskon, t_jual_produk.ppn, t_jual_produk.ongkos_kirim, m_produk.nama_produk, m_produk.satuan                                                   
                                               UNION
                                               SELECT m_customer.customer_id, m_customer.nama_customer, t_pembayaran_piutang_produk.tanggal, t_pembayaran_piutang_produk.keterangan AS nama_produk, '' AS satuan, 0 AS jumlah, SUM(t_item_pembayaran_piutang_produk.nominal) AS total, 2 AS jenis
                                               FROM public.t_pembayaran_piutang_produk INNER JOIN public.t_item_pembayaran_piutang_produk ON t_item_pembayaran_piutang_produk.pembayaran_piutang_id = t_pembayaran_piutang_produk.pembayaran_piutang_id

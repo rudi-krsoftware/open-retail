@@ -29,10 +29,11 @@ namespace OpenRetail.Model.Report
         public string nama_customer { get; set; }
         public double ppn { get; set; }
         public double diskon { get; set; }
+        public double ongkos_kirim { get; set; }
         public double total_nota { get; set; }
         public double grand_total
         {
-            get { return total_nota - diskon + ppn; }
+            get { return total_nota - diskon + ongkos_kirim + ppn; }
         }
 
         public double total_pelunasan { get; set; }
