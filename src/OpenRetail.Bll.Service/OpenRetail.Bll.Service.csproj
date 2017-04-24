@@ -66,6 +66,7 @@
     <Compile Include="DbConnectionHelper.cs" />
     <Compile Include="GajiKaryawanBll.cs" />
     <Compile Include="GolonganBll.cs" />
+    <Compile Include="HeaderNotaBll.cs" />
     <Compile Include="ImportExportDataCustomerBll.cs" />
     <Compile Include="ImportExportDataGolonganBll.cs" />
     <Compile Include="ImportExportDataProdukBll.cs" />

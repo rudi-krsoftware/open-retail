@@ -67,7 +67,9 @@
     <Compile Include="Customer.cs" />
     <Compile Include="DatabaseVersion.cs" />
     <Compile Include="GajiKaryawan.cs" />
+    <Compile Include="HeaderNota.cs" />
     <Compile Include="ItemPengeluaranBiaya.cs" />
+    <Compile Include="JenisNota.cs" />
     <Compile Include="Kasbon.cs" />
     <Compile Include="Nota\NotaPembelian.cs" />
     <Compile Include="Nota\NotaPenjualan.cs" />

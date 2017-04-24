@@ -52,6 +52,7 @@
     <Compile Include="IDbConnectionHelper.cs" />
     <Compile Include="IGajiKaryawanBll.cs" />
     <Compile Include="IGolonganBll.cs" />
+    <Compile Include="IHeaderNotaBll.cs" />
     <Compile Include="IImportExportDataBll.cs" />
     <Compile Include="IItemMenuBll.cs" />
     <Compile Include="IJabatanBll.cs" />

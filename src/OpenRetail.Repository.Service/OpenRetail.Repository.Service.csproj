@@ -64,6 +64,7 @@
     <Compile Include="DatabaseVersionRepository.cs" />
     <Compile Include="GajiKaryawanRepository.cs" />
     <Compile Include="GolonganRepository.cs" />
+    <Compile Include="HeaderNotaRepository.cs" />
     <Compile Include="ItemMenuRepository.cs" />
     <Compile Include="JabatanRepository.cs" />
     <Compile Include="JenisPengeluaranRepository.cs" />

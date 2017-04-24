@@ -80,6 +80,8 @@ namespace OpenRetail.Repository.Service
         private IReportKasbonRepository _reportKasbonRepository;
         private IReportGajiKaryawanRepository _reportGajiKaryawanRepository;
 
+        private IHeaderNotaRepository _headerNotaRepository;
+
         public UnitOfWork(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -294,6 +296,11 @@ namespace OpenRetail.Repository.Service
         public ICetakNotaRepository CetakNotaRepository
         {
             get { return _cetakNotaRepository ?? (_cetakNotaRepository = new CetakNotaRepository(_context, _log)); }
+        }
+
+        public IHeaderNotaRepository HeaderNotaRepository
+        {
+            get { return _headerNotaRepository ?? (_headerNotaRepository = new HeaderNotaRepository(_context, _log)); }
         }
     }
 }     

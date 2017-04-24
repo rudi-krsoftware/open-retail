@@ -1257,6 +1257,20 @@ CREATE TABLE m_golongan (
 ALTER TABLE m_golongan OWNER TO postgres;
 
 --
+-- Name: m_header_nota; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_header_nota (
+    header_nota_id t_guid NOT NULL,
+    keterangan t_keterangan,
+    order_number integer,
+    is_active t_bool
+);
+
+
+ALTER TABLE m_header_nota OWNER TO postgres;
+
+--
 -- Name: m_item_menu; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2108,6 +2122,14 @@ ALTER TABLE ONLY m_database_version
 
 ALTER TABLE ONLY m_golongan
     ADD CONSTRAINT m_golongan_pkey PRIMARY KEY (golongan_id);
+
+
+--
+-- Name: m_header_nota_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_header_nota
+    ADD CONSTRAINT m_header_nota_pkey PRIMARY KEY (header_nota_id);
 
 
 --

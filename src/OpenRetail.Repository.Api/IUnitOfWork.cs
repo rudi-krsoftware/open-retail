@@ -64,6 +64,7 @@ namespace OpenRetail.Repository.Api
         IRolePrivilegeRepository RolePrivilegeRepository { get; }
         IMenuRepository MenuRepository { get; }
         IItemMenuRepository ItemMenuRepository { get; }
+        IHeaderNotaRepository HeaderNotaRepository { get; }
 
         IProfilRepository ProfilRepository { get; }
 

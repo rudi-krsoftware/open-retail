@@ -51,6 +51,7 @@
     <Compile Include="IDatabaseVersionRepository.cs" />
     <Compile Include="IGajiKaryawanRepository.cs" />
     <Compile Include="IGolonganRepository.cs" />
+    <Compile Include="IHeaderNotaRepository.cs" />
     <Compile Include="IItemMenuRepository.cs" />
     <Compile Include="IJabatanRepository.cs" />
     <Compile Include="IJenisPengeluaranRepository.cs" />
