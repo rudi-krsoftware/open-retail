@@ -35,9 +35,8 @@ namespace OpenRetail.Bll.Service
 		private ILog _log;
 		private HeaderNotaValidator _validator;
 
-		public HeaderNotaBll(ILog log)
+		public HeaderNotaBll()
         {
-			_log = log;
             _validator = new HeaderNotaValidator();
         }
 

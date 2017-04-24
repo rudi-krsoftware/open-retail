@@ -46,6 +46,7 @@ namespace OpenRetail.Model.Nota
         public string kirim_kelurahan { get; set; }
         public string kirim_kota { get; set; }
         public string kirim_kode_pos { get; set; }
+        public string kirim_telepon { get; set; }
 
         public string nota { get; set; }
         public DateTime tanggal { get; set; }

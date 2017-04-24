@@ -502,13 +502,26 @@ namespace OpenRetail.App.Transaksi
                     Value = listOfItemNota
                 };
 
-                var parameters = new List<ReportParameter>();
-                parameters.Add(new ReportParameter("profil", _profil.nama_profil));
-                parameters.Add(new ReportParameter("alamat", _profil.alamat));
-                parameters.Add(new ReportParameter("kota", _profil.kota));
-                parameters.Add(new ReportParameter("telepon", _profil.telepon));
+                // set header nota
+                var parameters = new List<ReportParameter>();                
+                var index = 1;
 
-                var printReport = new ReportViewerPrintHelper("RvNotaPenjualanProduk", reportDataSource, parameters, _pengaturanUmum.nama_printer);
+                foreach (var item in _pengaturanUmum.list_of_header_nota)
+                {
+                    var paramName = string.Format("header{0}", index);
+                    parameters.Add(new ReportParameter(paramName, item.keterangan));
+
+                    index++;
+                }                
+
+                // set footer nota
+                var dt = DateTime.Now;
+                var kotaAndTanggal = string.Format("{0}, {1}", _profil.kota, dt.Day + " " + DayMonthHelper.GetBulanIndonesia(dt.Month) + " " + dt.Year);
+
+                parameters.Add(new ReportParameter("kota", kotaAndTanggal));
+                parameters.Add(new ReportParameter("footer", _pengguna.nama_pengguna));
+
+                var printReport = new ReportViewerPrintHelper("RvNotaPenjualanProduk2", reportDataSource, parameters, _pengaturanUmum.nama_printer);
                 printReport.Print();
             }
         }

@@ -5578,7 +5578,7 @@ namespace OpenRetail.Report.DataSet {
                         string kode_pos, 
                         string kontak, 
                         string telepon, 
-                        string is_sdac, 
+                        bool is_sdac, 
                         string kirim_kepada, 
                         string kirim_alamat, 
                         string kirim_kecamatan, 
@@ -5714,7 +5714,7 @@ namespace OpenRetail.Report.DataSet {
                 base.Columns.Add(this.columnkontak);
                 this.columntelepon = new global::System.Data.DataColumn("telepon", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntelepon);
-                this.columnis_sdac = new global::System.Data.DataColumn("is_sdac", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnis_sdac = new global::System.Data.DataColumn("is_sdac", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnis_sdac);
                 this.columnkirim_kepada = new global::System.Data.DataColumn("kirim_kepada", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnkirim_kepada);
@@ -10078,10 +10078,10 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string is_sdac {
+            public bool is_sdac {
                 get {
                     try {
-                        return ((string)(this[this.tableNotaPenjualan.is_sdacColumn]));
+                        return ((bool)(this[this.tableNotaPenjualan.is_sdacColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'is_sdac\' in table \'NotaPenjualan\' is DBNull.", e);

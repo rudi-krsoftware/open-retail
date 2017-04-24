@@ -35,14 +35,12 @@ namespace OpenRetail.Bll.Service.UnitTest
     [TestClass]
     public class HeaderNotaBllTest
     {
-		private ILog _log;
         private IHeaderNotaBll _bll;
 
         [TestInitialize]
         public void Init()
         {
-            _log = LogManager.GetLogger(typeof(HeaderNotaBllTest));
-            _bll = new HeaderNotaBll(_log);
+            _bll = new HeaderNotaBll();
         }
 
         [TestCleanup]

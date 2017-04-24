@@ -56,6 +56,7 @@ namespace OpenRetail.Repository.Api
         IGajiKaryawanRepository GajiKaryawanRepository { get; }
 
         ICetakNotaRepository CetakNotaRepository { get; }
+        ICetakNotaRepository CetakNotaDummyRepository { get; }
 
         ILog4NetRepository Log4NetRepository { get; }
         

@@ -21,12 +21,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpenRetail.Model
+using log4net;
+using OpenRetail.Model.Nota;
+using OpenRetail.Bll.Api;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Service;
+
+namespace OpenRetail.Bll.Service
 {
-    public class PengaturanUmum
+    public class CetakNotaDummyBll :ICetakNotaBll
     {
-        public string nama_printer { get; set; }
-        public bool is_auto_print { get; set; }
-        public IList<HeaderNota> list_of_header_nota { get; set; }
+        private ILog _log;
+
+        public IList<NotaPembelian> GetNotaPembelian(string beliProdukId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<NotaPenjualan> GetNotaPenjualan(string jualProdukId)
+        {
+            IList<NotaPenjualan> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.CetakNotaDummyRepository.GetNotaPenjualan(jualProdukId);
+            }
+
+            return oList;
+        }
     }
 }

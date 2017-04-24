@@ -31,11 +31,15 @@ using OpenRetail.Bll.Service;
 using OpenRetail.App.UI.Template;
 using OpenRetail.App.Helper;
 using System.Drawing.Printing;
+using Microsoft.Reporting.WinForms;
+using ConceptCave.WaitCursor;
+using OpenRetail.App.UserControl;
 
 namespace OpenRetail.App.Pengaturan
 {
     public partial class FrmPengaturanUmum : FrmEntryStandard
     {
+        private IList<AdvancedTextbox> _listOfTxtHeaderNota = new List<AdvancedTextbox>();
         private PengaturanUmum _pengaturanUmum = null;
         
         public FrmPengaturanUmum(string header, PengaturanUmum pengaturanUmum)
@@ -50,6 +54,30 @@ namespace OpenRetail.App.Pengaturan
 
             LoadPrinter(this._pengaturanUmum.nama_printer);
             chkCetakOtomatis.Checked = this._pengaturanUmum.is_auto_print;
+
+            LoadHeaderNota();
+        }
+
+        private void LoadHeaderNota()
+        {
+            _listOfTxtHeaderNota.Add(txtHeader1);
+            _listOfTxtHeaderNota.Add(txtHeader2);
+            _listOfTxtHeaderNota.Add(txtHeader3);
+            _listOfTxtHeaderNota.Add(txtHeader4);
+            _listOfTxtHeaderNota.Add(txtHeader5);
+
+            IHeaderNotaBll bll = new HeaderNotaBll();
+            var listOfHeaderNota = bll.GetAll();
+
+            var index = 0;
+            foreach (var item in listOfHeaderNota)
+            {
+                var txtHeader = _listOfTxtHeaderNota[index];
+                txtHeader.Tag = item.header_nota_id;
+                txtHeader.Text = item.keterangan;
+
+                index++;
+            }
         }
 
         private void LoadPrinter(string defaultPrinter)
@@ -70,14 +98,80 @@ namespace OpenRetail.App.Pengaturan
 
         protected override void Simpan()
         {
-            _pengaturanUmum.nama_printer = cmbPrinter.Text;
-            _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                _pengaturanUmum.nama_printer = cmbPrinter.Text;
+                _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
 
-            var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
-            AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
-            AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
+                var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
+                AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
+                AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
 
-            this.Close();    
+                // simpan header nota
+                SimpanHeaderNota();
+
+                this.Close();    
+            }            
+        }
+
+        private void SimpanHeaderNota()
+        {            
+            IHeaderNotaBll headerNotaBll = new HeaderNotaBll();
+
+            var index = 0;
+            foreach (var item in _listOfTxtHeaderNota)
+            {
+                var headerNota = new HeaderNota
+                {
+                    header_nota_id = item.Tag.ToString(),
+                    keterangan = item.Text
+                };
+
+                var result = headerNotaBll.Update(headerNota);
+                if (result > 0)
+                {
+                    _pengaturanUmum.list_of_header_nota[index].header_nota_id = headerNota.header_nota_id;
+                    _pengaturanUmum.list_of_header_nota[index].keterangan = headerNota.keterangan;
+                }
+
+                index++;
+            }
+        }
+
+        private void btnLihatContohNotaPenjualan_Click(object sender, EventArgs e)
+        {
+            var jualProdukId = string.Empty;
+
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                ICetakNotaBll bll = new CetakNotaDummyBll();
+                var listOfJual = bll.GetNotaPenjualan(jualProdukId);
+
+                if (listOfJual.Count > 0)
+                {
+                    var reportDataSource = new ReportDataSource
+                    {
+                        Name = "NotaPenjualan",
+                        Value = listOfJual
+                    };
+
+                    var parameters = new List<ReportParameter>();
+                    parameters.Add(new ReportParameter("header1", txtHeader1.Text));
+                    parameters.Add(new ReportParameter("header2", txtHeader2.Text));
+                    parameters.Add(new ReportParameter("header3", txtHeader3.Text));
+                    parameters.Add(new ReportParameter("header4", txtHeader4.Text));
+                    parameters.Add(new ReportParameter("header5", txtHeader5.Text));
+
+                    var dt = DateTime.Now;
+                    var kotaAndTanggal = string.Format("{0}, {1}", MainProgram.profil.kota, dt.Day + " " + DayMonthHelper.GetBulanIndonesia(dt.Month) + " " + dt.Year);
+
+                    parameters.Add(new ReportParameter("kota", kotaAndTanggal));
+                    parameters.Add(new ReportParameter("footer", MainProgram.pengguna.nama_pengguna));
+
+                    var frmPreviewReport = new FrmPreviewReport("Contoh Nota Penjualan", "RvNotaPenjualanProduk2", reportDataSource, parameters);
+                    frmPreviewReport.ShowDialog();
+                }
+            }            
         }
     }
 }

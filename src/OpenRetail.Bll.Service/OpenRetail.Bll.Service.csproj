@@ -61,6 +61,7 @@
     <Compile Include="AlasanPenyesuaianStokBll.cs" />
     <Compile Include="BeliProdukBll.cs" />
     <Compile Include="CetakNotaBll.cs" />
+    <Compile Include="CetakNotaDummyBll.cs" />
     <Compile Include="CustomerBll.cs" />
     <Compile Include="DatabaseVersionBll.cs" />
     <Compile Include="DbConnectionHelper.cs" />

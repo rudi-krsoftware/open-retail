@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="AlasanPenyesuaianStokRepository.cs" />
     <Compile Include="BeliProdukRepository.cs" />
+    <Compile Include="CetakNotaDummyRepository.cs" />
     <Compile Include="CetakNotaRepository.cs" />
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="DapperContext.cs" />
