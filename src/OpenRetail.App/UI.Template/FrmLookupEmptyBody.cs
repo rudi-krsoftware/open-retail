@@ -72,10 +72,17 @@ namespace OpenRetail.App.UI.Template
             Batal();
         }
 
+        private void FrmLookupEmptyBody_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (KeyPressHelper.IsShortcutKey(Keys.F10, e))
+                if (btnPilih.Enabled)
+                    Pilih();
+        }
+
         private void FrmLookupEmptyBody_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEsc(e))
                 Batal();
-        }
+        }        
     }
 }

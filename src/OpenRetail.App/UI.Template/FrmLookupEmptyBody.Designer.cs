@@ -109,7 +109,7 @@
             this.btnPilih.Name = "btnPilih";
             this.btnPilih.Size = new System.Drawing.Size(75, 23);
             this.btnPilih.TabIndex = 0;
-            this.btnPilih.Text = "Pilih";
+            this.btnPilih.Text = "F10 Pilih";
             this.btnPilih.UseVisualStyleBackColor = true;
             this.btnPilih.Click += new System.EventHandler(this.btnPilih_Click);
             // 
@@ -121,7 +121,7 @@
             this.btnBatal.Name = "btnBatal";
             this.btnBatal.Size = new System.Drawing.Size(75, 23);
             this.btnBatal.TabIndex = 1;
-            this.btnBatal.Text = "Batal";
+            this.btnBatal.Text = "Esc Batal";
             this.btnBatal.UseVisualStyleBackColor = true;
             this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
             // 
@@ -141,6 +141,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmLookupEmptyBody";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLookupEmptyBody_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmLookupEmptyBody_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);

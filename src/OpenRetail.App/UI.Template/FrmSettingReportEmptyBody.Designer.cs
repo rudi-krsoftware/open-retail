@@ -74,7 +74,7 @@
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(75, 23);
             this.btnPreview.TabIndex = 0;
-            this.btnPreview.Text = "Preview";
+            this.btnPreview.Text = "F10 Preview";
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
@@ -86,7 +86,7 @@
             this.btnSelesai.Name = "btnSelesai";
             this.btnSelesai.Size = new System.Drawing.Size(75, 23);
             this.btnSelesai.TabIndex = 1;
-            this.btnSelesai.Text = "Selesai";
+            this.btnSelesai.Text = "Esc Selesai";
             this.btnSelesai.UseVisualStyleBackColor = true;
             this.btnSelesai.Click += new System.EventHandler(this.btnSelesai_Click);
             // 
@@ -138,6 +138,7 @@
             this.Name = "FrmSettingReportEmptyBody";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSettingReportEmptyBody";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmSettingReportEmptyBody_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmSettingReportEmptyBody_KeyPress);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pnlFooter.ResumeLayout(false);

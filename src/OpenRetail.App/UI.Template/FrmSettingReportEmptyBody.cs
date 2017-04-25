@@ -94,10 +94,16 @@ namespace OpenRetail.App.UI.Template
             Selesai();
         }
 
+        private void FrmSettingReportEmptyBody_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (KeyPressHelper.IsShortcutKey(Keys.F10, e))
+                Preview();
+        }
+
         private void FrmSettingReportEmptyBody_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEsc(e))
                 Selesai();
-        }
+        }        
     }
 }
