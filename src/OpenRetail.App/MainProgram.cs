@@ -92,6 +92,7 @@ namespace OpenRetail.App
 
         /// <summary>
         /// Method untuk mengirim bug/error program via email menggunakan library CrashReporter.NET
+        /// Untuk petunjuknya cek: http://coding4ever.net/blog/2015/04/14/paket-nuget-yang-wajib-dicoba-bagian-number-1-crashreporter-dot-net/
         /// </summary>
         /// <param name="exception"></param>
         static void ReportCrash(Exception exception)
