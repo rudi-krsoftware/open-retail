@@ -38,7 +38,8 @@ namespace OpenRetail.Repository.Service.Report
                                                      GROUP BY c.customer_id, c.nama_customer, p.tanggal, p.keterangan
                                                      ORDER BY p.tanggal, c.nama_customer";
 
-        private const string SQL_TEMPLATE_DETAIL = @"SELECT c.customer_id, c.nama_customer, j.nota AS nota_jual, p.nota AS nota_bayar, p.tanggal, j.ppn, j.diskon, j.total_nota, i.nominal AS pelunasan, j.keterangan AS keterangan_jual, p.keterangan AS keterangan_bayar
+        private const string SQL_TEMPLATE_DETAIL = @"SELECT c.customer_id, c.nama_customer, j.nota AS nota_jual, p.nota AS nota_bayar, p.tanggal, j.ppn, j.diskon, j.ongkos_kirim, j.total_nota, 
+                                                     i.nominal AS pelunasan, j.keterangan AS keterangan_jual, p.keterangan AS keterangan_bayar
                                                      FROM public.t_jual_produk j INNER JOIN public.t_item_pembayaran_piutang_produk i ON i.jual_id = j.jual_id
                                                      INNER JOIN public.m_customer c ON j.customer_id = c.customer_id
                                                      INNER JOIN public.t_pembayaran_piutang_produk p ON i.pembayaran_piutang_id = p.pembayaran_piutang_id
