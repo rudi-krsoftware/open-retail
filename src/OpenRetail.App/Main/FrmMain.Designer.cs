@@ -92,11 +92,10 @@
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuHakAksesAplikasi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuManajemenOperator = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuKeluar = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuGantiUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuKeluarDariProgram = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBantuan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBlogOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuPetunjukPenggunaanOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuRegistrasi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDukungPengembanganOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,6 +103,9 @@
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOnlineUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCekUpdateTerbaru = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuKeluar = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGantiUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuKeluarDariProgram = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.mainDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -122,6 +124,7 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
+            this.mnuFanPageOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -655,33 +658,13 @@
             this.mnuManajemenOperator.Text = "Manajemen Operator";
             this.mnuManajemenOperator.Click += new System.EventHandler(this.mnuManajemenOperator_Click);
             // 
-            // mnuKeluar
-            // 
-            this.mnuKeluar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuGantiUser,
-            this.mnuKeluarDariProgram});
-            this.mnuKeluar.Name = "mnuKeluar";
-            this.mnuKeluar.Size = new System.Drawing.Size(52, 20);
-            this.mnuKeluar.Text = "Keluar";
-            // 
-            // mnuGantiUser
-            // 
-            this.mnuGantiUser.Name = "mnuGantiUser";
-            this.mnuGantiUser.Size = new System.Drawing.Size(174, 22);
-            this.mnuGantiUser.Text = "Ganti User";
-            this.mnuGantiUser.Click += new System.EventHandler(this.mnuGantiUser_Click);
-            // 
-            // mnuKeluarDariProgram
-            // 
-            this.mnuKeluarDariProgram.Name = "mnuKeluarDariProgram";
-            this.mnuKeluarDariProgram.Size = new System.Drawing.Size(174, 22);
-            this.mnuKeluarDariProgram.Text = "Keluar dari Aplikasi";
-            this.mnuKeluarDariProgram.Click += new System.EventHandler(this.mnuKeluarDariProgram_Click);
-            // 
             // mnuBantuan
             // 
             this.mnuBantuan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBlogOpenRetail,
+            this.mnuFanPageOpenRetail,
+            this.toolStripSeparator16,
+            this.mnuPetunjukPenggunaanOpenRetail,
             this.toolStripSeparator14,
             this.mnuRegistrasi,
             this.mnuDukungPengembanganOpenRetail,
@@ -697,6 +680,18 @@
             this.mnuBlogOpenRetail.Size = new System.Drawing.Size(264, 22);
             this.mnuBlogOpenRetail.Text = "Blog OpenRetail";
             this.mnuBlogOpenRetail.Click += new System.EventHandler(this.mnuBlogOpenRetail_Click);
+            // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            this.toolStripSeparator16.Size = new System.Drawing.Size(261, 6);
+            // 
+            // mnuPetunjukPenggunaanOpenRetail
+            // 
+            this.mnuPetunjukPenggunaanOpenRetail.Name = "mnuPetunjukPenggunaanOpenRetail";
+            this.mnuPetunjukPenggunaanOpenRetail.Size = new System.Drawing.Size(264, 22);
+            this.mnuPetunjukPenggunaanOpenRetail.Text = "Petunjuk Penggunaan OpenRetail";
+            this.mnuPetunjukPenggunaanOpenRetail.Click += new System.EventHandler(this.mnuPetunjukPenggunaanOpenRetail_Click);
             // 
             // toolStripSeparator14
             // 
@@ -743,6 +738,29 @@
             this.mnuCekUpdateTerbaru.Size = new System.Drawing.Size(179, 22);
             this.mnuCekUpdateTerbaru.Text = "Cek Update Terbaru";
             this.mnuCekUpdateTerbaru.Click += new System.EventHandler(this.mnuCekUpdateTerbaru_Click);
+            // 
+            // mnuKeluar
+            // 
+            this.mnuKeluar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuGantiUser,
+            this.mnuKeluarDariProgram});
+            this.mnuKeluar.Name = "mnuKeluar";
+            this.mnuKeluar.Size = new System.Drawing.Size(52, 20);
+            this.mnuKeluar.Text = "Keluar";
+            // 
+            // mnuGantiUser
+            // 
+            this.mnuGantiUser.Name = "mnuGantiUser";
+            this.mnuGantiUser.Size = new System.Drawing.Size(174, 22);
+            this.mnuGantiUser.Text = "Ganti User";
+            this.mnuGantiUser.Click += new System.EventHandler(this.mnuGantiUser_Click);
+            // 
+            // mnuKeluarDariProgram
+            // 
+            this.mnuKeluarDariProgram.Name = "mnuKeluarDariProgram";
+            this.mnuKeluarDariProgram.Size = new System.Drawing.Size(174, 22);
+            this.mnuKeluarDariProgram.Text = "Keluar dari Aplikasi";
+            this.mnuKeluarDariProgram.Click += new System.EventHandler(this.mnuKeluarDariProgram_Click);
             // 
             // timer1
             // 
@@ -918,6 +936,13 @@
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
+            // mnuFanPageOpenRetail
+            // 
+            this.mnuFanPageOpenRetail.Name = "mnuFanPageOpenRetail";
+            this.mnuFanPageOpenRetail.Size = new System.Drawing.Size(264, 22);
+            this.mnuFanPageOpenRetail.Text = "Fan Page OpenRetail";
+            this.mnuFanPageOpenRetail.Click += new System.EventHandler(this.mnuFanPageOpenRetail_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1039,5 +1064,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripMenuItem mnuOnlineUpdate;
         private System.Windows.Forms.ToolStripMenuItem mnuCekUpdateTerbaru;
+        private System.Windows.Forms.ToolStripMenuItem mnuPetunjukPenggunaanOpenRetail;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
+        private System.Windows.Forms.ToolStripMenuItem mnuFanPageOpenRetail;
     }
 }

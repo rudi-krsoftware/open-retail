@@ -80,7 +80,7 @@ namespace OpenRetail.App.Main
         /// </summary>
         private Dictionary<string, string> _getMenuID;
         private ILog _log;
-        
+        private string _openRetailBaseUrl = "https://openretailblog.wordpress.com";
         private bool _isCheckedUpdateDone = false;
 
         public bool IsLogout { get; private set; }
@@ -516,21 +516,33 @@ namespace OpenRetail.App.Main
             System.Diagnostics.Process.Start(url);
         }
 
-        private void mnuRegistrasi_Click(object sender, EventArgs e)
+        private void mnuBlogOpenRetail_Click(object sender, EventArgs e)
         {
-            var url = "https://openretailblog.wordpress.com/registrasi/";
+            var url = _openRetailBaseUrl;
             OpenUrl(url);
         }
 
-        private void mnuBlogOpenRetail_Click(object sender, EventArgs e)
+        private void mnuFanPageOpenRetail_Click(object sender, EventArgs e)
         {
-            var url = "https://openretailblog.wordpress.com/";
+            var url = "https://www.facebook.com/openretail/";
             OpenUrl(url);
         }
+
+        private void mnuPetunjukPenggunaanOpenRetail_Click(object sender, EventArgs e)
+        {
+            var url = _openRetailBaseUrl + "/petunjuk-penggunaan-openretail/";
+            OpenUrl(url);
+        }
+
+        private void mnuRegistrasi_Click(object sender, EventArgs e)
+        {
+            var url = _openRetailBaseUrl + "/registrasi/";
+            OpenUrl(url);
+        }        
 
         private void mnuDukungPengembanganOpenRetail_Click(object sender, EventArgs e)
         {
-            var url = "https://openretailblog.wordpress.com/kontribusi/";
+            var url = _openRetailBaseUrl + "/kontribusi/";
             OpenUrl(url);
         }
 
@@ -664,6 +676,6 @@ namespace OpenRetail.App.Main
                         break;
                 }
             }
-        }        
+        }
     }
 }
