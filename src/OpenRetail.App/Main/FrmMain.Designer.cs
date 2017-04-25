@@ -102,6 +102,8 @@
             this.mnuDukungPengembanganOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOnlineUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCekUpdateTerbaru = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.mainDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -206,8 +208,9 @@
             this.mnuPengeluaran,
             this.mnuLaporan,
             this.mnuPengaturan,
-            this.mnuKeluar,
-            this.mnuBantuan});
+            this.mnuBantuan,
+            this.mnuOnlineUpdate,
+            this.mnuKeluar});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(827, 24);
@@ -726,6 +729,21 @@
             this.mnuAbout.Text = "About";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
+            // mnuOnlineUpdate
+            // 
+            this.mnuOnlineUpdate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCekUpdateTerbaru});
+            this.mnuOnlineUpdate.Name = "mnuOnlineUpdate";
+            this.mnuOnlineUpdate.Size = new System.Drawing.Size(95, 20);
+            this.mnuOnlineUpdate.Text = "Online Update";
+            // 
+            // mnuCekUpdateTerbaru
+            // 
+            this.mnuCekUpdateTerbaru.Name = "mnuCekUpdateTerbaru";
+            this.mnuCekUpdateTerbaru.Size = new System.Drawing.Size(179, 22);
+            this.mnuCekUpdateTerbaru.Text = "Cek Update Terbaru";
+            this.mnuCekUpdateTerbaru.Click += new System.EventHandler(this.mnuCekUpdateTerbaru_Click);
+            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -1019,5 +1037,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuBlogOpenRetail;
         private System.Windows.Forms.ToolStripMenuItem mnuDukungPengembanganOpenRetail;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+        private System.Windows.Forms.ToolStripMenuItem mnuOnlineUpdate;
+        private System.Windows.Forms.ToolStripMenuItem mnuCekUpdateTerbaru;
     }
 }

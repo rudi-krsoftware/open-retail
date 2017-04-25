@@ -30,15 +30,15 @@ Prerequisites (Khusus software developer atau programmer)
     * Windows Server 2008 R2, Windows Server 2008 SP2, Windows Server 2012 atau versi yang lebih tinggi    
 
 * Library Pihak Ketiga
+	* [Apache log4net](https://www.nuget.org/packages/log4net/)
+	* [AutoUpdater.NET](https://www.nuget.org/packages/Autoupdater.NET.Official/)
     * [ClosedXML](https://www.nuget.org/packages/ClosedXML/)
+	* [CrashReporter.NET](http://www.nuget.org/packages/CrashReporter.NET.Official/)
     * [Dapper](http://www.nuget.org/packages/Dapper/)
     * [Dapper.Contrib](http://www.nuget.org/packages/Dapper.Contrib/)
-    * [Npgsql 2.2.7](http://www.nuget.org/packages/Npgsql/2.2.72)
-    * [Apache log4net](https://www.nuget.org/packages/log4net/)
-	* [Json.NET](http://www.nuget.org/packages/Newtonsoft.Json/9.0.1)	
-    * [CrashReporter.NET](http://www.nuget.org/packages/CrashReporter.NET.Official/)
-    * [AutoUpdater.NET](https://www.nuget.org/packages/Autoupdater.NET.Official/)
-    * [DockPanel Suite](https://www.nuget.org/packages/DockPanelSuite/)
+	* [DockPanel Suite](https://www.nuget.org/packages/DockPanelSuite/)
+	* [Json.NET](http://www.nuget.org/packages/Newtonsoft.Json/9.0.1)	    	
+    * [Npgsql 2.2.7](http://www.nuget.org/packages/Npgsql/2.2.72)    	    
     * [Syncfusion Community Edition](https://www.syncfusion.com/products/communitylicense/) versi 13.3.0.12
 
 * Database [PostgreSQL](https://www.postgresql.org/) versi 9.3.16 atau yang lebih tinggi

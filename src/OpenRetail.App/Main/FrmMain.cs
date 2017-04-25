@@ -37,6 +37,8 @@ using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using log4net;
+using AutoUpdaterDotNET;
+using System.Threading;
 
 namespace OpenRetail.App.Main
 {
@@ -78,6 +80,8 @@ namespace OpenRetail.App.Main
         /// </summary>
         private Dictionary<string, string> _getMenuID;
         private ILog _log;
+        
+        private bool _isCheckedUpdateDone = false;
 
         public bool IsLogout { get; private set; }
 
@@ -141,6 +145,48 @@ namespace OpenRetail.App.Main
         {
             SetMenuId();
             SetDisabledMenuAndToolbar(menuStrip1, toolStrip1);
+            
+            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;            
+        }
+
+        private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
+        {
+            _isCheckedUpdateDone = true;
+
+            if (args != null)
+            {
+                if (args.IsUpdateAvailable)
+                {                    
+                    var msg = "Update terbaru versi {0} sudah tersedia. Saat ini Anda sedang menggunakan Versi {1}\n\nApakah Anda ingin memperbarui aplikasi ini sekarang ?";
+
+                    var installedVersion = string.Format("{0}.{1}.{2}.{3} (v{0}.{1}.{2}{4})", args.InstalledVersion.Major, args.InstalledVersion.Minor, args.InstalledVersion.Build, args.InstalledVersion.Revision, MainProgram.stageOfDevelopment);
+                    var currentVersion = string.Format("{0}.{1}.{2}.{3}", args.CurrentVersion.Major, args.CurrentVersion.Minor, args.CurrentVersion.Build, args.CurrentVersion.Revision);
+
+                    var dialogResult = MessageBox.Show(string.Format(msg, currentVersion, installedVersion), "Update Tersedia",
+                                                       MessageBoxButtons.YesNo,
+                                                       MessageBoxIcon.Information);
+
+                    if (dialogResult.Equals(DialogResult.Yes))
+                    {
+                        try
+                        {
+                            AutoUpdater.DownloadUpdate();
+                        }
+                        catch (Exception exception)
+                        {
+                            MessageBox.Show(exception.Message, exception.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Tidak ada update yang tersedia, silahkan dicoba lagi nanti.", "Update belum tersedia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Gagal melakukan koneksi ke server, silahkan dicoba lagi nanti.", "Cek update terbaru gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void SetMenuId()
@@ -444,6 +490,7 @@ namespace OpenRetail.App.Main
             {
                 using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
+                    AutoUpdater.CheckForUpdateEvent -= AutoUpdaterOnCheckForUpdateEvent;
                     CloseAllDocuments();
 
                     this.IsLogout = true;
@@ -600,6 +647,23 @@ namespace OpenRetail.App.Main
         private void mnuLapPenggajian_Click(object sender, EventArgs e)
         {
             ShowFormDialog<FrmLapPenggajianKaryawan>(sender);
-        }                
+        }
+
+        private void mnuCekUpdateTerbaru_Click(object sender, EventArgs e)
+        {
+            _isCheckedUpdateDone = false;
+
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                AutoUpdater.Start(MainProgram.onlineUpdateUrlInfo);
+
+                var waitEvent = new AutoResetEvent(false);
+                while (true)
+                {
+                    if (_isCheckedUpdateDone)
+                        break;
+                }
+            }
+        }        
     }
 }
