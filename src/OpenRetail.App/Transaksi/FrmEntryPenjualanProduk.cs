@@ -568,27 +568,19 @@ namespace OpenRetail.App.Transaksi
             {
                 var produk = (Produk)data;
 
-                if (!IsExist(produk.produk_id))
+                double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+
+                SetItemProduk(this.gridControl, _rowIndex, _colIndex + 1, produk, diskon: diskon);
+                this.gridControl.Refresh();
+                RefreshTotal();
+
+                if (this.gridControl.RowCount == _rowIndex)
                 {
-                    double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
-
-                    SetItemProduk(this.gridControl, _rowIndex, _colIndex + 1, produk, diskon: diskon);
-                    this.gridControl.Refresh();
-                    RefreshTotal();
-
-                    if (this.gridControl.RowCount == _rowIndex)
-                    {
-                        _listOfItemJual.Add(new ItemJualProduk());
-                        this.gridControl.RowCount = _listOfItemJual.Count;
-                    }
-
-                    GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex + 1, 2); // pindah kebaris berikutnya
+                    _listOfItemJual.Add(new ItemJualProduk());
+                    this.gridControl.RowCount = _listOfItemJual.Count;
                 }
-                else
-                {
-                    MsgHelper.MsgWarning("Data produk sudah diinputkan");
-                    GridListControlHelper.SelectCellText(this.gridControl, _rowIndex, _colIndex);
-                }
+
+                GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex + 1, 2); // pindah kebaris berikutnya
             }
             else if (data is Customer) // pencarian customer
             {
@@ -669,14 +661,6 @@ namespace OpenRetail.App.Transaksi
             }
         }
 
-        private bool IsExist(string produkId)
-        {
-            var count = _listOfItemJual.Where(f => f.produk_id != null && f.produk_id.ToLower() == produkId.ToLower())
-                                       .Count();
-
-            return (count > 0);
-        }
-
         private void SetItemProduk(GridControl grid, int rowIndex, int colIndex, Produk produk, double jumlah = 1, double harga = 0, double diskon = 0)
         {
             ItemJualProduk itemJual;
@@ -743,27 +727,19 @@ namespace OpenRetail.App.Transaksi
 
                             _isValidKodeProduk = true;
 
-                            if (!IsExist(produk.produk_id))
+                            double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+
+                            SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
+                            grid.Refresh();
+                            RefreshTotal();
+
+                            if (grid.RowCount == rowIndex)
                             {
-                                double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
-
-                                SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
-                                grid.Refresh();
-                                RefreshTotal();
-
-                                if (grid.RowCount == rowIndex)
-                                {
-                                    _listOfItemJual.Add(new ItemJualProduk());
-                                    grid.RowCount = _listOfItemJual.Count;
-                                }
-
-                                GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                                _listOfItemJual.Add(new ItemJualProduk());
+                                grid.RowCount = _listOfItemJual.Count;
                             }
-                            else
-                            {
-                                MsgHelper.MsgWarning("Data produk sudah diinputkan");
-                                GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex);
-                            }
+
+                            GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
                         }
 
                         break;
@@ -786,27 +762,19 @@ namespace OpenRetail.App.Transaksi
                             {
                                 produk = listOfProduk[0];
 
-                                if (!IsExist(produk.produk_id))
+                                double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+
+                                SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
+                                grid.Refresh();
+                                RefreshTotal();
+
+                                if (grid.RowCount == rowIndex)
                                 {
-                                    double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
-
-                                    SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
-                                    grid.Refresh();
-                                    RefreshTotal();
-
-                                    if (grid.RowCount == rowIndex)
-                                    {
-                                        _listOfItemJual.Add(new ItemJualProduk());
-                                        grid.RowCount = _listOfItemJual.Count;
-                                    }
-
-                                    GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                                    _listOfItemJual.Add(new ItemJualProduk());
+                                    grid.RowCount = _listOfItemJual.Count;
                                 }
-                                else
-                                {
-                                    MsgHelper.MsgWarning("Data produk sudah diinputkan");
-                                    GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex);
-                                }
+
+                                GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
                             }
                             else // data lebih dari satu
                             {
