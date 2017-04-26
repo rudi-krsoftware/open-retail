@@ -71,16 +71,21 @@ namespace OpenRetail.Repository.Service
             return isConnected;
         }
 
-        public void ExecSQL(string sql)
+        public bool ExecSQL(string sql)
         {
+            var result = false;
+
             try
             {
                 _db.Execute(sql);
+                result = true;
             }
             catch (Exception ex)
             {
                 _log.Error("Error:", ex);
             }
+
+            return result;
         }
 
         private IDbConnection GetOpenConnection(string providerName, string connectionString)

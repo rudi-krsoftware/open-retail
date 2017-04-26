@@ -21,35 +21,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using OpenRetail.Bll.Api;
-using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
-
-namespace OpenRetail.Bll.Service
+namespace OpenRetail.App.Helper
 {
-    public class DbConnectionHelper : IDbConnectionHelper
+    public static class DatabaseVersionHelper
     {
-        public bool IsOpenConnection()
-        {
-            using (IDapperContext context = new DapperContext())
-            {
-                return context.IsOpenConnection();
-            }
-        }
+        /// <summary>
+        /// Versi database yang terakhir
+        /// </summary>
+        public const int DatabaseVersion = 2;
 
-        public bool ExecSQL(string sql)
-        {
-            var result = false;
+        /// <summary>
+        /// Script SQL untuk mengupgrade database v1 ke v2
+        /// </summary>
+        public const string UpgradeStrukturDatabase_v1_to_v2 = "db_v1_to_v2.sql";
 
-            using (IDapperContext context = new DapperContext())
-            {
-                if (context.IsOpenConnection())
-                {
-                    result = context.ExecSQL(sql);
-                }
-            }
-
-            return result;
-        }
+        /// <summary>
+        /// Script SQL untuk mengupgrade database v2 ke v3
+        /// </summary>
+        public const string UpgradeStrukturDatabase_v2_to_v3 = "db_v2_to_v3.sql";
     }
 }

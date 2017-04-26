@@ -26,6 +26,6 @@ namespace OpenRetail.Bll.Api
     public interface IDbConnectionHelper
     {
         bool IsOpenConnection();
-        void ExecSQL(string sql);
+        bool ExecSQL(string sql);
     }
 }

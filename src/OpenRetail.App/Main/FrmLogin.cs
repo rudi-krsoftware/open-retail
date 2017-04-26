@@ -33,11 +33,10 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace OpenRetail.App.Main
-{
+{    
     public partial class FrmLogin : Form
     {
-        private ILog _log;
-        private const int DatabaseVersion = 1;
+        private ILog _log;        
 
         public FrmLogin()
         {
@@ -92,8 +91,9 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum.list_of_header_nota = headerNotaBll.GetAll();
         }
 
-        private void ExecSQL(string fileName)
+        private bool ExecSQL(string fileName)
         {
+            var result = false;
             var fileSql = string.Format(@"{0}\sql\{1}", Utils.GetAppPath(), fileName);
 
             if (File.Exists(fileSql))
@@ -102,45 +102,46 @@ namespace OpenRetail.App.Main
 
                 using (var reader = new StreamReader(fileSql))
                 {
-                    var sql = string.Empty;
-                    while ((sql = reader.ReadLine()) != null)
-                    {
-                        dbHelper.ExecSQL(sql);
-                    }
+                    var sql = reader.ReadToEnd();
+                    result = dbHelper.ExecSQL(sql);
                 }
             }
+
+            return result;
         }
 
         private void UpgradeDatabase(int newDatabaseVersion)
         {
             IDatabaseVersionBll bll = new DatabaseVersionBll(_log);
-
+            
             var dbVersion = bll.Get();
             if (dbVersion != null)
             {
+                var result = true;
                 var upgradeTo = dbVersion.version_number + 1;
-
+                
                 while (upgradeTo <= newDatabaseVersion)
                 {
                     switch (upgradeTo)
                     {
-                        case 2:
-                            ExecSQL("patch_db_1_to_2.sql");
+                        case 2: // upgrade database v1 ke v2
+                            result = ExecSQL(DatabaseVersionHelper.UpgradeStrukturDatabase_v1_to_v2);
                             break;
 
-                        case 3:
-                            ExecSQL("patch_db_2_to_3.sql");
-                            break;
-
-                        case 4:
+                        case 3: // upgrade database v2 ke v3
+                            result = ExecSQL(DatabaseVersionHelper.UpgradeStrukturDatabase_v2_to_v3);
                             break;
 
                         default:
                             break;
                     }
 
+                    if (!result)
+                        break;
+
                     upgradeTo++;
-                    bll.UpdateVersion();
+                    if (!(bll.UpdateVersion() > 0))
+                        break;
                 }
             }
         }
@@ -178,11 +179,10 @@ namespace OpenRetail.App.Main
                     log4net.GlobalContext.Properties["UserName"] = txtUserName.Text;
                     MainProgram.pengguna = penggunaBll.GetByID(txtUserName.Text);
 
-                    SetProfil();
-                    SetPengaturanUmum();
+                    UpgradeDatabase(DatabaseVersionHelper.DatabaseVersion);
 
-                    // TODO: fix me (di aktifkan setelah rilis versi 1.0.0)
-                    // UpgradeDatabase(DatabaseVersion);
+                    SetProfil();
+                    SetPengaturanUmum();                    
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();

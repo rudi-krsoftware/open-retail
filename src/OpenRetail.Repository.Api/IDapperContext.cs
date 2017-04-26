@@ -26,7 +26,7 @@ namespace OpenRetail.Repository.Api
         IDbConnection db { get; }
 		IDbTransaction transaction { get; }
 		bool IsOpenConnection();
-        void ExecSQL(string sql);
+        bool ExecSQL(string sql);
 
         void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted);
         void Commit();
