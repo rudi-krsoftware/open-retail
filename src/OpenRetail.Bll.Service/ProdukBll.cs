@@ -65,7 +65,7 @@ namespace OpenRetail.Bll.Service
             }
 
             return obj;
-        }
+        }        
 
         public string GetLastKodeProduk()
         {
@@ -93,6 +93,19 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
+        public IList<Produk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount)
+        {
+            IList<Produk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ProdukRepository.GetByName(name, pageNumber, pageSize, ref pagesCount);
+            }
+
+            return oList;
+        }
+
         public IList<Produk> GetByGolongan(string golonganId)
         {
             IList<Produk> oList = null;
@@ -106,6 +119,19 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
+        public IList<Produk> GetByGolongan(string golonganId, int pageNumber, int pageSize, ref int pagesCount)
+        {
+            IList<Produk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ProdukRepository.GetByGolongan(golonganId, pageNumber, pageSize, ref pagesCount);
+            }
+
+            return oList;
+        }
+
         public IList<Produk> GetAll()
         {
             IList<Produk> oList = null;
@@ -114,6 +140,19 @@ namespace OpenRetail.Bll.Service
             {
                 IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.ProdukRepository.GetAll();
+            }
+
+            return oList;
+        }
+
+        public IList<Produk> GetAll(int pageNumber, int pageSize, ref int pagesCount)
+        {
+            IList<Produk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ProdukRepository.GetAll(pageNumber, pageSize, ref pagesCount);
             }
 
             return oList;
@@ -190,6 +229,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return result;
-        }        
+        }                       
     }
 }     

@@ -48,7 +48,7 @@ namespace OpenRetail.App.Main
         private const int CP_DISABLE_CLOSE_BUTTON = 0x200;
 
         private FrmListGolongan _frmListGolongan;
-        private FrmListProduk _frmListProduk;
+        private FrmListProdukWithNavigation _frmListProduk;
         private FrmListPenyesuaianStok _frmListPenyesuaianStok;
 
         private FrmListCustomer _frmListCustomer;
@@ -382,7 +382,7 @@ namespace OpenRetail.App.Main
 
         private void mnuProduk_Click(object sender, EventArgs e)
         {
-            ShowForm<FrmListProduk>(sender, ref _frmListProduk);
+            ShowForm<FrmListProdukWithNavigation>(sender, ref _frmListProduk);
         }
 
         private void mnuSupplier_Click(object sender, EventArgs e)

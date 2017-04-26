@@ -31,7 +31,10 @@ namespace OpenRetail.Bll.Api
         Produk GetByID(string id);
         Produk GetByKode(string kodeProduk);
         IList<Produk> GetByName(string name);
+        IList<Produk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount);
         IList<Produk> GetByGolongan(string golonganId);
+        IList<Produk> GetByGolongan(string golonganId, int pageNumber, int pageSize, ref int pagesCount);
+        IList<Produk> GetAll(int pageNumber, int pageSize, ref int pagesCount);
         string GetLastKodeProduk();
 
 		int Save(Produk obj, ref ValidationError validationError);

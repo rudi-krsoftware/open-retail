@@ -59,6 +59,12 @@ namespace OpenRetail.App.Main
                 txtUserName.Text = "admin";
                 txtPassword.Text = "admin";
             }
+
+            // baca setting pageSize
+            var pageSize = AppConfigHelper.GetValue("pageSize", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("pageSize", appConfigFile)) : 0;
+
+            if (pageSize > 0)
+                MainProgram.pageSize = pageSize;
         }
 
         private void SaveAppConfig()

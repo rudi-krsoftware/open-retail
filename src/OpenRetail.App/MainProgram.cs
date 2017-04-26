@@ -58,6 +58,11 @@ namespace OpenRetail.App
         /// </summary>
         public static readonly string securityCode = "BhGr7YwZpdX7ubFuZCuU";
 
+        /// <summary>
+        /// Objek global untuk menyimpan informasi jumlah record per halaman
+        /// </summary>
+        public static int pageSize = 50; // nilai default 50 record perhalaman
+
         public static Profil profil = null;
         public static Pengguna pengguna = null;
         public static PengaturanUmum pengaturanUmum = null;
