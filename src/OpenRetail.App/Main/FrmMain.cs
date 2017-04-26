@@ -665,17 +665,21 @@ namespace OpenRetail.App.Main
         {
             _isCheckedUpdateDone = false;
 
-            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            if (MainProgram.onlineUpdateUrlInfo.Length > 0)
             {
-                AutoUpdater.Start(MainProgram.onlineUpdateUrlInfo);
-
-                var waitEvent = new AutoResetEvent(false);
-                while (true)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    if (_isCheckedUpdateDone)
-                        break;
+                    AutoUpdater.Start(MainProgram.onlineUpdateUrlInfo);
+
+                    while (true)
+                    {
+                        if (_isCheckedUpdateDone)
+                            break;
+                    }
                 }
             }
+            else
+                MsgHelper.MsgWarning("Maaf link/url Online Update belum diset !!!\nProses cek update terbaru batal.");
         }
     }
 }
