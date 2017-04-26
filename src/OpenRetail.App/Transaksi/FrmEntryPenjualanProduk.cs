@@ -576,7 +576,13 @@ namespace OpenRetail.App.Transaksi
                     this.gridControl.Refresh();
                     RefreshTotal();
 
-                    GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex, _colIndex + 1);
+                    if (this.gridControl.RowCount == _rowIndex)
+                    {
+                        _listOfItemJual.Add(new ItemJualProduk());
+                        this.gridControl.RowCount = _listOfItemJual.Count;
+                    }
+
+                    GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex + 1, 2); // pindah kebaris berikutnya
                 }
                 else
                 {
@@ -745,7 +751,13 @@ namespace OpenRetail.App.Transaksi
                                 grid.Refresh();
                                 RefreshTotal();
 
-                                GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 2);
+                                if (grid.RowCount == rowIndex)
+                                {
+                                    _listOfItemJual.Add(new ItemJualProduk());
+                                    grid.RowCount = _listOfItemJual.Count;
+                                }
+
+                                GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
                             }
                             else
                             {
@@ -782,7 +794,13 @@ namespace OpenRetail.App.Transaksi
                                     grid.Refresh();
                                     RefreshTotal();
 
-                                    GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
+                                    if (grid.RowCount == rowIndex)
+                                    {
+                                        _listOfItemJual.Add(new ItemJualProduk());
+                                        grid.RowCount = _listOfItemJual.Count;
+                                    }
+
+                                    GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
                                 }
                                 else
                                 {
@@ -930,7 +948,7 @@ namespace OpenRetail.App.Transaksi
         }
 
         private void FrmEntryPenjualanProduk_KeyDown(object sender, KeyEventArgs e)
-        {
+        {            
             if (KeyPressHelper.IsShortcutKey(Keys.F1, e)) // tambah data produk
             {
                 ShowEntryProduk();
@@ -938,6 +956,35 @@ namespace OpenRetail.App.Transaksi
             else if (KeyPressHelper.IsShortcutKey(Keys.F2, e)) // tambahan data customer
             {
                 ShowEntryCustomer();
+            }
+            else if (KeyPressHelper.IsShortcutKey(Keys.F5, e) || KeyPressHelper.IsShortcutKey(Keys.F6, e) || KeyPressHelper.IsShortcutKey(Keys.F7, e))
+            {                
+                var colIndex = 4;
+                var rowIndex = this.gridControl.CurrentCell.RowIndex;
+
+                switch (e.KeyCode)
+                {
+                    case Keys.F5: // edit jumlah
+                        colIndex = 4;
+                        break;
+
+                    case Keys.F6: // edit diskon
+                        colIndex = 5;
+                        break;
+
+                    case Keys.F7: // edit harga
+                        colIndex = 6;
+                        break;
+
+                    default:
+                        break;
+                }
+
+                if (gridControl.RowCount > 1 && gridControl.RowCount == rowIndex)
+                {
+                    gridControl.Focus();
+                    GridListControlHelper.SetCurrentCell(gridControl, _listOfItemJual.Count - 1, colIndex);
+                }
             }
         }
 

@@ -50,19 +50,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridControl = new Syncfusion.Windows.Forms.Grid.GridControl();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.chkCetakNotaJual = new System.Windows.Forms.CheckBox();
-            this.txtDiskon = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtPPN = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtDiskon = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtOngkosKirim = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.txtOngkosKirim = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.label11 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -349,8 +349,8 @@
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.17757F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.82243F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.chkCetakNotaJual, 0, 1);
@@ -370,37 +370,16 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(749, 75);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label8.Location = new System.Drawing.Point(599, 25);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 25);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Diskon";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label9.Location = new System.Drawing.Point(610, 50);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 25);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "PPN";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(315, 25);
+            this.label10.Size = new System.Drawing.Size(528, 25);
             this.label10.TabIndex = 2;
-            this.label10.Text = "F1 : Tambah data produk  |  F2 : Tambah data customer";
+            this.label10.Text = "F1: Tambah data produk | F2: Tambah data customer | F5: Edit jumlah | F6: Edit di" +
+    "skon | F7: Edit harga";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // chkCetakNotaJual
@@ -414,25 +393,6 @@
             this.chkCetakNotaJual.TabIndex = 3;
             this.chkCetakNotaJual.Text = "Cetak Nota Jual";
             this.chkCetakNotaJual.UseVisualStyleBackColor = true;
-            // 
-            // txtDiskon
-            // 
-            this.txtDiskon.AutoEnter = true;
-            this.txtDiskon.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtDiskon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtDiskon.LetterOnly = false;
-            this.txtDiskon.Location = new System.Drawing.Point(645, 28);
-            this.txtDiskon.MaxLength = 20;
-            this.txtDiskon.Name = "txtDiskon";
-            this.txtDiskon.NumericOnly = true;
-            this.txtDiskon.SelectionText = false;
-            this.txtDiskon.Size = new System.Drawing.Size(100, 20);
-            this.txtDiskon.TabIndex = 1;
-            this.txtDiskon.Text = "0";
-            this.txtDiskon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDiskon.ThousandSeparator = true;
-            this.txtDiskon.TextChanged += new System.EventHandler(this.txtDiskon_TextChanged);
             // 
             // txtPPN
             // 
@@ -453,6 +413,77 @@
             this.txtPPN.ThousandSeparator = true;
             this.txtPPN.TextChanged += new System.EventHandler(this.txtPPN_TextChanged);
             this.txtPPN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPPN_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label9.Location = new System.Drawing.Point(610, 50);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(29, 25);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "PPN";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label8.Location = new System.Drawing.Point(599, 25);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 25);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Diskon";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtDiskon
+            // 
+            this.txtDiskon.AutoEnter = true;
+            this.txtDiskon.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDiskon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtDiskon.LetterOnly = false;
+            this.txtDiskon.Location = new System.Drawing.Point(645, 28);
+            this.txtDiskon.MaxLength = 20;
+            this.txtDiskon.Name = "txtDiskon";
+            this.txtDiskon.NumericOnly = true;
+            this.txtDiskon.SelectionText = false;
+            this.txtDiskon.Size = new System.Drawing.Size(100, 20);
+            this.txtDiskon.TabIndex = 1;
+            this.txtDiskon.Text = "0";
+            this.txtDiskon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDiskon.ThousandSeparator = true;
+            this.txtDiskon.TextChanged += new System.EventHandler(this.txtDiskon_TextChanged);
+            // 
+            // txtOngkosKirim
+            // 
+            this.txtOngkosKirim.AutoEnter = true;
+            this.txtOngkosKirim.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtOngkosKirim.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtOngkosKirim.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtOngkosKirim.LetterOnly = false;
+            this.txtOngkosKirim.Location = new System.Drawing.Point(645, 3);
+            this.txtOngkosKirim.MaxLength = 20;
+            this.txtOngkosKirim.Name = "txtOngkosKirim";
+            this.txtOngkosKirim.NumericOnly = true;
+            this.txtOngkosKirim.SelectionText = false;
+            this.txtOngkosKirim.Size = new System.Drawing.Size(100, 20);
+            this.txtOngkosKirim.TabIndex = 0;
+            this.txtOngkosKirim.Text = "0";
+            this.txtOngkosKirim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtOngkosKirim.ThousandSeparator = true;
+            this.txtOngkosKirim.TextChanged += new System.EventHandler(this.txtOngkosKirim_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label11.Location = new System.Drawing.Point(570, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(69, 25);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Ongkos Kirim";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel2
             // 
@@ -509,36 +540,6 @@
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Informasi";
-            // 
-            // txtOngkosKirim
-            // 
-            this.txtOngkosKirim.AutoEnter = true;
-            this.txtOngkosKirim.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtOngkosKirim.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtOngkosKirim.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtOngkosKirim.LetterOnly = false;
-            this.txtOngkosKirim.Location = new System.Drawing.Point(645, 3);
-            this.txtOngkosKirim.MaxLength = 20;
-            this.txtOngkosKirim.Name = "txtOngkosKirim";
-            this.txtOngkosKirim.NumericOnly = true;
-            this.txtOngkosKirim.SelectionText = false;
-            this.txtOngkosKirim.Size = new System.Drawing.Size(100, 20);
-            this.txtOngkosKirim.TabIndex = 0;
-            this.txtOngkosKirim.Text = "0";
-            this.txtOngkosKirim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtOngkosKirim.ThousandSeparator = true;
-            this.txtOngkosKirim.TextChanged += new System.EventHandler(this.txtOngkosKirim_TextChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label11.Location = new System.Drawing.Point(570, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 25);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Ongkos Kirim";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FrmEntryPenjualanProduk
             // 
