@@ -40,7 +40,7 @@ namespace OpenRetail.Bll.Service
 
         public IList<NotaPembelian> GetNotaPembelian(string beliProdukId)
         {
-            IList<NotaPembelian> oList = null;
+            IList<NotaPembelian> oList = new List<NotaPembelian>();
 
             using (IDapperContext context = new DapperContext())
             {
@@ -53,12 +53,27 @@ namespace OpenRetail.Bll.Service
 
         public IList<NotaPenjualan> GetNotaPenjualan(string jualProdukId)
         {
-            IList<NotaPenjualan> oList = null;
+            IList<NotaPenjualan> oList = new List<NotaPenjualan>();
 
             using (IDapperContext context = new DapperContext())
             {
                 IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.CetakNotaRepository.GetNotaPenjualan(jualProdukId);
+            }
+
+            foreach (var item in oList)
+            {
+                item.kecamatan = string.IsNullOrEmpty(item.kecamatan) ? "-" : item.kecamatan;
+                item.kelurahan = string.IsNullOrEmpty(item.kelurahan) ? "-" : item.kelurahan;
+                item.kota = string.IsNullOrEmpty(item.kota) ? "-" : item.kota;
+                item.kode_pos = string.IsNullOrEmpty(item.kode_pos) ? "-" : item.kode_pos;
+                item.telepon = string.IsNullOrEmpty(item.telepon) ? "-" : item.telepon;
+
+                item.kirim_kecamatan = string.IsNullOrEmpty(item.kirim_kecamatan) ? "-" : item.kirim_kecamatan;
+                item.kirim_kelurahan = string.IsNullOrEmpty(item.kirim_kelurahan) ? "-" : item.kirim_kelurahan;
+                item.kirim_kota = string.IsNullOrEmpty(item.kirim_kota) ? "-" : item.kirim_kota;
+                item.kirim_kode_pos = string.IsNullOrEmpty(item.kirim_kode_pos) ? "-" : item.kirim_kode_pos;
+                item.kirim_telepon = string.IsNullOrEmpty(item.kirim_telepon) ? "-" : item.kirim_telepon;
             }
 
             return oList;
