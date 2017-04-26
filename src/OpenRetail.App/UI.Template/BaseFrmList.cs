@@ -79,6 +79,34 @@ namespace OpenRetail.App.UI.Template
         }
 
         /// <summary>
+        /// Method override untuk pindah ke awal data
+        /// </summary>
+        protected virtual void MoveFirst()
+        {
+        }
+
+        /// <summary>
+        /// Method override untuk pindah ke data sebelumnya
+        /// </summary>
+        protected virtual void MovePrevious()
+        {
+        }
+
+        /// <summary>
+        /// Method override untuk pindah ke data berikutnya
+        /// </summary>
+        protected virtual void MoveNext()
+        {
+        }
+
+        /// <summary>
+        /// Method override untuk pindah ke akhir data
+        /// </summary>
+        protected virtual void MoveLast()
+        {
+        }
+
+        /// <summary>
         /// Method override untuk menghandle item yang dipilih
         /// </summary>
         /// <param name="index">Diisi dengan index grid list</param>

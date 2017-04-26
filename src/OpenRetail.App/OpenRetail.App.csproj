@@ -452,11 +452,11 @@
     <Compile Include="Referensi\FrmListJabatan.Designer.cs">
       <DependentUpon>FrmListJabatan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Referensi\FrmListProduk.cs">
+    <Compile Include="Referensi\FrmListProdukWithNavigation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Referensi\FrmListProduk.Designer.cs">
-      <DependentUpon>FrmListProduk.cs</DependentUpon>
+    <Compile Include="Referensi\FrmListProdukWithNavigation.Designer.cs">
+      <DependentUpon>FrmListProdukWithNavigation.cs</DependentUpon>
     </Compile>
     <Compile Include="Referensi\FrmListSupplier.cs">
       <SubType>Form</SubType>
@@ -559,6 +559,18 @@
     </Compile>
     <Compile Include="UI.Template\BaseFrmLookup.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmListEmptyBodyWithNavigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmListEmptyBodyWithNavigation.Designer.cs">
+      <DependentUpon>FrmListEmptyBodyWithNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmListStandardWithNavigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmListStandardWithNavigation.Designer.cs">
+      <DependentUpon>FrmListStandardWithNavigation.cs</DependentUpon>
     </Compile>
     <Compile Include="UI.Template\FrmLookupEmptyBody.cs">
       <SubType>Form</SubType>
@@ -724,8 +736,8 @@
     <EmbeddedResource Include="Referensi\FrmListJabatan.resx">
       <DependentUpon>FrmListJabatan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Referensi\FrmListProduk.resx">
-      <DependentUpon>FrmListProduk.cs</DependentUpon>
+    <EmbeddedResource Include="Referensi\FrmListProdukWithNavigation.resx">
+      <DependentUpon>FrmListProdukWithNavigation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmListSupplier.resx">
       <DependentUpon>FrmListSupplier.cs</DependentUpon>
@@ -774,6 +786,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmListPembelianProduk.resx">
       <DependentUpon>FrmListPembelianProduk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmListEmptyBodyWithNavigation.resx">
+      <DependentUpon>FrmListEmptyBodyWithNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmListStandardWithNavigation.resx">
+      <DependentUpon>FrmListStandardWithNavigation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI.Template\FrmLookupEmptyBody.resx">
       <DependentUpon>FrmLookupEmptyBody.cs</DependentUpon>
