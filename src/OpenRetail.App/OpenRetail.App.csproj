@@ -167,6 +167,7 @@
     <Compile Include="Helper\NumberHelper.cs" />
     <Compile Include="Helper\RolePrivilegeHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
+    <Compile Include="Helper\ThreadHelper.cs" />
     <Compile Include="Helper\Utils.cs" />
     <Compile Include="Laporan\FrmLapPenggajianKaryawan.cs">
       <SubType>Form</SubType>

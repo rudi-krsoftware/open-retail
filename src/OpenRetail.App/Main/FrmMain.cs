@@ -81,7 +81,8 @@ namespace OpenRetail.App.Main
         private Dictionary<string, string> _getMenuID;
         private ILog _log;
         private string _openRetailBaseUrl = "https://openretailblog.wordpress.com";
-        private bool _isCheckedUpdateDone = false;
+
+        private ThreadHelper _lightSleeper = new ThreadHelper();
 
         public bool IsLogout { get; private set; }
 
@@ -151,7 +152,7 @@ namespace OpenRetail.App.Main
 
         private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
         {
-            _isCheckedUpdateDone = true;
+            _lightSleeper.Cancel();
 
             if (args != null)
             {
@@ -663,19 +664,16 @@ namespace OpenRetail.App.Main
 
         private void mnuCekUpdateTerbaru_Click(object sender, EventArgs e)
         {
-            _isCheckedUpdateDone = false;
-
             if (MainProgram.onlineUpdateUrlInfo.Length > 0)
             {
                 using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
                     AutoUpdater.Start(MainProgram.onlineUpdateUrlInfo);
 
-                    while (true)
+                    while (!_lightSleeper.HasBeenCanceled)
                     {
-                        if (_isCheckedUpdateDone)
-                            break;
-                    }
+                        _lightSleeper.Sleep(10000);
+                    } 
                 }
             }
             else
