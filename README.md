@@ -3,7 +3,7 @@ OpenRetail
 
 [![Build status](https://ci.appveyor.com/api/projects/status/a2cf5uy7b16w386b?svg=true)](https://ci.appveyor.com/project/rudi-krsoftware/open-retail)
 
-[![Open Retail](https://openretailblog.files.wordpress.com/2017/04/banner-small-beta.png)](https://openretailblog.wordpress.com/)
+[![Open Retail](https://openretailblog.files.wordpress.com/2017/04/banner-small-beta1.png)](https://openretailblog.wordpress.com/)
 
 OpenRetail adalah perangkat lunak open source yang dikembangkan khusus untuk bidang usaha ritel, grosir, toko bangunan dan bidang usaha lainnya yang sejenis.
 
