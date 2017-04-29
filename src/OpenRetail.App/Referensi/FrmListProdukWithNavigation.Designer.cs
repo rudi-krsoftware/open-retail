@@ -44,7 +44,6 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(2382, 4);
             // 
             // tableLayoutPanel5
             // 
