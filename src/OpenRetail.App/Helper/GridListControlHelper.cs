@@ -110,7 +110,23 @@ namespace OpenRetail.App.Helper
                     }
                 };
             }
+            else
+            {
+                gridControl.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+                {
+                    // Make sure the cell falls inside the grid
+                    if (e.RowIndex > 0)
+                    {
+                        if (e.RowIndex % 2 == 0)
+                            e.Style.BackColor = ColorCollection.BACK_COLOR_ALTERNATE;
+                        else
+                            e.Style.BackColor = Color.White;
 
+                        // we handled it, let the grid know
+                        e.Handled = true;
+                    }
+                };
+            }
         }
 
         public static void InitializeGridListControl<T>(GridControl gridControl, IList<T> record, IList<GridListControlProperties> oglProperty, int rowHeight = 25)
