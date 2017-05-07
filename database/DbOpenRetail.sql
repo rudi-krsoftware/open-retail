@@ -1226,7 +1226,8 @@ CREATE TABLE m_customer (
     kecamatan t_alamat,
     kelurahan t_alamat,
     kota t_alamat,
-    kode_pos t_kode_pos
+    kode_pos t_kode_pos,
+    diskon t_jumlah
 );
 
 

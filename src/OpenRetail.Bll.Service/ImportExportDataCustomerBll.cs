@@ -70,7 +70,10 @@ namespace OpenRetail.Bll.Service
                 // Look for the first row used
                 var firstRowUsed = ws.FirstRowUsed();
 
-                var colums = new string[] { "NAMA", "ALAMAT", "KECAMATAN", "KELURAHAN", "KOTA", "KODE POS", "KONTAK", "TELEPON", "PLAFON PIUTANG" };
+                var colums = new string[] { 
+                                            "NAMA", "ALAMAT", "KECAMATAN", "KELURAHAN", "KOTA", "KODE POS", "KONTAK", 
+                                            "TELEPON", "DISKON RESELLER", "PLAFON PIUTANG" 
+                                          };
 
                 for (int i = 0; i < colums.Length; i++)
                 {
@@ -128,6 +131,7 @@ namespace OpenRetail.Bll.Service
                     kode_pos = row.Field("KODE POS").GetString(),
                     kontak = row.Field("KONTAK").GetString(),
                     telepon = row.Field("TELEPON").GetString(),
+                    diskon = row.Field("DISKON RESELLER").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("DISKON RESELLER").GetString()),
                     plafon_piutang = row.Field("PLAFON_PIUTANG").GetDouble()
                 }).ToList();
 

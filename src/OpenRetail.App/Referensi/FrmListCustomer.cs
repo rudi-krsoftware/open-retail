@@ -35,32 +35,45 @@ using ConceptCave.WaitCursor;
 using log4net;
 using System.IO;
 using System.Diagnostics;
+using OpenRetail.App.UserControl;
 
 namespace OpenRetail.App.Referensi
 {
-    public partial class FrmListCustomer : FrmListStandard, IListener
+    public partial class FrmListCustomer : FrmListEmptyBody, IListener
     {
         private ICustomerBll _bll; // deklarasi objek business logic layer 
         private IList<Customer> _listOfCustomer = new List<Customer>();
         private ILog _log;
 
         public FrmListCustomer(string header, Pengguna pengguna, string menuId)
-            : base(header)
+            : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
+
             this.btnImport.Visible = true;
             this.toolTip1.SetToolTip(this.btnImport, "Import Data Customer");
             this.mnuBukaFileMaster.Text = "Buka File Master Customer";
             this.mnuImportFileMaster.Text = "Import File Master Customer";
 
+            base.SetHeader(header);
+            base.WindowState = FormWindowState.Maximized;
+
             _log = MainProgram.log;
             _bll = new CustomerBll(_log);
+
+            cmbJenisCustomer.Enabled = false;
 
             // set hak akses untuk SELECT
             var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
             if (role != null)
+            {
                 if (role.is_grant)
-                    LoadData();
+                    cmbJenisCustomer.SelectedIndex = 0;
+
+                cmbJenisCustomer.Enabled = role.is_grant;
+            }                
+
 
             InitGridList();
 
@@ -172,6 +185,30 @@ namespace OpenRetail.App.Referensi
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 _listOfCustomer = _bll.GetAll();
+
+                GridListControlHelper.Refresh<Customer>(this.gridList, _listOfCustomer);
+            }
+
+            ResetButton();
+        }
+
+        private void LoadData(bool isReseller)
+        {
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                _listOfCustomer = _bll.GetAll(isReseller);
+
+                GridListControlHelper.Refresh<Customer>(this.gridList, _listOfCustomer);
+            }
+
+            ResetButton();
+        }
+
+        private void LoadData(string customerName)
+        {
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                _listOfCustomer = _bll.GetByName(customerName);
 
                 GridListControlHelper.Refresh<Customer>(this.gridList, _listOfCustomer);
             }
@@ -321,6 +358,62 @@ namespace OpenRetail.App.Referensi
             }
             else
                 GridListControlHelper.UpdateObject<Customer>(this.gridList, _listOfCustomer, customer);
+        }
+
+        private void cmbJenisCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var index = ((ComboBox)sender).SelectedIndex;
+
+            switch (index)
+            {
+                case 0: // semua
+                    LoadData();
+                    break;
+
+                case 1: // umum
+                    LoadData(false);
+                    break;
+
+                case 2: // reseller
+                    LoadData(true);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void gridList_DoubleClick(object sender, EventArgs e)
+        {
+            if (btnPerbaiki.Enabled)
+                Perbaiki();
+        }
+
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+            if (txtNamaCustomer.Text == "Cari nama customer ...")
+                LoadData();
+            else
+                LoadData(txtNamaCustomer.Text);
+        }
+
+        private void txtNamaCustomer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e))
+                btnCari_Click(sender, e);
+        }
+
+        private void txtNamaCustomer_Enter(object sender, EventArgs e)
+        {
+            ((AdvancedTextbox)sender).Clear();
+        }
+
+        private void txtNamaCustomer_Leave(object sender, EventArgs e)
+        {
+            var txtCari = (AdvancedTextbox)sender;
+
+            if (txtCari.Text.Length == 0)
+                txtCari.Text = "Cari nama customer ...";
         }
     }
 }

@@ -101,7 +101,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 25);
+            this.label1.Size = new System.Drawing.Size(81, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Customer";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -114,11 +114,11 @@
             this.txtCustomer.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtCustomer.LeaveFocusColor = System.Drawing.Color.White;
             this.txtCustomer.LetterOnly = false;
-            this.txtCustomer.Location = new System.Drawing.Point(85, 3);
+            this.txtCustomer.Location = new System.Drawing.Point(90, 3);
             this.txtCustomer.Name = "txtCustomer";
             this.txtCustomer.NumericOnly = false;
             this.txtCustomer.SelectionText = false;
-            this.txtCustomer.Size = new System.Drawing.Size(388, 20);
+            this.txtCustomer.Size = new System.Drawing.Size(383, 20);
             this.txtCustomer.TabIndex = 0;
             this.txtCustomer.Tag = "nama_customer";
             this.txtCustomer.ThousandSeparator = false;
@@ -129,7 +129,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 25);
+            this.label2.Size = new System.Drawing.Size(81, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Alamat";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -140,7 +140,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(3, 150);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 25);
+            this.label3.Size = new System.Drawing.Size(81, 25);
             this.label3.TabIndex = 1;
             this.label3.Text = "Kontak";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -151,7 +151,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(3, 175);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 25);
+            this.label4.Size = new System.Drawing.Size(81, 25);
             this.label4.TabIndex = 1;
             this.label4.Text = "Telepon/HP";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -162,7 +162,7 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(3, 225);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 25);
+            this.label5.Size = new System.Drawing.Size(81, 25);
             this.label5.TabIndex = 1;
             this.label5.Text = "Plafon Piutang";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -175,11 +175,11 @@
             this.txtAlamat.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtAlamat.LeaveFocusColor = System.Drawing.Color.White;
             this.txtAlamat.LetterOnly = false;
-            this.txtAlamat.Location = new System.Drawing.Point(85, 28);
+            this.txtAlamat.Location = new System.Drawing.Point(90, 28);
             this.txtAlamat.Name = "txtAlamat";
             this.txtAlamat.NumericOnly = false;
             this.txtAlamat.SelectionText = false;
-            this.txtAlamat.Size = new System.Drawing.Size(388, 20);
+            this.txtAlamat.Size = new System.Drawing.Size(383, 20);
             this.txtAlamat.TabIndex = 1;
             this.txtAlamat.Tag = "alamat";
             this.txtAlamat.ThousandSeparator = false;
@@ -192,11 +192,11 @@
             this.txtKontak.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKontak.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKontak.LetterOnly = false;
-            this.txtKontak.Location = new System.Drawing.Point(85, 153);
+            this.txtKontak.Location = new System.Drawing.Point(90, 153);
             this.txtKontak.Name = "txtKontak";
             this.txtKontak.NumericOnly = false;
             this.txtKontak.SelectionText = false;
-            this.txtKontak.Size = new System.Drawing.Size(388, 20);
+            this.txtKontak.Size = new System.Drawing.Size(383, 20);
             this.txtKontak.TabIndex = 6;
             this.txtKontak.Tag = "kontak";
             this.txtKontak.ThousandSeparator = false;
@@ -208,7 +208,7 @@
             this.txtTelepon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtTelepon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtTelepon.LetterOnly = false;
-            this.txtTelepon.Location = new System.Drawing.Point(85, 178);
+            this.txtTelepon.Location = new System.Drawing.Point(90, 178);
             this.txtTelepon.Name = "txtTelepon";
             this.txtTelepon.NumericOnly = false;
             this.txtTelepon.SelectionText = false;
@@ -224,7 +224,7 @@
             this.txtPlafonPiutang.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPlafonPiutang.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPlafonPiutang.LetterOnly = false;
-            this.txtPlafonPiutang.Location = new System.Drawing.Point(85, 228);
+            this.txtPlafonPiutang.Location = new System.Drawing.Point(90, 228);
             this.txtPlafonPiutang.MaxLength = 20;
             this.txtPlafonPiutang.Name = "txtPlafonPiutang";
             this.txtPlafonPiutang.NumericOnly = true;
@@ -255,11 +255,11 @@
             this.txtKecamatan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKecamatan.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKecamatan.LetterOnly = false;
-            this.txtKecamatan.Location = new System.Drawing.Point(85, 53);
+            this.txtKecamatan.Location = new System.Drawing.Point(90, 53);
             this.txtKecamatan.Name = "txtKecamatan";
             this.txtKecamatan.NumericOnly = false;
             this.txtKecamatan.SelectionText = false;
-            this.txtKecamatan.Size = new System.Drawing.Size(388, 20);
+            this.txtKecamatan.Size = new System.Drawing.Size(383, 20);
             this.txtKecamatan.TabIndex = 2;
             this.txtKecamatan.Tag = "kecamatan";
             this.txtKecamatan.ThousandSeparator = false;
@@ -272,11 +272,11 @@
             this.txtKelurahan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKelurahan.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKelurahan.LetterOnly = false;
-            this.txtKelurahan.Location = new System.Drawing.Point(85, 78);
+            this.txtKelurahan.Location = new System.Drawing.Point(90, 78);
             this.txtKelurahan.Name = "txtKelurahan";
             this.txtKelurahan.NumericOnly = false;
             this.txtKelurahan.SelectionText = false;
-            this.txtKelurahan.Size = new System.Drawing.Size(388, 20);
+            this.txtKelurahan.Size = new System.Drawing.Size(383, 20);
             this.txtKelurahan.TabIndex = 3;
             this.txtKelurahan.Tag = "kelurahan";
             this.txtKelurahan.ThousandSeparator = false;
@@ -289,11 +289,11 @@
             this.txtKota.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKota.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKota.LetterOnly = false;
-            this.txtKota.Location = new System.Drawing.Point(85, 103);
+            this.txtKota.Location = new System.Drawing.Point(90, 103);
             this.txtKota.Name = "txtKota";
             this.txtKota.NumericOnly = false;
             this.txtKota.SelectionText = false;
-            this.txtKota.Size = new System.Drawing.Size(388, 20);
+            this.txtKota.Size = new System.Drawing.Size(383, 20);
             this.txtKota.TabIndex = 4;
             this.txtKota.Tag = "kota";
             this.txtKota.ThousandSeparator = false;
@@ -305,7 +305,7 @@
             this.txtKodePos.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKodePos.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKodePos.LetterOnly = false;
-            this.txtKodePos.Location = new System.Drawing.Point(85, 128);
+            this.txtKodePos.Location = new System.Drawing.Point(90, 128);
             this.txtKodePos.Name = "txtKodePos";
             this.txtKodePos.NumericOnly = true;
             this.txtKodePos.SelectionText = false;
@@ -353,9 +353,9 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Left;
             this.label10.Location = new System.Drawing.Point(3, 200);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 25);
+            this.label10.Size = new System.Drawing.Size(81, 25);
             this.label10.TabIndex = 9;
-            this.label10.Text = "Diskon";
+            this.label10.Text = "Diskon Reseller";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtDiskon
@@ -365,7 +365,7 @@
             this.txtDiskon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDiskon.LetterOnly = false;
-            this.txtDiskon.Location = new System.Drawing.Point(85, 203);
+            this.txtDiskon.Location = new System.Drawing.Point(90, 203);
             this.txtDiskon.MaxLength = 5;
             this.txtDiskon.Name = "txtDiskon";
             this.txtDiskon.NumericOnly = true;

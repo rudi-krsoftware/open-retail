@@ -80,6 +80,19 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
+        public IList<Customer> GetAll(bool isReseller)
+        {
+            IList<Customer> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.CustomerRepository.GetAll(isReseller);
+            }
+
+            return oList;
+        }
+
 		public int Save(Customer obj)
         {
             var result = 0;
@@ -151,6 +164,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return result;
-        }
+        }        
     }
 }     
