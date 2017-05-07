@@ -75,7 +75,7 @@ namespace OpenRetail.App.Referensi
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Nama", Width = 170 });
 
-            gridListProperties.Add(new GridListControlProperties { Header = "Alamat", Width = 300 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Alamat", Width = 250 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kecamatan", Width = 120 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kelurahan", Width = 120 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kota", Width = 120 });
@@ -84,6 +84,7 @@ namespace OpenRetail.App.Referensi
             gridListProperties.Add(new GridListControlProperties { Header = "Kontak", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Telepon", Width = 100 });
 
+            gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Plafon Piutang", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang" });
 
@@ -140,11 +141,16 @@ namespace OpenRetail.App.Referensi
                                     break;
 
                                 case 10:
+                                    e.Style.CellValue = customer.diskon;
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                    break;
+
+                                case 11:
                                     e.Style.CellValue = NumberHelper.NumberToString(customer.plafon_piutang);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;
 
-                                case 11:
+                                case 12:
                                     e.Style.CellValue = NumberHelper.NumberToString(customer.total_piutang - customer.total_pembayaran_piutang);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;

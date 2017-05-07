@@ -276,7 +276,15 @@ namespace OpenRetail.App.Transaksi
                                     double diskonRupiah = 0;
 
                                     if(!(diskon > 0))
-                                        diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+                                    {
+                                        if (_customer != null)
+                                        {
+                                            diskon = _customer.diskon;
+                                        }
+
+                                        if (!(diskon > 0))
+                                            diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+                                    }                                        
 
                                     diskonRupiah = diskon / 100 * produk.harga_jual;
                                     hargaJual = produk.harga_jual - diskonRupiah;
@@ -568,7 +576,14 @@ namespace OpenRetail.App.Transaksi
             {
                 var produk = (Produk)data;
 
-                double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+                double diskon = 0;
+                if (_customer != null)
+                {
+                    diskon = _customer.diskon;
+                }
+
+                if (!(diskon > 0))
+                    diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
 
                 SetItemProduk(this.gridControl, _rowIndex, _colIndex + 1, produk, diskon: diskon);
                 this.gridControl.Refresh();
@@ -727,7 +742,15 @@ namespace OpenRetail.App.Transaksi
 
                             _isValidKodeProduk = true;
 
-                            double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+                            double diskon = 0;
+
+                            if (_customer != null)
+                            {
+                                diskon = _customer.diskon;
+                            }
+
+                            if (!(diskon > 0))
+                                diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
 
                             SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
                             grid.Refresh();
@@ -762,7 +785,15 @@ namespace OpenRetail.App.Transaksi
                             {
                                 produk = listOfProduk[0];
 
-                                double diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+                                double diskon = 0;
+
+                                if (_customer != null)
+                                {
+                                    diskon = _customer.diskon;
+                                }
+
+                                if (!(diskon > 0))
+                                    diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
 
                                 SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
                                 grid.Refresh();
