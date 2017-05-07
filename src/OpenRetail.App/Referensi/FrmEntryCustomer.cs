@@ -71,6 +71,7 @@ namespace OpenRetail.App.Referensi
             txtKodePos.Text = this._customer.kode_pos;
             txtKontak.Text = this._customer.kontak;
             txtTelepon.Text = this._customer.telepon;
+            txtDiskon.Text = this._customer.diskon.ToString();
             txtPlafonPiutang.Text = this._customer.plafon_piutang.ToString();
         }
 
@@ -87,6 +88,7 @@ namespace OpenRetail.App.Referensi
             _customer.kode_pos = txtKodePos.Text;
             _customer.kontak = txtKontak.Text;
             _customer.telepon = txtTelepon.Text;
+            _customer.diskon = NumberHelper.StringToDouble(txtDiskon.Text, true);
             _customer.plafon_piutang = NumberHelper.StringToDouble(txtPlafonPiutang.Text);
 
             var result = 0;

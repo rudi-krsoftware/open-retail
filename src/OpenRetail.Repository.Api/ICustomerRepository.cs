@@ -30,5 +30,6 @@ namespace OpenRetail.Repository.Api
     {
 		Customer GetByID(string id);            
         IList<Customer> GetByName(string name);
+        IList<Customer> GetAll(bool isReseller);
     }
 }     

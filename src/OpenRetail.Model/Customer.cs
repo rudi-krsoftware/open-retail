@@ -58,7 +58,10 @@ namespace OpenRetail.Model
 		
 		[Display(Name = "Telepon")]
 		public string telepon { get; set; }
-		
+
+        [Display(Name = "Diskon")]
+        public double diskon { get; set; }
+
 		[Display(Name = "plafon_piutang")]
 		public double plafon_piutang { get; set; }
 

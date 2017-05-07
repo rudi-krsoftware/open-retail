@@ -30,6 +30,7 @@ namespace OpenRetail.Bll.Api
     {
         Customer GetByID(string id);    
         IList<Customer> GetByName(string name);
+        IList<Customer> GetAll(bool isReseller);
 
 		int Save(Customer obj, ref ValidationError validationError);
 		int Update(Customer obj, ref ValidationError validationError);

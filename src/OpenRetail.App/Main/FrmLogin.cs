@@ -161,8 +161,10 @@ namespace OpenRetail.App.Main
 
             if (!isConnected)
             {
-                var msg = "Maaf koneksi ke server database gagal !!!\n" +
-                          "Silahkan cek koneksi jaringan Anda.";
+                var msg = "Maaf koneksi ke database gagal !!!\n\n" +
+                          "Disarankan untuk menginstall OpenRetail di 'Drive D'.\n" +
+                          "Silahkan uninstall dulu OpenRetailnya, kemudian install lagi di 'Drive D'.";
+
                 MsgHelper.MsgError(msg);
                 return;
             }
