@@ -27,6 +27,7 @@ using Dapper.Contrib.Extensions;
 
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
+using System.Linq.Expressions;
  
 namespace OpenRetail.Repository.Service
 {        
@@ -94,6 +95,30 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
+        public IList<Customer> GetAll(bool isReseller)
+        {
+            IList<Customer> oList = new List<Customer>();
+
+            try
+            {
+                Func<Customer, bool> predicate = p => p.diskon <= 0;
+
+                if (isReseller)
+                    predicate = p => p.diskon > 0;
+
+                oList = _context.db.GetAll<Customer>()
+                                .Where(predicate)
+                                .OrderBy(f => f.nama_customer)
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
         public int Save(Customer obj)
         {
             var result = 0;
@@ -143,6 +168,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }
+        }        
     }
 }     
