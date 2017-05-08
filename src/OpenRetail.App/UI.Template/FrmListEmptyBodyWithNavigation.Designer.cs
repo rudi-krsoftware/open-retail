@@ -51,6 +51,8 @@
             this.btnMoveNext = new System.Windows.Forms.Button();
             this.btnMoveLast = new System.Windows.Forms.Button();
             this.lblInfoNavigasi = new System.Windows.Forms.Label();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuExportData = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -193,9 +195,11 @@
             // 
             this.mnuPopupImportData.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBukaFileMaster,
-            this.mnuImportFileMaster});
+            this.mnuImportFileMaster,
+            this.toolStripSeparator1,
+            this.mnuExportData});
             this.mnuPopupImportData.Name = "mnuPopupImportData";
-            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 48);
+            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 98);
             // 
             // mnuBukaFileMaster
             // 
@@ -303,6 +307,17 @@
             this.lblInfoNavigasi.Text = "lblInfoNavigasi";
             this.lblInfoNavigasi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            // 
+            // mnuExportData
+            // 
+            this.mnuExportData.Name = "mnuExportData";
+            this.mnuExportData.Size = new System.Drawing.Size(188, 22);
+            this.mnuExportData.Text = "Export Data ...";
+            // 
             // FrmListEmptyBodyWithNavigation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,5 +370,7 @@
         private System.Windows.Forms.Button btnMoveNext;
         private System.Windows.Forms.Button btnMoveLast;
         private System.Windows.Forms.Label lblInfoNavigasi;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mnuExportData;
     }
 }
