@@ -27,6 +27,8 @@ using OpenRetail.Bll.Api;
 using ClosedXML.Excel;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
+using System.IO;
+using System.Diagnostics;
 
 namespace OpenRetail.Bll.Service
 {
@@ -159,7 +161,40 @@ namespace OpenRetail.Bll.Service
 
         public void Export(IList<Golongan> listOfObject)
         {
-            throw new NotImplementedException();
+            try
+            {
+                // Creating a new workbook
+                var wb = new XLWorkbook();
+
+                // Adding a worksheet
+                var ws = wb.Worksheets.Add(_workBookName);
+
+                // Set header table
+                ws.Cell(1, 1).Value = "NO";
+                ws.Cell(1, 2).Value = "GOLONGAN";
+                ws.Cell(1, 3).Value = "DISKON";
+
+                var noUrut = 1;
+                foreach (var golongan in listOfObject)
+                {
+                    ws.Cell(1 + noUrut, 1).Value = noUrut;
+                    ws.Cell(1 + noUrut, 2).Value = golongan.nama_golongan;
+                    ws.Cell(1 + noUrut, 3).Value = golongan.diskon;
+
+                    noUrut++;
+                }
+
+                // Saving the workbook
+                wb.SaveAs(_fileName);
+
+                var fi = new FileInfo(_fileName);
+                if (fi.Exists)
+                    Process.Start(_fileName);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
         }
     }
 }
