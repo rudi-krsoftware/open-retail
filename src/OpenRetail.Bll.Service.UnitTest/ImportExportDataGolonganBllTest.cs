@@ -36,7 +36,7 @@ namespace OpenRetail.Bll.Service.UnitTest
     public class ImportExportDataGolonganBllTest
     {
         private ILog _log;
-        private IImportExportDataBll _bll;
+        private IImportExportDataBll<Golongan> _bll;
 
         [TestInitialize]
         public void Init()

@@ -42,9 +42,6 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnImport
-            // 
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
@@ -59,7 +56,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(820, 359);
-            this.tableLayoutPanel3.TabIndex = 6;
+            this.tableLayoutPanel3.TabIndex = 0;
             // 
             // gridList
             // 
@@ -96,7 +93,7 @@
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(820, 28);
-            this.tableLayoutPanel4.TabIndex = 1;
+            this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label1
             // 
@@ -120,7 +117,7 @@
             this.cmbJenisCustomer.Location = new System.Drawing.Point(87, 3);
             this.cmbJenisCustomer.Name = "cmbJenisCustomer";
             this.cmbJenisCustomer.Size = new System.Drawing.Size(140, 21);
-            this.cmbJenisCustomer.TabIndex = 1;
+            this.cmbJenisCustomer.TabIndex = 0;
             this.cmbJenisCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbJenisCustomer_SelectedIndexChanged);
             // 
             // flowLayoutPanel1
@@ -133,7 +130,8 @@
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(590, 28);
-            this.flowLayoutPanel1.TabIndex = 2;
+            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.TabStop = true;
             // 
             // btnCari
             // 
@@ -142,7 +140,7 @@
             this.btnCari.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnCari.Name = "btnCari";
             this.btnCari.Size = new System.Drawing.Size(37, 23);
-            this.btnCari.TabIndex = 0;
+            this.btnCari.TabIndex = 1;
             this.btnCari.UseVisualStyleBackColor = true;
             this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
             // 
@@ -158,7 +156,7 @@
             this.txtNamaCustomer.NumericOnly = false;
             this.txtNamaCustomer.SelectionText = false;
             this.txtNamaCustomer.Size = new System.Drawing.Size(224, 20);
-            this.txtNamaCustomer.TabIndex = 1;
+            this.txtNamaCustomer.TabIndex = 0;
             this.txtNamaCustomer.Text = "Cari nama customer ...";
             this.txtNamaCustomer.ThousandSeparator = false;
             this.txtNamaCustomer.Enter += new System.EventHandler(this.txtNamaCustomer_Enter);

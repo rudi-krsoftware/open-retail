@@ -42,9 +42,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnImport
-            // 
-            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 1;
@@ -58,7 +55,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(845, 357);
-            this.tableLayoutPanel5.TabIndex = 7;
+            this.tableLayoutPanel5.TabIndex = 0;
             // 
             // tableLayoutPanel6
             // 
@@ -110,7 +107,7 @@
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(541, 28);
-            this.flowLayoutPanel2.TabIndex = 2;
+            this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnCari
             // 
