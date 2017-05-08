@@ -53,6 +53,8 @@ namespace OpenRetail.App.Referensi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
+
             this.btnImport.Visible = true;
             this.toolTip1.SetToolTip(this.btnImport, "Import Data Produk");
             this.mnuBukaFileMaster.Text = "Buka File Master Produk";
@@ -74,6 +76,8 @@ namespace OpenRetail.App.Referensi
 
                 txtNamaProduk.Enabled = role.is_grant;
                 btnCari.Enabled = role.is_grant;
+
+                btnImport.Enabled = pengguna.is_administrator;
             }
 
             InitGridList();

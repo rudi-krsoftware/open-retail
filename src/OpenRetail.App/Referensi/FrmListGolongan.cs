@@ -60,7 +60,11 @@ namespace OpenRetail.App.Referensi
             var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
             if (role != null)
                 if (role.is_grant)
+                {
                     LoadData();
+
+                    btnImport.Enabled = pengguna.is_administrator;
+                }                    
 
             InitGridList();
 

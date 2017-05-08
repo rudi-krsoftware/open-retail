@@ -72,6 +72,7 @@ namespace OpenRetail.App.Referensi
                     cmbJenisCustomer.SelectedIndex = 0;
 
                 cmbJenisCustomer.Enabled = role.is_grant;
+                btnImport.Enabled = pengguna.is_administrator;
             }                
 
 
