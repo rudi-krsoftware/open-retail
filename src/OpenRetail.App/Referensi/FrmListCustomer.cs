@@ -346,7 +346,21 @@ namespace OpenRetail.App.Referensi
 
         protected override void ExportData()
         {
-            base.ExportData();
+            using (var dlgSave = new SaveFileDialog())
+            {
+                dlgSave.Filter = "Microsoft Excel files (*.xlsx)|*.xlsx";
+                dlgSave.Title = "Export Data Customer";
+
+                var result = dlgSave.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                    {
+                        IImportExportDataBll<Customer> _importDataBll = new ImportExportDataCustomerBll(dlgSave.FileName, _log);
+                        _importDataBll.Export(_listOfCustomer);
+                    }
+                }
+            }
         }
 
         public void Ok(object sender, object data)

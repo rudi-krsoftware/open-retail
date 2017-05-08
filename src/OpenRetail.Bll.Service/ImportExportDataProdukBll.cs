@@ -197,7 +197,7 @@ namespace OpenRetail.Bll.Service
                 var wb = new XLWorkbook();
 
                 // Adding a worksheet
-                var ws = wb.Worksheets.Add("Produk");
+                var ws = wb.Worksheets.Add(_workBookName);
 
                 // Set header table
                 ws.Cell(1, 1).Value = "NO";
