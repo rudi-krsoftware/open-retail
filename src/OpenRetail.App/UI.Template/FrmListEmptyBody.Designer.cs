@@ -188,7 +188,7 @@
             this.toolStripSeparator1,
             this.mnuExportData});
             this.mnuPopupImportData.Name = "mnuPopupImportData";
-            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 98);
+            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 76);
             // 
             // mnuBukaFileMaster
             // 
@@ -256,6 +256,6 @@
         protected System.Windows.Forms.ToolStripMenuItem mnuImportFileMaster;
         protected System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem mnuExportData;
+        protected System.Windows.Forms.ToolStripMenuItem mnuExportData;
     }
 }
