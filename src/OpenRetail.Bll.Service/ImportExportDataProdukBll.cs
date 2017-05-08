@@ -27,10 +27,12 @@ using OpenRetail.Bll.Api;
 using ClosedXML.Excel;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
+using System.IO;
+using System.Diagnostics;
 
 namespace OpenRetail.Bll.Service
 {
-    public class ImportExportDataProdukBll : IImportExportDataBll
+    public class ImportExportDataProdukBll : IImportExportDataBll<Produk>
     {
         private ILog _log;
         private string _fileName;
@@ -187,9 +189,58 @@ namespace OpenRetail.Bll.Service
             return result;
         }
 
-        public void Export()
+        public void Export(IList<Produk> listOfObject)
         {
-            throw new NotImplementedException();
+            try
+            {
+                // Creating a new workbook
+                var wb = new XLWorkbook();
+
+                // Adding a worksheet
+                var ws = wb.Worksheets.Add("Produk");
+
+                // Set header table
+                ws.Cell(1, 1).Value = "NO";
+                ws.Cell(1, 2).Value = "GOLONGAN";
+                ws.Cell(1, 3).Value = "KODE PRODUK";
+                ws.Cell(1, 4).Value = "NAMA PRODUK";
+                ws.Cell(1, 5).Value = "SATUAN";
+                ws.Cell(1, 6).Value = "HARGA BELI";
+                ws.Cell(1, 7).Value = "HARGA JUAL";
+                ws.Cell(1, 8).Value = "DISKON";
+                ws.Cell(1, 9).Value = "STOK ETALASE";
+                ws.Cell(1, 10).Value = "STOK GUDANG";
+                ws.Cell(1, 11).Value = "MINIMAL STOK GUDANG";
+
+                var noUrut = 1;
+                foreach (var produk in listOfObject)
+                {
+                    ws.Cell(1 + noUrut, 1).Value = noUrut;
+                    ws.Cell(1 + noUrut, 2).Value = produk.Golongan != null ? produk.Golongan.nama_golongan : string.Empty;
+                    ws.Cell(1 + noUrut, 3).SetValue(produk.kode_produk).SetDataType(XLCellValues.Text);
+                    ws.Cell(1 + noUrut, 4).Value = produk.nama_produk;
+                    ws.Cell(1 + noUrut, 5).Value = produk.satuan;
+                    ws.Cell(1 + noUrut, 6).Value = produk.harga_beli;
+                    ws.Cell(1 + noUrut, 7).Value = produk.harga_jual;
+                    ws.Cell(1 + noUrut, 8).Value = produk.diskon;
+                    ws.Cell(1 + noUrut, 9).Value = produk.stok;
+                    ws.Cell(1 + noUrut, 10).Value = produk.stok_gudang;
+                    ws.Cell(1 + noUrut, 11).Value = produk.minimal_stok_gudang;
+
+                    noUrut++;
+                }
+
+                // Saving the workbook
+                wb.SaveAs(_fileName);
+
+                var fi = new FileInfo(_fileName);
+                if (fi.Exists)
+                    Process.Start(_fileName);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }           
         }
     }
 }

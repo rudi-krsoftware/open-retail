@@ -214,7 +214,7 @@ namespace OpenRetail.App.Referensi
             var msg = string.Empty;
             var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_golongan.xlsx";
 
-            IImportExportDataBll _importDataBll = new ImportExportDataGolonganBll(fileMaster, _log);
+            IImportExportDataBll<Golongan> _importDataBll = new ImportExportDataGolonganBll(fileMaster, _log);
 
             if (_importDataBll.IsOpened())
             {

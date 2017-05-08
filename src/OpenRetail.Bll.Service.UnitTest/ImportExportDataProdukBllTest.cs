@@ -36,7 +36,7 @@ namespace OpenRetail.Bll.Service.UnitTest
     public class ImportExportDataProdukBllTest
     {
         private ILog _log;
-        private IImportExportDataBll _bll;
+        private IImportExportDataBll<Produk> _bll;
 
         [TestInitialize]
         public void Init()

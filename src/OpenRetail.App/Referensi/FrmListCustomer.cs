@@ -52,9 +52,10 @@ namespace OpenRetail.App.Referensi
             ColorManagerHelper.SetTheme(this, this);
 
             this.btnImport.Visible = true;
-            this.toolTip1.SetToolTip(this.btnImport, "Import Data Customer");
+            this.toolTip1.SetToolTip(this.btnImport, "Import/Export Data Customer");
             this.mnuBukaFileMaster.Text = "Buka File Master Customer";
             this.mnuImportFileMaster.Text = "Import File Master Customer";
+            this.mnuExportData.Text = "Export Data Customer";
 
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
@@ -299,8 +300,8 @@ namespace OpenRetail.App.Referensi
             var msg = string.Empty;
             var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_customer.xlsx";
 
-            IImportExportDataBll _importDataBll = new ImportExportDataCustomerBll(fileMaster, _log);
-
+            IImportExportDataBll<Customer> _importDataBll = new ImportExportDataCustomerBll(fileMaster, _log);
+            
             if (_importDataBll.IsOpened())
             {
                 msg = "Maaf file master Customer sedang dibuka, silahkan ditutup terlebih dulu.";
@@ -341,6 +342,11 @@ namespace OpenRetail.App.Referensi
                     }
                 }
             }
+        }
+
+        protected override void ExportData()
+        {
+            base.ExportData();
         }
 
         public void Ok(object sender, object data)

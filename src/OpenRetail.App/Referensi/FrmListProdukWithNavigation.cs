@@ -36,7 +36,6 @@ using OpenRetail.App.UserControl;
 using log4net;
 using System.IO;
 using System.Diagnostics;
-using ClosedXML.Excel;
 
 namespace OpenRetail.App.Referensi
 {
@@ -398,7 +397,7 @@ namespace OpenRetail.App.Referensi
             var msg = string.Empty;
             var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_produk.xlsx";
 
-            IImportExportDataBll _importDataBll = new ImportExportDataProdukBll(fileMaster, _log);
+            IImportExportDataBll<Produk> _importDataBll = new ImportExportDataProdukBll(fileMaster, _log);
 
             if (_importDataBll.IsOpened())
             {
@@ -446,59 +445,6 @@ namespace OpenRetail.App.Referensi
             }
         }
 
-        private void SaveDataProduk(string fileName)
-        {
-            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
-            {
-                try
-                {
-                    // Creating a new workbook
-                    var wb = new XLWorkbook();
-
-                    // Adding a worksheet
-                    var ws = wb.Worksheets.Add("Produk");
-
-                    // Set header table
-                    ClosedXMLHelper.SetValue(ws, 1, 1, "NO");
-                    ClosedXMLHelper.SetValue(ws, 1, 2, "GOLONGAN");
-                    ClosedXMLHelper.SetValue(ws, 1, 3, "KODE PRODUK");
-                    ClosedXMLHelper.SetValue(ws, 1, 4, "NAMA PRODUK");
-                    ClosedXMLHelper.SetValue(ws, 1, 5, "SATUAN");
-                    ClosedXMLHelper.SetValue(ws, 1, 6, "HARGA BELI");
-                    ClosedXMLHelper.SetValue(ws, 1, 7, "HARGA JUAL");
-                    ClosedXMLHelper.SetValue(ws, 1, 8, "DISKON");
-                    ClosedXMLHelper.SetValue(ws, 1, 9, "STOK ETALASE");
-                    ClosedXMLHelper.SetValue(ws, 1, 10, "STOK GUDANG");
-                    ClosedXMLHelper.SetValue(ws, 1, 11, "MINIMAL STOK GUDANG");
-
-                    var noUrut = 1;
-                    foreach (var produk in _listOfProduk)
-                    {
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 1, noUrut, XLCellValues.Number);
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 2, produk.Golongan != null ? produk.Golongan.nama_golongan : string.Empty);
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 3, produk.kode_produk, XLCellValues.Text);
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 4, produk.nama_produk);
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 5, produk.satuan);
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 6, produk.harga_beli);
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 7, produk.harga_jual);
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 8, produk.diskon);
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 9, produk.stok);
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 10, produk.stok_gudang);
-                        ClosedXMLHelper.SetValue(ws, 1 + noUrut, 11, produk.minimal_stok_gudang);
-
-                        noUrut++;
-                    }
-
-                    // save
-                    ClosedXMLHelper.Save(wb, ws, fileName);
-                }
-                catch (Exception ex)
-                {
-                    _log.Error("Error:", ex);
-                }                
-            }     
-        }
-
         protected override void ExportData()
         {            
             using (var dlgSave = new SaveFileDialog())
@@ -509,7 +455,11 @@ namespace OpenRetail.App.Referensi
                 var result = dlgSave.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    SaveDataProduk(dlgSave.FileName);
+                    using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                    {
+                        IImportExportDataBll<Produk> _importDataBll = new ImportExportDataProdukBll(dlgSave.FileName, _log);
+                        _importDataBll.Export(_listOfProduk);
+                    }                    
                 }
             }                   
         }

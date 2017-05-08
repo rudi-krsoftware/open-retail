@@ -247,7 +247,7 @@ namespace OpenRetail.App.Referensi
             var msg = string.Empty;
             var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_supplier.xlsx";
 
-            IImportExportDataBll _importDataBll = new ImportExportDataSupplierBll(fileMaster, _log);
+            IImportExportDataBll<Supplier> _importDataBll = new ImportExportDataSupplierBll(fileMaster, _log);
 
             if (_importDataBll.IsOpened())
             {

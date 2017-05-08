@@ -30,7 +30,7 @@ using OpenRetail.Repository.Service;
 
 namespace OpenRetail.Bll.Service
 {
-    public class ImportExportDataCustomerBll : IImportExportDataBll
+    public class ImportExportDataCustomerBll : IImportExportDataBll<Customer>
     {
         private ILog _log;
         private string _fileName;
@@ -177,7 +177,7 @@ namespace OpenRetail.Bll.Service
             return result;
         }
 
-        public void Export()
+        public void Export(IList<Customer> listOfObject)
         {
             throw new NotImplementedException();
         }
