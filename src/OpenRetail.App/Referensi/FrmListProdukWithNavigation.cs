@@ -56,9 +56,10 @@ namespace OpenRetail.App.Referensi
             ColorManagerHelper.SetTheme(this, this);
 
             this.btnImport.Visible = true;
-            this.toolTip1.SetToolTip(this.btnImport, "Import Data Produk");
+            this.toolTip1.SetToolTip(this.btnImport, "Import/Export Data Produk");
             this.mnuBukaFileMaster.Text = "Buka File Master Produk";
             this.mnuImportFileMaster.Text = "Import File Master Produk";
+            this.mnuExportData.Text = "Export Data Produk";
 
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
@@ -396,7 +397,7 @@ namespace OpenRetail.App.Referensi
             var msg = string.Empty;
             var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_produk.xlsx";
 
-            IImportExportDataBll _importDataBll = new ImportExportDataProdukBll(fileMaster, _log);
+            IImportExportDataBll<Produk> _importDataBll = new ImportExportDataProdukBll(fileMaster, _log);
 
             if (_importDataBll.IsOpened())
             {
@@ -442,6 +443,25 @@ namespace OpenRetail.App.Referensi
                     }
                 }
             }
+        }
+
+        protected override void ExportData()
+        {            
+            using (var dlgSave = new SaveFileDialog())
+            {
+                dlgSave.Filter = "Microsoft Excel files (*.xlsx)|*.xlsx";
+                dlgSave.Title = "Export Data Produk";
+
+                var result = dlgSave.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                    {
+                        IImportExportDataBll<Produk> _importDataBll = new ImportExportDataProdukBll(dlgSave.FileName, _log);
+                        _importDataBll.Export(_listOfProduk);
+                    }                    
+                }
+            }                   
         }
 
         private void RefreshData()

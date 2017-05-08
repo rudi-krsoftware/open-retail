@@ -27,10 +27,12 @@ using OpenRetail.Bll.Api;
 using ClosedXML.Excel;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
+using System.IO;
+using System.Diagnostics;
 
 namespace OpenRetail.Bll.Service
 {
-    public class ImportExportDataCustomerBll : IImportExportDataBll
+    public class ImportExportDataCustomerBll : IImportExportDataBll<Customer>
     {
         private ILog _log;
         private string _fileName;
@@ -177,9 +179,58 @@ namespace OpenRetail.Bll.Service
             return result;
         }
 
-        public void Export()
+        public void Export(IList<Customer> listOfObject)
         {
-            throw new NotImplementedException();
+            try
+            {
+                // Creating a new workbook
+                var wb = new XLWorkbook();
+
+                // Adding a worksheet
+                var ws = wb.Worksheets.Add(_workBookName);
+
+                // Set header table
+                ws.Cell(1, 1).Value = "NO";
+                ws.Cell(1, 2).Value = "NAMA";
+                ws.Cell(1, 3).Value = "ALAMAT";
+                ws.Cell(1, 4).Value = "KECAMATAN";
+                ws.Cell(1, 5).Value = "KELURAHAN";
+                ws.Cell(1, 6).Value = "KOTA";
+                ws.Cell(1, 7).Value = "KODE POS";
+                ws.Cell(1, 8).Value = "KONTAK";
+                ws.Cell(1, 9).Value = "TELEPON";
+                ws.Cell(1, 10).Value = "DISKON RESELLER";
+                ws.Cell(1, 11).Value = "PLAFON PIUTANG";
+
+                var noUrut = 1;
+                foreach (var customer in listOfObject)
+                {
+                    ws.Cell(1 + noUrut, 1).Value = noUrut;
+                    ws.Cell(1 + noUrut, 2).Value = customer.nama_customer;                    
+                    ws.Cell(1 + noUrut, 3).Value = customer.alamat;
+                    ws.Cell(1 + noUrut, 4).Value = customer.kecamatan;
+                    ws.Cell(1 + noUrut, 5).Value = customer.kelurahan;
+                    ws.Cell(1 + noUrut, 6).Value = customer.kota;
+                    ws.Cell(1 + noUrut, 7).SetValue(customer.kode_pos).SetDataType(XLCellValues.Text);
+                    ws.Cell(1 + noUrut, 8).Value = customer.kontak;
+                    ws.Cell(1 + noUrut, 9).SetValue(customer.telepon).SetDataType(XLCellValues.Text);
+                    ws.Cell(1 + noUrut, 10).Value = customer.diskon;
+                    ws.Cell(1 + noUrut, 11).Value = customer.plafon_piutang;
+
+                    noUrut++;
+                }
+
+                // Saving the workbook
+                wb.SaveAs(_fileName);
+
+                var fi = new FileInfo(_fileName);
+                if (fi.Exists)
+                    Process.Start(_fileName);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }    
         }
     }
 }

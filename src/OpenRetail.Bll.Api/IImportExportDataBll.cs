@@ -23,7 +23,7 @@ using System.Text;
 
 namespace OpenRetail.Bll.Api
 {
-    public interface IImportExportDataBll
+    public interface IImportExportDataBll<T>
     {
         /// <summary>
         /// Method untuk mengecek file excel sedang dibuka aplikasi lain atau tidak
@@ -47,6 +47,6 @@ namespace OpenRetail.Bll.Api
         /// <summary>
         /// Method untuk export data
         /// </summary>
-        void Export();
+        void Export(IList<T> listOfObject);
     }
 }

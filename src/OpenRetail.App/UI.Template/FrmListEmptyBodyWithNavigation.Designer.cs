@@ -43,6 +43,8 @@
             this.mnuPopupImportData = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuBukaFileMaster = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImportFileMaster = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuExportData = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -193,9 +195,11 @@
             // 
             this.mnuPopupImportData.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBukaFileMaster,
-            this.mnuImportFileMaster});
+            this.mnuImportFileMaster,
+            this.toolStripSeparator1,
+            this.mnuExportData});
             this.mnuPopupImportData.Name = "mnuPopupImportData";
-            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 48);
+            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 76);
             // 
             // mnuBukaFileMaster
             // 
@@ -210,6 +214,18 @@
             this.mnuImportFileMaster.Size = new System.Drawing.Size(188, 22);
             this.mnuImportFileMaster.Text = "Import Data Master ...";
             this.mnuImportFileMaster.Click += new System.EventHandler(this.mnuImportFileMaster_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            // 
+            // mnuExportData
+            // 
+            this.mnuExportData.Name = "mnuExportData";
+            this.mnuExportData.Size = new System.Drawing.Size(188, 22);
+            this.mnuExportData.Text = "Export Data ...";
+            this.mnuExportData.Click += new System.EventHandler(this.mnuExportData_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -355,5 +371,7 @@
         private System.Windows.Forms.Button btnMoveNext;
         private System.Windows.Forms.Button btnMoveLast;
         private System.Windows.Forms.Label lblInfoNavigasi;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        protected System.Windows.Forms.ToolStripMenuItem mnuExportData;
     }
 }

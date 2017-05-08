@@ -52,9 +52,10 @@ namespace OpenRetail.App.Referensi
             ColorManagerHelper.SetTheme(this, this);
 
             this.btnImport.Visible = true;
-            this.toolTip1.SetToolTip(this.btnImport, "Import Data Supplier");
+            this.toolTip1.SetToolTip(this.btnImport, "Import/Export Data Supplier");
             this.mnuBukaFileMaster.Text = "Buka File Master Supplier";
             this.mnuImportFileMaster.Text = "Import File Master Supplier";
+            this.mnuExportData.Text = "Export Data Supplier";
 
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
@@ -247,7 +248,7 @@ namespace OpenRetail.App.Referensi
             var msg = string.Empty;
             var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_supplier.xlsx";
 
-            IImportExportDataBll _importDataBll = new ImportExportDataSupplierBll(fileMaster, _log);
+            IImportExportDataBll<Supplier> _importDataBll = new ImportExportDataSupplierBll(fileMaster, _log);
 
             if (_importDataBll.IsOpened())
             {
@@ -290,6 +291,26 @@ namespace OpenRetail.App.Referensi
                 }
             }            
         }
+
+        protected override void ExportData()
+        {
+            using (var dlgSave = new SaveFileDialog())
+            {
+                dlgSave.Filter = "Microsoft Excel files (*.xlsx)|*.xlsx";
+                dlgSave.Title = "Export Data Supplier";
+
+                var result = dlgSave.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                    {
+                        IImportExportDataBll<Supplier> _importDataBll = new ImportExportDataSupplierBll(dlgSave.FileName, _log);
+                        _importDataBll.Export(_listOfSupplier);
+                    }
+                }
+            }
+        }
+
 
         public void Ok(object sender, object data)
         {

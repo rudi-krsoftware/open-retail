@@ -49,9 +49,10 @@ namespace OpenRetail.App.Referensi
         {
             InitializeComponent();
             this.btnImport.Visible = true;
-            this.toolTip1.SetToolTip(this.btnImport, "Import Data Golongan");
+            this.toolTip1.SetToolTip(this.btnImport, "Import/Export Data Golongan");
             this.mnuBukaFileMaster.Text = "Buka File Master Golongan";
             this.mnuImportFileMaster.Text = "Import File Master Golongan";
+            this.mnuExportData.Text = "Export Data Golongan";
 
             _log = MainProgram.log;
             _bll = new GolonganBll(_log);
@@ -214,7 +215,7 @@ namespace OpenRetail.App.Referensi
             var msg = string.Empty;
             var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_golongan.xlsx";
 
-            IImportExportDataBll _importDataBll = new ImportExportDataGolonganBll(fileMaster, _log);
+            IImportExportDataBll<Golongan> _importDataBll = new ImportExportDataGolonganBll(fileMaster, _log);
 
             if (_importDataBll.IsOpened())
             {
@@ -256,6 +257,25 @@ namespace OpenRetail.App.Referensi
                     }
                 }
             } 
+        }
+
+        protected override void ExportData()
+        {
+            using (var dlgSave = new SaveFileDialog())
+            {
+                dlgSave.Filter = "Microsoft Excel files (*.xlsx)|*.xlsx";
+                dlgSave.Title = "Export Data Golongan";
+
+                var result = dlgSave.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                    {
+                        IImportExportDataBll<Golongan> _importDataBll = new ImportExportDataGolonganBll(dlgSave.FileName, _log);
+                        _importDataBll.Export(_listOfGolongan);
+                    }
+                }
+            }
         }
 
         public void Ok(object sender, object data)
