@@ -35,23 +35,29 @@ using ConceptCave.WaitCursor;
 using log4net;
 using System.IO;
 using System.Diagnostics;
+using OpenRetail.App.UserControl;
 
 namespace OpenRetail.App.Referensi
 {
-    public partial class FrmListSupplier : FrmListStandard, IListener
+    public partial class FrmListSupplier : FrmListEmptyBody, IListener
     {        
         private ISupplierBll _bll; // deklarasi objek business logic layer 
         private IList<Supplier> _listOfSupplier = new List<Supplier>();
         private ILog _log;
 
         public FrmListSupplier(string header, Pengguna pengguna, string menuId)
-            : base(header)
+            : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
+
             this.btnImport.Visible = true;
             this.toolTip1.SetToolTip(this.btnImport, "Import Data Supplier");
             this.mnuBukaFileMaster.Text = "Buka File Master Supplier";
             this.mnuImportFileMaster.Text = "Import File Master Supplier";
+
+            base.SetHeader(header);
+            base.WindowState = FormWindowState.Maximized;
 
             _log = MainProgram.log;
             _bll = new SupplierBll(_log);
@@ -140,6 +146,18 @@ namespace OpenRetail.App.Referensi
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 _listOfSupplier = _bll.GetAll();
+
+                GridListControlHelper.Refresh<Supplier>(this.gridList, _listOfSupplier);
+            }
+
+            ResetButton();
+        }
+
+        private void LoadData(string supplierName)
+        {
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                _listOfSupplier = _bll.GetByName(supplierName);
 
                 GridListControlHelper.Refresh<Supplier>(this.gridList, _listOfSupplier);
             }
@@ -289,6 +307,39 @@ namespace OpenRetail.App.Referensi
             }
             else
                 GridListControlHelper.UpdateObject<Supplier>(this.gridList, _listOfSupplier, supplier);
+        }
+
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+            if (txtNamaSupplier.Text == "Cari nama supplier ...")
+                LoadData();
+            else
+                LoadData(txtNamaSupplier.Text);
+        }
+
+        private void txtNamaSupplier_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e))
+                btnCari_Click(sender, e);
+        }
+
+        private void txtNamaSupplier_Leave(object sender, EventArgs e)
+        {
+            var txtCari = (AdvancedTextbox)sender;
+
+            if (txtCari.Text.Length == 0)
+                txtCari.Text = "Cari nama supplier ...";
+        }
+
+        private void txtNamaSupplier_Enter(object sender, EventArgs e)
+        {
+            ((AdvancedTextbox)sender).Clear();
+        }
+
+        private void gridList_DoubleClick(object sender, EventArgs e)
+        {
+            if (btnPerbaiki.Enabled)
+                Perbaiki();
         }
     }
 }
