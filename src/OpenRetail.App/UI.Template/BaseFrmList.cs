@@ -79,6 +79,13 @@ namespace OpenRetail.App.UI.Template
         }
 
         /// <summary>
+        /// Method override untuk menghandle proses export data
+        /// </summary>
+        protected virtual void ExportData()
+        {
+        }
+
+        /// <summary>
         /// Method override untuk pindah ke awal data
         /// </summary>
         protected virtual void MoveFirst()

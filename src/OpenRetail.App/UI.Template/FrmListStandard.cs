@@ -132,5 +132,10 @@ namespace OpenRetail.App.UI.Template
             if (KeyPressHelper.IsEsc(e))
                 Selesai();
         }
+
+        private void mnuExportData_Click(object sender, EventArgs e)
+        {
+            ExportData();
+        }
     }
 }

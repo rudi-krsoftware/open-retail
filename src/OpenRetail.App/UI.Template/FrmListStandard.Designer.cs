@@ -199,7 +199,7 @@
             this.toolStripSeparator1,
             this.mnuExportData});
             this.mnuPopupImportData.Name = "mnuPopupImportData";
-            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 76);
+            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 98);
             // 
             // mnuBukaFileMaster
             // 
@@ -225,6 +225,7 @@
             this.mnuExportData.Name = "mnuExportData";
             this.mnuExportData.Size = new System.Drawing.Size(188, 22);
             this.mnuExportData.Text = "Export Data ...";
+            this.mnuExportData.Click += new System.EventHandler(this.mnuExportData_Click);
             // 
             // FrmListStandard
             // 

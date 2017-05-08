@@ -200,5 +200,10 @@ namespace OpenRetail.App.UI.Template
         {
             MoveLast();
         }
+
+        private void mnuExportData_Click(object sender, EventArgs e)
+        {
+            ExportData();
+        }
     }
 }

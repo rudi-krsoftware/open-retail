@@ -316,6 +316,7 @@
             this.mnuExportData.Name = "mnuExportData";
             this.mnuExportData.Size = new System.Drawing.Size(188, 22);
             this.mnuExportData.Text = "Export Data ...";
+            this.mnuExportData.Click += new System.EventHandler(this.mnuExportData_Click);
             // 
             // FrmListStandardWithNavigation
             // 

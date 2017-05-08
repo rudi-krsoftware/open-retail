@@ -43,6 +43,8 @@
             this.mnuPopupImportData = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuBukaFileMaster = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImportFileMaster = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuExportData = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -51,8 +53,6 @@
             this.btnMoveNext = new System.Windows.Forms.Button();
             this.btnMoveLast = new System.Windows.Forms.Button();
             this.lblInfoNavigasi = new System.Windows.Forms.Label();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuExportData = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -215,6 +215,18 @@
             this.mnuImportFileMaster.Text = "Import Data Master ...";
             this.mnuImportFileMaster.Click += new System.EventHandler(this.mnuImportFileMaster_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            // 
+            // mnuExportData
+            // 
+            this.mnuExportData.Name = "mnuExportData";
+            this.mnuExportData.Size = new System.Drawing.Size(188, 22);
+            this.mnuExportData.Text = "Export Data ...";
+            this.mnuExportData.Click += new System.EventHandler(this.mnuExportData_Click);
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
@@ -306,17 +318,6 @@
             this.lblInfoNavigasi.TabIndex = 1;
             this.lblInfoNavigasi.Text = "lblInfoNavigasi";
             this.lblInfoNavigasi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
-            // 
-            // mnuExportData
-            // 
-            this.mnuExportData.Name = "mnuExportData";
-            this.mnuExportData.Size = new System.Drawing.Size(188, 22);
-            this.mnuExportData.Text = "Export Data ...";
             // 
             // FrmListEmptyBodyWithNavigation
             // 
