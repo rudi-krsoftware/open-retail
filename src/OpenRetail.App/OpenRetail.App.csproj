@@ -150,6 +150,7 @@
       <Link>VersionInfo.cs</Link>
     </Compile>
     <Compile Include="Helper\AppConfigHelper.cs" />
+    <Compile Include="Helper\ClosedXMLHelper.cs" />
     <Compile Include="Helper\DatabaseVersionHelper.cs" />
     <Compile Include="Helper\ReportViewerPrintHelper.cs" />
     <Compile Include="Helper\ColorCollection.cs" />
