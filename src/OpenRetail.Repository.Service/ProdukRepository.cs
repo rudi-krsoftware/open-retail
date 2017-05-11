@@ -116,7 +116,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name");
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY m_produk.nama_produk");
                 _sql = _sql.Replace("{OFFSET}", "");
 
@@ -158,7 +158,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 var sql = @"SELECT COUNT(*) FROM m_produk LEFT JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id
-                            WHERE LOWER(m_produk.nama_produk) LIKE @name";
+                            WHERE LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name";
 
                 name = "%" + name.ToLower() + "%";
                 var recordCount = _context.db.QuerySingleOrDefault<int>(sql, new { name });
@@ -198,7 +198,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name");
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY m_produk.nama_produk");
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
 
