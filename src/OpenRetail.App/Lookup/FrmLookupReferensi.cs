@@ -137,7 +137,8 @@ namespace OpenRetail.App.Lookup
 
                 case ReferencesType.Produk:
                     gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 120 });
-                    gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk" });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 350 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Golongan" });
                     GridListControlHelper.InitializeGridListControl<Produk>(this.gridList, _listOfProduk, gridListProperties);
                     this.gridList.Grid.QueryCellInfo += GridProduk_QueryCellInfo;
 
@@ -234,6 +235,14 @@ namespace OpenRetail.App.Lookup
 
                             case 3:
                                 e.Style.CellValue = produk.nama_produk;
+                                break;
+
+                            case 4:
+                                var golongan = produk.Golongan;
+
+                                if (golongan != null)
+                                    e.Style.CellValue = golongan.nama_golongan;
+
                                 break;
 
                             default:

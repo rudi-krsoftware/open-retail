@@ -44,7 +44,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(418, 404);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(640, 404);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // gridList
@@ -61,7 +61,7 @@
             this.gridList.Properties.MarkColHeader = false;
             this.gridList.Properties.MarkRowHeader = false;
             this.gridList.SelectedIndex = -1;
-            this.gridList.Size = new System.Drawing.Size(412, 398);
+            this.gridList.Size = new System.Drawing.Size(634, 398);
             this.gridList.TabIndex = 0;
             this.gridList.TopIndex = 0;
             this.gridList.DoubleClick += new System.EventHandler(this.gridList_DoubleClick);
@@ -71,7 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 486);
+            this.ClientSize = new System.Drawing.Size(640, 486);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "FrmLookupReferensi";
             this.Text = "FrmLookupReferensi";
