@@ -385,8 +385,13 @@ namespace OpenRetail.App.Transaksi
 
                 if (result > 0)
                 {
-                    if (chkCetakNotaBeli.Checked)
+                    try
+                    {
                         CetakNota(_beli.beli_produk_id);
+                    }
+                    catch
+                    {                        
+                    }
 
                     Listener.Ok(this, _isNewData, _beli);
 
@@ -428,8 +433,16 @@ namespace OpenRetail.App.Transaksi
                 parameters.Add(new ReportParameter("kota", _profil.kota));
                 parameters.Add(new ReportParameter("telepon", _profil.telepon));
 
-                var printReport = new ReportViewerPrintHelper("RvNotaPembelianProduk", reportDataSource, parameters, _pengaturanUmum.nama_printer);
-                printReport.Print();
+                if (chkCetakNotaBeli.Checked)
+                {
+                    var printReport = new ReportViewerPrintHelper("RvNotaPembelianProduk", reportDataSource, parameters, _pengaturanUmum.nama_printer);
+                    printReport.Print();
+                }                
+                else
+                {
+                    var frmPreviewReport = new FrmPreviewReport("Preview Nota Pembelian", "RvNotaPembelianProduk", reportDataSource, parameters);
+                    frmPreviewReport.ShowDialog();
+                }
             }
         }
 

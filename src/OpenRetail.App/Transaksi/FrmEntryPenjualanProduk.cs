@@ -465,16 +465,13 @@ namespace OpenRetail.App.Transaksi
 
                 if (result > 0)
                 {
-                    if (chkCetakNotaJual.Checked)
+                    try
                     {
-                        try
-                        {
-                            CetakNota(_jual.jual_id);
-                        }
-                        catch
-                        {
-                        }
-                    }                        
+                        CetakNota(_jual.jual_id);
+                    }
+                    catch
+                    {
+                    }
                     
                     Listener.Ok(this, _isNewData, _jual);
 
@@ -529,8 +526,16 @@ namespace OpenRetail.App.Transaksi
                 parameters.Add(new ReportParameter("kota", kotaAndTanggal));
                 parameters.Add(new ReportParameter("footer", _pengguna.nama_pengguna));
 
-                var printReport = new ReportViewerPrintHelper("RvNotaPenjualanProduk2", reportDataSource, parameters, _pengaturanUmum.nama_printer);
-                printReport.Print();
+                if (chkCetakNotaJual.Checked)
+                {
+                    var printReport = new ReportViewerPrintHelper("RvNotaPenjualanProduk2", reportDataSource, parameters, _pengaturanUmum.nama_printer);
+                    printReport.Print();
+                }
+                else
+                {
+                    var frmPreviewReport = new FrmPreviewReport("Preview Nota Penjualan", "RvNotaPenjualanProduk2", reportDataSource, parameters);
+                    frmPreviewReport.ShowDialog();
+                }                               
             }
         }
 
