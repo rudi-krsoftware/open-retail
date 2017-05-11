@@ -145,7 +145,7 @@ namespace OpenRetail.App.Transaksi
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 120 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 240 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 270 });
             gridListProperties.Add(new GridListControlProperties { Header = "Jumlah", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga", Width = 90 });
