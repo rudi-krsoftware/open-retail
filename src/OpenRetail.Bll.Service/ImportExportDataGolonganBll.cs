@@ -145,7 +145,11 @@ namespace OpenRetail.Bll.Service
                             if (golongan.nama_golongan.Length > 50)
                                 golongan.nama_golongan = golongan.nama_golongan.Substring(0, 50);
 
-                            result = Convert.ToBoolean(uow.GolonganRepository.Save(golongan));
+                            var oldGolongan = uow.GolonganRepository.GetByName(golongan.nama_golongan, false)
+                                                                    .FirstOrDefault();
+
+                            if (oldGolongan == null) // data golongan belum ada
+                                result = Convert.ToBoolean(uow.GolonganRepository.Save(golongan));
                         }                        
                     }                    
                 }
