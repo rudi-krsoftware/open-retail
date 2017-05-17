@@ -89,6 +89,10 @@ namespace OpenRetail.App.Main
             // set header nota
             IHeaderNotaBll headerNotaBll = new HeaderNotaBll();
             MainProgram.pengaturanUmum.list_of_header_nota = headerNotaBll.GetAll();
+
+            // set label nota
+            ILabelNotaBll labelNotaBll = new LabelNotaBll();
+            MainProgram.pengaturanUmum.list_of_label_nota = labelNotaBll.GetAll();
         }
 
         private bool ExecSQL(string fileName)

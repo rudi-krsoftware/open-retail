@@ -29,4 +29,5 @@ psql -U postgres DbOpenRetail < 08_data-jenis_pengeluaran.sql
 psql -U postgres DbOpenRetail < 09_data-jabatan.sql
 psql -U postgres DbOpenRetail < 10_data-profil.sql
 psql -U postgres DbOpenRetail < 11_data-header-nota.sql
+psql -U postgres DbOpenRetail < 12_data-label-nota.sql
 ```
