@@ -116,6 +116,15 @@ CREATE DOMAIN t_nama AS character varying(50);
 ALTER DOMAIN t_nama OWNER TO postgres;
 
 --
+-- Name: t_nama_panjang; Type: DOMAIN; Schema: public; Owner: postgres
+--
+
+CREATE DOMAIN t_nama_panjang AS character varying(300);
+
+
+ALTER DOMAIN t_nama_panjang OWNER TO postgres;
+
+--
 -- Name: t_nota; Type: DOMAIN; Schema: public; Owner: postgres
 --
 
@@ -1408,7 +1417,7 @@ ALTER TABLE m_prefix_nota OWNER TO postgres;
 
 CREATE TABLE m_produk (
     produk_id t_guid NOT NULL,
-    nama_produk t_nama,
+    nama_produk t_nama_panjang,
     satuan t_satuan,
     stok t_jumlah,
     harga_beli t_harga,
@@ -1766,7 +1775,16 @@ CREATE TABLE t_jual_produk (
     kirim_kepada t_nama,
     kirim_alamat t_alamat,
     kirim_telepon t_telepon,
-    ongkos_kirim t_harga
+    ongkos_kirim t_harga,
+    label_dari1 t_keterangan,
+    label_dari2 t_keterangan,
+    label_dari3 t_keterangan,
+    label_dari4 t_keterangan,
+    label_kepada1 t_keterangan,
+    label_kepada2 t_keterangan,
+    label_kepada3 t_keterangan,
+    label_kepada4 t_keterangan,
+    kurir t_keterangan
 );
 
 
