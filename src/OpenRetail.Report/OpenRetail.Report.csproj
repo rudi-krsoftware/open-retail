@@ -85,9 +85,6 @@
     <EmbeddedResource Include="RvNotaPenjualanProduk2.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RvNotaPenjualanProduk.rdlc">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="RvNotaPembelianProduk.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
