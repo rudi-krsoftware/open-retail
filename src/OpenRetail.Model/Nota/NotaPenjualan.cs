@@ -48,11 +48,21 @@ namespace OpenRetail.Model.Nota
         public string kirim_kode_pos { get; set; }
         public string kirim_telepon { get; set; }
 
+        public string label_dari1 { get; set; }
+        public string label_dari2 { get; set; }
+        public string label_dari3 { get; set; }
+        public string label_dari4 { get; set; }
+        public string label_kepada1 { get; set; }
+        public string label_kepada2 { get; set; }
+        public string label_kepada3 { get; set; }
+        public string label_kepada4 { get; set; }
+
         public string nota { get; set; }
         public DateTime tanggal { get; set; }
         public DateTime tanggal_tempo { get; set; }
         public double ppn { get; set; }
         public double diskon_nota { get; set; }
+        public string kurir { get; set; }
         public double ongkos_kirim { get; set; }
         public double total_nota { get; set; }        
 

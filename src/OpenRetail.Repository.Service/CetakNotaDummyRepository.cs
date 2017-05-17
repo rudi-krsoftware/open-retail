@@ -44,21 +44,50 @@ namespace OpenRetail.Repository.Service
             var itemNota1 = new NotaPenjualan
             {
                 nama_customer = "Adhi Jaya", alamat = "Jl. Wonosari Km. 11", kecamatan = "Piyungan", kelurahan = "Sitimulyo", kota = "Bantul", kode_pos = "55792", telepon = "0813 8176 9915",
-                nota = "201703210056", tanggal = DateTime.Today, ongkos_kirim = 25000, total_nota = 1542000, is_sdac = true,
+                nota = "201703210056",
+                tanggal = DateTime.Today,
+                kurir = "Tiki reguler",
+                ongkos_kirim = 25000,
+                total_nota = 1542000,
+                is_sdac = true,
+                label_dari1 = "PIXEL KOMPUTER", label_dari2 = "HP: 0813 81769915",
+                label_kepada1 = "Bpk. Sunardi",
+                label_kepada2 = "Jl. Ringroad Utara Km 11",
+                label_kepada3 = "HP: 0813 2828282",
                 kode_produk = "201704070001", nama_produk = "Flashdisk 2 Gb DEAM", harga = 50000, jumlah = 5
             };
 
             var itemNota2 = new NotaPenjualan
             {
                 nama_customer = "Adhi Jaya", alamat = "Jl. Wonosari Km. 11", kecamatan = "Piyungan", kelurahan = "Sitimulyo", kota = "Bantul", kode_pos = "55792", telepon = "0813 8176 9915",
-                nota = "201703210056", tanggal = DateTime.Today, ongkos_kirim = 25000, total_nota = 1542000, is_sdac = true,
+                nota = "201703210056",
+                tanggal = DateTime.Today,
+                kurir = "Tiki reguler",
+                ongkos_kirim = 25000,
+                total_nota = 1542000,
+                is_sdac = true,
+                label_dari1 = "PIXEL KOMPUTER",
+                label_dari2 = "HP: 0813 81769915",
+                label_kepada1 = "Bpk. Sunardi",
+                label_kepada2 = "Jl. Ringroad Utara Km 11",
+                label_kepada3 = "HP: 0813 2828282",
                 kode_produk = "201704070002", nama_produk = "HDD 160 Gb SATA Seagate", harga = 500000, jumlah = 1
             };
 
             var itemNota3 = new NotaPenjualan
             {
                 nama_customer = "Adhi Jaya", alamat = "Jl. Wonosari Km. 11", kecamatan = "Piyungan", kelurahan = "Sitimulyo", kota = "Bantul", kode_pos = "55792", telepon = "0813 8176 9915",
-                nota = "201703210056", tanggal = DateTime.Today, ongkos_kirim = 25000, total_nota = 1542000, is_sdac = true,
+                nota = "201703210056",
+                tanggal = DateTime.Today,
+                kurir = "Tiki reguler",
+                ongkos_kirim = 25000,
+                total_nota = 1542000,
+                is_sdac = true,
+                label_dari1 = "PIXEL KOMPUTER",
+                label_dari2 = "HP: 0813 81769915",
+                label_kepada1 = "Bpk. Sunardi",
+                label_kepada2 = "Jl. Ringroad Utara Km 11",
+                label_kepada3 = "HP: 0813 2828282",
                 kode_produk = "201704070003", nama_produk = "LCD 16 in Samsung 633NW", harga = 800000, jumlah = 1, diskon = 1
             };
 
