@@ -115,7 +115,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 25);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Supplier";
+            this.label4.Text = "Customer";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
