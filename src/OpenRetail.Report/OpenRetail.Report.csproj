@@ -82,10 +82,10 @@
     <EmbeddedResource Include="RvNotaPenjualanProdukLabelDropship.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RvNotaPenjualanProduk2.rdlc">
+    <EmbeddedResource Include="RvNotaPenjualanProdukTanpaLabelDropship.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RvNotaPenjualanProduk.rdlc">
+    <EmbeddedResource Include="RvNotaPenjualanProdukTanpaLabel.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RvNotaPembelianProduk.rdlc">
