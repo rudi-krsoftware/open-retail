@@ -169,8 +169,8 @@ namespace OpenRetail.Bll.Service
                             if (produk.kode_produk.Length > 15)
                                 produk.kode_produk = produk.kode_produk.Substring(0, 15);
 
-                            if (produk.nama_produk.Length > 50)
-                                produk.nama_produk = produk.nama_produk.Substring(0, 50);
+                            if (produk.nama_produk.Length > 300)
+                                produk.nama_produk = produk.nama_produk.Substring(0, 300);
 
                             if (produk.satuan.Length > 20)
                                 produk.satuan = produk.satuan.Substring(0, 20);

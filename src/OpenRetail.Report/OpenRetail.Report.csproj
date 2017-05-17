@@ -76,6 +76,9 @@
   <ItemGroup>
     <EmbeddedResource Include="RvKartuPiutangPenjualanProduk.rdlc" />
     <EmbeddedResource Include="RvKasbonDetail.rdlc" />
+    <EmbeddedResource Include="RvNotaPenjualanProdukLabelDropship.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="RvNotaPenjualanProduk2.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
