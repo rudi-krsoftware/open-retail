@@ -82,6 +82,9 @@ namespace OpenRetail.Model
 		[Display(Name = "Diskon")]
 		public double diskon { get; set; }
 
+        [Display(Name = "Kurir")]
+        public string kurir { get; set; }
+
         [Display(Name = "Ongkos Kirim")]
         public double ongkos_kirim { get; set; }
 
@@ -121,6 +124,30 @@ namespace OpenRetail.Model
 
         [Display(Name = "Telepon")]
         public string kirim_telepon { get; set; }
+
+        [Display(Name = "Label dari #1")]
+        public string label_dari1 { get; set; }
+
+        [Display(Name = "Label dari #2")]
+        public string label_dari2 { get; set; }
+
+        [Display(Name = "Label dari #3")]
+        public string label_dari3 { get; set; }
+
+        [Display(Name = "Label dari #4")]
+        public string label_dari4 { get; set; }
+
+        [Display(Name = "Label kepada #1")]
+        public string label_kepada1 { get; set; }
+
+        [Display(Name = "Label kepada #2")]
+        public string label_kepada2 { get; set; }
+
+        [Display(Name = "Label kepada #3")]
+        public string label_kepada3 { get; set; }
+
+        [Display(Name = "Label kepada #4")]
+        public string label_kepada4 { get; set; }
 
         [JsonIgnore]
         [Write(false)]
@@ -184,6 +211,17 @@ namespace OpenRetail.Model
 			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
 			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
 			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.kurir).Length(0, 100).WithMessage(msgError2);
+
+            RuleFor(c => c.label_dari1).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.label_dari2).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.label_dari3).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.label_dari4).Length(0, 100).WithMessage(msgError2);
+
+            RuleFor(c => c.label_kepada1).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.label_kepada2).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.label_kepada3).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.label_kepada4).Length(0, 100).WithMessage(msgError2);
 		}
 	}
 }
