@@ -40,6 +40,7 @@ namespace OpenRetail.App.Pengaturan
     public partial class FrmPengaturanUmum : FrmEntryStandard
     {
         private IList<AdvancedTextbox> _listOfTxtHeaderNota = new List<AdvancedTextbox>();
+        private IList<AdvancedTextbox> _listOfTxtLabelNota = new List<AdvancedTextbox>();
         private PengaturanUmum _pengaturanUmum = null;
         
         public FrmPengaturanUmum(string header, PengaturanUmum pengaturanUmum)
@@ -56,6 +57,7 @@ namespace OpenRetail.App.Pengaturan
             chkCetakOtomatis.Checked = this._pengaturanUmum.is_auto_print;
 
             LoadHeaderNota();
+            LoadLabelNota();
         }
 
         private void LoadHeaderNota()
@@ -75,6 +77,25 @@ namespace OpenRetail.App.Pengaturan
                 var txtHeader = _listOfTxtHeaderNota[index];
                 txtHeader.Tag = item.header_nota_id;
                 txtHeader.Text = item.keterangan;
+
+                index++;
+            }
+        }
+
+        private void LoadLabelNota()
+        {
+            _listOfTxtLabelNota.Add(txtDari1);
+            _listOfTxtLabelNota.Add(txtDari2);
+
+            ILabelNotaBll bll = new LabelNotaBll();
+            var listOfLabelNota = bll.GetAll();
+
+            var index = 0;
+            foreach (var item in listOfLabelNota)
+            {
+                var txtDari = _listOfTxtLabelNota[index];
+                txtDari.Tag = item.label_nota_id;
+                txtDari.Text = item.keterangan;
 
                 index++;
             }
@@ -110,6 +131,9 @@ namespace OpenRetail.App.Pengaturan
                 // simpan header nota
                 SimpanHeaderNota();
 
+                // simpan label nota
+                SimpanLabelNota();
+
                 this.Close();    
             }            
         }
@@ -132,6 +156,30 @@ namespace OpenRetail.App.Pengaturan
                 {
                     _pengaturanUmum.list_of_header_nota[index].header_nota_id = headerNota.header_nota_id;
                     _pengaturanUmum.list_of_header_nota[index].keterangan = headerNota.keterangan;
+                }
+
+                index++;
+            }
+        }
+
+        private void SimpanLabelNota()
+        {
+            ILabelNotaBll labelNotaBll = new LabelNotaBll();
+
+            var index = 0;
+            foreach (var item in _listOfTxtLabelNota)
+            {
+                var labelNota = new LabelNota
+                {
+                    label_nota_id = item.Tag.ToString(),
+                    keterangan = item.Text
+                };
+
+                var result = labelNotaBll.Update(labelNota);
+                if (result > 0)
+                {
+                    _pengaturanUmum.list_of_label_nota[index].label_nota_id = labelNota.label_nota_id;
+                    _pengaturanUmum.list_of_label_nota[index].keterangan = labelNota.keterangan;
                 }
 
                 index++;
@@ -162,13 +210,19 @@ namespace OpenRetail.App.Pengaturan
                     parameters.Add(new ReportParameter("header4", txtHeader4.Text));
                     parameters.Add(new ReportParameter("header5", txtHeader5.Text));
 
+                    foreach (var item in listOfJual)
+                    {
+                        item.label_dari1 = txtDari1.Text;
+                        item.label_dari2 = txtDari2.Text;
+                    }
+
                     var dt = DateTime.Now;
                     var kotaAndTanggal = string.Format("{0}, {1}", MainProgram.profil.kota, dt.Day + " " + DayMonthHelper.GetBulanIndonesia(dt.Month) + " " + dt.Year);
 
                     parameters.Add(new ReportParameter("kota", kotaAndTanggal));
                     parameters.Add(new ReportParameter("footer", MainProgram.pengguna.nama_pengguna));
 
-                    var frmPreviewReport = new FrmPreviewReport("Contoh Nota Penjualan", "RvNotaPenjualanProduk2", reportDataSource, parameters);
+                    var frmPreviewReport = new FrmPreviewReport("Contoh Nota Penjualan", "RvNotaPenjualanProdukLabel", reportDataSource, parameters);
                     frmPreviewReport.ShowDialog();
                 }
             }            

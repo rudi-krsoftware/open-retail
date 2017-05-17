@@ -70,6 +70,7 @@
     <Compile Include="HeaderNota.cs" />
     <Compile Include="ItemPengeluaranBiaya.cs" />
     <Compile Include="Kasbon.cs" />
+    <Compile Include="LabelNota.cs" />
     <Compile Include="Nota\NotaPembelian.cs" />
     <Compile Include="Nota\NotaPenjualan.cs" />
     <Compile Include="PembayaranKasbon.cs" />
