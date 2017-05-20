@@ -85,6 +85,7 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum = new PengaturanUmum();
             MainProgram.pengaturanUmum.nama_printer = AppConfigHelper.GetValue("printerName", appConfigFile);
             MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_auto_print_label_nota = AppConfigHelper.GetValue("isAutoPrinterLabelNota", appConfigFile).ToLower() == "true" ? true : false;
 
             // set header nota
             IHeaderNotaBll headerNotaBll = new HeaderNotaBll();

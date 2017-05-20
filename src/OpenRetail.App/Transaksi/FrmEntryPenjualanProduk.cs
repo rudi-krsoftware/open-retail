@@ -79,6 +79,7 @@ namespace OpenRetail.App.Transaksi
             dtpTanggal.Value = DateTime.Today;
             dtpTanggalTempo.Value = dtpTanggal.Value;
             chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
+            chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
 
             _listOfItemJual.Add(new ItemJualProduk()); // add dummy objek
 
@@ -105,6 +106,7 @@ namespace OpenRetail.App.Transaksi
             dtpTanggal.Value = (DateTime)this._jual.tanggal;
             dtpTanggalTempo.Value = dtpTanggal.Value;
             chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
+            chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
 
             if (!this._jual.tanggal_tempo.IsNull())
             {

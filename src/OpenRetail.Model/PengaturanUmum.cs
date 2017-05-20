@@ -27,6 +27,7 @@ namespace OpenRetail.Model
     {
         public string nama_printer { get; set; }
         public bool is_auto_print { get; set; }
+        public bool is_auto_print_label_nota { get; set; }
         public IList<HeaderNota> list_of_header_nota { get; set; }
         public IList<LabelNota> list_of_label_nota { get; set; }
     }
