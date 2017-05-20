@@ -78,6 +78,7 @@
     <Compile Include="JualProdukBll.cs" />
     <Compile Include="KaryawanBll.cs" />
     <Compile Include="KasbonBll.cs" />
+    <Compile Include="LabelAlamatKirimBll.cs" />
     <Compile Include="LabelNotaBll.cs" />
     <Compile Include="MenuBll.cs" />
     <Compile Include="PembayaranHutangProdukBll.cs" />

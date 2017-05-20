@@ -115,6 +115,9 @@ namespace OpenRetail.App.Transaksi
             txtCustomer.Text = this._customer.nama_customer;
             txtKeterangan.Text = this._jual.keterangan;
 
+            if (!string.IsNullOrEmpty(this._jual.kurir))
+                cmbKurir.Text = this._jual.kurir;
+
             txtOngkosKirim.Text = this._jual.ongkos_kirim.ToString();
             txtDiskon.Text = this._jual.diskon.ToString();
             txtPPN.Text = this._jual.ppn.ToString();
@@ -431,6 +434,7 @@ namespace OpenRetail.App.Transaksi
                 _jual.tanggal_tempo = dtpTanggalTempo.Value;
             }
 
+            _jual.kurir = cmbKurir.Text;
             _jual.ongkos_kirim = NumberHelper.StringToDouble(txtOngkosKirim.Text);
             _jual.ppn = NumberHelper.StringToDouble(txtPPN.Text);
             _jual.diskon = NumberHelper.StringToDouble(txtDiskon.Text);
@@ -517,7 +521,16 @@ namespace OpenRetail.App.Transaksi
                     parameters.Add(new ReportParameter(paramName, item.keterangan));
 
                     index++;
-                }                
+                }
+
+                foreach (var item in listOfItemNota)
+                {
+                    if (item.label_dari1.Length == 0)
+                        item.label_dari1 = this._pengaturanUmum.list_of_label_nota[0].keterangan;
+
+                    if (item.label_dari2.Length == 0)
+                        item.label_dari2 = this._pengaturanUmum.list_of_label_nota[1].keterangan;
+                }
 
                 // set footer nota
                 var dt = DateTime.Now;
@@ -526,14 +539,31 @@ namespace OpenRetail.App.Transaksi
                 parameters.Add(new ReportParameter("kota", kotaAndTanggal));
                 parameters.Add(new ReportParameter("footer", _pengguna.nama_pengguna));
 
+                var reportName = string.Empty;
+
+                if (chkDropship.Checked)
+                {
+                    reportName = "RvNotaPenjualanProdukTanpaLabelDropship";
+
+                    if (chkCetakLabel.Checked)
+                        reportName = "RvNotaPenjualanProdukLabelDropship";
+                }
+                else
+                {
+                    reportName = "RvNotaPenjualanProdukTanpaLabel";
+
+                    if (chkCetakLabel.Checked)
+                        reportName = "RvNotaPenjualanProdukLabel";
+                }
+
                 if (chkCetakNotaJual.Checked)
                 {
-                    var printReport = new ReportViewerPrintHelper("RvNotaPenjualanProduk2", reportDataSource, parameters, _pengaturanUmum.nama_printer);
+                    var printReport = new ReportViewerPrintHelper(reportName, reportDataSource, parameters, _pengaturanUmum.nama_printer);
                     printReport.Print();
                 }
                 else
                 {
-                    var frmPreviewReport = new FrmPreviewReport("Preview Nota Penjualan", "RvNotaPenjualanProduk2", reportDataSource, parameters);
+                    var frmPreviewReport = new FrmPreviewReport("Preview Nota Penjualan", reportName, reportDataSource, parameters);
                     frmPreviewReport.ShowDialog();
                 }                               
             }
@@ -623,6 +653,21 @@ namespace OpenRetail.App.Transaksi
                 this._jual.kirim_kota = alamatKirim.kota;
                 this._jual.kirim_kode_pos = alamatKirim.kode_pos;
                 this._jual.kirim_telepon = alamatKirim.telepon;
+            }
+            else if (data is LabelAlamatKirim)
+            {
+                var labelAlamatKirim = (LabelAlamatKirim)data;
+
+                if (this._jual == null)
+                    this._jual = new JualProduk();
+
+                this._jual.label_dari1 = labelAlamatKirim.dari1;
+                this._jual.label_dari2 = labelAlamatKirim.dari2;
+
+                this._jual.label_kepada1 = labelAlamatKirim.kepada1;
+                this._jual.label_kepada2 = labelAlamatKirim.kepada2;
+                this._jual.label_kepada3 = labelAlamatKirim.kepada3;
+                this._jual.label_kepada4 = labelAlamatKirim.kepada4;
             }
         }
 
@@ -1041,6 +1086,26 @@ namespace OpenRetail.App.Transaksi
             var frmEntryAlamatKirim = new FrmEntryAlamatKirim("Alamat Kirim", this._customer, this._jual);
             frmEntryAlamatKirim.Listener = this;
             frmEntryAlamatKirim.ShowDialog();
+        }
+
+        private void btnSetLabelNota_Click(object sender, EventArgs e)
+        {
+            if (this._customer == null || txtCustomer.Text.Length == 0)
+            {
+                MsgHelper.MsgWarning("'Customer' tidak boleh kosong !");
+                txtCustomer.Focus();
+
+                return;
+            }
+
+            var frmEntryLabelNota = new FrmEntryLabelNota("Label Nota", this._customer, this._jual);
+            frmEntryLabelNota.Listener = this;
+            frmEntryLabelNota.ShowDialog();
+        }
+
+        private void chkCetakLabel_CheckedChanged(object sender, EventArgs e)
+        {
+            btnSetLabelNota.Enabled = chkCetakLabel.Checked;
         }        
     }
 }

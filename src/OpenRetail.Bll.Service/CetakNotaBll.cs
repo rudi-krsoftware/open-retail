@@ -74,6 +74,14 @@ namespace OpenRetail.Bll.Service
                 item.kirim_kota = string.IsNullOrEmpty(item.kirim_kota) ? "-" : item.kirim_kota;
                 item.kirim_kode_pos = string.IsNullOrEmpty(item.kirim_kode_pos) ? "-" : item.kirim_kode_pos;
                 item.kirim_telepon = string.IsNullOrEmpty(item.kirim_telepon) ? "-" : item.kirim_telepon;
+
+                item.label_dari1 = string.IsNullOrEmpty(item.label_dari1) ? "" : item.label_dari1;
+                item.label_dari2 = string.IsNullOrEmpty(item.label_dari2) ? "" : item.label_dari2;
+
+                item.label_kepada1 = string.IsNullOrEmpty(item.label_kepada1) ? item.nama_customer : item.label_kepada1;
+                item.label_kepada2 = string.IsNullOrEmpty(item.label_kepada2) ? item.alamat : item.label_kepada2;
+                item.label_kepada3 = string.IsNullOrEmpty(item.label_kepada3) ? "HP: " + item.telepon : item.label_kepada3;
+                item.label_kepada4 = string.IsNullOrEmpty(item.label_kepada4) ? string.Empty : item.label_kepada4;
             }
 
             return oList;
