@@ -66,6 +66,7 @@ namespace OpenRetail.Repository.Api
         IMenuRepository MenuRepository { get; }
         IItemMenuRepository ItemMenuRepository { get; }
         IHeaderNotaRepository HeaderNotaRepository { get; }
+        ILabelNotaRepository LabelNotaRepository { get; }
 
         IProfilRepository ProfilRepository { get; }
 

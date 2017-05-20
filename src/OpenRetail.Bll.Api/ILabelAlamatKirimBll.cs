@@ -21,13 +21,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpenRetail.Model
+using OpenRetail.Model;
+
+namespace OpenRetail.Bll.Api
 {
-    public class PengaturanUmum
+    public interface ILabelAlamatKirimBll
     {
-        public string nama_printer { get; set; }
-        public bool is_auto_print { get; set; }
-        public IList<HeaderNota> list_of_header_nota { get; set; }
-        public IList<LabelNota> list_of_label_nota { get; set; }
+        bool IsValid(LabelAlamatKirim obj, ref ValidationError validationError);
     }
 }

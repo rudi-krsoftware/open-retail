@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,14 +20,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace OpenRetail.Model
-{
-    public class PengaturanUmum
+using OpenRetail.Model;
+ 
+namespace OpenRetail.Bll.Api
+{    
+    public interface ILabelNotaBll : IBaseBll<LabelNota>
     {
-        public string nama_printer { get; set; }
-        public bool is_auto_print { get; set; }
-        public IList<HeaderNota> list_of_header_nota { get; set; }
-        public IList<LabelNota> list_of_label_nota { get; set; }
+		int Update(LabelNota obj, ref ValidationError validationError);
     }
-}
+}     

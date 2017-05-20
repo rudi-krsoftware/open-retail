@@ -82,6 +82,7 @@ namespace OpenRetail.Repository.Service
         private IReportGajiKaryawanRepository _reportGajiKaryawanRepository;
 
         private IHeaderNotaRepository _headerNotaRepository;
+        private ILabelNotaRepository _labelNotaRepository;
 
         public UnitOfWork(IDapperContext context, ILog log)
         {
@@ -307,6 +308,11 @@ namespace OpenRetail.Repository.Service
         public IHeaderNotaRepository HeaderNotaRepository
         {
             get { return _headerNotaRepository ?? (_headerNotaRepository = new HeaderNotaRepository(_context, _log)); }
+        }
+
+        public ILabelNotaRepository LabelNotaRepository
+        {
+            get { return _labelNotaRepository ?? (_labelNotaRepository = new LabelNotaRepository(_context, _log)); }
         }
     }
 }     
