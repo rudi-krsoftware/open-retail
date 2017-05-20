@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle5 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle6 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle7 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle8 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtNota = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -42,7 +47,6 @@
             this.dtpTanggalTempo = new System.Windows.Forms.DateTimePicker();
             this.dtpTanggal = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtNota = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtKeterangan = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtCustomer = new OpenRetail.App.UserControl.AdvancedTextbox();
@@ -51,13 +55,19 @@
             this.gridControl = new Syncfusion.Windows.Forms.Grid.GridControl();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
-            this.chkCetakNotaJual = new System.Windows.Forms.CheckBox();
             this.txtPPN = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label9 = new System.Windows.Forms.Label();
+            this.chkDropship = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtDiskon = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtOngkosKirim = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label11 = new System.Windows.Forms.Label();
+            this.txtOngkosKirim = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.chkCetakNotaJual = new System.Windows.Forms.CheckBox();
+            this.chkCetakLabel = new System.Windows.Forms.CheckBox();
+            this.btnSetLabelNota = new System.Windows.Forms.Button();
+            this.cmbKurir = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,6 +80,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
@@ -89,8 +100,8 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(790, 481);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(790, 524);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -100,12 +111,12 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.txtNota, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 3);
             this.tableLayoutPanel4.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel1, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.dtpTanggal, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.label7, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.txtNota, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.txtKeterangan, 1, 4);
             this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel2, 1, 3);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -142,6 +153,22 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Status";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtNota
+            // 
+            this.txtNota.AutoEnter = true;
+            this.txtNota.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNota.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtNota.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtNota.LetterOnly = false;
+            this.txtNota.Location = new System.Drawing.Point(71, 3);
+            this.txtNota.Name = "txtNota";
+            this.txtNota.NumericOnly = false;
+            this.txtNota.SelectionText = false;
+            this.txtNota.Size = new System.Drawing.Size(100, 20);
+            this.txtNota.TabIndex = 0;
+            this.txtNota.Tag = "nota";
+            this.txtNota.ThousandSeparator = false;
             // 
             // label4
             // 
@@ -245,22 +272,6 @@
             this.label7.Text = "Tanggal";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtNota
-            // 
-            this.txtNota.AutoEnter = true;
-            this.txtNota.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtNota.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtNota.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtNota.LetterOnly = false;
-            this.txtNota.Location = new System.Drawing.Point(71, 3);
-            this.txtNota.Name = "txtNota";
-            this.txtNota.NumericOnly = false;
-            this.txtNota.SelectionText = false;
-            this.txtNota.Size = new System.Drawing.Size(100, 20);
-            this.txtNota.TabIndex = 0;
-            this.txtNota.Tag = "nota";
-            this.txtNota.ThousandSeparator = false;
-            // 
             // txtKeterangan
             // 
             this.txtKeterangan.AutoEnter = false;
@@ -327,16 +338,44 @@
             this.panel1.Location = new System.Drawing.Point(3, 186);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(784, 211);
+            this.panel1.Size = new System.Drawing.Size(784, 228);
             this.panel1.TabIndex = 1;
             // 
             // gridControl
             // 
+            gridBaseStyle5.Name = "Header";
+            gridBaseStyle5.StyleInfo.Borders.Bottom = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle5.StyleInfo.Borders.Left = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle5.StyleInfo.Borders.Right = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle5.StyleInfo.Borders.Top = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle5.StyleInfo.CellType = "Header";
+            gridBaseStyle5.StyleInfo.Font.Bold = true;
+            gridBaseStyle5.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.Vertical, System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(199)))), ((int)(((byte)(184))))), System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(234)))), ((int)(((byte)(216))))));
+            gridBaseStyle5.StyleInfo.VerticalAlignment = Syncfusion.Windows.Forms.Grid.GridVerticalAlignment.Middle;
+            gridBaseStyle6.Name = "Standard";
+            gridBaseStyle6.StyleInfo.Font.Facename = "Tahoma";
+            gridBaseStyle6.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(System.Drawing.SystemColors.Window);
+            gridBaseStyle7.Name = "Column Header";
+            gridBaseStyle7.StyleInfo.BaseStyle = "Header";
+            gridBaseStyle7.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Center;
+            gridBaseStyle8.Name = "Row Header";
+            gridBaseStyle8.StyleInfo.BaseStyle = "Header";
+            gridBaseStyle8.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Left;
+            gridBaseStyle8.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.Horizontal, System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(199)))), ((int)(((byte)(184))))), System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(234)))), ((int)(((byte)(216))))));
+            this.gridControl.BaseStylesMap.AddRange(new Syncfusion.Windows.Forms.Grid.GridBaseStyle[] {
+            gridBaseStyle5,
+            gridBaseStyle6,
+            gridBaseStyle7,
+            gridBaseStyle8});
+            this.gridControl.ColWidthEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridColWidth[] {
+            new Syncfusion.Windows.Forms.Grid.GridColWidth(0, 35)});
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(5, 5);
             this.gridControl.Name = "gridControl";
+            this.gridControl.RowHeightEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridRowHeight[] {
+            new Syncfusion.Windows.Forms.Grid.GridRowHeight(0, 25)});
             this.gridControl.SerializeCellsBehavior = Syncfusion.Windows.Forms.Grid.GridSerializeCellsBehavior.SerializeAsRangeStylesIntoCode;
-            this.gridControl.Size = new System.Drawing.Size(774, 201);
+            this.gridControl.Size = new System.Drawing.Size(774, 218);
             this.gridControl.SmartSizeBox = false;
             this.gridControl.TabIndex = 0;
             this.gridControl.Text = "gridControl1";
@@ -349,25 +388,29 @@
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.17757F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.82243F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.Controls.Add(this.label10, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.chkCetakNotaJual, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.txtPPN, 2, 2);
-            this.tableLayoutPanel5.Controls.Add(this.label9, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.label8, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.txtDiskon, 2, 1);
-            this.tableLayoutPanel5.Controls.Add(this.txtOngkosKirim, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label11, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtPPN, 2, 3);
+            this.tableLayoutPanel5.Controls.Add(this.label9, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.chkDropship, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label8, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.txtDiskon, 2, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label11, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.txtOngkosKirim, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.flowLayoutPanel3, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.cmbKurir, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label12, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 403);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 420);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowCount = 4;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(784, 75);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(784, 101);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // label10
@@ -376,38 +419,27 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(557, 25);
+            this.label10.Size = new System.Drawing.Size(569, 25);
             this.label10.TabIndex = 2;
             this.label10.Text = "F1: Tambah data produk | F2: Tambah data customer | F5: Edit jumlah | F6: Edit di" +
     "skon | F7: Edit harga";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // chkCetakNotaJual
-            // 
-            this.chkCetakNotaJual.AutoSize = true;
-            this.chkCetakNotaJual.Checked = true;
-            this.chkCetakNotaJual.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCetakNotaJual.Location = new System.Drawing.Point(3, 28);
-            this.chkCetakNotaJual.Name = "chkCetakNotaJual";
-            this.chkCetakNotaJual.Size = new System.Drawing.Size(102, 17);
-            this.chkCetakNotaJual.TabIndex = 3;
-            this.chkCetakNotaJual.Text = "Cetak Nota Jual";
-            this.chkCetakNotaJual.UseVisualStyleBackColor = true;
-            // 
             // txtPPN
             // 
             this.txtPPN.AutoEnter = false;
             this.txtPPN.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtPPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPPN.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPPN.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPPN.LetterOnly = false;
-            this.txtPPN.Location = new System.Drawing.Point(680, 53);
+            this.txtPPN.Location = new System.Drawing.Point(653, 78);
             this.txtPPN.MaxLength = 20;
             this.txtPPN.Name = "txtPPN";
             this.txtPPN.NumericOnly = true;
             this.txtPPN.SelectionText = false;
-            this.txtPPN.Size = new System.Drawing.Size(100, 20);
-            this.txtPPN.TabIndex = 2;
+            this.txtPPN.Size = new System.Drawing.Size(128, 20);
+            this.txtPPN.TabIndex = 3;
             this.txtPPN.Text = "0";
             this.txtPPN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPPN.ThousandSeparator = true;
@@ -418,18 +450,29 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label9.Location = new System.Drawing.Point(645, 50);
+            this.label9.Location = new System.Drawing.Point(618, 75);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 25);
+            this.label9.Size = new System.Drawing.Size(29, 26);
             this.label9.TabIndex = 0;
             this.label9.Text = "PPN";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // chkDropship
+            // 
+            this.chkDropship.AutoSize = true;
+            this.chkDropship.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkDropship.Location = new System.Drawing.Point(3, 53);
+            this.chkDropship.Name = "chkDropship";
+            this.chkDropship.Size = new System.Drawing.Size(68, 19);
+            this.chkDropship.TabIndex = 5;
+            this.chkDropship.Text = "Dropship";
+            this.chkDropship.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label8.Location = new System.Drawing.Point(634, 25);
+            this.label8.Location = new System.Drawing.Point(607, 50);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 25);
             this.label8.TabIndex = 0;
@@ -440,50 +483,140 @@
             // 
             this.txtDiskon.AutoEnter = true;
             this.txtDiskon.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDiskon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDiskon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDiskon.LetterOnly = false;
-            this.txtDiskon.Location = new System.Drawing.Point(680, 28);
+            this.txtDiskon.Location = new System.Drawing.Point(653, 53);
             this.txtDiskon.MaxLength = 20;
             this.txtDiskon.Name = "txtDiskon";
             this.txtDiskon.NumericOnly = true;
             this.txtDiskon.SelectionText = false;
-            this.txtDiskon.Size = new System.Drawing.Size(100, 20);
-            this.txtDiskon.TabIndex = 1;
+            this.txtDiskon.Size = new System.Drawing.Size(128, 20);
+            this.txtDiskon.TabIndex = 2;
             this.txtDiskon.Text = "0";
             this.txtDiskon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDiskon.ThousandSeparator = true;
             this.txtDiskon.TextChanged += new System.EventHandler(this.txtDiskon_TextChanged);
             // 
-            // txtOngkosKirim
-            // 
-            this.txtOngkosKirim.AutoEnter = true;
-            this.txtOngkosKirim.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtOngkosKirim.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtOngkosKirim.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtOngkosKirim.LetterOnly = false;
-            this.txtOngkosKirim.Location = new System.Drawing.Point(680, 3);
-            this.txtOngkosKirim.MaxLength = 20;
-            this.txtOngkosKirim.Name = "txtOngkosKirim";
-            this.txtOngkosKirim.NumericOnly = true;
-            this.txtOngkosKirim.SelectionText = false;
-            this.txtOngkosKirim.Size = new System.Drawing.Size(100, 20);
-            this.txtOngkosKirim.TabIndex = 0;
-            this.txtOngkosKirim.Text = "0";
-            this.txtOngkosKirim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtOngkosKirim.ThousandSeparator = true;
-            this.txtOngkosKirim.TextChanged += new System.EventHandler(this.txtOngkosKirim_TextChanged);
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label11.Location = new System.Drawing.Point(605, 0);
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Location = new System.Drawing.Point(578, 25);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(69, 25);
             this.label11.TabIndex = 0;
             this.label11.Text = "Ongkos Kirim";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtOngkosKirim
+            // 
+            this.txtOngkosKirim.AutoEnter = true;
+            this.txtOngkosKirim.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtOngkosKirim.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtOngkosKirim.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtOngkosKirim.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtOngkosKirim.LetterOnly = false;
+            this.txtOngkosKirim.Location = new System.Drawing.Point(653, 28);
+            this.txtOngkosKirim.MaxLength = 20;
+            this.txtOngkosKirim.Name = "txtOngkosKirim";
+            this.txtOngkosKirim.NumericOnly = true;
+            this.txtOngkosKirim.SelectionText = false;
+            this.txtOngkosKirim.Size = new System.Drawing.Size(128, 20);
+            this.txtOngkosKirim.TabIndex = 1;
+            this.txtOngkosKirim.Text = "0";
+            this.txtOngkosKirim.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtOngkosKirim.ThousandSeparator = true;
+            this.txtOngkosKirim.TextChanged += new System.EventHandler(this.txtOngkosKirim_TextChanged);
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.chkCetakNotaJual);
+            this.flowLayoutPanel3.Controls.Add(this.chkCetakLabel);
+            this.flowLayoutPanel3.Controls.Add(this.btnSetLabelNota);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 25);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(575, 25);
+            this.flowLayoutPanel3.TabIndex = 4;
+            // 
+            // chkCetakNotaJual
+            // 
+            this.chkCetakNotaJual.AutoSize = true;
+            this.chkCetakNotaJual.Checked = true;
+            this.chkCetakNotaJual.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCetakNotaJual.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkCetakNotaJual.Location = new System.Drawing.Point(3, 3);
+            this.chkCetakNotaJual.Name = "chkCetakNotaJual";
+            this.chkCetakNotaJual.Size = new System.Drawing.Size(102, 19);
+            this.chkCetakNotaJual.TabIndex = 3;
+            this.chkCetakNotaJual.Text = "Cetak Nota Jual";
+            this.chkCetakNotaJual.UseVisualStyleBackColor = true;
+            // 
+            // chkCetakLabel
+            // 
+            this.chkCetakLabel.AutoSize = true;
+            this.chkCetakLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkCetakLabel.Location = new System.Drawing.Point(111, 3);
+            this.chkCetakLabel.Name = "chkCetakLabel";
+            this.chkCetakLabel.Size = new System.Drawing.Size(83, 19);
+            this.chkCetakLabel.TabIndex = 4;
+            this.chkCetakLabel.Text = "Cetak Label";
+            this.chkCetakLabel.UseVisualStyleBackColor = true;
+            this.chkCetakLabel.CheckedChanged += new System.EventHandler(this.chkCetakLabel_CheckedChanged);
+            // 
+            // btnSetLabelNota
+            // 
+            this.btnSetLabelNota.Enabled = false;
+            this.btnSetLabelNota.Image = global::OpenRetail.App.Properties.Resources.label16;
+            this.btnSetLabelNota.Location = new System.Drawing.Point(200, 2);
+            this.btnSetLabelNota.Margin = new System.Windows.Forms.Padding(3, 2, 3, 0);
+            this.btnSetLabelNota.Name = "btnSetLabelNota";
+            this.btnSetLabelNota.Size = new System.Drawing.Size(34, 23);
+            this.btnSetLabelNota.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.btnSetLabelNota, "Set Label Nota");
+            this.btnSetLabelNota.UseVisualStyleBackColor = true;
+            this.btnSetLabelNota.Click += new System.EventHandler(this.btnSetLabelNota_Click);
+            // 
+            // cmbKurir
+            // 
+            this.cmbKurir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbKurir.FormattingEnabled = true;
+            this.cmbKurir.Items.AddRange(new object[] {
+            "JNE Super Speed",
+            "JNE PESONA",
+            "JNE YES",
+            "JNE Regular",
+            "JNE OKE",
+            "JNE Loyalty Card",
+            "TIKI SDS",
+            "TIKI ONS",
+            "TIKI TDS",
+            "TIKI HDS",
+            "TIKI Regular",
+            "TIKI Economy",
+            "TIKI Internasional",
+            "POS Express",
+            "POS Standard",
+            "Paket POS",
+            "POS Kilat Khusus"});
+            this.cmbKurir.Location = new System.Drawing.Point(653, 3);
+            this.cmbKurir.Name = "cmbKurir";
+            this.cmbKurir.Size = new System.Drawing.Size(128, 21);
+            this.cmbKurir.TabIndex = 0;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Location = new System.Drawing.Point(578, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 25);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Kurir";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel2
             // 
@@ -545,7 +678,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 563);
+            this.ClientSize = new System.Drawing.Size(790, 606);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "FrmEntryPenjualanProduk";
             this.Text = "FrmEntryPenjualanProduk";
@@ -563,6 +696,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
@@ -606,6 +741,12 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private UserControl.AdvancedTextbox txtOngkosKirim;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.CheckBox chkCetakLabel;
+        private System.Windows.Forms.ComboBox cmbKurir;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox chkDropship;
+        private System.Windows.Forms.Button btnSetLabelNota;
 
     }
 }

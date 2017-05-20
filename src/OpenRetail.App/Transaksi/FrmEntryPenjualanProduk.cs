@@ -624,6 +624,21 @@ namespace OpenRetail.App.Transaksi
                 this._jual.kirim_kode_pos = alamatKirim.kode_pos;
                 this._jual.kirim_telepon = alamatKirim.telepon;
             }
+            else if (data is LabelAlamatKirim)
+            {
+                var labelAlamatKirim = (LabelAlamatKirim)data;
+
+                if (this._jual == null)
+                    this._jual = new JualProduk();
+
+                this._jual.label_dari1 = labelAlamatKirim.dari1;
+                this._jual.label_dari2 = labelAlamatKirim.dari2;
+
+                this._jual.label_kepada1 = labelAlamatKirim.kepada1;
+                this._jual.label_kepada2 = labelAlamatKirim.kepada2;
+                this._jual.label_kepada3 = labelAlamatKirim.kepada3;
+                this._jual.label_kepada4 = labelAlamatKirim.kepada4;
+            }
         }
 
         public void Ok(object sender, bool isNewData, object data)
@@ -1041,6 +1056,26 @@ namespace OpenRetail.App.Transaksi
             var frmEntryAlamatKirim = new FrmEntryAlamatKirim("Alamat Kirim", this._customer, this._jual);
             frmEntryAlamatKirim.Listener = this;
             frmEntryAlamatKirim.ShowDialog();
+        }
+
+        private void btnSetLabelNota_Click(object sender, EventArgs e)
+        {
+            if (this._customer == null || txtCustomer.Text.Length == 0)
+            {
+                MsgHelper.MsgWarning("'Customer' tidak boleh kosong !");
+                txtCustomer.Focus();
+
+                return;
+            }
+
+            var frmEntryLabelNota = new FrmEntryLabelNota("Label Nota", this._customer, this._jual);
+            frmEntryLabelNota.Listener = this;
+            frmEntryLabelNota.ShowDialog();
+        }
+
+        private void chkCetakLabel_CheckedChanged(object sender, EventArgs e)
+        {
+            btnSetLabelNota.Enabled = chkCetakLabel.Checked;
         }        
     }
 }
