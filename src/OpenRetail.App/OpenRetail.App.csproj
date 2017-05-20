@@ -915,6 +915,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main-icon.ico" />
+    <None Include="Resources\donasi-fix.png" />
     <None Include="Resources\label16.png" />
     <None Include="Resources\address16.png" />
     <None Include="Resources\import-data16.png" />
