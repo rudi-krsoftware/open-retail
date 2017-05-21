@@ -67,7 +67,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(564, 41);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(536, 41);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // pnlHeader
@@ -78,7 +78,7 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHeader.Location = new System.Drawing.Point(3, 3);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(558, 35);
+            this.pnlHeader.Size = new System.Drawing.Size(530, 35);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblHeader
@@ -97,11 +97,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.pnlFooter, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 366);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 352);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(564, 41);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(536, 41);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
             // pnlFooter
@@ -112,14 +112,14 @@
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFooter.Location = new System.Drawing.Point(3, 3);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(558, 35);
+            this.pnlFooter.Size = new System.Drawing.Size(530, 35);
             this.pnlFooter.TabIndex = 0;
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(241, 6);
+            this.btnOk.Location = new System.Drawing.Point(227, 6);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 0;
@@ -150,7 +150,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(564, 325);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(536, 311);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // pictureBox1
@@ -160,7 +160,7 @@
             this.pictureBox1.Image = global::OpenRetail.App.Properties.Resources.logofix;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(558, 107);
+            this.pictureBox1.Size = new System.Drawing.Size(530, 107);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -171,7 +171,7 @@
             this.lblVersion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblVersion.Location = new System.Drawing.Point(3, 113);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(558, 20);
+            this.lblVersion.Size = new System.Drawing.Size(530, 20);
             this.lblVersion.TabIndex = 1;
             this.lblVersion.Text = "lblVersion";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -182,7 +182,7 @@
             this.lblCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCopyright.Location = new System.Drawing.Point(3, 133);
             this.lblCopyright.Name = "lblCopyright";
-            this.lblCopyright.Size = new System.Drawing.Size(558, 20);
+            this.lblCopyright.Size = new System.Drawing.Size(530, 20);
             this.lblCopyright.TabIndex = 1;
             this.lblCopyright.Text = "lblCopyright";
             this.lblCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -193,7 +193,7 @@
             this.lblUrl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblUrl1.Location = new System.Drawing.Point(3, 173);
             this.lblUrl1.Name = "lblUrl1";
-            this.lblUrl1.Size = new System.Drawing.Size(558, 20);
+            this.lblUrl1.Size = new System.Drawing.Size(530, 20);
             this.lblUrl1.TabIndex = 2;
             this.lblUrl1.TabStop = true;
             this.lblUrl1.Text = "lblUrl1";
@@ -206,7 +206,7 @@
             this.lblUrl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblUrl2.Location = new System.Drawing.Point(3, 193);
             this.lblUrl2.Name = "lblUrl2";
-            this.lblUrl2.Size = new System.Drawing.Size(558, 20);
+            this.lblUrl2.Size = new System.Drawing.Size(530, 20);
             this.lblUrl2.TabIndex = 2;
             this.lblUrl2.TabStop = true;
             this.lblUrl2.Text = "lblUrl2";
@@ -218,7 +218,7 @@
             this.lblUrl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblUrl3.Location = new System.Drawing.Point(3, 213);
             this.lblUrl3.Name = "lblUrl3";
-            this.lblUrl3.Size = new System.Drawing.Size(558, 20);
+            this.lblUrl3.Size = new System.Drawing.Size(530, 20);
             this.lblUrl3.TabIndex = 3;
             this.lblUrl3.TabStop = true;
             this.lblUrl3.Text = "lblUrl3";
@@ -230,15 +230,15 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 236);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(558, 86);
+            this.groupBox1.Size = new System.Drawing.Size(530, 72);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.70892F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.29108F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.05344F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.94657F));
             this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.imgDonate, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -246,7 +246,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(552, 67);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(524, 53);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label1
@@ -255,7 +255,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(397, 48);
+            this.label1.Size = new System.Drawing.Size(401, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "OpenRetail adalah perangkat lunak gratis di bawah lisensi Apache, namun jika Anda" +
     " merasakan manfaat dari perangkat lunak ini, Anda dapat berkontribusi dalam peng" +
@@ -266,9 +266,9 @@
             this.imgDonate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.imgDonate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgDonate.Image = global::OpenRetail.App.Properties.Resources.donasi_fix;
-            this.imgDonate.Location = new System.Drawing.Point(409, 3);
+            this.imgDonate.Location = new System.Drawing.Point(412, 3);
             this.imgDonate.Name = "imgDonate";
-            this.imgDonate.Size = new System.Drawing.Size(140, 61);
+            this.imgDonate.Size = new System.Drawing.Size(109, 47);
             this.imgDonate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgDonate.TabIndex = 1;
             this.imgDonate.TabStop = false;
@@ -278,7 +278,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 407);
+            this.ClientSize = new System.Drawing.Size(536, 393);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
