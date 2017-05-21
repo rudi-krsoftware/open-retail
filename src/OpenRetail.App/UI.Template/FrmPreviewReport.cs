@@ -48,7 +48,7 @@ namespace OpenRetail.App.UI.Template
             _assemblyReport = Assembly.LoadFrom("OpenRetail.Report.dll");
         }
 
-        public FrmPreviewReport(string header, string reportName, ReportDataSource reportDataSource, IEnumerable<ReportParameter> parameters = null)
+        public FrmPreviewReport(string header, string reportName, ReportDataSource reportDataSource, IEnumerable<ReportParameter> parameters = null, bool isPreview = false)
             : this()
         {
             this.Text = header;
@@ -62,11 +62,13 @@ namespace OpenRetail.App.UI.Template
 
             if (!(parameters == null))
                 this.reportViewer1.LocalReport.SetParameters(parameters);
-            
+
+            this.reportViewer1.ShowPrintButton = !isPreview;
+
             this.reportViewer1.RefreshReport();
         }
 
-        public FrmPreviewReport(string header, string reportName, IList<ReportDataSource> reportDataSources, IEnumerable<ReportParameter> parameters = null)
+        public FrmPreviewReport(string header, string reportName, IList<ReportDataSource> reportDataSources, IEnumerable<ReportParameter> parameters = null, bool isPreview = false)
             : this()
         {
             this.Text = header;
@@ -85,6 +87,8 @@ namespace OpenRetail.App.UI.Template
 
             if (!(parameters == null))
                 this.reportViewer1.LocalReport.SetParameters(parameters);
+
+            this.reportViewer1.ShowPrintButton = !isPreview;
 
             this.reportViewer1.RefreshReport();
         }
