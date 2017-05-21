@@ -78,8 +78,9 @@ namespace OpenRetail.App.Transaksi
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
             dtpTanggalTempo.Value = dtpTanggal.Value;
-            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
+
             chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
+            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;            
 
             _listOfItemJual.Add(new ItemJualProduk()); // add dummy objek
 
@@ -105,8 +106,8 @@ namespace OpenRetail.App.Transaksi
             txtNota.Text = this._jual.nota;
             dtpTanggal.Value = (DateTime)this._jual.tanggal;
             dtpTanggalTempo.Value = dtpTanggal.Value;
-            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
             chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
+            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;            
             chkDropship.Checked = this._jual.is_dropship;
 
             if (!this._jual.tanggal_tempo.IsNull())
@@ -1110,6 +1111,13 @@ namespace OpenRetail.App.Transaksi
         private void chkCetakLabel_CheckedChanged(object sender, EventArgs e)
         {
             btnSetLabelNota.Enabled = chkCetakLabel.Checked;
+        }
+
+        private void chkCetakNotaJual_CheckedChanged(object sender, EventArgs e)
+        {
+            chkCetakLabel.Enabled = chkCetakNotaJual.Checked;
+            if (!chkCetakNotaJual.Checked)
+                chkCetakLabel.Checked = false;  
         }        
     }
 }
