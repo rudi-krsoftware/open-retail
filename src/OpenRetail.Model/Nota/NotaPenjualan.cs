@@ -40,6 +40,8 @@ namespace OpenRetail.Model.Nota
         /// </summary>
         public bool is_sdac { get; set; }
 
+        public bool is_dropship { get; set; }
+
         public string kirim_kepada { get; set; }
         public string kirim_alamat { get; set; }
         public string kirim_kecamatan { get; set; }

@@ -107,6 +107,7 @@ namespace OpenRetail.App.Transaksi
             dtpTanggalTempo.Value = dtpTanggal.Value;
             chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
             chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
+            chkDropship.Checked = this._jual.is_dropship;
 
             if (!this._jual.tanggal_tempo.IsNull())
             {
@@ -116,7 +117,7 @@ namespace OpenRetail.App.Transaksi
 
             txtCustomer.Text = this._customer.nama_customer;
             txtKeterangan.Text = this._jual.keterangan;
-
+            
             if (!string.IsNullOrEmpty(this._jual.kurir))
                 cmbKurir.Text = this._jual.kurir;
 
@@ -436,6 +437,7 @@ namespace OpenRetail.App.Transaksi
                 _jual.tanggal_tempo = dtpTanggalTempo.Value;
             }
 
+            _jual.is_dropship = chkDropship.Checked;
             _jual.kurir = cmbKurir.Text;
             _jual.ongkos_kirim = NumberHelper.StringToDouble(txtOngkosKirim.Text);
             _jual.ppn = NumberHelper.StringToDouble(txtPPN.Text);
