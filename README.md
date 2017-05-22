@@ -3,7 +3,7 @@ OpenRetail
 
 [![Build status](https://ci.appveyor.com/api/projects/status/a2cf5uy7b16w386b?svg=true)](https://ci.appveyor.com/project/rudi-krsoftware/open-retail)
 
-[![Open Retail](https://openretailblog.files.wordpress.com/2017/04/banner-small-beta1.png)](https://openretailblog.wordpress.com/)
+[![Open Retail](https://openretailblog.files.wordpress.com/2017/05/banner-small-beta.png)](https://openretailblog.wordpress.com/)
 
 OpenRetail adalah perangkat lunak open source yang dikembangkan khusus untuk bidang usaha ritel, grosir, toko bangunan dan bidang usaha lainnya yang sejenis.
 
@@ -39,6 +39,7 @@ Prerequisites (Khusus software developer atau programmer)
 	* [DockPanel Suite](https://www.nuget.org/packages/DockPanelSuite/)
 	* [Json.NET](http://www.nuget.org/packages/Newtonsoft.Json/9.0.1)	    	
     * [Npgsql 2.2.7](http://www.nuget.org/packages/Npgsql/2.2.72)    	    
+	* [RestSharp](https://www.nuget.org/packages/RestSharp/)    	    
     * [Syncfusion Community Edition](https://www.syncfusion.com/products/communitylicense/) versi 13.3.0.12
 
 * Database [PostgreSQL](https://www.postgresql.org/) versi 9.3.16 atau yang lebih tinggi
