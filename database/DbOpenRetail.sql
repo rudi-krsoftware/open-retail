@@ -1327,6 +1327,21 @@ CREATE TABLE m_jenis_pengeluaran (
 ALTER TABLE m_jenis_pengeluaran OWNER TO postgres;
 
 --
+-- Name: m_kabupaten; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_kabupaten (
+    kabupaten_id integer NOT NULL,
+    provinsi_id integer,
+    tipe character varying(15),
+    nama_kabupaten t_keterangan,
+    kode_pos t_kode_pos
+);
+
+
+ALTER TABLE m_kabupaten OWNER TO postgres;
+
+--
 -- Name: m_karyawan; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1347,6 +1362,20 @@ CREATE TABLE m_karyawan (
 
 
 ALTER TABLE m_karyawan OWNER TO postgres;
+
+--
+-- Name: m_label_nota; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_label_nota (
+    label_nota_id t_guid NOT NULL,
+    keterangan t_keterangan,
+    order_number integer,
+    is_active t_bool
+);
+
+
+ALTER TABLE m_label_nota OWNER TO postgres;
 
 --
 -- Name: m_menu; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1461,6 +1490,18 @@ CREATE TABLE m_profil (
 
 
 ALTER TABLE m_profil OWNER TO postgres;
+
+--
+-- Name: m_provinsi; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_provinsi (
+    provinsi_id integer NOT NULL,
+    nama_provinsi t_keterangan
+);
+
+
+ALTER TABLE m_provinsi OWNER TO postgres;
 
 --
 -- Name: m_role; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1784,7 +1825,8 @@ CREATE TABLE t_jual_produk (
     label_kepada2 t_keterangan,
     label_kepada3 t_keterangan,
     label_kepada4 t_keterangan,
-    kurir t_keterangan
+    kurir t_keterangan,
+    is_dropship boolean
 );
 
 
@@ -2176,11 +2218,27 @@ ALTER TABLE ONLY m_jenis_pengeluaran
 
 
 --
+-- Name: m_kabupaten_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_kabupaten
+    ADD CONSTRAINT m_kabupaten_pkey PRIMARY KEY (kabupaten_id);
+
+
+--
 -- Name: m_karyawan_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
 ALTER TABLE ONLY m_karyawan
     ADD CONSTRAINT m_karyawan_pkey PRIMARY KEY (karyawan_id);
+
+
+--
+-- Name: m_label_nota_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_label_nota
+    ADD CONSTRAINT m_label_nota_pkey PRIMARY KEY (label_nota_id);
 
 
 --
@@ -2221,6 +2279,14 @@ ALTER TABLE ONLY m_produk
 
 ALTER TABLE ONLY m_profil
     ADD CONSTRAINT m_profil_pkey PRIMARY KEY (profil_id);
+
+
+--
+-- Name: m_provinsi_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_provinsi
+    ADD CONSTRAINT m_provinsi_pkey PRIMARY KEY (provinsi_id);
 
 
 --
@@ -2751,6 +2817,14 @@ CREATE TRIGGER tr_update_total_retur_produk_aiud AFTER INSERT OR DELETE OR UPDAT
 
 ALTER TABLE ONLY m_item_menu
     ADD CONSTRAINT m_item_menu_fk FOREIGN KEY (menu_id) REFERENCES m_menu(menu_id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: m_kabupaten_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY m_kabupaten
+    ADD CONSTRAINT m_kabupaten_fk FOREIGN KEY (provinsi_id) REFERENCES m_provinsi(provinsi_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
