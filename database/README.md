@@ -30,4 +30,6 @@ psql -U postgres DbOpenRetail < 09_data-jabatan.sql
 psql -U postgres DbOpenRetail < 10_data-profil.sql
 psql -U postgres DbOpenRetail < 11_data-header-nota.sql
 psql -U postgres DbOpenRetail < 12_data-label-nota.sql
+psql -U postgres DbOpenRetail < 13_data-provinsi.sql
+psql -U postgres DbOpenRetail < 14_data-kabupaten.sql
 ```
