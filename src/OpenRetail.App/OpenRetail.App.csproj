@@ -74,8 +74,16 @@
       <HintPath>..\..\lib\Npgsql.2.2.7\lib\net40\Mono.Security.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Npgsql, Version=2.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\..\lib\Npgsql.2.2.7\lib\net40\Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\RestSharp.105.2.3\lib\net4\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Syncfusion.Grid.Base, Version=13.3400.0.12, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
@@ -264,6 +272,12 @@
     </Compile>
     <Compile Include="Laporan\FrmLapStokProduk.Designer.cs">
       <DependentUpon>FrmLapStokProduk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lookup\FrmLookupCekOngkir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lookup\FrmLookupCekOngkir.Designer.cs">
+      <DependentUpon>FrmLookupCekOngkir.cs</DependentUpon>
     </Compile>
     <Compile Include="Lookup\FrmLookupItemNota.cs">
       <SubType>Form</SubType>
@@ -640,6 +654,9 @@
     <EmbeddedResource Include="Laporan\FrmLapStokProduk.resx">
       <DependentUpon>FrmLapStokProduk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lookup\FrmLookupCekOngkir.resx">
+      <DependentUpon>FrmLookupCekOngkir.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lookup\FrmLookupItemNota.resx">
       <DependentUpon>FrmLookupItemNota.cs</DependentUpon>
     </EmbeddedResource>
@@ -915,6 +932,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main-icon.ico" />
+    <None Include="Resources\donasi-fix.png" />
     <None Include="Resources\label16.png" />
     <None Include="Resources\address16.png" />
     <None Include="Resources\import-data16.png" />

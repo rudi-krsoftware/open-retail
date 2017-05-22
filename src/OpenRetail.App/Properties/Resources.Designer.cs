@@ -113,6 +113,16 @@ namespace OpenRetail.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap donasi_fix {
+            get {
+                object obj = ResourceManager.GetObject("donasi_fix", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap excel16 {
             get {
                 object obj = ResourceManager.GetObject("excel16", resourceCulture);

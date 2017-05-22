@@ -21,16 +21,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpenRetail.Model
+namespace OpenRetail.Model.RajaOngkir
 {
-    public enum ReferencesType
+    public class results
     {
-        Supplier = 1, 
-        Customer = 2, 
-        Produk = 3,
-        NotaBeliProduk = 4,
-        NotaJualProduk = 5,
-        JenisPengeluaran = 6,
-        KabupatenAsal = 7, KabupatenTujuan
+        public string province_id { get; set; }
+        public string province { get; set; }
+
+        /// <summary>
+        /// id kota/kabupaten
+        /// </summary>
+        public string city_id { get; set; }
+
+        /// <summary>
+        /// Jenis Daerah Tingkat II. Berisi "Kota" atau "Kabupaten"
+        /// </summary>
+        public string type { get; set; }
+        public string city_name { get; set; }
+        public string postal_code { get; set; }
+
+        public string code { get; set; }
+        public string name { get; set; }
+        public List<costs> costs { get; set; }
     }
 }

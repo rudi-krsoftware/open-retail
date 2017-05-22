@@ -81,6 +81,14 @@ namespace OpenRetail.App.Main
         {
             if (KeyPressHelper.IsEsc(e))
                 btnOk_Click(sender, e);
+        }
+
+        private void imgDonate_Click(object sender, EventArgs e)
+        {
+            var url = "https://openretailblog.wordpress.com/kontribusi/";
+
+            // Navigate to a URL.
+            System.Diagnostics.Process.Start(url);
         }        
     }
 }

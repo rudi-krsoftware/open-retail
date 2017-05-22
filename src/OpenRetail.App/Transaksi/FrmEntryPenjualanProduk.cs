@@ -29,6 +29,7 @@ using OpenRetail.App.Helper;
 using OpenRetail.App.UI.Template;
 using OpenRetail.App.Lookup;
 using OpenRetail.Model;
+using OpenRetail.Model.Nota;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using Syncfusion.Windows.Forms.Grid;
@@ -37,6 +38,7 @@ using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
 using log4net;
 using Microsoft.Reporting.WinForms;
+using OpenRetail.Model.RajaOngkir;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -78,7 +80,9 @@ namespace OpenRetail.App.Transaksi
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
             dtpTanggalTempo.Value = dtpTanggal.Value;
-            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
+
+            chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
+            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;            
 
             _listOfItemJual.Add(new ItemJualProduk()); // add dummy objek
 
@@ -104,7 +108,9 @@ namespace OpenRetail.App.Transaksi
             txtNota.Text = this._jual.nota;
             dtpTanggal.Value = (DateTime)this._jual.tanggal;
             dtpTanggalTempo.Value = dtpTanggal.Value;
-            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
+            chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
+            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;            
+            chkDropship.Checked = this._jual.is_dropship;
 
             if (!this._jual.tanggal_tempo.IsNull())
             {
@@ -114,7 +120,7 @@ namespace OpenRetail.App.Transaksi
 
             txtCustomer.Text = this._customer.nama_customer;
             txtKeterangan.Text = this._jual.keterangan;
-
+            
             if (!string.IsNullOrEmpty(this._jual.kurir))
                 cmbKurir.Text = this._jual.kurir;
 
@@ -434,6 +440,7 @@ namespace OpenRetail.App.Transaksi
                 _jual.tanggal_tempo = dtpTanggalTempo.Value;
             }
 
+            _jual.is_dropship = chkDropship.Checked;
             _jual.kurir = cmbKurir.Text;
             _jual.ongkos_kirim = NumberHelper.StringToDouble(txtOngkosKirim.Text);
             _jual.ppn = NumberHelper.StringToDouble(txtPPN.Text);
@@ -471,7 +478,8 @@ namespace OpenRetail.App.Transaksi
                 {
                     try
                     {
-                        CetakNota(_jual.jual_id);
+                        if (chkCetakNotaJual.Checked)
+                            CetakNota(_jual.jual_id);
                     }
                     catch
                     {
@@ -556,16 +564,8 @@ namespace OpenRetail.App.Transaksi
                         reportName = "RvNotaPenjualanProdukLabel";
                 }
 
-                if (chkCetakNotaJual.Checked)
-                {
-                    var printReport = new ReportViewerPrintHelper(reportName, reportDataSource, parameters, _pengaturanUmum.nama_printer);
-                    printReport.Print();
-                }
-                else
-                {
-                    var frmPreviewReport = new FrmPreviewReport("Preview Nota Penjualan", reportName, reportDataSource, parameters);
-                    frmPreviewReport.ShowDialog();
-                }                               
+                var printReport = new ReportViewerPrintHelper(reportName, reportDataSource, parameters, _pengaturanUmum.nama_printer);
+                printReport.Print();
             }
         }
 
@@ -668,6 +668,19 @@ namespace OpenRetail.App.Transaksi
                 this._jual.label_kepada2 = labelAlamatKirim.kepada2;
                 this._jual.label_kepada3 = labelAlamatKirim.kepada3;
                 this._jual.label_kepada4 = labelAlamatKirim.kepada4;
+            }
+            else if (data is costs)
+            {
+                var ongkir = (costs)data;
+
+                try
+                {
+                    cmbKurir.Text = string.Format("{0} {1}", ongkir.kurir_code, ongkir.service);
+                    txtOngkosKirim.Text = ongkir.cost[0].value.ToString();
+                }
+                catch
+                {
+                }
             }
         }
 
@@ -1106,6 +1119,172 @@ namespace OpenRetail.App.Transaksi
         private void chkCetakLabel_CheckedChanged(object sender, EventArgs e)
         {
             btnSetLabelNota.Enabled = chkCetakLabel.Checked;
+        }
+
+        private void chkCetakNotaJual_CheckedChanged(object sender, EventArgs e)
+        {
+            chkCetakLabel.Enabled = chkCetakNotaJual.Checked;
+            if (!chkCetakNotaJual.Checked)
+                chkCetakLabel.Checked = false;  
+        }
+
+        private void btnPreviewNota_Click(object sender, EventArgs e)
+        {
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                PreviewNota();
+            }            
+        }
+
+        private void PreviewNota()
+        {
+            if (this._customer == null || txtCustomer.Text.Length == 0)
+            {
+                MsgHelper.MsgWarning("'Customer' tidak boleh kosong !");
+                txtCustomer.Focus();
+
+                return;
+            }
+
+            var total = SumGrid(this._listOfItemJual);
+            if (!(total > 0))
+            {
+                MsgHelper.MsgWarning("Anda belum melengkapi inputan data produk !");
+                return;
+            }
+
+            if (total > 0)
+            {
+                total += NumberHelper.StringToDouble(txtDiskon.Text);
+                total -= NumberHelper.StringToDouble(txtOngkosKirim.Text);
+                total -= NumberHelper.StringToDouble(txtPPN.Text);
+            }
+
+            if (this._jual == null)
+            {
+                this._jual = new JualProduk();
+            }
+
+            var listOfItemNota = new List<NotaPenjualan>();
+
+            foreach (var item in this._listOfItemJual.Where(f => f.Produk != null))
+            {
+                var itemNota = new NotaPenjualan
+                {
+                    nama_customer = this._customer.nama_customer,
+                    alamat = string.IsNullOrEmpty(this._customer.alamat) ? "" : this._customer.alamat,
+                    kecamatan = string.IsNullOrEmpty(this._customer.kecamatan) ? "-" : this._customer.kecamatan,
+                    kelurahan = string.IsNullOrEmpty(this._customer.kelurahan) ? "-" : this._customer.kelurahan,
+                    kota = string.IsNullOrEmpty(this._customer.kota) ? "-" : this._customer.kota,
+                    kode_pos = string.IsNullOrEmpty(this._customer.kode_pos) ? "-" : this._customer.kode_pos,
+                    kontak = string.IsNullOrEmpty(this._customer.kontak) ? "" : this._customer.kontak,
+                    telepon = string.IsNullOrEmpty(this._customer.telepon) ? "-" : this._customer.telepon,
+                    nota = txtNota.Text,
+                    tanggal = dtpTanggal.Value,                    
+                    ppn = NumberHelper.StringToDouble(txtPPN.Text),
+                    diskon_nota = NumberHelper.StringToDouble(txtDiskon.Text),
+                    kurir = cmbKurir.Text,
+                    ongkos_kirim = NumberHelper.StringToDouble(txtOngkosKirim.Text),
+                    total_nota = total,
+                    is_sdac = this._jual.is_sdac,
+                    kirim_kepada = string.IsNullOrEmpty(this._jual.kirim_kepada) ? "" : this._jual.kirim_kepada,
+                    kirim_alamat = string.IsNullOrEmpty(this._jual.kirim_alamat) ? "" : this._jual.kirim_alamat,
+                    kirim_kecamatan = string.IsNullOrEmpty(this._jual.kirim_kecamatan) ? "-" : this._jual.kirim_kecamatan,
+                    kirim_kelurahan = string.IsNullOrEmpty(this._jual.kirim_kelurahan) ? "-" : this._jual.kirim_kelurahan,
+                    kirim_kota = string.IsNullOrEmpty(this._jual.kirim_kota) ? "-" : this._jual.kirim_kota,
+                    kirim_kode_pos = string.IsNullOrEmpty(this._jual.kirim_kode_pos) ? "-" : this._jual.kirim_kode_pos,
+                    kirim_telepon = string.IsNullOrEmpty(this._jual.kirim_telepon) ? "-" : this._jual.kirim_telepon,
+                    label_dari1 = string.IsNullOrEmpty(this._jual.label_dari1) ? "" : this._jual.label_dari1,
+                    label_dari2 = string.IsNullOrEmpty(this._jual.label_dari2) ? "" : this._jual.label_dari1,
+                    label_kepada1 = string.IsNullOrEmpty(this._jual.label_kepada1) ? "" : this._jual.label_kepada1,
+                    label_kepada2 = string.IsNullOrEmpty(this._jual.label_kepada2) ? "" : this._jual.label_kepada2,
+                    label_kepada3 = string.IsNullOrEmpty(this._jual.label_kepada3) ? "" : this._jual.label_kepada3,
+                    label_kepada4 = string.IsNullOrEmpty(this._jual.label_kepada4) ? "" : this._jual.label_kepada4,
+                    kode_produk = item.Produk.kode_produk,
+                    nama_produk = item.Produk.nama_produk,
+                    satuan = item.Produk.satuan,
+                    harga = item.harga_jual,
+                    jumlah = item.jumlah,
+                    jumlah_retur = item.jumlah_retur,
+                    diskon = item.diskon
+                };
+
+                itemNota.tanggal_tempo = DateTimeHelper.GetNullDateTime();
+                if (rdoKredit.Checked)
+                    itemNota.tanggal_tempo = dtpTanggalTempo.Value;
+
+                if (string.IsNullOrEmpty(itemNota.label_kepada1))
+                    itemNota.label_kepada1 = this._customer.nama_customer;
+
+                if (string.IsNullOrEmpty(itemNota.label_kepada2))
+                    itemNota.label_kepada2 = this._customer.alamat;
+
+                if (string.IsNullOrEmpty(itemNota.label_kepada3))
+                    itemNota.label_kepada3 = "HP: " + this._customer.telepon;
+
+                listOfItemNota.Add(itemNota);
+            }
+
+            var reportDataSource = new ReportDataSource
+            {
+                Name = "NotaPenjualan",
+                Value = listOfItemNota
+            };
+
+            // set header nota
+            var parameters = new List<ReportParameter>();
+            var index = 1;
+
+            foreach (var item in _pengaturanUmum.list_of_header_nota)
+            {
+                var paramName = string.Format("header{0}", index);
+                parameters.Add(new ReportParameter(paramName, item.keterangan));
+
+                index++;
+            }
+
+            foreach (var item in listOfItemNota)
+            {
+                if (item.label_dari1.Length == 0)
+                    item.label_dari1 = this._pengaturanUmum.list_of_label_nota[0].keterangan;
+
+                if (item.label_dari2.Length == 0)
+                    item.label_dari2 = this._pengaturanUmum.list_of_label_nota[1].keterangan;
+            }
+
+            // set footer nota
+            var dt = DateTime.Now;
+            var kotaAndTanggal = string.Format("{0}, {1}", _profil.kota, dt.Day + " " + DayMonthHelper.GetBulanIndonesia(dt.Month) + " " + dt.Year);
+
+            parameters.Add(new ReportParameter("kota", kotaAndTanggal));
+            parameters.Add(new ReportParameter("footer", _pengguna.nama_pengguna));
+
+            var reportName = string.Empty;
+
+            if (chkDropship.Checked)
+            {
+                reportName = "RvNotaPenjualanProdukTanpaLabelDropship";
+
+                if (chkCetakLabel.Checked)
+                    reportName = "RvNotaPenjualanProdukLabelDropship";
+            }
+            else
+            {
+                reportName = "RvNotaPenjualanProdukTanpaLabel";
+
+                if (chkCetakLabel.Checked)
+                    reportName = "RvNotaPenjualanProdukLabel";
+            }
+
+            var frmPreviewReport = new FrmPreviewReport("Preview Nota Penjualan", reportName, reportDataSource, parameters, true);
+            frmPreviewReport.ShowDialog();
+        }
+
+        private void btnCekOngkir_Click(object sender, EventArgs e)
+        {
+            var frmCekOngkir = new FrmLookupCekOngkir("Cek Ongkos Kirim");
+            frmCekOngkir.Listener = this;
+            frmCekOngkir.ShowDialog();
         }        
     }
 }

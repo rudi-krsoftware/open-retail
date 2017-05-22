@@ -76,6 +76,7 @@
     <Compile Include="JabatanBll.cs" />
     <Compile Include="JenisPengeluaranBll.cs" />
     <Compile Include="JualProdukBll.cs" />
+    <Compile Include="KabupatenBll.cs" />
     <Compile Include="KaryawanBll.cs" />
     <Compile Include="KasbonBll.cs" />
     <Compile Include="LabelAlamatKirimBll.cs" />

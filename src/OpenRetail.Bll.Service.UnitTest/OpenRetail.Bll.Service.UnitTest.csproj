@@ -92,6 +92,7 @@
     <Compile Include="JabatanBllTest.cs" />
     <Compile Include="JenisPengeluaranBllTest.cs" />
     <Compile Include="JualProdukBllTest.cs" />
+    <Compile Include="KabupatenBllTest.cs" />
     <Compile Include="KaryawanBllTest.cs" />
     <Compile Include="KasbonBllTest.cs" />
     <Compile Include="MenuBllTest.cs" />

@@ -56,6 +56,7 @@
             this.txtHeader3 = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtHeader4 = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtHeader5 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.chkCetakLabelNotaJualOtomatis = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -111,6 +112,7 @@
             this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.cmbPrinter, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.chkCetakOtomatis, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.chkCetakLabelNotaJualOtomatis, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -137,9 +139,9 @@
             this.cmbPrinter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrinter.FormattingEnabled = true;
-            this.cmbPrinter.Location = new System.Drawing.Point(107, 3);
+            this.cmbPrinter.Location = new System.Drawing.Point(133, 3);
             this.cmbPrinter.Name = "cmbPrinter";
-            this.cmbPrinter.Size = new System.Drawing.Size(366, 21);
+            this.cmbPrinter.Size = new System.Drawing.Size(340, 21);
             this.cmbPrinter.TabIndex = 1;
             // 
             // chkCetakOtomatis
@@ -148,9 +150,9 @@
             this.chkCetakOtomatis.Dock = System.Windows.Forms.DockStyle.Left;
             this.chkCetakOtomatis.Location = new System.Drawing.Point(3, 28);
             this.chkCetakOtomatis.Name = "chkCetakOtomatis";
-            this.chkCetakOtomatis.Size = new System.Drawing.Size(98, 19);
+            this.chkCetakOtomatis.Size = new System.Drawing.Size(124, 19);
             this.chkCetakOtomatis.TabIndex = 2;
-            this.chkCetakOtomatis.Text = "Cetak Otomatis";
+            this.chkCetakOtomatis.Text = "Cetak Nota Otomatis";
             this.chkCetakOtomatis.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -455,6 +457,17 @@
             this.txtHeader5.TabIndex = 4;
             this.txtHeader5.ThousandSeparator = false;
             // 
+            // chkCetakLabelNotaJualOtomatis
+            // 
+            this.chkCetakLabelNotaJualOtomatis.AutoSize = true;
+            this.chkCetakLabelNotaJualOtomatis.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkCetakLabelNotaJualOtomatis.Location = new System.Drawing.Point(133, 28);
+            this.chkCetakLabelNotaJualOtomatis.Name = "chkCetakLabelNotaJualOtomatis";
+            this.chkCetakLabelNotaJualOtomatis.Size = new System.Drawing.Size(175, 19);
+            this.chkCetakLabelNotaJualOtomatis.TabIndex = 3;
+            this.chkCetakLabelNotaJualOtomatis.Text = "Cetak Label Nota Jual Otomatis";
+            this.chkCetakLabelNotaJualOtomatis.UseVisualStyleBackColor = true;
+            // 
             // FrmPengaturanUmum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,6 +524,7 @@
         private System.Windows.Forms.Label label8;
         private UserControl.AdvancedTextbox txtDari2;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox chkCetakLabelNotaJualOtomatis;
 
 
 

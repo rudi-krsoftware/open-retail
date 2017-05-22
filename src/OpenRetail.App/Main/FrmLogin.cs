@@ -85,6 +85,7 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum = new PengaturanUmum();
             MainProgram.pengaturanUmum.nama_printer = AppConfigHelper.GetValue("printerName", appConfigFile);
             MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_auto_print_label_nota = AppConfigHelper.GetValue("isAutoPrinterLabelNota", appConfigFile).ToLower() == "true" ? true : false;
 
             // set header nota
             IHeaderNotaBll headerNotaBll = new HeaderNotaBll();
@@ -93,6 +94,15 @@ namespace OpenRetail.App.Main
             // set label nota
             ILabelNotaBll labelNotaBll = new LabelNotaBll();
             MainProgram.pengaturanUmum.list_of_label_nota = labelNotaBll.GetAll();
+        }
+
+        /// <summary>
+        /// Load data kabupaten untuk keperluan pengecekan ongkos kirim
+        /// </summary>
+        private void LoadKabupaten()
+        {
+            IKabupatenBll bll = new KabupatenBll();
+            MainProgram.ListOfKabupaten = bll.GetAll();
         }
 
         private bool ExecSQL(string fileName)
@@ -188,7 +198,8 @@ namespace OpenRetail.App.Main
                     UpgradeDatabase(DatabaseVersionHelper.DatabaseVersion);
 
                     SetProfil();
-                    SetPengaturanUmum();                    
+                    SetPengaturanUmum();
+                    LoadKabupaten();
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();

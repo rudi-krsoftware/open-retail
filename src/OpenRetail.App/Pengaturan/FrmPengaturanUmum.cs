@@ -55,6 +55,7 @@ namespace OpenRetail.App.Pengaturan
 
             LoadPrinter(this._pengaturanUmum.nama_printer);
             chkCetakOtomatis.Checked = this._pengaturanUmum.is_auto_print;
+            chkCetakLabelNotaJualOtomatis.Checked = this._pengaturanUmum.is_auto_print_label_nota;
 
             LoadHeaderNota();
             LoadLabelNota();
@@ -123,10 +124,12 @@ namespace OpenRetail.App.Pengaturan
             {
                 _pengaturanUmum.nama_printer = cmbPrinter.Text;
                 _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
+                _pengaturanUmum.is_auto_print_label_nota = chkCetakLabelNotaJualOtomatis.Checked;
 
                 var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
                 AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
                 AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
+                AppConfigHelper.SaveValue("isAutoPrinterLabelNota", chkCetakLabelNotaJualOtomatis.Checked.ToString(), appConfigFile);
 
                 // simpan header nota
                 SimpanHeaderNota();

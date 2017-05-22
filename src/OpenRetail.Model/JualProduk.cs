@@ -104,6 +104,8 @@ namespace OpenRetail.Model
         /// </summary>
         public bool is_sdac { get; set; }
 
+        public bool is_dropship { get; set; }
+
         [Display(Name = "Kepada")]
         public string kirim_kepada { get; set; }
 
