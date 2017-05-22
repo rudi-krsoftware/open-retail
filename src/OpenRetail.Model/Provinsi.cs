@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,17 +20,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+
+using FluentValidation;
+using Dapper.Contrib.Extensions;
+using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{
-    public enum ReferencesType
+{        
+	[Table("m_provinsi")]
+    public class Provinsi
     {
-        Supplier = 1, 
-        Customer = 2, 
-        Produk = 3,
-        NotaBeliProduk = 4,
-        NotaJualProduk = 5,
-        JenisPengeluaran = 6,
-        KabupatenAsal = 7, KabupatenTujuan
-    }
+		[ExplicitKey]
+		[Display(Name = "provinsi_id")]		
+		public int provinsi_id { get; set; }
+		
+		[Display(Name = "nama_provinsi")]
+		public string nama_provinsi { get; set; }
+	}
+
+    public class ProvinsiValidator : AbstractValidator<Provinsi>
+    {
+        public ProvinsiValidator()
+        {
+            CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
+
+			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
+
+			RuleFor(c => c.nama_provinsi).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
+		}
+	}
 }

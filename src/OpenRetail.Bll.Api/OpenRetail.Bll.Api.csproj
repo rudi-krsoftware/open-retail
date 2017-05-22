@@ -58,6 +58,7 @@
     <Compile Include="IJabatanBll.cs" />
     <Compile Include="IJenisPengeluaranBll.cs" />
     <Compile Include="IJualProdukBll.cs" />
+    <Compile Include="IKabupatenBll.cs" />
     <Compile Include="IKaryawanBll.cs" />
     <Compile Include="IKasbonBll.cs" />
     <Compile Include="ILabelAlamatKirimBll.cs" />

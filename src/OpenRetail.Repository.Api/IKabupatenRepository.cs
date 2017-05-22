@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,17 +20,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace OpenRetail.Model
-{
-    public enum ReferencesType
+using OpenRetail.Model;
+ 
+namespace OpenRetail.Repository.Api
+{        
+    public interface IKabupatenRepository : IBaseRepository<Kabupaten>
     {
-        Supplier = 1, 
-        Customer = 2, 
-        Produk = 3,
-        NotaBeliProduk = 4,
-        NotaJualProduk = 5,
-        JenisPengeluaran = 6,
-        KabupatenAsal = 7, KabupatenTujuan
+		Kabupaten GetByID(int id);            
+        IList<Kabupaten> GetByName(string name);
     }
-}
+}     

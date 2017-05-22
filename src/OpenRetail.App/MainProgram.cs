@@ -59,6 +59,11 @@ namespace OpenRetail.App
         public static readonly string securityCode = "BhGr7YwZpdX7ubFuZCuU";
 
         /// <summary>
+        /// API key dari raja ongkir untuk mengcek ongkos kirim secara online
+        /// </summary>
+        public static readonly string rajaOngkirKey = "";
+
+        /// <summary>
         /// Objek global untuk menyimpan informasi jumlah record per halaman
         /// </summary>
         public static int pageSize = 50; // nilai default 50 record perhalaman
@@ -66,7 +71,7 @@ namespace OpenRetail.App
         public static Profil profil = null;
         public static Pengguna pengguna = null;
         public static PengaturanUmum pengaturanUmum = null;
-
+        public static IList<Kabupaten> ListOfKabupaten = null;
         private static bool _isLogout;
 
         /// <summary>

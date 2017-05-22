@@ -23,14 +23,7 @@ using System.Text;
 
 namespace OpenRetail.Model
 {
-    public enum ReferencesType
+    public class KabupatenTujuan : Kabupaten
     {
-        Supplier = 1, 
-        Customer = 2, 
-        Produk = 3,
-        NotaBeliProduk = 4,
-        NotaJualProduk = 5,
-        JenisPengeluaran = 6,
-        KabupatenAsal = 7, KabupatenTujuan
     }
 }

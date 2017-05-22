@@ -21,16 +21,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpenRetail.Model
+namespace OpenRetail.Model.RajaOngkir
 {
-    public enum ReferencesType
+    public class rajaongkir
     {
-        Supplier = 1, 
-        Customer = 2, 
-        Produk = 3,
-        NotaBeliProduk = 4,
-        NotaJualProduk = 5,
-        JenisPengeluaran = 6,
-        KabupatenAsal = 7, KabupatenTujuan
+        public query query { get; set; }
+        public status status { get; set; }
+        public List<results> results { get; set; }
+
+        public origin_details origin_details { get; set; }
+        public destination_details destination_details { get; set; }
     }
 }

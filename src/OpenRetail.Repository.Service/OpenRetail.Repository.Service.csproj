@@ -70,6 +70,7 @@
     <Compile Include="JabatanRepository.cs" />
     <Compile Include="JenisPengeluaranRepository.cs" />
     <Compile Include="JualProdukRepository.cs" />
+    <Compile Include="KabupatenRepository.cs" />
     <Compile Include="KaryawanRepository.cs" />
     <Compile Include="KasbonRepository.cs" />
     <Compile Include="LabelNotaRepository.cs" />

@@ -83,6 +83,7 @@ namespace OpenRetail.Repository.Service
 
         private IHeaderNotaRepository _headerNotaRepository;
         private ILabelNotaRepository _labelNotaRepository;
+        private IKabupatenRepository _kabupatenRepository;
 
         public UnitOfWork(IDapperContext context, ILog log)
         {
@@ -313,6 +314,11 @@ namespace OpenRetail.Repository.Service
         public ILabelNotaRepository LabelNotaRepository
         {
             get { return _labelNotaRepository ?? (_labelNotaRepository = new LabelNotaRepository(_context, _log)); }
+        }
+
+        public IKabupatenRepository KabupatenRepository
+        {
+            get { return _kabupatenRepository ?? (_kabupatenRepository = new KabupatenRepository(_context, _log)); }
         }
     }
 }     

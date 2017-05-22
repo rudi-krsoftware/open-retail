@@ -38,6 +38,8 @@ namespace OpenRetail.App.Lookup
         private IList<Customer> _listOfCustomer = null;
         private IList<Produk> _listOfProduk = null;
         private IList<JenisPengeluaran> _listOfJenisPengeluaran = null;
+        private IList<KabupatenAsal> _listOfKabupatenAsal = null;
+        private IList<KabupatenTujuan> _listOfKabupatenTujuan = null;
 
         private ReferencesType _referensiType = ReferencesType.Supplier;
         public IListener Listener { private get; set; }
@@ -94,6 +96,32 @@ namespace OpenRetail.App.Lookup
             base.SetActiveBtnPilih(listOfProduk.Count > 0);
         }
 
+        public FrmLookupReferensi(string header, IList<KabupatenAsal> listOfKabupatenAsal)
+            : base()
+        {
+            InitializeComponent();
+
+            base.SetHeader(header);
+            this._listOfKabupatenAsal = listOfKabupatenAsal;
+            this._referensiType = ReferencesType.KabupatenAsal;
+
+            InitGridList();
+            base.SetActiveBtnPilih(listOfKabupatenAsal.Count > 0);
+        }
+
+        public FrmLookupReferensi(string header, IList<KabupatenTujuan> listOfKabupatenTujuan)
+            : base()
+        {
+            InitializeComponent();
+
+            base.SetHeader(header);
+            this._listOfKabupatenTujuan = listOfKabupatenTujuan;
+            this._referensiType = ReferencesType.KabupatenTujuan;
+
+            InitGridList();
+            base.SetActiveBtnPilih(listOfKabupatenTujuan.Count > 0);
+        }
+
         private void InitGridList()
         {
             var gridListProperties = new List<GridListControlProperties>();
@@ -145,12 +173,108 @@ namespace OpenRetail.App.Lookup
                     listCount = _listOfProduk.Count;
                     break;
 
+                case ReferencesType.KabupatenAsal:
+                    gridListProperties.Add(new GridListControlProperties { Header = "Provinsi", Width = 250 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Kota/Kabupaten", Width = 250 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Kode Pos" });
+                    GridListControlHelper.InitializeGridListControl<KabupatenAsal>(this.gridList, _listOfKabupatenAsal, gridListProperties);
+                    this.gridList.Grid.QueryCellInfo += GridKabupatenAsal_QueryCellInfo;
+
+                    listCount = _listOfKabupatenAsal.Count;
+                    break;
+
+                case ReferencesType.KabupatenTujuan:
+                    gridListProperties.Add(new GridListControlProperties { Header = "Provinsi", Width = 250 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Kota/Kabupaten", Width = 250 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Kode Pos" });
+                    GridListControlHelper.InitializeGridListControl<KabupatenTujuan>(this.gridList, _listOfKabupatenTujuan, gridListProperties);
+                    this.gridList.Grid.QueryCellInfo += GridKabupatenTujuan_QueryCellInfo;
+
+                    listCount = _listOfKabupatenTujuan.Count;
+                    break;
+
                 default:
                     break;
             }
 
             if (listCount > 0)
                 this.gridList.SetSelected(0, true);
+        }
+
+        private void GridKabupatenTujuan_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
+        {            
+            if (_listOfKabupatenTujuan.Count > 0)
+            {
+                if (e.RowIndex > 0)
+                {
+                    var rowIndex = e.RowIndex - 1;
+
+                    if (rowIndex < _listOfKabupatenTujuan.Count)
+                    {
+                        var kabupaten = _listOfKabupatenTujuan[rowIndex];
+
+                        switch (e.ColIndex)
+                        {
+                            case 2:
+                                e.Style.CellValue = kabupaten.Provinsi.nama_provinsi;
+                                break;
+
+                            case 3:
+                                e.Style.CellValue = kabupaten.nama_kabupaten;
+                                break;
+
+                            case 4:
+                                e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                e.Style.CellValue = kabupaten.kode_pos;
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        // we handled it, let the grid know
+                        e.Handled = true;
+                    }
+                }
+            }
+        }
+
+        private void GridKabupatenAsal_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
+        {            
+            if (_listOfKabupatenAsal.Count > 0)
+            {
+                if (e.RowIndex > 0)
+                {
+                    var rowIndex = e.RowIndex - 1;
+
+                    if (rowIndex < _listOfKabupatenAsal.Count)
+                    {
+                        var kabupaten = _listOfKabupatenAsal[rowIndex];
+
+                        switch (e.ColIndex)
+                        {
+                            case 2:
+                                e.Style.CellValue = kabupaten.Provinsi.nama_provinsi;
+                                break;
+
+                            case 3:
+                                e.Style.CellValue = kabupaten.nama_kabupaten;
+                                break;
+
+                            case 4:
+                                e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                e.Style.CellValue = kabupaten.kode_pos;
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        // we handled it, let the grid know
+                        e.Handled = true;
+                    }
+                }
+            }
         }
 
         private void GridJenisPengeluaran_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
@@ -322,6 +446,16 @@ namespace OpenRetail.App.Lookup
                 case ReferencesType.Produk:
                     var produk = _listOfProduk[rowIndex];
                     this.Listener.Ok(this, produk);
+                    break;
+
+                case ReferencesType.KabupatenAsal:
+                    var kabupatenAsal = _listOfKabupatenAsal[rowIndex];
+                    this.Listener.Ok(this, kabupatenAsal);
+                    break;
+
+                case ReferencesType.KabupatenTujuan:
+                    var kabupatenTujuan = _listOfKabupatenTujuan[rowIndex];
+                    this.Listener.Ok(this, kabupatenTujuan);
                     break;
 
                 default:

@@ -21,16 +21,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpenRetail.Model
+namespace OpenRetail.Model.RajaOngkir
 {
-    public enum ReferencesType
+    public class cost
     {
-        Supplier = 1, 
-        Customer = 2, 
-        Produk = 3,
-        NotaBeliProduk = 4,
-        NotaJualProduk = 5,
-        JenisPengeluaran = 6,
-        KabupatenAsal = 7, KabupatenTujuan
+        /// <summary>
+        /// Tarif pengiriman (ongkos kirim)
+        /// </summary>
+        public int value { get; set; }
+
+        /// <summary>
+        /// Perkiraan waktu pengiriman (dalam hari)
+        /// </summary>
+        public string etd { get; set; }
+
+        /// <summary>
+        /// Catatan terkait tarif pengiriman
+        /// </summary>
+        public string note { get; set; }
     }
 }
