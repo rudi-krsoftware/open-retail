@@ -35,6 +35,11 @@ namespace OpenRetail.Bll.Service
 		private ILog _log;
 		private KabupatenValidator _validator;
 
+        public KabupatenBll()
+        {
+            _validator = new KabupatenValidator();
+        }
+
 		public KabupatenBll(ILog log)
         {
 			_log = log;
