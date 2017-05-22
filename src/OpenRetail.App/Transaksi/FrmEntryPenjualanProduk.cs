@@ -38,6 +38,7 @@ using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
 using log4net;
 using Microsoft.Reporting.WinForms;
+using OpenRetail.Model.RajaOngkir;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -668,6 +669,19 @@ namespace OpenRetail.App.Transaksi
                 this._jual.label_kepada3 = labelAlamatKirim.kepada3;
                 this._jual.label_kepada4 = labelAlamatKirim.kepada4;
             }
+            else if (data is costs)
+            {
+                var ongkir = (costs)data;
+
+                try
+                {
+                    cmbKurir.Text = string.Format("{0} {1}", ongkir.kurir_code, ongkir.service);
+                    txtOngkosKirim.Text = ongkir.cost[0].value.ToString();
+                }
+                catch
+                {
+                }
+            }
         }
 
         public void Ok(object sender, bool isNewData, object data)
@@ -1264,6 +1278,13 @@ namespace OpenRetail.App.Transaksi
 
             var frmPreviewReport = new FrmPreviewReport("Preview Nota Penjualan", reportName, reportDataSource, parameters, true);
             frmPreviewReport.ShowDialog();
+        }
+
+        private void btnCekOngkir_Click(object sender, EventArgs e)
+        {
+            var frmCekOngkir = new FrmLookupCekOngkir("Cek Ongkos Kirim");
+            frmCekOngkir.Listener = this;
+            frmCekOngkir.ShowDialog();
         }        
     }
 }

@@ -96,6 +96,15 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum.list_of_label_nota = labelNotaBll.GetAll();
         }
 
+        /// <summary>
+        /// Load data kabupaten untuk keperluan pengecekan ongkos kirim
+        /// </summary>
+        private void LoadKabupaten()
+        {
+            IKabupatenBll bll = new KabupatenBll();
+            MainProgram.ListOfKabupaten = bll.GetAll();
+        }
+
         private bool ExecSQL(string fileName)
         {
             var result = false;
@@ -189,7 +198,8 @@ namespace OpenRetail.App.Main
                     UpgradeDatabase(DatabaseVersionHelper.DatabaseVersion);
 
                     SetProfil();
-                    SetPengaturanUmum();                    
+                    SetPengaturanUmum();
+                    LoadKabupaten();
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();

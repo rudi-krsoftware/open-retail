@@ -70,6 +70,8 @@
     <Compile Include="HeaderNota.cs" />
     <Compile Include="ItemPengeluaranBiaya.cs" />
     <Compile Include="Kabupaten.cs" />
+    <Compile Include="KabupatenAsal.cs" />
+    <Compile Include="KabupatenTujuan.cs" />
     <Compile Include="Kasbon.cs" />
     <Compile Include="LabelAlamatKirim.cs" />
     <Compile Include="LabelNota.cs" />
