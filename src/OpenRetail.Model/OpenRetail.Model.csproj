@@ -77,6 +77,15 @@
     <Compile Include="PembayaranKasbon.cs" />
     <Compile Include="PengaturanUmum.cs" />
     <Compile Include="PengeluaranBiaya.cs" />
+    <Compile Include="RajaOngkir\cost.cs" />
+    <Compile Include="RajaOngkir\costs.cs" />
+    <Compile Include="RajaOngkir\destination_details.cs" />
+    <Compile Include="RajaOngkir\origin_details.cs" />
+    <Compile Include="RajaOngkir\query.cs" />
+    <Compile Include="RajaOngkir\rajaongkir.cs" />
+    <Compile Include="RajaOngkir\results.cs" />
+    <Compile Include="RajaOngkir\root.cs" />
+    <Compile Include="RajaOngkir\status.cs" />
     <Compile Include="Report\ReportGajiKaryawan.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukHeader.cs" />
