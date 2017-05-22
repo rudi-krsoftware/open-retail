@@ -69,6 +69,7 @@
     <Compile Include="GajiKaryawan.cs" />
     <Compile Include="HeaderNota.cs" />
     <Compile Include="ItemPengeluaranBiaya.cs" />
+    <Compile Include="Kabupaten.cs" />
     <Compile Include="Kasbon.cs" />
     <Compile Include="LabelAlamatKirim.cs" />
     <Compile Include="LabelNota.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="PembayaranKasbon.cs" />
     <Compile Include="PengaturanUmum.cs" />
     <Compile Include="PengeluaranBiaya.cs" />
+    <Compile Include="Provinsi.cs" />
     <Compile Include="RajaOngkir\cost.cs" />
     <Compile Include="RajaOngkir\costs.cs" />
     <Compile Include="RajaOngkir\destination_details.cs" />
