@@ -31,24 +31,39 @@ namespace OpenRetail.App.Helper
             return result ;
         }
 
+        private static bool IsSectionExist(string sectionName, AppSettingsSection appSetting)
+        {
+            var keyCount = appSetting.Settings.AllKeys
+                                     .Where(key => key == sectionName).Count();
+
+            return keyCount > 0;
+        }
+
         public static void SaveValue(string sectionName, string value, string appConfigFile)
         {
             var configFileMap = new ExeConfigurationFileMap();
             configFileMap.ExeConfigFilename = appConfigFile;
 
             var configuration = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-            var section = (AppSettingsSection)configuration.GetSection(SECTION_NAME);           
+            var section = (AppSettingsSection)configuration.GetSection(SECTION_NAME);
 
             try
             {
-                section.Settings[sectionName].Value = value;
+                if (IsSectionExist(sectionName, section))
+                {
+                    section.Settings[sectionName].Value = value;
+                }
+                else
+                {
+                    section.Settings.Add(sectionName, value);
+                }
 
                 configuration.Save(ConfigurationSaveMode.Modified, false);
                 ConfigurationManager.RefreshSection(SECTION_NAME);
             }
             catch
             {
-            }            
+            }
         }
     }
 }
