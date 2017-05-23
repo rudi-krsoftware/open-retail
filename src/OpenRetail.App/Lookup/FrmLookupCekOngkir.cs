@@ -236,13 +236,13 @@ namespace OpenRetail.App.Lookup
 
         public void Ok(object sender, object data)
         {
-            if (data is KabupatenAsal) // pencarian customer
+            if (data is KabupatenAsal) // hasil pencarian kabupaten asal
             {
                 this._kabupatenAsal = (KabupatenAsal)data;
                 txtKabupatenAsal.Text = this._kabupatenAsal.nama_kabupaten;
                 KeyPressHelper.NextFocus();
             }
-            else if (data is KabupatenTujuan) // pencarian customer
+            else if (data is KabupatenTujuan) // hasil pencarian kabupaten tujuan
             {
                 this._kabupatenTujuan = (KabupatenTujuan)data;
                 txtKabupatenTujuan.Text = this._kabupatenTujuan.nama_kabupaten;
