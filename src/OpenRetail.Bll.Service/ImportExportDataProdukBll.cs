@@ -175,7 +175,21 @@ namespace OpenRetail.Bll.Service
                             if (produk.satuan.Length > 20)
                                 produk.satuan = produk.satuan.Substring(0, 20);
 
-                            result = Convert.ToBoolean(uow.ProdukRepository.Save(produk));
+                            var oldProduk = uow.ProdukRepository.GetByKode(produk.kode_produk);
+                            if (oldProduk == null)
+                            {
+                                result = Convert.ToBoolean(uow.ProdukRepository.Save(produk));
+                            }                                
+                            else
+                            {
+                                // khusus stok etalase dan gudang diabaikan (tidak diupdate)
+                                produk.produk_id = oldProduk.produk_id;
+                                produk.kode_produk_old = oldProduk.kode_produk;
+                                produk.stok = oldProduk.stok;
+                                produk.stok_gudang = oldProduk.stok_gudang;
+
+                                result = Convert.ToBoolean(uow.ProdukRepository.Update(produk));
+                            }
                         }                        
                     }                    
                 }
