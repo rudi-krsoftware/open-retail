@@ -95,6 +95,8 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{ORDER BY}", "");
                 _sql = _sql.Replace("{OFFSET}", "");
 
+                kodeProduk = kodeProduk.ToLower();
+
                 obj = MappingRecordToObject(_sql, new { kodeProduk }).SingleOrDefault();
             }
             catch (Exception ex)
