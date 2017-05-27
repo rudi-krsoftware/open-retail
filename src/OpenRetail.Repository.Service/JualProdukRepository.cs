@@ -75,7 +75,7 @@ namespace OpenRetail.Repository.Service
             {
                 var sql = @"SELECT t_item_jual_produk.item_jual_id, t_item_jual_produk.jual_id, t_item_jual_produk.pengguna_id, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual, 
                             t_item_jual_produk.jumlah, t_item_jual_produk.jumlah_retur, t_item_jual_produk.diskon, t_item_jual_produk.tanggal_sistem, 1 as entity_state,
-                            m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.harga_beli, m_produk.harga_jual
+                            m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon
                             FROM public.t_item_jual_produk INNER JOIN public.m_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
                             WHERE t_item_jual_produk.jual_id = @jualId
                             ORDER BY t_item_jual_produk.tanggal_sistem";

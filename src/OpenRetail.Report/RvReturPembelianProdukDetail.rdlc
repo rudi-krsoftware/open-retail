@@ -864,7 +864,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!jumlah_retur.Value</Value>
+                              <Value>=FormatNumber(Fields!jumlah_retur.Value, 2)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
