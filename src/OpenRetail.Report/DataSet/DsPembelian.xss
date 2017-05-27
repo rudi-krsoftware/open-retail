@@ -15,7 +15,7 @@
     <Shape ID="DesignTable:ReportKartuHutang" ZOrder="4" X="321" Y="232" Height="49" Width="256" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="45" />
     <Shape ID="DesignTable:ReportReturPembelianProdukHeader" ZOrder="3" X="2" Y="296" Height="68" Width="282" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
     <Shape ID="DesignTable:ReportReturPembelianProdukDetail" ZOrder="2" X="8" Y="380" Height="49" Width="275" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="45" />
-    <Shape ID="DesignTable:NotaPembelian" ZOrder="1" X="630" Y="9" Height="257" Width="155" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
+    <Shape ID="DesignTable:NotaPembelian" ZOrder="1" X="630" Y="9" Height="467" Width="155" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="463" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
