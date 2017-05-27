@@ -463,8 +463,10 @@ namespace OpenRetail.App.Referensi
                 {
                     using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                     {
+                        var listOfProduk = _bll.GetAll(cmbSortBy.SelectedIndex);
+                        
                         IImportExportDataBll<Produk> _importDataBll = new ImportExportDataProdukBll(dlgSave.FileName, _log);
-                        _importDataBll.Export(_listOfProduk);
+                        _importDataBll.Export(listOfProduk);
                     }                    
                 }
             }                   

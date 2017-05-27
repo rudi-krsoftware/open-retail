@@ -34,6 +34,7 @@ namespace OpenRetail.Bll.Api
         IList<Produk> GetByName(string name, int sortByIndex, int pageNumber, int pageSize, ref int pagesCount);
         IList<Produk> GetByGolongan(string golonganId);
         IList<Produk> GetByGolongan(string golonganId, int sortByIndex, int pageNumber, int pageSize, ref int pagesCount);
+        IList<Produk> GetAll(int sortByIndex);
         IList<Produk> GetAll(int sortByIndex, int pageNumber, int pageSize, ref int pagesCount);
         string GetLastKodeProduk();
 

@@ -150,6 +150,19 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
+        public IList<Produk> GetAll(int sortByIndex)
+        {
+            IList<Produk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ProdukRepository.GetAll(GetSortByFieldName(sortByIndex));
+            }
+
+            return oList;
+        }
+
         public IList<Produk> GetAll(int sortByIndex, int pageNumber, int pageSize, ref int pagesCount)
         {
             IList<Produk> oList = null;

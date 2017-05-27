@@ -36,6 +36,7 @@ namespace OpenRetail.Repository.Api
         IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount);
         IList<Produk> GetByGolongan(string golonganId);
         IList<Produk> GetByGolongan(string golonganId, string sortBy, int pageNumber, int pageSize, ref int pagesCount);
+        IList<Produk> GetAll(string sortBy);
         IList<Produk> GetAll(string sortBy, int pageNumber, int pageSize, ref int pagesCount);
     }
 }     

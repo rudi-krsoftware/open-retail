@@ -80,17 +80,13 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(937, 28);
             this.tableLayoutPanel6.TabIndex = 0;
-            this.tableLayoutPanel6.Controls.SetChildIndex(this.cmbSortBy, 0);
-            this.tableLayoutPanel6.Controls.SetChildIndex(this.label2, 0);
-            this.tableLayoutPanel6.Controls.SetChildIndex(this.flowLayoutPanel2, 0);
-            this.tableLayoutPanel6.Controls.SetChildIndex(this.cmbGolongan, 0);
             // 
             // cmbGolongan
             // 
             this.cmbGolongan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbGolongan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGolongan.FormattingEnabled = true;
-            this.cmbGolongan.Location = new System.Drawing.Point(37, 3);
+            this.cmbGolongan.Location = new System.Drawing.Point(3, 3);
             this.cmbGolongan.Name = "cmbGolongan";
             this.cmbGolongan.Size = new System.Drawing.Size(194, 21);
             this.cmbGolongan.TabIndex = 1;
@@ -102,16 +98,16 @@
             this.flowLayoutPanel2.Controls.Add(this.txtNamaProduk);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(597, 0);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(563, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(340, 28);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(374, 28);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnCari
             // 
             this.btnCari.Image = global::OpenRetail.App.Properties.Resources.search16;
-            this.btnCari.Location = new System.Drawing.Point(300, 0);
+            this.btnCari.Location = new System.Drawing.Point(334, 0);
             this.btnCari.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnCari.Name = "btnCari";
             this.btnCari.Size = new System.Drawing.Size(37, 23);
@@ -127,7 +123,7 @@
             this.txtNamaProduk.ForeColor = System.Drawing.Color.Black;
             this.txtNamaProduk.LeaveFocusColor = System.Drawing.Color.White;
             this.txtNamaProduk.LetterOnly = false;
-            this.txtNamaProduk.Location = new System.Drawing.Point(91, 3);
+            this.txtNamaProduk.Location = new System.Drawing.Point(125, 3);
             this.txtNamaProduk.Name = "txtNamaProduk";
             this.txtNamaProduk.NumericOnly = false;
             this.txtNamaProduk.SelectionText = false;
@@ -140,7 +136,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(257, 0);
+            this.label2.Location = new System.Drawing.Point(223, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 28);
             this.label2.TabIndex = 2;
@@ -154,7 +150,7 @@
             this.cmbSortBy.Items.AddRange(new object[] {
             "Kode Produk",
             "Nama Produk"});
-            this.cmbSortBy.Location = new System.Drawing.Point(388, 3);
+            this.cmbSortBy.Location = new System.Drawing.Point(354, 3);
             this.cmbSortBy.Name = "cmbSortBy";
             this.cmbSortBy.Size = new System.Drawing.Size(148, 21);
             this.cmbSortBy.TabIndex = 3;

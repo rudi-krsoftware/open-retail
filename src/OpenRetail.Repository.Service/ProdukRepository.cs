@@ -282,6 +282,28 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
+        public IList<Produk> GetAll(string sortBy)
+        {
+            IList<Produk> oList = new List<Produk>();
+
+            try
+            {
+                sortBy = string.Format("ORDER BY {0}", sortBy);
+
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
+                _sql = _sql.Replace("{ORDER BY}", sortBy);
+                _sql = _sql.Replace("{OFFSET}", "");
+
+                oList = MappingRecordToObject(_sql).ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
         public IList<Produk> GetAll(string sortBy, int pageNumber, int pageSize, ref int pagesCount)
         {
             IList<Produk> oList = new List<Produk>();
