@@ -52,6 +52,8 @@
             this.btnMovePrevious = new System.Windows.Forms.Button();
             this.btnMoveNext = new System.Windows.Forms.Button();
             this.btnMoveLast = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.updLimit = new System.Windows.Forms.NumericUpDown();
             this.lblInfoNavigasi = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
@@ -61,6 +63,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -95,7 +98,7 @@
             this.btnImport.Image = global::OpenRetail.App.Properties.Resources.import_data16;
             this.btnImport.Location = new System.Drawing.Point(591, 4);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(39, 23);
+            this.btnImport.Size = new System.Drawing.Size(39, 25);
             this.btnImport.TabIndex = 3;
             this.toolTip1.SetToolTip(this.btnImport, "Impor data dari excel");
             this.btnImport.UseVisualStyleBackColor = true;
@@ -261,6 +264,8 @@
             this.flowLayoutPanel1.Controls.Add(this.btnMovePrevious);
             this.flowLayoutPanel1.Controls.Add(this.btnMoveNext);
             this.flowLayoutPanel1.Controls.Add(this.btnMoveLast);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.updLimit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -308,6 +313,48 @@
             this.btnMoveLast.UseVisualStyleBackColor = true;
             this.btnMoveLast.Click += new System.EventHandler(this.btnMoveLast_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Location = new System.Drawing.Point(179, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Limit";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // updLimit
+            // 
+            this.updLimit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.updLimit.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.updLimit.Location = new System.Drawing.Point(213, 5);
+            this.updLimit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.updLimit.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.updLimit.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.updLimit.Name = "updLimit";
+            this.updLimit.ReadOnly = true;
+            this.updLimit.Size = new System.Drawing.Size(42, 20);
+            this.updLimit.TabIndex = 2;
+            this.updLimit.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.updLimit.ValueChanged += new System.EventHandler(this.updLimit_ValueChanged);
+            // 
             // lblInfoNavigasi
             // 
             this.lblInfoNavigasi.AutoSize = true;
@@ -343,6 +390,8 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updLimit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,5 +422,7 @@
         private System.Windows.Forms.Label lblInfoNavigasi;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         protected System.Windows.Forms.ToolStripMenuItem mnuExportData;
+        private System.Windows.Forms.Label label1;
+        protected System.Windows.Forms.NumericUpDown updLimit;
     }
 }

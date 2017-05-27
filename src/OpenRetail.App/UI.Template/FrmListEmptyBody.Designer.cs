@@ -84,7 +84,7 @@
             this.btnImport.Image = global::OpenRetail.App.Properties.Resources.import_data16;
             this.btnImport.Location = new System.Drawing.Point(591, 4);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(39, 23);
+            this.btnImport.Size = new System.Drawing.Size(39, 25);
             this.btnImport.TabIndex = 3;
             this.toolTip1.SetToolTip(this.btnImport, "Impor data dari excel");
             this.btnImport.UseVisualStyleBackColor = true;

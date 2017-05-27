@@ -196,5 +196,10 @@ namespace OpenRetail.App.UI.Template
         {
             ExportData();
         }
+
+        private void updLimit_ValueChanged(object sender, EventArgs e)
+        {
+            LimitRowChanged();
+        }
     }
 }

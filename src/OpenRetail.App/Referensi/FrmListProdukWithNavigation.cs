@@ -75,6 +75,8 @@ namespace OpenRetail.App.Referensi
                 if (role.is_grant)
                 {
                     cmbSortBy.SelectedIndex = 1;
+                    this.updLimit.Value = _pageSize;
+
                     LoadDataGolongan();                    
                 }
 
@@ -514,7 +516,15 @@ namespace OpenRetail.App.Referensi
             _pageNumber = _pagesCount;
 
             RefreshData();
-        }        
+        }
+
+        protected override void LimitRowChanged()
+        {
+            MainProgram.pageSize = (int)this.updLimit.Value;
+            _pageSize = MainProgram.pageSize;
+
+            cmbGolongan_SelectedIndexChanged(cmbGolongan, new EventArgs());
+        }
 
         private void gridList_DoubleClick(object sender, EventArgs e)
         {

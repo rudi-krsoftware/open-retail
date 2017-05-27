@@ -30,7 +30,6 @@
         {
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.cmbGolongan = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCari = new System.Windows.Forms.Button();
@@ -38,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbSortBy = new System.Windows.Forms.ComboBox();
             this.gridList = new Syncfusion.Windows.Forms.Grid.GridListControl();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -68,7 +68,6 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.cmbGolongan, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.flowLayoutPanel2, 5, 0);
             this.tableLayoutPanel6.Controls.Add(this.label2, 3, 0);
@@ -81,24 +80,17 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(937, 28);
             this.tableLayoutPanel6.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Golongan";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tableLayoutPanel6.Controls.SetChildIndex(this.cmbSortBy, 0);
+            this.tableLayoutPanel6.Controls.SetChildIndex(this.label2, 0);
+            this.tableLayoutPanel6.Controls.SetChildIndex(this.flowLayoutPanel2, 0);
+            this.tableLayoutPanel6.Controls.SetChildIndex(this.cmbGolongan, 0);
             // 
             // cmbGolongan
             // 
             this.cmbGolongan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbGolongan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGolongan.FormattingEnabled = true;
-            this.cmbGolongan.Location = new System.Drawing.Point(62, 3);
+            this.cmbGolongan.Location = new System.Drawing.Point(37, 3);
             this.cmbGolongan.Name = "cmbGolongan";
             this.cmbGolongan.Size = new System.Drawing.Size(194, 21);
             this.cmbGolongan.TabIndex = 1;
@@ -110,16 +102,16 @@
             this.flowLayoutPanel2.Controls.Add(this.txtNamaProduk);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(622, 0);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(597, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(315, 28);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(340, 28);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnCari
             // 
             this.btnCari.Image = global::OpenRetail.App.Properties.Resources.search16;
-            this.btnCari.Location = new System.Drawing.Point(275, 0);
+            this.btnCari.Location = new System.Drawing.Point(300, 0);
             this.btnCari.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnCari.Name = "btnCari";
             this.btnCari.Size = new System.Drawing.Size(37, 23);
@@ -135,7 +127,7 @@
             this.txtNamaProduk.ForeColor = System.Drawing.Color.Black;
             this.txtNamaProduk.LeaveFocusColor = System.Drawing.Color.White;
             this.txtNamaProduk.LetterOnly = false;
-            this.txtNamaProduk.Location = new System.Drawing.Point(66, 3);
+            this.txtNamaProduk.Location = new System.Drawing.Point(91, 3);
             this.txtNamaProduk.Name = "txtNamaProduk";
             this.txtNamaProduk.NumericOnly = false;
             this.txtNamaProduk.SelectionText = false;
@@ -148,7 +140,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(282, 0);
+            this.label2.Location = new System.Drawing.Point(257, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 28);
             this.label2.TabIndex = 2;
@@ -162,7 +154,7 @@
             this.cmbSortBy.Items.AddRange(new object[] {
             "Kode Produk",
             "Nama Produk"});
-            this.cmbSortBy.Location = new System.Drawing.Point(413, 3);
+            this.cmbSortBy.Location = new System.Drawing.Point(388, 3);
             this.cmbSortBy.Name = "cmbSortBy";
             this.cmbSortBy.Size = new System.Drawing.Size(148, 21);
             this.cmbSortBy.TabIndex = 3;
@@ -186,6 +178,17 @@
             this.gridList.TabIndex = 1;
             this.gridList.TopIndex = 0;
             this.gridList.DoubleClick += new System.EventHandler(this.gridList_DoubleClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 28);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Golongan";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmListProdukWithNavigation
             // 
