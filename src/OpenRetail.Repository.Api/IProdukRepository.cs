@@ -33,9 +33,9 @@ namespace OpenRetail.Repository.Api
         string GetLastKodeProduk();
 
         IList<Produk> GetByName(string name);
-        IList<Produk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount);
+        IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount);
         IList<Produk> GetByGolongan(string golonganId);
-        IList<Produk> GetByGolongan(string golonganId, int pageNumber, int pageSize, ref int pagesCount);
-        IList<Produk> GetAll(int pageNumber, int pageSize, ref int pagesCount);
+        IList<Produk> GetByGolongan(string golonganId, string sortBy, int pageNumber, int pageSize, ref int pagesCount);
+        IList<Produk> GetAll(string sortBy, int pageNumber, int pageSize, ref int pagesCount);
     }
 }     
