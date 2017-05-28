@@ -82,9 +82,11 @@
     <Compile Include="CetakNotaBllTest.cs" />
     <Compile Include="CustomerBllTest.cs" />
     <Compile Include="DatabaseVersionBllTest.cs" />
+    <Compile Include="FooterNotaMiniPosBllTest.cs" />
     <Compile Include="GajiKaryawanBllTest.cs" />
     <Compile Include="GolonganBllTest.cs" />
     <Compile Include="HeaderNotaBllTest.cs" />
+    <Compile Include="HeaderNotaMiniPosBllTest.cs" />
     <Compile Include="ImportExportDataCustomerBllTest.cs" />
     <Compile Include="ImportExportDataGolonganBllTest.cs" />
     <Compile Include="ImportExportDataProdukBllTest.cs" />

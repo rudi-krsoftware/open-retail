@@ -65,9 +65,11 @@
     <Compile Include="CustomerBll.cs" />
     <Compile Include="DatabaseVersionBll.cs" />
     <Compile Include="DbConnectionHelper.cs" />
+    <Compile Include="FooterNotaMiniPosBll.cs" />
     <Compile Include="GajiKaryawanBll.cs" />
     <Compile Include="GolonganBll.cs" />
     <Compile Include="HeaderNotaBll.cs" />
+    <Compile Include="HeaderNotaMiniPosBll.cs" />
     <Compile Include="ImportExportDataCustomerBll.cs" />
     <Compile Include="ImportExportDataGolonganBll.cs" />
     <Compile Include="ImportExportDataProdukBll.cs" />
