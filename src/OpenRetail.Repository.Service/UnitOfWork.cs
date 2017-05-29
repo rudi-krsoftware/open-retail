@@ -85,6 +85,9 @@ namespace OpenRetail.Repository.Service
         private ILabelNotaRepository _labelNotaRepository;
         private IKabupatenRepository _kabupatenRepository;
 
+        private IFooterNotaMiniPosRepository _footernotaminiposRepository;
+        private IHeaderNotaMiniPosRepository _headernotaminiposRepository;
+
         public UnitOfWork(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -319,6 +322,16 @@ namespace OpenRetail.Repository.Service
         public IKabupatenRepository KabupatenRepository
         {
             get { return _kabupatenRepository ?? (_kabupatenRepository = new KabupatenRepository(_context, _log)); }
+        }
+
+        public IFooterNotaMiniPosRepository FooterNotaMiniPosRepository
+        {
+            get { return _footernotaminiposRepository ?? (_footernotaminiposRepository = new FooterNotaMiniPosRepository(_context, _log)); }
+        }
+
+        public IHeaderNotaMiniPosRepository HeaderNotaMiniPosRepository
+        {
+            get { return _headernotaminiposRepository ?? (_headernotaminiposRepository = new HeaderNotaMiniPosRepository(_context, _log)); }
         }
     }
 }     

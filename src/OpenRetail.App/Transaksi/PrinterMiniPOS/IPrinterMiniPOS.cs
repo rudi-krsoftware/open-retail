@@ -21,20 +21,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpenRetail.Model
+using OpenRetail.Model;
+
+namespace OpenRetail.App.Transaksi.PrinterMiniPOS
 {
-    public class PengaturanUmum
+    public interface IPrinterMiniPOS
     {
-        public string nama_printer { get; set; }
-        public bool is_auto_print { get; set; }
-        public bool is_auto_print_label_nota { get; set; }
-        public bool is_printer_mini_pos { get; set; }
-        public bool is_cetak_customer { get; set; }
-        public int jumlah_karakter { get; set; }
-        public int jumlah_gulung { get; set; }
-        public IList<HeaderNota> list_of_header_nota { get; set; }
-        public IList<HeaderNotaMiniPos> list_of_header_nota_mini_pos { get; set; }
-        public IList<FooterNotaMiniPos> list_of_footer_nota_mini_pos { get; set; }
-        public IList<LabelNota> list_of_label_nota { get; set; }
+        /// <summary>
+        /// Override method untuk mencetak nota mini pos
+        /// </summary>
+        /// <param name="jual">objek jual</param>
+        /// <param name="listOfHeaderNota">list objek header nota</param>
+        /// <param name="listOfFooterNota">list objek footer nota</param>        
+        /// <param name="jumlahKarakter">maksimal jumlah karakter yang tercetak</param>
+        /// <param name="lineFeed">jumlah gulung kertas setelah pencetakan selesai</param>
+        void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true);
     }
 }
