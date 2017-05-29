@@ -1056,7 +1056,7 @@ namespace OpenRetail.App.Transaksi
             {
                 ShowEntryCustomer();
             }
-            else if (KeyPressHelper.IsShortcutKey(Keys.F5, e) || KeyPressHelper.IsShortcutKey(Keys.F6, e) || KeyPressHelper.IsShortcutKey(Keys.F7, e) || KeyPressHelper.IsShortcutKey(Keys.F8, e))
+            else if (KeyPressHelper.IsShortcutKey(Keys.F5, e) || KeyPressHelper.IsShortcutKey(Keys.F6, e) || KeyPressHelper.IsShortcutKey(Keys.F7, e))
             {                
                 var colIndex = 4;
                 var rowIndex = this.gridControl.CurrentCell.RowIndex;
@@ -1075,12 +1075,6 @@ namespace OpenRetail.App.Transaksi
                         colIndex = 6;
                         break;
 
-                    case Keys.F8: // bayar
-                        txtJumlahBayar.Text = "0";
-                        txtKembali.Text = "0";                        
-                        txtJumlahBayar.Focus();
-                        break;
-
                     default:
                         break;
                 }
@@ -1090,6 +1084,12 @@ namespace OpenRetail.App.Transaksi
                     gridControl.Focus();
                     GridListControlHelper.SetCurrentCell(gridControl, _listOfItemJual.Count - 1, colIndex);
                 }
+            }
+            else if (KeyPressHelper.IsShortcutKey(Keys.F8, e)) // bayar
+            {
+                txtJumlahBayar.Text = "0";
+                txtKembali.Text = "0";
+                txtJumlahBayar.Focus();
             }
         }
 
