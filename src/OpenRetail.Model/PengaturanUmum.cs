@@ -28,7 +28,13 @@ namespace OpenRetail.Model
         public string nama_printer { get; set; }
         public bool is_auto_print { get; set; }
         public bool is_auto_print_label_nota { get; set; }
+        public bool is_printer_mini_pos { get; set; }
+        public bool is_cetak_customer { get; set; }
+        public int jumlah_karakter { get; set; }
+        public int jumlah_gulung { get; set; }
         public IList<HeaderNota> list_of_header_nota { get; set; }
+        public IList<HeaderNotaMiniPos> list_of_header_nota_mini_pos { get; set; }
+        public IList<FooterNotaMiniPos> list_of_footer_nota_mini_pos { get; set; }
         public IList<LabelNota> list_of_label_nota { get; set; }
     }
 }

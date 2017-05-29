@@ -52,6 +52,8 @@
             this.mnuImportFileMaster = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExportData = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.updLimit = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.pnlFooter.SuspendLayout();
@@ -59,6 +61,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.mnuPopupImportData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -219,6 +222,8 @@
             this.flowLayoutPanel1.Controls.Add(this.btnMovePrevious);
             this.flowLayoutPanel1.Controls.Add(this.btnMoveNext);
             this.flowLayoutPanel1.Controls.Add(this.btnMoveLast);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.updLimit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -318,6 +323,42 @@
             this.mnuExportData.Text = "Export Data ...";
             this.mnuExportData.Click += new System.EventHandler(this.mnuExportData_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Location = new System.Drawing.Point(179, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Limit";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // updLimit
+            // 
+            this.updLimit.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.updLimit.Location = new System.Drawing.Point(213, 5);
+            this.updLimit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.updLimit.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.updLimit.Name = "updLimit";
+            this.updLimit.ReadOnly = true;
+            this.updLimit.Size = new System.Drawing.Size(42, 20);
+            this.updLimit.TabIndex = 2;
+            this.updLimit.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.updLimit.ValueChanged += new System.EventHandler(this.updLimit_ValueChanged);
+            // 
             // FrmListStandardWithNavigation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,7 +380,9 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.mnuPopupImportData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.updLimit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -369,5 +412,7 @@
         private System.Windows.Forms.Button btnMoveLast;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         protected System.Windows.Forms.ToolStripMenuItem mnuExportData;
+        private System.Windows.Forms.Label label1;
+        protected System.Windows.Forms.NumericUpDown updLimit;
     }
 }

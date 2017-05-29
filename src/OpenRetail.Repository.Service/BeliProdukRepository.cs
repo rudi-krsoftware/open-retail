@@ -69,7 +69,7 @@ namespace OpenRetail.Repository.Service
             {
                 var sql = @"SELECT t_item_beli_produk.item_beli_produk_id, t_item_beli_produk.beli_produk_id, t_item_beli_produk.pengguna_id, t_item_beli_produk.harga, 
                             t_item_beli_produk.jumlah, t_item_beli_produk.jumlah_retur, t_item_beli_produk.diskon, t_item_beli_produk.tanggal_sistem, 1 as entity_state,
-                            m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.harga_beli, m_produk.harga_jual
+                            m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon
                             FROM public.t_item_beli_produk INNER JOIN public.m_produk ON t_item_beli_produk.produk_id = m_produk.produk_id
                             WHERE t_item_beli_produk.beli_produk_id = @beliId
                             ORDER BY t_item_beli_produk.tanggal_sistem";
@@ -349,7 +349,7 @@ namespace OpenRetail.Repository.Service
         private double GetTotalNota(BeliProduk obj)
         {
             var total = obj.item_beli.Where(f => f.Produk != null && f.entity_state != EntityState.Deleted)
-                                     .Sum(f => f.jumlah * f.harga);
+                                     .Sum(f => (f.jumlah - f.jumlah_retur) * (f.harga - (f.diskon / 100 * f.harga)));
 
             total = Math.Ceiling(total);
             return total;

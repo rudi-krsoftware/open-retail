@@ -95,6 +95,8 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{ORDER BY}", "");
                 _sql = _sql.Replace("{OFFSET}", "");
 
+                kodeProduk = kodeProduk.ToLower();
+
                 obj = MappingRecordToObject(_sql, new { kodeProduk }).SingleOrDefault();
             }
             catch (Exception ex)
@@ -192,14 +194,16 @@ namespace OpenRetail.Repository.Service
             return pagesCount;
         }
 
-        public IList<Produk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount)
+        public IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount)
         {
             IList<Produk> oList = new List<Produk>();
 
             try
             {
+                sortBy = string.Format("ORDER BY {0}", sortBy);
+
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY m_produk.nama_produk");
+                _sql = _sql.Replace("{ORDER BY}", sortBy);
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
 
                 pagesCount = GetPagesCountByName(name, pageSize);
@@ -235,14 +239,16 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
-        public IList<Produk> GetByGolongan(string golonganId, int pageNumber, int pageSize, ref int pagesCount)
+        public IList<Produk> GetByGolongan(string golonganId, string sortBy, int pageNumber, int pageSize, ref int pagesCount)
         {
             IList<Produk> oList = new List<Produk>();
 
             try
             {
+                sortBy = string.Format("ORDER BY {0}", sortBy);
+
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_produk.golongan_id = @golonganId");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY m_produk.nama_produk");
+                _sql = _sql.Replace("{ORDER BY}", sortBy);
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
 
                 pagesCount = GetPagesCountByGolongan(golonganId, pageSize);
@@ -276,14 +282,38 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
-        public IList<Produk> GetAll(int pageNumber, int pageSize, ref int pagesCount)
+        public IList<Produk> GetAll(string sortBy)
         {
             IList<Produk> oList = new List<Produk>();
 
             try
             {
+                sortBy = string.Format("ORDER BY {0}", sortBy);
+
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY m_produk.nama_produk");
+                _sql = _sql.Replace("{ORDER BY}", sortBy);
+                _sql = _sql.Replace("{OFFSET}", "");
+
+                oList = MappingRecordToObject(_sql).ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<Produk> GetAll(string sortBy, int pageNumber, int pageSize, ref int pagesCount)
+        {
+            IList<Produk> oList = new List<Produk>();
+
+            try
+            {
+                sortBy = string.Format("ORDER BY {0}", sortBy);
+
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
+                _sql = _sql.Replace("{ORDER BY}", sortBy);
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
 
                 pagesCount = GetPagesCount(pageSize);

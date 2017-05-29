@@ -39,6 +39,7 @@ using ConceptCave.WaitCursor;
 using log4net;
 using Microsoft.Reporting.WinForms;
 using OpenRetail.Model.RajaOngkir;
+using OpenRetail.App.Transaksi.PrinterMiniPOS;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -81,13 +82,12 @@ namespace OpenRetail.App.Transaksi
             dtpTanggal.Value = DateTime.Today;
             dtpTanggalTempo.Value = dtpTanggal.Value;
 
-            chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
-            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;            
+            SetPengaturanPrinter();
 
             _listOfItemJual.Add(new ItemJualProduk()); // add dummy objek
 
             InitGridControl(gridControl);
-        }
+        }        
 
         public FrmEntryPenjualanProduk(string header, JualProduk jual, IJualProdukBll bll)
             : base()
@@ -108,8 +108,8 @@ namespace OpenRetail.App.Transaksi
             txtNota.Text = this._jual.nota;
             dtpTanggal.Value = (DateTime)this._jual.tanggal;
             dtpTanggalTempo.Value = dtpTanggal.Value;
-            chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
-            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;            
+
+            SetPengaturanPrinter();            
             chkDropship.Checked = this._jual.is_dropship;
 
             if (!this._jual.tanggal_tempo.IsNull())
@@ -146,6 +146,22 @@ namespace OpenRetail.App.Transaksi
             InitGridControl(gridControl);
 
             RefreshTotal();
+        }
+
+        private void SetPengaturanPrinter()
+        {
+            if (this._pengaturanUmum.is_printer_mini_pos)
+            {
+                btnPreviewNota.Visible = false;
+                chkCetakLabel.Visible = false;
+                chkDropship.Visible = false;
+                btnSetLabelNota.Visible = false;
+            }
+            else
+            {
+                chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
+                chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
+            }
         }
 
         private void InitGridControl(GridControl grid)
@@ -378,6 +394,15 @@ namespace OpenRetail.App.Transaksi
                 return;
             }
 
+            var jumlahBayar = NumberHelper.StringToNumber(txtJumlahBayar.Text);
+            if (jumlahBayar > 0 && jumlahBayar < total)
+            {
+                MsgHelper.MsgWarning("Jumlah bayar kurang !");
+                txtJumlahBayar.Focus();
+                txtJumlahBayar.SelectAll();
+                return;
+            }
+
             if (rdoKredit.Checked)
             {
                 if (!DateTimeHelper.IsValidRangeTanggal(dtpTanggal.Value, dtpTanggalTempo.Value))
@@ -415,7 +440,7 @@ namespace OpenRetail.App.Transaksi
                         }
                     }
                 }
-            }
+            }            
 
             if (!MsgHelper.MsgKonfirmasi("Apakah proses ingin dilanjutkan ?"))
                 return;
@@ -434,6 +459,7 @@ namespace OpenRetail.App.Transaksi
             _jual.tanggal = dtpTanggal.Value;
             _jual.tanggal_tempo = DateTimeHelper.GetNullDateTime();
             _jual.is_tunai = rdoTunai.Checked;
+            _jual.jumlah_bayar = jumlahBayar;
 
             if (rdoKredit.Checked) // penjualan kredit
             {
@@ -479,7 +505,12 @@ namespace OpenRetail.App.Transaksi
                     try
                     {
                         if (chkCetakNotaJual.Checked)
-                            CetakNota(_jual.jual_id);
+                        {
+                            if (this._pengaturanUmum.is_printer_mini_pos)
+                                CetakNotaMiniPOS(_jual);
+                            else
+                                CetakNota(_jual.jual_id);
+                        }
                     }
                     catch
                     {
@@ -495,7 +526,7 @@ namespace OpenRetail.App.Transaksi
                 }
                 else
                 {
-                    if (validationError.Message.Length > 0)
+                    if (validationError.Message != null && validationError.Message.Length > 0)
                     {
                         MsgHelper.MsgWarning(validationError.Message);
                         base.SetFocusObject(validationError.PropertyName, this);
@@ -567,6 +598,12 @@ namespace OpenRetail.App.Transaksi
                 var printReport = new ReportViewerPrintHelper(reportName, reportDataSource, parameters, _pengaturanUmum.nama_printer);
                 printReport.Print();
             }
+        }
+
+        private void CetakNotaMiniPOS(JualProduk jual)
+        {
+            IPrinterMiniPOS printerMiniPos = new PrinterMiniPOS.PrinterMiniPOS(_pengaturanUmum.nama_printer);
+            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer);
         }
 
         protected override void Selesai()
@@ -1019,7 +1056,7 @@ namespace OpenRetail.App.Transaksi
             {
                 ShowEntryCustomer();
             }
-            else if (KeyPressHelper.IsShortcutKey(Keys.F5, e) || KeyPressHelper.IsShortcutKey(Keys.F6, e) || KeyPressHelper.IsShortcutKey(Keys.F7, e))
+            else if (KeyPressHelper.IsShortcutKey(Keys.F5, e) || KeyPressHelper.IsShortcutKey(Keys.F6, e) || KeyPressHelper.IsShortcutKey(Keys.F7, e) || KeyPressHelper.IsShortcutKey(Keys.F8, e))
             {                
                 var colIndex = 4;
                 var rowIndex = this.gridControl.CurrentCell.RowIndex;
@@ -1036,6 +1073,12 @@ namespace OpenRetail.App.Transaksi
 
                     case Keys.F7: // edit harga
                         colIndex = 6;
+                        break;
+
+                    case Keys.F8: // bayar
+                        txtJumlahBayar.Text = "0";
+                        txtKembali.Text = "0";                        
+                        txtJumlahBayar.Focus();
                         break;
 
                     default:
@@ -1078,12 +1121,6 @@ namespace OpenRetail.App.Transaksi
                     _jual.item_jual.Remove(item);
                 }
             }
-        }
-
-        private void txtPPN_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (KeyPressHelper.IsEnter(e))
-                Simpan();
         }
 
         private void btnSetAlamatKirim_Click(object sender, EventArgs e)
@@ -1285,6 +1322,27 @@ namespace OpenRetail.App.Transaksi
             var frmCekOngkir = new FrmLookupCekOngkir("Cek Ongkos Kirim");
             frmCekOngkir.Listener = this;
             frmCekOngkir.ShowDialog();
+        }
+
+        private void cmbKurir_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e))
+                KeyPressHelper.NextFocus();
+        }
+
+        private void txtJumlahBayar_TextChanged(object sender, EventArgs e)
+        {
+            txtKembali.Text = "0";
+
+            var total = SumGrid(this._listOfItemJual);            
+            if (total > 0)
+            {
+                var jumlahBayar = NumberHelper.StringToNumber(((AdvancedTextbox)sender).Text);
+                var kembali = jumlahBayar - total;
+                
+                if (kembali > 0)
+                    txtKembali.Text = kembali.ToString();
+            }
         }        
     }
 }

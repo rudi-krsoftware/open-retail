@@ -73,8 +73,14 @@ namespace OpenRetail.App.Referensi
             if (role != null)
             {
                 if (role.is_grant)
-                    LoadDataGolongan();
+                {
+                    cmbSortBy.SelectedIndex = 1;
+                    this.updLimit.Value = _pageSize;
 
+                    LoadDataGolongan();                    
+                }
+
+                cmbSortBy.Enabled = role.is_grant;
                 txtNamaProduk.Enabled = role.is_grant;
                 btnCari.Enabled = role.is_grant;
 
@@ -106,14 +112,14 @@ namespace OpenRetail.App.Referensi
             }
         }
 
-        private void LoadDataProduk(string golonganId = "")
+        private void LoadDataProduk(string golonganId = "", int sortIndex = 1)
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 if (golonganId.Length > 0)
-                    _listOfProduk = _bll.GetByGolongan(golonganId, _pageNumber, _pageSize, ref _pagesCount);
+                    _listOfProduk = _bll.GetByGolongan(golonganId, sortIndex, _pageNumber, _pageSize, ref _pagesCount);
                 else
-                    _listOfProduk = _bll.GetAll(_pageNumber, _pageSize, ref _pagesCount);
+                    _listOfProduk = _bll.GetAll(sortIndex, _pageNumber, _pageSize, ref _pagesCount);
 
                 GridListControlHelper.Refresh<Produk>(this.gridList, _listOfProduk);
 
@@ -130,11 +136,11 @@ namespace OpenRetail.App.Referensi
             ResetButton();
         }
 
-        private void LoadDataProdukByName(string name)
+        private void LoadDataProdukByName(string name, int sortIndex = 1)
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                _listOfProduk = _bll.GetByName(name, _pageNumber, _pageSize, ref _pagesCount);
+                _listOfProduk = _bll.GetByName(name, sortIndex, _pageNumber, _pageSize, ref _pagesCount);
                 GridListControlHelper.Refresh<Produk>(this.gridList, _listOfProduk);
 
                 base.SetInfoHalaman(_pageNumber, _pagesCount);
@@ -290,7 +296,7 @@ namespace OpenRetail.App.Referensi
         private void btnCari_Click(object sender, EventArgs e)
         {
             _pageNumber = 1;
-            LoadDataProdukByName(txtNamaProduk.Text);
+            LoadDataProdukByName(txtNamaProduk.Text, cmbSortBy.SelectedIndex);
         }
 
         private void cmbGolongan_SelectedIndexChanged(object sender, EventArgs e)
@@ -306,7 +312,7 @@ namespace OpenRetail.App.Referensi
             }
 
             _pageNumber = 1;
-            LoadDataProduk(golonganId);
+            LoadDataProduk(golonganId, cmbSortBy.SelectedIndex);
         }
 
         protected override void Tambah()
@@ -457,8 +463,10 @@ namespace OpenRetail.App.Referensi
                 {
                     using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                     {
+                        var listOfProduk = _bll.GetAll(cmbSortBy.SelectedIndex);
+                        
                         IImportExportDataBll<Produk> _importDataBll = new ImportExportDataProdukBll(dlgSave.FileName, _log);
-                        _importDataBll.Export(_listOfProduk);
+                        _importDataBll.Export(listOfProduk);
                     }                    
                 }
             }                   
@@ -510,12 +518,36 @@ namespace OpenRetail.App.Referensi
             _pageNumber = _pagesCount;
 
             RefreshData();
-        }        
+        }
+
+        protected override void LimitRowChanged()
+        {
+            MainProgram.pageSize = (int)this.updLimit.Value;
+            _pageSize = MainProgram.pageSize;
+
+            cmbGolongan_SelectedIndexChanged(cmbGolongan, new EventArgs());
+        }
 
         private void gridList_DoubleClick(object sender, EventArgs e)
         {
             if (btnPerbaiki.Enabled)
                 Perbaiki();
+        }
+
+        private void cmbSortBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var golonganId = string.Empty;
+
+            var index = cmbGolongan.SelectedIndex;
+
+            if (index > 0)
+            {
+                var golongan = _listOfGolongan[index - 1];
+                golonganId = golongan.golongan_id;
+            }
+
+            _pageNumber = 1;
+            LoadDataProduk(golonganId, cmbSortBy.SelectedIndex);
         }
         
     }

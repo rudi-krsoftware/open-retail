@@ -66,8 +66,10 @@
     <Compile Include="BeliProduk.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DatabaseVersion.cs" />
+    <Compile Include="FooterNotaMiniPos.cs" />
     <Compile Include="GajiKaryawan.cs" />
     <Compile Include="HeaderNota.cs" />
+    <Compile Include="HeaderNotaMiniPos.cs" />
     <Compile Include="ItemPengeluaranBiaya.cs" />
     <Compile Include="Kabupaten.cs" />
     <Compile Include="KabupatenAsal.cs" />

@@ -114,6 +114,13 @@ namespace OpenRetail.App.UI.Template
         }
 
         /// <summary>
+        /// Method override untuk merubah limir row per halaman
+        /// </summary>
+        protected virtual void LimitRowChanged()
+        {
+        }
+
+        /// <summary>
         /// Method override untuk menghandle item yang dipilih
         /// </summary>
         /// <param name="index">Diisi dengan index grid list</param>

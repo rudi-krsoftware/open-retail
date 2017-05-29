@@ -40,6 +40,8 @@ namespace OpenRetail.App.Pengaturan
     public partial class FrmPengaturanUmum : FrmEntryStandard
     {
         private IList<AdvancedTextbox> _listOfTxtHeaderNota = new List<AdvancedTextbox>();
+        private IList<AdvancedTextbox> _listOfTxtHeaderNotaMiniPOS = new List<AdvancedTextbox>();
+        private IList<AdvancedTextbox> _listOfTxtFooterNotaMiniPOS = new List<AdvancedTextbox>();
         private IList<AdvancedTextbox> _listOfTxtLabelNota = new List<AdvancedTextbox>();
         private PengaturanUmum _pengaturanUmum = null;
         
@@ -51,13 +53,12 @@ namespace OpenRetail.App.Pengaturan
 
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();
-            this._pengaturanUmum = pengaturanUmum;
-
-            LoadPrinter(this._pengaturanUmum.nama_printer);
-            chkCetakOtomatis.Checked = this._pengaturanUmum.is_auto_print;
-            chkCetakLabelNotaJualOtomatis.Checked = this._pengaturanUmum.is_auto_print_label_nota;
-
+            this._pengaturanUmum = pengaturanUmum;            
+            
+            SetInfoPrinter();
             LoadHeaderNota();
+            LoadHeaderNotaMiniPOS();
+            LoadFooterNotaMinniPOS();
             LoadLabelNota();
         }
 
@@ -78,6 +79,48 @@ namespace OpenRetail.App.Pengaturan
                 var txtHeader = _listOfTxtHeaderNota[index];
                 txtHeader.Tag = item.header_nota_id;
                 txtHeader.Text = item.keterangan;
+
+                index++;
+            }
+        }
+
+        private void LoadHeaderNotaMiniPOS()
+        {
+            _listOfTxtHeaderNotaMiniPOS.Add(txtHeaderMiniPOS1);
+            _listOfTxtHeaderNotaMiniPOS.Add(txtHeaderMiniPOS2);
+            _listOfTxtHeaderNotaMiniPOS.Add(txtHeaderMiniPOS3);
+            _listOfTxtHeaderNotaMiniPOS.Add(txtHeaderMiniPOS4);
+            _listOfTxtHeaderNotaMiniPOS.Add(txtHeaderMiniPOS5);
+
+            IHeaderNotaMiniPosBll bll = new HeaderNotaMiniPosBll();
+            var listOfHeaderNota = bll.GetAll();
+
+            var index = 0;
+            foreach (var item in listOfHeaderNota)
+            {
+                var txtHeader = _listOfTxtHeaderNotaMiniPOS[index];
+                txtHeader.Tag = item.header_nota_id;
+                txtHeader.Text = item.keterangan;
+
+                index++;
+            }
+        }
+
+        private void LoadFooterNotaMinniPOS()
+        {
+            _listOfTxtFooterNotaMiniPOS.Add(txtFooterMiniPOS1);
+            _listOfTxtFooterNotaMiniPOS.Add(txtFooterMiniPOS2);
+            _listOfTxtFooterNotaMiniPOS.Add(txtFooterMiniPOS3);
+
+            IFooterNotaMiniPosBll bll = new FooterNotaMiniPosBll();
+            var listOfFooterNota = bll.GetAll();
+
+            var index = 0;
+            foreach (var item in listOfFooterNota)
+            {
+                var txtFooter = _listOfTxtFooterNotaMiniPOS[index];
+                txtFooter.Tag = item.footer_nota_id;
+                txtFooter.Text = item.keterangan;
 
                 index++;
             }
@@ -118,6 +161,20 @@ namespace OpenRetail.App.Pengaturan
             }
         }
 
+        private void SetInfoPrinter()
+        {
+            // setting general
+            LoadPrinter(this._pengaturanUmum.nama_printer);
+            chkCetakOtomatis.Checked = this._pengaturanUmum.is_auto_print;
+            chkCetakLabelNotaJualOtomatis.Checked = this._pengaturanUmum.is_auto_print_label_nota;
+
+            // setting khusus printer mini pos
+            chkPrinterMiniPOS.Checked = _pengaturanUmum.is_printer_mini_pos;
+            chkCetakCustomer.Checked = _pengaturanUmum.is_cetak_customer;
+            txtJumlahKarakter.Text = _pengaturanUmum.jumlah_karakter.ToString();
+            txtJumlahGulung.Text = _pengaturanUmum.jumlah_gulung.ToString();
+        }
+
         protected override void Simpan()
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
@@ -126,13 +183,32 @@ namespace OpenRetail.App.Pengaturan
                 _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
                 _pengaturanUmum.is_auto_print_label_nota = chkCetakLabelNotaJualOtomatis.Checked;
 
+                _pengaturanUmum.is_printer_mini_pos = chkPrinterMiniPOS.Checked;
+                _pengaturanUmum.is_cetak_customer = chkCetakCustomer.Checked;
+                _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
+                _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
+
                 var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
+
+                // simpan info printer
                 AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
                 AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("isAutoPrinterLabelNota", chkCetakLabelNotaJualOtomatis.Checked.ToString(), appConfigFile);
 
+                // simpan info printer mini pos
+                AppConfigHelper.SaveValue("isPrinterMiniPOS", chkPrinterMiniPOS.Checked.ToString(), appConfigFile);
+                AppConfigHelper.SaveValue("isCetakCustomer", chkCetakCustomer.Checked.ToString(), appConfigFile);
+                AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
+                AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
+
                 // simpan header nota
                 SimpanHeaderNota();
+
+                // simpan header nota minipos
+                SimpanHeaderNotaMiniPOS();
+
+                // simpan footer nota minipos
+                SimpanFooterNotaMiniPOS();
 
                 // simpan label nota
                 SimpanLabelNota();
@@ -159,6 +235,54 @@ namespace OpenRetail.App.Pengaturan
                 {
                     _pengaturanUmum.list_of_header_nota[index].header_nota_id = headerNota.header_nota_id;
                     _pengaturanUmum.list_of_header_nota[index].keterangan = headerNota.keterangan;
+                }
+
+                index++;
+            }
+        }
+
+        private void SimpanHeaderNotaMiniPOS()
+        {
+            IHeaderNotaMiniPosBll headerNotaBll = new HeaderNotaMiniPosBll();
+
+            var index = 0;
+            foreach (var item in _listOfTxtHeaderNotaMiniPOS)
+            {
+                var headerNota = new HeaderNotaMiniPos
+                {
+                    header_nota_id = item.Tag.ToString(),
+                    keterangan = item.Text
+                };
+
+                var result = headerNotaBll.Update(headerNota);
+                if (result > 0)
+                {
+                    _pengaturanUmum.list_of_header_nota_mini_pos[index].header_nota_id = headerNota.header_nota_id;
+                    _pengaturanUmum.list_of_header_nota_mini_pos[index].keterangan = headerNota.keterangan;
+                }
+
+                index++;
+            }
+        }
+
+        private void SimpanFooterNotaMiniPOS()
+        {
+            IFooterNotaMiniPosBll footerNotaBll = new FooterNotaMiniPosBll();
+
+            var index = 0;
+            foreach (var item in _listOfTxtFooterNotaMiniPOS)
+            {
+                var footerNota = new FooterNotaMiniPos
+                {
+                    footer_nota_id = item.Tag.ToString(),
+                    keterangan = item.Text
+                };
+
+                var result = footerNotaBll.Update(footerNota);
+                if (result > 0)
+                {
+                    _pengaturanUmum.list_of_footer_nota_mini_pos[index].footer_nota_id = footerNota.footer_nota_id;
+                    _pengaturanUmum.list_of_footer_nota_mini_pos[index].keterangan = footerNota.keterangan;
                 }
 
                 index++;
@@ -205,13 +329,17 @@ namespace OpenRetail.App.Pengaturan
                         Name = "NotaPenjualan",
                         Value = listOfJual
                     };
-
+                    
                     var parameters = new List<ReportParameter>();
-                    parameters.Add(new ReportParameter("header1", txtHeader1.Text));
-                    parameters.Add(new ReportParameter("header2", txtHeader2.Text));
-                    parameters.Add(new ReportParameter("header3", txtHeader3.Text));
-                    parameters.Add(new ReportParameter("header4", txtHeader4.Text));
-                    parameters.Add(new ReportParameter("header5", txtHeader5.Text));
+                    var index = 1;
+
+                    foreach (var txtHeaderNota in _listOfTxtHeaderNota)
+                    {
+                        var paramName = string.Format("header{0}", index);
+                        parameters.Add(new ReportParameter(paramName, txtHeaderNota.Text));
+
+                        index++;
+                    }
 
                     foreach (var item in listOfJual)
                     {
@@ -229,6 +357,52 @@ namespace OpenRetail.App.Pengaturan
                     frmPreviewReport.ShowDialog();
                 }
             }            
+        }
+
+        private void chkPrinterMiniPOS_CheckedChanged(object sender, EventArgs e)
+        {
+            txtJumlahKarakter.Enabled = ((CheckBox)sender).Checked;
+            txtJumlahGulung.Enabled = txtJumlahKarakter.Enabled;
+
+            if (txtJumlahKarakter.Enabled)
+            {
+                txtJumlahKarakter.BackColor = Color.White;
+                txtJumlahGulung.BackColor = Color.White;
+            }
+        }
+
+        private void btnLihatContohNotaPenjualanMiniPOS_Click(object sender, EventArgs e)
+        {
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                var parameters = new List<ReportParameter>();
+                var index = 1;
+
+                foreach (var txtHeaderNota in _listOfTxtHeaderNotaMiniPOS)
+                {
+                    var paramName = string.Format("header{0}", index);
+                    parameters.Add(new ReportParameter(paramName, txtHeaderNota.Text));
+
+                    index++;
+                }
+
+                index = 1;
+                foreach (var txtFooterNota in _listOfTxtFooterNotaMiniPOS)
+                {
+                    var paramName = string.Format("footer{0}", index);
+                    parameters.Add(new ReportParameter(paramName, txtFooterNota.Text));
+
+                    index++;
+                }
+
+                var reportName = "RvNotaPenjualanMiniPOSTanpaCustomer";
+
+                if (chkCetakCustomer.Checked)
+                    reportName = "RvNotaPenjualanMiniPOS";
+
+                var frmPreviewReport = new FrmPreviewReport("Contoh Nota Penjualan MINI POS", reportName, new ReportDataSource(), parameters);
+                frmPreviewReport.ShowDialog();
+            }
         }
     }
 }

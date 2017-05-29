@@ -93,14 +93,19 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-        public IList<Produk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount)
+        private string GetSortByFieldName(int sortByIndex)
+        {
+            return sortByIndex == 0 ? "m_produk.kode_produk" : "m_produk.nama_produk";
+        }
+
+        public IList<Produk> GetByName(string name, int sortByIndex, int pageNumber, int pageSize, ref int pagesCount)
         {
             IList<Produk> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
                 IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetByName(name, pageNumber, pageSize, ref pagesCount);
+                oList = uow.ProdukRepository.GetByName(name, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
             }
 
             return oList;
@@ -119,14 +124,14 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-        public IList<Produk> GetByGolongan(string golonganId, int pageNumber, int pageSize, ref int pagesCount)
+        public IList<Produk> GetByGolongan(string golonganId, int sortByIndex, int pageNumber, int pageSize, ref int pagesCount)
         {
             IList<Produk> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
                 IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetByGolongan(golonganId, pageNumber, pageSize, ref pagesCount);
+                oList = uow.ProdukRepository.GetByGolongan(golonganId, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
             }
 
             return oList;
@@ -145,14 +150,27 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-        public IList<Produk> GetAll(int pageNumber, int pageSize, ref int pagesCount)
+        public IList<Produk> GetAll(int sortByIndex)
         {
             IList<Produk> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
                 IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetAll(pageNumber, pageSize, ref pagesCount);
+                oList = uow.ProdukRepository.GetAll(GetSortByFieldName(sortByIndex));
+            }
+
+            return oList;
+        }
+
+        public IList<Produk> GetAll(int sortByIndex, int pageNumber, int pageSize, ref int pagesCount)
+        {
+            IList<Produk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ProdukRepository.GetAll(GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
             }
 
             return oList;
