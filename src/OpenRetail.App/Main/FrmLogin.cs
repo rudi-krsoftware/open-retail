@@ -164,6 +164,10 @@ namespace OpenRetail.App.Main
                             result = ExecSQL(DatabaseVersionHelper.UpgradeStrukturDatabase_v2_to_v3);
                             break;
 
+                        case 4: // upgrade database v3 ke v4
+                            result = ExecSQL(DatabaseVersionHelper.UpgradeStrukturDatabase_v3_to_v4);
+                            break;
+
                         default:
                             break;
                     }
