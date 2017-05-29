@@ -153,6 +153,11 @@ namespace OpenRetail.Model
 
         [JsonIgnore]
         [Write(false)]
+        [Display(Name = "Jumlah Bayar")]
+        public double jumlah_bayar { get; set; }
+
+        [JsonIgnore]
+        [Write(false)]
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
 		

@@ -28,6 +28,14 @@ namespace OpenRetail.App.Helper
     {
         private const string SECTION_NAME = "appSettings";
 
+        private static bool IsSectionExist(string sectionName, AppSettingsSection appSetting)
+        {
+            var keyCount = appSetting.Settings.AllKeys
+                                     .Where(key => key == sectionName).Count();
+
+            return keyCount > 0;
+        }
+
         public static string GetValue(string sectionName, string appConfigFile)
         {
             var configFileMap = new ExeConfigurationFileMap();
@@ -40,22 +48,15 @@ namespace OpenRetail.App.Helper
 
             try
             {
-                result = section.Settings[sectionName].Value;
+                if (IsSectionExist(sectionName, section))
+                    result = section.Settings[sectionName].Value;
             }
             catch
             {
             }
 
             return result ;
-        }
-
-        private static bool IsSectionExist(string sectionName, AppSettingsSection appSetting)
-        {
-            var keyCount = appSetting.Settings.AllKeys
-                                     .Where(key => key == sectionName).Count();
-
-            return keyCount > 0;
-        }
+        }        
 
         public static void SaveValue(string sectionName, string value, string appConfigFile)
         {

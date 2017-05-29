@@ -87,9 +87,27 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", appConfigFile).ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.is_auto_print_label_nota = AppConfigHelper.GetValue("isAutoPrinterLabelNota", appConfigFile).ToLower() == "true" ? true : false;
 
+            // set info printer mini pos
+            var jumlahKarakter = AppConfigHelper.GetValue("jumlahKarakter", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahKarakter", appConfigFile)) : 40;
+            var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", appConfigFile)) : 5;
+            var isCetakCustomer = AppConfigHelper.GetValue("isCetakCustomer", appConfigFile).Length > 0 ? Convert.ToBoolean(AppConfigHelper.GetValue("isCetakCustomer", appConfigFile)) : true;
+
+            MainProgram.pengaturanUmum.is_printer_mini_pos = AppConfigHelper.GetValue("isPrinterMiniPOS", appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_cetak_customer = isCetakCustomer;
+            MainProgram.pengaturanUmum.jumlah_karakter = jumlahKarakter;
+            MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;
+
             // set header nota
             IHeaderNotaBll headerNotaBll = new HeaderNotaBll();
             MainProgram.pengaturanUmum.list_of_header_nota = headerNotaBll.GetAll();
+
+            // set header nota minipos
+            IHeaderNotaMiniPosBll headerNotaMiniPosBll = new HeaderNotaMiniPosBll();
+            MainProgram.pengaturanUmum.list_of_header_nota_mini_pos = headerNotaMiniPosBll.GetAll();
+
+            // set footer nota minipos
+            IFooterNotaMiniPosBll footerNotaMiniPosBll = new FooterNotaMiniPosBll();
+            MainProgram.pengaturanUmum.list_of_footer_nota_mini_pos = footerNotaMiniPosBll.GetAll();
 
             // set label nota
             ILabelNotaBll labelNotaBll = new LabelNotaBll();

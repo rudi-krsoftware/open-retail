@@ -159,6 +159,8 @@
     </Compile>
     <Compile Include="Helper\AppConfigHelper.cs" />
     <Compile Include="Helper\DatabaseVersionHelper.cs" />
+    <Compile Include="Helper\ESCCommandHelper.cs" />
+    <Compile Include="Helper\RawPrinterHelper.cs" />
     <Compile Include="Helper\ReportViewerPrintHelper.cs" />
     <Compile Include="Helper\ColorCollection.cs" />
     <Compile Include="Helper\ColorManagerHelper.cs" />
@@ -576,6 +578,8 @@
     <Compile Include="Transaksi\FrmListPembelianProduk.Designer.cs">
       <DependentUpon>FrmListPembelianProduk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transaksi\PrinterMiniPOS\IPrinterMiniPOS.cs" />
+    <Compile Include="Transaksi\PrinterMiniPOS\PrinterMiniPOS.cs" />
     <Compile Include="UI.Template\BaseFrmList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -848,7 +852,9 @@
     <EmbeddedResource Include="UserControl\FilterRangeTanggal.resx">
       <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
