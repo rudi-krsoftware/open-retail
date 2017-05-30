@@ -3,9 +3,24 @@ OpenRetail
 
 [![Build status](https://ci.appveyor.com/api/projects/status/a2cf5uy7b16w386b?svg=true)](https://ci.appveyor.com/project/rudi-krsoftware/open-retail)
 
-[![Open Retail](https://openretailblog.files.wordpress.com/2017/05/banner-small-beta.png)](https://openretailblog.wordpress.com/)
+[![Open Retail](https://openretailblog.files.wordpress.com/2017/05/banner-small-beta1.png)](https://openretailblog.wordpress.com/)
 
-OpenRetail adalah perangkat lunak open source yang dikembangkan khusus untuk bidang usaha ritel, grosir, toko bangunan dan bidang usaha lainnya yang sejenis.
+Apa itu OpenRetail?
+-------------------
+
+[OpenRetail](https://openretailblog.wordpress.com/) adalah software open source yang dikembangkan khusus untuk bidang usaha ritel, grosir, toko bangunan, toko komputer dan bidang usaha lainnya yang sejenis.
+
+Saat ini pilihan software untuk usaha retil memang banyak ditambah lagi harga yang bervariasi mulai dari ratusan hingga jutaan rupiah. Tapi untuk software yang gratis, open source dan berkualitas mungkin [OpenRetail](https://openretailblog.wordpress.com/) adalah solusinya :-).
+
+Apakah aplikasi ini benar-benar gratis?
+---------------------------------------
+
+Yuph, benar-benar gratis, bahkan lebih dari itu [OpenRetail](https://openretailblog.wordpress.com/) adalah software open source sehingga Anda bisa mendownload [kode sumbernya](https://github.com/rudi-krsoftware/open-retail/), mempelajari dan mengembangkan sendiri sesuai kebutuhan, tapi dengan syarat tidak boleh **menghapus** informasi asli tentang pembuat aplikasi ini. 
+
+Bagaimana jika ingin ikut berkontribusi?
+----------------------------------------
+
+[OpenRetail](https://openretailblog.wordpress.com/) adalah software gratis di bawah lisensi [Apache](http://www.apache.org/licenses/LICENSE-2.0), namun jika Anda merasakan manfaat dari software ini, Anda dapat [berkontribusi](https://openretailblog.wordpress.com/kontribusi/) dalam pengembangannya :-). Untuk informasi lebih lanjut tentang bagaimana cara [berkontribusi](https://openretailblog.wordpress.com/kontribusi/) bisa Anda cek di [sini](https://openretailblog.wordpress.com/kontribusi/).
 
 Catatan Rilis
 -------------
@@ -15,7 +30,7 @@ Bisa langsung Anda cek di blog [OpenRetail.](https://openretailblog.wordpress.co
 Fitur
 --------
 
-OpenRetail mempunyai [segudang fitur](https://openretailblog.wordpress.com/fitur/) untuk mempermudah transaksi usaha retail Anda. Untuk fitur lengkapnya bisa Anda cek di [sini.](https://openretailblog.wordpress.com/fitur/).
+OpenRetail mempunyai [segudang fitur](https://openretailblog.wordpress.com/fitur/) untuk mempermudah transaksi usaha retail dan grosir Anda. Untuk fitur lengkapnya bisa Anda cek di [sini.](https://openretailblog.wordpress.com/fitur/).
 
 Rilis Terbaru
 -------------
@@ -24,6 +39,13 @@ Untuk rilis terbaru OpenRetail bisa Anda download di [sini.](https://github.com/
 
 Prerequisites (Khusus software developer atau programmer)
 ---------------------------------------------------------
+
+[OpenRetail](https://openretailblog.wordpress.com/) adalah software gratis di bawah lisensi [Apache](http://www.apache.org/licenses/LICENSE-2.0). Selain gratis [OpenRetail](https://openretailblog.wordpress.com/) juga merupakan software open source sehingga Anda bisa mendownload [kode sumbernya](https://github.com/rudi-krsoftware/open-retail/), mempelajari dan mengembangkan sendiri sesuai kebutuhan, tapi dengan syarat tidak boleh **menghapus** informasi asli tentang pembuat aplikasi ini.
+
+Untuk mengembangkan sendiri [OpenRetail](https://openretailblog.wordpress.com/) dibutuhkan keahlian khusus di bidang pemrograman, ditambah keahlian pendukungnya seperti database. [OpenRetail](https://openretailblog.wordpress.com/) dikembangkan/ditulis dengan menggunakan bahasa pemrograman [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)), salah satu bahasa pemrograman yang ada di platform [.NET](https://en.wikipedia.org/wiki/.NET_Framework), sehingga untuk saat ini [OpenRetail](https://openretailblog.wordpress.com/) hanya bisa di install untuk sistem operasi Windows, mulai dari windows XP, Windows Server 2003, Windows Vista, Windows Server 2008 dan Windows 7, windows 8, Windows Server 2012, Windows 10 dan Windows versi terbaru.
+
+Selain keahlian khusus di bidang pemrograman, dibutuhkan juga tool-tool pendukung yang akan digunakan dalam proses pengembangannya. Berikut adalah tool-tool yang dibutuhkan untuk proses pengembangan [OpenRetail](https://openretailblog.wordpress.com/).
+
 * [Visual Studio Community 2013](https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs) atau versi yang lebih tinggi
 * [.NET Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=17718) atau versi yang lebih tinggi
     * Windows XP SP3, Windows Vista, Windows 7, Windows 8 atau versi yang lebih tinggi
