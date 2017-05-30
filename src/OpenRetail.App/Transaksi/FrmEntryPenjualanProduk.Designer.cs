@@ -112,7 +112,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 155F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(790, 578);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(790, 549);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -372,7 +372,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 186);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(784, 234);
+            this.panel1.Size = new System.Drawing.Size(784, 205);
             this.panel1.TabIndex = 1;
             // 
             // gridControl
@@ -409,7 +409,7 @@
             this.gridControl.RowHeightEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridRowHeight[] {
             new Syncfusion.Windows.Forms.Grid.GridRowHeight(0, 25)});
             this.gridControl.SerializeCellsBehavior = Syncfusion.Windows.Forms.Grid.GridSerializeCellsBehavior.SerializeAsRangeStylesIntoCode;
-            this.gridControl.Size = new System.Drawing.Size(774, 224);
+            this.gridControl.Size = new System.Drawing.Size(774, 195);
             this.gridControl.SmartSizeBox = false;
             this.gridControl.TabIndex = 0;
             this.gridControl.Text = "gridControl1";
@@ -442,7 +442,7 @@
             this.tableLayoutPanel5.Controls.Add(this.txtJumlahBayar, 2, 4);
             this.tableLayoutPanel5.Controls.Add(this.txtKembali, 2, 5);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 426);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 397);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 6;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -814,7 +814,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 660);
+            this.ClientSize = new System.Drawing.Size(790, 631);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "FrmEntryPenjualanProduk";
             this.Text = "FrmEntryPenjualanProduk";
