@@ -21,6 +21,8 @@ namespace OpenRetail.WebAPI
 
             // set default return data menggunakan format json
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+
+            AutoMapperConfig.Initialize();
         }
     }
 }
