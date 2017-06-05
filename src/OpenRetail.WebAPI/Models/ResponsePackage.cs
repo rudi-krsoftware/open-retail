@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 
 namespace OpenRetail.WebAPI.Models
@@ -27,26 +28,26 @@ namespace OpenRetail.WebAPI.Models
     {
         public ResponsePackage()
         {
-            Result = new { };
+            Status = new Status();
+            Results = new List<object>();
         }
 
-        public ResponsePackage(string result)
+        public ResponsePackage(HttpStatusCode httpStatusCode)
+            : this()
         {
-            Result = new { Message = result };
+            Status.Code = Convert.ToInt32(httpStatusCode);
+            Status.Description = httpStatusCode.ToString();
         }
 
-        public ResponsePackage(object result)
+        public ResponsePackage(List<string> errors)
+            : this()
         {
-            Result = result;
+            Status.Code = Convert.ToInt32(HttpStatusCode.BadRequest);
+            Status.Description = HttpStatusCode.BadRequest.ToString();
+            Status.Errors = errors;
         }
 
-        public ResponsePackage(object result, List<string> errors)
-        {
-            Result = result;
-            Errors = errors;
-        }
-
-        public List<string> Errors { get; set; }
-        public object Result { get; set; }
+        public Status Status { get; set; }
+        public object Results { get; set; }        
     }
 }
