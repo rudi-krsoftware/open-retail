@@ -85,6 +85,7 @@
     <Compile Include="FooterNotaMiniPosBllTest.cs" />
     <Compile Include="GajiKaryawanBllTest.cs" />
     <Compile Include="GolonganBllTest.cs" />
+    <Compile Include="GolonganWebAPIBllTest.cs" />
     <Compile Include="HeaderNotaBllTest.cs" />
     <Compile Include="HeaderNotaMiniPosBllTest.cs" />
     <Compile Include="ImportExportDataCustomerBllTest.cs" />
