@@ -149,6 +149,9 @@
     <Compile Include="Shift.cs" />
     <Compile Include="Supplier.cs" />
     <Compile Include="ValidationError.cs" />
+    <Compile Include="WebAPI\OpenRetailWebApiGetResponse.cs" />
+    <Compile Include="WebAPI\OpenRetailWebApiPostResponse.cs" />
+    <Compile Include="WebAPI\Status.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
