@@ -33,6 +33,8 @@ namespace OpenRetail.Repository.Service
     {
         private IDapperContext _context;
         private ILog _log;
+        private bool _isUseWebAPI;
+        private string _baseUrl = string.Empty;
 
         private IDatabaseVersionRepository _databaseversionRepository;
         private IAlasanPenyesuaianStokRepository _alasanpenyesuaianstokRepository;
@@ -95,6 +97,14 @@ namespace OpenRetail.Repository.Service
             this._log = log;
         }
 
+        public UnitOfWork(bool isUseWebAPI, string baseUrl, IDapperContext context, ILog log)
+        {
+            this._isUseWebAPI = isUseWebAPI;
+            this._baseUrl = baseUrl;
+            this._context = context;
+            this._log = log;            
+        }
+
         public IDatabaseVersionRepository DatabaseVersionRepository
         {
             get { return _databaseversionRepository ?? (_databaseversionRepository = new DatabaseVersionRepository(_context, _log)); }
@@ -117,7 +127,22 @@ namespace OpenRetail.Repository.Service
 
         public IGolonganRepository GolonganRepository
         {
-            get { return _golonganRepository ?? (_golonganRepository = new GolonganRepository(_context, _log)); }
+            get 
+            {
+                if (_golonganRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _golonganRepository = new GolonganWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _golonganRepository = new GolonganRepository(_context, _log);
+                    }
+                }                
+
+                return _golonganRepository;
+            }
         }
 
         public IProdukRepository ProdukRepository

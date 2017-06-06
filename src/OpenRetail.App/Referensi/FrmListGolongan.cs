@@ -55,7 +55,7 @@ namespace OpenRetail.App.Referensi
             this.mnuExportData.Text = "Export Data Golongan";
 
             _log = MainProgram.log;
-            _bll = new GolonganBll(_log);
+            _bll = new GolonganBll(MainProgram.IsUseWebAPI, MainProgram.BaseUrl, _log);
 
             // set hak akses untuk SELECT
             var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
