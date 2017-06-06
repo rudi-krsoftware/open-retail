@@ -236,6 +236,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -309,6 +310,27 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Debug" goto skip
+
+echo set lokasi folder deploy
+set DeployDir="$(SolutionDir)..\deploy\webapi-bin"
+if not exist %25DeployDir%25 mkdir %25DeployDir%25
+
+echo copy hasil build ke folder deploy
+copy /Y "$(TargetDir)*.*" %25DeployDir%25
+
+echo hapus file build yang tidak diperlukan
+del /s /q %25DeployDir%25\*.xml
+del /s /q %25DeployDir%25\*.pdb
+
+goto exit
+
+:skip
+echo "do nothing"
+
+:exit</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
