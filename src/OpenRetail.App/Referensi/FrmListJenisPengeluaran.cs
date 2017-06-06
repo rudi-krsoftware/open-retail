@@ -48,7 +48,7 @@ namespace OpenRetail.App.Referensi
             InitializeComponent();
 
             _log = MainProgram.log;
-            _bll = new JenisPengeluaranBll(_log);
+            _bll = new JenisPengeluaranBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
 
             // set hak akses untuk SELECT
             var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);

@@ -80,6 +80,7 @@
     <Compile Include="ItemMenuRepository.cs" />
     <Compile Include="JabatanRepository.cs" />
     <Compile Include="JenisPengeluaranRepository.cs" />
+    <Compile Include="JenisPengeluaranWebAPIRepository.cs" />
     <Compile Include="JualProdukRepository.cs" />
     <Compile Include="KabupatenRepository.cs" />
     <Compile Include="KaryawanRepository.cs" />

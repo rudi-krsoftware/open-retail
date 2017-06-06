@@ -121,7 +121,22 @@ namespace OpenRetail.Repository.Service
 
         public IJenisPengeluaranRepository JenisPengeluaranRepository
         {
-            get { return _jenispengeluaranRepository ?? (_jenispengeluaranRepository = new JenisPengeluaranRepository(_context, _log)); }
+            get 
+            { 
+                if (_jenispengeluaranRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _jenispengeluaranRepository = new JenisPengeluaranWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _jenispengeluaranRepository = new JenisPengeluaranRepository(_context, _log);
+                    }
+                }
+
+                return _jenispengeluaranRepository;
+            }
         }
 
         public IGolonganRepository GolonganRepository
