@@ -42,6 +42,14 @@
       <HintPath>..\..\lib\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\RestSharp.105.2.3\lib\net4\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -66,6 +74,7 @@
     <Compile Include="FooterNotaMiniPosRepository.cs" />
     <Compile Include="GajiKaryawanRepository.cs" />
     <Compile Include="GolonganRepository.cs" />
+    <Compile Include="GolonganWebAPIRepository.cs" />
     <Compile Include="HeaderNotaMiniPosRepository.cs" />
     <Compile Include="HeaderNotaRepository.cs" />
     <Compile Include="ItemMenuRepository.cs" />
