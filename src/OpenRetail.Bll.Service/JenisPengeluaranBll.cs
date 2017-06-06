@@ -34,9 +34,19 @@ namespace OpenRetail.Bll.Service
     {
         private ILog _log;
 		private JenisPengeluaranValidator _validator;
+        private bool _isUseWebAPI;
+        private string _baseUrl;
 
 		public JenisPengeluaranBll(ILog log)
         {
+            _log = log;
+            _validator = new JenisPengeluaranValidator();
+        }
+
+        public JenisPengeluaranBll(bool isUseWebAPI, string baseUrl, ILog log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
             _log = log;
             _validator = new JenisPengeluaranValidator();
         }
@@ -47,7 +57,7 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
+                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
                 obj = uow.JenisPengeluaranRepository.GetByID(id);
             }
 
@@ -60,7 +70,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
+                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
                 oList = uow.JenisPengeluaranRepository.GetByName(name);
             }
 
@@ -73,7 +83,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
+                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
                 oList = uow.JenisPengeluaranRepository.GetAll();
             }
 
@@ -86,7 +96,11 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
+                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
+
+                if (_isUseWebAPI)
+                    obj.jenis_pengeluaran_id = context.GetGUID();
+
                 result = uow.JenisPengeluaranRepository.Save(obj);
             }
 
@@ -116,7 +130,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
+                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
                 result = uow.JenisPengeluaranRepository.Update(obj);
             }
 
@@ -146,7 +160,7 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
+                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
                 result = uow.JenisPengeluaranRepository.Delete(obj);
             }
 
