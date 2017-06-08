@@ -182,7 +182,7 @@
             this.txtDari1.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDari1.LetterOnly = false;
             this.txtDari1.Location = new System.Drawing.Point(67, 3);
-            this.txtDari1.MaxLength = 50;
+            this.txtDari1.MaxLength = 100;
             this.txtDari1.Name = "txtDari1";
             this.txtDari1.NumericOnly = false;
             this.txtDari1.SelectionText = false;
@@ -199,7 +199,7 @@
             this.txtDari2.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDari2.LetterOnly = false;
             this.txtDari2.Location = new System.Drawing.Point(67, 28);
-            this.txtDari2.MaxLength = 250;
+            this.txtDari2.MaxLength = 100;
             this.txtDari2.Name = "txtDari2";
             this.txtDari2.NumericOnly = false;
             this.txtDari2.SelectionText = false;
@@ -216,7 +216,7 @@
             this.txtDari3.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDari3.LetterOnly = false;
             this.txtDari3.Location = new System.Drawing.Point(67, 53);
-            this.txtDari3.MaxLength = 250;
+            this.txtDari3.MaxLength = 100;
             this.txtDari3.Name = "txtDari3";
             this.txtDari3.NumericOnly = false;
             this.txtDari3.SelectionText = false;
@@ -314,7 +314,7 @@
             this.txtKepada1.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKepada1.LetterOnly = false;
             this.txtKepada1.Location = new System.Drawing.Point(69, 3);
-            this.txtKepada1.MaxLength = 50;
+            this.txtKepada1.MaxLength = 250;
             this.txtKepada1.Name = "txtKepada1";
             this.txtKepada1.NumericOnly = false;
             this.txtKepada1.SelectionText = false;

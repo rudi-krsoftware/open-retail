@@ -52,8 +52,9 @@ namespace OpenRetail.Repository.Service
                 is_sdac = true,
                 label_dari1 = "PIXEL KOMPUTER", label_dari2 = "HP: 0813 81769915",
                 label_kepada1 = "Bpk. Sunardi",
-                label_kepada2 = "Jl. Ringroad Utara Km 11",
-                label_kepada3 = "HP: 0813 2828282",
+                label_kepada2 = "Jl. Ring Road Utara",
+                label_kepada3 = "Condong Catur - Sleman - Yogyakarta - 55283",
+                label_kepada4 = "HP: 0813 2828282",
                 kode_produk = "201704070001", nama_produk = "Flashdisk 2 Gb DEAM", harga = 50000, jumlah = 5
             };
 
@@ -69,8 +70,9 @@ namespace OpenRetail.Repository.Service
                 label_dari1 = "PIXEL KOMPUTER",
                 label_dari2 = "HP: 0813 81769915",
                 label_kepada1 = "Bpk. Sunardi",
-                label_kepada2 = "Jl. Ringroad Utara Km 11",
-                label_kepada3 = "HP: 0813 2828282",
+                label_kepada2 = "Jl. Ring Road Utara",
+                label_kepada3 = "Condong Catur - Sleman - Yogyakarta - 55283",
+                label_kepada4 = "HP: 0813 2828282",
                 kode_produk = "201704070002", nama_produk = "HDD 160 Gb SATA Seagate", harga = 500000, jumlah = 1
             };
 
@@ -86,8 +88,9 @@ namespace OpenRetail.Repository.Service
                 label_dari1 = "PIXEL KOMPUTER",
                 label_dari2 = "HP: 0813 81769915",
                 label_kepada1 = "Bpk. Sunardi",
-                label_kepada2 = "Jl. Ringroad Utara Km 11",
-                label_kepada3 = "HP: 0813 2828282",
+                label_kepada2 = "Jl. Ring Road Utara",
+                label_kepada3 = "Condong Catur - Sleman - Yogyakarta - 55283",
+                label_kepada4 = "HP: 0813 2828282",
                 kode_produk = "201704070003", nama_produk = "LCD 16 in Samsung 633NW", harga = 800000, jumlah = 1, diskon = 1
             };
 

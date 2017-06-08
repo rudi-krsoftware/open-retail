@@ -81,7 +81,7 @@ namespace OpenRetail.App.Transaksi
         {
             var dari1 = this._pengaturanUmum.list_of_label_nota[0].keterangan;
             var dari2 = this._pengaturanUmum.list_of_label_nota[1].keterangan;
-            var dari3 = string.Empty;            
+            var dari3 = this._pengaturanUmum.list_of_label_nota[2].keterangan;
 
             dari1 = string.IsNullOrEmpty(this._jual.label_dari1) ? dari1 : this._jual.label_dari1;
             dari2 = string.IsNullOrEmpty(this._jual.label_dari2) ? dari2 : this._jual.label_dari2;

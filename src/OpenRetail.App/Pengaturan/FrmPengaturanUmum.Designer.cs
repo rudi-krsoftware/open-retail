@@ -53,7 +53,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtDari1 = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.txtDari2 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtDari3 = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -355,7 +357,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(416, 307);
             this.tableLayoutPanel5.TabIndex = 0;
@@ -374,9 +376,9 @@
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel7);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 191);
+            this.groupBox1.Location = new System.Drawing.Point(3, 180);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(410, 83);
+            this.groupBox1.Size = new System.Drawing.Size(410, 94);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " [ Label Nota/Info Pengirim ] ";
@@ -389,7 +391,9 @@
             this.tableLayoutPanel7.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.txtDari1, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.label8, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.label19, 0, 2);
             this.tableLayoutPanel7.Controls.Add(this.txtDari2, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.txtDari3, 1, 2);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -397,7 +401,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(404, 64);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(404, 75);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // label7
@@ -439,6 +443,17 @@
             this.label8.Text = "Dari #2";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Location = new System.Drawing.Point(3, 50);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(58, 25);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Dari #3";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // txtDari2
             // 
             this.txtDari2.AutoEnter = true;
@@ -456,13 +471,30 @@
             this.txtDari2.TabIndex = 1;
             this.txtDari2.ThousandSeparator = false;
             // 
+            // txtDari3
+            // 
+            this.txtDari3.AutoEnter = true;
+            this.txtDari3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDari3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDari3.EnterFocusColor = System.Drawing.Color.White;
+            this.txtDari3.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtDari3.LetterOnly = false;
+            this.txtDari3.Location = new System.Drawing.Point(67, 53);
+            this.txtDari3.MaxLength = 100;
+            this.txtDari3.Name = "txtDari3";
+            this.txtDari3.NumericOnly = false;
+            this.txtDari3.SelectionText = false;
+            this.txtDari3.Size = new System.Drawing.Size(334, 20);
+            this.txtDari3.TabIndex = 2;
+            this.txtDari3.ThousandSeparator = false;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel6);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(410, 182);
+            this.groupBox2.Size = new System.Drawing.Size(410, 171);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = " [ Header Nota ] ";
@@ -492,7 +524,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(404, 163);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(404, 152);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // label2
@@ -1085,6 +1117,8 @@
         private UserControl.AdvancedTextbox txtFooterMiniPOS3;
         private System.Windows.Forms.Button btnLihatContohNotaPenjualanMiniPOS;
         private System.Windows.Forms.CheckBox chkCetakCustomer;
+        private System.Windows.Forms.Label label19;
+        private UserControl.AdvancedTextbox txtDari3;
 
 
 

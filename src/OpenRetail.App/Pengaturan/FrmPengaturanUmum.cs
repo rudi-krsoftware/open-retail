@@ -130,6 +130,7 @@ namespace OpenRetail.App.Pengaturan
         {
             _listOfTxtLabelNota.Add(txtDari1);
             _listOfTxtLabelNota.Add(txtDari2);
+            _listOfTxtLabelNota.Add(txtDari3);
 
             ILabelNotaBll bll = new LabelNotaBll();
             var listOfLabelNota = bll.GetAll();
@@ -345,6 +346,7 @@ namespace OpenRetail.App.Pengaturan
                     {
                         item.label_dari1 = txtDari1.Text;
                         item.label_dari2 = txtDari2.Text;
+                        item.label_dari3 = txtDari3.Text;
                     }
 
                     var dt = DateTime.Now;
