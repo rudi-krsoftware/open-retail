@@ -38,7 +38,7 @@ using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Transaksi
 {
-    public partial class FrmPreviewNotaPenjualan : Form
+    public partial class FrmPreviewLabelNotaPenjualan : Form
     {
         private string _reportNameSpace = @"OpenRetail.Report.{0}.rdlc";
         private Assembly _assemblyReport;
@@ -50,7 +50,7 @@ namespace OpenRetail.App.Transaksi
         private Profil _profil;
         private PengaturanUmum _pengaturanUmum;
 
-        public FrmPreviewNotaPenjualan()
+        public FrmPreviewLabelNotaPenjualan()
         {
             InitializeComponent();
             this.reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
@@ -58,10 +58,10 @@ namespace OpenRetail.App.Transaksi
             this.reportViewer1.ZoomPercent = 100;
 
             ColorManagerHelper.SetTheme(this, this);
-            _assemblyReport = Assembly.LoadFrom("OpenRetail.Report.dll");
+            _assemblyReport = Assembly.LoadFrom("OpenRetail.Report.dll");            
         }
 
-        public FrmPreviewNotaPenjualan(string header, JualProduk jual)
+        public FrmPreviewLabelNotaPenjualan(string header, JualProduk jual)
             : this()
         {
             this.Text = header;
@@ -73,19 +73,19 @@ namespace OpenRetail.App.Transaksi
             this._jual = jual;
             this._customer = this._jual.Customer;
 
-            chkIsSdac.Checked = this._jual.is_sdac;
-            chkIsSdac_CheckedChanged(chkIsSdac, new EventArgs());
+            SetLabelNota();
             btnPreviewNota_Click(btnPreviewNota, new EventArgs());
-        }        
+        }
 
-        private void chkIsSdac_CheckedChanged(object sender, EventArgs e)
+        private void SetLabelNota()
         {
-            var chk = (CheckBox)sender;
+            var dari1 = this._pengaturanUmum.list_of_label_nota[0].keterangan;
+            var dari2 = this._pengaturanUmum.list_of_label_nota[1].keterangan;
+            var dari3 = string.Empty;            
 
-            txtKepada1.Enabled = !chk.Checked;
-            txtKepada2.Enabled = !chk.Checked;
-            txtKepada3.Enabled = !chk.Checked;
-            txtKepada4.Enabled = !chk.Checked;            
+            dari1 = string.IsNullOrEmpty(this._jual.label_dari1) ? dari1 : this._jual.label_dari1;
+            dari2 = string.IsNullOrEmpty(this._jual.label_dari2) ? dari2 : this._jual.label_dari2;
+            dari3 = string.IsNullOrEmpty(this._jual.label_dari3) ? dari3 : this._jual.label_dari3;
 
             var kecamatan = string.IsNullOrEmpty(_customer.kecamatan) ? string.Empty : _customer.kecamatan;
             var kelurahan = string.IsNullOrEmpty(_customer.kelurahan) ? string.Empty : _customer.kelurahan;
@@ -93,18 +93,21 @@ namespace OpenRetail.App.Transaksi
             var kodePos = string.IsNullOrEmpty(_customer.kode_pos) ? string.Empty : _customer.kode_pos;
             var telepon = string.IsNullOrEmpty(_customer.telepon) ? string.Empty : _customer.telepon;
 
+            // info alamat kirim berdasarkan data cusomter
             var kepada1 = _customer.nama_customer;
             var kepada2 = _customer.alamat;
             var kepada3 = string.Format("{0} - {1} - {2} - {3}", kecamatan, kelurahan, kota, kodePos);
             var kepada4 = telepon;
 
-            if (!chk.Checked)
-            {
-                kepada1 = string.IsNullOrEmpty(_jual.kirim_kepada) ? kepada1 : _jual.kirim_kepada;
-                kepada2 = string.IsNullOrEmpty(_jual.kirim_alamat) ? kepada2 : _jual.kirim_alamat;
-                kepada3 = string.IsNullOrEmpty(_jual.kirim_kecamatan) ? kepada3 : _jual.kirim_kecamatan;
-                kepada4 = string.IsNullOrEmpty(_jual.kirim_kelurahan) ? kepada4 : _jual.kirim_kelurahan;
-            }
+            // info alamat kirim yang diedit
+            kepada1 = string.IsNullOrEmpty(this._jual.label_kepada1) ? kepada1 : this._jual.label_kepada1;
+            kepada2 = string.IsNullOrEmpty(this._jual.label_kepada2) ? kepada2 : this._jual.label_kepada2;
+            kepada3 = string.IsNullOrEmpty(this._jual.label_kepada3) ? kepada3 : this._jual.label_kepada3;
+            kepada4 = string.IsNullOrEmpty(this._jual.label_kepada4) ? kepada4 : this._jual.label_kepada4;
+
+            txtDari1.Text = dari1;
+            txtDari2.Text = dari2;
+            txtDari3.Text = dari3;
 
             txtKepada1.Text = kepada1;
             txtKepada2.Text = kepada2;
@@ -114,23 +117,22 @@ namespace OpenRetail.App.Transaksi
 
         private void btnPreviewNota_Click(object sender, EventArgs e)
         {
-            _jual.is_sdac = chkIsSdac.Checked;
+            _jual.label_dari1 = txtDari1.Text;
+            _jual.label_dari2 = txtDari2.Text;
+            _jual.label_dari3 = txtDari3.Text;
 
-            if (!chkIsSdac.Checked)
-            {
-                _jual.kirim_kepada = txtKepada1.Text;
-                _jual.kirim_alamat = txtKepada2.Text;
-                _jual.kirim_kecamatan = txtKepada3.Text;
-                _jual.kirim_kelurahan = txtKepada4.Text;
-            }
+            _jual.kirim_kepada = txtKepada1.Text;
+            _jual.kirim_alamat = txtKepada2.Text;
+            _jual.kirim_kecamatan = txtKepada3.Text;
+            _jual.kirim_kelurahan = txtKepada4.Text;
             
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                PreviewNota(_jual);
+                PreviewLabelNota(_jual);
             }
         }
 
-        private void PreviewNota(JualProduk jual, bool isPreview = true)
+        private void PreviewLabelNota(JualProduk jual, bool isPreview = true)
         {
             ICetakNotaBll cetakBll = new CetakNotaBll(_log);
             var listOfItemNota = cetakBll.GetNotaPenjualan(jual.jual_id);
@@ -143,39 +145,19 @@ namespace OpenRetail.App.Transaksi
                     Value = listOfItemNota
                 };
 
-                // set header nota
-                var parameters = new List<ReportParameter>();
-                var index = 1;
-
-                foreach (var item in _pengaturanUmum.list_of_header_nota)
-                {
-                    var paramName = string.Format("header{0}", index);
-                    parameters.Add(new ReportParameter(paramName, item.keterangan));
-
-                    index++;
-                }
-
                 foreach (var item in listOfItemNota)
                 {
-                    item.is_sdac = chkIsSdac.Checked;
+                    item.label_dari1 = txtDari1.Text;
+                    item.label_dari2 = txtDari2.Text;
+                    item.label_dari3 = txtDari3.Text;
 
-                    if (!chkIsSdac.Checked)
-                    {
-                        item.kirim_kepada = txtKepada1.Text;
-                        item.kirim_alamat = txtKepada2.Text;
-                        item.kirim_kecamatan = txtKepada3.Text;
-                        item.kirim_kelurahan = txtKepada4.Text;
-                    }                    
+                    item.label_kepada1 = txtKepada1.Text;
+                    item.label_kepada2 = txtKepada2.Text;
+                    item.label_kepada3 = txtKepada3.Text;
+                    item.label_kepada4 = txtKepada4.Text;
                 }
 
-                // set footer nota
-                var dt = DateTime.Now;
-                var kotaAndTanggal = string.Format("{0}, {1}", _profil.kota, dt.Day + " " + DayMonthHelper.GetBulanIndonesia(dt.Month) + " " + dt.Year);
-
-                parameters.Add(new ReportParameter("kota", kotaAndTanggal));
-                parameters.Add(new ReportParameter("footer", _pengguna.nama_pengguna));
-
-                var reportName = jual.is_dropship ? "RvNotaPenjualanProdukTanpaLabelDropship" : "RvNotaPenjualanProdukTanpaLabel";
+                var reportName = "RvLabelNotaPenjualan";
 
                 if (isPreview)
                 {
@@ -186,20 +168,17 @@ namespace OpenRetail.App.Transaksi
                     this.reportViewer1.LocalReport.DataSources.Add(reportDataSource);
                     this.reportViewer1.LocalReport.LoadReportDefinition(stream);
 
-                    if (!(parameters == null))
-                        this.reportViewer1.LocalReport.SetParameters(parameters);
-
                     this.reportViewer1.RefreshReport();
                 }
                 else
                 {
-                    var printReport = new ReportViewerPrintHelper(reportName, reportDataSource, parameters, _pengaturanUmum.nama_printer);
+                    var printReport = new ReportViewerPrintHelper(reportName, reportDataSource, printerName: _pengaturanUmum.nama_printer);
                     printReport.Print();
                 }                
             }
         }
 
-        private void btnCetakNota_Click(object sender, EventArgs e)
+        private void btnCetakLabelNota_Click(object sender, EventArgs e)
         {
             if (MsgHelper.MsgKonfirmasi("Apakah proses pencetakan ingin dilanjutkan ?"))
             {
@@ -208,7 +187,7 @@ namespace OpenRetail.App.Transaksi
                     IJualProdukBll bll = new JualProdukBll(_log);
                     var result = bll.Update(_jual);
 
-                    PreviewNota(_jual, false);
+                    PreviewLabelNota(_jual, false);
                 }
             }
         }
@@ -218,7 +197,7 @@ namespace OpenRetail.App.Transaksi
             this.Close();
         }
 
-        private void FrmPreviewNotaPenjualan_KeyPress(object sender, KeyPressEventArgs e)
+        private void FrmPreviewLabelNotaPenjualan_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEsc(e))
                 this.Close();
