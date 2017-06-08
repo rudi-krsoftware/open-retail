@@ -233,7 +233,7 @@
             this.groupBox2.Size = new System.Drawing.Size(381, 126);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = " [ Info Pengirim ] ";
+            this.groupBox2.Text = " [ Info Tujuan ] ";
             // 
             // tableLayoutPanel3
             // 
