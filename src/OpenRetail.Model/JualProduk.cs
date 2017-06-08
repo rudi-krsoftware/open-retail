@@ -225,10 +225,10 @@ namespace OpenRetail.Model
             RuleFor(c => c.label_dari3).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.label_dari4).Length(0, 100).WithMessage(msgError2);
 
-            RuleFor(c => c.label_kepada1).Length(0, 100).WithMessage(msgError2);
-            RuleFor(c => c.label_kepada2).Length(0, 100).WithMessage(msgError2);
-            RuleFor(c => c.label_kepada3).Length(0, 100).WithMessage(msgError2);
-            RuleFor(c => c.label_kepada4).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.label_kepada1).Length(0, 250).WithMessage(msgError2);
+            RuleFor(c => c.label_kepada2).Length(0, 250).WithMessage(msgError2);
+            RuleFor(c => c.label_kepada3).Length(0, 250).WithMessage(msgError2);
+            RuleFor(c => c.label_kepada4).Length(0, 250).WithMessage(msgError2);
 		}
 	}
 }

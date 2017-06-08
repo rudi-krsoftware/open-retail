@@ -6,7 +6,7 @@
         <Source>Embedded</Source>
         <Value>dropship</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>8.7034cm</Top>
+        <Top>10.2909cm</Top>
         <Left>5.12235cm</Left>
         <Height>1.15049in</Height>
         <Width>2.55833in</Width>
@@ -842,7 +842,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>NotaPenjualan</DataSetName>
-        <Top>2.51542in</Top>
+        <Top>3.14042in</Top>
         <Height>0.5in</Height>
         <Width>6.78058in</Width>
         <ZIndex>1</ZIndex>
@@ -927,8 +927,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>1.4925in</Top>
-        <Left>1.875in</Left>
+        <Top>2.1175in</Top>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>4</ZIndex>
@@ -958,8 +957,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>1.72028in</Top>
-        <Left>1.875in</Left>
+        <Top>2.34528in</Top>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
         <ZIndex>5</ZIndex>
@@ -993,7 +991,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>3.34167in</Top>
+        <Top>3.96667in</Top>
         <Left>4.89306in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
@@ -1028,7 +1026,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>3.57361in</Top>
+        <Top>4.19861in</Top>
         <Left>4.89306in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
@@ -1063,7 +1061,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>3.80555in</Top>
+        <Top>4.43055in</Top>
         <Left>4.89306in</Left>
         <Height>0.25in</Height>
         <Width>0.6875in</Width>
@@ -1096,7 +1094,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>4.22326in</Top>
+        <Top>4.84826in</Top>
         <Left>0.44027in</Left>
         <Height>0.25in</Height>
         <Width>1.33057in</Width>
@@ -1129,7 +1127,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>4.22326in</Top>
+        <Top>4.84826in</Top>
         <Left>4.64306in</Left>
         <Height>0.25in</Height>
         <Width>1.75509in</Width>
@@ -1161,7 +1159,7 @@
         </Paragraphs>
         <rd:DefaultName>nota</rd:DefaultName>
         <Top>1.4925in</Top>
-        <Left>0.60694in</Left>
+        <Left>0.69497in</Left>
         <Height>0.25in</Height>
         <Width>1.05717in</Width>
         <ZIndex>11</ZIndex>
@@ -1192,7 +1190,7 @@
         </Paragraphs>
         <rd:DefaultName>tanggal</rd:DefaultName>
         <Top>1.72028in</Top>
-        <Left>0.60694in</Left>
+        <Left>0.69497in</Left>
         <Height>0.25in</Height>
         <Width>1.05717in</Width>
         <ZIndex>12</ZIndex>
@@ -1222,8 +1220,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>tanggal_tempo</rd:DefaultName>
-        <Top>1.94875in</Top>
-        <Left>0.60694in</Left>
+        <Top>1.72028in</Top>
+        <Left>2.49861in</Left>
         <Height>0.25in</Height>
         <Width>1.05717in</Width>
         <ZIndex>13</ZIndex>
@@ -1255,10 +1253,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>nama_supplier</rd:DefaultName>
-        <Top>1.4925in</Top>
-        <Left>2.56997in</Left>
+        <Top>2.1175in</Top>
+        <Left>0.69497in</Left>
         <Height>0.25in</Height>
-        <Width>4.15283in</Width>
+        <Width>6.02311in</Width>
         <ZIndex>14</ZIndex>
         <Style>
           <Border>
@@ -1286,10 +1284,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>alamat1</rd:DefaultName>
-        <Top>1.72028in</Top>
-        <Left>2.56997in</Left>
+        <Top>2.34528in</Top>
+        <Left>0.69497in</Left>
         <Height>0.25in</Height>
-        <Width>4.15283in</Width>
+        <Width>6.02311in</Width>
         <ZIndex>15</ZIndex>
         <Style>
           <Border>
@@ -1321,7 +1319,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>ppn</rd:DefaultName>
-        <Top>3.57361in</Top>
+        <Top>4.19861in</Top>
         <Left>5.625in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
@@ -1356,7 +1354,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>diskon_nota</rd:DefaultName>
-        <Top>3.34167in</Top>
+        <Top>3.96667in</Top>
         <Left>5.625in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
@@ -1391,7 +1389,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>total_nota</rd:DefaultName>
-        <Top>3.80555in</Top>
+        <Top>4.43055in</Top>
         <Left>5.625in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
@@ -1408,7 +1406,7 @@
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>5.03208in</Top>
+        <Top>5.65708in</Top>
         <Left>0.44027in</Left>
         <Height>0in</Height>
         <Width>1.33057in</Width>
@@ -1420,7 +1418,7 @@
         </Style>
       </Line>
       <Line Name="Line2">
-        <Top>5.03208in</Top>
+        <Top>5.65708in</Top>
         <Left>4.87777in</Left>
         <Height>0in</Height>
         <Width>1.33057in</Width>
@@ -1432,7 +1430,7 @@
         </Style>
       </Line>
       <Line Name="Line3">
-        <Top>4.05938in</Top>
+        <Top>4.68438in</Top>
         <Height>0in</Height>
         <Width>6.75in</Width>
         <ZIndex>21</ZIndex>
@@ -1461,7 +1459,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>ongkos_kirim</rd:DefaultName>
-        <Top>3.1125in</Top>
+        <Top>3.7375in</Top>
         <Left>5.62362in</Left>
         <Height>0.25in</Height>
         <Width>1.125in</Width>
@@ -1496,7 +1494,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>3.10848in</Top>
+        <Top>3.73348in</Top>
         <Left>4.33056in</Left>
         <Height>0.25in</Height>
         <Width>1.25in</Width>
@@ -1527,7 +1525,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>1.94875in</Top>
+        <Top>1.72028in</Top>
+        <Left>1.89167in</Left>
         <Height>0.25in</Height>
         <Width>0.5625in</Width>
         <ZIndex>24</ZIndex>
@@ -1549,7 +1548,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="  Telepon/HP: " &amp; First(Iif(Fields!is_sdac.Value = True, Fields!telepon.Value, Fields!kirim_telepon.Value), "NotaPenjualan")</Value>
+                <Value>="  " &amp; First(Iif(Fields!is_sdac.Value = False, Fields!kirim_kelurahan.Value, Fields!telepon.Value), "NotaPenjualan")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -1557,10 +1556,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>alamat1</rd:DefaultName>
-        <Top>2.17375in</Top>
-        <Left>2.56997in</Left>
+        <Top>2.79875in</Top>
+        <Left>0.69497in</Left>
         <Height>0.25in</Height>
-        <Width>4.15283in</Width>
+        <Width>6.02311in</Width>
         <ZIndex>25</ZIndex>
         <Style>
           <Border>
@@ -1580,10 +1579,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="  Kec: " &amp; First(Iif(Fields!is_sdac.Value = True, Fields!kecamatan.Value, Fields!kirim_kecamatan.Value), "NotaPenjualan") &amp; 
-", Kel: " &amp; First(Iif(Fields!is_sdac.Value = True, Fields!kelurahan.Value, Fields!kirim_kelurahan.Value), "NotaPenjualan") &amp; 
-", Kel: " &amp; First(Iif(Fields!is_sdac.Value = True, Fields!kota.Value, Fields!kirim_kota.Value), "NotaPenjualan") &amp; 
-", Pos: " &amp; First(Iif(Fields!is_sdac.Value = True, Fields!kode_pos.Value, Fields!kirim_kode_pos.Value), "NotaPenjualan")</Value>
+                <Value>="  " &amp; First(Iif(Fields!is_sdac.Value = False, Fields!kirim_kecamatan.Value, Fields!kecamatan.Value &amp; " - " &amp; Fields!kelurahan.Value &amp; " - " &amp; Fields!kota.Value &amp; " - " &amp; Fields!kode_pos.Value), "NotaPenjualan")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -1591,10 +1587,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>alamat1</rd:DefaultName>
-        <Top>1.94875in</Top>
-        <Left>2.56997in</Left>
+        <Top>2.57375in</Top>
+        <Left>0.69497in</Left>
         <Height>0.25in</Height>
-        <Width>4.15283in</Width>
+        <Width>6.02311in</Width>
         <ZIndex>26</ZIndex>
         <Style>
           <Border>
@@ -1626,7 +1622,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>footer</rd:DefaultName>
-        <Top>12.20265cm</Top>
+        <Top>13.79015cm</Top>
         <Left>11.79337cm</Left>
         <Height>0.6cm</Height>
         <Width>4.45792cm</Width>
@@ -1848,7 +1844,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>12.80265cm</Height>
+    <Height>14.39015cm</Height>
     <Style />
   </Body>
   <Width>17.22267cm</Width>

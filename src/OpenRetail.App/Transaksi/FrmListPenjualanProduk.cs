@@ -33,6 +33,8 @@ using OpenRetail.App.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using Microsoft.Reporting.WinForms;
+using OpenRetail.App.Transaksi.PrinterMiniPOS;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -42,6 +44,7 @@ namespace OpenRetail.App.Transaksi
         private IList<JualProduk> _listOfJual = new List<JualProduk>();
         private ILog _log;
         private Pengguna _pengguna;
+        private PengaturanUmum _pengaturanUmum;
         private string _menuId;
 
         public FrmListPenjualanProduk(string header, Pengguna pengguna, string menuId)
@@ -55,7 +58,8 @@ namespace OpenRetail.App.Transaksi
             _log = MainProgram.log;
             _bll = new JualProdukBll(_log);
             _pengguna = pengguna;
-            _menuId = menuId;
+            _pengaturanUmum = MainProgram.pengaturanUmum;
+            _menuId = menuId;            
 
             // set hak akses untuk SELECT
             var role = _pengguna.GetRoleByMenuAndGrant(_menuId, GrantState.SELECT);
@@ -81,15 +85,53 @@ namespace OpenRetail.App.Transaksi
             gridListProperties.Add(new GridListControlProperties { Header = "Tanggal", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Tempo", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Nota", Width = 100 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Customer", Width = 250 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Keterangan", Width = 450 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Piutang", Width = 150 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang" });
+            gridListProperties.Add(new GridListControlProperties { Header = "Customer", Width = 230 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Keterangan", Width = 350 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Piutang", Width = 130 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang", Width = 130 });
+            gridListProperties.Add(new GridListControlProperties { Header = "", Width = 80 });
+            gridListProperties.Add(new GridListControlProperties { Header = "" });
 
             GridListControlHelper.InitializeGridListControl<JualProduk>(this.gridList, _listOfJual, gridListProperties);
 
             if (_listOfJual.Count > 0)
                 this.gridList.SetSelected(0, true);
+
+            this.gridList.Grid.PushButtonClick += delegate(object sender, GridCellPushButtonClickEventArgs e)
+            {
+                if (e.RowIndex > 0)
+                {
+                    var index = e.RowIndex - 1;
+
+                    switch (e.ColIndex)
+                    {
+                        case 9: // cetak nota jual
+                            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                            {
+                                var jual = _listOfJual[index];
+
+                                if (this._pengaturanUmum.is_printer_mini_pos)
+                                {
+                                    if (MsgHelper.MsgKonfirmasi("Apakah proses pencetakan ingin dilanjutkan ?"))
+                                        CetakNotaMiniPOS(jual);
+                                }
+                                else
+                                {
+                                    var frmCetakNota = new FrmPreviewNotaPenjualan("Preview Nota Penjualan", jual);
+                                    frmCetakNota.ShowDialog();
+                                }                                
+                            }
+
+                            break;
+
+                        case 10: // cetak label nota jual
+                            break;
+
+                        default:
+                            break;
+                    }
+                }                
+            };
 
             this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
             {
@@ -110,6 +152,7 @@ namespace OpenRetail.App.Transaksi
 
 
                             var isRetur = jual.retur_jual_id != null;
+                            var oldStyleBackColor = e.Style.BackColor;
 
                             if (isRetur)
                                 e.Style.BackColor = Color.Red;
@@ -150,6 +193,20 @@ namespace OpenRetail.App.Transaksi
                                     e.Style.CellValue = NumberHelper.NumberToString(totalNota - jual.total_pelunasan);
                                     break;
 
+                                case 9: // button hapus
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                    e.Style.CellType = GridCellTypeName.PushButton;                                    
+                                    e.Style.BackColor = oldStyleBackColor;
+                                    e.Style.Description = "Cetak Nota";
+                                    break;
+
+                                case 10: // button hapus
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                    e.Style.CellType = GridCellTypeName.PushButton;                                    
+                                    e.Style.BackColor = oldStyleBackColor;
+                                    e.Style.Description = "Cetak Label Nota";
+                                    break;
+
                                 default:
                                     break;
                             }
@@ -160,6 +217,12 @@ namespace OpenRetail.App.Transaksi
                     }
                 }
             };
+        }
+
+        private void CetakNotaMiniPOS(JualProduk jual)
+        {
+            IPrinterMiniPOS printerMiniPos = new PrinterMiniPOS.PrinterMiniPOS(_pengaturanUmum.nama_printer);
+            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer);
         }
 
         private void LoadData()

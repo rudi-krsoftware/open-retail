@@ -67,10 +67,10 @@ namespace OpenRetail.Model
             RuleFor(c => c.dari3).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.dari4).Length(0, 100).WithMessage(msgError2);
 
-            RuleFor(c => c.kepada1).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
-            RuleFor(c => c.kepada2).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
-            RuleFor(c => c.kepada3).Length(0, 100).WithMessage(msgError2);
-            RuleFor(c => c.kepada4).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.kepada1).NotEmpty().WithMessage(msgError1).Length(1, 250).WithMessage(msgError2);
+            RuleFor(c => c.kepada2).NotEmpty().WithMessage(msgError1).Length(1, 250).WithMessage(msgError2);
+            RuleFor(c => c.kepada3).Length(0, 250).WithMessage(msgError2);
+            RuleFor(c => c.kepada4).Length(0, 250).WithMessage(msgError2);
         }
     }
 }
