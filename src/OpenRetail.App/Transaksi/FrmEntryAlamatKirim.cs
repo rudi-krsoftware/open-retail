@@ -64,40 +64,13 @@ namespace OpenRetail.App.Transaksi
         protected override void Simpan()
         {
             this._alamatKirim.is_sdac = chkIsSdac.Checked;
-            this._alamatKirim.kepada = txtKepada.Text;
-            this._alamatKirim.alamat = txtAlamat.Text;
-            this._alamatKirim.kecamatan = txtKecamatan.Text;
-            this._alamatKirim.kelurahan = txtKelurahan.Text;
-            this._alamatKirim.kota = txtKota.Text;
-            this._alamatKirim.kode_pos = txtKodePos.Text;
-            this._alamatKirim.telepon = txtTelepon.Text;
+            this._alamatKirim.kepada = txtKepada1.Text;
+            this._alamatKirim.alamat = txtKepada2.Text;
+            this._alamatKirim.kecamatan = txtKepada3.Text;
+            this._alamatKirim.kelurahan = txtKepada4.Text;
 
-            var validationError = new ValidationError();
-            IAlamatKirimBll bll = new AlamatKirimBll();
-
-            if (bll.IsValid(this._alamatKirim, ref validationError))
-            {
-                Listener.Ok(this, this._alamatKirim);
-                this.Close();
-            }
-            else
-            {
-                if (validationError.Message.Length > 0)
-                {
-                    MsgHelper.MsgWarning(validationError.Message);
-                    base.SetFocusObject(validationError.PropertyName, this);
-                }
-                else
-                    MsgHelper.MsgUpdateError();
-            }
-            
-            
-        }
-
-        private void txtTelepon_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (KeyPressHelper.IsEnter(e))
-                Simpan();
+            Listener.Ok(this, this._alamatKirim);
+            this.Close();
         }
 
         private void chkIsSdac_CheckedChanged(object sender, EventArgs e)
@@ -106,29 +79,32 @@ namespace OpenRetail.App.Transaksi
 
             pnlAlamatKirim.Enabled = !chk.Checked;
 
-            if (chk.Checked)
-            {
-                txtKepada.Text = _customer.nama_customer;
-                txtAlamat.Text = _customer.alamat;
-                txtKecamatan.Text = _customer.kecamatan;
-                txtKelurahan.Text = _customer.kelurahan;
-                txtKota.Text = _customer.kota;
-                txtKodePos.Text = _customer.kode_pos;
-                txtTelepon.Text = _customer.telepon;
-            }
-            else
+            var kecamatan = string.IsNullOrEmpty(_customer.kecamatan) ? string.Empty : _customer.kecamatan;
+            var kelurahan = string.IsNullOrEmpty(_customer.kelurahan) ? string.Empty : _customer.kelurahan;
+            var kota = string.IsNullOrEmpty(_customer.kota) ? string.Empty : _customer.kota;
+            var kodePos = string.IsNullOrEmpty(_customer.kode_pos) ? string.Empty : _customer.kode_pos;
+            var telepon = string.IsNullOrEmpty(_customer.telepon) ? string.Empty : _customer.telepon;
+
+            var kepada1 = _customer.nama_customer;
+            var kepada2 = _customer.alamat;
+            var kepada3 = string.Format("{0} - {1} - {2} - {3}", kecamatan, kelurahan, kota, kodePos);
+            var kepada4 = telepon;
+
+            if (!chk.Checked)
             {
                 if (_jual != null)
                 {
-                    txtKepada.Text = _jual.kirim_kepada;
-                    txtAlamat.Text = _jual.kirim_alamat;
-                    txtKecamatan.Text = _jual.kirim_kecamatan;
-                    txtKelurahan.Text = _jual.kirim_kelurahan;
-                    txtKota.Text = _jual.kirim_kota;
-                    txtKodePos.Text = _jual.kirim_kode_pos;
-                    txtTelepon.Text = _jual.kirim_telepon;
+                    kepada1 = string.IsNullOrEmpty(_jual.kirim_kepada) ? kepada1 : _jual.kirim_kepada;
+                    kepada2 = string.IsNullOrEmpty(_jual.kirim_alamat) ? kepada2 : _jual.kirim_alamat;
+                    kepada3 = string.IsNullOrEmpty(_jual.kirim_kecamatan) ? kepada3 : _jual.kirim_kecamatan;
+                    kepada4 = string.IsNullOrEmpty(_jual.kirim_kelurahan) ? kepada4 : _jual.kirim_kelurahan;
                 }
-            }                
+            }
+
+            txtKepada1.Text = kepada1;
+            txtKepada2.Text = kepada2;
+            txtKepada3.Text = kepada3;
+            txtKepada4.Text = kepada4;
         }
     }
 }

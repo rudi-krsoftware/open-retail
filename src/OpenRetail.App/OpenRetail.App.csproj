@@ -494,12 +494,6 @@
     <Compile Include="Referensi\FrmListGolongan.Designer.cs">
       <DependentUpon>FrmListGolongan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transaksi\FrmEntryLabelNota.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Transaksi\FrmEntryLabelNota.Designer.cs">
-      <DependentUpon>FrmEntryLabelNota.cs</DependentUpon>
-    </Compile>
     <Compile Include="Transaksi\FrmEntryAlamatKirim.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -788,9 +782,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmListGolongan.resx">
       <DependentUpon>FrmListGolongan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Transaksi\FrmEntryLabelNota.resx">
-      <DependentUpon>FrmEntryLabelNota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmEntryAlamatKirim.resx">
       <DependentUpon>FrmEntryAlamatKirim.cs</DependentUpon>

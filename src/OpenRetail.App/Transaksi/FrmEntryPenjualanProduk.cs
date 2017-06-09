@@ -153,13 +153,10 @@ namespace OpenRetail.App.Transaksi
             if (this._pengaturanUmum.is_printer_mini_pos)
             {
                 btnPreviewNota.Visible = false;
-                chkCetakLabel.Visible = false;
                 chkDropship.Visible = false;
-                btnSetLabelNota.Visible = false;
             }
             else
             {
-                chkCetakLabel.Checked = this._pengaturanUmum.is_auto_print_label_nota;
                 chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
             }
         }
@@ -578,22 +575,7 @@ namespace OpenRetail.App.Transaksi
                 parameters.Add(new ReportParameter("kota", kotaAndTanggal));
                 parameters.Add(new ReportParameter("footer", _pengguna.nama_pengguna));
 
-                var reportName = string.Empty;
-
-                if (chkDropship.Checked)
-                {
-                    reportName = "RvNotaPenjualanProdukTanpaLabelDropship";
-
-                    if (chkCetakLabel.Checked)
-                        reportName = "RvNotaPenjualanProdukLabelDropship";
-                }
-                else
-                {
-                    reportName = "RvNotaPenjualanProdukTanpaLabel";
-
-                    if (chkCetakLabel.Checked)
-                        reportName = "RvNotaPenjualanProdukLabel";
-                }
+                var reportName = chkDropship.Checked ? "RvNotaPenjualanProdukTanpaLabelDropship" : "RvNotaPenjualanProdukTanpaLabel";
 
                 var printReport = new ReportViewerPrintHelper(reportName, reportDataSource, parameters, _pengaturanUmum.nama_printer);
                 printReport.Print();
@@ -687,9 +669,6 @@ namespace OpenRetail.App.Transaksi
                 this._jual.kirim_alamat = alamatKirim.alamat;
                 this._jual.kirim_kecamatan = alamatKirim.kecamatan;
                 this._jual.kirim_kelurahan = alamatKirim.kelurahan;
-                this._jual.kirim_kota = alamatKirim.kota;
-                this._jual.kirim_kode_pos = alamatKirim.kode_pos;
-                this._jual.kirim_telepon = alamatKirim.telepon;
             }
             else if (data is LabelAlamatKirim)
             {
@@ -1138,33 +1117,6 @@ namespace OpenRetail.App.Transaksi
             frmEntryAlamatKirim.ShowDialog();
         }
 
-        private void btnSetLabelNota_Click(object sender, EventArgs e)
-        {
-            if (this._customer == null || txtCustomer.Text.Length == 0)
-            {
-                MsgHelper.MsgWarning("'Customer' tidak boleh kosong !");
-                txtCustomer.Focus();
-
-                return;
-            }
-
-            var frmEntryLabelNota = new FrmEntryLabelNota("Label Nota", this._customer, this._jual);
-            frmEntryLabelNota.Listener = this;
-            frmEntryLabelNota.ShowDialog();
-        }
-
-        private void chkCetakLabel_CheckedChanged(object sender, EventArgs e)
-        {
-            btnSetLabelNota.Enabled = chkCetakLabel.Checked;
-        }
-
-        private void chkCetakNotaJual_CheckedChanged(object sender, EventArgs e)
-        {
-            chkCetakLabel.Enabled = chkCetakNotaJual.Checked;
-            if (!chkCetakNotaJual.Checked)
-                chkCetakLabel.Checked = false;  
-        }
-
         private void btnPreviewNota_Click(object sender, EventArgs e)
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
@@ -1296,22 +1248,7 @@ namespace OpenRetail.App.Transaksi
             parameters.Add(new ReportParameter("kota", kotaAndTanggal));
             parameters.Add(new ReportParameter("footer", _pengguna.nama_pengguna));
 
-            var reportName = string.Empty;
-
-            if (chkDropship.Checked)
-            {
-                reportName = "RvNotaPenjualanProdukTanpaLabelDropship";
-
-                if (chkCetakLabel.Checked)
-                    reportName = "RvNotaPenjualanProdukLabelDropship";
-            }
-            else
-            {
-                reportName = "RvNotaPenjualanProdukTanpaLabel";
-
-                if (chkCetakLabel.Checked)
-                    reportName = "RvNotaPenjualanProdukLabel";
-            }
+            var reportName = chkDropship.Checked ? "RvNotaPenjualanProdukTanpaLabelDropship" : "RvNotaPenjualanProdukTanpaLabel";
 
             var frmPreviewReport = new FrmPreviewReport("Preview Nota Penjualan", reportName, reportDataSource, parameters, true);
             frmPreviewReport.ShowDialog();
@@ -1343,6 +1280,6 @@ namespace OpenRetail.App.Transaksi
                 if (kembali > 0)
                     txtKembali.Text = kembali.ToString();
             }
-        }        
+        }
     }
 }

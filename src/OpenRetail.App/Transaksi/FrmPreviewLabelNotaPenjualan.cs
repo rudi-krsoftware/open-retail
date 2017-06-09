@@ -93,13 +93,19 @@ namespace OpenRetail.App.Transaksi
             var kodePos = string.IsNullOrEmpty(_customer.kode_pos) ? string.Empty : _customer.kode_pos;
             var telepon = string.IsNullOrEmpty(_customer.telepon) ? string.Empty : _customer.telepon;
 
-            // info alamat kirim berdasarkan data cusomter
+            // info alamat kirim berdasarkan data customer
             var kepada1 = _customer.nama_customer;
             var kepada2 = _customer.alamat;
             var kepada3 = string.Format("{0} - {1} - {2} - {3}", kecamatan, kelurahan, kota, kodePos);
             var kepada4 = telepon;
 
-            // info alamat kirim yang diedit
+            // info alamat kirim berdasarkan data alamat yang diedit pada saat penjualan
+            kepada1 = string.IsNullOrEmpty(this._jual.kirim_kepada) ? kepada1 : this._jual.kirim_kepada;
+            kepada2 = string.IsNullOrEmpty(this._jual.kirim_alamat) ? kepada2 : this._jual.kirim_alamat;
+            kepada3 = string.IsNullOrEmpty(this._jual.kirim_kecamatan) ? kepada3 : this._jual.kirim_kecamatan;
+            kepada4 = string.IsNullOrEmpty(this._jual.kirim_kelurahan) ? kepada4 : this._jual.kirim_kelurahan;
+
+            // info alamat kirim yang diedit di label nota
             kepada1 = string.IsNullOrEmpty(this._jual.label_kepada1) ? kepada1 : this._jual.label_kepada1;
             kepada2 = string.IsNullOrEmpty(this._jual.label_kepada2) ? kepada2 : this._jual.label_kepada2;
             kepada3 = string.IsNullOrEmpty(this._jual.label_kepada3) ? kepada3 : this._jual.label_kepada3;
@@ -121,10 +127,10 @@ namespace OpenRetail.App.Transaksi
             _jual.label_dari2 = txtDari2.Text;
             _jual.label_dari3 = txtDari3.Text;
 
-            _jual.kirim_kepada = txtKepada1.Text;
-            _jual.kirim_alamat = txtKepada2.Text;
-            _jual.kirim_kecamatan = txtKepada3.Text;
-            _jual.kirim_kelurahan = txtKepada4.Text;
+            _jual.label_kepada1 = txtKepada1.Text;
+            _jual.label_kepada2 = txtKepada2.Text;
+            _jual.label_kepada3 = txtKepada3.Text;
+            _jual.label_kepada4 = txtKepada4.Text;
             
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
