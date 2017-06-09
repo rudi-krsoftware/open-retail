@@ -594,7 +594,7 @@ namespace OpenRetail.App.Transaksi
                 switch (cc.ColIndex)
                 {
                     case 5: // kolom pembayaran
-                        itemPembayaran.nominal = Convert.ToDouble(cc.Renderer.ControlValue);
+                        itemPembayaran.nominal = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString());
                         jual.total_pelunasan = itemPembayaran.nominal + jual.total_pelunasan_old;
                         isValidSisaNota = jual.sisa_nota >= 0;
 

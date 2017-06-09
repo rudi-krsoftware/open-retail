@@ -953,19 +953,19 @@ namespace OpenRetail.App.Transaksi
             var produk = itemJual.Produk;
 
             if (produk != null)
-            {
+            {                
                 switch (cc.ColIndex)
                 {
                     case 4: // kolom jumlah
-                        itemJual.jumlah = Convert.ToDouble(cc.Renderer.ControlValue);
+                        itemJual.jumlah = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
                         break;
 
                     case 5: // kolom diskon
-                        itemJual.diskon = Convert.ToDouble(cc.Renderer.ControlValue);
+                        itemJual.diskon = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
                         break;
 
                     case 6: // kolom harga
-                        itemJual.harga_jual = Convert.ToDouble(cc.Renderer.ControlValue);
+                        itemJual.harga_jual = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
                         break;
 
                     default:

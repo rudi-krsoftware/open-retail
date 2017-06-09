@@ -508,11 +508,11 @@ namespace OpenRetail.App.Pengeluaran
                 switch (cc.ColIndex)
                 {
                     case 3: // kolom jumlah
-                        itemPengeluaran.jumlah = Convert.ToDouble(cc.Renderer.ControlValue);
+                        itemPengeluaran.jumlah = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
                         break;
 
                     case 4: // kolom harga
-                        itemPengeluaran.harga = Convert.ToDouble(cc.Renderer.ControlValue);
+                        itemPengeluaran.harga = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString());
                         break;
 
                     default:

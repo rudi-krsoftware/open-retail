@@ -586,7 +586,7 @@ namespace OpenRetail.App.Transaksi
                         try
                         {
                             cc = grid.CurrentCell;
-                            double jumlahRetur = Convert.ToDouble(cc.Renderer.ControlValue);
+                            double jumlahRetur = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
 
                             var jumlahJual = _listOfItemRetur[rowIndex - 1].jumlah;
                             if (jumlahRetur <= jumlahJual)
@@ -686,12 +686,12 @@ namespace OpenRetail.App.Transaksi
                     {
                         case 4:
                             if (_isValidJumlahRetur)
-                                obj.jumlah_retur = Convert.ToDouble(cc.Renderer.ControlValue);
+                                obj.jumlah_retur = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
 
                             break;
 
                         case 5:
-                            obj.harga_jual = Convert.ToDouble(cc.Renderer.ControlValue);
+                            obj.harga_jual = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
                             break;
 
                         default:
