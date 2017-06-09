@@ -56,7 +56,9 @@ namespace OpenRetail.App.Helper
             report.DataSources.Clear();
             report.DataSources.Add(_reportDataSource);
             report.LoadReportDefinition(_stream);
-            report.SetParameters(_parameters);
+
+            if (_parameters != null)
+                report.SetParameters(_parameters);
 
             using (var printer = new PrintReport())
             {

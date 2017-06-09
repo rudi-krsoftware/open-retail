@@ -59,14 +59,12 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtPPN = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label9 = new System.Windows.Forms.Label();
-            this.chkDropship = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtDiskon = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label11 = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.chkCetakNotaJual = new System.Windows.Forms.CheckBox();
-            this.chkCetakLabel = new System.Windows.Forms.CheckBox();
-            this.btnSetLabelNota = new System.Windows.Forms.Button();
+            this.chkDropship = new System.Windows.Forms.CheckBox();
             this.cmbKurir = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -428,7 +426,6 @@
             this.tableLayoutPanel5.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.txtPPN, 2, 3);
             this.tableLayoutPanel5.Controls.Add(this.label9, 1, 3);
-            this.tableLayoutPanel5.Controls.Add(this.chkDropship, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.label8, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.txtDiskon, 2, 2);
             this.tableLayoutPanel5.Controls.Add(this.label11, 1, 1);
@@ -498,17 +495,6 @@
             this.label9.Text = "PPN";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // chkDropship
-            // 
-            this.chkDropship.AutoSize = true;
-            this.chkDropship.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkDropship.Location = new System.Drawing.Point(3, 53);
-            this.chkDropship.Name = "chkDropship";
-            this.chkDropship.Size = new System.Drawing.Size(68, 19);
-            this.chkDropship.TabIndex = 2;
-            this.chkDropship.Text = "Dropship";
-            this.chkDropship.UseVisualStyleBackColor = true;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -554,8 +540,7 @@
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.chkCetakNotaJual);
-            this.flowLayoutPanel3.Controls.Add(this.chkCetakLabel);
-            this.flowLayoutPanel3.Controls.Add(this.btnSetLabelNota);
+            this.flowLayoutPanel3.Controls.Add(this.chkDropship);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 25);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
@@ -571,36 +556,20 @@
             this.chkCetakNotaJual.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkCetakNotaJual.Location = new System.Drawing.Point(3, 3);
             this.chkCetakNotaJual.Name = "chkCetakNotaJual";
-            this.chkCetakNotaJual.Size = new System.Drawing.Size(102, 19);
+            this.chkCetakNotaJual.Size = new System.Drawing.Size(102, 17);
             this.chkCetakNotaJual.TabIndex = 0;
             this.chkCetakNotaJual.Text = "Cetak Nota Jual";
             this.chkCetakNotaJual.UseVisualStyleBackColor = true;
-            this.chkCetakNotaJual.CheckedChanged += new System.EventHandler(this.chkCetakNotaJual_CheckedChanged);
             // 
-            // chkCetakLabel
+            // chkDropship
             // 
-            this.chkCetakLabel.AutoSize = true;
-            this.chkCetakLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkCetakLabel.Location = new System.Drawing.Point(111, 3);
-            this.chkCetakLabel.Name = "chkCetakLabel";
-            this.chkCetakLabel.Size = new System.Drawing.Size(83, 19);
-            this.chkCetakLabel.TabIndex = 1;
-            this.chkCetakLabel.Text = "Cetak Label";
-            this.chkCetakLabel.UseVisualStyleBackColor = true;
-            this.chkCetakLabel.CheckedChanged += new System.EventHandler(this.chkCetakLabel_CheckedChanged);
-            // 
-            // btnSetLabelNota
-            // 
-            this.btnSetLabelNota.Enabled = false;
-            this.btnSetLabelNota.Image = global::OpenRetail.App.Properties.Resources.label16;
-            this.btnSetLabelNota.Location = new System.Drawing.Point(200, 2);
-            this.btnSetLabelNota.Margin = new System.Windows.Forms.Padding(3, 2, 3, 0);
-            this.btnSetLabelNota.Name = "btnSetLabelNota";
-            this.btnSetLabelNota.Size = new System.Drawing.Size(34, 23);
-            this.btnSetLabelNota.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.btnSetLabelNota, "Set Label Nota");
-            this.btnSetLabelNota.UseVisualStyleBackColor = true;
-            this.btnSetLabelNota.Click += new System.EventHandler(this.btnSetLabelNota_Click);
+            this.chkDropship.AutoSize = true;
+            this.chkDropship.Location = new System.Drawing.Point(111, 3);
+            this.chkDropship.Name = "chkDropship";
+            this.chkDropship.Size = new System.Drawing.Size(68, 17);
+            this.chkDropship.TabIndex = 2;
+            this.chkDropship.Text = "Dropship";
+            this.chkDropship.UseVisualStyleBackColor = true;
             // 
             // cmbKurir
             // 
@@ -882,11 +851,9 @@
         private UserControl.AdvancedTextbox txtOngkosKirim;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.CheckBox chkCetakLabel;
         private System.Windows.Forms.ComboBox cmbKurir;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox chkDropship;
-        private System.Windows.Forms.Button btnSetLabelNota;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Button btnPreviewNota;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;

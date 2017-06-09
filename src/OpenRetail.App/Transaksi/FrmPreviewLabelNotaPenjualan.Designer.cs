@@ -1,6 +1,6 @@
 ﻿namespace OpenRetail.App.Transaksi
 {
-    partial class FrmPreviewNotaPenjualan
+    partial class FrmPreviewLabelNotaPenjualan
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPreviewNotaPenjualan));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPreviewLabelNotaPenjualan));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtDari1 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtDari2 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtDari3 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,17 +50,19 @@
             this.txtKepada3 = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtKepada4 = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.btnPreviewNota = new System.Windows.Forms.Button();
-            this.chkIsSdac = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.btnCetakNota = new System.Windows.Forms.Button();
+            this.btnCetakLabelNota = new System.Windows.Forms.Button();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblHeader = new System.Windows.Forms.Label();
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.btnSelesai = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -82,16 +93,147 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.chkIsSdac, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox2, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnPreviewNota, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 43);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 132F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(387, 590);
-            this.tableLayoutPanel2.TabIndex = 1;
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tableLayoutPanel5);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(381, 98);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = " [ Info Pengirim ] ";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label6, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label7, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.txtDari1, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtDari2, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.txtDari3, 1, 2);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 4;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(375, 79);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 25);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Dari #1";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(3, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 25);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Dari #2";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(3, 50);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 25);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Dari #3";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtDari1
+            // 
+            this.txtDari1.AutoEnter = true;
+            this.txtDari1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDari1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDari1.EnterFocusColor = System.Drawing.Color.White;
+            this.txtDari1.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtDari1.LetterOnly = false;
+            this.txtDari1.Location = new System.Drawing.Point(67, 3);
+            this.txtDari1.MaxLength = 100;
+            this.txtDari1.Name = "txtDari1";
+            this.txtDari1.NumericOnly = false;
+            this.txtDari1.SelectionText = false;
+            this.txtDari1.Size = new System.Drawing.Size(305, 20);
+            this.txtDari1.TabIndex = 0;
+            this.txtDari1.ThousandSeparator = false;
+            // 
+            // txtDari2
+            // 
+            this.txtDari2.AutoEnter = true;
+            this.txtDari2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDari2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDari2.EnterFocusColor = System.Drawing.Color.White;
+            this.txtDari2.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtDari2.LetterOnly = false;
+            this.txtDari2.Location = new System.Drawing.Point(67, 28);
+            this.txtDari2.MaxLength = 100;
+            this.txtDari2.Name = "txtDari2";
+            this.txtDari2.NumericOnly = false;
+            this.txtDari2.SelectionText = false;
+            this.txtDari2.Size = new System.Drawing.Size(305, 20);
+            this.txtDari2.TabIndex = 1;
+            this.txtDari2.ThousandSeparator = false;
+            // 
+            // txtDari3
+            // 
+            this.txtDari3.AutoEnter = true;
+            this.txtDari3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDari3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDari3.EnterFocusColor = System.Drawing.Color.White;
+            this.txtDari3.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtDari3.LetterOnly = false;
+            this.txtDari3.Location = new System.Drawing.Point(67, 53);
+            this.txtDari3.MaxLength = 100;
+            this.txtDari3.Name = "txtDari3";
+            this.txtDari3.NumericOnly = false;
+            this.txtDari3.SelectionText = false;
+            this.txtDari3.Size = new System.Drawing.Size(305, 20);
+            this.txtDari3.TabIndex = 2;
+            this.txtDari3.ThousandSeparator = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tableLayoutPanel3);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 107);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(381, 126);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = " [ Info Tujuan ] ";
             // 
             // tableLayoutPanel3
             // 
@@ -106,9 +248,8 @@
             this.tableLayoutPanel3.Controls.Add(this.txtKepada2, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtKepada3, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.txtKepada4, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.btnPreviewNota, 1, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 5;
@@ -117,7 +258,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(387, 566);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(375, 107);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label1
@@ -173,11 +314,11 @@
             this.txtKepada1.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKepada1.LetterOnly = false;
             this.txtKepada1.Location = new System.Drawing.Point(69, 3);
-            this.txtKepada1.MaxLength = 50;
+            this.txtKepada1.MaxLength = 250;
             this.txtKepada1.Name = "txtKepada1";
             this.txtKepada1.NumericOnly = false;
             this.txtKepada1.SelectionText = false;
-            this.txtKepada1.Size = new System.Drawing.Size(315, 20);
+            this.txtKepada1.Size = new System.Drawing.Size(303, 20);
             this.txtKepada1.TabIndex = 0;
             this.txtKepada1.ThousandSeparator = false;
             // 
@@ -194,7 +335,7 @@
             this.txtKepada2.Name = "txtKepada2";
             this.txtKepada2.NumericOnly = false;
             this.txtKepada2.SelectionText = false;
-            this.txtKepada2.Size = new System.Drawing.Size(315, 20);
+            this.txtKepada2.Size = new System.Drawing.Size(303, 20);
             this.txtKepada2.TabIndex = 1;
             this.txtKepada2.ThousandSeparator = false;
             // 
@@ -211,7 +352,7 @@
             this.txtKepada3.Name = "txtKepada3";
             this.txtKepada3.NumericOnly = false;
             this.txtKepada3.SelectionText = false;
-            this.txtKepada3.Size = new System.Drawing.Size(315, 20);
+            this.txtKepada3.Size = new System.Drawing.Size(303, 20);
             this.txtKepada3.TabIndex = 2;
             this.txtKepada3.ThousandSeparator = false;
             // 
@@ -228,32 +369,21 @@
             this.txtKepada4.Name = "txtKepada4";
             this.txtKepada4.NumericOnly = false;
             this.txtKepada4.SelectionText = false;
-            this.txtKepada4.Size = new System.Drawing.Size(315, 20);
+            this.txtKepada4.Size = new System.Drawing.Size(303, 20);
             this.txtKepada4.TabIndex = 3;
             this.txtKepada4.ThousandSeparator = false;
             // 
             // btnPreviewNota
             // 
             this.btnPreviewNota.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPreviewNota.Location = new System.Drawing.Point(291, 103);
+            this.btnPreviewNota.Location = new System.Drawing.Point(264, 239);
+            this.btnPreviewNota.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.btnPreviewNota.Name = "btnPreviewNota";
-            this.btnPreviewNota.Size = new System.Drawing.Size(93, 23);
+            this.btnPreviewNota.Size = new System.Drawing.Size(120, 23);
             this.btnPreviewNota.TabIndex = 4;
-            this.btnPreviewNota.Text = "Preview Nota";
+            this.btnPreviewNota.Text = "Preview Label Nota";
             this.btnPreviewNota.UseVisualStyleBackColor = true;
             this.btnPreviewNota.Click += new System.EventHandler(this.btnPreviewNota_Click);
-            // 
-            // chkIsSdac
-            // 
-            this.chkIsSdac.AutoSize = true;
-            this.chkIsSdac.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkIsSdac.Location = new System.Drawing.Point(3, 3);
-            this.chkIsSdac.Name = "chkIsSdac";
-            this.chkIsSdac.Size = new System.Drawing.Size(381, 17);
-            this.chkIsSdac.TabIndex = 1;
-            this.chkIsSdac.Text = "Alamat kirim sama dengan alamat customer";
-            this.chkIsSdac.UseVisualStyleBackColor = true;
-            this.chkIsSdac.CheckedChanged += new System.EventHandler(this.chkIsSdac_CheckedChanged);
             // 
             // panel1
             // 
@@ -270,7 +400,7 @@
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.reportViewer1, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btnCetakNota, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnCetakLabelNota, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -290,15 +420,15 @@
             this.reportViewer1.Size = new System.Drawing.Size(809, 552);
             this.reportViewer1.TabIndex = 0;
             // 
-            // btnCetakNota
+            // btnCetakLabelNota
             // 
-            this.btnCetakNota.Location = new System.Drawing.Point(3, 561);
-            this.btnCetakNota.Name = "btnCetakNota";
-            this.btnCetakNota.Size = new System.Drawing.Size(92, 23);
-            this.btnCetakNota.TabIndex = 0;
-            this.btnCetakNota.Text = "Cetak Nota";
-            this.btnCetakNota.UseVisualStyleBackColor = true;
-            this.btnCetakNota.Click += new System.EventHandler(this.btnCetakNota_Click);
+            this.btnCetakLabelNota.Location = new System.Drawing.Point(3, 561);
+            this.btnCetakLabelNota.Name = "btnCetakLabelNota";
+            this.btnCetakLabelNota.Size = new System.Drawing.Size(115, 23);
+            this.btnCetakLabelNota.TabIndex = 0;
+            this.btnCetakLabelNota.Text = "Cetak Label Nota";
+            this.btnCetakLabelNota.UseVisualStyleBackColor = true;
+            this.btnCetakLabelNota.Click += new System.EventHandler(this.btnCetakLabelNota_Click);
             // 
             // pnlHeader
             // 
@@ -344,7 +474,7 @@
             this.btnSelesai.UseVisualStyleBackColor = true;
             this.btnSelesai.Click += new System.EventHandler(this.btnSelesai_Click);
             // 
-            // FrmPreviewNotaPenjualan
+            // FrmPreviewLabelNotaPenjualan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -352,14 +482,17 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Name = "FrmPreviewNotaPenjualan";
+            this.Name = "FrmPreviewLabelNotaPenjualan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPreviewReport";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmPreviewNotaPenjualan_KeyPress);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmPreviewLabelNotaPenjualan_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -385,15 +518,23 @@
         private UserControl.AdvancedTextbox txtKepada2;
         private UserControl.AdvancedTextbox txtKepada3;
         private UserControl.AdvancedTextbox txtKepada4;
-        private System.Windows.Forms.CheckBox chkIsSdac;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnPreviewNota;
-        private System.Windows.Forms.Button btnCetakNota;
+        private System.Windows.Forms.Button btnCetakLabelNota;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Panel pnlFooter;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Button btnSelesai;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private UserControl.AdvancedTextbox txtDari1;
+        private UserControl.AdvancedTextbox txtDari2;
+        private UserControl.AdvancedTextbox txtDari3;
 
 
     }

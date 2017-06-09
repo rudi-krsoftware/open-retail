@@ -743,15 +743,15 @@ namespace OpenRetail.App.Transaksi
                 switch (cc.ColIndex)
                 {
                     case 4: // kolom jumlah
-                        itemBeli.jumlah = Convert.ToDouble(cc.Renderer.ControlValue);
+                        itemBeli.jumlah = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
                         break;
 
                     case 5: // dikson
-                        itemBeli.diskon = Convert.ToDouble(cc.Renderer.ControlValue);
+                        itemBeli.diskon = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
                         break;
 
                     case 6: // kolom harga
-                        itemBeli.harga = Convert.ToDouble(cc.Renderer.ControlValue);
+                        itemBeli.harga = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
                         break;
 
                     default:

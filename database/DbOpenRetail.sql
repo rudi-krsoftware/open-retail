@@ -35,6 +35,15 @@ CREATE DOMAIN t_alamat AS character varying(100);
 ALTER DOMAIN t_alamat OWNER TO postgres;
 
 --
+-- Name: t_alamat_panjang; Type: DOMAIN; Schema: public; Owner: postgres
+--
+
+CREATE DOMAIN t_alamat_panjang AS character varying(250);
+
+
+ALTER DOMAIN t_alamat_panjang OWNER TO postgres;
+
+--
 -- Name: t_bool; Type: DOMAIN; Schema: public; Owner: postgres
 --
 
@@ -1890,22 +1899,22 @@ CREATE TABLE t_jual_produk (
     retur_jual_id t_guid,
     shift_id t_guid,
     is_sdac t_bool,
-    kirim_kecamatan t_alamat,
-    kirim_kelurahan t_alamat,
-    kirim_kota t_alamat,
+    kirim_kecamatan t_alamat_panjang,
+    kirim_kelurahan t_alamat_panjang,
+    kirim_kota t_alamat_panjang,
     kirim_kode_pos t_kode_pos,
     kirim_kepada t_nama,
-    kirim_alamat t_alamat,
+    kirim_alamat t_alamat_panjang,
     kirim_telepon t_telepon,
     ongkos_kirim t_harga,
     label_dari1 t_keterangan,
     label_dari2 t_keterangan,
     label_dari3 t_keterangan,
     label_dari4 t_keterangan,
-    label_kepada1 t_keterangan,
-    label_kepada2 t_keterangan,
-    label_kepada3 t_keterangan,
-    label_kepada4 t_keterangan,
+    label_kepada1 t_alamat_panjang,
+    label_kepada2 t_alamat_panjang,
+    label_kepada3 t_alamat_panjang,
+    label_kepada4 t_alamat_panjang,
     kurir t_keterangan,
     is_dropship boolean
 );

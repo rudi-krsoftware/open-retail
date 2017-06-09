@@ -494,12 +494,6 @@
     <Compile Include="Referensi\FrmListGolongan.Designer.cs">
       <DependentUpon>FrmListGolongan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transaksi\FrmEntryLabelNota.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Transaksi\FrmEntryLabelNota.Designer.cs">
-      <DependentUpon>FrmEntryLabelNota.cs</DependentUpon>
-    </Compile>
     <Compile Include="Transaksi\FrmEntryAlamatKirim.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -577,6 +571,12 @@
     </Compile>
     <Compile Include="Transaksi\FrmListPembelianProduk.Designer.cs">
       <DependentUpon>FrmListPembelianProduk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaksi\FrmPreviewLabelNotaPenjualan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FrmPreviewLabelNotaPenjualan.Designer.cs">
+      <DependentUpon>FrmPreviewLabelNotaPenjualan.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaksi\FrmPreviewNotaPenjualan.cs">
       <SubType>Form</SubType>
@@ -783,9 +783,6 @@
     <EmbeddedResource Include="Referensi\FrmListGolongan.resx">
       <DependentUpon>FrmListGolongan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Transaksi\FrmEntryLabelNota.resx">
-      <DependentUpon>FrmEntryLabelNota.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmEntryAlamatKirim.resx">
       <DependentUpon>FrmEntryAlamatKirim.cs</DependentUpon>
     </EmbeddedResource>
@@ -824,6 +821,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmListPembelianProduk.resx">
       <DependentUpon>FrmListPembelianProduk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FrmPreviewLabelNotaPenjualan.resx">
+      <DependentUpon>FrmPreviewLabelNotaPenjualan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmPreviewNotaPenjualan.resx">
       <DependentUpon>FrmPreviewNotaPenjualan.cs</DependentUpon>

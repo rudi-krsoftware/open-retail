@@ -130,6 +130,7 @@ namespace OpenRetail.App.Pengaturan
         {
             _listOfTxtLabelNota.Add(txtDari1);
             _listOfTxtLabelNota.Add(txtDari2);
+            _listOfTxtLabelNota.Add(txtDari3);
 
             ILabelNotaBll bll = new LabelNotaBll();
             var listOfLabelNota = bll.GetAll();
@@ -166,7 +167,6 @@ namespace OpenRetail.App.Pengaturan
             // setting general
             LoadPrinter(this._pengaturanUmum.nama_printer);
             chkCetakOtomatis.Checked = this._pengaturanUmum.is_auto_print;
-            chkCetakLabelNotaJualOtomatis.Checked = this._pengaturanUmum.is_auto_print_label_nota;
 
             // setting khusus printer mini pos
             chkPrinterMiniPOS.Checked = _pengaturanUmum.is_printer_mini_pos;
@@ -181,7 +181,6 @@ namespace OpenRetail.App.Pengaturan
             {
                 _pengaturanUmum.nama_printer = cmbPrinter.Text;
                 _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
-                _pengaturanUmum.is_auto_print_label_nota = chkCetakLabelNotaJualOtomatis.Checked;
 
                 _pengaturanUmum.is_printer_mini_pos = chkPrinterMiniPOS.Checked;
                 _pengaturanUmum.is_cetak_customer = chkCetakCustomer.Checked;
@@ -193,7 +192,6 @@ namespace OpenRetail.App.Pengaturan
                 // simpan info printer
                 AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
                 AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
-                AppConfigHelper.SaveValue("isAutoPrinterLabelNota", chkCetakLabelNotaJualOtomatis.Checked.ToString(), appConfigFile);
 
                 // simpan info printer mini pos
                 AppConfigHelper.SaveValue("isPrinterMiniPOS", chkPrinterMiniPOS.Checked.ToString(), appConfigFile);
@@ -345,6 +343,7 @@ namespace OpenRetail.App.Pengaturan
                     {
                         item.label_dari1 = txtDari1.Text;
                         item.label_dari2 = txtDari2.Text;
+                        item.label_dari3 = txtDari3.Text;
                     }
 
                     var dt = DateTime.Now;

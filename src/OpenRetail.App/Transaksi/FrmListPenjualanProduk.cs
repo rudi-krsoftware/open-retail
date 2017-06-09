@@ -89,10 +89,13 @@ namespace OpenRetail.App.Transaksi
             gridListProperties.Add(new GridListControlProperties { Header = "Keterangan", Width = 350 });
             gridListProperties.Add(new GridListControlProperties { Header = "Piutang", Width = 130 });
             gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "", Width = 80 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Cetak Nota/Label", Width = 80 });
             gridListProperties.Add(new GridListControlProperties { Header = "" });
 
             GridListControlHelper.InitializeGridListControl<JualProduk>(this.gridList, _listOfJual, gridListProperties);
+
+            // merge header kolom cetak nota/label
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, 9, 0, 10));
 
             if (_listOfJual.Count > 0)
                 this.gridList.SetSelected(0, true);
@@ -125,6 +128,14 @@ namespace OpenRetail.App.Transaksi
                             break;
 
                         case 10: // cetak label nota jual
+                            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                            {
+                                var jual = _listOfJual[index];
+
+                                var frmCetakLabelNota = new FrmPreviewLabelNotaPenjualan("Preview Label Nota Penjualan", jual);
+                                frmCetakLabelNota.ShowDialog();
+                            }
+
                             break;
 
                         default:
