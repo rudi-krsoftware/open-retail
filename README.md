@@ -50,6 +50,7 @@ Selain keahlian khusus di bidang pemrograman, dibutuhkan juga tool-tool pendukun
 * [.NET Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=17718) atau versi yang lebih tinggi
     * Windows XP SP3, Windows Vista, Windows 7, Windows 8 atau versi yang lebih tinggi
     * Windows Server 2008 R2, Windows Server 2008 SP2, Windows Server 2012 atau versi yang lebih tinggi    
+* [Microsoft Report Viewer 2012 Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=35747)    
 
 * Library Pihak Ketiga
 	* [Apache log4net](https://www.nuget.org/packages/log4net/)
