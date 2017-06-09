@@ -36,7 +36,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPrinter = new System.Windows.Forms.ComboBox();
             this.chkCetakOtomatis = new System.Windows.Forms.CheckBox();
-            this.chkCetakLabelNotaJualOtomatis = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpMiniPOS = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
@@ -173,7 +172,6 @@
             this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.cmbPrinter, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.chkCetakOtomatis, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.chkCetakLabelNotaJualOtomatis, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -214,17 +212,6 @@
             this.chkCetakOtomatis.TabIndex = 1;
             this.chkCetakOtomatis.Text = "Cetak Nota Otomatis";
             this.chkCetakOtomatis.UseVisualStyleBackColor = true;
-            // 
-            // chkCetakLabelNotaJualOtomatis
-            // 
-            this.chkCetakLabelNotaJualOtomatis.AutoSize = true;
-            this.chkCetakLabelNotaJualOtomatis.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkCetakLabelNotaJualOtomatis.Location = new System.Drawing.Point(133, 28);
-            this.chkCetakLabelNotaJualOtomatis.Name = "chkCetakLabelNotaJualOtomatis";
-            this.chkCetakLabelNotaJualOtomatis.Size = new System.Drawing.Size(175, 20);
-            this.chkCetakLabelNotaJualOtomatis.TabIndex = 2;
-            this.chkCetakLabelNotaJualOtomatis.Text = "Cetak Label Nota Jual Otomatis";
-            this.chkCetakLabelNotaJualOtomatis.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -1083,7 +1070,6 @@
         private System.Windows.Forms.Label label8;
         private UserControl.AdvancedTextbox txtDari2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox chkCetakLabelNotaJualOtomatis;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox grpMiniPOS;

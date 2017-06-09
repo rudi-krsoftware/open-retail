@@ -167,7 +167,6 @@ namespace OpenRetail.App.Pengaturan
             // setting general
             LoadPrinter(this._pengaturanUmum.nama_printer);
             chkCetakOtomatis.Checked = this._pengaturanUmum.is_auto_print;
-            chkCetakLabelNotaJualOtomatis.Checked = this._pengaturanUmum.is_auto_print_label_nota;
 
             // setting khusus printer mini pos
             chkPrinterMiniPOS.Checked = _pengaturanUmum.is_printer_mini_pos;
@@ -182,7 +181,6 @@ namespace OpenRetail.App.Pengaturan
             {
                 _pengaturanUmum.nama_printer = cmbPrinter.Text;
                 _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
-                _pengaturanUmum.is_auto_print_label_nota = chkCetakLabelNotaJualOtomatis.Checked;
 
                 _pengaturanUmum.is_printer_mini_pos = chkPrinterMiniPOS.Checked;
                 _pengaturanUmum.is_cetak_customer = chkCetakCustomer.Checked;
@@ -194,7 +192,6 @@ namespace OpenRetail.App.Pengaturan
                 // simpan info printer
                 AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
                 AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
-                AppConfigHelper.SaveValue("isAutoPrinterLabelNota", chkCetakLabelNotaJualOtomatis.Checked.ToString(), appConfigFile);
 
                 // simpan info printer mini pos
                 AppConfigHelper.SaveValue("isPrinterMiniPOS", chkPrinterMiniPOS.Checked.ToString(), appConfigFile);
