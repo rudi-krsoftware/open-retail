@@ -97,6 +97,8 @@ namespace OpenRetail.App.Transaksi
             var kepada1 = _customer.nama_customer;
             var kepada2 = _customer.alamat;
             var kepada3 = string.Format("{0} - {1} - {2} - {3}", kecamatan, kelurahan, kota, kodePos);
+            kepada3 = kepada3.Replace(" -  -  - ", "");
+
             var kepada4 = telepon;
 
             // info alamat kirim berdasarkan data alamat yang diedit pada saat penjualan

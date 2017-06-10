@@ -1564,7 +1564,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="  " &amp; First(Iif(Fields!is_sdac.Value = False, Fields!kirim_kecamatan.Value, Fields!kecamatan.Value &amp; " - " &amp; Fields!kelurahan.Value &amp; " - " &amp; Fields!kota.Value &amp; " - " &amp; Fields!kode_pos.Value), "NotaPenjualan")</Value>
+                <Value>="  " &amp; Replace(First(Iif(Fields!is_sdac.Value = False, Fields!kirim_kecamatan.Value, Fields!kecamatan.Value &amp; " - " &amp; Fields!kelurahan.Value &amp; " - " &amp; Fields!kota.Value &amp; " - " &amp; Fields!kode_pos.Value), "NotaPenjualan"), " -  -  - ", "")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
