@@ -271,7 +271,10 @@ namespace OpenRetail.App.Transaksi
                                     hargaBeli = produk.harga_beli;
 
                                 if (!(hargaJual > 0))
-                                    hargaJual = produk.harga_jual;
+                                {
+                                    jumlah = itemJual.jumlah - itemJual.jumlah_retur;
+                                    hargaJual = GetHargaJualFix(produk, jumlah, produk.harga_jual);
+                                }                                    
                             }
 
                             e.Style.CellValue = NumberHelper.NumberToString(hargaJual);
@@ -305,11 +308,16 @@ namespace OpenRetail.App.Transaksi
                                         }
 
                                         if (!(diskon > 0))
-                                            diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
-                                    }                                        
+                                        {
+                                            var diskonProduk = GetDiskonJualFix(produk, jumlah, produk.diskon);
+                                            diskon = diskonProduk > 0 ? diskonProduk : produk.Golongan.diskon;
+                                        }                                            
+                                    }
 
-                                    diskonRupiah = diskon / 100 * produk.harga_jual;
-                                    hargaJual = produk.harga_jual - diskonRupiah;
+                                    hargaJual = GetHargaJualFix(produk, jumlah, produk.harga_jual);
+
+                                    diskonRupiah = diskon / 100 * hargaJual;
+                                    hargaJual -= diskonRupiah;
                                 }                                    
                             }
                             
@@ -340,23 +348,26 @@ namespace OpenRetail.App.Transaksi
             foreach (var item in _listOfItemJual.Where(f => f.Produk != null))
             {
                 double harga = 0;
+                var jumlah = item.jumlah - item.jumlah_retur;
 
                 if (item.harga_jual > 0)
                 {
-                    // harga = item.harga_jual;
                     harga = item.harga_setelah_diskon;
                 }                    
                 else
                 {
                     if (item.Produk != null)
                     {
-                        double diskonRupiah = item.diskon / 100 * item.Produk.harga_jual;
+                        var hargaJual = GetHargaJualFix(item.Produk, jumlah, item.Produk.harga_jual);
+                        var diskon = GetDiskonJualFix(item.Produk, jumlah, item.diskon);
 
-                        harga = item.Produk.harga_jual - diskonRupiah;
+                        double diskonRupiah = diskon / 100 * hargaJual;
+
+                        harga = hargaJual - diskonRupiah;
                     }                        
                 }
 
-                total += harga * (item.jumlah - item.jumlah_retur);
+                total += harga * jumlah;
             }
 
             if (total > 0)
@@ -372,6 +383,52 @@ namespace OpenRetail.App.Transaksi
         private void RefreshTotal()
         {
             lblTotal.Text = NumberHelper.NumberToString(SumGrid(_listOfItemJual));
+        }
+
+        private HargaGrosir GetHargaGrosir(Produk produk, double jumlah)
+        {
+            HargaGrosir hargaGrosir = null;
+
+            if (produk.list_of_harga_grosir.Count > 0)
+            {
+                hargaGrosir = produk.list_of_harga_grosir
+                                    .Where(f => f.produk_id == produk.produk_id && f.jumlah_minimal <= jumlah)
+                                    .LastOrDefault();
+            }
+
+            return hargaGrosir;
+        }
+
+        private double GetHargaJualFix(Produk produk, double jumlah, double hargaJualRetail)
+        {
+            var result = hargaJualRetail;
+
+            if (jumlah > 1)
+            {
+                var grosir = GetHargaGrosir(produk, jumlah);
+                if (grosir != null)
+                {
+                    result = grosir.harga_grosir;
+                }
+            }            
+
+            return result;
+        }
+
+        private double GetDiskonJualFix(Produk produk, double jumlah, double diskonJualRetail)
+        {
+            var result = diskonJualRetail;
+
+            if (jumlah > 1)
+            {
+                var grosir = GetHargaGrosir(produk, jumlah);
+                if (grosir != null)
+                {
+                    result = grosir.diskon;
+                }
+            }            
+
+            return result;
         }
 
         protected override void Simpan()
@@ -477,7 +534,7 @@ namespace OpenRetail.App.Transaksi
                     item.harga_beli = item.Produk.harga_beli;
 
                 if (!(item.harga_jual > 0))
-                    item.harga_jual = item.Produk.harga_jual;
+                    item.harga_jual = GetHargaJualFix(item.Produk, item.jumlah - item.jumlah_retur, item.Produk.harga_jual);
             }
 
             if (!_isNewData) // update
@@ -637,7 +694,10 @@ namespace OpenRetail.App.Transaksi
                 }
 
                 if (!(diskon > 0))
-                    diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+                {
+                    var diskonProduk = GetDiskonJualFix(produk, 1, produk.diskon);
+                    diskon = diskonProduk > 0 ? diskonProduk : produk.Golongan.diskon;
+                }                    
 
                 SetItemProduk(this.gridControl, _rowIndex, _colIndex + 1, produk, diskon: diskon);
                 this.gridControl.Refresh();
@@ -829,7 +889,10 @@ namespace OpenRetail.App.Transaksi
                             }
 
                             if (!(diskon > 0))
-                                diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+                            {
+                                var diskonProduk = GetDiskonJualFix(produk, 1, produk.diskon);
+                                diskon = diskonProduk > 0 ? diskonProduk : produk.Golongan.diskon;
+                            }                                
 
                             SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
                             grid.Refresh();
@@ -872,7 +935,10 @@ namespace OpenRetail.App.Transaksi
                                 }
 
                                 if (!(diskon > 0))
-                                    diskon = produk.diskon > 0 ? produk.diskon : produk.Golongan.diskon;
+                                {
+                                    var diskonProduk = GetDiskonJualFix(produk, 1, produk.diskon);
+                                    diskon = diskonProduk > 0 ? diskonProduk : produk.Golongan.diskon;
+                                }                                    
 
                                 SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
                                 grid.Refresh();
@@ -958,6 +1024,9 @@ namespace OpenRetail.App.Transaksi
                 {
                     case 4: // kolom jumlah
                         itemJual.jumlah = NumberHelper.StringToDouble(cc.Renderer.ControlValue.ToString(), true);
+
+                        itemJual.diskon = GetDiskonJualFix(produk, itemJual.jumlah, itemJual.diskon);
+                        itemJual.harga_jual = GetHargaJualFix(produk, itemJual.jumlah, itemJual.harga_jual);
                         break;
 
                     case 5: // kolom diskon
@@ -971,7 +1040,7 @@ namespace OpenRetail.App.Transaksi
                     default:
                         break;
                 }
-
+                
                 SetItemProduk(grid, cc.RowIndex, cc.ColIndex, produk, itemJual.jumlah, itemJual.harga_jual, itemJual.diskon);
                 grid.Refresh();
 

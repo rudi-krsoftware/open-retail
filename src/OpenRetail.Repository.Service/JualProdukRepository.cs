@@ -74,6 +74,13 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
+        private IList<HargaGrosir> GetListHargaGrosir(string produkId)
+        {
+            IHargaGrosirRepository repo = new HargaGrosirRepository(_context, _log);
+
+            return repo.GetListHargaGrosir(produkId);
+        }
+
         public IList<ItemJualProduk> GetItemJual(string jualId)
         {
             IList<ItemJualProduk> oList = new List<ItemJualProduk>();
@@ -92,6 +99,11 @@ namespace OpenRetail.Repository.Service
                     ij.produk_id = p.produk_id; ij.Produk = p;
                     return ij;
                 }, new { jualId }, splitOn: "produk_id").ToList();
+
+                foreach (var item in oList)
+                {
+                    item.Produk.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                }
             }
             catch
             {
@@ -389,6 +401,7 @@ namespace OpenRetail.Repository.Service
             }
             catch (Exception ex)
             {
+                result = 0;
                 _log.Error("Error:", ex);
             }
 

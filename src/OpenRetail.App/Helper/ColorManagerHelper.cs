@@ -43,7 +43,7 @@ namespace OpenRetail.App.Helper
 
             var frmName = frm.Name;
 
-            if (!(frmName == "FrmLogin" || frmName.Substring(0, 10) == "FrmPreview"))
+            if (!(frmName == "FrmLogin" || frmName == "FrmAbout" || frmName.Substring(0, 10) == "FrmPreview"))
             {
                 frm.ShowIcon = false;
                 frm.ShowInTaskbar = false;

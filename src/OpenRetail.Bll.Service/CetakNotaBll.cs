@@ -63,17 +63,17 @@ namespace OpenRetail.Bll.Service
 
             foreach (var item in oList)
             {
-                item.kecamatan = string.IsNullOrEmpty(item.kecamatan) ? "-" : item.kecamatan;
-                item.kelurahan = string.IsNullOrEmpty(item.kelurahan) ? "-" : item.kelurahan;
-                item.kota = string.IsNullOrEmpty(item.kota) ? "-" : item.kota;
-                item.kode_pos = string.IsNullOrEmpty(item.kode_pos) ? "-" : item.kode_pos;
-                item.telepon = string.IsNullOrEmpty(item.telepon) ? "-" : item.telepon;
+                item.kecamatan = string.IsNullOrEmpty(item.kecamatan) ? "" : item.kecamatan;
+                item.kelurahan = string.IsNullOrEmpty(item.kelurahan) ? "" : item.kelurahan;
+                item.kota = string.IsNullOrEmpty(item.kota) ? "" : item.kota;
+                item.kode_pos = string.IsNullOrEmpty(item.kode_pos) ? "" : item.kode_pos;
+                item.telepon = string.IsNullOrEmpty(item.telepon) ? "" : item.telepon;
 
-                item.kirim_kecamatan = string.IsNullOrEmpty(item.kirim_kecamatan) ? "-" : item.kirim_kecamatan;
-                item.kirim_kelurahan = string.IsNullOrEmpty(item.kirim_kelurahan) ? "-" : item.kirim_kelurahan;
-                item.kirim_kota = string.IsNullOrEmpty(item.kirim_kota) ? "-" : item.kirim_kota;
-                item.kirim_kode_pos = string.IsNullOrEmpty(item.kirim_kode_pos) ? "-" : item.kirim_kode_pos;
-                item.kirim_telepon = string.IsNullOrEmpty(item.kirim_telepon) ? "-" : item.kirim_telepon;
+                item.kirim_kecamatan = string.IsNullOrEmpty(item.kirim_kecamatan) ? "" : item.kirim_kecamatan;
+                item.kirim_kelurahan = string.IsNullOrEmpty(item.kirim_kelurahan) ? "" : item.kirim_kelurahan;
+                item.kirim_kota = string.IsNullOrEmpty(item.kirim_kota) ? "" : item.kirim_kota;
+                item.kirim_kode_pos = string.IsNullOrEmpty(item.kirim_kode_pos) ? "" : item.kirim_kode_pos;
+                item.kirim_telepon = string.IsNullOrEmpty(item.kirim_telepon) ? "" : item.kirim_telepon;
 
                 item.label_dari1 = string.IsNullOrEmpty(item.label_dari1) ? "" : item.label_dari1;
                 item.label_dari2 = string.IsNullOrEmpty(item.label_dari2) ? "" : item.label_dari2;
