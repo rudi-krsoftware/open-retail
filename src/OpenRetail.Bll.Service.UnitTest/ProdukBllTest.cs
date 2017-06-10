@@ -52,6 +52,25 @@ namespace OpenRetail.Bll.Service.UnitTest
         }
 
         [TestMethod]
+        public void GetHargaGrosirTest()
+        {
+            var obj = _bll.GetByKode("201607000000053");
+
+            if (obj.list_of_harga_grosir.Count > 0)
+            {
+                var jumlah = 9;
+                var hargaGrosir = obj.list_of_harga_grosir
+                                     .Where(f => f.produk_id == obj.produk_id && f.jumlah_minimal <= jumlah)
+                                     .OrderByDescending(f => f.harga_ke)
+                                     .LastOrDefault();
+
+                Assert.AreEqual(50000, hargaGrosir.harga_grosir);
+                Assert.AreEqual(5, hargaGrosir.jumlah_minimal);
+                Assert.AreEqual(1, hargaGrosir.diskon);
+            }            
+        }
+
+        [TestMethod]
         public void GetByIDTest()
         {
             var id = "17c7626c-e5ca-43f2-b075-af6b6cbcbf83";
@@ -194,10 +213,15 @@ namespace OpenRetail.Bll.Service.UnitTest
         [TestMethod]
         public void SaveTest()
         {
+            var listOfHargaGrosir = new List<HargaGrosir>();
+            listOfHargaGrosir.Add(new HargaGrosir { harga_ke = 1, harga_grosir = 15000, jumlah_minimal = 5, diskon = 1 });
+            listOfHargaGrosir.Add(new HargaGrosir { harga_ke = 2, harga_grosir = 13000, jumlah_minimal = 10, diskon = 1.5 });
+            listOfHargaGrosir.Add(new HargaGrosir { harga_ke = 3, harga_grosir = 10000, jumlah_minimal = 15, diskon = 2.5 });
+
             var obj = new Produk
             {
-                kode_produk = "201607000000521",
-                nama_produk = "Printer Epson L220 Inkjet",
+                kode_produk = "200111101234",
+                nama_produk = "Harga dengan grosir",
                 satuan = "",
                 stok = 10,
                 minimal_stok = 5,
@@ -207,6 +231,7 @@ namespace OpenRetail.Bll.Service.UnitTest
                 stok_gudang = 15,
                 minimal_stok_gudang = 5
             };
+            obj.list_of_harga_grosir = listOfHargaGrosir;
 
             var validationError = new ValidationError();
 
@@ -234,16 +259,18 @@ namespace OpenRetail.Bll.Service.UnitTest
         [TestMethod]
         public void UpdateTest()
         {
-            var obj = _bll.GetByID("9864948c-5dbc-42ac-91de-8844f546f47b");
+            var obj = _bll.GetByID("53e03588-b9a2-43df-ae59-283e72917f9a");
             obj.kode_produk_old = obj.kode_produk;
-            obj.nama_produk = "Printer Epson L220";
-            obj.stok = 1;
-            obj.minimal_stok = 3;
-            obj.stok_gudang = 10;
-            obj.minimal_stok_gudang = 5;
-            obj.harga_beli = 100000;
-            obj.harga_jual = 1000000;
-            obj.golongan_id = "6ae85958-80c6-4f3a-bc01-53a715e25bf1";
+
+            var index = 0;
+            foreach (var item in obj.list_of_harga_grosir)
+            {
+                obj.list_of_harga_grosir[index].harga_grosir -= 100;
+                obj.list_of_harga_grosir[index].jumlah_minimal -= 2;
+                obj.list_of_harga_grosir[index].diskon -= 0.5;
+
+                index++;
+            }
 
             var validationError = new ValidationError();
 
@@ -253,19 +280,18 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var updatedObj = _bll.GetByID(obj.produk_id);
-			Assert.IsNotNull(updatedObj);
-            Assert.AreEqual(obj.produk_id, updatedObj.produk_id);                                
-            Assert.AreEqual(obj.nama_produk, updatedObj.nama_produk);                                
-            Assert.AreEqual(obj.satuan, updatedObj.satuan);                                
-            Assert.AreEqual(obj.stok, updatedObj.stok);                                
-            Assert.AreEqual(obj.harga_beli, updatedObj.harga_beli);                                
-            Assert.AreEqual(obj.harga_jual, updatedObj.harga_jual);                                
-            Assert.AreEqual(obj.kode_produk, updatedObj.kode_produk);                                
-            Assert.AreEqual(obj.golongan_id, updatedObj.golongan_id);                                
-            Assert.AreEqual(obj.minimal_stok, updatedObj.minimal_stok);                                
-            Assert.AreEqual(obj.stok_gudang, updatedObj.stok_gudang);                                
+            Assert.IsNotNull(updatedObj);
+            Assert.AreEqual(obj.produk_id, updatedObj.produk_id);
+            Assert.AreEqual(obj.nama_produk, updatedObj.nama_produk);
+            Assert.AreEqual(obj.satuan, updatedObj.satuan);
+            Assert.AreEqual(obj.stok, updatedObj.stok);
+            Assert.AreEqual(obj.harga_beli, updatedObj.harga_beli);
+            Assert.AreEqual(obj.harga_jual, updatedObj.harga_jual);
+            Assert.AreEqual(obj.kode_produk, updatedObj.kode_produk);
+            Assert.AreEqual(obj.golongan_id, updatedObj.golongan_id);
+            Assert.AreEqual(obj.minimal_stok, updatedObj.minimal_stok);
+            Assert.AreEqual(obj.stok_gudang, updatedObj.stok_gudang);
             Assert.AreEqual(obj.minimal_stok_gudang, updatedObj.minimal_stok_gudang);                                
-            
         }
 
         [TestMethod]
@@ -273,7 +299,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         {
             var obj = new Produk
             {
-                produk_id = "9864948c-5dbc-42ac-91de-8844f546f47b"
+                produk_id = "53e03588-b9a2-43df-ae59-283e72917f9a"
             };
 
             var result = _bll.Delete(obj);

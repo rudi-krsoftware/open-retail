@@ -1343,6 +1343,22 @@ CREATE TABLE m_golongan (
 ALTER TABLE m_golongan OWNER TO postgres;
 
 --
+-- Name: m_harga_grosir; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_harga_grosir (
+    harga_grosir_id t_guid NOT NULL,
+    produk_id t_guid,
+    harga_ke integer,
+    harga_grosir t_harga,
+    jumlah_minimal t_jumlah,
+    diskon t_jumlah
+);
+
+
+ALTER TABLE m_harga_grosir OWNER TO postgres;
+
+--
 -- Name: m_header_nota; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2284,6 +2300,14 @@ ALTER TABLE ONLY m_golongan
 
 
 --
+-- Name: m_harga_grosir_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_harga_grosir
+    ADD CONSTRAINT m_harga_grosir_pkey PRIMARY KEY (harga_grosir_id);
+
+
+--
 -- Name: m_header_nota_mini_pos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2915,6 +2939,14 @@ CREATE TRIGGER tr_update_total_retur_beli_aiud AFTER INSERT OR DELETE OR UPDATE 
 --
 
 CREATE TRIGGER tr_update_total_retur_produk_aiud AFTER INSERT OR DELETE OR UPDATE ON t_item_retur_jual_produk FOR EACH ROW EXECUTE PROCEDURE f_update_total_retur_produk_aiud();
+
+
+--
+-- Name: m_harga_grosir_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY m_harga_grosir
+    ADD CONSTRAINT m_harga_grosir_fk FOREIGN KEY (produk_id) REFERENCES m_produk(produk_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --

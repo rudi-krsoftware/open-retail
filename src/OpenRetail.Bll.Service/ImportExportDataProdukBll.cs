@@ -74,7 +74,11 @@ namespace OpenRetail.Bll.Service
 
                 var colums = new string[] { 
                                             "GOLONGAN", "KODE PRODUK", "NAMA PRODUK", "SATUAN",
-                                            "HARGA BELI", "HARGA JUAL", "DISKON", "STOK ETALASE", "STOK GUDANG", "MINIMAL STOK GUDANG"
+                                            "HARGA BELI", "HARGA JUAL (RETAIL)", "DISKON (RETAIL)", 
+                                            "HARGA GROSIR #1", "JUMLAH MINIMAL GROSIR #1", "DISKON GROSIR #1", 
+                                            "HARGA GROSIR #2", "JUMLAH MINIMAL GROSIR #2", "DISKON GROSIR #2", 
+                                            "HARGA GROSIR #3", "JUMLAH MINIMAL GROSIR #3", "DISKON GROSIR #3",
+                                            "STOK ETALASE", "STOK GUDANG", "MINIMAL STOK GUDANG"
                                           };
 
                 for (int i = 0; i < colums.Length; i++)
@@ -123,6 +127,10 @@ namespace OpenRetail.Bll.Service
 
                 var listOfProduk = new List<Produk>();
 
+                var hargaGrosir1 = new HargaGrosir();
+                var hargaGrosir2 = new HargaGrosir();
+                var hargaGrosir3 = new HargaGrosir();
+
                 listOfProduk = supplierTable.DataRange.Rows().Select(row => new Produk
                 {
                     Golongan = new Golongan { nama_golongan = row.Field("GOLONGAN").GetString() },
@@ -130,8 +138,34 @@ namespace OpenRetail.Bll.Service
                     nama_produk = row.Field("NAMA PRODUK").GetString(),
                     satuan = row.Field("SATUAN").GetString(),
                     harga_beli = row.Field("HARGA BELI").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("HARGA BELI").GetString()),
-                    harga_jual = row.Field("HARGA JUAL").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("HARGA JUAL").GetString()),
-                    diskon = row.Field("DISKON").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("DISKON").GetString()),
+                    harga_jual = row.Field("HARGA JUAL (RETAIL)").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("HARGA JUAL (RETAIL)").GetString()),
+                    diskon = row.Field("DISKON (RETAIL)").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("DISKON (RETAIL)").GetString()),
+
+                    list_of_harga_grosir = new List<HargaGrosir> 
+                    {
+                        new HargaGrosir 
+                        { 
+                            harga_ke = 1,
+                            harga_grosir = row.Field("HARGA GROSIR #1").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("HARGA GROSIR #1").GetString()), 
+                            jumlah_minimal = row.Field("JUMLAH MINIMAL GROSIR #1").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("JUMLAH MINIMAL GROSIR #1").GetString()), 
+                            diskon = row.Field("DISKON GROSIR #1").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("DISKON GROSIR #1").GetString()) 
+                        },
+                        new HargaGrosir 
+                        { 
+                            harga_ke = 2,
+                            harga_grosir = row.Field("HARGA GROSIR #2").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("HARGA GROSIR #2").GetString()), 
+                            jumlah_minimal = row.Field("JUMLAH MINIMAL GROSIR #2").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("JUMLAH MINIMAL GROSIR #2").GetString()), 
+                            diskon = row.Field("DISKON GROSIR #2").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("DISKON GROSIR #2").GetString()) 
+                        },
+                        new HargaGrosir 
+                        { 
+                            harga_ke = 3,
+                            harga_grosir = row.Field("HARGA GROSIR #3").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("HARGA GROSIR #3").GetString()), 
+                            jumlah_minimal = row.Field("JUMLAH MINIMAL GROSIR #3").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("JUMLAH MINIMAL GROSIR #3").GetString()), 
+                            diskon = row.Field("DISKON GROSIR #3").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("DISKON GROSIR #3").GetString()) 
+                        }
+                    },
+
                     stok = row.Field("STOK ETALASE").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("STOK ETALASE").GetString()),
                     stok_gudang = row.Field("STOK GUDANG").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("STOK GUDANG").GetString()),
                     minimal_stok_gudang = row.Field("MINIMAL STOK GUDANG").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("MINIMAL STOK GUDANG").GetString())
@@ -149,7 +183,7 @@ namespace OpenRetail.Bll.Service
                 using (IDapperContext context = new DapperContext())
                 {
                     IUnitOfWork uow = new UnitOfWork(context, _log);
-
+                    
                     foreach (var produk in listOfProduk)
                     {
                         if (produk.nama_produk.Length > 0 && produk.Golongan.nama_golongan.Length > 0)
@@ -188,6 +222,19 @@ namespace OpenRetail.Bll.Service
                                 produk.stok = oldProduk.stok;
                                 produk.stok_gudang = oldProduk.stok_gudang;
 
+                                foreach (var grosir in produk.list_of_harga_grosir.OrderBy(f => f.harga_ke))
+                                {
+                                    var oldGrosir = oldProduk.list_of_harga_grosir
+                                                             .Where(f => f.produk_id == produk.produk_id && f.harga_ke == grosir.harga_ke)
+                                                             .SingleOrDefault();
+
+                                    if (oldGrosir != null)
+                                    {
+                                        grosir.harga_grosir_id = oldGrosir.harga_grosir_id;
+                                        grosir.produk_id = oldGrosir.produk_id;
+                                    }                                    
+                                }
+
                                 result = Convert.ToBoolean(uow.ProdukRepository.Update(produk));
                             }
                         }                        
@@ -220,11 +267,24 @@ namespace OpenRetail.Bll.Service
                 ws.Cell(1, 4).Value = "NAMA PRODUK";
                 ws.Cell(1, 5).Value = "SATUAN";
                 ws.Cell(1, 6).Value = "HARGA BELI";
-                ws.Cell(1, 7).Value = "HARGA JUAL";
-                ws.Cell(1, 8).Value = "DISKON";
-                ws.Cell(1, 9).Value = "STOK ETALASE";
-                ws.Cell(1, 10).Value = "STOK GUDANG";
-                ws.Cell(1, 11).Value = "MINIMAL STOK GUDANG";
+                ws.Cell(1, 7).Value = "HARGA JUAL (RETAIL)";
+                ws.Cell(1, 8).Value = "DISKON (RETAIL)";
+
+                ws.Cell(1, 9).Value = "HARGA GROSIR #1";
+                ws.Cell(1, 10).Value = "JUMLAH MINIMAL GROSIR #1";
+                ws.Cell(1, 11).Value = "DISKON GROSIR #1";
+
+                ws.Cell(1, 12).Value = "HARGA GROSIR #2";
+                ws.Cell(1, 13).Value = "JUMLAH MINIMAL GROSIR #2";
+                ws.Cell(1, 14).Value = "DISKON GROSIR #2";
+
+                ws.Cell(1, 15).Value = "HARGA GROSIR #3";
+                ws.Cell(1, 16).Value = "JUMLAH MINIMAL GROSIR #3";
+                ws.Cell(1, 17).Value = "DISKON GROSIR #3";
+
+                ws.Cell(1, 18).Value = "STOK ETALASE";
+                ws.Cell(1, 19).Value = "STOK GUDANG";
+                ws.Cell(1, 20).Value = "MINIMAL STOK GUDANG";
 
                 var noUrut = 1;
                 foreach (var produk in listOfObject)
@@ -237,9 +297,24 @@ namespace OpenRetail.Bll.Service
                     ws.Cell(1 + noUrut, 6).Value = produk.harga_beli;
                     ws.Cell(1 + noUrut, 7).Value = produk.harga_jual;
                     ws.Cell(1 + noUrut, 8).Value = produk.diskon;
-                    ws.Cell(1 + noUrut, 9).Value = produk.stok;
-                    ws.Cell(1 + noUrut, 10).Value = produk.stok_gudang;
-                    ws.Cell(1 + noUrut, 11).Value = produk.minimal_stok_gudang;
+
+                    var listOfHargaGrosir = produk.list_of_harga_grosir;
+                    if (listOfHargaGrosir.Count > 0)
+                    {
+                        var column = 9;
+                        foreach (var grosir in listOfHargaGrosir)
+                        {
+                            ws.Cell(1 + noUrut, column).Value = grosir.harga_grosir;
+                            ws.Cell(1 + noUrut, column + 1).Value = grosir.jumlah_minimal;
+                            ws.Cell(1 + noUrut, column + 2).Value = grosir.diskon;
+
+                            column += 3;
+                        }
+                    }
+
+                    ws.Cell(1 + noUrut, 18).Value = produk.stok;
+                    ws.Cell(1 + noUrut, 19).Value = produk.stok_gudang;
+                    ws.Cell(1 + noUrut, 20).Value = produk.minimal_stok_gudang;
 
                     noUrut++;
                 }

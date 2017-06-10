@@ -33,6 +33,7 @@ namespace OpenRetail.Repository.Api
 
         IGolonganRepository GolonganRepository { get; }
         IProdukRepository ProdukRepository { get; }
+        IHargaGrosirRepository HargaGrosirRepository { get; }
         IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
         IPenyesuaianStokRepository PenyesuaianStokRepository { get; }
 
@@ -89,6 +90,6 @@ namespace OpenRetail.Repository.Api
 
         IKabupatenRepository KabupatenRepository { get; }
         IFooterNotaMiniPosRepository FooterNotaMiniPosRepository { get; }
-        IHeaderNotaMiniPosRepository HeaderNotaMiniPosRepository { get; }
+        IHeaderNotaMiniPosRepository HeaderNotaMiniPosRepository { get; }        
     }
 }     

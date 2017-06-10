@@ -31,6 +31,11 @@ namespace OpenRetail.Model
 	[Table("m_produk")]
     public class Produk
     {
+        public Produk()
+        {
+            list_of_harga_grosir = new List<HargaGrosir>();
+        }
+
 		[ExplicitKey]
 		[Display(Name = "produk_id")]		
 		public string produk_id { get; set; }
@@ -79,6 +84,9 @@ namespace OpenRetail.Model
         {
             get { return (stok + stok_gudang) > 0 ? (stok + stok_gudang) * harga_jual : 0; }
         }
+
+        [Write(false)]
+        public IList<HargaGrosir> list_of_harga_grosir { get; set; }
 	}
 
     public class ProdukValidator : AbstractValidator<Produk>

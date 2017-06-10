@@ -36,6 +36,7 @@ using OpenRetail.App.UserControl;
 using log4net;
 using System.IO;
 using System.Diagnostics;
+using Syncfusion.Styles;
 
 namespace OpenRetail.App.Referensi
 {
@@ -121,7 +122,7 @@ namespace OpenRetail.App.Referensi
                 else
                     _listOfProduk = _bll.GetAll(sortIndex, _pageNumber, _pageSize, ref _pagesCount);
 
-                GridListControlHelper.Refresh<Produk>(this.gridList, _listOfProduk);
+                GridListControlHelper.Refresh<Produk>(this.gridList, _listOfProduk, additionalRowCount: 1);
 
                 base.SetInfoHalaman(_pageNumber, _pagesCount);
                 base.SetStateBtnNavigation(_pageNumber, _pagesCount);
@@ -141,8 +142,8 @@ namespace OpenRetail.App.Referensi
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 _listOfProduk = _bll.GetByName(name, sortIndex, _pageNumber, _pageSize, ref _pagesCount);
-                GridListControlHelper.Refresh<Produk>(this.gridList, _listOfProduk);
-
+                GridListControlHelper.Refresh<Produk>(this.gridList, _listOfProduk, additionalRowCount: 1);
+                
                 base.SetInfoHalaman(_pageNumber, _pagesCount);
                 base.SetStateBtnNavigation(_pageNumber, _pagesCount);
 
@@ -168,38 +169,111 @@ namespace OpenRetail.App.Referensi
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Golongan", Width = 130 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 400 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 350 });
             gridListProperties.Add(new GridListControlProperties { Header = "Satuan", Width = 100 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Harga Beli", Width = 100 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Harga Beli", Width = 70 });
+            
+            gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 70 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 70 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 70 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 70 });
+
             gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = 50 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Stok Etalase", Width = 90 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Stok Gudang", Width = 90 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Stok Etalase", Width = 60 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Stok Gudang", Width = 60 });
             gridListProperties.Add(new GridListControlProperties { Header = "Min. Stok Gudang" });
 
-            GridListControlHelper.InitializeGridListControl<Produk>(this.gridList, _listOfProduk, gridListProperties, false);
+            GridListControlHelper.InitializeGridListControl<Produk>(this.gridList, _listOfProduk, gridListProperties, false, additionalRowCount: 1);
+            this.gridList.Grid.Model.RowHeights[1] = 25;
+            this.gridList.Grid.Model.Rows.FrozenCount = 1;
+
+            this.gridList.Grid.PrepareViewStyleInfo += delegate(object sender, GridPrepareViewStyleInfoEventArgs e)
+            {
+                var subHeaderHargaJual = new string[] { "Retail", "Grosir 1", "Grosir 2", "Grosir 3" };
+                if (e.ColIndex > 6 && e.RowIndex == 1)
+                {
+                    var colIndex = 7;
+
+                    foreach (var header in subHeaderHargaJual)
+                    {
+                        if (colIndex == e.ColIndex)
+                            e.Style.Text = header;
+
+                        colIndex++;
+                    }
+                }
+            };
 
             if (_listOfProduk.Count > 0)
-                this.gridList.SetSelected(0, true);
+                this.gridList.SetSelected(1, true);
+
+            // merge cell
+            var column = 1; // kolom no
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 2; // kolom golongan
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 3; // kolom kode
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 4; // kolom nama produk
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 5; // kolom satuan
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 6; // kolom harga beli
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 7; // kolom harga jual
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 0, column + 3));
+
+            column = 11; // kolom diskon
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 12; // kolom stok etalase
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 13; // kolom stok gudang
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 14; // kolom minimal stok
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+            
+            var headerStyle = this.gridList.Grid.BaseStylesMap["Column Header"].StyleInfo;
+            headerStyle.CellType = GridCellTypeName.Header;
 
             this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
             {
+                if (e.RowIndex == 1)
+                {
+                    if (e.ColIndex > 6)
+                    {
+                        e.Style.ModifyStyle(headerStyle, StyleModifyType.ApplyNew);
+                    }
+
+                    // we handled it, let the grid know
+                    e.Handled = true;
+                }
 
                 if (_listOfProduk.Count > 0)
-                {
-                    if (e.RowIndex > 0)
+                {                    
+                    if (e.RowIndex > 1)
                     {
 
-                        var rowIndex = e.RowIndex - 1;
+                        var rowIndex = e.RowIndex - 2;
 
                         if (rowIndex < _listOfProduk.Count)
                         {
                             var produk = _listOfProduk[rowIndex];
+                            var listOfHargaGrosir = produk.list_of_harga_grosir;
+                            var hargaGrosir = 0d;
 
                             switch (e.ColIndex)
                             {
                                 case 1:
-                                    var noUrut = (_pageNumber - 1) * _pageSize + e.RowIndex;
+                                    var noUrut = (_pageNumber - 1) * _pageSize + e.RowIndex - 1;
                                     e.Style.CellValue = noUrut;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
@@ -232,27 +306,48 @@ namespace OpenRetail.App.Referensi
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;
 
-                                case 7:
+                                case 7: // harga jual ritel
                                     e.Style.CellValue = NumberHelper.NumberToString(produk.harga_jual);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;
 
-                                case 8:
+                                case 8: // harga grosir 1
+                                    hargaGrosir = listOfHargaGrosir.Count > 0 ? listOfHargaGrosir[0].harga_grosir : 0;
+
+                                    e.Style.CellValue = NumberHelper.NumberToString(hargaGrosir);
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
+                                    break;
+
+                                case 9: // harga grosir 2
+                                    hargaGrosir = listOfHargaGrosir.Count > 1 ? listOfHargaGrosir[1].harga_grosir : 0;
+
+                                    e.Style.CellValue = NumberHelper.NumberToString(hargaGrosir);
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
+                                    break;
+
+                                case 10: // harga grosir 3
+                                    hargaGrosir = listOfHargaGrosir.Count > 2 ? listOfHargaGrosir[2].harga_grosir : 0;
+
+                                    e.Style.CellValue = NumberHelper.NumberToString(hargaGrosir);
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
+                                    break;
+
+                                case 11:
                                     e.Style.CellValue = produk.diskon;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
-                                case 9:
+                                case 12:
                                     e.Style.CellValue = produk.stok;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
-                                case 10:
+                                case 13:
                                     e.Style.CellValue = produk.stok_gudang;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
-                                case 11:
+                                case 14:
                                     e.Style.CellValue = produk.minimal_stok_gudang;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
@@ -280,11 +375,11 @@ namespace OpenRetail.App.Referensi
 
             if (isNewData)
             {
-                GridListControlHelper.AddObject<Produk>(this.gridList, _listOfProduk, produk);
+                GridListControlHelper.AddObject<Produk>(this.gridList, _listOfProduk, produk, additionalRowCount: 1);
                 ResetButton();
             }
             else
-                GridListControlHelper.UpdateObject<Produk>(this.gridList, _listOfProduk, produk);
+                GridListControlHelper.UpdateObject<Produk>(this.gridList, _listOfProduk, produk, additionalRowCount: 1);
         }
 
         private void txtNamaProduk_KeyPress(object sender, KeyPressEventArgs e)
@@ -334,7 +429,7 @@ namespace OpenRetail.App.Referensi
 
         protected override void Perbaiki()
         {
-            var index = this.gridList.SelectedIndex;
+            var index = this.gridList.SelectedIndex - 1;
 
             if (!base.IsSelectedItem(index, this.TabText))
                 return;
@@ -349,7 +444,7 @@ namespace OpenRetail.App.Referensi
 
         protected override void Hapus()
         {
-            var index = this.gridList.SelectedIndex;
+            var index = this.gridList.SelectedIndex - 1;
 
             if (!base.IsSelectedItem(index, this.TabText))
                 return;
@@ -361,7 +456,7 @@ namespace OpenRetail.App.Referensi
                 var result = _bll.Delete(produk);
                 if (result > 0)
                 {
-                    GridListControlHelper.RemoveObject<Produk>(this.gridList, _listOfProduk, produk);
+                    GridListControlHelper.RemoveObject<Produk>(this.gridList, _listOfProduk, produk, additionalRowCount: 1);
                     ResetButton();
                 }
                 else

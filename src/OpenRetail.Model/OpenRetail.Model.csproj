@@ -68,6 +68,7 @@
     <Compile Include="DatabaseVersion.cs" />
     <Compile Include="FooterNotaMiniPos.cs" />
     <Compile Include="GajiKaryawan.cs" />
+    <Compile Include="HargaGrosir.cs" />
     <Compile Include="HeaderNota.cs" />
     <Compile Include="HeaderNotaMiniPos.cs" />
     <Compile Include="ItemPengeluaranBiaya.cs" />

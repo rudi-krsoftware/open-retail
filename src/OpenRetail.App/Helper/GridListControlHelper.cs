@@ -28,8 +28,8 @@ using System.Windows.Forms;
 namespace OpenRetail.App.Helper
 {
     public sealed class GridListControlHelper
-    {        
-        public static void InitializeGridListControl<T>(GridListControl gridControl, IList<T> record, IList<GridListControlProperties> oglProperty, bool addRowNumber = true, int rowHeight = 25)
+    {
+        public static void InitializeGridListControl<T>(GridListControl gridControl, IList<T> record, IList<GridListControlProperties> oglProperty, bool addRowNumber = true, int rowHeight = 25, int additionalRowCount = 0)
         {
             gridControl.ShowColumnHeader = true;
             gridControl.MultiColumn = true;
@@ -39,7 +39,7 @@ namespace OpenRetail.App.Helper
             gridControl.FillLastColumn = true;
             gridControl.BorderStyle = BorderStyle.FixedSingle;
             gridControl.Grid.GridVisualStyles = GridVisualStyles.Office2010Silver;
-            gridControl.Grid.Model.RowCount = record.Count;
+            gridControl.Grid.Model.RowCount = record.Count + additionalRowCount;
             gridControl.BackColor = Color.White;
             gridControl.Grid.Model.RowHeights[0] = rowHeight;
 
@@ -182,35 +182,35 @@ namespace OpenRetail.App.Helper
             colSizeHelper.ColSizeBehavior = behavior;
         }
 
-        public static void AddObject<T>(GridListControl gridControl, IList<T> record, T obj, bool isLastRowFocus = true)
+        public static void AddObject<T>(GridListControl gridControl, IList<T> record, T obj, bool isLastRowFocus = true, int additionalRowCount = 0)
         {
             record.Add(obj);
-            gridControl.Grid.Model.RowCount = record.Count;
+            gridControl.Grid.Model.RowCount = record.Count + additionalRowCount;
             gridControl.Refresh();
 
             if (isLastRowFocus)
                 gridControl.SetSelected(gridControl.Grid.RowCount - 1, true);
         }
 
-        public static void AddObjects<T>(GridListControl gridControl, IList<T> record)
+        public static void AddObjects<T>(GridListControl gridControl, IList<T> record, int additionalRowCount = 0)
         {
-            gridControl.Grid.Model.RowCount = record.Count;
+            gridControl.Grid.Model.RowCount = record.Count + additionalRowCount;
             gridControl.Refresh();
 
             if (record.Count > 0)
-                gridControl.SetSelected(0, true);
+                gridControl.SetSelected(additionalRowCount, true);
         }
 
-        public static void UpdateObject<T>(GridListControl gridControl, IList<T> record, T obj)
+        public static void UpdateObject<T>(GridListControl gridControl, IList<T> record, T obj, int additionalRowCount = 0)
         {
-            record[gridControl.SelectedIndex] = obj;
+            record[gridControl.SelectedIndex - additionalRowCount] = obj;
             gridControl.Refresh();
         }
 
-        public static void RemoveObject<T>(GridListControl gridControl, IList<T> record, T obj)
+        public static void RemoveObject<T>(GridListControl gridControl, IList<T> record, T obj, int additionalRowCount = 0)
         {
             record.Remove(obj);
-            gridControl.Grid.Model.RowCount = record.Count;
+            gridControl.Grid.Model.RowCount = record.Count + additionalRowCount;
 
             gridControl.Refresh();
 
@@ -218,13 +218,13 @@ namespace OpenRetail.App.Helper
                 gridControl.SetSelected(gridControl.SelectedIndex - 1, true);
         }
 
-        public static void Refresh<T>(GridListControl gridControl, IList<T> record)
+        public static void Refresh<T>(GridListControl gridControl, IList<T> record, int additionalRowCount = 0)
         {
-            gridControl.Grid.Model.RowCount = record.Count;
+            gridControl.Grid.Model.RowCount = record.Count + additionalRowCount;
             gridControl.Refresh();
 
             if (record.Count > 0)
-                gridControl.SetSelected(0, true);
+                gridControl.SetSelected(additionalRowCount, true);
 
         }
 

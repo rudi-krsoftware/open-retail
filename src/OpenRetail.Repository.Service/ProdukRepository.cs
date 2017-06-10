@@ -28,6 +28,7 @@ using Dapper.Contrib.Extensions;
 
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
+using System.Data;
  
 namespace OpenRetail.Repository.Service
 {        
@@ -65,6 +66,20 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
+        private HargaGrosir GetHargaGrosir(string produkId, int hargaKe, IDbTransaction transaction = null)
+        {
+            IHargaGrosirRepository repo = new HargaGrosirRepository(_context, _log);
+
+            return repo.GetHargaGrosir(produkId, hargaKe, transaction);
+        }
+
+        private IList<HargaGrosir> GetListHargaGrosir(string produkId)
+        {
+            IHargaGrosirRepository repo = new HargaGrosirRepository(_context, _log);
+
+            return repo.GetListHargaGrosir(produkId);
+        }
+
         public Produk GetByID(string id)
         {
             Produk obj = null;
@@ -76,6 +91,9 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
                 
                 obj = MappingRecordToObject(_sql, new { id }).SingleOrDefault();
+
+                if (obj != null)
+                    obj.list_of_harga_grosir = GetListHargaGrosir(obj.produk_id);
             }
             catch (Exception ex)
             {
@@ -98,6 +116,9 @@ namespace OpenRetail.Repository.Service
                 kodeProduk = kodeProduk.ToLower();
 
                 obj = MappingRecordToObject(_sql, new { kodeProduk }).SingleOrDefault();
+
+                if (obj != null)
+                    obj.list_of_harga_grosir = GetListHargaGrosir(obj.produk_id);
             }
             catch (Exception ex)
             {
@@ -125,6 +146,11 @@ namespace OpenRetail.Repository.Service
                 name = "%" + name.ToLower() + "%";
 
                 oList = MappingRecordToObject(_sql, new { name }).ToList();
+
+                foreach (var item in oList)
+                {
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                }
             }
             catch (Exception ex)
             {
@@ -210,6 +236,11 @@ namespace OpenRetail.Repository.Service
                 name = "%" + name.ToLower() + "%";
 
                 oList = MappingRecordToObject(_sql, new { name, pageNumber, pageSize }).ToList();
+
+                foreach (var item in oList)
+                {
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                }
             }
             catch (Exception ex)
             {
@@ -230,6 +261,11 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql, new { golonganId }).ToList();
+
+                foreach (var item in oList)
+                {
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                }
             }
             catch (Exception ex)
             {
@@ -253,6 +289,11 @@ namespace OpenRetail.Repository.Service
 
                 pagesCount = GetPagesCountByGolongan(golonganId, pageSize);
                 oList = MappingRecordToObject(_sql, new { golonganId, pageNumber, pageSize }).ToList();
+
+                foreach (var item in oList)
+                {
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                }
             }
             catch (Exception ex)
             {
@@ -273,6 +314,11 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql).ToList();
+
+                foreach (var item in oList)
+                {
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                }
             }
             catch (Exception ex)
             {
@@ -295,6 +341,11 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql).ToList();
+
+                foreach (var item in oList)
+                {
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                }
             }
             catch (Exception ex)
             {
@@ -319,6 +370,11 @@ namespace OpenRetail.Repository.Service
                 pagesCount = GetPagesCount(pageSize);
 
                 oList = MappingRecordToObject(_sql, new { pageNumber, pageSize }).ToList();
+
+                foreach (var item in oList)
+                {
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                }
             }
             catch (Exception ex)
             {
@@ -347,7 +403,27 @@ namespace OpenRetail.Repository.Service
                 {
                     obj.produk_id = _context.GetGUID();
 
-                    _context.db.Insert<Produk>(obj);
+                    _context.BeginTransaction();
+                    
+                    var transaction = _context.transaction;
+
+                    _context.db.Insert<Produk>(obj, transaction);
+
+                    foreach (var item in obj.list_of_harga_grosir)
+                    {
+                        var hargaGrosir = GetHargaGrosir(obj.produk_id, item.harga_ke, transaction);
+
+                        if (hargaGrosir == null)
+                        {
+                            item.harga_grosir_id = _context.GetGUID();
+                            item.produk_id = obj.produk_id;
+
+                            _context.db.Insert<HargaGrosir>(item, transaction);
+                        }
+                    }
+
+                    _context.Commit();
+
                     result = 1;
                 }
             }
@@ -367,11 +443,38 @@ namespace OpenRetail.Repository.Service
             {
                 if (!(IsExist(obj.kode_produk) && obj.kode_produk != obj.kode_produk_old))
                 {
-                    result = _context.db.Update<Produk>(obj) ? 1 : 0;
+                    _context.BeginTransaction();
+
+                    var transaction = _context.transaction;
+
+                    result = _context.db.Update<Produk>(obj, transaction) ? 1 : 0;
+
+                    foreach (var item in obj.list_of_harga_grosir)
+                    {
+                        var hargaGrosir = GetHargaGrosir(obj.produk_id, item.harga_ke, transaction);
+                        
+                        if (hargaGrosir == null)
+                        {
+                            item.harga_grosir_id = _context.GetGUID();
+                            item.produk_id = obj.produk_id;
+
+                            _context.db.Insert<HargaGrosir>(item, transaction);
+                            result = 1;
+                        }
+                        else
+                        {
+                            result = _context.db.Update<HargaGrosir>(item, transaction) ? 1 : 0;
+                        }
+                    }
+
+                    _context.Commit();
+
+                    result = 1;
                 }
             }
             catch (Exception ex)
             {
+                result = 0;
                 _log.Error("Error:", ex);
             }
 
