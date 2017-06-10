@@ -28,7 +28,7 @@ namespace OpenRetail.App.Helper
         /// <summary>
         /// Versi database yang terakhir
         /// </summary>
-        public const int DatabaseVersion = 4;
+        public const int DatabaseVersion = 5;
 
         /// <summary>
         /// Script SQL untuk mengupgrade database v1 ke v2
@@ -44,5 +44,10 @@ namespace OpenRetail.App.Helper
         /// Script SQL untuk mengupgrade database v3 ke v4
         /// </summary>
         public const string UpgradeStrukturDatabase_v3_to_v4 = "db_v3_to_v4.sql";
+
+        /// <summary>
+        /// Script SQL untuk mengupgrade database v4 ke v5
+        /// </summary>
+        public const string UpgradeStrukturDatabase_v4_to_v5 = "db_v4_to_v5.sql";
     }
 }

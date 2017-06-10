@@ -16,7 +16,7 @@ SET search_path = public, pg_catalog;
 --
 
 COPY m_database_version (version_number) FROM stdin;
-1
+5
 \.
 
 
