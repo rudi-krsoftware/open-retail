@@ -68,7 +68,7 @@ namespace OpenRetail.App
         /// </summary>
         public static int pageSize = 50; // nilai default 50 record perhalaman
 
-        public static bool isUseWebAPI = false;
+        public static bool isUseWebAPI = true;
         public static string baseUrl = "http://localhost/openretail_webapi/";
         public static Profil profil = null;
         public static Pengguna pengguna = null;

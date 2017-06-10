@@ -97,11 +97,10 @@ namespace OpenRetail.Repository.Service
             this._log = log;
         }
 
-        public UnitOfWork(bool isUseWebAPI, string baseUrl, IDapperContext context, ILog log)
+        public UnitOfWork(bool isUseWebAPI, string baseUrl, ILog log)
         {
             this._isUseWebAPI = isUseWebAPI;
             this._baseUrl = baseUrl;
-            this._context = context;
             this._log = log;            
         }
 
