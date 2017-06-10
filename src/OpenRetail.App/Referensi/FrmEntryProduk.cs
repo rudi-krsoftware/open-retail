@@ -29,6 +29,7 @@ using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.App.UI.Template;
 using OpenRetail.App.Helper;
+using OpenRetail.App.UserControl;
 
 namespace OpenRetail.App.Referensi
 {
@@ -37,6 +38,10 @@ namespace OpenRetail.App.Referensi
         private IProdukBll _bll = null; // deklarasi objek business logic layer 
         private Produk _produk = null;
         private IList<Golongan> _listOfGolongan;
+
+        private IList<AdvancedTextbox> _listOfTxtHargaGrosir = new List<AdvancedTextbox>();
+        private IList<AdvancedTextbox> _listOfTxtJumlahGrosir = new List<AdvancedTextbox>();
+        private IList<AdvancedTextbox> _listOfTxtDiskonGrosir = new List<AdvancedTextbox>();
 
         private bool _isNewData = false;
         
@@ -56,6 +61,7 @@ namespace OpenRetail.App.Referensi
             txtKodeProduk.Text = this._bll.GetLastKodeProduk();
 
             LoadDataGolongan();
+            LoadInputGrosir();
 
             if (golongan != null)
                 cmbGolongan.SelectedItem = golongan.nama_golongan;
@@ -83,9 +89,48 @@ namespace OpenRetail.App.Referensi
             txtStokGudang.Text = this._produk.stok_gudang.ToString();
             txtMinStokGudang.Text = this._produk.minimal_stok_gudang.ToString();
 
+            LoadInputGrosir();
+
             LoadDataGolongan();
             if (this._produk.Golongan != null)
                 cmbGolongan.SelectedItem = this._produk.Golongan.nama_golongan;
+        }
+
+        private void LoadInputGrosir()
+        {
+            _listOfTxtHargaGrosir.Add(txtHargaGrosir1);
+            _listOfTxtHargaGrosir.Add(txtHargaGrosir2);
+            _listOfTxtHargaGrosir.Add(txtHargaGrosir3);
+
+            _listOfTxtJumlahGrosir.Add(txtJumlahMinimalGrosir1);
+            _listOfTxtJumlahGrosir.Add(txtJumlahMinimalGrosir2);
+            _listOfTxtJumlahGrosir.Add(txtJumlahMinimalGrosir3);
+
+            _listOfTxtDiskonGrosir.Add(txtDiskonGrosir1);
+            _listOfTxtDiskonGrosir.Add(txtDiskonGrosir2);
+            _listOfTxtDiskonGrosir.Add(txtDiskonGrosir3);
+
+            if (this._produk != null)
+            {
+                var listOfHargaGrosir = this._produk.list_of_harga_grosir;
+                if (listOfHargaGrosir.Count > 0)
+                {
+                    var index = 0;
+                    foreach (var grosir in listOfHargaGrosir)
+                    {
+                        var txtHargaGrosir = _listOfTxtHargaGrosir[index];
+                        txtHargaGrosir.Text = grosir.harga_grosir.ToString();
+
+                        var txtJumlahMinGrosir = _listOfTxtJumlahGrosir[index];
+                        txtJumlahMinGrosir.Text = grosir.jumlah_minimal.ToString();
+
+                        var txtDiskonGrosir = _listOfTxtDiskonGrosir[index];
+                        txtDiskonGrosir.Text = grosir.diskon.ToString();
+
+                        index++;
+                    }
+                }
+            }            
         }
 
         private void LoadDataGolongan()
@@ -104,6 +149,45 @@ namespace OpenRetail.App.Referensi
         {
             if (_isNewData)
                 _produk = new Produk();
+            
+            if (_produk.list_of_harga_grosir.Count == 0)
+            {
+                var index = 0;
+                foreach (var item in _listOfTxtHargaGrosir)
+                {                    
+                    var txtHargaGrosir = _listOfTxtHargaGrosir[index];
+                    var txtJumlahMinGrosir = _listOfTxtJumlahGrosir[index];
+                    var txtDiskonGrosir = _listOfTxtDiskonGrosir[index];
+
+                    var hargaGrosir = new HargaGrosir
+                    {
+                        harga_ke = index + 1,
+                        harga_grosir = NumberHelper.StringToDouble(txtHargaGrosir.Text),
+                        jumlah_minimal = NumberHelper.StringToDouble(txtJumlahMinGrosir.Text, true),
+                        diskon = NumberHelper.StringToDouble(txtDiskonGrosir.Text, true)
+                    };
+
+                    _produk.list_of_harga_grosir.Add(hargaGrosir);
+
+                    index++;
+                }
+            }
+            else
+            {
+                var index = 0;
+                foreach (var item in _produk.list_of_harga_grosir)
+	            {
+                    var txtHargaGrosir = _listOfTxtHargaGrosir[index];
+                    var txtJumlahMinGrosir = _listOfTxtJumlahGrosir[index];
+                    var txtDiskonGrosir = _listOfTxtDiskonGrosir[index];
+                    
+                    item.harga_grosir = NumberHelper.StringToDouble(txtHargaGrosir.Text);
+                    item.jumlah_minimal = NumberHelper.StringToDouble(txtJumlahMinGrosir.Text, true);
+                    item.diskon = NumberHelper.StringToDouble(txtDiskonGrosir.Text, true);
+
+                    index++;
+	            }
+            }
 
             var golongan = _listOfGolongan[cmbGolongan.SelectedIndex];
             _produk.golongan_id = golongan.golongan_id;

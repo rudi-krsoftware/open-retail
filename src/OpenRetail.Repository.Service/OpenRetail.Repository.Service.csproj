@@ -66,6 +66,7 @@
     <Compile Include="FooterNotaMiniPosRepository.cs" />
     <Compile Include="GajiKaryawanRepository.cs" />
     <Compile Include="GolonganRepository.cs" />
+    <Compile Include="HargaGrosirRepository.cs" />
     <Compile Include="HeaderNotaMiniPosRepository.cs" />
     <Compile Include="HeaderNotaRepository.cs" />
     <Compile Include="ItemMenuRepository.cs" />

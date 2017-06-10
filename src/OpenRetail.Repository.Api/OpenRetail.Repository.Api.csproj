@@ -52,6 +52,7 @@
     <Compile Include="IFooterNotaMiniPosRepository.cs" />
     <Compile Include="IGajiKaryawanRepository.cs" />
     <Compile Include="IGolonganRepository.cs" />
+    <Compile Include="IHargaGrosirRepository.cs" />
     <Compile Include="IHeaderNotaMiniPosRepository.cs" />
     <Compile Include="IHeaderNotaRepository.cs" />
     <Compile Include="IItemMenuRepository.cs" />
