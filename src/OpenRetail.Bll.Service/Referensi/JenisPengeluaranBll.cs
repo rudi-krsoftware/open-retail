@@ -33,7 +33,9 @@ namespace OpenRetail.Bll.Service
     public class JenisPengeluaranBll : IJenisPengeluaranBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private JenisPengeluaranValidator _validator;
+
         private bool _isUseWebAPI;
         private string _baseUrl;
 
@@ -44,22 +46,29 @@ namespace OpenRetail.Bll.Service
         }
 
         public JenisPengeluaranBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
         {
             _isUseWebAPI = isUseWebAPI;
             _baseUrl = baseUrl;
-            _log = log;
-            _validator = new JenisPengeluaranValidator();
         }
 
         public JenisPengeluaran GetByID(string id)
         {
             JenisPengeluaran obj = null;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
-                obj = uow.JenisPengeluaranRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.JenisPengeluaranRepository.GetByID(id);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.JenisPengeluaranRepository.GetByID(id);
+                }
+            }            
 
             return obj;
         }
@@ -68,11 +77,19 @@ namespace OpenRetail.Bll.Service
         {
             IList<JenisPengeluaran> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
-                oList = uow.JenisPengeluaranRepository.GetByName(name);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.JenisPengeluaranRepository.GetByName(name);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JenisPengeluaranRepository.GetByName(name);
+                }
+            }            
 
             return oList;
         }
@@ -81,11 +98,19 @@ namespace OpenRetail.Bll.Service
         {
             IList<JenisPengeluaran> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
-                oList = uow.JenisPengeluaranRepository.GetAll();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.JenisPengeluaranRepository.GetAll();
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JenisPengeluaranRepository.GetAll();
+                }
+            }            
 
             return oList;
         }
@@ -94,15 +119,21 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
+                obj.jenis_pengeluaran_id = Guid.NewGuid().ToString();
 
-                if (_isUseWebAPI)
-                    obj.jenis_pengeluaran_id = context.GetGUID();
-
-                result = uow.JenisPengeluaranRepository.Save(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);                
+                result = _unitOfWork.JenisPengeluaranRepository.Save(obj);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.JenisPengeluaranRepository.Save(obj);
+                }
+            }            
 
             return result;
         }
@@ -128,11 +159,19 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
-                result = uow.JenisPengeluaranRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.JenisPengeluaranRepository.Update(obj);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.JenisPengeluaranRepository.Update(obj);
+                }
+            }            
 
             return result;
         }
@@ -158,11 +197,19 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(_isUseWebAPI, _baseUrl, context, _log);
-                result = uow.JenisPengeluaranRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.JenisPengeluaranRepository.Delete(obj);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.JenisPengeluaranRepository.Delete(obj);
+                }
+            }            
 
             return result;
         }
