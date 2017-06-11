@@ -130,6 +130,7 @@
     <Compile Include="RoleBllTest.cs" />
     <Compile Include="RolePrivilegeBllTest.cs" />
     <Compile Include="SupplierBllTest.cs" />
+    <Compile Include="SupplierWebAPIBllTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

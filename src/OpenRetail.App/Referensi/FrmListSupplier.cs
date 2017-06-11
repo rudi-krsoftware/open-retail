@@ -61,7 +61,7 @@ namespace OpenRetail.App.Referensi
             base.WindowState = FormWindowState.Maximized;
 
             _log = MainProgram.log;
-            _bll = new SupplierBll(_log);
+            _bll = new SupplierBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             
             // set hak akses untuk SELECT
             var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
