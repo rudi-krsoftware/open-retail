@@ -93,6 +93,7 @@
     <Compile Include="ImportExportDataProdukBllTest.cs" />
     <Compile Include="ImportExportDataSupplierBllTest.cs" />
     <Compile Include="JabatanBllTest.cs" />
+    <Compile Include="JabatanWebAPIBllTest.cs" />
     <Compile Include="JenisPengeluaranBllTest.cs" />
     <Compile Include="JenisPengeluaranWebAPIBllTest.cs" />
     <Compile Include="JualProdukBllTest.cs" />
