@@ -33,7 +33,11 @@ namespace OpenRetail.Bll.Service
     public class CustomerBll : ICustomerBll
     {
         private ILog _log;
-		private CustomerValidator _validator;
+        private IUnitOfWork _unitOfWork;
+        private CustomerValidator _validator;
+
+        private bool _isUseWebAPI;
+        private string _baseUrl;
 
 		public CustomerBll(ILog log)
         {
@@ -41,14 +45,29 @@ namespace OpenRetail.Bll.Service
             _validator = new CustomerValidator();
         }
 
+        public CustomerBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
+        }
+
         public Customer GetByID(string id)
         {
             Customer obj = null;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.CustomerRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.CustomerRepository.GetByID(id);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.CustomerRepository.GetByID(id);
+                }
             }
 
             return obj;
@@ -58,10 +77,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Customer> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.CustomerRepository.GetByName(name);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.CustomerRepository.GetByName(name);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.CustomerRepository.GetByName(name);
+                }
             }
 
             return oList;
@@ -71,10 +98,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Customer> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.CustomerRepository.GetAll();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.CustomerRepository.GetAll();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.CustomerRepository.GetAll();
+                }
             }
 
             return oList;
@@ -84,10 +119,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Customer> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.CustomerRepository.GetAll(isReseller);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.CustomerRepository.GetAll(isReseller);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.CustomerRepository.GetAll(isReseller);
+                }
             }
 
             return oList;
@@ -97,10 +140,20 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.CustomerRepository.Save(obj);
+                obj.customer_id = Guid.NewGuid().ToString();
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.CustomerRepository.Save(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.CustomerRepository.Save(obj);
+                }
             }
 
             return result;
@@ -127,10 +180,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.CustomerRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.CustomerRepository.Update(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.CustomerRepository.Update(obj);
+                }
             }
 
             return result;
@@ -157,10 +218,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.CustomerRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.CustomerRepository.Delete(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.CustomerRepository.Delete(obj);
+                }
             }
 
             return result;

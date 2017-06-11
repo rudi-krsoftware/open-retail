@@ -34,26 +34,27 @@ using OpenRetail.WebAPI.Controllers.Helper;
 
 namespace OpenRetail.WebAPI.Controllers
 {        
-	public interface IJabatanController : IBaseApiController<JabatanDTO>
+	public interface ICustomerController : IBaseApiController<CustomerDTO>
     {
         IHttpActionResult GetByID(string id);
         IHttpActionResult GetByName(string name);
+        IHttpActionResult GetByJenisCustomer(bool isReseller);
     }
 
-	[RoutePrefix("api/jabatan")]
-    public class JabatanController : BaseApiController, IJabatanController
+	[RoutePrefix("api/customer")]
+    public class CustomerController : BaseApiController, ICustomerController
     {
         private IUnitOfWork _unitOfWork;
         private ILog _log;
         private HttpStatusCode _httpStatusCode = HttpStatusCode.BadRequest;
         private IHttpActionResult _response = null;
 		
-		public JabatanController(IUnitOfWork unitOfWork)
+		public CustomerController(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
         }
 
-        public JabatanController(IUnitOfWork unitOfWork, ILog log)
+        public CustomerController(IUnitOfWork unitOfWork, ILog log)
         {
             this._unitOfWork = unitOfWork;
             this._log = log;
@@ -67,8 +68,8 @@ namespace OpenRetail.WebAPI.Controllers
 
             try
             {
-                var results = new List<Jabatan>();
-                var obj = _unitOfWork.JabatanRepository.GetByID(id);
+                var results = new List<Customer>();
+                var obj = _unitOfWork.CustomerRepository.GetByID(id);
                 
                 if (obj != null)
                     results.Add(obj);
@@ -87,9 +88,28 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
+		[HttpGet, Route("get_by_name")]
         public IHttpActionResult GetByName(string name)
         {
-            throw new NotImplementedException();
+            _httpStatusCode = HttpStatusCode.BadRequest;
+            _response = Content(_httpStatusCode, new ResponsePackage(_httpStatusCode));
+
+            try
+            {
+                var results = _unitOfWork.CustomerRepository.GetByName(name);
+
+                _httpStatusCode = HttpStatusCode.OK;
+                var output = GenerateOutput(_httpStatusCode, results);
+
+                _response = Content(_httpStatusCode, output);
+            }
+            catch (Exception ex)
+            {
+                if (_log != null)
+                    _log.Error("Error:", ex);
+            }
+
+            return _response;
         }
 
 		[HttpGet, Route("get_all")]
@@ -100,7 +120,31 @@ namespace OpenRetail.WebAPI.Controllers
 
             try
             {
-                var results = _unitOfWork.JabatanRepository.GetAll();
+                var results = _unitOfWork.CustomerRepository.GetAll();
+
+                _httpStatusCode = HttpStatusCode.OK;
+                var output = GenerateOutput(_httpStatusCode, results);
+
+                _response = Content(_httpStatusCode, output);
+            }
+            catch (Exception ex)
+            {
+                if (_log != null)
+                    _log.Error("Error:", ex);
+            }
+
+            return _response;
+        }
+
+        [HttpGet, Route("get_by_jenis_customer")]
+        public IHttpActionResult GetByJenisCustomer(bool isReseller)
+        {
+            _httpStatusCode = HttpStatusCode.BadRequest;
+            _response = Content(_httpStatusCode, new ResponsePackage(_httpStatusCode));
+
+            try
+            {
+                var results = _unitOfWork.CustomerRepository.GetAll(isReseller);
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, results);
@@ -117,7 +161,7 @@ namespace OpenRetail.WebAPI.Controllers
         }
 
 		[HttpPost, Route("save")]
-        public IHttpActionResult Save(JabatanDTO objDTO)
+        public IHttpActionResult Save(CustomerDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
             _response = Content(_httpStatusCode, new ResponsePackage(_httpStatusCode));
@@ -129,9 +173,9 @@ namespace OpenRetail.WebAPI.Controllers
 
             try
             {
-                var obj = AutoMapper.Mapper.Map<Jabatan>(objDTO);
+                var obj = AutoMapper.Mapper.Map<Customer>(objDTO);
 
-                var result = _unitOfWork.JabatanRepository.Save(obj);
+                var result = _unitOfWork.CustomerRepository.Save(obj);
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, result);
@@ -148,7 +192,7 @@ namespace OpenRetail.WebAPI.Controllers
         }
 
 		[HttpPost, Route("update")]
-        public IHttpActionResult Update(JabatanDTO objDTO)
+        public IHttpActionResult Update(CustomerDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
             _response = Content(_httpStatusCode, new ResponsePackage(_httpStatusCode));
@@ -160,9 +204,9 @@ namespace OpenRetail.WebAPI.Controllers
 
             try
             {
-                var obj = AutoMapper.Mapper.Map<Jabatan>(objDTO);
+                var obj = AutoMapper.Mapper.Map<Customer>(objDTO);
 
-                var result = _unitOfWork.JabatanRepository.Update(obj);
+                var result = _unitOfWork.CustomerRepository.Update(obj);
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, result);
@@ -179,7 +223,7 @@ namespace OpenRetail.WebAPI.Controllers
         }
 
 		[HttpPost, Route("delete")]
-        public IHttpActionResult Delete(JabatanDTO objDTO)
+        public IHttpActionResult Delete(CustomerDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
             _response = Content(_httpStatusCode, new ResponsePackage(_httpStatusCode));
@@ -191,9 +235,9 @@ namespace OpenRetail.WebAPI.Controllers
 
             try
             {
-                var obj = AutoMapper.Mapper.Map<Jabatan>(objDTO);
+                var obj = AutoMapper.Mapper.Map<Customer>(objDTO);
 
-                var result = _unitOfWork.JabatanRepository.Delete(obj);
+                var result = _unitOfWork.CustomerRepository.Delete(obj);
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, result);
