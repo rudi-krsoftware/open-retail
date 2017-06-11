@@ -86,7 +86,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                obj.jabatan_id = _context.GetGUID();
+                if (obj.jabatan_id == null)
+                    obj.jabatan_id = _context.GetGUID();
 
                 _context.db.Insert<Jabatan>(obj);
                 result = 1;
