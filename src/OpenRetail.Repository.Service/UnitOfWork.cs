@@ -116,7 +116,22 @@ namespace OpenRetail.Repository.Service
 
         public IJabatanRepository JabatanRepository
         {
-            get { return _jabatanRepository ?? (_jabatanRepository = new JabatanRepository(_context, _log)); }
+            get
+            {
+                if (_jabatanRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _jabatanRepository = new JabatanWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _jabatanRepository = new JabatanRepository(_context, _log);
+                    }
+                }
+
+                return _jabatanRepository;
+            }
         }
 
         public IJenisPengeluaranRepository JenisPengeluaranRepository
