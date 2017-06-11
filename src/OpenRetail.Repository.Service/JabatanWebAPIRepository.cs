@@ -66,23 +66,7 @@ namespace OpenRetail.Repository.Service
 
         public IList<Jabatan> GetByName(string name)
         {
-            IList<Jabatan> oList = new List<Jabatan>();
-
-			try
-            {
-                var client = new RestClient(_apiUrl);
-                var request = new RestRequest(string.Format("get_by_name?name={0}", name), Method.GET);
-                var response = client.Execute<OpenRetailWebApiGetResponse<Jabatan>>(request).Data;
-
-                if (response.Results.Count > 0)
-                    oList = response.Results;
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Error:", ex);
-            }
-
-            return oList;
+            throw new NotImplementedException();
         }
 
         public IList<Jabatan> GetAll()
