@@ -61,7 +61,7 @@ namespace OpenRetail.App.Referensi
             base.WindowState = FormWindowState.Maximized;
 
             _log = MainProgram.log;
-            _bll = new CustomerBll(_log);
+            _bll = new CustomerBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
 
             cmbJenisCustomer.Enabled = false;
 

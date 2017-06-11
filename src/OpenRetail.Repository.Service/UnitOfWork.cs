@@ -186,7 +186,22 @@ namespace OpenRetail.Repository.Service
 
         public ICustomerRepository CustomerRepository
         {
-            get { return _customerRepository ?? (_customerRepository = new CustomerRepository(_context, _log)); }
+            get
+            {
+                if (_customerRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _customerRepository = new CustomerWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _customerRepository = new CustomerRepository(_context, _log);
+                    }
+                }
+
+                return _customerRepository;
+            }
         }
 
         public ISupplierRepository SupplierRepository

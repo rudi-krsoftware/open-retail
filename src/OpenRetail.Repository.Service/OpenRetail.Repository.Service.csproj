@@ -69,6 +69,7 @@
     <Compile Include="CetakNotaDummyRepository.cs" />
     <Compile Include="CetakNotaRepository.cs" />
     <Compile Include="CustomerRepository.cs" />
+    <Compile Include="CustomerWebAPIRepository.cs" />
     <Compile Include="DapperContext.cs" />
     <Compile Include="DatabaseVersionRepository.cs" />
     <Compile Include="FooterNotaMiniPosRepository.cs" />

@@ -194,6 +194,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutoMapperConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\GolonganController.cs" />
     <Compile Include="Controllers\Helper\FluentValidationExtensionMethod.cs" />
     <Compile Include="Controllers\Helper\HttpActionResultHelper.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\CustomerDTO.cs" />
     <Compile Include="Models\DTO\GolonganDTO.cs" />
     <Compile Include="Models\DTO\JabatanDTO.cs" />
     <Compile Include="Models\DTO\JenisPengeluaranDTO.cs" />
