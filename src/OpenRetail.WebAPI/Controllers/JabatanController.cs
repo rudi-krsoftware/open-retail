@@ -87,30 +87,6 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpGet, Route("get_by_name")]
-        public IHttpActionResult GetByName(string name)
-        {
-            _httpStatusCode = HttpStatusCode.BadRequest;
-            _response = Content(_httpStatusCode, new ResponsePackage(_httpStatusCode));
-
-            try
-            {
-                var results = _unitOfWork.JabatanRepository.GetByName(name);
-
-                _httpStatusCode = HttpStatusCode.OK;
-                var output = GenerateOutput(_httpStatusCode, results);
-
-                _response = Content(_httpStatusCode, output);
-            }
-            catch (Exception ex)
-            {
-                if (_log != null)
-                    _log.Error("Error:", ex);
-            }
-
-            return _response;
-        }
-
 		[HttpGet, Route("get_all")]
         public IHttpActionResult GetAll()
         {
