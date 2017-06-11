@@ -100,7 +100,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                obj.supplier_id = _context.GetGUID();
+                if (obj.supplier_id == null)
+                    obj.supplier_id = _context.GetGUID();
 
                 _context.db.Insert<Supplier>(obj);
                 result = 1;

@@ -202,6 +202,7 @@
     <Compile Include="Controllers\IBaseApiController.cs" />
     <Compile Include="Controllers\JabatanController.cs" />
     <Compile Include="Controllers\JenisPengeluaranController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,6 +212,7 @@
     <Compile Include="Models\DTO\JenisPengeluaranDTO.cs" />
     <Compile Include="Models\ResponsePackage.cs" />
     <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\DTO\SupplierDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
