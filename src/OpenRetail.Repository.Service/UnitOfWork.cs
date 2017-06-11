@@ -206,7 +206,22 @@ namespace OpenRetail.Repository.Service
 
         public ISupplierRepository SupplierRepository
         {
-            get { return _supplierRepository ?? (_supplierRepository = new SupplierRepository(_context, _log)); }
+            get
+            {
+                if (_supplierRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _supplierRepository = new SupplierWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _supplierRepository = new SupplierRepository(_context, _log);
+                    }
+                }
+
+                return _supplierRepository;
+            }
         }
 
         public IKaryawanRepository KaryawanRepository

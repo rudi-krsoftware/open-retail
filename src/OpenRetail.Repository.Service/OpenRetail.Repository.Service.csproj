@@ -119,6 +119,7 @@
     <Compile Include="RolePrivilegeRepository.cs" />
     <Compile Include="RoleRepository.cs" />
     <Compile Include="SupplierRepository.cs" />
+    <Compile Include="SupplierWebAPIRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="WhereBuilder.cs" />
   </ItemGroup>
