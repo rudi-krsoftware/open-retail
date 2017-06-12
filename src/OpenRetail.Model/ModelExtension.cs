@@ -70,6 +70,16 @@ namespace OpenRetail.Model
         }
 
         /// <summary>
+        /// Method untuk mengkonversi tanggal ke format utc
+        /// </summary>
+        /// <param name="tanggal"></param>
+        /// <returns></returns>
+        public static Nullable<DateTime> ToUtc(this Nullable<DateTime> tanggal)
+        {
+            return DateTime.SpecifyKind((DateTime)tanggal, DateTimeKind.Utc);
+        }
+
+        /// <summary>
         /// Method untuk mengkonversi nilai object ke format json
         /// </summary>
         /// <typeparam name="T"></typeparam>
