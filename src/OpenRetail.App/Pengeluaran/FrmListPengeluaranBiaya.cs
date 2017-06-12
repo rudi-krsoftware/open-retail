@@ -53,7 +53,7 @@ namespace OpenRetail.App.Pengeluaran
             base.WindowState = FormWindowState.Maximized;
 
             _log = MainProgram.log;
-            _bll = new PengeluaranBiayaBll(_log);
+            _bll = new PengeluaranBiayaBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _pengguna = pengguna;
             _menuId = menuId;
 
@@ -197,14 +197,17 @@ namespace OpenRetail.App.Pengeluaran
             {
                 var pengeluaran = _listOfPengeluaran[index];
 
-                var result = _bll.Delete(pengeluaran);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<PengeluaranBiaya>(this.gridList, _listOfPengeluaran, pengeluaran);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var result = _bll.Delete(pengeluaran);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<PengeluaranBiaya>(this.gridList, _listOfPengeluaran, pengeluaran);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 
