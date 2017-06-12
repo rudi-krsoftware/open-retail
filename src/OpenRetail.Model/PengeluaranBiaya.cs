@@ -55,7 +55,6 @@ namespace OpenRetail.Model
 		[Display(Name = "Tanggal")]
 		public Nullable<DateTime> tanggal { get; set; }
 
-        [JsonIgnore]
         [Computed]
 		[Display(Name = "total")]
 		public double total { get; set; }
@@ -64,10 +63,10 @@ namespace OpenRetail.Model
 		public string keterangan { get; set; }
 
         [Write(false)]
-        public IList<ItemPengeluaranBiaya> item_pengeluaran_biaya { get; set; }
+        public List<ItemPengeluaranBiaya> item_pengeluaran_biaya { get; set; }
 
         [Write(false)]
-        public IList<ItemPengeluaranBiaya> item_pengeluaran_biaya_deleted { get; set; }
+        public List<ItemPengeluaranBiaya> item_pengeluaran_biaya_deleted { get; set; }
 
         [JsonIgnore]
         [Write(false)]

@@ -22,72 +22,75 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using FluentValidation;
+using System.ComponentModel.DataAnnotations;
+using OpenRetail.Model;
 
-namespace OpenRetail.Model
+namespace OpenRetail.WebAPI.Models.DTO
 {        
-	[Table("t_item_pengeluaran_biaya")]
-    public class ItemPengeluaranBiaya
+    public class ItemPengeluaranBiayaDTO
     {
-        public ItemPengeluaranBiaya()
-        {
-            entity_state = EntityState.Added;
-        }
-
-		[ExplicitKey]
 		[Display(Name = "item_pengeluaran_id")]		
 		public string item_pengeluaran_id { get; set; }
 		
 		[Display(Name = "pengeluaran_id")]
 		public string pengeluaran_id { get; set; }
 
-        [JsonIgnore]
-		[Write(false)]
-        public PengeluaranBiaya PengeluaranBiaya { get; set; }
-
 		[Display(Name = "pengguna_id")]
 		public string pengguna_id { get; set; }
 
-        [JsonIgnore]
-		[Write(false)]
-        public Pengguna Pengguna { get; set; }
-
-		[Display(Name = "Jumlah")]
+		[Display(Name = "jumlah")]
 		public double jumlah { get; set; }
 		
-		[Display(Name = "Harga")]
+		[Display(Name = "harga")]
 		public double harga { get; set; }
-
-        [JsonIgnore]
-        [Write(false)]
+		
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
 		
 		[Display(Name = "jenis_pengeluaran_id")]
 		public string jenis_pengeluaran_id { get; set; }
 
-		[Write(false)]
-        public JenisPengeluaran JenisPengeluaran { get; set; }
+        public JenisPengeluaranDTO JenisPengeluaran { get; set; }
 
-        [Write(false)]
         public EntityState entity_state { get; set; }
 	}
 
-    public class ItemPengeluaranBiayaValidator : AbstractValidator<ItemPengeluaranBiaya>
+    public class ItemPengeluaranBiayaDTOValidator : AbstractValidator<ItemPengeluaranBiayaDTO>
     {
-        public ItemPengeluaranBiayaValidator()
+        public ItemPengeluaranBiayaDTOValidator()
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
 			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
-            var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
+            var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
+								
 
-			RuleFor(c => c.pengeluaran_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.jenis_pengeluaran_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+			RuleSet("save", () =>
+            {
+                DefaultRule(msgError1, msgError2);
+            });
+
+            RuleSet("update", () =>
+            {
+                RuleFor(c => c.item_pengeluaran_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+                DefaultRule(msgError1, msgError2);
+            });
+
+            RuleSet("delete", () =>
+            {
+                RuleFor(c => c.item_pengeluaran_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            });
 		}
+
+        private void DefaultRule(string msgError1, string msgError2)
+        {
+            RuleFor(c => c.pengeluaran_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.jenis_pengeluaran_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);			
+            RuleFor(c => c.jumlah).NotEmpty().WithMessage(msgError1);
+            RuleFor(c => c.harga).NotEmpty().WithMessage(msgError1);            
+        }
 	}
 }

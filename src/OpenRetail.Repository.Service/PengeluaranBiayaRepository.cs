@@ -78,7 +78,7 @@ namespace OpenRetail.Repository.Service
 
                 // load item pengeluaran
                 if (obj != null)
-                    obj.item_pengeluaran_biaya = GetItemPengeluaranBiaya(obj.pengeluaran_id);
+                    obj.item_pengeluaran_biaya = GetItemPengeluaranBiaya(obj.pengeluaran_id).ToList();
             }
             catch (Exception ex)
             {
@@ -107,7 +107,7 @@ namespace OpenRetail.Repository.Service
                 // load item pengeluaran
                 foreach (var item in oList)
                 {
-                    item.item_pengeluaran_biaya = GetItemPengeluaranBiaya(item.pengeluaran_id);
+                    item.item_pengeluaran_biaya = GetItemPengeluaranBiaya(item.pengeluaran_id).ToList();
                 }
 
             }
@@ -132,7 +132,7 @@ namespace OpenRetail.Repository.Service
                 // load item pengeluaran
                 foreach (var item in oList)
                 {
-                    item.item_pengeluaran_biaya = GetItemPengeluaranBiaya(item.pengeluaran_id);
+                    item.item_pengeluaran_biaya = GetItemPengeluaranBiaya(item.pengeluaran_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -162,7 +162,9 @@ namespace OpenRetail.Repository.Service
 
                 var transaction = _context.transaction;
 
-                obj.pengeluaran_id = _context.GetGUID();
+                if (obj.pengeluaran_id == null)
+                    obj.pengeluaran_id = _context.GetGUID();
+
                 obj.total = GetTotalNota(obj);
 
                 // insert header
@@ -173,7 +175,9 @@ namespace OpenRetail.Repository.Service
                 {
                     if (item.jenis_pengeluaran_id.Length > 0)
                     {
-                        item.item_pengeluaran_id = _context.GetGUID();
+                        if (item.item_pengeluaran_id == null)
+                            item.item_pengeluaran_id = _context.GetGUID();
+
                         item.pengeluaran_id = obj.pengeluaran_id;
                         item.pengguna_id = obj.pengguna_id;
                         
@@ -228,7 +232,8 @@ namespace OpenRetail.Repository.Service
 
                     if (item.entity_state == EntityState.Added)
                     {
-                        item.item_pengeluaran_id = _context.GetGUID();
+                        if (item.item_pengeluaran_id == null)
+                            item.item_pengeluaran_id = _context.GetGUID();
 
                         _context.db.Insert<ItemPengeluaranBiaya>(item, transaction);
 

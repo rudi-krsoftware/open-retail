@@ -356,7 +356,22 @@ namespace OpenRetail.Repository.Service
 
         public IPengeluaranBiayaRepository PengeluaranBiayaRepository
         {
-            get { return _pengeluaranbiayaRepository ?? (_pengeluaranbiayaRepository = new PengeluaranBiayaRepository(_context, _log)); }
+            get
+            {
+                if (_pengeluaranbiayaRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _pengeluaranbiayaRepository = new PengeluaranBiayaWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _pengeluaranbiayaRepository = new PengeluaranBiayaRepository(_context, _log);
+                    }
+                }
+
+                return _pengeluaranbiayaRepository;
+            }
         }
 
         public IReportPengeluaranBiayaRepository ReportPengeluaranBiayaRepository
