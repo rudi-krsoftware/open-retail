@@ -20,6 +20,8 @@ namespace OpenRetail.WebAPI
                 config.CreateMap<JabatanDTO, Jabatan>();
                 config.CreateMap<CustomerDTO, Customer>();
                 config.CreateMap<SupplierDTO, Supplier>();
+                config.CreateMap<PengeluaranBiayaDTO, PengeluaranBiaya>();
+                config.CreateMap<ItemPengeluaranBiayaDTO, ItemPengeluaranBiaya>();
             });
         }
     }
