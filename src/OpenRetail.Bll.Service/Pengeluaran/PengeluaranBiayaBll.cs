@@ -32,8 +32,12 @@ namespace OpenRetail.Bll.Service
 {    
     public class PengeluaranBiayaBll : IPengeluaranBiayaBll
     {
-		private ILog _log;
-		private PengeluaranBiayaValidator _validator;
+        private ILog _log;
+        private IUnitOfWork _unitOfWork;
+        private PengeluaranBiayaValidator _validator;
+
+        private bool _isUseWebAPI;
+        private string _baseUrl;
 
 		public PengeluaranBiayaBll(ILog log)
         {
@@ -41,27 +45,34 @@ namespace OpenRetail.Bll.Service
             _validator = new PengeluaranBiayaValidator();
         }
 
+        public PengeluaranBiayaBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
+        }
+
         public IList<ItemPengeluaranBiaya> GetItemPengeluaranBiaya(string pengeluaranBiayaId)
         {
-            IList<ItemPengeluaranBiaya> oList = null;
-
-            using (IDapperContext context = new DapperContext())
-            {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PengeluaranBiayaRepository.GetItemPengeluaranBiaya(pengeluaranBiayaId);
-            }
-
-            return oList;
+            throw new NotImplementedException();
         }
 
         public PengeluaranBiaya GetByID(string id)
         {
             PengeluaranBiaya obj = null;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.PengeluaranBiayaRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.PengeluaranBiayaRepository.GetByID(id);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.PengeluaranBiayaRepository.GetByID(id);
+                }
             }
 
             return obj;
@@ -76,10 +87,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<PengeluaranBiaya> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PengeluaranBiayaRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.PengeluaranBiayaRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PengeluaranBiayaRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                }
             }
 
             return oList;
@@ -89,10 +108,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<PengeluaranBiaya> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PengeluaranBiayaRepository.GetAll();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.PengeluaranBiayaRepository.GetAll();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PengeluaranBiayaRepository.GetAll();
+                }
             }
 
             return oList;
@@ -102,10 +129,25 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PengeluaranBiayaRepository.Save(obj);
+                obj.pengeluaran_id = Guid.NewGuid().ToString();
+
+                foreach (var item in obj.item_pengeluaran_biaya)
+                {
+                    item.item_pengeluaran_id = Guid.NewGuid().ToString();
+                }
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.PengeluaranBiayaRepository.Save(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PengeluaranBiayaRepository.Save(obj);
+                }
             }
 
             return result;
@@ -132,10 +174,23 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PengeluaranBiayaRepository.Update(obj);
+                foreach (var item in obj.item_pengeluaran_biaya.Where(f => f.entity_state == EntityState.Added))
+                {
+                    item.item_pengeluaran_id = Guid.NewGuid().ToString();
+                }
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.PengeluaranBiayaRepository.Update(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PengeluaranBiayaRepository.Update(obj);
+                }
             }
 
             return result;
@@ -162,10 +217,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PengeluaranBiayaRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.PengeluaranBiayaRepository.Delete(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PengeluaranBiayaRepository.Delete(obj);
+                }
             }
 
             return result;
@@ -175,10 +238,18 @@ namespace OpenRetail.Bll.Service
         {
             var lastNota = string.Empty;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                lastNota = uow.PengeluaranBiayaRepository.GetLastNota();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                lastNota = _unitOfWork.PengeluaranBiayaRepository.GetLastNota();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    lastNota = _unitOfWork.PengeluaranBiayaRepository.GetLastNota();
+                }
             }
 
             return lastNota;

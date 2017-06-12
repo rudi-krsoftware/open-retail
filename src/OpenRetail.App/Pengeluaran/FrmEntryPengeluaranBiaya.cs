@@ -258,7 +258,7 @@ namespace OpenRetail.App.Pengeluaran
             _pengeluaran.item_pengeluaran_biaya = this._listOfItemPengeluaran.Where(f => f.JenisPengeluaran != null).ToList();
 
             if (!_isNewData) // update
-                _pengeluaran.item_pengeluaran_biaya_deleted = _listOfItemPengeluaranDeleted;
+                _pengeluaran.item_pengeluaran_biaya_deleted = _listOfItemPengeluaranDeleted.ToList();
 
             var result = 0;
             var validationError = new ValidationError();
