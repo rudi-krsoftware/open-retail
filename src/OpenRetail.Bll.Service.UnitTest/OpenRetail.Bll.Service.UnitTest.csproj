@@ -106,6 +106,7 @@
     <Compile Include="PembayaranKasbonBllTest.cs" />
     <Compile Include="PembayaranPiutangProdukBllTest.cs" />
     <Compile Include="PengeluaranBiayaBllTest.cs" />
+    <Compile Include="PengeluaranBiayaWebAPIBllTest.cs" />
     <Compile Include="PenggunaBllTest.cs" />
     <Compile Include="PenyesuaianStokBllTest.cs" />
     <Compile Include="ProdukBllTest.cs" />
