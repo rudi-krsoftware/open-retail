@@ -86,6 +86,7 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum.nama_printer = AppConfigHelper.GetValue("printerName", appConfigFile);
             MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", appConfigFile).ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.is_auto_print_label_nota = AppConfigHelper.GetValue("isAutoPrinterLabelNota", appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_show_minimal_stok = AppConfigHelper.GetValue("isShowMinimalStok", appConfigFile).ToLower() == "true" ? true : false;
 
             // set info printer mini pos
             var jumlahKarakter = AppConfigHelper.GetValue("jumlahKarakter", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahKarakter", appConfigFile)) : 40;
@@ -123,6 +124,12 @@ namespace OpenRetail.App.Main
             MainProgram.ListOfKabupaten = bll.GetAll();
         }
 
+        private void LoadInfoMinimalStokProduk()
+        {
+            IProdukBll bll = new ProdukBll(_log);
+            MainProgram.listOfMinimalStokProduk = bll.GetInfoMinimalStok();
+        }
+
         private bool ExecSQL(string fileName)
         {
             var result = false;
@@ -149,32 +156,21 @@ namespace OpenRetail.App.Main
             var dbVersion = bll.Get();
             if (dbVersion != null)
             {
+                var listOfUpgradeDatabaseScript = new Dictionary<int, string>
+                {
+                    { 2, DatabaseVersionHelper.UpgradeStrukturDatabase_v1_to_v2 },
+                    { 3, DatabaseVersionHelper.UpgradeStrukturDatabase_v2_to_v3 },
+                    { 4, DatabaseVersionHelper.UpgradeStrukturDatabase_v3_to_v4 },
+                    { 5, DatabaseVersionHelper.UpgradeStrukturDatabase_v4_to_v5 }
+                };
+
                 var result = true;
                 var upgradeTo = dbVersion.version_number + 1;
                 
                 while (upgradeTo <= newDatabaseVersion)
                 {
-                    switch (upgradeTo)
-                    {
-                        case 2: // upgrade database v1 ke v2
-                            result = ExecSQL(DatabaseVersionHelper.UpgradeStrukturDatabase_v1_to_v2);
-                            break;
-
-                        case 3: // upgrade database v2 ke v3
-                            result = ExecSQL(DatabaseVersionHelper.UpgradeStrukturDatabase_v2_to_v3);
-                            break;
-
-                        case 4: // upgrade database v3 ke v4
-                            result = ExecSQL(DatabaseVersionHelper.UpgradeStrukturDatabase_v3_to_v4);
-                            break;
-
-                        case 5: // upgrade database v4 ke v5
-                            result = ExecSQL(DatabaseVersionHelper.UpgradeStrukturDatabase_v4_to_v5);
-                            break;
-
-                        default:
-                            break;
-                    }
+                    var scriptUpgrade = listOfUpgradeDatabaseScript[upgradeTo];
+                    result = ExecSQL(scriptUpgrade);
 
                     if (!result)
                         break;
@@ -226,6 +222,11 @@ namespace OpenRetail.App.Main
                     SetProfil();
                     SetPengaturanUmum();
                     LoadKabupaten();
+
+                    if (MainProgram.pengaturanUmum.is_show_minimal_stok)
+                    {
+                        LoadInfoMinimalStokProduk();
+                    }                        
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();

@@ -91,6 +91,9 @@
             this.txtHeaderMiniPOS5 = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.btnLihatContohNotaPenjualanMiniPOS = new System.Windows.Forms.Button();
             this.chkCetakCustomer = new System.Windows.Forms.CheckBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.chkTampilkanInfoMinimalStokProduk = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -111,6 +114,8 @@
             this.tableLayoutPanel12.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -131,6 +136,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
@@ -999,6 +1005,41 @@
             this.chkCetakCustomer.Text = "Cetak informasi customer";
             this.chkCetakCustomer.UseVisualStyleBackColor = true;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.tableLayoutPanel13);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(416, 307);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Lainnya";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 1;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.Controls.Add(this.chkTampilkanInfoMinimalStokProduk, 0, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 2;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(416, 307);
+            this.tableLayoutPanel13.TabIndex = 0;
+            // 
+            // chkTampilkanInfoMinimalStokProduk
+            // 
+            this.chkTampilkanInfoMinimalStokProduk.AutoSize = true;
+            this.chkTampilkanInfoMinimalStokProduk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkTampilkanInfoMinimalStokProduk.Location = new System.Drawing.Point(3, 3);
+            this.chkTampilkanInfoMinimalStokProduk.Name = "chkTampilkanInfoMinimalStokProduk";
+            this.chkTampilkanInfoMinimalStokProduk.Size = new System.Drawing.Size(410, 19);
+            this.chkTampilkanInfoMinimalStokProduk.TabIndex = 0;
+            this.chkTampilkanInfoMinimalStokProduk.Text = "Tampilkan info minimal stok produk";
+            this.chkTampilkanInfoMinimalStokProduk.UseVisualStyleBackColor = true;
+            // 
             // FrmPengaturanUmum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1036,6 +1077,9 @@
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel13.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1105,6 +1149,9 @@
         private System.Windows.Forms.CheckBox chkCetakCustomer;
         private System.Windows.Forms.Label label19;
         private UserControl.AdvancedTextbox txtDari3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.CheckBox chkTampilkanInfoMinimalStokProduk;
 
 
 
