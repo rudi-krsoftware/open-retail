@@ -249,7 +249,22 @@ namespace OpenRetail.Repository.Service
 
         public IKaryawanRepository KaryawanRepository
         {
-            get { return _karyawanRepository ?? (_karyawanRepository = new KaryawanRepository(_context, _log)); }
+            get
+            {
+                if (_karyawanRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _karyawanRepository = new KaryawanWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _karyawanRepository = new KaryawanRepository(_context, _log);
+                    }
+                }
+
+                return _karyawanRepository;
+            }
         }
 
         public IBeliProdukRepository BeliProdukRepository

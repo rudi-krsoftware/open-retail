@@ -125,7 +125,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                obj.karyawan_id = _context.GetGUID();
+                if (obj.karyawan_id == null)
+                    obj.karyawan_id = _context.GetGUID();
 
                 _context.db.Insert<Karyawan>(obj);
                 result = 1;
