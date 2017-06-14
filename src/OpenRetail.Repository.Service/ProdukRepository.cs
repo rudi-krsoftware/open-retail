@@ -303,6 +303,31 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
+        public IList<Produk> GetInfoMinimalStok()
+        {
+            IList<Produk> oList = new List<Produk>();
+
+            try
+            {
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_produk.minimal_stok_gudang > 0 AND (m_produk.stok + m_produk.stok_gudang) <= m_produk.minimal_stok_gudang");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY m_produk.nama_produk");
+                _sql = _sql.Replace("{OFFSET}", "");
+
+                oList = MappingRecordToObject(_sql).ToList();
+
+                foreach (var item in oList)
+                {
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
         public IList<Produk> GetAll()
         {
             IList<Produk> oList = new List<Produk>();
@@ -495,6 +520,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }                        
+        }        
     }
 }     

@@ -60,6 +60,7 @@ namespace OpenRetail.App.Pengaturan
             LoadHeaderNotaMiniPOS();
             LoadFooterNotaMinniPOS();
             LoadLabelNota();
+            LoadSettingLainnya();
         }
 
         private void LoadHeaderNota()
@@ -175,15 +176,21 @@ namespace OpenRetail.App.Pengaturan
             txtJumlahGulung.Text = _pengaturanUmum.jumlah_gulung.ToString();
         }
 
+        private void LoadSettingLainnya()
+        {
+            chkTampilkanInfoMinimalStokProduk.Checked = _pengaturanUmum.is_show_minimal_stok;
+        }
+
         protected override void Simpan()
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 _pengaturanUmum.nama_printer = cmbPrinter.Text;
                 _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
-
+                
                 _pengaturanUmum.is_printer_mini_pos = chkPrinterMiniPOS.Checked;
                 _pengaturanUmum.is_cetak_customer = chkCetakCustomer.Checked;
+                _pengaturanUmum.is_show_minimal_stok = chkTampilkanInfoMinimalStokProduk.Checked;
                 _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
                 _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
 
@@ -196,6 +203,7 @@ namespace OpenRetail.App.Pengaturan
                 // simpan info printer mini pos
                 AppConfigHelper.SaveValue("isPrinterMiniPOS", chkPrinterMiniPOS.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("isCetakCustomer", chkCetakCustomer.Checked.ToString(), appConfigFile);
+                AppConfigHelper.SaveValue("isShowMinimalStok", chkTampilkanInfoMinimalStokProduk.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
                 AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
 

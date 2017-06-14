@@ -23,16 +23,16 @@ using System.Windows.Forms;
 using System.Reflection;
 
 using log4net;
-using OpenRetail.App.Referensi;
-using OpenRetail.App.Transaksi;
-using OpenRetail.App.Main;
-using OpenRetail.Model;
 using System.Globalization;
 using System.Threading;
-using OpenRetail.Model.Report;
-using OpenRetail.App.Laporan;
 using CrashReporterDotNET;
+
+using OpenRetail.Model;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.App.Main;
 using OpenRetail.App.Helper;
+using OpenRetail.App.Lookup;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace OpenRetail.App
@@ -72,6 +72,7 @@ namespace OpenRetail.App
         public static Pengguna pengguna = null;
         public static PengaturanUmum pengaturanUmum = null;
         public static IList<Kabupaten> ListOfKabupaten = null;
+        public static IList<Produk> listOfMinimalStokProduk = new List<Produk>();
         private static bool _isLogout;
 
         /// <summary>
@@ -138,6 +139,12 @@ namespace OpenRetail.App
             {
                 // set Default RegionalSetting menggunakan United States
                 SetDefaultRegionalSetting();
+
+                if (MainProgram.pengaturanUmum.is_show_minimal_stok && MainProgram.listOfMinimalStokProduk.Count > 0)
+                {
+                    var frmInfoMinimalStok = new FrmLookupMinimalStok("Info Minimal Stok Produk", MainProgram.listOfMinimalStokProduk);
+                    frmInfoMinimalStok.Show(frmMain);
+                }
 
                 frmMain.InisialisasiData();
                 Application.Run(frmMain);
