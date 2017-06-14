@@ -29,6 +29,7 @@ using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.App.UI.Template;
 using OpenRetail.App.Helper;
+using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Referensi
 {
@@ -121,35 +122,38 @@ namespace OpenRetail.App.Referensi
             var result = 0;
             var validationError = new ValidationError();
 
-            if (_isNewData)
-                result = _bll.Save(_karyawan, ref validationError);
-            else
-                result = _bll.Update(_karyawan, ref validationError);
-
-            if (result > 0) 
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                Listener.Ok(this, _isNewData, _karyawan);
-
                 if (_isNewData)
+                    result = _bll.Save(_karyawan, ref validationError);
+                else
+                    result = _bll.Update(_karyawan, ref validationError);
+
+                if (result > 0)
                 {
-                    base.ResetForm(this);
-                    txtNama.Focus();
+                    Listener.Ok(this, _isNewData, _karyawan);
+
+                    if (_isNewData)
+                    {
+                        base.ResetForm(this);
+                        txtNama.Focus();
+
+                    }
+                    else
+                        this.Close();
 
                 }
                 else
-                    this.Close();
-
-            }
-            else
-            {
-                if (validationError.Message.Length > 0)
                 {
-                    MsgHelper.MsgWarning(validationError.Message);
-                    base.SetFocusObject(validationError.PropertyName, this);
+                    if (validationError.Message.Length > 0)
+                    {
+                        MsgHelper.MsgWarning(validationError.Message);
+                        base.SetFocusObject(validationError.PropertyName, this);
+                    }
+                    else
+                        MsgHelper.MsgUpdateError();
                 }
-                else
-                    MsgHelper.MsgUpdateError();
-            }                
+            }                            
         }
 
         private void txtGolongan_KeyPress(object sender, KeyPressEventArgs e)

@@ -22,6 +22,7 @@ namespace OpenRetail.WebAPI
                 config.CreateMap<SupplierDTO, Supplier>();
                 config.CreateMap<PengeluaranBiayaDTO, PengeluaranBiaya>();
                 config.CreateMap<ItemPengeluaranBiayaDTO, ItemPengeluaranBiaya>();
+                config.CreateMap<KaryawanDTO, Karyawan>();
             });
         }
     }

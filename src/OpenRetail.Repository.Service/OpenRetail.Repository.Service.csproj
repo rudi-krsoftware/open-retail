@@ -87,6 +87,7 @@
     <Compile Include="JualProdukRepository.cs" />
     <Compile Include="KabupatenRepository.cs" />
     <Compile Include="KaryawanRepository.cs" />
+    <Compile Include="KaryawanWebAPIRepository.cs" />
     <Compile Include="KasbonRepository.cs" />
     <Compile Include="LabelNotaRepository.cs" />
     <Compile Include="Log4NetRepository.cs" />

@@ -100,6 +100,7 @@
     <Compile Include="JualProdukBllTest.cs" />
     <Compile Include="KabupatenBllTest.cs" />
     <Compile Include="KaryawanBllTest.cs" />
+    <Compile Include="KaryawanWebAPIBllTest.cs" />
     <Compile Include="KasbonBllTest.cs" />
     <Compile Include="MenuBllTest.cs" />
     <Compile Include="PembayaranHutangProdukBllTest.cs" />
