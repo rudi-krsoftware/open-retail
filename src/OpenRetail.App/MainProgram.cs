@@ -49,7 +49,7 @@ namespace OpenRetail.App
         /// </summary>
         public static readonly string onlineUpdateUrlInfo = ""; // TODO: set url informasi update
 
-        public static readonly string stageOfDevelopment = "-beta5";
+        public static readonly string stageOfDevelopment = "";
         public static readonly string appName = "Open Retail Versi {0}{1} - Copyright © {2} Kamarudin";
 
         /// <summary>
