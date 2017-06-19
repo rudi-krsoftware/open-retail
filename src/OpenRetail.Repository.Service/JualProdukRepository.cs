@@ -40,7 +40,7 @@ namespace OpenRetail.Repository.Service
                                               t_jual_produk.label_kepada1, t_jual_produk.label_kepada2, t_jual_produk.label_kepada3, t_jual_produk.label_kepada4,
                                               m_customer.customer_id, m_customer.nama_customer, m_customer.alamat, m_customer.kecamatan, m_customer.kelurahan, m_customer.kota, m_customer.kode_pos, m_customer.telepon, m_customer.diskon, m_customer.plafon_piutang,
                                               m_pengguna.pengguna_id, m_pengguna.nama_pengguna
-                                              FROM public.t_jual_produk INNER JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
+                                              FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
                                               LEFT JOIN m_pengguna ON m_pengguna.pengguna_id = t_jual_produk.pengguna_id
                                               {WHERE}
                                               {ORDER BY}";
@@ -192,7 +192,7 @@ namespace OpenRetail.Repository.Service
             var total = obj.item_jual.Where(f => f.Produk != null && f.entity_state != EntityState.Deleted)
                                      .Sum(f => (f.jumlah - f.jumlah_retur) * (f.harga_jual - (f.diskon / 100 * f.harga_jual)));
 
-            total = Math.Ceiling(total);
+            total = (int)total;
             return total;
         }
 
