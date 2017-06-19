@@ -94,6 +94,7 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.chkTampilkanInfoMinimalStokProduk = new System.Windows.Forms.CheckBox();
+            this.chkCustomerWajibDiisi = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1020,12 +1021,14 @@
             this.tableLayoutPanel13.ColumnCount = 1;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.Controls.Add(this.chkTampilkanInfoMinimalStokProduk, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.chkCustomerWajibDiisi, 0, 1);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 2;
+            this.tableLayoutPanel13.RowCount = 3;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(416, 307);
             this.tableLayoutPanel13.TabIndex = 0;
             // 
@@ -1039,6 +1042,17 @@
             this.chkTampilkanInfoMinimalStokProduk.TabIndex = 0;
             this.chkTampilkanInfoMinimalStokProduk.Text = "Tampilkan info minimal stok produk";
             this.chkTampilkanInfoMinimalStokProduk.UseVisualStyleBackColor = true;
+            // 
+            // chkCustomerWajibDiisi
+            // 
+            this.chkCustomerWajibDiisi.AutoSize = true;
+            this.chkCustomerWajibDiisi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkCustomerWajibDiisi.Location = new System.Drawing.Point(3, 28);
+            this.chkCustomerWajibDiisi.Name = "chkCustomerWajibDiisi";
+            this.chkCustomerWajibDiisi.Size = new System.Drawing.Size(410, 19);
+            this.chkCustomerWajibDiisi.TabIndex = 1;
+            this.chkCustomerWajibDiisi.Text = "Customer wajib diisi pada saat penjualan";
+            this.chkCustomerWajibDiisi.UseVisualStyleBackColor = true;
             // 
             // FrmPengaturanUmum
             // 
@@ -1152,6 +1166,7 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.CheckBox chkTampilkanInfoMinimalStokProduk;
+        private System.Windows.Forms.CheckBox chkCustomerWajibDiisi;
 
 
 
