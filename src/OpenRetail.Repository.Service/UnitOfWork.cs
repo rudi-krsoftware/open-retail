@@ -176,7 +176,22 @@ namespace OpenRetail.Repository.Service
 
         public IProdukRepository ProdukRepository
         {
-            get { return _produkRepository ?? (_produkRepository = new ProdukRepository(_context, _log)); }
+            get
+            {
+                if (_produkRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _produkRepository = new ProdukWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _produkRepository = new ProdukRepository(_context, _log);
+                    }
+                }
+
+                return _produkRepository;
+            }
         }
 
         public IHargaGrosirRepository HargaGrosirRepository

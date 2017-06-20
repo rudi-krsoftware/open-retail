@@ -100,6 +100,7 @@
     <Compile Include="PenggunaRepository.cs" />
     <Compile Include="PenyesuaianStokRepository.cs" />
     <Compile Include="ProdukRepository.cs" />
+    <Compile Include="ProdukWebAPIRepository.cs" />
     <Compile Include="ProfilRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\ReportBeliProdukRepository.cs" />
