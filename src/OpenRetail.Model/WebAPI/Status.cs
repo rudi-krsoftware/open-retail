@@ -26,6 +26,7 @@ namespace OpenRetail.Model.WebAPI
     public class Status
     {
         public int Code { get; set; }
+        public int PagesCount { get; set; }
         public string Description { get; set; }
         public List<string> Errors { get; set; }
     }

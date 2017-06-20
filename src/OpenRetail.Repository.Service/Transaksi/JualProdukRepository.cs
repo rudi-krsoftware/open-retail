@@ -125,7 +125,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.Produk.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                    item.Produk.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
                 }
             }
             catch
