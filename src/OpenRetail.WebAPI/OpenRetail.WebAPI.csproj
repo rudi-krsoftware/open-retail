@@ -205,17 +205,20 @@
     <Compile Include="Controllers\JenisPengeluaranController.cs" />
     <Compile Include="Controllers\KaryawanController.cs" />
     <Compile Include="Controllers\PengeluaranBiayaController.cs" />
+    <Compile Include="Controllers\ProdukController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DTO\CustomerDTO.cs" />
     <Compile Include="Models\DTO\GolonganDTO.cs" />
+    <Compile Include="Models\DTO\HargaGrosirDTO.cs" />
     <Compile Include="Models\DTO\ItemPengeluaranBiayaDTO.cs" />
     <Compile Include="Models\DTO\JabatanDTO.cs" />
     <Compile Include="Models\DTO\JenisPengeluaranDTO.cs" />
     <Compile Include="Models\DTO\KaryawanDTO.cs" />
     <Compile Include="Models\DTO\PengeluaranBiayaDTO.cs" />
+    <Compile Include="Models\DTO\ProdukDTO.cs" />
     <Compile Include="Models\ResponsePackage.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\DTO\SupplierDTO.cs" />

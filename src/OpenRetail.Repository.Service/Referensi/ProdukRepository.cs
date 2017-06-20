@@ -98,7 +98,7 @@ namespace OpenRetail.Repository.Service
                 obj = MappingRecordToObject(_sql, new { id }).SingleOrDefault();
 
                 if (obj != null)
-                    obj.list_of_harga_grosir = GetListHargaGrosir(obj.produk_id);
+                    obj.list_of_harga_grosir = GetListHargaGrosir(obj.produk_id).ToList();
             }
             catch (Exception ex)
             {
@@ -123,7 +123,7 @@ namespace OpenRetail.Repository.Service
                 obj = MappingRecordToObject(_sql, new { kodeProduk }).SingleOrDefault();
 
                 if (obj != null)
-                    obj.list_of_harga_grosir = GetListHargaGrosir(obj.produk_id);
+                    obj.list_of_harga_grosir = GetListHargaGrosir(obj.produk_id).ToList();
             }
             catch (Exception ex)
             {
@@ -154,7 +154,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -186,7 +186,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -211,7 +211,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -242,7 +242,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -267,7 +267,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -292,7 +292,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -319,7 +319,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -349,7 +349,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id);
+                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -377,7 +377,8 @@ namespace OpenRetail.Repository.Service
             {
                 if (!IsExist(obj.kode_produk))
                 {
-                    obj.produk_id = _context.GetGUID();
+                    if (obj.produk_id == null)
+                        obj.produk_id = _context.GetGUID();
 
                     _context.BeginTransaction();
                     
@@ -391,7 +392,9 @@ namespace OpenRetail.Repository.Service
 
                         if (hargaGrosir == null)
                         {
-                            item.harga_grosir_id = _context.GetGUID();
+                            if (item.harga_grosir_id == null)
+                                item.harga_grosir_id = _context.GetGUID();
+
                             item.produk_id = obj.produk_id;
 
                             _context.db.Insert<HargaGrosir>(item, transaction);
@@ -427,12 +430,14 @@ namespace OpenRetail.Repository.Service
 
                     foreach (var item in obj.list_of_harga_grosir)
                     {
+                        item.produk_id = obj.produk_id;
+
                         var hargaGrosir = GetHargaGrosir(obj.produk_id, item.harga_ke, transaction);
                         
                         if (hargaGrosir == null)
                         {
-                            item.harga_grosir_id = _context.GetGUID();
-                            item.produk_id = obj.produk_id;
+                            if (item.harga_grosir_id == null)
+                                item.harga_grosir_id = _context.GetGUID();                            
 
                             _context.db.Insert<HargaGrosir>(item, transaction);
                             result = 1;

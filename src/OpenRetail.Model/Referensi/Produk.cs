@@ -98,7 +98,7 @@ namespace OpenRetail.Model
         }
 
         [Write(false)]
-        public IList<HargaGrosir> list_of_harga_grosir { get; set; }
+        public List<HargaGrosir> list_of_harga_grosir { get; set; }
 	}
 
     public class ProdukValidator : AbstractValidator<Produk>

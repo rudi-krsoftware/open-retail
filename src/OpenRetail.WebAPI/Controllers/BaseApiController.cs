@@ -29,13 +29,14 @@ namespace OpenRetail.WebAPI.Controllers
 {
     public class BaseApiController : ApiController
     {
-        protected ResponsePackage GenerateOutput(HttpStatusCode httpStatusCode, object results)
+        protected ResponsePackage GenerateOutput(HttpStatusCode httpStatusCode, object results, int pagesCount = 0)
         {
             var output = new ResponsePackage
             {
                 Status = new Status
                 {
                     Code = Convert.ToInt32(httpStatusCode),
+                    PagesCount = pagesCount,
                     Description = httpStatusCode.ToString()
                 },
                 Results = results

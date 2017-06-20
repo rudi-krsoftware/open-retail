@@ -33,7 +33,11 @@ namespace OpenRetail.Bll.Service
     public class ProdukBll : IProdukBll
     {
         private ILog _log;
-		private ProdukValidator _validator;
+        private IUnitOfWork _unitOfWork;
+        private ProdukValidator _validator;
+
+        private bool _isUseWebAPI;
+        private string _baseUrl;
 
 		public ProdukBll(ILog log)
         {
@@ -41,14 +45,29 @@ namespace OpenRetail.Bll.Service
             _validator = new ProdukValidator();
         }
 
+        public ProdukBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
+        }
+
         public Produk GetByID(string id)
         {
             Produk obj = null;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.ProdukRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.ProdukRepository.GetByID(id);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.ProdukRepository.GetByID(id);
+                }
             }
 
             return obj;
@@ -58,10 +77,18 @@ namespace OpenRetail.Bll.Service
         {
             Produk obj = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.ProdukRepository.GetByKode(kodeProduk);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.ProdukRepository.GetByKode(kodeProduk);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.ProdukRepository.GetByKode(kodeProduk);
+                }
             }
 
             return obj;
@@ -71,10 +98,18 @@ namespace OpenRetail.Bll.Service
         {
             var lastNota = string.Empty;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                lastNota = uow.ProdukRepository.GetLastKodeProduk();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                lastNota = _unitOfWork.ProdukRepository.GetLastKodeProduk();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    lastNota = _unitOfWork.ProdukRepository.GetLastKodeProduk();
+                }
             }
 
             return lastNota;
@@ -84,10 +119,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Produk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetByName(name);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.ProdukRepository.GetByName(name);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.ProdukRepository.GetByName(name);
+                }
             }
 
             return oList;
@@ -102,10 +145,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Produk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetByName(name, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.ProdukRepository.GetByName(name, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.ProdukRepository.GetByName(name, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+                }
             }
 
             return oList;
@@ -115,10 +166,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Produk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetByGolongan(golonganId);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.ProdukRepository.GetByGolongan(golonganId);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.ProdukRepository.GetByGolongan(golonganId);
+                }
             }
 
             return oList;
@@ -128,10 +187,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Produk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetByGolongan(golonganId, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.ProdukRepository.GetByGolongan(golonganId, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.ProdukRepository.GetByGolongan(golonganId, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+                }
             }
 
             return oList;
@@ -141,10 +208,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Produk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetInfoMinimalStok();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.ProdukRepository.GetInfoMinimalStok();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.ProdukRepository.GetInfoMinimalStok();
+                }
             }
 
             return oList;
@@ -154,10 +229,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Produk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetAll();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.ProdukRepository.GetAll();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.ProdukRepository.GetAll();
+                }
             }
 
             return oList;
@@ -167,10 +250,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Produk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetAll(GetSortByFieldName(sortByIndex));
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.ProdukRepository.GetAll(GetSortByFieldName(sortByIndex));
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.ProdukRepository.GetAll(GetSortByFieldName(sortByIndex));
+                }
             }
 
             return oList;
@@ -180,10 +271,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Produk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ProdukRepository.GetAll(GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.ProdukRepository.GetAll(GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.ProdukRepository.GetAll(GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+                }
             }
 
             return oList;
@@ -193,10 +292,25 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.ProdukRepository.Save(obj);
+                obj.produk_id = Guid.NewGuid().ToString();
+
+                foreach (var item in obj.list_of_harga_grosir)
+                {
+                    item.harga_grosir_id = Guid.NewGuid().ToString();
+                }
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.ProdukRepository.Save(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.ProdukRepository.Save(obj);
+                }
             }
 
             return result;
@@ -223,10 +337,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.ProdukRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.ProdukRepository.Update(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.ProdukRepository.Update(obj);
+                }
             }
 
             return result;
@@ -253,10 +375,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.ProdukRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.ProdukRepository.Delete(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.ProdukRepository.Delete(obj);
+                }
             }
 
             return result;
