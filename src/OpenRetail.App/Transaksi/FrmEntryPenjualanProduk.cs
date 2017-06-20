@@ -118,7 +118,9 @@ namespace OpenRetail.App.Transaksi
                 dtpTanggalTempo.Value = (DateTime)this._jual.tanggal_tempo;
             }
 
-            txtCustomer.Text = this._customer.nama_customer;
+            if (this._customer != null)
+                txtCustomer.Text = this._customer.nama_customer;
+
             txtKeterangan.Text = this._jual.keterangan;
             
             if (!string.IsNullOrEmpty(this._jual.kurir))
@@ -433,13 +435,16 @@ namespace OpenRetail.App.Transaksi
 
         protected override void Simpan()
         {
-            if (this._customer == null || txtCustomer.Text.Length == 0)
+            if (_pengaturanUmum.is_customer_required)
             {
-                MsgHelper.MsgWarning("'Customer' tidak boleh kosong !");
-                txtCustomer.Focus();
+                if (this._customer == null || txtCustomer.Text.Length == 0)
+                {
+                    MsgHelper.MsgWarning("'Customer' tidak boleh kosong !");
+                    txtCustomer.Focus();
 
-                return;
-            }
+                    return;
+                }
+            }            
 
             var total = SumGrid(this._listOfItemJual);
             if (!(total > 0))
@@ -507,8 +512,13 @@ namespace OpenRetail.App.Transaksi
 
             _jual.pengguna_id = this._pengguna.pengguna_id;
             _jual.Pengguna = this._pengguna;
-            _jual.customer_id = this._customer.customer_id;
-            _jual.Customer = this._customer;
+
+            if (this._customer != null)
+            {
+                _jual.customer_id = this._customer.customer_id;
+                _jual.Customer = this._customer;
+            }            
+
             _jual.nota = txtNota.Text;
             _jual.tanggal = dtpTanggal.Value;
             _jual.tanggal_tempo = DateTimeHelper.GetNullDateTime();
@@ -1340,7 +1350,7 @@ namespace OpenRetail.App.Transaksi
         {
             txtKembali.Text = "0";
 
-            var total = SumGrid(this._listOfItemJual);            
+            var total = NumberHelper.StringToNumber(lblTotal.Text);
             if (total > 0)
             {
                 var jumlahBayar = NumberHelper.StringToNumber(((AdvancedTextbox)sender).Text);
