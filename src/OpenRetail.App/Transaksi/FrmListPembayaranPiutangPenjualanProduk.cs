@@ -48,6 +48,7 @@ namespace OpenRetail.App.Transaksi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
@@ -63,6 +64,9 @@ namespace OpenRetail.App.Transaksi
             {
                 if (role.is_grant)
                     LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
+
+                txtNamaCustomer.Enabled = role.is_grant;
+                btnCari.Enabled = role.is_grant;
 
                 filterRangeTanggal.Enabled = role.is_grant;
             }            
@@ -150,6 +154,17 @@ namespace OpenRetail.App.Transaksi
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 _listOfPembayaranPiutang = _bll.GetAll();
+                GridListControlHelper.Refresh<PembayaranPiutangProduk>(this.gridList, _listOfPembayaranPiutang);
+            }
+
+            ResetButton();
+        }
+
+        private void LoadData(string customerName)
+        {
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                _listOfPembayaranPiutang = _bll.GetByName(customerName);
                 GridListControlHelper.Refresh<PembayaranPiutangProduk>(this.gridList, _listOfPembayaranPiutang);
             }
 
@@ -260,6 +275,7 @@ namespace OpenRetail.App.Transaksi
                 return;
             }
 
+            txtNamaCustomer.Clear();
             LoadData(tanggalMulai, tanggalSelesai);
         }
 
@@ -267,10 +283,32 @@ namespace OpenRetail.App.Transaksi
         {
             var chk = (CheckBox)sender;
 
+            txtNamaCustomer.Clear();
+
             if (chk.Checked)
+            {
                 LoadData();
+                txtNamaCustomer.Enabled = false;
+                btnCari.Enabled = false;
+            }                
             else
+            {
                 LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
+                txtNamaCustomer.Enabled = true;
+                btnCari.Enabled = true;
+            }                
+        }
+
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+            if (txtNamaCustomer.Text.Length > 0)
+                LoadData(txtNamaCustomer.Text);
+        }
+
+        private void txtNamaCustomer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e))
+                btnCari_Click(sender, e);
         }
     }
 }

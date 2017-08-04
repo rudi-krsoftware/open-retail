@@ -147,7 +147,28 @@ namespace OpenRetail.Repository.Service
 
         public IList<PembayaranPiutangProduk> GetByName(string name)
         {
-            throw new NotImplementedException();
+            IList<PembayaranPiutangProduk> oList = new List<PembayaranPiutangProduk>();
+
+            try
+            {
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_customer.nama_customer) LIKE @name");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_pembayaran_piutang_produk.tanggal, t_pembayaran_piutang_produk.nota");
+
+                name = "%" + name.ToLower() + "%";
+
+                oList = MappingRecordToObject(_sql, new { name }).ToList();
+
+                foreach (var item in oList)
+                {
+                    item.item_pembayaran_piutang = GetItemPembayaran(item.pembayaran_piutang_id);
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
         }        
 
         public IList<PembayaranPiutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)

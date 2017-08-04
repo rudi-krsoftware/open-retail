@@ -73,8 +73,8 @@ namespace OpenRetail.Bll.Service
                 var firstRowUsed = ws.FirstRowUsed();
 
                 var colums = new string[] { 
-                                            "NAMA", "ALAMAT", "KECAMATAN", "KELURAHAN", "KOTA", "KODE POS", "KONTAK", 
-                                            "TELEPON", "DISKON RESELLER", "PLAFON PIUTANG" 
+                                            "NAMA", "ALAMAT", "DESA", "KELURAHAN", "KECAMATAN", "KOTA", "KABUPATEN", 
+                                            "KODE POS", "KONTAK", "TELEPON", "DISKON RESELLER", "PLAFON PIUTANG" 
                                           };
 
                 for (int i = 0; i < colums.Length; i++)
@@ -127,9 +127,11 @@ namespace OpenRetail.Bll.Service
                 {
                     nama_customer = row.Field("NAMA").GetString(),
                     alamat = row.Field("ALAMAT").GetString(),
-                    kecamatan = row.Field("KECAMATAN").GetString(),
+                    desa = row.Field("DESA").GetString(),
                     kelurahan = row.Field("KELURAHAN").GetString(),
+                    kecamatan = row.Field("KECAMATAN").GetString(),                    
                     kota = row.Field("KOTA").GetString(),
+                    kabupaten = row.Field("KABUPATEN").GetString(),
                     kode_pos = row.Field("KODE POS").GetString(),
                     kontak = row.Field("KONTAK").GetString(),
                     telepon = row.Field("TELEPON").GetString(),
@@ -156,8 +158,8 @@ namespace OpenRetail.Bll.Service
                             if (customer.nama_customer.Length > 50)
                                 customer.nama_customer = customer.nama_customer.Substring(0, 50);
 
-                            if (customer.alamat.Length > 100)
-                                customer.alamat = customer.alamat.Substring(0, 100);
+                            if (customer.alamat.Length > 250)
+                                customer.alamat = customer.alamat.Substring(0, 250);
 
                             if (customer.kontak.Length > 50)
                                 customer.kontak = customer.kontak.Substring(0, 50);

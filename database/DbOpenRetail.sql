@@ -1288,7 +1288,7 @@ ALTER TABLE m_alasan_penyesuaian_stok OWNER TO postgres;
 CREATE TABLE m_customer (
     customer_id t_guid NOT NULL,
     nama_customer t_nama,
-    alamat t_alamat,
+    alamat t_alamat_panjang,
     kontak t_nama,
     telepon t_telepon,
     plafon_piutang t_harga,
@@ -1298,7 +1298,9 @@ CREATE TABLE m_customer (
     kelurahan t_alamat,
     kota t_alamat,
     kode_pos t_kode_pos,
-    diskon t_jumlah
+    diskon t_jumlah,
+    desa t_alamat,
+    kabupaten t_alamat
 );
 
 
@@ -1932,7 +1934,9 @@ CREATE TABLE t_jual_produk (
     label_kepada3 t_alamat_panjang,
     label_kepada4 t_alamat_panjang,
     kurir t_keterangan,
-    is_dropship boolean
+    is_dropship boolean,
+    kirim_desa t_alamat_panjang,
+    kirim_kabupaten t_alamat_panjang
 );
 
 

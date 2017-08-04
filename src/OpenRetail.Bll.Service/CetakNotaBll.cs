@@ -66,8 +66,11 @@ namespace OpenRetail.Bll.Service
                 item.kecamatan = string.IsNullOrEmpty(item.kecamatan) ? "" : item.kecamatan;
                 item.kelurahan = string.IsNullOrEmpty(item.kelurahan) ? "" : item.kelurahan;
                 item.kota = string.IsNullOrEmpty(item.kota) ? "" : item.kota;
-                item.kode_pos = string.IsNullOrEmpty(item.kode_pos) ? "" : item.kode_pos;
+                item.kode_pos = (string.IsNullOrEmpty(item.kode_pos) || item.kode_pos == "0") ? "" : item.kode_pos;
                 item.telepon = string.IsNullOrEmpty(item.telepon) ? "" : item.telepon;
+
+                item.kirim_desa = string.IsNullOrEmpty(item.kirim_desa) ? "" : item.kirim_desa;
+                item.kirim_kabupaten = string.IsNullOrEmpty(item.kirim_kabupaten) ? "" : item.kirim_kabupaten;
 
                 item.kirim_kecamatan = string.IsNullOrEmpty(item.kirim_kecamatan) ? "" : item.kirim_kecamatan;
                 item.kirim_kelurahan = string.IsNullOrEmpty(item.kirim_kelurahan) ? "" : item.kirim_kelurahan;

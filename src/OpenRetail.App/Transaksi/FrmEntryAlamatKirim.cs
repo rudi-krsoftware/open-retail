@@ -82,7 +82,7 @@ namespace OpenRetail.App.Transaksi
             var kecamatan = string.IsNullOrEmpty(_customer.kecamatan) ? string.Empty : _customer.kecamatan;
             var kelurahan = string.IsNullOrEmpty(_customer.kelurahan) ? string.Empty : _customer.kelurahan;
             var kota = string.IsNullOrEmpty(_customer.kota) ? string.Empty : _customer.kota;
-            var kodePos = string.IsNullOrEmpty(_customer.kode_pos) ? string.Empty : _customer.kode_pos;
+            var kodePos = (string.IsNullOrEmpty(_customer.kode_pos) || _customer.kode_pos == "0") ? string.Empty : _customer.kode_pos;
             var telepon = string.IsNullOrEmpty(_customer.telepon) ? string.Empty : _customer.telepon;
 
             var kepada1 = _customer.nama_customer;

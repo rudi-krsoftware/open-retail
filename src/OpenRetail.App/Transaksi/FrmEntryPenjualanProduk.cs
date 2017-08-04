@@ -739,6 +739,8 @@ namespace OpenRetail.App.Transaksi
                 this._jual.kirim_alamat = alamatKirim.alamat;
                 this._jual.kirim_kecamatan = alamatKirim.kecamatan;
                 this._jual.kirim_kelurahan = alamatKirim.kelurahan;
+                this._jual.kirim_desa = alamatKirim.desa;
+                this._jual.kirim_kabupaten = alamatKirim.kabupaten;
             }
             else if (data is LabelAlamatKirim)
             {
@@ -1244,7 +1246,7 @@ namespace OpenRetail.App.Transaksi
                     kecamatan = string.IsNullOrEmpty(this._customer.kecamatan) ? "-" : this._customer.kecamatan,
                     kelurahan = string.IsNullOrEmpty(this._customer.kelurahan) ? "-" : this._customer.kelurahan,
                     kota = string.IsNullOrEmpty(this._customer.kota) ? "-" : this._customer.kota,
-                    kode_pos = string.IsNullOrEmpty(this._customer.kode_pos) ? "-" : this._customer.kode_pos,
+                    kode_pos = (string.IsNullOrEmpty(this._customer.kode_pos) || this._customer.kode_pos == "0") ? "-" : this._customer.kode_pos,
                     kontak = string.IsNullOrEmpty(this._customer.kontak) ? "" : this._customer.kontak,
                     telepon = string.IsNullOrEmpty(this._customer.telepon) ? "-" : this._customer.telepon,
                     nota = txtNota.Text,
@@ -1257,6 +1259,8 @@ namespace OpenRetail.App.Transaksi
                     is_sdac = this._jual.is_sdac,
                     kirim_kepada = string.IsNullOrEmpty(this._jual.kirim_kepada) ? "" : this._jual.kirim_kepada,
                     kirim_alamat = string.IsNullOrEmpty(this._jual.kirim_alamat) ? "" : this._jual.kirim_alamat,
+                    kirim_desa = string.IsNullOrEmpty(this._jual.kirim_desa) ? "-" : this._jual.kirim_desa,
+                    kirim_kabupaten = string.IsNullOrEmpty(this._jual.kirim_kabupaten) ? "-" : this._jual.kirim_kabupaten,
                     kirim_kecamatan = string.IsNullOrEmpty(this._jual.kirim_kecamatan) ? "-" : this._jual.kirim_kecamatan,
                     kirim_kelurahan = string.IsNullOrEmpty(this._jual.kirim_kelurahan) ? "-" : this._jual.kirim_kelurahan,
                     kirim_kota = string.IsNullOrEmpty(this._jual.kirim_kota) ? "-" : this._jual.kirim_kota,

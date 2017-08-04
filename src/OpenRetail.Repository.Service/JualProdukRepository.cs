@@ -35,10 +35,10 @@ namespace OpenRetail.Repository.Service
     {
         private const string SQL_TEMPLATE = @"SELECT t_jual_produk.jual_id, t_jual_produk.retur_jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, 
                                               t_jual_produk.ppn, t_jual_produk.kurir, t_jual_produk.ongkos_kirim, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan, t_jual_produk.total_pelunasan AS total_pelunasan_old, t_jual_produk.keterangan, t_jual_produk.tanggal_sistem, 
-                                              t_jual_produk.is_sdac, t_jual_produk.is_dropship, t_jual_produk.kirim_kepada, t_jual_produk.kirim_alamat, t_jual_produk.kirim_kecamatan, t_jual_produk.kirim_kelurahan, t_jual_produk.kirim_kota, t_jual_produk.kirim_kode_pos, t_jual_produk.kirim_telepon,
+                                              t_jual_produk.is_sdac, t_jual_produk.is_dropship, t_jual_produk.kirim_kepada, t_jual_produk.kirim_alamat, t_jual_produk.kirim_kecamatan, t_jual_produk.kirim_desa, t_jual_produk.kirim_kabupaten, t_jual_produk.kirim_kelurahan, t_jual_produk.kirim_kota, t_jual_produk.kirim_kode_pos, t_jual_produk.kirim_telepon,
                                               t_jual_produk.label_dari1, t_jual_produk.label_dari2, t_jual_produk.label_dari3, t_jual_produk.label_dari4,
                                               t_jual_produk.label_kepada1, t_jual_produk.label_kepada2, t_jual_produk.label_kepada3, t_jual_produk.label_kepada4,
-                                              m_customer.customer_id, m_customer.nama_customer, m_customer.alamat, m_customer.kecamatan, m_customer.kelurahan, m_customer.kota, m_customer.kode_pos, m_customer.telepon, m_customer.diskon, m_customer.plafon_piutang,
+                                              m_customer.customer_id, m_customer.nama_customer, m_customer.alamat, m_customer.kecamatan, m_customer.kelurahan, m_customer.desa, m_customer.kabupaten, m_customer.kota, m_customer.kode_pos, m_customer.telepon, m_customer.diskon, m_customer.plafon_piutang,
                                               m_pengguna.pengguna_id, m_pengguna.nama_pengguna
                                               FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
                                               LEFT JOIN m_pengguna ON m_pengguna.pengguna_id = t_jual_produk.pengguna_id

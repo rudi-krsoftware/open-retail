@@ -294,7 +294,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!kurir.Value, "NotaPenjualan") &amp; ": " &amp; FormatNumber(First(Fields!ongkos_kirim.Value, "NotaPenjualan"), 2)</Value>
+                <Value>=First(Fields!kurir.Value, "NotaPenjualan") &amp; ": " &amp; FormatNumber(First(Fields!ongkos_kirim.Value, "NotaPenjualan"), 0)</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontSize>11pt</FontSize>

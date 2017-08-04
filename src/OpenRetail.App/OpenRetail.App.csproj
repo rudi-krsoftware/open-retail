@@ -86,47 +86,47 @@
       <HintPath>..\..\lib\RestSharp.105.2.3\lib\net4\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Grid.Base, Version=13.3400.0.12, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Grid.Base, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Syncfusion.Grid.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Grid.Windows, Version=13.3400.0.12, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Syncfusion.Grid.Windows.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Grid.Windows.XmlSerializers, Version=13.3400.0.12, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Grid.Windows.XmlSerializers, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Syncfusion.Grid.Windows.XmlSerializers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.GridConverter.Windows, Version=13.3400.0.12, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.GridConverter.Windows, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Syncfusion.GridConverter.Windows.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.GridHelperClasses.Windows, Version=13.3400.0.12, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.GridHelperClasses.Windows, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Syncfusion.GridHelperClasses.Windows.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Shared.Base, Version=13.3400.0.12, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Shared.Base, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Syncfusion.Shared.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Shared.Windows, Version=13.3400.0.12, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Shared.Windows, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Syncfusion.Shared.Windows.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Tools.Base, Version=13.3400.0.12, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Tools.Base, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Syncfusion.Tools.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Tools.Windows, Version=13.3400.0.12, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Syncfusion.Tools.Windows.dll</HintPath>
       <Private>True</Private>

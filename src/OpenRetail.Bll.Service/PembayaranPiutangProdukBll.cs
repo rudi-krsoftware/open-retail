@@ -82,7 +82,15 @@ namespace OpenRetail.Bll.Service
 
         public IList<PembayaranPiutangProduk> GetByName(string name)
         {
-            throw new NotImplementedException();
+            IList<PembayaranPiutangProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.PembayaranPiutangProdukRepository.GetByName(name);
+            }
+
+            return oList;
         }        
 
         public IList<PembayaranPiutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)

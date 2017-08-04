@@ -44,9 +44,11 @@ namespace OpenRetail.Model.Nota
 
         public string kirim_kepada { get; set; }
         public string kirim_alamat { get; set; }
-        public string kirim_kecamatan { get; set; }
+        public string kirim_desa { get; set; }
         public string kirim_kelurahan { get; set; }
+        public string kirim_kecamatan { get; set; }        
         public string kirim_kota { get; set; }
+        public string kirim_kabupaten { get; set; }
         public string kirim_kode_pos { get; set; }
         public string kirim_telepon { get; set; }
 
