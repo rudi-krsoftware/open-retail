@@ -156,8 +156,8 @@ namespace OpenRetail.Bll.Service
                             if (customer.nama_customer.Length > 50)
                                 customer.nama_customer = customer.nama_customer.Substring(0, 50);
 
-                            if (customer.alamat.Length > 100)
-                                customer.alamat = customer.alamat.Substring(0, 100);
+                            if (customer.alamat.Length > 250)
+                                customer.alamat = customer.alamat.Substring(0, 250);
 
                             if (customer.kontak.Length > 50)
                                 customer.kontak = customer.kontak.Substring(0, 50);
