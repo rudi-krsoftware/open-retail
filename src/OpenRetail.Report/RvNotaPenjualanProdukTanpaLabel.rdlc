@@ -1210,6 +1210,9 @@
         <Height>0.25in</Height>
         <Width>1.05717in</Width>
         <ZIndex>12</ZIndex>
+        <Visibility>
+          <Hidden>=IIf(Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy") = "01-01-0001", True, False)</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1515,6 +1518,9 @@
         <Height>0.25in</Height>
         <Width>0.5625in</Width>
         <ZIndex>23</ZIndex>
+        <Visibility>
+          <Hidden>=IIf(Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy") = "01-01-0001", True, False)</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
