@@ -56,7 +56,15 @@ namespace OpenRetail.Bll.Service
 
         public IList<PembayaranHutangProduk> GetByName(string name)
         {
-            throw new NotImplementedException();
+            IList<PembayaranHutangProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.PembayaranHutangProdukRepository.GetByName(name);
+            }
+
+            return oList;
         }
 
         public IList<PembayaranHutangProduk> GetAll()

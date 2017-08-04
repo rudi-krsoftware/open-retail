@@ -112,7 +112,28 @@ namespace OpenRetail.Repository.Service
 
         public IList<PembayaranHutangProduk> GetByName(string name)
         {
-            throw new NotImplementedException();
+            IList<PembayaranHutangProduk> oList = new List<PembayaranHutangProduk>();
+
+            try
+            {
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_supplier.nama_supplier) LIKE @name");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_pembayaran_hutang_produk.tanggal, t_pembayaran_hutang_produk.nota");
+
+                name = "%" + name.ToLower() + "%";
+
+                oList = MappingRecordToObject(_sql, new { name }).ToList();
+
+                foreach (var item in oList)
+                {
+                    item.item_pembayaran_hutang = GetItemPembayaran(item.pembayaran_hutang_produk_id);
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
         }
 
         public IList<PembayaranHutangProduk> GetAll()
