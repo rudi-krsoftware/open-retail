@@ -1874,6 +1874,10 @@
           <DataField>alamat</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="desa">
+          <DataField>desa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="kecamatan">
           <DataField>kecamatan</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1884,6 +1888,10 @@
         </Field>
         <Field Name="kota">
           <DataField>kota</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kabupaten">
+          <DataField>kabupaten</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="kode_pos">
@@ -1910,6 +1918,10 @@
           <DataField>kirim_alamat</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="kirim_desa">
+          <DataField>kirim_desa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="kirim_kecamatan">
           <DataField>kirim_kecamatan</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1920,6 +1932,10 @@
         </Field>
         <Field Name="kirim_kota">
           <DataField>kirim_kota</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kirim_kabupaten">
+          <DataField>kirim_kabupaten</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="kirim_kode_pos">
@@ -1949,6 +1965,10 @@
         <Field Name="diskon_nota">
           <DataField>diskon_nota</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="kurir">
+          <DataField>kurir</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ongkos_kirim">
           <DataField>ongkos_kirim</DataField>
@@ -1998,10 +2018,42 @@
           <DataField>sub_total</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
+        <Field Name="label_dari1">
+          <DataField>label_dari1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="label_dari2">
+          <DataField>label_dari2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="label_dari3">
+          <DataField>label_dari3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="label_dari4">
+          <DataField>label_dari4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="label_kepada1">
+          <DataField>label_kepada1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="label_kepada2">
+          <DataField>label_kepada2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="label_kepada3">
+          <DataField>label_kepada3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="label_kepada4">
+          <DataField>label_kepada4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DsPenjualan</rd:DataSetName>
-        <rd:SchemaPath>D:\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPenjualan.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Data\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPenjualan.xsd</rd:SchemaPath>
         <rd:TableName>NotaPenjualan</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
