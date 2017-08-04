@@ -1226,7 +1226,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=IIf(Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy") = "01-01-0001", ": -", ": " &amp; Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy"))</Value>
-                <Style />
+                <Style>
+                  <Color>=IIf(Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy") = "01-01-0001", "White", "Red")</Color>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -1238,9 +1240,6 @@
         <Height>0.25in</Height>
         <Width>1.05717in</Width>
         <ZIndex>13</ZIndex>
-        <Visibility>
-          <Hidden>=IIf(Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy") = "01-01-0001", True, False)</Hidden>
-        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1523,7 +1522,9 @@
             <TextRuns>
               <TextRun>
                 <Value>Tempo</Value>
-                <Style />
+                <Style>
+                  <Color>=IIf(Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy") = "01-01-0001", "White", "Red")</Color>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -1534,9 +1535,6 @@
         <Height>0.25in</Height>
         <Width>0.5625in</Width>
         <ZIndex>23</ZIndex>
-        <Visibility>
-          <Hidden>=IIf(Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy") = "01-01-0001", True, False)</Hidden>
-        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
