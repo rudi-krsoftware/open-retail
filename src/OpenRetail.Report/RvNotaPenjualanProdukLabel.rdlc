@@ -728,7 +728,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=FormatNumber(Fields!harga.Value, 2)</Value>
+                              <Value>=FormatNumber(Fields!harga.Value, 0)</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -782,7 +782,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=FormatNumber(Fields!sub_total.Value, 2)</Value>
+                              <Value>=FormatNumber(Fields!sub_total.Value, 0)</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -1320,7 +1320,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(First(Fields!ppn.Value, "NotaPenjualan"), 2)</Value>
+                <Value>=FormatNumber(First(Fields!ppn.Value, "NotaPenjualan"), 0)</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -1355,7 +1355,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(First(Fields!diskon_nota.Value, "NotaPenjualan"), 2)</Value>
+                <Value>=FormatNumber(First(Fields!diskon_nota.Value, "NotaPenjualan"), 0)</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -1390,7 +1390,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(First(Fields!total_nota.Value - Fields!diskon_nota.Value + Fields!ppn.Value + Fields!ongkos_kirim.Value, "NotaPenjualan"), 2)</Value>
+                <Value>=FormatNumber(First(Fields!total_nota.Value - Fields!diskon_nota.Value + Fields!ppn.Value + Fields!ongkos_kirim.Value, "NotaPenjualan"), 0)</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -1449,7 +1449,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(First(Fields!ongkos_kirim.Value, "NotaPenjualan"), 2)</Value>
+                <Value>=FormatNumber(First(Fields!ongkos_kirim.Value, "NotaPenjualan"), 0)</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -2138,7 +2138,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!kurir.Value, "NotaPenjualan") &amp; ": " &amp; FormatNumber(First(Fields!ongkos_kirim.Value, "NotaPenjualan"), 2)</Value>
+                <Value>=First(Fields!kurir.Value, "NotaPenjualan") &amp; ": " &amp; FormatNumber(First(Fields!ongkos_kirim.Value, "NotaPenjualan"), 0)</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontWeight>Bold</FontWeight>
