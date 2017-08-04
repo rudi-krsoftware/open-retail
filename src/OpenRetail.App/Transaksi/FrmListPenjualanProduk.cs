@@ -51,6 +51,7 @@ namespace OpenRetail.App.Transaksi
             : base()
         {
             InitializeComponent();
+            ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
@@ -67,6 +68,9 @@ namespace OpenRetail.App.Transaksi
             {
                 if (role.is_grant)
                     LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
+
+                txtNamaCustomer.Enabled = role.is_grant;
+                btnCari.Enabled = role.is_grant;
 
                 filterRangeTanggal.Enabled = role.is_grant;
             }            
@@ -247,6 +251,17 @@ namespace OpenRetail.App.Transaksi
             ResetButton();
         }
 
+        private void LoadData(string customerName)
+        {
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                _listOfJual = _bll.GetByName(customerName);
+                GridListControlHelper.Refresh<JualProduk>(this.gridList, _listOfJual);
+            }
+
+            ResetButton();
+        }
+
         private void LoadData(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
@@ -347,17 +362,40 @@ namespace OpenRetail.App.Transaksi
                 return;
             }
 
+            txtNamaCustomer.Clear();
             LoadData(tanggalMulai, tanggalSelesai);
         }
 
         private void filterRangeTanggal_ChkTampilkanSemuaDataClicked(object sender, EventArgs e)
-        {
+        {            
+            txtNamaCustomer.Clear();
+
             var chk = (CheckBox)sender;
 
             if (chk.Checked)
+            {
                 LoadData();
+                txtNamaCustomer.Enabled = false;
+                btnCari.Enabled = false;
+            }                
             else
+            {
                 LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
+                txtNamaCustomer.Enabled = true;
+                btnCari.Enabled = true;
+            }                
+        }
+
+        private void txtNamaCustomer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e))
+                btnCari_Click(sender, e);
+        }
+
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+            if (txtNamaCustomer.Text.Length > 0)
+                LoadData(txtNamaCustomer.Text);
         }
     }
 }

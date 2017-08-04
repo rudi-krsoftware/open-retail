@@ -43,6 +43,7 @@
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
             this.SuspendLayout();
+            
             // 
             // tableLayoutPanel5
             // 
@@ -112,6 +113,7 @@
             this.btnCari.Name = "btnCari";
             this.btnCari.Size = new System.Drawing.Size(37, 23);
             this.btnCari.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.btnCari, "Cari nama produk");
             this.btnCari.UseVisualStyleBackColor = true;
             this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
             // 
@@ -163,12 +165,8 @@
             this.gridList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridList.ItemHeight = 17;
             this.gridList.Location = new System.Drawing.Point(3, 31);
-            this.gridList.MultiColumn = false;
             this.gridList.Name = "gridList";
             this.gridList.Properties.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.gridList.Properties.ForceImmediateRepaint = false;
-            this.gridList.Properties.MarkColHeader = false;
-            this.gridList.Properties.MarkRowHeader = false;
             this.gridList.SelectedIndex = -1;
             this.gridList.Size = new System.Drawing.Size(931, 323);
             this.gridList.TabIndex = 1;
