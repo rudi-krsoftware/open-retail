@@ -41,14 +41,20 @@ namespace OpenRetail.Model
 		[Display(Name = "Alamat")]
 		public string alamat { get; set; }
 
-        [Display(Name = "Kecamatan")]
-        public string kecamatan { get; set; }
+        [Display(Name = "Desa")]
+        public string desa { get; set; }
 
         [Display(Name = "Kelurahan")]
         public string kelurahan { get; set; }
 
+        [Display(Name = "Kecamatan")]
+        public string kecamatan { get; set; }        
+
         [Display(Name = "Kota")]
         public string kota { get; set; }
+
+        [Display(Name = "Kabupaten")]
+        public string kabupaten { get; set; }
 
         [Display(Name = "Kode Pos")]
         public string kode_pos { get; set; }
@@ -91,9 +97,11 @@ namespace OpenRetail.Model
 
 			RuleFor(c => c.nama_customer).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
             RuleFor(c => c.alamat).Length(0, 250).WithMessage(msgError2);
-            RuleFor(c => c.kecamatan).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.desa).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.kelurahan).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.kecamatan).Length(0, 100).WithMessage(msgError2);            
             RuleFor(c => c.kota).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.kabupaten).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.kode_pos).Length(0, 6).WithMessage(msgError2);
 			RuleFor(c => c.kontak).Length(0, 50).WithMessage(msgError2);
 			RuleFor(c => c.telepon).Length(0, 20).WithMessage(msgError2);

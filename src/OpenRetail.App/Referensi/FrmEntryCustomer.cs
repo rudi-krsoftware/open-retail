@@ -65,9 +65,11 @@ namespace OpenRetail.App.Referensi
 
             txtCustomer.Text = this._customer.nama_customer;
             txtAlamat.Text = this._customer.alamat;
-            txtKecamatan.Text = this._customer.kecamatan;
+            txtDesa.Text = this._customer.desa;
             txtKelurahan.Text = this._customer.kelurahan;
+            txtKecamatan.Text = this._customer.kecamatan;            
             txtKota.Text = this._customer.kota;
+            txtKabupaten.Text = this._customer.kabupaten;
             txtKodePos.Text = this._customer.kode_pos;
             txtKontak.Text = this._customer.kontak;
             txtTelepon.Text = this._customer.telepon;
@@ -82,9 +84,11 @@ namespace OpenRetail.App.Referensi
 
             _customer.nama_customer = txtCustomer.Text;
             _customer.alamat = txtAlamat.Text;
-            _customer.kecamatan = txtKecamatan.Text;
+            _customer.desa = txtDesa.Text;
             _customer.kelurahan = txtKelurahan.Text;
+            _customer.kecamatan = txtKecamatan.Text;            
             _customer.kota = txtKota.Text;
+            _customer.kabupaten = txtKabupaten.Text;
             _customer.kode_pos = txtKodePos.Text;
             _customer.kontak = txtKontak.Text;
             _customer.telepon = txtTelepon.Text;

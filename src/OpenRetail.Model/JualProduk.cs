@@ -112,14 +112,20 @@ namespace OpenRetail.Model
         [Display(Name = "Alamat")]
         public string kirim_alamat { get; set; }
 
-        [Display(Name = "Kecamatan")]
-        public string kirim_kecamatan { get; set; }
+        [Display(Name = "Desa")]
+        public string kirim_desa { get; set; }        
 
         [Display(Name = "Kelurahan")]
         public string kirim_kelurahan { get; set; }
 
+        [Display(Name = "Kecamatan")]
+        public string kirim_kecamatan { get; set; }
+
         [Display(Name = "Kota")]
         public string kirim_kota { get; set; }
+
+        [Display(Name = "Kabupaten")]
+        public string kirim_kabupaten { get; set; }
 
         [Display(Name = "Kode Pos")]
         public string kirim_kode_pos { get; set; }

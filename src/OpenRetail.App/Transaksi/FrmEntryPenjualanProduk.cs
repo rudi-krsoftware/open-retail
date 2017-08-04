@@ -739,6 +739,8 @@ namespace OpenRetail.App.Transaksi
                 this._jual.kirim_alamat = alamatKirim.alamat;
                 this._jual.kirim_kecamatan = alamatKirim.kecamatan;
                 this._jual.kirim_kelurahan = alamatKirim.kelurahan;
+                this._jual.kirim_desa = alamatKirim.desa;
+                this._jual.kirim_kabupaten = alamatKirim.kabupaten;
             }
             else if (data is LabelAlamatKirim)
             {
@@ -1257,6 +1259,8 @@ namespace OpenRetail.App.Transaksi
                     is_sdac = this._jual.is_sdac,
                     kirim_kepada = string.IsNullOrEmpty(this._jual.kirim_kepada) ? "" : this._jual.kirim_kepada,
                     kirim_alamat = string.IsNullOrEmpty(this._jual.kirim_alamat) ? "" : this._jual.kirim_alamat,
+                    kirim_desa = string.IsNullOrEmpty(this._jual.kirim_desa) ? "-" : this._jual.kirim_desa,
+                    kirim_kabupaten = string.IsNullOrEmpty(this._jual.kirim_kabupaten) ? "-" : this._jual.kirim_kabupaten,
                     kirim_kecamatan = string.IsNullOrEmpty(this._jual.kirim_kecamatan) ? "-" : this._jual.kirim_kecamatan,
                     kirim_kelurahan = string.IsNullOrEmpty(this._jual.kirim_kelurahan) ? "-" : this._jual.kirim_kelurahan,
                     kirim_kota = string.IsNullOrEmpty(this._jual.kirim_kota) ? "-" : this._jual.kirim_kota,
