@@ -41,16 +41,16 @@
             this.txtPlafonPiutang = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtKecamatan = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKelurahan = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKota = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.txtKodePos = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtDiskon = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDesa = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtKelurahan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKota = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txtKabupaten = new OpenRetail.App.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
@@ -274,38 +274,6 @@
             this.txtKecamatan.Tag = "kecamatan";
             this.txtKecamatan.ThousandSeparator = false;
             // 
-            // txtKelurahan
-            // 
-            this.txtKelurahan.AutoEnter = true;
-            this.txtKelurahan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtKelurahan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtKelurahan.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtKelurahan.LetterOnly = false;
-            this.txtKelurahan.Location = new System.Drawing.Point(90, 78);
-            this.txtKelurahan.Name = "txtKelurahan";
-            this.txtKelurahan.NumericOnly = false;
-            this.txtKelurahan.SelectionText = false;
-            this.txtKelurahan.Size = new System.Drawing.Size(383, 20);
-            this.txtKelurahan.TabIndex = 3;
-            this.txtKelurahan.Tag = "kelurahan";
-            this.txtKelurahan.ThousandSeparator = false;
-            // 
-            // txtKota
-            // 
-            this.txtKota.AutoEnter = true;
-            this.txtKota.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
-            this.txtKota.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtKota.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtKota.LetterOnly = false;
-            this.txtKota.Location = new System.Drawing.Point(90, 128);
-            this.txtKota.Name = "txtKota";
-            this.txtKota.NumericOnly = false;
-            this.txtKota.SelectionText = false;
-            this.txtKota.Size = new System.Drawing.Size(383, 20);
-            this.txtKota.TabIndex = 5;
-            this.txtKota.Tag = "kota";
-            this.txtKota.ThousandSeparator = false;
-            // 
             // txtKodePos
             // 
             this.txtKodePos.AutoEnter = true;
@@ -315,34 +283,12 @@
             this.txtKodePos.LetterOnly = false;
             this.txtKodePos.Location = new System.Drawing.Point(90, 178);
             this.txtKodePos.Name = "txtKodePos";
-            this.txtKodePos.NumericOnly = true;
+            this.txtKodePos.NumericOnly = false;
             this.txtKodePos.SelectionText = false;
             this.txtKodePos.Size = new System.Drawing.Size(66, 20);
             this.txtKodePos.TabIndex = 7;
             this.txtKodePos.Tag = "kode_pos";
             this.txtKodePos.ThousandSeparator = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label7.Location = new System.Drawing.Point(3, 75);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 25);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Kelurahan";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label8.Location = new System.Drawing.Point(3, 125);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 25);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Kota";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label9
             // 
@@ -411,6 +357,60 @@
             this.txtDesa.TabIndex = 2;
             this.txtDesa.Tag = "desa";
             this.txtDesa.ThousandSeparator = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label7.Location = new System.Drawing.Point(3, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 25);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Kelurahan";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtKelurahan
+            // 
+            this.txtKelurahan.AutoEnter = true;
+            this.txtKelurahan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKelurahan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtKelurahan.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKelurahan.LetterOnly = false;
+            this.txtKelurahan.Location = new System.Drawing.Point(90, 78);
+            this.txtKelurahan.Name = "txtKelurahan";
+            this.txtKelurahan.NumericOnly = false;
+            this.txtKelurahan.SelectionText = false;
+            this.txtKelurahan.Size = new System.Drawing.Size(383, 20);
+            this.txtKelurahan.TabIndex = 3;
+            this.txtKelurahan.Tag = "kelurahan";
+            this.txtKelurahan.ThousandSeparator = false;
+            // 
+            // txtKota
+            // 
+            this.txtKota.AutoEnter = true;
+            this.txtKota.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKota.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtKota.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKota.LetterOnly = false;
+            this.txtKota.Location = new System.Drawing.Point(90, 128);
+            this.txtKota.Name = "txtKota";
+            this.txtKota.NumericOnly = false;
+            this.txtKota.SelectionText = false;
+            this.txtKota.Size = new System.Drawing.Size(383, 20);
+            this.txtKota.TabIndex = 5;
+            this.txtKota.Tag = "kota";
+            this.txtKota.ThousandSeparator = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label8.Location = new System.Drawing.Point(3, 125);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 25);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Kota";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label12
             // 

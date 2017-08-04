@@ -1246,7 +1246,7 @@ namespace OpenRetail.App.Transaksi
                     kecamatan = string.IsNullOrEmpty(this._customer.kecamatan) ? "-" : this._customer.kecamatan,
                     kelurahan = string.IsNullOrEmpty(this._customer.kelurahan) ? "-" : this._customer.kelurahan,
                     kota = string.IsNullOrEmpty(this._customer.kota) ? "-" : this._customer.kota,
-                    kode_pos = string.IsNullOrEmpty(this._customer.kode_pos) ? "-" : this._customer.kode_pos,
+                    kode_pos = (string.IsNullOrEmpty(this._customer.kode_pos) || this._customer.kode_pos == "0") ? "-" : this._customer.kode_pos,
                     kontak = string.IsNullOrEmpty(this._customer.kontak) ? "" : this._customer.kontak,
                     telepon = string.IsNullOrEmpty(this._customer.telepon) ? "-" : this._customer.telepon,
                     nota = txtNota.Text,
