@@ -95,6 +95,7 @@
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.chkTampilkanInfoMinimalStokProduk = new System.Windows.Forms.CheckBox();
             this.chkCustomerWajibDiisi = new System.Windows.Forms.CheckBox();
+            this.chkSingkatPenulisanOngkir = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1022,10 +1023,12 @@
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.Controls.Add(this.chkTampilkanInfoMinimalStokProduk, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.chkCustomerWajibDiisi, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.chkSingkatPenulisanOngkir, 0, 2);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 3;
+            this.tableLayoutPanel13.RowCount = 4;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -1053,6 +1056,17 @@
             this.chkCustomerWajibDiisi.TabIndex = 1;
             this.chkCustomerWajibDiisi.Text = "Customer wajib diisi pada saat penjualan";
             this.chkCustomerWajibDiisi.UseVisualStyleBackColor = true;
+            // 
+            // chkSingkatPenulisanOngkir
+            // 
+            this.chkSingkatPenulisanOngkir.AutoSize = true;
+            this.chkSingkatPenulisanOngkir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkSingkatPenulisanOngkir.Location = new System.Drawing.Point(3, 53);
+            this.chkSingkatPenulisanOngkir.Name = "chkSingkatPenulisanOngkir";
+            this.chkSingkatPenulisanOngkir.Size = new System.Drawing.Size(410, 19);
+            this.chkSingkatPenulisanOngkir.TabIndex = 2;
+            this.chkSingkatPenulisanOngkir.Text = "Singkat penulisan ongkos kirim. Misal 7.000 -> 7, 14.000 -> 14, dst";
+            this.chkSingkatPenulisanOngkir.UseVisualStyleBackColor = true;
             // 
             // FrmPengaturanUmum
             // 
@@ -1167,6 +1181,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.CheckBox chkTampilkanInfoMinimalStokProduk;
         private System.Windows.Forms.CheckBox chkCustomerWajibDiisi;
+        private System.Windows.Forms.CheckBox chkSingkatPenulisanOngkir;
 
 
 
