@@ -163,6 +163,16 @@ namespace OpenRetail.App.Transaksi
                     item.label_kepada2 = txtKepada2.Text;
                     item.label_kepada3 = txtKepada3.Text;
                     item.label_kepada4 = txtKepada4.Text;
+
+                    if (_pengaturanUmum.is_singkat_penulisan_ongkir && item.ongkos_kirim > 0)
+                    {
+                        item.ongkos_kirim /= 1000;
+                        item.label_ongkos_kirim = item.ongkos_kirim.ToString();
+                    }
+                    else
+                    {
+                        item.label_ongkos_kirim = NumberHelper.NumberToString(item.ongkos_kirim);
+                    }                        
                 }
 
                 var reportName = "RvLabelNotaPenjualan";

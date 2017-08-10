@@ -88,6 +88,7 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum.is_auto_print_label_nota = AppConfigHelper.GetValue("isAutoPrinterLabelNota", appConfigFile).ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.is_show_minimal_stok = AppConfigHelper.GetValue("isShowMinimalStok", appConfigFile).ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.is_customer_required = AppConfigHelper.GetValue("isCustomerRequired", appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_singkat_penulisan_ongkir = AppConfigHelper.GetValue("isSingkatPenulisanOngkir", appConfigFile).ToLower() == "true" ? true : false;
 
             // set info printer mini pos
             var jumlahKarakter = AppConfigHelper.GetValue("jumlahKarakter", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahKarakter", appConfigFile)) : 40;

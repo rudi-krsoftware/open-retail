@@ -5223,6 +5223,8 @@ namespace OpenRetail.Report.DataSet {
             
             private global::System.Data.DataColumn columnongkos_kirim;
             
+            private global::System.Data.DataColumn columnlabel_ongkos_kirim;
+            
             private global::System.Data.DataColumn columntotal_nota;
             
             private global::System.Data.DataColumn columnkode_produk;
@@ -5512,6 +5514,14 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn label_ongkos_kirimColumn {
+                get {
+                    return this.columnlabel_ongkos_kirim;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn total_notaColumn {
                 get {
                     return this.columntotal_nota;
@@ -5727,6 +5737,7 @@ namespace OpenRetail.Report.DataSet {
                         double diskon_nota, 
                         string kurir, 
                         double ongkos_kirim, 
+                        string label_ongkos_kirim, 
                         double total_nota, 
                         string kode_produk, 
                         string nama_produk, 
@@ -5775,6 +5786,7 @@ namespace OpenRetail.Report.DataSet {
                         diskon_nota,
                         kurir,
                         ongkos_kirim,
+                        label_ongkos_kirim,
                         total_nota,
                         kode_produk,
                         nama_produk,
@@ -5843,6 +5855,7 @@ namespace OpenRetail.Report.DataSet {
                 this.columndiskon_nota = base.Columns["diskon_nota"];
                 this.columnkurir = base.Columns["kurir"];
                 this.columnongkos_kirim = base.Columns["ongkos_kirim"];
+                this.columnlabel_ongkos_kirim = base.Columns["label_ongkos_kirim"];
                 this.columntotal_nota = base.Columns["total_nota"];
                 this.columnkode_produk = base.Columns["kode_produk"];
                 this.columnnama_produk = base.Columns["nama_produk"];
@@ -5921,6 +5934,8 @@ namespace OpenRetail.Report.DataSet {
                 base.Columns.Add(this.columnkurir);
                 this.columnongkos_kirim = new global::System.Data.DataColumn("ongkos_kirim", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnongkos_kirim);
+                this.columnlabel_ongkos_kirim = new global::System.Data.DataColumn("label_ongkos_kirim", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlabel_ongkos_kirim);
                 this.columntotal_nota = new global::System.Data.DataColumn("total_nota", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotal_nota);
                 this.columnkode_produk = new global::System.Data.DataColumn("kode_produk", typeof(string), null, global::System.Data.MappingType.Element);
@@ -10577,6 +10592,22 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string label_ongkos_kirim {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.label_ongkos_kirimColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'label_ongkos_kirim\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.label_ongkos_kirimColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public double total_nota {
                 get {
                     try {
@@ -11201,6 +11232,18 @@ namespace OpenRetail.Report.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setongkos_kirimNull() {
                 this[this.tableNotaPenjualan.ongkos_kirimColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Islabel_ongkos_kirimNull() {
+                return this.IsNull(this.tableNotaPenjualan.label_ongkos_kirimColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setlabel_ongkos_kirimNull() {
+                this[this.tableNotaPenjualan.label_ongkos_kirimColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -180,6 +180,7 @@ namespace OpenRetail.App.Pengaturan
         {
             chkTampilkanInfoMinimalStokProduk.Checked = _pengaturanUmum.is_show_minimal_stok;
             chkCustomerWajibDiisi.Checked = _pengaturanUmum.is_customer_required;
+            chkSingkatPenulisanOngkir.Checked = _pengaturanUmum.is_singkat_penulisan_ongkir;
         }
 
         protected override void Simpan()
@@ -193,6 +194,7 @@ namespace OpenRetail.App.Pengaturan
                 _pengaturanUmum.is_cetak_customer = chkCetakCustomer.Checked;
                 _pengaturanUmum.is_show_minimal_stok = chkTampilkanInfoMinimalStokProduk.Checked;
                 _pengaturanUmum.is_customer_required = chkCustomerWajibDiisi.Checked;
+                _pengaturanUmum.is_singkat_penulisan_ongkir = chkSingkatPenulisanOngkir.Checked;
                 _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
                 _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
 
@@ -207,6 +209,7 @@ namespace OpenRetail.App.Pengaturan
                 AppConfigHelper.SaveValue("isCetakCustomer", chkCetakCustomer.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("isShowMinimalStok", chkTampilkanInfoMinimalStokProduk.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("isCustomerRequired", chkCustomerWajibDiisi.Checked.ToString(), appConfigFile);
+                AppConfigHelper.SaveValue("isSingkatPenulisanOngkir", chkSingkatPenulisanOngkir.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
                 AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
 
@@ -355,6 +358,11 @@ namespace OpenRetail.App.Pengaturan
                         item.label_dari1 = txtDari1.Text;
                         item.label_dari2 = txtDari2.Text;
                         item.label_dari3 = txtDari3.Text;
+
+                        if (_pengaturanUmum.is_singkat_penulisan_ongkir)
+                        {
+                            item.ongkos_kirim /= 1000;
+                        }
                     }
 
                     var dt = DateTime.Now;
