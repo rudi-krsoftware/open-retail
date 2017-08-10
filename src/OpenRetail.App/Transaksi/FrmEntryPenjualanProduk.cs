@@ -410,7 +410,8 @@ namespace OpenRetail.App.Transaksi
                 var grosir = GetHargaGrosir(produk, jumlah);
                 if (grosir != null)
                 {
-                    result = grosir.harga_grosir;
+                    if (grosir.harga_grosir > 0)
+                        result = grosir.harga_grosir;
                 }
             }            
 
@@ -426,7 +427,8 @@ namespace OpenRetail.App.Transaksi
                 var grosir = GetHargaGrosir(produk, jumlah);
                 if (grosir != null)
                 {
-                    result = grosir.diskon;
+                    if (grosir.diskon > 0)
+                        result = grosir.diskon;
                 }
             }            
 
@@ -847,7 +849,7 @@ namespace OpenRetail.App.Transaksi
             itemJual.Produk = produk;
             itemJual.jumlah = jumlah;
             itemJual.harga_beli = produk.harga_beli;
-            itemJual.harga_jual = harga;
+            itemJual.harga_jual = harga > 0 ? harga : produk.harga_jual;
             itemJual.diskon = diskon;
 
             _listOfItemJual[rowIndex - 1] = itemJual;
