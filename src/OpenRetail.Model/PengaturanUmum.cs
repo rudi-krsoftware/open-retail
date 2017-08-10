@@ -32,6 +32,7 @@ namespace OpenRetail.Model
         public bool is_cetak_customer { get; set; }
         public bool is_show_minimal_stok { get; set; }
         public bool is_customer_required { get; set; }
+        public bool is_singkat_penulisan_ongkir { get; set; }
         public int jumlah_karakter { get; set; }
         public int jumlah_gulung { get; set; }
         public IList<HeaderNota> list_of_header_nota { get; set; }

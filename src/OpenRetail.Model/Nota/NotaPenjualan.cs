@@ -68,6 +68,7 @@ namespace OpenRetail.Model.Nota
         public double diskon_nota { get; set; }
         public string kurir { get; set; }
         public double ongkos_kirim { get; set; }
+        public string label_ongkos_kirim { get; set; }
         public double total_nota { get; set; }        
 
         public string kode_produk { get; set; }
