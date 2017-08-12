@@ -29,7 +29,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.1875in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -42,7 +42,7 @@
                             <TextRun>
                               <Value>No</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -98,7 +98,7 @@
                             <TextRun>
                               <Value>Kode Produk</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -154,7 +154,7 @@
                             <TextRun>
                               <Value>Produk</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -210,7 +210,7 @@
                             <TextRun>
                               <Value>Jumlah</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -266,7 +266,7 @@
                             <TextRun>
                               <Value>Diskon</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -322,7 +322,7 @@
                             <TextRun>
                               <Value>Harga</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -378,7 +378,7 @@
                             <TextRun>
                               <Value>Sub Total</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -426,7 +426,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.1875in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -439,7 +439,7 @@
                             <TextRun>
                               <Value>=RowNumber(Nothing)</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -493,7 +493,7 @@
                             <TextRun>
                               <Value>=Fields!kode_produk.Value</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -545,7 +545,7 @@
                             <TextRun>
                               <Value>=Fields!nama_produk.Value</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -597,7 +597,7 @@
                             <TextRun>
                               <Value>=Fields!jumlah.Value - Fields!jumlah_retur.Value</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -651,7 +651,7 @@
                             <TextRun>
                               <Value>=FormatNumber(Fields!diskon.Value, 2)</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -705,7 +705,7 @@
                             <TextRun>
                               <Value>=FormatNumber(Fields!harga.Value, 0)</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -759,7 +759,7 @@
                             <TextRun>
                               <Value>=FormatNumber(Fields!sub_total.Value, 0)</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -828,8 +828,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>NotaPenjualan</DataSetName>
-        <Top>3.14042in</Top>
-        <Height>0.5in</Height>
+        <Top>2.15292in</Top>
+        <Height>0.375in</Height>
         <Width>6.78058in</Width>
         <Style>
           <Border>
@@ -845,15 +845,17 @@
             <TextRuns>
               <TextRun>
                 <Value>Nota</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>1.4925in</Top>
-        <Height>0.25in</Height>
+        <Top>1.06622in</Top>
+        <Height>0.19872in</Height>
         <Width>0.5625in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -875,15 +877,17 @@
             <TextRuns>
               <TextRun>
                 <Value>Tanggal</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>1.72028in</Top>
-        <Height>0.25in</Height>
+        <Top>1.21633in</Top>
+        <Height>0.19872in</Height>
         <Width>0.5625in</Width>
         <ZIndex>2</ZIndex>
         <Style>
@@ -905,15 +909,17 @@
             <TextRuns>
               <TextRun>
                 <Value>Kepada</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>2.1175in</Top>
-        <Height>0.25in</Height>
+        <Top>1.47894in</Top>
+        <Height>0.19872in</Height>
         <Width>0.6875in</Width>
         <ZIndex>3</ZIndex>
         <Style>
@@ -935,15 +941,17 @@
             <TextRuns>
               <TextRun>
                 <Value>Alamat</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>2.34528in</Top>
-        <Height>0.25in</Height>
+        <Top>1.62905in</Top>
+        <Height>0.19872in</Height>
         <Width>0.6875in</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -966,6 +974,7 @@
               <TextRun>
                 <Value>Diskon</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -976,9 +985,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>3.96667in</Top>
+        <Top>2.71667in</Top>
         <Left>4.89306in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>0.6875in</Width>
         <ZIndex>5</ZIndex>
         <Style>
@@ -1001,6 +1010,7 @@
               <TextRun>
                 <Value>PPN</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1011,9 +1021,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>4.19861in</Top>
+        <Top>2.87361in</Top>
         <Left>4.89306in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>0.6875in</Width>
         <ZIndex>6</ZIndex>
         <Style>
@@ -1036,6 +1046,7 @@
               <TextRun>
                 <Value>Total</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1046,9 +1057,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>4.43055in</Top>
+        <Top>3.03055in</Top>
         <Left>4.89306in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>0.6875in</Width>
         <ZIndex>7</ZIndex>
         <Style>
@@ -1070,7 +1081,9 @@
             <TextRuns>
               <TextRun>
                 <Value>Penerima</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -1079,7 +1092,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>4.84826in</Top>
+        <Top>3.28576in</Top>
         <Left>0.44027in</Left>
         <Height>0.25in</Height>
         <Width>1.33057in</Width>
@@ -1103,7 +1116,9 @@
             <TextRuns>
               <TextRun>
                 <Value>Hormat Kami</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -1112,7 +1127,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>4.84826in</Top>
+        <Top>3.28576in</Top>
         <Left>4.64306in</Left>
         <Height>0.25in</Height>
         <Width>1.75509in</Width>
@@ -1136,16 +1151,18 @@
             <TextRuns>
               <TextRun>
                 <Value>=": " &amp; First(Fields!nota.Value, "NotaPenjualan")</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>nota</rd:DefaultName>
-        <Top>1.4925in</Top>
+        <Top>1.06622in</Top>
         <Left>0.69497in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>1.05717in</Width>
         <ZIndex>10</ZIndex>
         <Style>
@@ -1167,16 +1184,18 @@
             <TextRuns>
               <TextRun>
                 <Value>=": " &amp; Format(First(Fields!tanggal.Value, "NotaPenjualan"), "dd-MM-yyyy")</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>tanggal</rd:DefaultName>
-        <Top>1.72028in</Top>
+        <Top>1.21633in</Top>
         <Left>0.69497in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>1.05717in</Width>
         <ZIndex>11</ZIndex>
         <Style>
@@ -1199,6 +1218,7 @@
               <TextRun>
                 <Value>=IIf(Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy") = "01-01-0001", ": -", ": " &amp; Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy"))</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <Color>=IIf(Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy") = "01-01-0001", "White", "Red")</Color>
                 </Style>
               </TextRun>
@@ -1207,9 +1227,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>tanggal_tempo</rd:DefaultName>
-        <Top>1.72028in</Top>
+        <Top>1.21633in</Top>
         <Left>2.46528in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>1.05717in</Width>
         <ZIndex>12</ZIndex>
         <Style>
@@ -1232,6 +1252,7 @@
               <TextRun>
                 <Value>=": " &amp; First(Iif(Fields!is_sdac.Value = True, Fields!nama_customer.Value, Fields!kirim_kepada.Value), "NotaPenjualan")</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1240,9 +1261,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>nama_supplier</rd:DefaultName>
-        <Top>2.1175in</Top>
+        <Top>1.47894in</Top>
         <Left>0.69497in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>6.02311in</Width>
         <ZIndex>13</ZIndex>
         <Style>
@@ -1264,16 +1285,18 @@
             <TextRuns>
               <TextRun>
                 <Value>=": " &amp; First(Iif(Fields!is_sdac.Value = True, Fields!alamat.Value, Fields!kirim_alamat.Value), "NotaPenjualan")</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>alamat1</rd:DefaultName>
-        <Top>2.34528in</Top>
+        <Top>1.62905in</Top>
         <Left>0.69497in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>6.02311in</Width>
         <ZIndex>14</ZIndex>
         <Style>
@@ -1296,6 +1319,7 @@
               <TextRun>
                 <Value>=FormatNumber(First(Fields!ppn.Value, "NotaPenjualan"), 0)</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1306,9 +1330,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>ppn</rd:DefaultName>
-        <Top>4.19861in</Top>
+        <Top>2.87361in</Top>
         <Left>5.625in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>1.125in</Width>
         <ZIndex>15</ZIndex>
         <Style>
@@ -1331,6 +1355,7 @@
               <TextRun>
                 <Value>=FormatNumber(First(Fields!diskon_nota.Value, "NotaPenjualan"), 0)</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1341,9 +1366,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>diskon_nota</rd:DefaultName>
-        <Top>3.96667in</Top>
+        <Top>2.71667in</Top>
         <Left>5.625in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>1.125in</Width>
         <ZIndex>16</ZIndex>
         <Style>
@@ -1366,6 +1391,7 @@
               <TextRun>
                 <Value>=FormatNumber(First(Fields!total_nota.Value - Fields!diskon_nota.Value + Fields!ppn.Value + Fields!ongkos_kirim.Value, "NotaPenjualan"), 0)</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1376,9 +1402,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>total_nota</rd:DefaultName>
-        <Top>4.43055in</Top>
+        <Top>3.03055in</Top>
         <Left>5.625in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>1.125in</Width>
         <ZIndex>17</ZIndex>
         <Style>
@@ -1393,7 +1419,7 @@
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>5.65708in</Top>
+        <Top>3.96958in</Top>
         <Left>0.44027in</Left>
         <Height>0in</Height>
         <Width>1.33057in</Width>
@@ -1405,7 +1431,7 @@
         </Style>
       </Line>
       <Line Name="Line2">
-        <Top>5.65708in</Top>
+        <Top>3.96958in</Top>
         <Left>4.87777in</Left>
         <Height>0in</Height>
         <Width>1.33057in</Width>
@@ -1417,7 +1443,7 @@
         </Style>
       </Line>
       <Line Name="Line3">
-        <Top>4.72188in</Top>
+        <Top>3.25938in</Top>
         <Height>0in</Height>
         <Width>6.75in</Width>
         <ZIndex>20</ZIndex>
@@ -1436,7 +1462,9 @@
               <TextRun>
                 <Value>=FormatNumber(First(Fields!ongkos_kirim.Value, "NotaPenjualan"), 0)</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
+                  <Color>=IIf(First(Fields!ongkos_kirim.Value, "NotaPenjualan") &gt; 0, "Black", "White")</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1446,9 +1474,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>ongkos_kirim</rd:DefaultName>
-        <Top>3.7375in</Top>
-        <Left>5.62362in</Left>
-        <Height>0.25in</Height>
+        <Top>2.5625in</Top>
+        <Left>5.625in</Left>
+        <Height>0.19872in</Height>
         <Width>1.125in</Width>
         <ZIndex>21</ZIndex>
         <Style>
@@ -1471,7 +1499,9 @@
               <TextRun>
                 <Value>Ongkos Kirim</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
+                  <Color>=IIf(First(Fields!ongkos_kirim.Value, "NotaPenjualan") &gt; 0, "Black", "White")</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1481,9 +1511,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>3.73348in</Top>
-        <Left>4.33056in</Left>
-        <Height>0.25in</Height>
+        <Top>2.5625in</Top>
+        <Left>4.33194in</Left>
+        <Height>0.19872in</Height>
         <Width>1.25in</Width>
         <ZIndex>22</ZIndex>
         <Style>
@@ -1506,6 +1536,7 @@
               <TextRun>
                 <Value>Tempo</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <Color>=IIf(Format(First(Fields!tanggal_tempo.Value, "NotaPenjualan"), "dd-MM-yyyy") = "01-01-0001", "White", "Red")</Color>
                 </Style>
               </TextRun>
@@ -1514,9 +1545,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>1.72028in</Top>
+        <Top>1.21633in</Top>
         <Left>1.875in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>0.5625in</Width>
         <ZIndex>23</ZIndex>
         <Style>
@@ -1538,18 +1569,23 @@
             <TextRuns>
               <TextRun>
                 <Value>="  " &amp; First(Iif(Fields!is_sdac.Value = False, Fields!kirim_kelurahan.Value, Fields!telepon.Value), "NotaPenjualan")</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>alamat1</rd:DefaultName>
-        <Top>2.79875in</Top>
-        <Left>0.69497in</Left>
-        <Height>0.25in</Height>
+        <Top>1.90843in</Top>
+        <Left>0.69635in</Left>
+        <Height>0.19872in</Height>
         <Width>6.02311in</Width>
         <ZIndex>24</ZIndex>
+        <Visibility>
+          <Hidden>=Len(First(Iif(Fields!is_sdac.Value = False, Fields!kirim_kelurahan.Value, Fields!telepon.Value), "NotaPenjualan")) = 0</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1569,16 +1605,18 @@
             <TextRuns>
               <TextRun>
                 <Value>="  " &amp; Replace(First(Iif(Fields!is_sdac.Value = False, Fields!kirim_kecamatan.Value, Fields!kecamatan.Value &amp; " - " &amp; Fields!kelurahan.Value &amp; " - " &amp; Fields!kota.Value &amp; " - " &amp; Fields!kode_pos.Value), "NotaPenjualan"), " -  -  - ", "")</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>alamat1</rd:DefaultName>
-        <Top>2.57375in</Top>
+        <Top>1.76804in</Top>
         <Left>0.69497in</Left>
-        <Height>0.25in</Height>
+        <Height>0.19872in</Height>
         <Width>6.02311in</Width>
         <ZIndex>25</ZIndex>
         <Style>
@@ -1601,6 +1639,7 @@
               <TextRun>
                 <Value>=Parameters!footer.Value</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1611,7 +1650,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>footer</rd:DefaultName>
-        <Top>13.79015cm</Top>
+        <Top>9.5039cm</Top>
         <Left>11.79337cm</Left>
         <Height>0.6cm</Height>
         <Width>4.45792cm</Width>
@@ -1635,6 +1674,7 @@
               <TextRun>
                 <Value>=Parameters!header1.Value</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1647,7 +1687,7 @@
         <rd:DefaultName>header1</rd:DefaultName>
         <Top>0cm</Top>
         <Left>0cm</Left>
-        <Height>0.635cm</Height>
+        <Height>0.50475cm</Height>
         <Width>17.06392cm</Width>
         <ZIndex>27</ZIndex>
         <Style>
@@ -1668,7 +1708,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!header2.Value</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -1677,9 +1719,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>header2</rd:DefaultName>
-        <Top>0.57503cm</Top>
+        <Top>0.38453cm</Top>
         <Left>0cm</Left>
-        <Height>0.6cm</Height>
+        <Height>0.50475cm</Height>
         <Width>17.06392cm</Width>
         <ZIndex>28</ZIndex>
         <Style>
@@ -1700,7 +1742,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!header3.Value</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -1709,9 +1753,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>header3</rd:DefaultName>
-        <Top>1.15359cm</Top>
-        <Left>0cm</Left>
-        <Height>0.6cm</Height>
+        <Top>0.77259cm</Top>
+        <Left>0.00001cm</Left>
+        <Height>0.50475cm</Height>
         <Width>17.06392cm</Width>
         <ZIndex>29</ZIndex>
         <Style>
@@ -1732,7 +1776,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!header4.Value</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -1741,9 +1787,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>header4</rd:DefaultName>
-        <Top>1.70773cm</Top>
+        <Top>1.13623cm</Top>
         <Left>0cm</Left>
-        <Height>0.6cm</Height>
+        <Height>0.50475cm</Height>
         <Width>17.06392cm</Width>
         <ZIndex>30</ZIndex>
         <Style>
@@ -1764,7 +1810,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!header5.Value</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -1773,9 +1821,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>header5</rd:DefaultName>
-        <Top>2.26187cm</Top>
+        <Top>1.53162cm</Top>
         <Left>0cm</Left>
-        <Height>0.6cm</Height>
+        <Height>0.50475cm</Height>
         <Width>17.06392cm</Width>
         <ZIndex>31</ZIndex>
         <Style>
@@ -1789,7 +1837,7 @@
         </Style>
       </Textbox>
       <Line Name="Line5">
-        <Top>2.96545cm</Top>
+        <Top>2.1082cm</Top>
         <Left>0cm</Left>
         <Height>0cm</Height>
         <Width>17.06392cm</Width>
@@ -1808,7 +1856,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!kota.Value</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -1817,9 +1867,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>kota</rd:DefaultName>
-        <Top>3.0607cm</Top>
+        <Top>2.1717cm</Top>
         <Left>10.54952cm</Left>
-        <Height>0.6cm</Height>
+        <Height>0.50475cm</Height>
         <Width>6.51441cm</Width>
         <ZIndex>33</ZIndex>
         <Style>
@@ -1833,7 +1883,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>14.39015cm</Height>
+    <Height>10.1039cm</Height>
     <Style />
   </Body>
   <Width>17.22267cm</Width>
@@ -1842,7 +1892,7 @@
     <PageWidth>20.32cm</PageWidth>
     <LeftMargin>1.5cm</LeftMargin>
     <RightMargin>1.5cm</RightMargin>
-    <TopMargin>1.905cm</TopMargin>
+    <TopMargin>0.5cm</TopMargin>
     <BottomMargin>2.54cm</BottomMargin>
     <ColumnSpacing>1.27cm</ColumnSpacing>
     <Style />
