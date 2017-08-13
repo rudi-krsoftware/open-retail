@@ -45,6 +45,8 @@
             this.btnMovePrevious = new System.Windows.Forms.Button();
             this.btnMoveNext = new System.Windows.Forms.Button();
             this.btnMoveLast = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.updLimit = new System.Windows.Forms.NumericUpDown();
             this.lblInfoNavigasi = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.mnuPopupImportData = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -52,16 +54,14 @@
             this.mnuImportFileMaster = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExportData = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.updLimit = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.mnuPopupImportData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updLimit)).BeginInit();
+            this.mnuPopupImportData.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -187,12 +187,8 @@
             this.gridList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridList.ItemHeight = 17;
             this.gridList.Location = new System.Drawing.Point(3, 43);
-            this.gridList.MultiColumn = false;
             this.gridList.Name = "gridList";
             this.gridList.Properties.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.gridList.Properties.ForceImmediateRepaint = false;
-            this.gridList.Properties.MarkColHeader = false;
-            this.gridList.Properties.MarkRowHeader = false;
             this.gridList.SelectedIndex = -1;
             this.gridList.Size = new System.Drawing.Size(659, 318);
             this.gridList.TabIndex = 0;
@@ -271,58 +267,6 @@
             this.btnMoveLast.UseVisualStyleBackColor = true;
             this.btnMoveLast.Click += new System.EventHandler(this.btnMoveLast_Click);
             // 
-            // lblInfoNavigasi
-            // 
-            this.lblInfoNavigasi.AutoSize = true;
-            this.lblInfoNavigasi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblInfoNavigasi.Location = new System.Drawing.Point(468, 0);
-            this.lblInfoNavigasi.Name = "lblInfoNavigasi";
-            this.lblInfoNavigasi.Size = new System.Drawing.Size(194, 29);
-            this.lblInfoNavigasi.TabIndex = 1;
-            this.lblInfoNavigasi.Text = "lblInfoNavigasi";
-            this.lblInfoNavigasi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTip1.ToolTipTitle = "Informasi";
-            // 
-            // mnuPopupImportData
-            // 
-            this.mnuPopupImportData.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuBukaFileMaster,
-            this.mnuImportFileMaster,
-            this.toolStripSeparator1,
-            this.mnuExportData});
-            this.mnuPopupImportData.Name = "mnuPopupImportData";
-            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 76);
-            // 
-            // mnuBukaFileMaster
-            // 
-            this.mnuBukaFileMaster.Name = "mnuBukaFileMaster";
-            this.mnuBukaFileMaster.Size = new System.Drawing.Size(188, 22);
-            this.mnuBukaFileMaster.Text = "Buka File Master ...";
-            this.mnuBukaFileMaster.Click += new System.EventHandler(this.mnuBukaFileMaster_Click);
-            // 
-            // mnuImportFileMaster
-            // 
-            this.mnuImportFileMaster.Name = "mnuImportFileMaster";
-            this.mnuImportFileMaster.Size = new System.Drawing.Size(188, 22);
-            this.mnuImportFileMaster.Text = "Import Data Master ...";
-            this.mnuImportFileMaster.Click += new System.EventHandler(this.mnuImportFileMaster_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
-            // 
-            // mnuExportData
-            // 
-            this.mnuExportData.Name = "mnuExportData";
-            this.mnuExportData.Size = new System.Drawing.Size(188, 22);
-            this.mnuExportData.Text = "Export Data ...";
-            this.mnuExportData.Click += new System.EventHandler(this.mnuExportData_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -359,6 +303,59 @@
             0});
             this.updLimit.ValueChanged += new System.EventHandler(this.updLimit_ValueChanged);
             // 
+            // lblInfoNavigasi
+            // 
+            this.lblInfoNavigasi.AutoSize = true;
+            this.lblInfoNavigasi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblInfoNavigasi.Location = new System.Drawing.Point(468, 0);
+            this.lblInfoNavigasi.Name = "lblInfoNavigasi";
+            this.lblInfoNavigasi.Size = new System.Drawing.Size(194, 29);
+            this.lblInfoNavigasi.TabIndex = 1;
+            this.lblInfoNavigasi.Text = "lblInfoNavigasi";
+            this.lblInfoNavigasi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Informasi";
+            // 
+            // mnuPopupImportData
+            // 
+            this.mnuPopupImportData.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuBukaFileMaster,
+            this.mnuImportFileMaster,
+            this.toolStripSeparator1,
+            this.mnuExportData});
+            this.mnuPopupImportData.Name = "mnuPopupImportData";
+            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 98);
+            // 
+            // mnuBukaFileMaster
+            // 
+            this.mnuBukaFileMaster.Name = "mnuBukaFileMaster";
+            this.mnuBukaFileMaster.Size = new System.Drawing.Size(188, 22);
+            this.mnuBukaFileMaster.Text = "Buka File Master ...";
+            this.mnuBukaFileMaster.Visible = false;
+            this.mnuBukaFileMaster.Click += new System.EventHandler(this.mnuBukaFileMaster_Click);
+            // 
+            // mnuImportFileMaster
+            // 
+            this.mnuImportFileMaster.Name = "mnuImportFileMaster";
+            this.mnuImportFileMaster.Size = new System.Drawing.Size(188, 22);
+            this.mnuImportFileMaster.Text = "Import Data Master ...";
+            this.mnuImportFileMaster.Click += new System.EventHandler(this.mnuImportFileMaster_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            // 
+            // mnuExportData
+            // 
+            this.mnuExportData.Name = "mnuExportData";
+            this.mnuExportData.Size = new System.Drawing.Size(188, 22);
+            this.mnuExportData.Text = "Export Data ...";
+            this.mnuExportData.Click += new System.EventHandler(this.mnuExportData_Click);
+            // 
             // FrmListStandardWithNavigation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,8 +378,8 @@
             this.tableLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.mnuPopupImportData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.updLimit)).EndInit();
+            this.mnuPopupImportData.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

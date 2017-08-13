@@ -366,7 +366,14 @@ namespace OpenRetail.App.Referensi
 
         public void Ok(object sender, object data)
         {
-            throw new NotImplementedException();
+            if (sender is FrmImportDataProduk)
+            {
+                // refresh data setelah import dari file excel
+                if (cmbGolongan.SelectedIndex == 0)
+                    LoadDataProduk();
+                else
+                    cmbGolongan.SelectedIndex = 0;
+            }
         }
 
         public void Ok(object sender, bool isNewData, object data)
@@ -495,55 +502,9 @@ namespace OpenRetail.App.Referensi
 
         protected override void ImportData()
         {
-            var msg = string.Empty;
-            var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_produk.xlsx";
-
-            IImportExportDataBll<Produk> _importDataBll = new ImportExportDataProdukBll(fileMaster, _log);
-
-            if (_importDataBll.IsOpened())
-            {
-                msg = "Maaf file master Produk sedang dibuka, silahkan ditutup terlebih dulu.";
-                MsgHelper.MsgWarning(msg);
-
-                return;
-            }
-
-            if (!_importDataBll.IsValidFormat())
-            {
-                msg = "Maaf format file master Produk tidak valid, proses import tidak bisa dilanjutkan.";
-                MsgHelper.MsgWarning(msg);
-
-                return;
-            }
-
-            if (MsgHelper.MsgKonfirmasi("Apakah proses ingin dilanjutkan ?"))
-            {
-                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
-                {
-                    var rowCount = 0;
-                    var result = _importDataBll.Import(ref rowCount);
-
-                    if (result)
-                    {
-                        msg = "Import data master Produk berhasil.";
-                        MsgHelper.MsgInfo(msg);
-
-                        if (cmbGolongan.SelectedIndex == 0)
-                            LoadDataProduk();
-                        else
-                            cmbGolongan.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        if (rowCount == 0)
-                        {
-                            msg = "Data file master Produk masih kosong.\n" +
-                                  "Silahkan diisi terlebih dulu.";
-                            MsgHelper.MsgInfo(msg);
-                        }
-                    }
-                }
-            }
+            var frm = new FrmImportDataProduk("Import Data Produk dari File Excel");
+            frm.Listener = this;
+            frm.ShowDialog();
         }
 
         protected override void ExportData()

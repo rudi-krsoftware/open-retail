@@ -212,51 +212,9 @@ namespace OpenRetail.App.Referensi
 
         protected override void ImportData()
         {
-            var msg = string.Empty;
-            var fileMaster = Utils.GetAppPath() + @"\File Import Excel\Master Data\data_golongan.xlsx";
-
-            IImportExportDataBll<Golongan> _importDataBll = new ImportExportDataGolonganBll(fileMaster, _log);
-
-            if (_importDataBll.IsOpened())
-            {
-                msg = "Maaf file master Golongan sedang dibuka, silahkan ditutup terlebih dulu.";
-                MsgHelper.MsgWarning(msg);
-
-                return;
-            }
-
-            if (!_importDataBll.IsValidFormat())
-            {
-                msg = "Maaf format file master Golongan tidak valid, proses import tidak bisa dilanjutkan.";
-                MsgHelper.MsgWarning(msg);
-
-                return;
-            }
-
-            if (MsgHelper.MsgKonfirmasi("Apakah proses ingin dilanjutkan ?"))
-            {
-                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
-                {
-                    var rowCount = 0;
-                    var result = _importDataBll.Import(ref rowCount);
-
-                    if (result)
-                    {
-                        msg = "Import data master Golongan berhasil.";
-                        MsgHelper.MsgInfo(msg);
-                        LoadData();
-                    }
-                    else
-                    {
-                        if (rowCount == 0)
-                        {
-                            msg = "Data file master Golongan masih kosong.\n" +
-                                  "Silahkan diisi terlebih dulu.";
-                            MsgHelper.MsgInfo(msg);
-                        }
-                    }
-                }
-            } 
+            var frm = new FrmImportDataGolongan("Import Data Golongan dari File Excel");
+            frm.Listener = this;
+            frm.ShowDialog();
         }
 
         protected override void ExportData()
@@ -280,7 +238,10 @@ namespace OpenRetail.App.Referensi
 
         public void Ok(object sender, object data)
         {
-            throw new NotImplementedException();
+            if (sender is FrmImportDataGolongan)
+            {
+                LoadData(); // refresh data setelah import dari file excel
+            }
         }
 
         public void Ok(object sender, bool isNewData, object data)

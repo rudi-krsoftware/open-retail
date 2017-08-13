@@ -223,6 +223,16 @@ namespace OpenRetail.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap open16 {
+            get {
+                object obj = ResourceManager.GetObject("open16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pembelian {
             get {
                 object obj = ResourceManager.GetObject("pembelian", resourceCulture);

@@ -174,12 +174,8 @@
             this.gridList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridList.ItemHeight = 17;
             this.gridList.Location = new System.Drawing.Point(3, 43);
-            this.gridList.MultiColumn = false;
             this.gridList.Name = "gridList";
             this.gridList.Properties.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.gridList.Properties.ForceImmediateRepaint = false;
-            this.gridList.Properties.MarkColHeader = false;
-            this.gridList.Properties.MarkRowHeader = false;
             this.gridList.SelectedIndex = -1;
             this.gridList.Size = new System.Drawing.Size(659, 347);
             this.gridList.TabIndex = 0;
@@ -206,6 +202,7 @@
             this.mnuBukaFileMaster.Name = "mnuBukaFileMaster";
             this.mnuBukaFileMaster.Size = new System.Drawing.Size(188, 22);
             this.mnuBukaFileMaster.Text = "Buka File Master ...";
+            this.mnuBukaFileMaster.Visible = false;
             this.mnuBukaFileMaster.Click += new System.EventHandler(this.mnuBukaFileMaster_Click);
             // 
             // mnuImportFileMaster

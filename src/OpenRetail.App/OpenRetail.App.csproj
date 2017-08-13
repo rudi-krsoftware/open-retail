@@ -56,8 +56,8 @@
       <HintPath>..\..\lib\Dapper.Contrib.1.50.0\lib\net40\Dapper.Contrib.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -452,6 +452,30 @@
     <Compile Include="Referensi\FrmEntryGolongan.Designer.cs">
       <DependentUpon>FrmEntryGolongan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Referensi\FrmImportDataCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmImportDataCustomer.Designer.cs">
+      <DependentUpon>FrmImportDataCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Referensi\FrmImportDataSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmImportDataSupplier.Designer.cs">
+      <DependentUpon>FrmImportDataSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Referensi\FrmImportDataProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmImportDataProduk.Designer.cs">
+      <DependentUpon>FrmImportDataProduk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Referensi\FrmImportDataGolongan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmImportDataGolongan.Designer.cs">
+      <DependentUpon>FrmImportDataGolongan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Referensi\FrmListPenyesuaianStok.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -597,6 +621,12 @@
     </Compile>
     <Compile Include="UI.Template\BaseFrmLookup.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmDialogImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmDialogImport.Designer.cs">
+      <DependentUpon>FrmDialogImport.cs</DependentUpon>
     </Compile>
     <Compile Include="UI.Template\FrmListEmptyBodyWithNavigation.cs">
       <SubType>Form</SubType>
@@ -837,6 +867,9 @@
     <EmbeddedResource Include="Transaksi\FrmPreviewNotaPenjualan.resx">
       <DependentUpon>FrmPreviewNotaPenjualan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmDialogImport.resx">
+      <DependentUpon>FrmDialogImport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI.Template\FrmListEmptyBodyWithNavigation.resx">
       <DependentUpon>FrmListEmptyBodyWithNavigation.cs</DependentUpon>
     </EmbeddedResource>
@@ -956,6 +989,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main-icon.ico" />
+    <None Include="Resources\open16.png" />
     <None Include="Resources\donasi-fix.png" />
     <None Include="Resources\label16.png" />
     <None Include="Resources\address16.png" />
