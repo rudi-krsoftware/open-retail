@@ -86,6 +86,7 @@ namespace OpenRetail.App.Helper
                     case "Panel":
                         var objPanel = (Panel)ctl;
 
+                        color = Color.White;
                         if (objPanel.Name.Length > 8)
                         {
                             if (objPanel.Name == "pnlHeader")

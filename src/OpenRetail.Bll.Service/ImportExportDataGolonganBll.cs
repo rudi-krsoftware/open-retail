@@ -36,7 +36,7 @@ namespace OpenRetail.Bll.Service
     {
         private ILog _log;
         private string _fileName;
-        private string _workBookName = "golongan";
+        private XLWorkbook _workbook;
 
         public ImportExportDataGolonganBll(string fileName, ILog log)
         {
@@ -50,7 +50,7 @@ namespace OpenRetail.Bll.Service
 
             try
             {
-                var wb = new XLWorkbook(_fileName);
+                _workbook = new XLWorkbook(_fileName);
             }
             catch
             {
@@ -60,14 +60,13 @@ namespace OpenRetail.Bll.Service
             return result;
         }
 
-        public bool IsValidFormat()
+        public bool IsValidFormat(string workSheetName)
         {
             var result = true;
 
             try
             {
-                var wb = new XLWorkbook(_fileName);
-                var ws = wb.Worksheet(_workBookName);
+                var ws = _workbook.Worksheet(workSheetName);
 
                 // Look for the first row used
                 var firstRowUsed = ws.FirstRowUsed();
@@ -91,14 +90,13 @@ namespace OpenRetail.Bll.Service
             return result;
         }
 
-        public bool Import(ref int rowCount)
+        public bool Import(string workSheetName, ref int rowCount)
         {
             var result = false;
 
             try
             {
-                var wb = new XLWorkbook(_fileName);
-                var ws = wb.Worksheet(_workBookName);
+                var ws = _workbook.Worksheet(workSheetName);
 
                 // Look for the first row used
                 var firstRowUsed = ws.FirstRowUsed();
@@ -156,8 +154,13 @@ namespace OpenRetail.Bll.Service
 
                 result = true;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
+            }
+            finally
+            {
+                _workbook.Dispose();
             }
 
             return result;
@@ -168,37 +171,51 @@ namespace OpenRetail.Bll.Service
             try
             {
                 // Creating a new workbook
-                var wb = new XLWorkbook();
 
-                // Adding a worksheet
-                var ws = wb.Worksheets.Add(_workBookName);
-
-                // Set header table
-                ws.Cell(1, 1).Value = "NO";
-                ws.Cell(1, 2).Value = "GOLONGAN";
-                ws.Cell(1, 3).Value = "DISKON";
-
-                var noUrut = 1;
-                foreach (var golongan in listOfObject)
+                using (var wb = new XLWorkbook())
                 {
-                    ws.Cell(1 + noUrut, 1).Value = noUrut;
-                    ws.Cell(1 + noUrut, 2).Value = golongan.nama_golongan;
-                    ws.Cell(1 + noUrut, 3).Value = golongan.diskon;
+                    // Adding a worksheet
+                    var ws = wb.Worksheets.Add("golongan");
 
-                    noUrut++;
-                }
+                    // Set header table
+                    ws.Cell(1, 1).Value = "NO";
+                    ws.Cell(1, 2).Value = "GOLONGAN";
+                    ws.Cell(1, 3).Value = "DISKON";
 
-                // Saving the workbook
-                wb.SaveAs(_fileName);
+                    var noUrut = 1;
+                    foreach (var golongan in listOfObject)
+                    {
+                        ws.Cell(1 + noUrut, 1).Value = noUrut;
+                        ws.Cell(1 + noUrut, 2).Value = golongan.nama_golongan;
+                        ws.Cell(1 + noUrut, 3).Value = golongan.diskon;
 
-                var fi = new FileInfo(_fileName);
-                if (fi.Exists)
-                    Process.Start(_fileName);
+                        noUrut++;
+                    }
+
+                    // Saving the workbook
+                    wb.SaveAs(_fileName);
+
+                    var fi = new FileInfo(_fileName);
+                    if (fi.Exists)
+                        Process.Start(_fileName);
+                }                               
             }
             catch (Exception ex)
             {
                 _log.Error("Error:", ex);
             }
+        }
+
+        public IList<string> GetWorksheets()
+        {
+            var listOfWorksheet = new List<string>();
+
+            foreach (IXLWorksheet worksheet in _workbook.Worksheets)
+            {
+                listOfWorksheet.Add(worksheet.Name);
+            }
+
+            return listOfWorksheet;
         }
     }
 }

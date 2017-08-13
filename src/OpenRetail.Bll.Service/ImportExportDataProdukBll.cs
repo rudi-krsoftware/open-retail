@@ -36,7 +36,7 @@ namespace OpenRetail.Bll.Service
     {
         private ILog _log;
         private string _fileName;
-        private string _workBookName = "produk";
+        private XLWorkbook _workbook;
 
         public ImportExportDataProdukBll(string fileName, ILog log)
         {
@@ -50,7 +50,7 @@ namespace OpenRetail.Bll.Service
 
             try
             {
-                var wb = new XLWorkbook(_fileName);
+                _workbook = new XLWorkbook(_fileName);
             }
             catch
             {
@@ -60,14 +60,13 @@ namespace OpenRetail.Bll.Service
             return result;
         }
 
-        public bool IsValidFormat()
+        public bool IsValidFormat(string workSheetName)
         {
             var result = true;
 
             try
             {
-                var wb = new XLWorkbook(_fileName);
-                var ws = wb.Worksheet(_workBookName);
+                var ws = _workbook.Worksheet(workSheetName);
 
                 // Look for the first row used
                 var firstRowUsed = ws.FirstRowUsed();
@@ -98,14 +97,13 @@ namespace OpenRetail.Bll.Service
             return result;
         }
 
-        public bool Import(ref int rowCount)
+        public bool Import(string workSheetName, ref int rowCount)
         {
             var result = false;
 
             try
             {
-                var wb = new XLWorkbook(_fileName);
-                var ws = wb.Worksheet(_workBookName);
+                var ws = _workbook.Worksheet(workSheetName);
 
                 // Look for the first row used
                 var firstRowUsed = ws.FirstRowUsed();
@@ -243,8 +241,13 @@ namespace OpenRetail.Bll.Service
 
                 result = true;
             }
-            catch
+            catch (Exception ex)
             {
+                _log.Error("Error:", ex);
+            }
+            finally
+            {
+                _workbook.Dispose();
             }
 
             return result;
@@ -255,81 +258,95 @@ namespace OpenRetail.Bll.Service
             try
             {
                 // Creating a new workbook
-                var wb = new XLWorkbook();
-
-                // Adding a worksheet
-                var ws = wb.Worksheets.Add(_workBookName);
-
-                // Set header table
-                ws.Cell(1, 1).Value = "NO";
-                ws.Cell(1, 2).Value = "GOLONGAN";
-                ws.Cell(1, 3).Value = "KODE PRODUK";
-                ws.Cell(1, 4).Value = "NAMA PRODUK";
-                ws.Cell(1, 5).Value = "SATUAN";
-                ws.Cell(1, 6).Value = "HARGA BELI";
-                ws.Cell(1, 7).Value = "HARGA JUAL (RETAIL)";
-                ws.Cell(1, 8).Value = "DISKON (RETAIL)";
-
-                ws.Cell(1, 9).Value = "HARGA GROSIR #1";
-                ws.Cell(1, 10).Value = "JUMLAH MINIMAL GROSIR #1";
-                ws.Cell(1, 11).Value = "DISKON GROSIR #1";
-
-                ws.Cell(1, 12).Value = "HARGA GROSIR #2";
-                ws.Cell(1, 13).Value = "JUMLAH MINIMAL GROSIR #2";
-                ws.Cell(1, 14).Value = "DISKON GROSIR #2";
-
-                ws.Cell(1, 15).Value = "HARGA GROSIR #3";
-                ws.Cell(1, 16).Value = "JUMLAH MINIMAL GROSIR #3";
-                ws.Cell(1, 17).Value = "DISKON GROSIR #3";
-
-                ws.Cell(1, 18).Value = "STOK ETALASE";
-                ws.Cell(1, 19).Value = "STOK GUDANG";
-                ws.Cell(1, 20).Value = "MINIMAL STOK GUDANG";
-
-                var noUrut = 1;
-                foreach (var produk in listOfObject)
+                using (var wb = new XLWorkbook())
                 {
-                    ws.Cell(1 + noUrut, 1).Value = noUrut;
-                    ws.Cell(1 + noUrut, 2).Value = produk.Golongan != null ? produk.Golongan.nama_golongan : string.Empty;
-                    ws.Cell(1 + noUrut, 3).SetValue(produk.kode_produk).SetDataType(XLCellValues.Text);
-                    ws.Cell(1 + noUrut, 4).Value = produk.nama_produk;
-                    ws.Cell(1 + noUrut, 5).Value = produk.satuan;
-                    ws.Cell(1 + noUrut, 6).Value = produk.harga_beli;
-                    ws.Cell(1 + noUrut, 7).Value = produk.harga_jual;
-                    ws.Cell(1 + noUrut, 8).Value = produk.diskon;
+                    // Adding a worksheet
+                    var ws = wb.Worksheets.Add("produk");
 
-                    var listOfHargaGrosir = produk.list_of_harga_grosir;
-                    if (listOfHargaGrosir.Count > 0)
+                    // Set header table
+                    ws.Cell(1, 1).Value = "NO";
+                    ws.Cell(1, 2).Value = "GOLONGAN";
+                    ws.Cell(1, 3).Value = "KODE PRODUK";
+                    ws.Cell(1, 4).Value = "NAMA PRODUK";
+                    ws.Cell(1, 5).Value = "SATUAN";
+                    ws.Cell(1, 6).Value = "HARGA BELI";
+                    ws.Cell(1, 7).Value = "HARGA JUAL (RETAIL)";
+                    ws.Cell(1, 8).Value = "DISKON (RETAIL)";
+
+                    ws.Cell(1, 9).Value = "HARGA GROSIR #1";
+                    ws.Cell(1, 10).Value = "JUMLAH MINIMAL GROSIR #1";
+                    ws.Cell(1, 11).Value = "DISKON GROSIR #1";
+
+                    ws.Cell(1, 12).Value = "HARGA GROSIR #2";
+                    ws.Cell(1, 13).Value = "JUMLAH MINIMAL GROSIR #2";
+                    ws.Cell(1, 14).Value = "DISKON GROSIR #2";
+
+                    ws.Cell(1, 15).Value = "HARGA GROSIR #3";
+                    ws.Cell(1, 16).Value = "JUMLAH MINIMAL GROSIR #3";
+                    ws.Cell(1, 17).Value = "DISKON GROSIR #3";
+
+                    ws.Cell(1, 18).Value = "STOK ETALASE";
+                    ws.Cell(1, 19).Value = "STOK GUDANG";
+                    ws.Cell(1, 20).Value = "MINIMAL STOK GUDANG";
+
+                    var noUrut = 1;
+                    foreach (var produk in listOfObject)
                     {
-                        var column = 9;
-                        foreach (var grosir in listOfHargaGrosir)
-                        {
-                            ws.Cell(1 + noUrut, column).Value = grosir.harga_grosir;
-                            ws.Cell(1 + noUrut, column + 1).Value = grosir.jumlah_minimal;
-                            ws.Cell(1 + noUrut, column + 2).Value = grosir.diskon;
+                        ws.Cell(1 + noUrut, 1).Value = noUrut;
+                        ws.Cell(1 + noUrut, 2).Value = produk.Golongan != null ? produk.Golongan.nama_golongan : string.Empty;
+                        ws.Cell(1 + noUrut, 3).SetValue(produk.kode_produk).SetDataType(XLCellValues.Text);
+                        ws.Cell(1 + noUrut, 4).Value = produk.nama_produk;
+                        ws.Cell(1 + noUrut, 5).Value = produk.satuan;
+                        ws.Cell(1 + noUrut, 6).Value = produk.harga_beli;
+                        ws.Cell(1 + noUrut, 7).Value = produk.harga_jual;
+                        ws.Cell(1 + noUrut, 8).Value = produk.diskon;
 
-                            column += 3;
+                        var listOfHargaGrosir = produk.list_of_harga_grosir;
+                        if (listOfHargaGrosir.Count > 0)
+                        {
+                            var column = 9;
+                            foreach (var grosir in listOfHargaGrosir)
+                            {
+                                ws.Cell(1 + noUrut, column).Value = grosir.harga_grosir;
+                                ws.Cell(1 + noUrut, column + 1).Value = grosir.jumlah_minimal;
+                                ws.Cell(1 + noUrut, column + 2).Value = grosir.diskon;
+
+                                column += 3;
+                            }
                         }
+
+                        ws.Cell(1 + noUrut, 18).Value = produk.stok;
+                        ws.Cell(1 + noUrut, 19).Value = produk.stok_gudang;
+                        ws.Cell(1 + noUrut, 20).Value = produk.minimal_stok_gudang;
+
+                        noUrut++;
                     }
 
-                    ws.Cell(1 + noUrut, 18).Value = produk.stok;
-                    ws.Cell(1 + noUrut, 19).Value = produk.stok_gudang;
-                    ws.Cell(1 + noUrut, 20).Value = produk.minimal_stok_gudang;
+                    // Saving the workbook
+                    wb.SaveAs(_fileName);
 
-                    noUrut++;
-                }
-
-                // Saving the workbook
-                wb.SaveAs(_fileName);
-
-                var fi = new FileInfo(_fileName);
-                if (fi.Exists)
-                    Process.Start(_fileName);
+                    var fi = new FileInfo(_fileName);
+                    if (fi.Exists)
+                        Process.Start(_fileName);
+                }                
             }
             catch (Exception ex)
             {
                 _log.Error("Error:", ex);
             }           
+        }
+
+
+        public IList<string> GetWorksheets()
+        {
+            var listOfWorksheet = new List<string>();
+
+            foreach (IXLWorksheet worksheet in _workbook.Worksheets)
+            {
+                listOfWorksheet.Add(worksheet.Name);
+            }
+
+            return listOfWorksheet;
         }
     }
 }

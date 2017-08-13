@@ -34,19 +34,27 @@ namespace OpenRetail.Bll.Api
         /// <summary>
         /// Method untuk mengecek format file master data valid atau tidak
         /// </summary>
+        /// <param name="workSheetName"></param>
         /// <returns></returns>
-        bool IsValidFormat();
+        bool IsValidFormat(string workSheetName);
 
         /// <summary>
         /// Method untuk import data
         /// </summary>
+        /// <param name="workSheetName"></param>
         /// <param name="rowCount"></param>
         /// <returns></returns>
-        bool Import(ref int rowCount);
+        bool Import(string workSheetName, ref int rowCount);
 
         /// <summary>
         /// Method untuk export data
         /// </summary>
         void Export(IList<T> listOfObject);
+
+        /// <summary>
+        /// Method untuk mendapatkan list/daftar worksheet
+        /// </summary>
+        /// <returns></returns>
+        IList<string> GetWorksheets();
     }
 }
