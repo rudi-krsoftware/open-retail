@@ -37,6 +37,7 @@ namespace OpenRetail.Bll.Service.UnitTest
     {
         private ILog _log;
         private IImportExportDataBll<Supplier> _bll;
+        private const string WorksheetName = "supplier";
 
         [TestInitialize]
         public void Init()
@@ -64,7 +65,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         [TestMethod]
         public void IsValidFormatTest()
         {
-            var result = _bll.IsValidFormat();
+            var result = _bll.IsValidFormat(WorksheetName);
 
             Assert.IsTrue(result);
         }
@@ -73,7 +74,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         public void ImportTest()
         {
             var rowCount = 0;
-            var result = _bll.Import(ref rowCount);
+            var result = _bll.Import(WorksheetName, ref rowCount);
 
             Assert.IsTrue(result);
             Assert.AreEqual(5, rowCount);

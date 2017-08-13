@@ -188,13 +188,14 @@
             this.toolStripSeparator1,
             this.mnuExportData});
             this.mnuPopupImportData.Name = "mnuPopupImportData";
-            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 76);
+            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 98);
             // 
             // mnuBukaFileMaster
             // 
             this.mnuBukaFileMaster.Name = "mnuBukaFileMaster";
             this.mnuBukaFileMaster.Size = new System.Drawing.Size(188, 22);
             this.mnuBukaFileMaster.Text = "Buka File Master ...";
+            this.mnuBukaFileMaster.Visible = false;
             this.mnuBukaFileMaster.Click += new System.EventHandler(this.mnuBukaFileMaster_Click);
             // 
             // mnuImportFileMaster
