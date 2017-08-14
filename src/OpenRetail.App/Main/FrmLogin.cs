@@ -163,7 +163,8 @@ namespace OpenRetail.App.Main
                     { 2, DatabaseVersionHelper.UpgradeStrukturDatabase_v1_to_v2 },
                     { 3, DatabaseVersionHelper.UpgradeStrukturDatabase_v2_to_v3 },
                     { 4, DatabaseVersionHelper.UpgradeStrukturDatabase_v3_to_v4 },
-                    { 5, DatabaseVersionHelper.UpgradeStrukturDatabase_v4_to_v5 }
+                    { 5, DatabaseVersionHelper.UpgradeStrukturDatabase_v4_to_v5 },
+                    { 6, DatabaseVersionHelper.UpgradeStrukturDatabase_v5_to_v6 }
                 };
 
                 var result = true;
