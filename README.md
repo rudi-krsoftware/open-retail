@@ -1,9 +1,9 @@
-OpenRetail
+OpenRetail [![Donate](https://img.shields.io/badge/Donate-Bank%20Transfer-green.svg)](https://openretailblog.wordpress.com/kontribusi/)
 ==============================================
 
-[![Build status](https://ci.appveyor.com/api/projects/status/a2cf5uy7b16w386b?svg=true)](https://ci.appveyor.com/project/rudi-krsoftware/open-retail)
+[![Build status](https://ci.appveyor.com/api/projects/status/a2cf5uy7b16w386b?svg=true)](https://ci.appveyor.com/project/rudi-krsoftware/open-retail) [![Release](https://img.shields.io/badge/release-v1.1.0-blue.svg)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0) [![Downloads](https://img.shields.io/badge/downloads-1.2k-brightgreen.svg)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0)
 
-[![Open Retail](https://openretailblog.files.wordpress.com/2017/08/banner-small.png)](https://openretailblog.wordpress.com/)
+[![Open Retail](https://openretailblog.files.wordpress.com/2017/09/banner-small.png)](https://openretailblog.wordpress.com/)
 
 Apa itu OpenRetail?
 -------------------
@@ -63,7 +63,7 @@ Selain keahlian khusus di bidang pemrograman, dibutuhkan juga tool-tool pendukun
 	* [Json.NET](http://www.nuget.org/packages/Newtonsoft.Json/9.0.1)	    	
     * [Npgsql 2.2.7](http://www.nuget.org/packages/Npgsql/2.2.72)    	    
 	* [RestSharp](https://www.nuget.org/packages/RestSharp/)    	    
-    * [Syncfusion Community Edition](https://www.syncfusion.com/products/communitylicense/) versi 13.3.0.12
+    * [Syncfusion Community Edition](https://www.syncfusion.com/products/communitylicense/)
 
 * Database [PostgreSQL](https://www.postgresql.org/) versi 9.3.16 atau yang lebih tinggi
 
