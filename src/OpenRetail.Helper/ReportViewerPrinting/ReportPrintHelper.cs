@@ -29,7 +29,7 @@ using Microsoft.Reporting.WinForms;
 namespace OpenRetail.Helper
 {
     // referensi: https://msdn.microsoft.com/en-us/library/ms252091.aspx
-    public class PrintReport : IDisposable
+    public class ReportPrintHelper : IDisposable
     {
         private int m_currentPageIndex;
         private IList<Stream> m_streams;

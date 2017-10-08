@@ -26,7 +26,7 @@ using System.Text;
 namespace OpenRetail.Helper
 {
     // referensi: https://support.microsoft.com/en-us/help/322091/how-to-send-raw-data-to-a-printer-by-using-visual-c-.net#top
-    public static class RawPrinterHelper
+    public static class RawPrintHelper
     {
         // Structure and API declarions:
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
