@@ -46,21 +46,21 @@
             this.dtpTanggalTempo = new System.Windows.Forms.DateTimePicker();
             this.dtpTanggal = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtKeterangan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKeterangan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtCustomer = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtCustomer = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.btnSetAlamatKirim = new System.Windows.Forms.Button();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtNota = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNota = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.btnPreviewNota = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridControl = new Syncfusion.Windows.Forms.Grid.GridControl();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtPPN = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtPPN = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtDiskon = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtDiskon = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label11 = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.chkCetakNotaJual = new System.Windows.Forms.CheckBox();
@@ -68,13 +68,13 @@
             this.cmbKurir = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtOngkosKirim = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtOngkosKirim = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.btnCekOngkir = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtJumlahBayar = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKembali = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtJumlahBayar = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKembali = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -268,7 +268,7 @@
             // txtKeterangan
             // 
             this.txtKeterangan.AutoEnter = false;
-            this.txtKeterangan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKeterangan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKeterangan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKeterangan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKeterangan.LeaveFocusColor = System.Drawing.Color.White;
@@ -297,7 +297,7 @@
             // txtCustomer
             // 
             this.txtCustomer.AutoEnter = false;
-            this.txtCustomer.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtCustomer.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCustomer.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtCustomer.LeaveFocusColor = System.Drawing.Color.White;
@@ -338,7 +338,7 @@
             // txtNota
             // 
             this.txtNota.AutoEnter = true;
-            this.txtNota.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNota.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNota.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtNota.LeaveFocusColor = System.Drawing.Color.White;
             this.txtNota.LetterOnly = false;
@@ -467,7 +467,7 @@
             // txtPPN
             // 
             this.txtPPN.AutoEnter = true;
-            this.txtPPN.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtPPN.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtPPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPPN.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPPN.LeaveFocusColor = System.Drawing.Color.White;
@@ -509,7 +509,7 @@
             // txtDiskon
             // 
             this.txtDiskon.AutoEnter = true;
-            this.txtDiskon.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDiskon.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDiskon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDiskon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
@@ -624,7 +624,7 @@
             // txtOngkosKirim
             // 
             this.txtOngkosKirim.AutoEnter = true;
-            this.txtOngkosKirim.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtOngkosKirim.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtOngkosKirim.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtOngkosKirim.LeaveFocusColor = System.Drawing.Color.White;
             this.txtOngkosKirim.LetterOnly = false;
@@ -686,7 +686,7 @@
             // txtJumlahBayar
             // 
             this.txtJumlahBayar.AutoEnter = true;
-            this.txtJumlahBayar.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJumlahBayar.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJumlahBayar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtJumlahBayar.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtJumlahBayar.LeaveFocusColor = System.Drawing.Color.White;
@@ -706,7 +706,7 @@
             // txtKembali
             // 
             this.txtKembali.AutoEnter = false;
-            this.txtKembali.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKembali.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKembali.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKembali.Enabled = false;
             this.txtKembali.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -840,15 +840,15 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTotal;
-        private UserControl.AdvancedTextbox txtDiskon;
-        private UserControl.AdvancedTextbox txtPPN;
-        private UserControl.AdvancedTextbox txtNota;
-        private UserControl.AdvancedTextbox txtCustomer;
-        private UserControl.AdvancedTextbox txtKeterangan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDiskon;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtPPN;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNota;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtCustomer;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKeterangan;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btnSetAlamatKirim;
         private System.Windows.Forms.ToolTip toolTip1;
-        private UserControl.AdvancedTextbox txtOngkosKirim;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtOngkosKirim;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.ComboBox cmbKurir;
@@ -861,8 +861,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private UserControl.AdvancedTextbox txtJumlahBayar;
-        private UserControl.AdvancedTextbox txtKembali;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJumlahBayar;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKembali;
 
     }
 }

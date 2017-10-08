@@ -43,11 +43,11 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtUserName = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtPassword = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtUserName = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtPassword = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtServer = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtServer = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2.SuspendLayout();
@@ -244,7 +244,7 @@
             // txtUserName
             // 
             this.txtUserName.AutoEnter = true;
-            this.txtUserName.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtUserName.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtUserName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtUserName.EnterFocusColor = System.Drawing.Color.White;
             this.txtUserName.LeaveFocusColor = System.Drawing.Color.White;
@@ -260,7 +260,7 @@
             // txtPassword
             // 
             this.txtPassword.AutoEnter = false;
-            this.txtPassword.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtPassword.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPassword.EnterFocusColor = System.Drawing.Color.White;
             this.txtPassword.LeaveFocusColor = System.Drawing.Color.White;
@@ -305,7 +305,7 @@
             // txtServer
             // 
             this.txtServer.AutoEnter = false;
-            this.txtServer.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtServer.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtServer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtServer.EnterFocusColor = System.Drawing.Color.White;
             this.txtServer.LeaveFocusColor = System.Drawing.Color.White;
@@ -393,9 +393,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private UserControl.AdvancedTextbox txtUserName;
-        private UserControl.AdvancedTextbox txtPassword;
-        private UserControl.AdvancedTextbox txtServer;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtUserName;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtPassword;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtServer;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;

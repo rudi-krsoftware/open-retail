@@ -33,7 +33,7 @@
             this.cmbGolongan = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCari = new System.Windows.Forms.Button();
-            this.txtNamaProduk = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNamaProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbSortBy = new System.Windows.Forms.ComboBox();
             this.gridList = new Syncfusion.Windows.Forms.Grid.GridListControl();
@@ -120,7 +120,7 @@
             // txtNamaProduk
             // 
             this.txtNamaProduk.AutoEnter = false;
-            this.txtNamaProduk.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNamaProduk.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNamaProduk.EnterFocusColor = System.Drawing.Color.White;
             this.txtNamaProduk.ForeColor = System.Drawing.Color.Black;
             this.txtNamaProduk.LeaveFocusColor = System.Drawing.Color.White;
@@ -210,7 +210,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbGolongan;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private UserControl.AdvancedTextbox txtNamaProduk;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNamaProduk;
         private System.Windows.Forms.Button btnCari;
         private Syncfusion.Windows.Forms.Grid.GridListControl gridList;
         private System.Windows.Forms.Label label2;

@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbStatusStok = new System.Windows.Forms.ComboBox();
-            this.txtNamaProduk = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNamaProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,7 +93,7 @@
             // txtNamaProduk
             // 
             this.txtNamaProduk.AutoEnter = false;
-            this.txtNamaProduk.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNamaProduk.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNamaProduk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNamaProduk.EnterFocusColor = System.Drawing.Color.White;
             this.txtNamaProduk.LeaveFocusColor = System.Drawing.Color.White;
@@ -127,6 +127,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbStatusStok;
-        private UserControl.AdvancedTextbox txtNamaProduk;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNamaProduk;
     }
 }

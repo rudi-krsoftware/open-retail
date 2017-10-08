@@ -25,7 +25,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 
 namespace OpenRetail.App.Main
 {

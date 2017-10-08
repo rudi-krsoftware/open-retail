@@ -26,9 +26,9 @@ using System.Text;
 using System.Windows.Forms;
 
 using OpenRetail.Model;
-using OpenRetail.App.UI.Template;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 using Syncfusion.Windows.Forms.Grid;
+using OpenRetail.Helper.UI.Template;
 
 namespace OpenRetail.App.Lookup
 {

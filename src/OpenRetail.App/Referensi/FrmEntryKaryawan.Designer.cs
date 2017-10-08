@@ -39,17 +39,17 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.rdoAktif = new System.Windows.Forms.RadioButton();
             this.rdoNonAktif = new System.Windows.Forms.RadioButton();
-            this.txtNama = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtAlamat = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtTelepon = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNama = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtAlamat = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtTelepon = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbJenisGaji = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtGajiPokok = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtLembur = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtGajiPokok = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtLembur = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -203,7 +203,7 @@
             // txtNama
             // 
             this.txtNama.AutoEnter = true;
-            this.txtNama.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNama.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNama.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtNama.LeaveFocusColor = System.Drawing.Color.White;
@@ -220,7 +220,7 @@
             // txtAlamat
             // 
             this.txtAlamat.AutoEnter = true;
-            this.txtAlamat.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtAlamat.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtAlamat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtAlamat.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtAlamat.LeaveFocusColor = System.Drawing.Color.White;
@@ -237,7 +237,7 @@
             // txtTelepon
             // 
             this.txtTelepon.AutoEnter = true;
-            this.txtTelepon.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtTelepon.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtTelepon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtTelepon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtTelepon.LetterOnly = false;
@@ -333,7 +333,7 @@
             // txtGajiPokok
             // 
             this.txtGajiPokok.AutoEnter = true;
-            this.txtGajiPokok.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtGajiPokok.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtGajiPokok.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtGajiPokok.LeaveFocusColor = System.Drawing.Color.White;
             this.txtGajiPokok.LetterOnly = false;
@@ -351,7 +351,7 @@
             // txtLembur
             // 
             this.txtLembur.AutoEnter = false;
-            this.txtLembur.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtLembur.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtLembur.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtLembur.LeaveFocusColor = System.Drawing.Color.White;
             this.txtLembur.LetterOnly = false;
@@ -407,11 +407,11 @@
         private System.Windows.Forms.ComboBox cmbJenisGaji;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private UserControl.AdvancedTextbox txtNama;
-        private UserControl.AdvancedTextbox txtAlamat;
-        private UserControl.AdvancedTextbox txtTelepon;
-        private UserControl.AdvancedTextbox txtGajiPokok;
-        private UserControl.AdvancedTextbox txtLembur;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNama;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtAlamat;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtTelepon;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtGajiPokok;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtLembur;
 
     }
 }

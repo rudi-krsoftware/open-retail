@@ -34,11 +34,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtKabupatenAsal = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKabupatenAsal = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtBerat = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtBerat = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.btnCekOngkir = new System.Windows.Forms.Button();
-            this.txtKabupatenTujuan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKabupatenTujuan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
@@ -140,7 +140,7 @@
             // txtKabupatenAsal
             // 
             this.txtKabupatenAsal.AutoEnter = false;
-            this.txtKabupatenAsal.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKabupatenAsal.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKabupatenAsal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKabupatenAsal.EnterFocusColor = System.Drawing.Color.White;
             this.txtKabupatenAsal.LeaveFocusColor = System.Drawing.Color.White;
@@ -167,7 +167,7 @@
             // txtBerat
             // 
             this.txtBerat.AutoEnter = true;
-            this.txtBerat.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtBerat.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtBerat.EnterFocusColor = System.Drawing.Color.White;
             this.txtBerat.LeaveFocusColor = System.Drawing.Color.White;
             this.txtBerat.LetterOnly = false;
@@ -195,7 +195,7 @@
             // txtKabupatenTujuan
             // 
             this.txtKabupatenTujuan.AutoEnter = false;
-            this.txtKabupatenTujuan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKabupatenTujuan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKabupatenTujuan.EnterFocusColor = System.Drawing.Color.White;
             this.txtKabupatenTujuan.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKabupatenTujuan.LetterOnly = false;
@@ -247,11 +247,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private UserControl.AdvancedTextbox txtBerat;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtBerat;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnCekOngkir;
-        private UserControl.AdvancedTextbox txtKabupatenAsal;
-        private UserControl.AdvancedTextbox txtKabupatenTujuan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKabupatenAsal;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKabupatenTujuan;
     }
 }

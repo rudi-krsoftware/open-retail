@@ -30,9 +30,9 @@
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtJabatan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtJabatan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtKeterangan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKeterangan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +71,7 @@
             // txtJabatan
             // 
             this.txtJabatan.AutoEnter = true;
-            this.txtJabatan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJabatan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJabatan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtJabatan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtJabatan.LeaveFocusColor = System.Drawing.Color.White;
@@ -99,7 +99,7 @@
             // txtKeterangan
             // 
             this.txtKeterangan.AutoEnter = false;
-            this.txtKeterangan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKeterangan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKeterangan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKeterangan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKeterangan.LeaveFocusColor = System.Drawing.Color.White;
@@ -133,8 +133,8 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
-        private UserControl.AdvancedTextbox txtJabatan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJabatan;
         private System.Windows.Forms.Label label2;
-        private UserControl.AdvancedTextbox txtKeterangan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKeterangan;
     }
 }

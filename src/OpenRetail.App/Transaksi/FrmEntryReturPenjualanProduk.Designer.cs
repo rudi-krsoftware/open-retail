@@ -38,10 +38,10 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtNotaJual = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtCustomer = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtNota = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKeterangan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNotaJual = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtCustomer = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtNota = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKeterangan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridControl = new Syncfusion.Windows.Forms.Grid.GridControl();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -195,7 +195,7 @@
             // txtNotaJual
             // 
             this.txtNotaJual.AutoEnter = false;
-            this.txtNotaJual.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNotaJual.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNotaJual.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtNotaJual.LeaveFocusColor = System.Drawing.Color.White;
             this.txtNotaJual.LetterOnly = false;
@@ -211,7 +211,7 @@
             // txtCustomer
             // 
             this.txtCustomer.AutoEnter = false;
-            this.txtCustomer.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtCustomer.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCustomer.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtCustomer.LeaveFocusColor = System.Drawing.Color.White;
@@ -228,7 +228,7 @@
             // txtNota
             // 
             this.txtNota.AutoEnter = true;
-            this.txtNota.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNota.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNota.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtNota.LeaveFocusColor = System.Drawing.Color.White;
             this.txtNota.LetterOnly = false;
@@ -243,7 +243,7 @@
             // txtKeterangan
             // 
             this.txtKeterangan.AutoEnter = false;
-            this.txtKeterangan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKeterangan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKeterangan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKeterangan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKeterangan.LeaveFocusColor = System.Drawing.Color.White;
@@ -371,10 +371,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label11;
-        private UserControl.AdvancedTextbox txtNotaJual;
-        private UserControl.AdvancedTextbox txtCustomer;
-        private UserControl.AdvancedTextbox txtNota;
-        private UserControl.AdvancedTextbox txtKeterangan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNotaJual;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtCustomer;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNota;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKeterangan;
         private System.Windows.Forms.Panel panel1;
         private Syncfusion.Windows.Forms.Grid.GridControl gridControl;
         private System.Windows.Forms.Panel panel2;

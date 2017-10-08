@@ -41,8 +41,8 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtJumlahKarakter = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtJumlahGulung = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtJumlahKarakter = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtJumlahGulung = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.chkPrinterMiniPOS = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -50,11 +50,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtDari1 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtDari1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label8 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.txtDari2 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtDari3 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtDari2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtDari3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -62,11 +62,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtHeader1 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtHeader2 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtHeader3 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtHeader4 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtHeader5 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtHeader1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtHeader2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtHeader3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtHeader4 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtHeader5 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -74,9 +74,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.txtFooterMiniPOS1 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtFooterMiniPOS2 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtFooterMiniPOS3 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtFooterMiniPOS1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtFooterMiniPOS2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtFooterMiniPOS3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
@@ -84,11 +84,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtHeaderMiniPOS1 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtHeaderMiniPOS2 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtHeaderMiniPOS3 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtHeaderMiniPOS4 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtHeaderMiniPOS5 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtHeaderMiniPOS1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtHeaderMiniPOS2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtHeaderMiniPOS3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtHeaderMiniPOS4 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtHeaderMiniPOS5 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.btnLihatContohNotaPenjualanMiniPOS = new System.Windows.Forms.Button();
             this.chkCetakCustomer = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -286,7 +286,7 @@
             // txtJumlahKarakter
             // 
             this.txtJumlahKarakter.AutoEnter = true;
-            this.txtJumlahKarakter.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJumlahKarakter.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJumlahKarakter.Enabled = false;
             this.txtJumlahKarakter.EnterFocusColor = System.Drawing.Color.White;
             this.txtJumlahKarakter.LeaveFocusColor = System.Drawing.Color.White;
@@ -304,7 +304,7 @@
             // txtJumlahGulung
             // 
             this.txtJumlahGulung.AutoEnter = true;
-            this.txtJumlahGulung.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJumlahGulung.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJumlahGulung.Enabled = false;
             this.txtJumlahGulung.EnterFocusColor = System.Drawing.Color.White;
             this.txtJumlahGulung.LeaveFocusColor = System.Drawing.Color.White;
@@ -413,7 +413,7 @@
             // txtDari1
             // 
             this.txtDari1.AutoEnter = true;
-            this.txtDari1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDari1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDari1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDari1.EnterFocusColor = System.Drawing.Color.White;
             this.txtDari1.LeaveFocusColor = System.Drawing.Color.White;
@@ -452,7 +452,7 @@
             // txtDari2
             // 
             this.txtDari2.AutoEnter = true;
-            this.txtDari2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDari2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDari2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDari2.EnterFocusColor = System.Drawing.Color.White;
             this.txtDari2.LeaveFocusColor = System.Drawing.Color.White;
@@ -469,7 +469,7 @@
             // txtDari3
             // 
             this.txtDari3.AutoEnter = true;
-            this.txtDari3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDari3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDari3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDari3.EnterFocusColor = System.Drawing.Color.White;
             this.txtDari3.LeaveFocusColor = System.Drawing.Color.White;
@@ -580,7 +580,7 @@
             // txtHeader1
             // 
             this.txtHeader1.AutoEnter = true;
-            this.txtHeader1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHeader1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHeader1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHeader1.EnterFocusColor = System.Drawing.Color.White;
             this.txtHeader1.LeaveFocusColor = System.Drawing.Color.White;
@@ -597,7 +597,7 @@
             // txtHeader2
             // 
             this.txtHeader2.AutoEnter = true;
-            this.txtHeader2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHeader2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHeader2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHeader2.EnterFocusColor = System.Drawing.Color.White;
             this.txtHeader2.LeaveFocusColor = System.Drawing.Color.White;
@@ -614,7 +614,7 @@
             // txtHeader3
             // 
             this.txtHeader3.AutoEnter = true;
-            this.txtHeader3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHeader3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHeader3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHeader3.EnterFocusColor = System.Drawing.Color.White;
             this.txtHeader3.LeaveFocusColor = System.Drawing.Color.White;
@@ -631,7 +631,7 @@
             // txtHeader4
             // 
             this.txtHeader4.AutoEnter = true;
-            this.txtHeader4.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHeader4.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHeader4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHeader4.EnterFocusColor = System.Drawing.Color.White;
             this.txtHeader4.LeaveFocusColor = System.Drawing.Color.White;
@@ -648,7 +648,7 @@
             // txtHeader5
             // 
             this.txtHeader5.AutoEnter = true;
-            this.txtHeader5.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHeader5.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHeader5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHeader5.EnterFocusColor = System.Drawing.Color.White;
             this.txtHeader5.LeaveFocusColor = System.Drawing.Color.White;
@@ -760,7 +760,7 @@
             // txtFooterMiniPOS1
             // 
             this.txtFooterMiniPOS1.AutoEnter = true;
-            this.txtFooterMiniPOS1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtFooterMiniPOS1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtFooterMiniPOS1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtFooterMiniPOS1.EnterFocusColor = System.Drawing.Color.White;
             this.txtFooterMiniPOS1.LeaveFocusColor = System.Drawing.Color.White;
@@ -777,7 +777,7 @@
             // txtFooterMiniPOS2
             // 
             this.txtFooterMiniPOS2.AutoEnter = true;
-            this.txtFooterMiniPOS2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtFooterMiniPOS2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtFooterMiniPOS2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtFooterMiniPOS2.EnterFocusColor = System.Drawing.Color.White;
             this.txtFooterMiniPOS2.LeaveFocusColor = System.Drawing.Color.White;
@@ -794,7 +794,7 @@
             // txtFooterMiniPOS3
             // 
             this.txtFooterMiniPOS3.AutoEnter = true;
-            this.txtFooterMiniPOS3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtFooterMiniPOS3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtFooterMiniPOS3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtFooterMiniPOS3.EnterFocusColor = System.Drawing.Color.White;
             this.txtFooterMiniPOS3.LeaveFocusColor = System.Drawing.Color.White;
@@ -905,7 +905,7 @@
             // txtHeaderMiniPOS1
             // 
             this.txtHeaderMiniPOS1.AutoEnter = true;
-            this.txtHeaderMiniPOS1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHeaderMiniPOS1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHeaderMiniPOS1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHeaderMiniPOS1.EnterFocusColor = System.Drawing.Color.White;
             this.txtHeaderMiniPOS1.LeaveFocusColor = System.Drawing.Color.White;
@@ -922,7 +922,7 @@
             // txtHeaderMiniPOS2
             // 
             this.txtHeaderMiniPOS2.AutoEnter = true;
-            this.txtHeaderMiniPOS2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHeaderMiniPOS2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHeaderMiniPOS2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHeaderMiniPOS2.EnterFocusColor = System.Drawing.Color.White;
             this.txtHeaderMiniPOS2.LeaveFocusColor = System.Drawing.Color.White;
@@ -939,7 +939,7 @@
             // txtHeaderMiniPOS3
             // 
             this.txtHeaderMiniPOS3.AutoEnter = true;
-            this.txtHeaderMiniPOS3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHeaderMiniPOS3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHeaderMiniPOS3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHeaderMiniPOS3.EnterFocusColor = System.Drawing.Color.White;
             this.txtHeaderMiniPOS3.LeaveFocusColor = System.Drawing.Color.White;
@@ -956,7 +956,7 @@
             // txtHeaderMiniPOS4
             // 
             this.txtHeaderMiniPOS4.AutoEnter = true;
-            this.txtHeaderMiniPOS4.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHeaderMiniPOS4.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHeaderMiniPOS4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHeaderMiniPOS4.EnterFocusColor = System.Drawing.Color.White;
             this.txtHeaderMiniPOS4.LeaveFocusColor = System.Drawing.Color.White;
@@ -973,7 +973,7 @@
             // txtHeaderMiniPOS5
             // 
             this.txtHeaderMiniPOS5.AutoEnter = true;
-            this.txtHeaderMiniPOS5.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHeaderMiniPOS5.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHeaderMiniPOS5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHeaderMiniPOS5.EnterFocusColor = System.Drawing.Color.White;
             this.txtHeaderMiniPOS5.LeaveFocusColor = System.Drawing.Color.White;
@@ -1130,17 +1130,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private UserControl.AdvancedTextbox txtHeader1;
-        private UserControl.AdvancedTextbox txtHeader2;
-        private UserControl.AdvancedTextbox txtHeader3;
-        private UserControl.AdvancedTextbox txtHeader4;
-        private UserControl.AdvancedTextbox txtHeader5;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHeader1;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHeader2;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHeader3;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHeader4;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHeader5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label label7;
-        private UserControl.AdvancedTextbox txtDari1;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDari1;
         private System.Windows.Forms.Label label8;
-        private UserControl.AdvancedTextbox txtDari2;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDari2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Panel panel1;
@@ -1149,8 +1149,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private UserControl.AdvancedTextbox txtJumlahKarakter;
-        private UserControl.AdvancedTextbox txtJumlahGulung;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJumlahKarakter;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJumlahGulung;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -1160,23 +1160,23 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private UserControl.AdvancedTextbox txtHeaderMiniPOS1;
-        private UserControl.AdvancedTextbox txtHeaderMiniPOS2;
-        private UserControl.AdvancedTextbox txtHeaderMiniPOS3;
-        private UserControl.AdvancedTextbox txtHeaderMiniPOS4;
-        private UserControl.AdvancedTextbox txtHeaderMiniPOS5;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS1;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS2;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS3;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS4;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private UserControl.AdvancedTextbox txtFooterMiniPOS1;
-        private UserControl.AdvancedTextbox txtFooterMiniPOS2;
-        private UserControl.AdvancedTextbox txtFooterMiniPOS3;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtFooterMiniPOS1;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtFooterMiniPOS2;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtFooterMiniPOS3;
         private System.Windows.Forms.Button btnLihatContohNotaPenjualanMiniPOS;
         private System.Windows.Forms.CheckBox chkCetakCustomer;
         private System.Windows.Forms.Label label19;
-        private UserControl.AdvancedTextbox txtDari3;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDari3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.CheckBox chkTampilkanInfoMinimalStokProduk;

@@ -31,7 +31,7 @@ using OpenRetail.App.Transaksi;
 using OpenRetail.App.Pengeluaran;
 using OpenRetail.App.Laporan;
 using OpenRetail.App.Pengaturan;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 using ConceptCave.WaitCursor;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;

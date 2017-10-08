@@ -33,10 +33,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtNamaPerusahaan = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtAlamat = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKota = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtTelepon = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNamaPerusahaan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtAlamat = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKota = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtTelepon = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,7 +112,7 @@
             // txtNamaPerusahaan
             // 
             this.txtNamaPerusahaan.AutoEnter = true;
-            this.txtNamaPerusahaan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNamaPerusahaan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNamaPerusahaan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNamaPerusahaan.EnterFocusColor = System.Drawing.Color.White;
             this.txtNamaPerusahaan.LeaveFocusColor = System.Drawing.Color.White;
@@ -129,7 +129,7 @@
             // txtAlamat
             // 
             this.txtAlamat.AutoEnter = true;
-            this.txtAlamat.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtAlamat.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtAlamat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtAlamat.EnterFocusColor = System.Drawing.Color.White;
             this.txtAlamat.LeaveFocusColor = System.Drawing.Color.White;
@@ -146,7 +146,7 @@
             // txtKota
             // 
             this.txtKota.AutoEnter = true;
-            this.txtKota.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKota.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKota.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKota.EnterFocusColor = System.Drawing.Color.White;
             this.txtKota.LeaveFocusColor = System.Drawing.Color.White;
@@ -163,7 +163,7 @@
             // txtTelepon
             // 
             this.txtTelepon.AutoEnter = false;
-            this.txtTelepon.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtTelepon.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtTelepon.EnterFocusColor = System.Drawing.Color.White;
             this.txtTelepon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtTelepon.LetterOnly = false;
@@ -199,10 +199,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private UserControl.AdvancedTextbox txtNamaPerusahaan;
-        private UserControl.AdvancedTextbox txtAlamat;
-        private UserControl.AdvancedTextbox txtKota;
-        private UserControl.AdvancedTextbox txtTelepon;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNamaPerusahaan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtAlamat;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKota;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtTelepon;
 
     }
 }

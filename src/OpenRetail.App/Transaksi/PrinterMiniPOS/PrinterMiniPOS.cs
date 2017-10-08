@@ -22,7 +22,7 @@ using System.Linq;
 using System.Text;
 
 using OpenRetail.Model;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 
 namespace OpenRetail.App.Transaksi.PrinterMiniPOS
 {

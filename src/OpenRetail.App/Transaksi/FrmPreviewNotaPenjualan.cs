@@ -30,7 +30,7 @@ using System.Reflection;
 using System.IO;
 
 using log4net;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;

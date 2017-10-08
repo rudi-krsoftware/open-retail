@@ -27,8 +27,8 @@ using System.Windows.Forms;
 
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.App.UI.Template;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper;
 
 namespace OpenRetail.App.Pengaturan
 {
