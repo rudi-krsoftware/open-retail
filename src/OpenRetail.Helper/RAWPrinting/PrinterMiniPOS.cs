@@ -22,11 +22,10 @@ using System.Linq;
 using System.Text;
 
 using OpenRetail.Model;
-using OpenRetail.Helper;
 
-namespace OpenRetail.App.Transaksi.PrinterMiniPOS
+namespace OpenRetail.Helper.RAWPrinting
 {
-    public class PrinterMiniPOS : IPrinterMiniPOS
+    public class PrinterMiniPOS : IRAWPrinting
     {
         private string _printerName = string.Empty;
 
@@ -53,7 +52,11 @@ namespace OpenRetail.App.Transaksi.PrinterMiniPOS
             {
                 if (header.keterangan.Length > 0)
                 {
-                    header.keterangan = StringHelper.FixedLength(header.keterangan, garisPemisah.Length);
+                    if (header.keterangan.Length > garisPemisah.Length)
+                    {
+                        header.keterangan = StringHelper.FixedLength(header.keterangan, garisPemisah.Length);
+                    }
+
                     textToPrint.Append(header.keterangan).Append(ESCCommandHelper.LineFeed(1));
                 }
             }
@@ -99,7 +102,7 @@ namespace OpenRetail.App.Transaksi.PrinterMiniPOS
 
                 if (telepon.Length > 0)
                     textToPrint.Append("HP: " + telepon).Append(ESCCommandHelper.LineFeed(1));
-            }            
+            }
 
             // cetak garis
             textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(1));
@@ -162,7 +165,7 @@ namespace OpenRetail.App.Transaksi.PrinterMiniPOS
 
                 textToPrint.Append(StringHelper.FixedLength("Kembali", fixedLengthLabelFooter));
                 textToPrint.Append(" : " + StringHelper.RightAlignment(NumberHelper.NumberToString(jual.jumlah_bayar - jual.grand_total), fixedLengthValueFooter)).Append(ESCCommandHelper.LineFeed(1));
-            }            
+            }
 
             // cetak garis
             textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(2));
@@ -191,7 +194,12 @@ namespace OpenRetail.App.Transaksi.PrinterMiniPOS
             else
             {
                 RawPrintHelper.SendStringToFile(textToPrint.ToString());
-            }            
+            }
+        }
+
+        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int lineFeed)
+        {
+            throw new NotImplementedException();
         }
     }
 }
