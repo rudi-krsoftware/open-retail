@@ -186,11 +186,11 @@ namespace OpenRetail.App.Transaksi.PrinterMiniPOS
 
             if (!Utils.IsRunningUnderIDE())
             {
-                RawPrinterHelper.SendStringToPrinter(_printerName, textToPrint.ToString());
+                RawPrintHelper.SendStringToPrinter(_printerName, textToPrint.ToString());
             }
             else
             {
-                RawPrinterHelper.SendStringToFile(textToPrint.ToString());
+                RawPrintHelper.SendStringToFile(textToPrint.ToString());
             }            
         }
     }
