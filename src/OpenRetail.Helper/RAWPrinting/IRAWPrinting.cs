@@ -23,9 +23,9 @@ using System.Text;
 
 using OpenRetail.Model;
 
-namespace OpenRetail.App.Transaksi.PrinterMiniPOS
+namespace OpenRetail.Helper.RAWPrinting
 {
-    public interface IPrinterMiniPOS
+    public interface IRAWPrinting
     {
         /// <summary>
         /// Override method untuk mencetak nota mini pos
@@ -36,5 +36,13 @@ namespace OpenRetail.App.Transaksi.PrinterMiniPOS
         /// <param name="jumlahKarakter">maksimal jumlah karakter yang tercetak</param>
         /// <param name="lineFeed">jumlah gulung kertas setelah pencetakan selesai</param>
         void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true);
+
+        /// <summary>
+        /// Override method untuk mencetak nota dot matrix
+        /// </summary>
+        /// <param name="jual"></param>
+        /// <param name="listOfHeaderNota"></param>
+        /// <param name="lineFeed"></param>
+        void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int lineFeed);
     }
 }
