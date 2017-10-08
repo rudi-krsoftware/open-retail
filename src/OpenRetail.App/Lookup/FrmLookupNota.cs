@@ -16,8 +16,8 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using OpenRetail.App.Helper;
-using OpenRetail.App.UI.Template;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper;
 using OpenRetail.Model;
 using Syncfusion.Windows.Forms.Grid;
 using System;

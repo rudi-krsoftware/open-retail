@@ -18,7 +18,7 @@
 
 using ConceptCave.WaitCursor;
 using log4net;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using OpenRetail.Model;

@@ -35,7 +35,7 @@
             this.cmbJenisCustomer = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCari = new System.Windows.Forms.Button();
-            this.txtNamaCustomer = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNamaCustomer = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
@@ -147,7 +147,7 @@
             // txtNamaCustomer
             // 
             this.txtNamaCustomer.AutoEnter = false;
-            this.txtNamaCustomer.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNamaCustomer.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNamaCustomer.EnterFocusColor = System.Drawing.Color.White;
             this.txtNamaCustomer.LeaveFocusColor = System.Drawing.Color.White;
             this.txtNamaCustomer.LetterOnly = false;
@@ -191,6 +191,6 @@
         private System.Windows.Forms.ComboBox cmbJenisCustomer;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnCari;
-        private UserControl.AdvancedTextbox txtNamaCustomer;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNamaCustomer;
     }
 }

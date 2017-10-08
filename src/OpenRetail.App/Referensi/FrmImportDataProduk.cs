@@ -31,10 +31,9 @@ using log4net;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.App.Helper;
-using OpenRetail.App.UI.Template;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
 using ConceptCave.WaitCursor;
-
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmImportDataProduk : FrmDialogImport

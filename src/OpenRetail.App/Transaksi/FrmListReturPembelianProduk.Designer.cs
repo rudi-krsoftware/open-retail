@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.gridList = new Syncfusion.Windows.Forms.Grid.GridListControl();
-            this.filterRangeTanggal = new OpenRetail.App.UserControl.FilterRangeTanggal();
+            this.filterRangeTanggal = new OpenRetail.Helper.UserControl.FilterRangeTanggal();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
             this.SuspendLayout();
@@ -75,8 +75,8 @@
             this.filterRangeTanggal.Name = "filterRangeTanggal";
             this.filterRangeTanggal.Size = new System.Drawing.Size(469, 23);
             this.filterRangeTanggal.TabIndex = 2;
-            this.filterRangeTanggal.BtnTampilkanClicked += new OpenRetail.App.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_BtnTampilkanClicked);
-            this.filterRangeTanggal.ChkTampilkanSemuaDataClicked += new OpenRetail.App.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_ChkTampilkanSemuaDataClicked);
+            this.filterRangeTanggal.BtnTampilkanClicked += new OpenRetail.Helper.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_BtnTampilkanClicked);
+            this.filterRangeTanggal.ChkTampilkanSemuaDataClicked += new OpenRetail.Helper.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_ChkTampilkanSemuaDataClicked);
             // 
             // FrmListReturPembelianProduk
             // 
@@ -97,6 +97,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Syncfusion.Windows.Forms.Grid.GridListControl gridList;
-        private UserControl.FilterRangeTanggal filterRangeTanggal;
+        private OpenRetail.Helper.UserControl.FilterRangeTanggal filterRangeTanggal;
     }
 }

@@ -36,19 +36,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtDari1 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtDari2 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtDari3 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtDari1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtDari2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtDari3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtKepada1 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKepada2 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKepada3 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKepada4 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKepada1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKepada2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKepada3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKepada4 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.btnPreviewNota = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -176,7 +176,7 @@
             // txtDari1
             // 
             this.txtDari1.AutoEnter = true;
-            this.txtDari1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDari1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDari1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDari1.EnterFocusColor = System.Drawing.Color.White;
             this.txtDari1.LeaveFocusColor = System.Drawing.Color.White;
@@ -193,7 +193,7 @@
             // txtDari2
             // 
             this.txtDari2.AutoEnter = true;
-            this.txtDari2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDari2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDari2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDari2.EnterFocusColor = System.Drawing.Color.White;
             this.txtDari2.LeaveFocusColor = System.Drawing.Color.White;
@@ -210,7 +210,7 @@
             // txtDari3
             // 
             this.txtDari3.AutoEnter = true;
-            this.txtDari3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDari3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDari3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDari3.EnterFocusColor = System.Drawing.Color.White;
             this.txtDari3.LeaveFocusColor = System.Drawing.Color.White;
@@ -308,7 +308,7 @@
             // txtKepada1
             // 
             this.txtKepada1.AutoEnter = true;
-            this.txtKepada1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKepada1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKepada1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKepada1.EnterFocusColor = System.Drawing.Color.White;
             this.txtKepada1.LeaveFocusColor = System.Drawing.Color.White;
@@ -325,7 +325,7 @@
             // txtKepada2
             // 
             this.txtKepada2.AutoEnter = true;
-            this.txtKepada2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKepada2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKepada2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKepada2.EnterFocusColor = System.Drawing.Color.White;
             this.txtKepada2.LeaveFocusColor = System.Drawing.Color.White;
@@ -342,7 +342,7 @@
             // txtKepada3
             // 
             this.txtKepada3.AutoEnter = true;
-            this.txtKepada3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKepada3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKepada3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKepada3.EnterFocusColor = System.Drawing.Color.White;
             this.txtKepada3.LeaveFocusColor = System.Drawing.Color.White;
@@ -359,7 +359,7 @@
             // txtKepada4
             // 
             this.txtKepada4.AutoEnter = false;
-            this.txtKepada4.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKepada4.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKepada4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKepada4.EnterFocusColor = System.Drawing.Color.White;
             this.txtKepada4.LeaveFocusColor = System.Drawing.Color.White;
@@ -514,10 +514,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private UserControl.AdvancedTextbox txtKepada1;
-        private UserControl.AdvancedTextbox txtKepada2;
-        private UserControl.AdvancedTextbox txtKepada3;
-        private UserControl.AdvancedTextbox txtKepada4;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKepada1;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKepada2;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKepada3;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKepada4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnPreviewNota;
         private System.Windows.Forms.Button btnCetakLabelNota;
@@ -532,9 +532,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private UserControl.AdvancedTextbox txtDari1;
-        private UserControl.AdvancedTextbox txtDari2;
-        private UserControl.AdvancedTextbox txtDari3;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDari1;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDari2;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDari3;
 
 
     }
