@@ -591,8 +591,6 @@
     <Compile Include="Transaksi\FrmPreviewNotaPenjualan.Designer.cs">
       <DependentUpon>FrmPreviewNotaPenjualan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transaksi\PrinterMiniPOS\IPrinterMiniPOS.cs" />
-    <Compile Include="Transaksi\PrinterMiniPOS\PrinterMiniPOS.cs" />
     <EmbeddedResource Include="Laporan\FrmLapStokProduk.resx">
       <DependentUpon>FrmLapStokProduk.cs</DependentUpon>
     </EmbeddedResource>

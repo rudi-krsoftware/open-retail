@@ -34,7 +34,7 @@ using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
 using Microsoft.Reporting.WinForms;
-using OpenRetail.App.Transaksi.PrinterMiniPOS;
+using OpenRetail.Helper.RAWPrinting;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -236,7 +236,7 @@ namespace OpenRetail.App.Transaksi
 
         private void CetakNotaMiniPOS(JualProduk jual)
         {
-            IPrinterMiniPOS printerMiniPos = new PrinterMiniPOS.PrinterMiniPOS(_pengaturanUmum.nama_printer);
+            IRAWPrinting printerMiniPos = new PrinterMiniPOS(_pengaturanUmum.nama_printer);
             printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer);
         }
 
