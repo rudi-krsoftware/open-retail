@@ -31,7 +31,7 @@ using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using OpenRetail.App.Main;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 using OpenRetail.App.Lookup;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]

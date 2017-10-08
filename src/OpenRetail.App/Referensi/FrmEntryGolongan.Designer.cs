@@ -30,9 +30,9 @@
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtGolongan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtGolongan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtDiskon = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtDiskon = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +69,7 @@
             // txtGolongan
             // 
             this.txtGolongan.AutoEnter = true;
-            this.txtGolongan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtGolongan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtGolongan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGolongan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtGolongan.LeaveFocusColor = System.Drawing.Color.White;
@@ -97,7 +97,7 @@
             // txtDiskon
             // 
             this.txtDiskon.AutoEnter = false;
-            this.txtDiskon.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDiskon.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDiskon.EnterFocusColor = System.Drawing.Color.White;
             this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDiskon.LetterOnly = false;
@@ -132,8 +132,8 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
-        private UserControl.AdvancedTextbox txtGolongan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtGolongan;
         private System.Windows.Forms.Label label2;
-        private UserControl.AdvancedTextbox txtDiskon;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDiskon;
     }
 }

@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtJenisPengeluaran = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtJenisPengeluaran = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@
             // txtJenisPengeluaran
             // 
             this.txtJenisPengeluaran.AutoEnter = false;
-            this.txtJenisPengeluaran.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJenisPengeluaran.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJenisPengeluaran.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtJenisPengeluaran.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtJenisPengeluaran.LeaveFocusColor = System.Drawing.Color.White;
@@ -98,6 +98,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
-        private UserControl.AdvancedTextbox txtJenisPengeluaran;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJenisPengeluaran;
     }
 }

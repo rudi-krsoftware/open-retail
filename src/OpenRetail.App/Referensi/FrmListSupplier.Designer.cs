@@ -31,7 +31,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCari = new System.Windows.Forms.Button();
-            this.txtNamaSupplier = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNamaSupplier = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.gridList = new Syncfusion.Windows.Forms.Grid.GridListControl();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -81,7 +81,7 @@
             // txtNamaSupplier
             // 
             this.txtNamaSupplier.AutoEnter = false;
-            this.txtNamaSupplier.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNamaSupplier.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNamaSupplier.EnterFocusColor = System.Drawing.Color.White;
             this.txtNamaSupplier.LeaveFocusColor = System.Drawing.Color.White;
             this.txtNamaSupplier.LetterOnly = false;
@@ -138,7 +138,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnCari;
-        private UserControl.AdvancedTextbox txtNamaSupplier;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNamaSupplier;
         private Syncfusion.Windows.Forms.Grid.GridListControl gridList;
     }
 }

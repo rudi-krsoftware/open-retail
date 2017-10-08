@@ -28,12 +28,12 @@ using System.Windows.Forms;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.App.UI.Template;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper;
 using System.Drawing.Printing;
 using Microsoft.Reporting.WinForms;
 using ConceptCave.WaitCursor;
-using OpenRetail.App.UserControl;
+using OpenRetail.Helper.UserControl;
 
 namespace OpenRetail.App.Pengaturan
 {

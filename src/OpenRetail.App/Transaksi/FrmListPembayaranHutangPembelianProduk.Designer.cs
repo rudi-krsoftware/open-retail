@@ -30,11 +30,11 @@
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.gridList = new Syncfusion.Windows.Forms.Grid.GridListControl();
-            this.filterRangeTanggal = new OpenRetail.App.UserControl.FilterRangeTanggal();
+            this.filterRangeTanggal = new OpenRetail.Helper.UserControl.FilterRangeTanggal();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCari = new System.Windows.Forms.Button();
-            this.txtNamaSupplier = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNamaSupplier = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
@@ -81,8 +81,8 @@
             this.filterRangeTanggal.Name = "filterRangeTanggal";
             this.filterRangeTanggal.Size = new System.Drawing.Size(469, 23);
             this.filterRangeTanggal.TabIndex = 2;
-            this.filterRangeTanggal.BtnTampilkanClicked += new OpenRetail.App.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_BtnTampilkanClicked);
-            this.filterRangeTanggal.ChkTampilkanSemuaDataClicked += new OpenRetail.App.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_ChkTampilkanSemuaDataClicked);
+            this.filterRangeTanggal.BtnTampilkanClicked += new OpenRetail.Helper.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_BtnTampilkanClicked);
+            this.filterRangeTanggal.ChkTampilkanSemuaDataClicked += new OpenRetail.Helper.UserControl.FilterRangeTanggal.EventHandler(this.filterRangeTanggal_ChkTampilkanSemuaDataClicked);
             // 
             // tableLayoutPanel4
             // 
@@ -126,7 +126,7 @@
             // txtNamaSupplier
             // 
             this.txtNamaSupplier.AutoEnter = false;
-            this.txtNamaSupplier.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNamaSupplier.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNamaSupplier.EnterFocusColor = System.Drawing.Color.White;
             this.txtNamaSupplier.LeaveFocusColor = System.Drawing.Color.White;
             this.txtNamaSupplier.LetterOnly = false;
@@ -161,10 +161,10 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Syncfusion.Windows.Forms.Grid.GridListControl gridList;
-        private UserControl.FilterRangeTanggal filterRangeTanggal;
+        private OpenRetail.Helper.UserControl.FilterRangeTanggal filterRangeTanggal;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnCari;
-        private UserControl.AdvancedTextbox txtNamaSupplier;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNamaSupplier;
     }
 }

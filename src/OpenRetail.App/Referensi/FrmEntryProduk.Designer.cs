@@ -39,16 +39,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbGolongan = new System.Windows.Forms.ComboBox();
-            this.txtKodeProduk = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtNamaProduk = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtSatuan = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtHargaBeli = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtHargaJual = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtStok = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtStokGudang = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtMinStokGudang = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKodeProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtNamaProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtSatuan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtHargaBeli = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtHargaJual = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtStok = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtStokGudang = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtMinStokGudang = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtDiskon = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtDiskon = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -56,21 +56,21 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.txtDiskonGrosir1 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtDiskonGrosir2 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtDiskonGrosir3 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtDiskonGrosir1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtDiskonGrosir2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtDiskonGrosir3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtHargaGrosir1 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtHargaGrosir1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label18 = new System.Windows.Forms.Label();
-            this.txtJumlahMinimalGrosir1 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtJumlahMinimalGrosir1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtHargaGrosir2 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtHargaGrosir2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label19 = new System.Windows.Forms.Label();
-            this.txtJumlahMinimalGrosir2 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtJumlahMinimalGrosir2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtHargaGrosir3 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtHargaGrosir3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label20 = new System.Windows.Forms.Label();
-            this.txtJumlahMinimalGrosir3 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtJumlahMinimalGrosir3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -255,7 +255,7 @@
             // txtKodeProduk
             // 
             this.txtKodeProduk.AutoEnter = true;
-            this.txtKodeProduk.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKodeProduk.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKodeProduk.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKodeProduk.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKodeProduk.LetterOnly = false;
@@ -271,7 +271,7 @@
             // txtNamaProduk
             // 
             this.txtNamaProduk.AutoEnter = true;
-            this.txtNamaProduk.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNamaProduk.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNamaProduk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNamaProduk.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtNamaProduk.LeaveFocusColor = System.Drawing.Color.White;
@@ -288,7 +288,7 @@
             // txtSatuan
             // 
             this.txtSatuan.AutoEnter = true;
-            this.txtSatuan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtSatuan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtSatuan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtSatuan.LeaveFocusColor = System.Drawing.Color.White;
             this.txtSatuan.LetterOnly = false;
@@ -304,7 +304,7 @@
             // txtHargaBeli
             // 
             this.txtHargaBeli.AutoEnter = true;
-            this.txtHargaBeli.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHargaBeli.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHargaBeli.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtHargaBeli.LeaveFocusColor = System.Drawing.Color.White;
             this.txtHargaBeli.LetterOnly = false;
@@ -322,7 +322,7 @@
             // txtHargaJual
             // 
             this.txtHargaJual.AutoEnter = true;
-            this.txtHargaJual.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHargaJual.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHargaJual.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtHargaJual.LeaveFocusColor = System.Drawing.Color.White;
             this.txtHargaJual.LetterOnly = false;
@@ -340,7 +340,7 @@
             // txtStok
             // 
             this.txtStok.AutoEnter = true;
-            this.txtStok.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtStok.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtStok.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtStok.LeaveFocusColor = System.Drawing.Color.White;
             this.txtStok.LetterOnly = false;
@@ -358,7 +358,7 @@
             // txtStokGudang
             // 
             this.txtStokGudang.AutoEnter = true;
-            this.txtStokGudang.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtStokGudang.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtStokGudang.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtStokGudang.LeaveFocusColor = System.Drawing.Color.White;
             this.txtStokGudang.LetterOnly = false;
@@ -376,7 +376,7 @@
             // txtMinStokGudang
             // 
             this.txtMinStokGudang.AutoEnter = false;
-            this.txtMinStokGudang.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtMinStokGudang.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtMinStokGudang.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtMinStokGudang.LeaveFocusColor = System.Drawing.Color.White;
             this.txtMinStokGudang.LetterOnly = false;
@@ -407,7 +407,7 @@
             // txtDiskon
             // 
             this.txtDiskon.AutoEnter = true;
-            this.txtDiskon.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDiskon.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDiskon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDiskon.LetterOnly = false;
@@ -508,7 +508,7 @@
             // txtDiskonGrosir1
             // 
             this.txtDiskonGrosir1.AutoEnter = true;
-            this.txtDiskonGrosir1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDiskonGrosir1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDiskonGrosir1.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDiskonGrosir1.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDiskonGrosir1.LetterOnly = false;
@@ -526,7 +526,7 @@
             // txtDiskonGrosir2
             // 
             this.txtDiskonGrosir2.AutoEnter = true;
-            this.txtDiskonGrosir2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDiskonGrosir2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDiskonGrosir2.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDiskonGrosir2.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDiskonGrosir2.LetterOnly = false;
@@ -544,7 +544,7 @@
             // txtDiskonGrosir3
             // 
             this.txtDiskonGrosir3.AutoEnter = true;
-            this.txtDiskonGrosir3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtDiskonGrosir3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtDiskonGrosir3.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDiskonGrosir3.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDiskonGrosir3.LetterOnly = false;
@@ -574,7 +574,7 @@
             // txtHargaGrosir1
             // 
             this.txtHargaGrosir1.AutoEnter = true;
-            this.txtHargaGrosir1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHargaGrosir1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHargaGrosir1.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtHargaGrosir1.LeaveFocusColor = System.Drawing.Color.White;
             this.txtHargaGrosir1.LetterOnly = false;
@@ -604,7 +604,7 @@
             // txtJumlahMinimalGrosir1
             // 
             this.txtJumlahMinimalGrosir1.AutoEnter = true;
-            this.txtJumlahMinimalGrosir1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJumlahMinimalGrosir1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJumlahMinimalGrosir1.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtJumlahMinimalGrosir1.LeaveFocusColor = System.Drawing.Color.White;
             this.txtJumlahMinimalGrosir1.LetterOnly = false;
@@ -634,7 +634,7 @@
             // txtHargaGrosir2
             // 
             this.txtHargaGrosir2.AutoEnter = true;
-            this.txtHargaGrosir2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHargaGrosir2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHargaGrosir2.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtHargaGrosir2.LeaveFocusColor = System.Drawing.Color.White;
             this.txtHargaGrosir2.LetterOnly = false;
@@ -664,7 +664,7 @@
             // txtJumlahMinimalGrosir2
             // 
             this.txtJumlahMinimalGrosir2.AutoEnter = true;
-            this.txtJumlahMinimalGrosir2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJumlahMinimalGrosir2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJumlahMinimalGrosir2.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtJumlahMinimalGrosir2.LeaveFocusColor = System.Drawing.Color.White;
             this.txtJumlahMinimalGrosir2.LetterOnly = false;
@@ -694,7 +694,7 @@
             // txtHargaGrosir3
             // 
             this.txtHargaGrosir3.AutoEnter = true;
-            this.txtHargaGrosir3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtHargaGrosir3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtHargaGrosir3.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtHargaGrosir3.LeaveFocusColor = System.Drawing.Color.White;
             this.txtHargaGrosir3.LetterOnly = false;
@@ -724,7 +724,7 @@
             // txtJumlahMinimalGrosir3
             // 
             this.txtJumlahMinimalGrosir3.AutoEnter = true;
-            this.txtJumlahMinimalGrosir3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJumlahMinimalGrosir3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJumlahMinimalGrosir3.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtJumlahMinimalGrosir3.LeaveFocusColor = System.Drawing.Color.White;
             this.txtJumlahMinimalGrosir3.LetterOnly = false;
@@ -773,16 +773,16 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbGolongan;
-        private UserControl.AdvancedTextbox txtKodeProduk;
-        private UserControl.AdvancedTextbox txtNamaProduk;
-        private UserControl.AdvancedTextbox txtSatuan;
-        private UserControl.AdvancedTextbox txtHargaBeli;
-        private UserControl.AdvancedTextbox txtHargaJual;
-        private UserControl.AdvancedTextbox txtStok;
-        private UserControl.AdvancedTextbox txtStokGudang;
-        private UserControl.AdvancedTextbox txtMinStokGudang;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKodeProduk;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNamaProduk;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtSatuan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHargaBeli;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHargaJual;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtStok;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtStokGudang;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtMinStokGudang;
         private System.Windows.Forms.Label label10;
-        private UserControl.AdvancedTextbox txtDiskon;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDiskon;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
@@ -790,21 +790,21 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private UserControl.AdvancedTextbox txtDiskonGrosir1;
-        private UserControl.AdvancedTextbox txtDiskonGrosir2;
-        private UserControl.AdvancedTextbox txtDiskonGrosir3;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDiskonGrosir1;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDiskonGrosir2;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtDiskonGrosir3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private UserControl.AdvancedTextbox txtHargaGrosir1;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHargaGrosir1;
         private System.Windows.Forms.Label label18;
-        private UserControl.AdvancedTextbox txtJumlahMinimalGrosir1;
-        private UserControl.AdvancedTextbox txtHargaGrosir2;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJumlahMinimalGrosir1;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHargaGrosir2;
         private System.Windows.Forms.Label label19;
-        private UserControl.AdvancedTextbox txtJumlahMinimalGrosir2;
-        private UserControl.AdvancedTextbox txtHargaGrosir3;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJumlahMinimalGrosir2;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtHargaGrosir3;
         private System.Windows.Forms.Label label20;
-        private UserControl.AdvancedTextbox txtJumlahMinimalGrosir3;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJumlahMinimalGrosir3;
 
     }
 }

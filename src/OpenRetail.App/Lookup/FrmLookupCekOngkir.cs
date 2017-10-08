@@ -26,8 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using OpenRetail.App.Helper;
-using OpenRetail.App.UI.Template;
+using OpenRetail.Helper;
 using OpenRetail.Model;
 using OpenRetail.Model.RajaOngkir;
 using OpenRetail.Bll.Api;
@@ -35,7 +34,8 @@ using OpenRetail.Bll.Service;
 using RestSharp;
 using Newtonsoft.Json;
 using ConceptCave.WaitCursor;
-using OpenRetail.App.UserControl;
+using OpenRetail.Helper.UserControl;
+using OpenRetail.Helper.UI.Template;
 
 namespace OpenRetail.App.Lookup
 {

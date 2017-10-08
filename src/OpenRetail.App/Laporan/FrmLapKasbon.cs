@@ -26,17 +26,17 @@ using System.Text;
 using System.Windows.Forms;
 
 using log4net;
-using OpenRetail.App.UI.Template;
 using OpenRetail.Model;
 using OpenRetail.Model.Report;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 using OpenRetail.Report;
 using OpenRetail.Bll.Api.Report;
 using OpenRetail.Bll.Service.Report;
 using ConceptCave.WaitCursor;
 using Microsoft.Reporting.WinForms;
+using OpenRetail.Helper.UI.Template;
 
 namespace OpenRetail.App.Laporan
 {

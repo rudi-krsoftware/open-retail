@@ -34,7 +34,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.rdoAktif = new System.Windows.Forms.RadioButton();
             this.rdoNonAktif = new System.Windows.Forms.RadioButton();
-            this.txtNamaRole = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNamaRole = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -116,7 +116,7 @@
             // txtNamaRole
             // 
             this.txtNamaRole.AutoEnter = true;
-            this.txtNamaRole.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNamaRole.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNamaRole.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNamaRole.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtNamaRole.LeaveFocusColor = System.Drawing.Color.White;
@@ -155,7 +155,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.RadioButton rdoAktif;
         private System.Windows.Forms.RadioButton rdoNonAktif;
-        private UserControl.AdvancedTextbox txtNamaRole;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNamaRole;
 
 
     }
