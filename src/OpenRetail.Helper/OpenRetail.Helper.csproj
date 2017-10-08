@@ -72,7 +72,7 @@
     <Compile Include="DatabaseVersionHelper.cs" />
     <Compile Include="DateTimeHelper.cs" />
     <Compile Include="DayMonthHelper.cs" />
-    <Compile Include="ESCCommandHelper.cs" />
+    <Compile Include="RAWPrinting\ESCCommandHelper.cs" />
     <Compile Include="FillDataHelper.cs" />
     <Compile Include="GridControlColSizeHelper.cs" />
     <Compile Include="GridListControlHelper.cs" />
@@ -81,15 +81,15 @@
     <Compile Include="KeyPressHelper.cs" />
     <Compile Include="MsgHelper.cs" />
     <Compile Include="NumberHelper.cs" />
-    <Compile Include="PrintReportHelper.cs" />
+    <Compile Include="ReportViewerPrinting\ReportPrintHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RawPrinterHelper.cs" />
-    <Compile Include="ReportViewerPrintHelper.cs" />
+    <Compile Include="RAWPrinting\RawPrintHelper.cs" />
+    <Compile Include="ReportViewerPrinting\ReportViewerPrintHelper.cs" />
     <Compile Include="RolePrivilegeHelper.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="ThreadHelper.cs" />

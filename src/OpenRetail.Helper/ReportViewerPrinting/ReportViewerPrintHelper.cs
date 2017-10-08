@@ -60,7 +60,7 @@ namespace OpenRetail.Helper
             if (_parameters != null)
                 report.SetParameters(_parameters);
 
-            using (var printer = new PrintReport())
+            using (var printer = new ReportPrintHelper())
             {
                 printer.PrintToPrinter(report, _printerName);
             } 
