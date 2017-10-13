@@ -79,5 +79,15 @@ namespace OpenRetail.Model
         {
             return JsonConvert.SerializeObject(obj);
         }
+
+        /// <summary>
+        /// Method untuk mengkonversi nilai null menjadi string kosong
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string NullToString(this object value)
+        {
+            return value == null ? "" : value.ToString();
+        }
     }
 }

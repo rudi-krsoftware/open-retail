@@ -23,12 +23,30 @@ using System.Text;
 
 namespace OpenRetail.Model
 {
+    public enum JenisPrinter
+    {
+        /// <summary>
+        /// Jenis printer inkjet/lasetjet
+        /// </summary>
+        InkJet = 1, 
+
+        /// <summary>
+        /// Jenis printer dot matrix
+        /// </summary>
+        DotMatrix = 2, 
+
+        /// <summary>
+        /// Jenis printer mini pos
+        /// </summary>
+        MiniPOS = 3
+    }
+
     public class PengaturanUmum
     {
         public string nama_printer { get; set; }
         public bool is_auto_print { get; set; }
         public bool is_auto_print_label_nota { get; set; }
-        public bool is_printer_mini_pos { get; set; }
+        public JenisPrinter jenis_printer { get; set; }
         public bool is_cetak_customer { get; set; }
         public bool is_show_minimal_stok { get; set; }
         public bool is_customer_required { get; set; }
