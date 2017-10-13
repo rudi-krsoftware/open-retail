@@ -40,9 +40,10 @@ namespace OpenRetail.Helper.RAWPrinting
         /// <summary>
         /// Override method untuk mencetak nota dot matrix
         /// </summary>
-        /// <param name="jual"></param>
-        /// <param name="listOfHeaderNota"></param>
-        /// <param name="lineFeed"></param>
-        void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int lineFeed);
+        /// <param name="jual">Objek jual</param>
+        /// <param name="listOfHeaderNota">List of header nota</param>
+        /// <param name="jumlahBaris">Maksimal jumlah baris yang tercetak dalam satu halaman</param>
+        /// <param name="jumlahKarakter">Maksimal jumlah karakter/kolom</param>
+        void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80);
     }
 }

@@ -82,7 +82,11 @@ namespace OpenRetail.Helper.RAWPrinting
             // cetak info nota
             textToPrint.Append("Nota   : ").Append(jual.nota).Append(ESCCommandHelper.LineFeed(1));
             textToPrint.Append("Tanggal: ").Append(DateTimeHelper.DateToString(jual.tanggal)).Append(ESCCommandHelper.LineFeed(1));
-            textToPrint.Append("Tempo  : ").Append(jual.tanggal_tempo == null ? "-" : DateTimeHelper.DateToString(jual.tanggal_tempo)).Append(ESCCommandHelper.LineFeed(1));
+
+            if (jual.tanggal_tempo != null)
+            {
+                textToPrint.Append("Tempo  : ").Append(DateTimeHelper.DateToString(jual.tanggal_tempo)).Append(ESCCommandHelper.LineFeed(1));
+            }            
 
             if (isCetakCustomer)
             {
@@ -92,8 +96,8 @@ namespace OpenRetail.Helper.RAWPrinting
                 textToPrint.Append("Kepada: ").Append(ESCCommandHelper.LineFeed(1));
 
                 var namaCustomer = jual.is_sdac == true ? jual.Customer.nama_customer : jual.kirim_kepada;
-                var alamat = jual.is_sdac == true ? jual.Customer.alamat : jual.kirim_alamat;
-                var telepon = jual.is_sdac == true ? jual.Customer.telepon : jual.kirim_telepon;
+                var alamat = jual.is_sdac == true ? jual.Customer.alamat.NullToString() : jual.kirim_alamat.NullToString();
+                var telepon = jual.is_sdac == true ? jual.Customer.telepon.NullToString() : jual.kirim_telepon.NullToString();
 
                 textToPrint.Append(namaCustomer).Append(ESCCommandHelper.LineFeed(1));
 
@@ -180,7 +184,11 @@ namespace OpenRetail.Helper.RAWPrinting
             {
                 if (footer.keterangan.Length > 0)
                 {
-                    footer.keterangan = StringHelper.FixedLength(footer.keterangan, garisPemisah.Length);
+                    if (footer.keterangan.Length > garisPemisah.Length)
+                    {
+                        footer.keterangan = StringHelper.FixedLength(footer.keterangan, garisPemisah.Length);
+                    }
+
                     textToPrint.Append(footer.keterangan).Append(ESCCommandHelper.LineFeed(1));
                 }
             }
@@ -197,7 +205,7 @@ namespace OpenRetail.Helper.RAWPrinting
             }
         }
 
-        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int lineFeed)
+        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80)
         {
             throw new NotImplementedException();
         }
