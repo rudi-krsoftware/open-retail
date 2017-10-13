@@ -82,6 +82,7 @@
     <Compile Include="MsgHelper.cs" />
     <Compile Include="NumberHelper.cs" />
     <Compile Include="RAWPrinting\IRAWPrinting.cs" />
+    <Compile Include="RAWPrinting\PrinterDotMatrix.cs" />
     <Compile Include="RAWPrinting\PrinterMiniPOS.cs" />
     <Compile Include="ReportViewerPrinting\ReportPrintHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

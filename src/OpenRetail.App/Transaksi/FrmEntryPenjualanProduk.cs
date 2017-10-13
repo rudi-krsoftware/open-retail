@@ -152,15 +152,8 @@ namespace OpenRetail.App.Transaksi
 
         private void SetPengaturanPrinter()
         {
-            if (this._pengaturanUmum.is_printer_mini_pos)
-            {
-                btnPreviewNota.Visible = false;
-                chkDropship.Visible = false;
-            }
-            else
-            {
-                chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
-            }
+            chkDropship.Visible = this._pengaturanUmum.jenis_printer == JenisPrinter.InkJet;
+            chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
         }
 
         private void InitGridControl(GridControl grid)
@@ -572,14 +565,28 @@ namespace OpenRetail.App.Transaksi
                     {
                         if (chkCetakNotaJual.Checked)
                         {
-                            if (this._pengaturanUmum.is_printer_mini_pos)
-                                CetakNotaMiniPOS(_jual);
-                            else
-                                CetakNota(_jual.jual_id);
+                            switch (this._pengaturanUmum.jenis_printer)
+                            {
+                                case JenisPrinter.DotMatrix:
+                                    if (MsgHelper.MsgKonfirmasi("Apakah proses pencetakan ingin dilanjutkan ?"))
+                                        CetakNotaDotMatrix(_jual);
+                                    
+                                    break;
+
+                                case JenisPrinter.MiniPOS:
+                                    if (MsgHelper.MsgKonfirmasi("Apakah proses pencetakan ingin dilanjutkan ?"))
+                                        CetakNotaMiniPOS(_jual);
+
+                                    break;
+                                default:
+                                    CetakNota(_jual.jual_id);
+                                    break;
+                            }
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        _log.Error("Error:", ex);
                     }
                     
                     Listener.Ok(this, _isNewData, _jual);
@@ -655,6 +662,12 @@ namespace OpenRetail.App.Transaksi
         {
             IRAWPrinting printerMiniPos = new PrinterMiniPOS(_pengaturanUmum.nama_printer);
             printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer);
+        }
+
+        private void CetakNotaDotMatrix(JualProduk jual)
+        {
+            IRAWPrinting printerMiniPos = new PrinterDotMatrix(_pengaturanUmum.nama_printer);
+            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota, _pengaturanUmum.jumlah_gulung);
         }
 
         protected override void Selesai()

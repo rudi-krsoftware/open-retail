@@ -38,12 +38,13 @@
             this.chkCetakOtomatis = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpMiniPOS = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtJumlahKarakter = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtJumlahGulung = new OpenRetail.Helper.UserControl.AdvancedTextbox();
-            this.chkPrinterMiniPOS = new System.Windows.Forms.CheckBox();
+            this.txtJumlahKarakter = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.rdoJenisPrinterMiniPOS = new System.Windows.Forms.RadioButton();
+            this.rdoJenisPrinterDotMatrix = new System.Windows.Forms.RadioButton();
+            this.rdoJenisPrinterInkJet = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLihatContohNotaPenjualan = new System.Windows.Forms.Button();
@@ -103,7 +104,6 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.grpMiniPOS.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -232,74 +232,20 @@
             // 
             // grpMiniPOS
             // 
-            this.grpMiniPOS.Controls.Add(this.tableLayoutPanel9);
-            this.grpMiniPOS.Controls.Add(this.chkPrinterMiniPOS);
+            this.grpMiniPOS.Controls.Add(this.txtJumlahGulung);
+            this.grpMiniPOS.Controls.Add(this.txtJumlahKarakter);
+            this.grpMiniPOS.Controls.Add(this.label10);
+            this.grpMiniPOS.Controls.Add(this.label9);
+            this.grpMiniPOS.Controls.Add(this.rdoJenisPrinterMiniPOS);
+            this.grpMiniPOS.Controls.Add(this.rdoJenisPrinterDotMatrix);
+            this.grpMiniPOS.Controls.Add(this.rdoJenisPrinterInkJet);
             this.grpMiniPOS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpMiniPOS.Location = new System.Drawing.Point(0, 0);
             this.grpMiniPOS.Name = "grpMiniPOS";
             this.grpMiniPOS.Size = new System.Drawing.Size(404, 238);
             this.grpMiniPOS.TabIndex = 1;
             this.grpMiniPOS.TabStop = false;
-            this.grpMiniPOS.Text = "                               ";
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 2;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Controls.Add(this.label9, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.label10, 0, 1);
-            this.tableLayoutPanel9.Controls.Add(this.txtJumlahKarakter, 1, 0);
-            this.tableLayoutPanel9.Controls.Add(this.txtJumlahGulung, 1, 1);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 3;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(398, 219);
-            this.tableLayoutPanel9.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(3, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(174, 25);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Jumlah karakter yang tercetak";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(3, 25);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(174, 25);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Jumlah gulung kertas setelah cetak";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtJumlahKarakter
-            // 
-            this.txtJumlahKarakter.AutoEnter = true;
-            this.txtJumlahKarakter.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
-            this.txtJumlahKarakter.Enabled = false;
-            this.txtJumlahKarakter.EnterFocusColor = System.Drawing.Color.White;
-            this.txtJumlahKarakter.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtJumlahKarakter.LetterOnly = false;
-            this.txtJumlahKarakter.Location = new System.Drawing.Point(183, 3);
-            this.txtJumlahKarakter.MaxLength = 2;
-            this.txtJumlahKarakter.Name = "txtJumlahKarakter";
-            this.txtJumlahKarakter.NumericOnly = true;
-            this.txtJumlahKarakter.SelectionText = false;
-            this.txtJumlahKarakter.Size = new System.Drawing.Size(41, 20);
-            this.txtJumlahKarakter.TabIndex = 1;
-            this.txtJumlahKarakter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtJumlahKarakter.ThousandSeparator = false;
+            this.grpMiniPOS.Text = " [ Jenis Printer ] ";
             // 
             // txtJumlahGulung
             // 
@@ -309,7 +255,7 @@
             this.txtJumlahGulung.EnterFocusColor = System.Drawing.Color.White;
             this.txtJumlahGulung.LeaveFocusColor = System.Drawing.Color.White;
             this.txtJumlahGulung.LetterOnly = false;
-            this.txtJumlahGulung.Location = new System.Drawing.Point(183, 28);
+            this.txtJumlahGulung.Location = new System.Drawing.Point(208, 108);
             this.txtJumlahGulung.MaxLength = 2;
             this.txtJumlahGulung.Name = "txtJumlahGulung";
             this.txtJumlahGulung.NumericOnly = true;
@@ -319,16 +265,79 @@
             this.txtJumlahGulung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtJumlahGulung.ThousandSeparator = false;
             // 
-            // chkPrinterMiniPOS
+            // txtJumlahKarakter
             // 
-            this.chkPrinterMiniPOS.AutoSize = true;
-            this.chkPrinterMiniPOS.Location = new System.Drawing.Point(15, -1);
-            this.chkPrinterMiniPOS.Name = "chkPrinterMiniPOS";
-            this.chkPrinterMiniPOS.Size = new System.Drawing.Size(103, 17);
-            this.chkPrinterMiniPOS.TabIndex = 0;
-            this.chkPrinterMiniPOS.Text = "Printer Mini POS";
-            this.chkPrinterMiniPOS.UseVisualStyleBackColor = true;
-            this.chkPrinterMiniPOS.CheckedChanged += new System.EventHandler(this.chkPrinterMiniPOS_CheckedChanged);
+            this.txtJumlahKarakter.AutoEnter = true;
+            this.txtJumlahKarakter.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtJumlahKarakter.Enabled = false;
+            this.txtJumlahKarakter.EnterFocusColor = System.Drawing.Color.White;
+            this.txtJumlahKarakter.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtJumlahKarakter.LetterOnly = false;
+            this.txtJumlahKarakter.Location = new System.Drawing.Point(208, 85);
+            this.txtJumlahKarakter.MaxLength = 2;
+            this.txtJumlahKarakter.Name = "txtJumlahKarakter";
+            this.txtJumlahKarakter.NumericOnly = true;
+            this.txtJumlahKarakter.SelectionText = false;
+            this.txtJumlahKarakter.Size = new System.Drawing.Size(41, 20);
+            this.txtJumlahKarakter.TabIndex = 1;
+            this.txtJumlahKarakter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtJumlahKarakter.ThousandSeparator = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(26, 109);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(174, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Jumlah gulung kertas setelah cetak";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(26, 85);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(150, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Jumlah karakter yang tercetak";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // rdoJenisPrinterMiniPOS
+            // 
+            this.rdoJenisPrinterMiniPOS.AutoSize = true;
+            this.rdoJenisPrinterMiniPOS.Location = new System.Drawing.Point(9, 65);
+            this.rdoJenisPrinterMiniPOS.Name = "rdoJenisPrinterMiniPOS";
+            this.rdoJenisPrinterMiniPOS.Size = new System.Drawing.Size(69, 17);
+            this.rdoJenisPrinterMiniPOS.TabIndex = 2;
+            this.rdoJenisPrinterMiniPOS.TabStop = true;
+            this.rdoJenisPrinterMiniPOS.Text = "Mini POS";
+            this.rdoJenisPrinterMiniPOS.UseVisualStyleBackColor = true;
+            this.rdoJenisPrinterMiniPOS.CheckedChanged += new System.EventHandler(this.rdoJenisPrinterMiniPOS_CheckedChanged);
+            // 
+            // rdoJenisPrinterDotMatrix
+            // 
+            this.rdoJenisPrinterDotMatrix.AutoSize = true;
+            this.rdoJenisPrinterDotMatrix.Location = new System.Drawing.Point(9, 42);
+            this.rdoJenisPrinterDotMatrix.Name = "rdoJenisPrinterDotMatrix";
+            this.rdoJenisPrinterDotMatrix.Size = new System.Drawing.Size(73, 17);
+            this.rdoJenisPrinterDotMatrix.TabIndex = 2;
+            this.rdoJenisPrinterDotMatrix.TabStop = true;
+            this.rdoJenisPrinterDotMatrix.Text = "Dot Matrix";
+            this.rdoJenisPrinterDotMatrix.UseVisualStyleBackColor = true;
+            this.rdoJenisPrinterDotMatrix.CheckedChanged += new System.EventHandler(this.rdoJenisPrinterDotMatrix_CheckedChanged);
+            // 
+            // rdoJenisPrinterInkJet
+            // 
+            this.rdoJenisPrinterInkJet.AutoSize = true;
+            this.rdoJenisPrinterInkJet.Location = new System.Drawing.Point(9, 19);
+            this.rdoJenisPrinterInkJet.Name = "rdoJenisPrinterInkJet";
+            this.rdoJenisPrinterInkJet.Size = new System.Drawing.Size(96, 17);
+            this.rdoJenisPrinterInkJet.TabIndex = 2;
+            this.rdoJenisPrinterInkJet.TabStop = true;
+            this.rdoJenisPrinterInkJet.Text = "InkJet/Laserjet";
+            this.rdoJenisPrinterInkJet.UseVisualStyleBackColor = true;
+            this.rdoJenisPrinterInkJet.CheckedChanged += new System.EventHandler(this.rdoJenisPrinterInkJet_CheckedChanged);
             // 
             // tabPage2
             // 
@@ -1086,8 +1095,6 @@
             this.panel1.ResumeLayout(false);
             this.grpMiniPOS.ResumeLayout(false);
             this.grpMiniPOS.PerformLayout();
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.tableLayoutPanel9.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -1145,8 +1152,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox grpMiniPOS;
-        private System.Windows.Forms.CheckBox chkPrinterMiniPOS;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private OpenRetail.Helper.UserControl.AdvancedTextbox txtJumlahKarakter;
@@ -1182,6 +1187,9 @@
         private System.Windows.Forms.CheckBox chkTampilkanInfoMinimalStokProduk;
         private System.Windows.Forms.CheckBox chkCustomerWajibDiisi;
         private System.Windows.Forms.CheckBox chkSingkatPenulisanOngkir;
+        private System.Windows.Forms.RadioButton rdoJenisPrinterMiniPOS;
+        private System.Windows.Forms.RadioButton rdoJenisPrinterDotMatrix;
+        private System.Windows.Forms.RadioButton rdoJenisPrinterInkJet;
 
 
 

@@ -95,7 +95,7 @@ namespace OpenRetail.App.Main
             var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", appConfigFile)) : 5;
             var isCetakCustomer = AppConfigHelper.GetValue("isCetakCustomer", appConfigFile).Length > 0 ? Convert.ToBoolean(AppConfigHelper.GetValue("isCetakCustomer", appConfigFile)) : true;
 
-            MainProgram.pengaturanUmum.is_printer_mini_pos = AppConfigHelper.GetValue("isPrinterMiniPOS", appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.jenis_printer = AppConfigHelper.GetValue("jenis_printer", appConfigFile).Length > 0 ? (JenisPrinter)Convert.ToInt32(AppConfigHelper.GetValue("jenis_printer", appConfigFile)) : JenisPrinter.InkJet;
             MainProgram.pengaturanUmum.is_cetak_customer = isCetakCustomer;
             MainProgram.pengaturanUmum.jumlah_karakter = jumlahKarakter;
             MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;
