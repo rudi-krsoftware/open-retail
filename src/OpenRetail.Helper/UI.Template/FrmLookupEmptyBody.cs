@@ -75,8 +75,12 @@ namespace OpenRetail.Helper.UI.Template
         private void FrmLookupEmptyBody_KeyDown(object sender, KeyEventArgs e)
         {
             if (KeyPressHelper.IsShortcutKey(Keys.F10, e))
+            {
                 if (btnPilih.Enabled)
                     Pilih();
+
+                e.SuppressKeyPress = true;
+            }                
         }
 
         private void FrmLookupEmptyBody_KeyPress(object sender, KeyPressEventArgs e)

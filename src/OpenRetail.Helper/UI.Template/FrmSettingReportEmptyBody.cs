@@ -97,7 +97,11 @@ namespace OpenRetail.Helper.UI.Template
         private void FrmSettingReportEmptyBody_KeyDown(object sender, KeyEventArgs e)
         {
             if (KeyPressHelper.IsShortcutKey(Keys.F10, e))
+            {
                 Preview();
+
+                e.SuppressKeyPress = true;
+            }                
         }
 
         private void FrmSettingReportEmptyBody_KeyPress(object sender, KeyPressEventArgs e)
