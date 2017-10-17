@@ -223,8 +223,13 @@ namespace OpenRetail.Helper.UserControl
                     if (this.Text.Substring(0, 1) == ".")
                         this.Text = this.Text.Replace(".", "");
 
-                    long x = Convert.ToInt64(this.Text.Replace(",", ""));
-                    string strAfterFormat = string.Format("{0:N0}", x);
+                    var tmp = this.Text.Replace(",", "");
+                    if (_isDecimal)
+                    {
+                        tmp = Math.Round(Convert.ToDouble(tmp)).ToString();
+                    }
+
+                    string strAfterFormat = string.Format("{0:N0}", Convert.ToInt64(tmp));
 
                     if (this.Text != strAfterFormat)
                     {
