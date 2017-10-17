@@ -50,7 +50,7 @@ namespace OpenRetail.Helper.UserControl
         private bool _isLetterOnly = false;
         private bool _isAutoEnter = false;
         private bool _isDecimal = false;
-
+        
         #region >> property <<
 
         public override int MaxLength
@@ -151,9 +151,15 @@ namespace OpenRetail.Helper.UserControl
             Leave += AdvancedTextbox_Leave;
             KeyPress += AdvancedTextbox_KeyPress;
             Enter += AdvancedTextbox_Enter;
+            EnabledChanged += AdvancedTextbox_EnabledChanged;
         }        
 
         #region ">> delegate method <<"
+
+        private void AdvancedTextbox_EnabledChanged(object sender, EventArgs e)
+        {
+            this.BackColor = this.Enabled ? this._leaveFocusColor : Color.FromArgb(232, 235, 242);
+        }        
 
         private void AdvancedTextbox_Enter(object sender, EventArgs e)
         {
