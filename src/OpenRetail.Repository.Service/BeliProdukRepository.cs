@@ -351,8 +351,7 @@ namespace OpenRetail.Repository.Service
             var total = obj.item_beli.Where(f => f.Produk != null && f.entity_state != EntityState.Deleted)
                                      .Sum(f => (f.jumlah - f.jumlah_retur) * (f.harga - (f.diskon / 100 * f.harga)));
 
-            total = (int)total;
-            return total;
+            return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
         public int Save(BeliProduk obj)

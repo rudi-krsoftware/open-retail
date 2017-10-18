@@ -176,7 +176,8 @@ namespace OpenRetail.Repository.Service
         {
             var total = obj.item_retur.Where(f => f.Produk != null && f.entity_state != EntityState.Deleted)
                                       .Sum(f => f.jumlah_retur * f.harga_jual);
-            return total;
+
+            return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
         public int Save(ReturJualProduk obj)
