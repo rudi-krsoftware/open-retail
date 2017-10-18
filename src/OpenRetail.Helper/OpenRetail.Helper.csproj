@@ -154,6 +154,12 @@
     <Compile Include="UI.Template\FrmListStandardWithNavigation.designer.cs">
       <DependentUpon>FrmListStandardWithNavigation.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI.Template\FrmDialogInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmDialogInfo.designer.cs">
+      <DependentUpon>FrmDialogInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI.Template\FrmLookupEmptyBody.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI.Template\FrmListStandardWithNavigation.resx">
       <DependentUpon>FrmListStandardWithNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmDialogInfo.resx">
+      <DependentUpon>FrmDialogInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI.Template\FrmLookupEmptyBody.resx">
       <DependentUpon>FrmLookupEmptyBody.cs</DependentUpon>
