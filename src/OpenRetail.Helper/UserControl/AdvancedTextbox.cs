@@ -226,7 +226,7 @@ namespace OpenRetail.Helper.UserControl
                     var tmp = this.Text.Replace(",", "");
                     if (_isDecimal)
                     {
-                        tmp = Math.Round(Convert.ToDouble(tmp)).ToString();
+                        tmp = Math.Round(Convert.ToDouble(tmp), MidpointRounding.AwayFromZero).ToString();
                     }
 
                     string strAfterFormat = string.Format("{0:N0}", Convert.ToInt64(tmp));
