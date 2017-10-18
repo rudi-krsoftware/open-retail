@@ -164,9 +164,11 @@ namespace OpenRetail.App.Lookup
                     break;
 
                 case ReferencesType.Produk:
-                    gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 120 });
-                    gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 350 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 110 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 270 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Harga", Width = 80 });
                     gridListProperties.Add(new GridListControlProperties { Header = "Golongan" });
+
                     GridListControlHelper.InitializeGridListControl<Produk>(this.gridList, _listOfProduk, gridListProperties);
                     this.gridList.Grid.QueryCellInfo += GridProduk_QueryCellInfo;
 
@@ -362,6 +364,11 @@ namespace OpenRetail.App.Lookup
                                 break;
 
                             case 4:
+                                e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
+                                e.Style.CellValue = NumberHelper.NumberToString(produk.harga_jual);
+                                break;
+
+                            case 5:
                                 var golongan = produk.Golongan;
 
                                 if (golongan != null)
