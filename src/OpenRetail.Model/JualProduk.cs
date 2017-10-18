@@ -181,6 +181,13 @@ namespace OpenRetail.Model
 		[Write(false)]
         public Shift Shift { get; set; }
 
+        [Display(Name = "mesin_id")]
+        public string mesin_id { get; set; }
+
+        [JsonIgnore]
+        [Write(false)]
+        public Mesin Mesin { get; set; }
+
         [Write(false)]
         public bool is_tunai { get; set; }
 

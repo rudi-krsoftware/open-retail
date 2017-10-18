@@ -58,6 +58,7 @@ namespace OpenRetail.Repository.Service
         private IMenuRepository _menuRepository;
         private IItemMenuRepository _itemmenuRepository;
         private IProfilRepository _profilRepository;
+        private IMesinRepository _mesinRepository;
         private IPengeluaranBiayaRepository _pengeluaranbiayaRepository;
         private IKasbonRepository _kasbonRepository;
         private IPembayaranKasbonRepository _pembayarankasbonRepository;
@@ -213,6 +214,11 @@ namespace OpenRetail.Repository.Service
         public IProfilRepository ProfilRepository
         {
             get { return _profilRepository ?? (_profilRepository = new ProfilRepository(_context, _log)); }
+        }
+
+        public IMesinRepository MesinRepository
+        {
+            get { return _mesinRepository ?? (_mesinRepository = new MesinRepository(_context, _log)); }
         }
 
         public IReportBeliProdukRepository ReportBeliProdukRepository

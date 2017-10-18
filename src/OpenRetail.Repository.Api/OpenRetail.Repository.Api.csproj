@@ -65,6 +65,7 @@
     <Compile Include="ILabelNotaRepository.cs" />
     <Compile Include="ILog4NetRepository.cs" />
     <Compile Include="IMenuRepository.cs" />
+    <Compile Include="IMesinRepository.cs" />
     <Compile Include="IPembayaranHutangProdukRepository.cs" />
     <Compile Include="IPembayaranKasbonRepository.cs" />
     <Compile Include="IPembayaranPiutangProdukRepository.cs" />

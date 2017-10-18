@@ -71,6 +71,8 @@ namespace OpenRetail.Repository.Api
 
         IProfilRepository ProfilRepository { get; }
 
+        IMesinRepository MesinRepository { get; }
+
         IReportBeliProdukRepository ReportBeliProdukRepository { get; }
         IReportHutangBeliProdukRepository ReportHutangBeliProdukRepository { get; }
         IReportPembayaranHutangBeliProdukRepository ReportPembayaranHutangBeliProdukRepository { get; }

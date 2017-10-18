@@ -79,6 +79,7 @@
     <Compile Include="LabelNotaRepository.cs" />
     <Compile Include="Log4NetRepository.cs" />
     <Compile Include="MenuRepository.cs" />
+    <Compile Include="MesinRepository.cs" />
     <Compile Include="PembayaranHutangProdukRepository.cs" />
     <Compile Include="PembayaranKasbonRepository.cs" />
     <Compile Include="PembayaranPiutangProdukRepository.cs" />

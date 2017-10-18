@@ -78,6 +78,7 @@
     <Compile Include="Kasbon.cs" />
     <Compile Include="LabelAlamatKirim.cs" />
     <Compile Include="LabelNota.cs" />
+    <Compile Include="Mesin.cs" />
     <Compile Include="Nota\NotaPembelian.cs" />
     <Compile Include="Nota\NotaPenjualan.cs" />
     <Compile Include="PembayaranKasbon.cs" />
