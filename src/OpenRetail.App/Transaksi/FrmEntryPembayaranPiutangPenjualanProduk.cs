@@ -259,7 +259,7 @@ namespace OpenRetail.App.Transaksi
                 total += item.nominal;
             }
 
-            return total;
+            return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
         private void RefreshTotal()

@@ -226,7 +226,7 @@ namespace OpenRetail.App.Pengeluaran
                 total += item.harga * item.jumlah;
             }
 
-            return total;
+            return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
         private void RefreshTotal()

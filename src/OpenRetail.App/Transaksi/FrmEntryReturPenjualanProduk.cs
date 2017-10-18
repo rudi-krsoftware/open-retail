@@ -257,7 +257,7 @@ namespace OpenRetail.App.Transaksi
                 total += item.harga_jual * item.jumlah_retur;
             }
 
-            return total;
+            return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
         private void RefreshTotal()

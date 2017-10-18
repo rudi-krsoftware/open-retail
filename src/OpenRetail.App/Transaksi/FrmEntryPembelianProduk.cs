@@ -308,7 +308,7 @@ namespace OpenRetail.App.Transaksi
                 total += NumberHelper.StringToDouble(txtPPN.Text);
             }
 
-            return total;
+            return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
         private void RefreshTotal()
