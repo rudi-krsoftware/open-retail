@@ -228,6 +228,10 @@ namespace OpenRetail.Helper.UI.Template
         {
             switch (e.KeyCode)
             {
+                case Keys.F10:
+                    e.SuppressKeyPress = true;
+                    break;
+
                 case Keys.F11:
                     if (btnSimpan.Enabled)
                         Simpan();
