@@ -166,7 +166,8 @@ namespace OpenRetail.Helper.UserControl
             if (this._isSelectionText)
                 SeleksiText((System.Windows.Forms.TextBox)sender);
 
-            this.BackColor = this._enterFocusColor;
+            if (!this.ReadOnly)
+                this.BackColor = this._enterFocusColor;
         }
 
         private void AdvancedTextbox_KeyPress(object sender, KeyPressEventArgs e)
