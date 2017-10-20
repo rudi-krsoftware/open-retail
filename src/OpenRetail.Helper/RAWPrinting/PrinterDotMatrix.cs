@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 
 using OpenRetail.Model;
+using OpenRetail.Model.Report;
 
 namespace OpenRetail.Helper.RAWPrinting
 {
@@ -35,6 +36,11 @@ namespace OpenRetail.Helper.RAWPrinting
         }
 
         public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed)
         {
             throw new NotImplementedException();
         }
@@ -94,49 +100,65 @@ namespace OpenRetail.Helper.RAWPrinting
             rowCount += 4;
 
             // cetak informasi customer
-            var namaCustomer = StringHelper.FixedLength(jual.is_sdac ? jual.Customer.nama_customer : jual.kirim_kepada, jumlahKarakter - 10);
-            var alamat1 = jual.is_sdac ? jual.Customer.alamat.NullToString() : jual.kirim_alamat.NullToString();
+            var namaCustomer = string.Empty;
 
-            var gabungAlamat2 = jual.Customer.kecamatan.NullToString();
-            gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kelurahan.NullToString() : jual.Customer.kelurahan.NullToString();
-            gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kota.NullToString() : jual.Customer.kota.NullToString();
-            gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kode_pos.NullToString() : jual.Customer.kode_pos.NullToString();
-
-            var alamat2 = jual.is_sdac ? gabungAlamat2 : jual.kirim_kecamatan.NullToString();
-            var alamat3 = jual.is_sdac ? jual.Customer.telepon.NullToString() : jual.kirim_kelurahan.NullToString();
-            
-            textToPrint.Append("Kepada : ").Append(namaCustomer).Append(ESCCommandHelper.LineFeed(1));
-            rowCount++;
-
-            textToPrint.Append("Alamat : ");
-
-            var isAddLineFeed = true;
-
-            if (alamat1.Length > 0)
+            if (jual.is_sdac)
             {
-                textToPrint.Append(StringHelper.FixedLength(alamat1, jumlahKarakter - 10)).Append(ESCCommandHelper.LineFeed(1));
+                if (jual.Customer != null)
+                {
+                    namaCustomer = StringHelper.FixedLength(jual.Customer.nama_customer.NullToString(), jumlahKarakter - 10);
+                }
+            }
+            else
+            {
+                namaCustomer = StringHelper.FixedLength(jual.kirim_kepada.NullToString(), jumlahKarakter - 10);
+            }
+
+            if (namaCustomer.Length > 0)
+            {
+                var alamat1 = jual.is_sdac ? jual.Customer.alamat.NullToString() : jual.kirim_alamat.NullToString();
+
+                var gabungAlamat2 = jual.Customer.kecamatan.NullToString();
+                gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kelurahan.NullToString() : jual.Customer.kelurahan.NullToString();
+                gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kota.NullToString() : jual.Customer.kota.NullToString();
+                gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kode_pos.NullToString() : jual.Customer.kode_pos.NullToString();
+
+                var alamat2 = jual.is_sdac ? gabungAlamat2 : jual.kirim_kecamatan.NullToString();
+                var alamat3 = jual.is_sdac ? jual.Customer.telepon.NullToString() : jual.kirim_kelurahan.NullToString();
+
+                textToPrint.Append("Kepada : ").Append(namaCustomer).Append(ESCCommandHelper.LineFeed(1));
                 rowCount++;
-                isAddLineFeed = false;
-            }
 
-            if (alamat2.Length > 0)
-            {
-                textToPrint.Append(StringHelper.PrintChar(' ', 9)).Append(StringHelper.FixedLength(alamat2, jumlahKarakter - 10)).Append(ESCCommandHelper.LineFeed(1));
-                rowCount++;
-                isAddLineFeed = false;
-            }
+                textToPrint.Append("Alamat : ");
 
-            if (alamat3.Length > 0)
-            {
-                textToPrint.Append(StringHelper.PrintChar(' ', 9)).Append(StringHelper.FixedLength(alamat3, jumlahKarakter - 10)).Append(ESCCommandHelper.LineFeed(1));
-                rowCount++;
-                isAddLineFeed = false;
-            }
+                var isAddLineFeed = true;
 
-            if (isAddLineFeed)
-            {
-                textToPrint.Append(ESCCommandHelper.LineFeed(1));
-            }
+                if (alamat1.Length > 0)
+                {
+                    textToPrint.Append(StringHelper.FixedLength(alamat1, jumlahKarakter - 10)).Append(ESCCommandHelper.LineFeed(1));
+                    rowCount++;
+                    isAddLineFeed = false;
+                }
+
+                if (alamat2.Length > 0)
+                {
+                    textToPrint.Append(StringHelper.PrintChar(' ', 9)).Append(StringHelper.FixedLength(alamat2, jumlahKarakter - 10)).Append(ESCCommandHelper.LineFeed(1));
+                    rowCount++;
+                    isAddLineFeed = false;
+                }
+
+                if (alamat3.Length > 0)
+                {
+                    textToPrint.Append(StringHelper.PrintChar(' ', 9)).Append(StringHelper.FixedLength(alamat3, jumlahKarakter - 10)).Append(ESCCommandHelper.LineFeed(1));
+                    rowCount++;
+                    isAddLineFeed = false;
+                }
+
+                if (isAddLineFeed)
+                {
+                    textToPrint.Append(ESCCommandHelper.LineFeed(1));
+                }
+            }                        
 
             textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(1));
 
@@ -270,6 +292,6 @@ namespace OpenRetail.Helper.RAWPrinting
             {
                 RawPrintHelper.SendStringToFile(textToPrint.ToString());
             }
-        }
+        }        
     }
 }

@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 
 using OpenRetail.Model;
+using OpenRetail.Model.Report;
 
 namespace OpenRetail.Helper.RAWPrinting
 {
@@ -32,6 +33,138 @@ namespace OpenRetail.Helper.RAWPrinting
         public PrinterMiniPOS(string printerName)
         {
             _printerName = printerName;
+        }
+
+        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed)
+        {
+            var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
+            var textToPrint = new StringBuilder();            
+
+            var totalSaldoAwal = 0d;
+            var totalItem = 0;
+            var totalDiskon = 0d;
+            var totalPPN = 0d;
+            var grandTotal = 0d;
+            var maxFormatNumber = 10;
+
+            if (!Utils.IsRunningUnderIDE())
+            {
+                textToPrint.Append(ESCCommandHelper.InitializePrinter());
+                textToPrint.Append(ESCCommandHelper.LineSpacing());
+                textToPrint.Append(ESCCommandHelper.CenterText());
+            }
+
+            // cetak header
+            foreach (var header in listOfHeaderNota)
+            {
+                if (header.keterangan.Length > 0)
+                {
+                    if (header.keterangan.Length > garisPemisah.Length)
+                    {
+                        header.keterangan = StringHelper.FixedLength(header.keterangan, garisPemisah.Length);
+                    }
+
+                    textToPrint.Append(header.keterangan).Append(ESCCommandHelper.LineFeed(1));
+                }
+            }
+
+            textToPrint.Append(ESCCommandHelper.LineFeed(1));
+
+            textToPrint.Append("Laporan Penjualan Per Kasir").Append(ESCCommandHelper.LineFeed(1));
+            textToPrint.Append("Per tanggal: ").Append(DateTimeHelper.DateToString(DateTime.Today)).Append(ESCCommandHelper.LineFeed(2));
+
+            if (!Utils.IsRunningUnderIDE())
+                textToPrint.Append(ESCCommandHelper.LeftText());
+
+            var kasir = listOfMesinKasir[0].Pengguna.nama_pengguna;
+
+            textToPrint.Append("Kasir      : ").Append(kasir).Append(ESCCommandHelper.LineFeed(1));
+            textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(2));
+
+            var isAdaTransaksi = false;
+
+            foreach (var mesin in listOfMesinKasir.Where(f => f.saldo_awal > 0 || (f.jual != null && f.jual.total_nota > 0)))
+            {
+                isAdaTransaksi = true;
+
+                textToPrint.Append("Login      : ").Append(DateTimeHelper.DateToString(mesin.tanggal_sistem, "dd/MM/yyyy HH:mm:ss")).Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append("Saldo Awal : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.saldo_awal), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(1));
+
+                if (mesin.jual.total_nota > 0)
+                {
+                    foreach (var produk in mesin.item_jual)
+                    {
+                        textToPrint.Append(StringHelper.FixedLength(produk.nama_produk, garisPemisah.Length)).Append(ESCCommandHelper.LineFeed(1));
+
+                        var jumlah = StringHelper.RightAlignment(produk.jumlah.ToString(), 4);
+                        textToPrint.Append(jumlah);
+
+                        textToPrint.Append("  " + StringHelper.FixedLength("x", 3));
+
+                        var harga = StringHelper.RightAlignment(NumberHelper.NumberToString(produk.harga_jual), maxFormatNumber);
+                        textToPrint.Append(harga);
+
+                        var diskon = StringHelper.RightAlignment(produk.diskon.ToString(), 7);
+                        textToPrint.Append(diskon);
+
+                        var subTotal = produk.jumlah * produk.harga_jual_setelah_diskon;
+
+                        var sSubTotal = StringHelper.RightAlignment(NumberHelper.NumberToString(subTotal), garisPemisah.Length - 26);
+                        textToPrint.Append(sSubTotal).Append(ESCCommandHelper.LineFeed(1));
+                    }
+
+                    textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(1));
+                    textToPrint.Append("Total item : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.item_jual.Count), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+                    textToPrint.Append("Diskon     : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.jual.diskon), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+                    textToPrint.Append("PPN        : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.jual.ppn), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+                    textToPrint.Append("Total      : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.jual.grand_total), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+                    textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(1));
+
+                    totalItem += mesin.item_jual.Count;
+                    totalDiskon += mesin.jual.diskon;
+                    totalPPN += mesin.jual.ppn;
+                    grandTotal += mesin.jual.grand_total;
+                }
+                else
+                {
+                    textToPrint.Append(">> Belum ada transaksi <<").Append(ESCCommandHelper.LineFeed(1));
+                }
+
+                textToPrint.Append(ESCCommandHelper.LineFeed(1));
+
+                totalSaldoAwal += mesin.saldo_awal;
+            }
+
+            if (isAdaTransaksi)
+            {
+                textToPrint.Append("Grand Total:").Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append("Saldo Awal : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(totalSaldoAwal), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append("Total item : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(totalItem), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append("Diskon     : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(totalDiskon), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append("PPN        : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(totalPPN), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append("Total      : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(grandTotal), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+            }
+            else
+            {
+                textToPrint.Append(">> Belum ada transaksi <<").Append(ESCCommandHelper.LineFeed(1));
+            }            
+
+            textToPrint.Append(ESCCommandHelper.LineFeed(lineFeed));
+
+            if (!Utils.IsRunningUnderIDE())
+            {
+                RawPrintHelper.SendStringToPrinter(_printerName, textToPrint.ToString());
+            }
+            else
+            {
+                RawPrintHelper.SendStringToFile(textToPrint.ToString());
+            }
         }
 
         public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true)
@@ -203,11 +336,6 @@ namespace OpenRetail.Helper.RAWPrinting
             {
                 RawPrintHelper.SendStringToFile(textToPrint.ToString());
             }
-        }
-
-        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80)
-        {
-            throw new NotImplementedException();
-        }
+        }        
     }
 }

@@ -22,13 +22,14 @@ using System.Linq;
 using System.Text;
 
 using OpenRetail.Model;
+using OpenRetail.Model.Report;
 
 namespace OpenRetail.Helper.RAWPrinting
 {
     public interface IRAWPrinting
     {
         /// <summary>
-        /// Override method untuk mencetak nota mini pos
+        /// Override method untuk mencetak nota jual menggunakan printer mini pos
         /// </summary>
         /// <param name="jual">objek jual</param>
         /// <param name="listOfHeaderNota">list objek header nota</param>
@@ -38,7 +39,15 @@ namespace OpenRetail.Helper.RAWPrinting
         void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true);
 
         /// <summary>
-        /// Override method untuk mencetak nota dot matrix
+        /// Override method untuk mencetak laporan kasir menggunakan printer mini pos
+        /// </summary>
+        /// <param name="listOfMesinKasir"></param>
+        /// <param name="listOfHeaderNota"></param>
+        /// <param name="jumlahKarakter"></param>
+        void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed);
+
+        /// <summary>
+        /// Override method untuk mencetak nota jual menggunakan printer dot matrix
         /// </summary>
         /// <param name="jual">Objek jual</param>
         /// <param name="listOfHeaderNota">List of header nota</param>
