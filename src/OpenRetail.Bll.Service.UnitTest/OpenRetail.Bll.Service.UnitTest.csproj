@@ -95,6 +95,7 @@
     <Compile Include="JenisPengeluaranBllTest.cs" />
     <Compile Include="JualProdukBllTest.cs" />
     <Compile Include="KabupatenBllTest.cs" />
+    <Compile Include="KartuBllTest.cs" />
     <Compile Include="KaryawanBllTest.cs" />
     <Compile Include="KasbonBllTest.cs" />
     <Compile Include="MenuBllTest.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Report\ReportJualProdukBllTest.cs" />
     <Compile Include="Report\ReportKartuHutangBllTest.cs" />
     <Compile Include="Report\ReportKartuPiutangBllTest.cs" />
+    <Compile Include="Report\ReportMesinKasirBllTest.cs" />
     <Compile Include="Report\ReportKasbonBllTest.cs" />
     <Compile Include="Report\ReportPembayaranHutangBeliProdukBllTest.cs" />
     <Compile Include="Report\ReportPembayaranPiutangJualProdukBllTest.cs" />

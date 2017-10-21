@@ -79,6 +79,7 @@
     <Compile Include="JenisPengeluaranBll.cs" />
     <Compile Include="JualProdukBll.cs" />
     <Compile Include="KabupatenBll.cs" />
+    <Compile Include="KartuBll.cs" />
     <Compile Include="KaryawanBll.cs" />
     <Compile Include="KasbonBll.cs" />
     <Compile Include="LabelAlamatKirimBll.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Report\ReportKartuHutangBll.cs" />
     <Compile Include="Report\ReportKartuPiutangBll.cs" />
     <Compile Include="Report\ReportKasbonBll.cs" />
+    <Compile Include="Report\ReportMesinKasirBll.cs" />
     <Compile Include="Report\ReportPembayaranHutangBeliProdukBll.cs" />
     <Compile Include="Report\ReportPembayaranPiutangJualProdukBll.cs" />
     <Compile Include="Report\ReportPengeluaranBiayaBll.cs" />
