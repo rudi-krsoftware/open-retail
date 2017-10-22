@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,19 +20,36 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
+using log4net;
 using OpenRetail.Model;
- 
-namespace OpenRetail.Bll.Api
-{    
-    public interface IMesinBll : IBaseBll<Mesin>
-    {
-        Mesin GetByID(string id);    
-        IList<Mesin> GetByName(string name);
-        IList<Mesin> GetByTanggal(string penggunaId, DateTime tanggalSelesai);
+using OpenRetail.Model.Report;
+using OpenRetail.Bll.Api.Report;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Service;
 
-		int Save(Mesin obj, ref ValidationError validationError);
-		int Update(Mesin obj, ref ValidationError validationError);
+namespace OpenRetail.Bll.Service.Report
+{
+    public class ReportMesinKasirBll : IReportMesinKasirBll
+    {
+        private ILog _log;
+
+        public ReportMesinKasirBll(ILog log)
+        {
+            _log = log;
+        }
+
+        public IList<ReportMesinKasir> PerKasirGetByPenggunaId(string penggunaId)
+        {
+            IList<ReportMesinKasir> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportMesinKasirRepository.PerKasirGetByPenggunaId(penggunaId);
+            }
+
+            return oList;
+        }
     }
-}     
+}

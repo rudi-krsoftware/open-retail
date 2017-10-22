@@ -30,20 +30,20 @@ using OpenRetail.Repository.Service;
  
 namespace OpenRetail.Bll.Service
 {    
-    public class MesinBll : IMesinBll
+    public class MesinKasirBll : IMesinKasirBll
     {
 		private ILog _log;
 		private MesinValidator _validator;
 
-		public MesinBll(ILog log)
+		public MesinKasirBll(ILog log)
         {
 			_log = log;
             _validator = new MesinValidator();
         }
 
-        public Mesin GetByID(string id)
+        public MesinKasir GetByID(string id)
         {
-            Mesin obj = null;
+            MesinKasir obj = null;
             
             using (IDapperContext context = new DapperContext())
             {
@@ -54,30 +54,17 @@ namespace OpenRetail.Bll.Service
             return obj;
         }
 
-        public IList<Mesin> GetByName(string name)
+        public IList<MesinKasir> GetByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Mesin> GetAll()
+        public IList<MesinKasir> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Mesin> GetByTanggal(string penggunaId, DateTime tanggalSelesai)
-        {
-            IList<Mesin> oList = null;
-
-            using (IDapperContext context = new DapperContext())
-            {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.MesinRepository.GetByTanggal(penggunaId, tanggalSelesai);
-            }
-
-            return oList;
-        }
-
-		public int Save(Mesin obj)
+		public int Save(MesinKasir obj)
         {
             var result = 0;
 
@@ -90,7 +77,7 @@ namespace OpenRetail.Bll.Service
             return result;
         }
 
-        public int Save(Mesin obj, ref ValidationError validationError)
+        public int Save(MesinKasir obj, ref ValidationError validationError)
         {
 			var validatorResults = _validator.Validate(obj);
 
@@ -107,7 +94,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(Mesin obj)
+		public int Update(MesinKasir obj)
         {
             var result = 0;
 
@@ -120,7 +107,7 @@ namespace OpenRetail.Bll.Service
             return result;
         }
 
-        public int Update(Mesin obj, ref ValidationError validationError)
+        public int Update(MesinKasir obj, ref ValidationError validationError)
         {
             var validatorResults = _validator.Validate(obj);
 
@@ -137,7 +124,7 @@ namespace OpenRetail.Bll.Service
             return Update(obj);
         }
 
-        public int Delete(Mesin obj)
+        public int Delete(MesinKasir obj)
         {
             var result = 0;
 

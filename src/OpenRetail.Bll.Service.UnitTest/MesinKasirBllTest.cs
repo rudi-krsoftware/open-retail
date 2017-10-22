@@ -33,16 +33,16 @@ using OpenRetail.Bll.Service;
 namespace OpenRetail.Bll.Service.UnitTest
 {    
     [TestClass]
-    public class MesinBllTest
+    public class MesinKasirBllTest
     {
 		private ILog _log;
-        private IMesinBll _bll;
+        private IMesinKasirBll _bll;
 
         [TestInitialize]
         public void Init()
         {
-            _log = LogManager.GetLogger(typeof(MesinBllTest));
-            _bll = new MesinBll(_log);
+            _log = LogManager.GetLogger(typeof(MesinKasirBllTest));
+            _bll = new MesinKasirBll(_log);
         }
 
         [TestCleanup]
@@ -52,26 +52,9 @@ namespace OpenRetail.Bll.Service.UnitTest
         }
 
         [TestMethod]
-        public void GetByTanggalTest()
-        {
-            var penggunaId = "00b5acfa-b533-454b-8dfd-e7881edd180f";
-            var tanggal = DateTime.Today;
-
-            var index = 1;
-            var oList = _bll.GetByTanggal(penggunaId, tanggal);
-            var obj = oList[index];
-                 
-            Assert.IsNotNull(obj);
-            Assert.AreEqual("ebfdae76-2577-4070-aaac-16fffc09d6f5", obj.mesin_id);
-            Assert.AreEqual("00b5acfa-b533-454b-8dfd-e7881edd180f", obj.pengguna_id);                                
-            Assert.AreEqual(DateTime.Today, obj.tanggal);                                
-            Assert.AreEqual(300000, obj.saldo_awal);                                
-        }
-
-        [TestMethod]
         public void SaveTest()
         {
-            var obj = new Mesin
+            var obj = new MesinKasir
             {
                 pengguna_id = "00b5acfa-b533-454b-8dfd-e7881edd180f",
                 tanggal = DateTime.Today,
@@ -123,7 +106,7 @@ namespace OpenRetail.Bll.Service.UnitTest
         [TestMethod]
         public void DeleteTest()
         {
-            var obj = new Mesin
+            var obj = new MesinKasir
             {
                 mesin_id = "6870dec2-3f4b-4952-9174-d6d40f254573"
             };

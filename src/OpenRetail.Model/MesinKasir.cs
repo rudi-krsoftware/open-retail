@@ -26,11 +26,12 @@ using FluentValidation;
 using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using OpenRetail.Model.Report;
 
 namespace OpenRetail.Model
 {        
 	[Table("t_mesin")]
-    public class Mesin
+    public class MesinKasir
     {
 		[ExplicitKey]
 		[Display(Name = "mesin_id")]		
@@ -50,22 +51,21 @@ namespace OpenRetail.Model
 		public double saldo_awal { get; set; }
 		
 		[Display(Name = "uang_masuk")]
-		public double uang_masuk { get; set; }
-
-        [JsonIgnore]
-        [Write(false)]
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
+		public double uang_masuk { get; set; }        
 		
 		[Display(Name = "shift_id")]
 		public string shift_id { get; set; }
 		
 		[Display(Name = "uang_keluar")]
 		public double uang_keluar { get; set; }
-		
+
+        [JsonIgnore]
+        [Write(false)]
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
 	}
 
-    public class MesinValidator : AbstractValidator<Mesin>
+    public class MesinValidator : AbstractValidator<MesinKasir>
     {
         public MesinValidator()
         {

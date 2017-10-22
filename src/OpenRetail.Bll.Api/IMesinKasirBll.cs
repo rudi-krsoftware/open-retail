@@ -24,12 +24,14 @@ using System.Threading.Tasks;
 
 using OpenRetail.Model;
  
-namespace OpenRetail.Repository.Api
-{        
-    public interface IMesinRepository : IBaseRepository<Mesin>
+namespace OpenRetail.Bll.Api
+{    
+    public interface IMesinKasirBll : IBaseBll<MesinKasir>
     {
-		Mesin GetByID(string id);            
-        IList<Mesin> GetByName(string name);
-        IList<Mesin> GetByTanggal(string penggunaId, DateTime tanggalSelesai);
+        MesinKasir GetByID(string id);    
+        IList<MesinKasir> GetByName(string name);
+
+		int Save(MesinKasir obj, ref ValidationError validationError);
+		int Update(MesinKasir obj, ref ValidationError validationError);
     }
 }     

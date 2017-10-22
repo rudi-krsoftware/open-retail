@@ -30,24 +30,24 @@ using OpenRetail.Repository.Api;
  
 namespace OpenRetail.Repository.Service
 {        
-    public class MesinRepository : IMesinRepository
+    public class MesinKasirRepository : IMesinKasirRepository
     {
         private IDapperContext _context;
 		private ILog _log;
 		
-        public MesinRepository(IDapperContext context, ILog log)
+        public MesinKasirRepository(IDapperContext context, ILog log)
         {
             this._context = context;
             this._log = log;
         }
 
-        public Mesin GetByID(string id)
+        public MesinKasir GetByID(string id)
         {
-            Mesin obj = null;
+            MesinKasir obj = null;
 
             try
             {
-                obj = _context.db.Get<Mesin>(id);
+                obj = _context.db.Get<MesinKasir>(id);
             }
             catch (Exception ex)
             {
@@ -57,36 +57,17 @@ namespace OpenRetail.Repository.Service
             return obj;
         }
 
-        public IList<Mesin> GetByName(string name)
+        public IList<MesinKasir> GetByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Mesin> GetAll()
+        public IList<MesinKasir> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Mesin> GetByTanggal(string penggunaId, DateTime tanggalSelesai)
-        {
-            IList<Mesin> oList = new List<Mesin>();
-
-            try
-            {
-                oList = _context.db.GetAll<Mesin>()
-                                .Where(f => f.pengguna_id == penggunaId && f.tanggal == tanggalSelesai)
-                                .OrderBy(f => f.tanggal_sistem)
-                                .ToList();
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Error:", ex);
-            }
-
-            return oList;
-        }
-
-        public int Save(Mesin obj)
+        public int Save(MesinKasir obj)
         {
             var result = 0;
 
@@ -94,7 +75,7 @@ namespace OpenRetail.Repository.Service
             {
                 obj.mesin_id = _context.GetGUID();
 
-                _context.db.Insert<Mesin>(obj);
+                _context.db.Insert<MesinKasir>(obj);
                 result = 1;
             }
             catch (Exception ex)
@@ -105,13 +86,13 @@ namespace OpenRetail.Repository.Service
             return result;
         }
 
-        public int Update(Mesin obj)
+        public int Update(MesinKasir obj)
         {
             var result = 0;
 
             try
             {
-                result = _context.db.Update<Mesin>(obj) ? 1 : 0;
+                result = _context.db.Update<MesinKasir>(obj) ? 1 : 0;
             }
             catch (Exception ex)
             {
@@ -121,13 +102,13 @@ namespace OpenRetail.Repository.Service
             return result;
         }
 
-        public int Delete(Mesin obj)
+        public int Delete(MesinKasir obj)
         {
             var result = 0;
 
             try
             {
-                result = _context.db.Delete<Mesin>(obj) ? 1 : 0;
+                result = _context.db.Delete<MesinKasir>(obj) ? 1 : 0;
             }
             catch (Exception ex)
             {
