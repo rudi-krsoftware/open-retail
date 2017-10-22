@@ -1,7 +1,7 @@
-OpenRetail [![Donate](https://img.shields.io/badge/Donate-Bank%20Transfer-green.svg)](https://openretailblog.wordpress.com/kontribusi/)
+OpenRetail [![Donate](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZDVaZWMtSTJpRVU)](https://openretailblog.wordpress.com/kontribusi/)
 ==============================================
 
-[![Build status](https://ci.appveyor.com/api/projects/status/a2cf5uy7b16w386b?svg=true)](https://ci.appveyor.com/project/rudi-krsoftware/open-retail) [![Release](https://img.shields.io/badge/release-v1.1.0-blue.svg)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0) [![Downloads](https://img.shields.io/badge/downloads-1.2k-brightgreen.svg)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0)
+[![Build status](https://ci.appveyor.com/api/projects/status/a2cf5uy7b16w386b?svg=true)](https://ci.appveyor.com/project/rudi-krsoftware/open-retail) [![Release](https://drive.google.com/uc?id=0BxSptsEQ_0A1MzFGMVpVSE9jVFU)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0) [![Downloads](https://drive.google.com/uc?id=0BxSptsEQ_0A1Rk91LS1ROUpYNFE)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0)
 
 [![Open Retail](https://openretailblog.files.wordpress.com/2017/09/banner-small.png)](https://openretailblog.wordpress.com/)
 
