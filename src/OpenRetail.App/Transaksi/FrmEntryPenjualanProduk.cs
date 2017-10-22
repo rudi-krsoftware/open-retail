@@ -518,8 +518,8 @@ namespace OpenRetail.App.Transaksi
             _jual.tanggal = dtpTanggal.Value;
             _jual.tanggal_tempo = DateTimeHelper.GetNullDateTime();
             _jual.is_tunai = rdoTunai.Checked;
-            _jual.jumlah_bayar = jumlahBayar;
-
+            _jual.bayar_tunai = jumlahBayar;
+            
             if (rdoKredit.Checked) // penjualan kredit
             {
                 _jual.tanggal_tempo = dtpTanggalTempo.Value;
@@ -667,7 +667,7 @@ namespace OpenRetail.App.Transaksi
         private void CetakNotaDotMatrix(JualProduk jual)
         {
             IRAWPrinting printerMiniPos = new PrinterDotMatrix(_pengaturanUmum.nama_printer);
-            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota, _pengaturanUmum.jumlah_gulung);
+            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota);
         }
 
         protected override void Selesai()

@@ -52,6 +52,28 @@ namespace OpenRetail.Bll.Service.UnitTest
         }
 
         [TestMethod]
+        public void GetListItemNotaTerakhirTest()
+        {
+            var penggunaId = "00b5acfa-b533-454b-8dfd-e7881edd180f";
+            var mesinId = "b0df248f-3cf9-4b28-95ae-1691d4465a80";
+
+            var obj = _bll.GetListItemNotaTerakhir(penggunaId, mesinId);
+
+            Assert.IsNotNull(obj);
+            Assert.AreEqual("eeb4d5c2-6dc9-49bb-af80-515bcd63d927", obj.jual_id);
+            Assert.AreEqual("201710180515", obj.nota);
+            Assert.AreEqual("b0df248f-3cf9-4b28-95ae-1691d4465a80", obj.mesin_id);
+            Assert.AreEqual("b0df248f-3cf9-4b28-95ae-1691d4465a80", obj.Mesin.mesin_id);
+            Assert.AreEqual(150000, obj.Mesin.saldo_awal);
+
+            // cek item            
+            var index = 1;
+            Assert.AreEqual(2, obj.item_jual.Count);
+            Assert.AreEqual("11112", obj.item_jual[index].Produk.kode_produk);
+            Assert.AreEqual("LAN Tester", obj.item_jual[index].Produk.nama_produk);
+        }
+
+        [TestMethod]
         public void GetLastNotaTest()
         {
             var lastNota = _bll.GetLastNota();

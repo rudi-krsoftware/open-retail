@@ -39,9 +39,11 @@ namespace OpenRetail.Repository.Service
                                               t_jual_produk.label_dari1, t_jual_produk.label_dari2, t_jual_produk.label_dari3, t_jual_produk.label_dari4,
                                               t_jual_produk.label_kepada1, t_jual_produk.label_kepada2, t_jual_produk.label_kepada3, t_jual_produk.label_kepada4,
                                               m_customer.customer_id, m_customer.nama_customer, m_customer.alamat, m_customer.kecamatan, m_customer.kelurahan, m_customer.desa, m_customer.kabupaten, m_customer.kota, m_customer.kode_pos, m_customer.telepon, m_customer.diskon, m_customer.plafon_piutang,
-                                              m_pengguna.pengguna_id, m_pengguna.nama_pengguna
+                                              m_pengguna.pengguna_id, m_pengguna.nama_pengguna,
+                                              t_mesin.mesin_id, t_mesin.saldo_awal
                                               FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
                                               LEFT JOIN m_pengguna ON m_pengguna.pengguna_id = t_jual_produk.pengguna_id
+                                              LEFT JOIN t_mesin ON t_mesin.mesin_id = t_jual_produk.mesin_id
                                               {WHERE}
                                               {ORDER BY}";
         private IDapperContext _context;
@@ -56,7 +58,7 @@ namespace OpenRetail.Repository.Service
 
         private IEnumerable<JualProduk> MappingRecordToObject(string sql, object param = null)
         {
-            IEnumerable<JualProduk> oList = _context.db.Query<JualProduk, Customer, Pengguna, JualProduk>(sql, (j, c, p) =>
+            IEnumerable<JualProduk> oList = _context.db.Query<JualProduk, Customer, Pengguna, MesinKasir, JualProduk>(sql, (j, c, p, m) =>
             {
                 if (c != null)
                 {
@@ -68,8 +70,13 @@ namespace OpenRetail.Repository.Service
                     j.pengguna_id = p.pengguna_id; j.Pengguna = p;
                 }
 
+                if (m != null)
+                {
+                    j.mesin_id = m.mesin_id; j.Mesin = m;
+                }
+
                 return j;
-            }, param, splitOn: "customer_id, pengguna_id");
+            }, param, splitOn: "customer_id, pengguna_id, mesin_id");
 
             return oList;
         }
@@ -122,6 +129,29 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{ORDER BY}", "");
 
                 obj = MappingRecordToObject(_sql, new { id }).SingleOrDefault();
+
+                if (obj != null)
+                    // load item jual
+                    obj.item_jual = GetItemJual(obj.jual_id);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return obj;
+        }
+
+        public JualProduk GetListItemNotaTerakhir(string penggunaId, string mesinId)
+        {
+            JualProduk obj = null;
+
+            try
+            {
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_jual_produk.tanggal = CURRENT_DATE AND t_jual_produk.pengguna_id = @penggunaId AND t_jual_produk.mesin_id = @mesinId");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal_sistem DESC LIMIT 1");
+
+                obj = MappingRecordToObject(_sql, new { penggunaId, mesinId }).SingleOrDefault();
 
                 if (obj != null)
                     // load item jual

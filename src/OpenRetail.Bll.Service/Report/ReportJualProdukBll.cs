@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 
 using log4net;
+using OpenRetail.Model;
 using OpenRetail.Model.Report;
 using OpenRetail.Bll.Api.Report;
 using OpenRetail.Repository.Api;
@@ -153,6 +154,6 @@ namespace OpenRetail.Bll.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

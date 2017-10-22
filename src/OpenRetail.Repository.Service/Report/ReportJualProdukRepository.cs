@@ -23,6 +23,7 @@ using System.Text;
 
 using log4net;
 using Dapper;
+using OpenRetail.Model;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
@@ -263,6 +264,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

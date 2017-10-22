@@ -85,7 +85,7 @@
     <Compile Include="LabelAlamatKirimBll.cs" />
     <Compile Include="LabelNotaBll.cs" />
     <Compile Include="MenuBll.cs" />
-    <Compile Include="MesinBll.cs" />
+    <Compile Include="MesinKasirBll.cs" />
     <Compile Include="PembayaranHutangProdukBll.cs" />
     <Compile Include="PembayaranKasbonBll.cs" />
     <Compile Include="PembayaranPiutangProdukBll.cs" />

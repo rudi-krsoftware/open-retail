@@ -406,7 +406,6 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RowHeightEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridRowHeight[] {
             new Syncfusion.Windows.Forms.Grid.GridRowHeight(0, 25)});
-            this.gridControl.SerializeCellsBehavior = Syncfusion.Windows.Forms.Grid.GridSerializeCellsBehavior.SerializeAsRangeStylesIntoCode;
             this.gridControl.Size = new System.Drawing.Size(774, 195);
             this.gridControl.SmartSizeBox = false;
             this.gridControl.TabIndex = 0;

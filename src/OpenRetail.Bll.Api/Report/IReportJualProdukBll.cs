@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OpenRetail.Model;
 using OpenRetail.Model.Report;
 
 namespace OpenRetail.Bll.Api.Report
