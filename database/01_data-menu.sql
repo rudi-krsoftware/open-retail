@@ -17,6 +17,12 @@ SET search_path = public, pg_catalog;
 
 COPY m_menu (menu_id, nama_menu, judul_menu, parent_id, order_number, is_active, nama_form, is_enabled) FROM stdin;
 0a516b56-ed73-dafe-aaa0-332fadd2f088	mnuPengaturanUmum	Pengaturan Umum	593c989d-be87-42bf-a11d-f177afcc2180	2	t	FrmPengaturanUmum	t
+8a0ba72f-67d2-481f-9e10-a188f09effa5	mnuProduk	Produk	07b24b4b-cf52-4b3c-ab06-51f7312e4813	3	t	FrmListProduk	t
+8a8c6d23-963b-4819-819d-b9cdeaad7718	mnuGolongan	Golongan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	2	t	FrmListGolongan	t
+95e9e230-c4f3-4fbc-9652-78cf4155d7ea	mnuPenyesuaianStok	Penyesuaian Stok	07b24b4b-cf52-4b3c-ab06-51f7312e4813	4	t	FrmListPenyesuaianStok	t
+fd48562f-9096-4cec-ad9c-37229fc072a3	mnuSupplier	Supplier	07b24b4b-cf52-4b3c-ab06-51f7312e4813	5	t	FrmListSupplier	t
+5ab9c82d-a116-4032-8891-cbfb7b71b8e3	mnuCustomer	Customer	07b24b4b-cf52-4b3c-ab06-51f7312e4813	6	t	FrmListCustomer	t
+f18fbb6e-bd6f-5d21-fa8d-11923327b436	mnuKartu	Kartu	07b24b4b-cf52-4b3c-ab06-51f7312e4813	1	t	FrmListKartu	t
 5a114aab-28cc-4655-b676-d08075bae831	mnuLapPembelian	Pembelian	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	6	t		t
 6f13d6e5-4322-4b4b-8fca-2278b04bd4eb	mnuLapPenjualan	Penjualan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	13	t		t
 07b24b4b-cf52-4b3c-ab06-51f7312e4813	mnuReferensi	Referensi	\N	1	t	\N	t
@@ -24,14 +30,6 @@ COPY m_menu (menu_id, nama_menu, judul_menu, parent_id, order_number, is_active,
 d1bd5f93-996c-46a3-b80f-f4f50681a1f9	mnuPengeluaran	Pengeluaran	\N	3	t	\N	t
 3a62ea0b-0f48-495c-947b-ad5aa9af77f7	mnuLaporan	Laporan	\N	4	t	\N	t
 593c989d-be87-42bf-a11d-f177afcc2180	mnuPengaturan	Pengaturan	\N	5	t	\N	t
-8a0ba72f-67d2-481f-9e10-a188f09effa5	mnuProduk	Produk	07b24b4b-cf52-4b3c-ab06-51f7312e4813	2	t	FrmListProduk	t
-95e9e230-c4f3-4fbc-9652-78cf4155d7ea	mnuPenyesuaianStok	Penyesuaian Stok	07b24b4b-cf52-4b3c-ab06-51f7312e4813	3	t	FrmListPenyesuaianStok	t
-fd48562f-9096-4cec-ad9c-37229fc072a3	mnuSupplier	Supplier	07b24b4b-cf52-4b3c-ab06-51f7312e4813	4	t	FrmListSupplier	t
-5ab9c82d-a116-4032-8891-cbfb7b71b8e3	mnuCustomer	Customer	07b24b4b-cf52-4b3c-ab06-51f7312e4813	5	t	FrmListCustomer	t
-8a8c6d23-963b-4819-819d-b9cdeaad7718	mnuGolongan	Golongan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	1	t	FrmListGolongan	t
-e7be0d85-9f96-4095-be35-1da049028cef	mnuJabatan	Jabatan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	6	t	FrmListJabatan	t
-b7ade8cc-22aa-43c8-be9c-af6cb71d11a6	mnuKaryawan	Karyawan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	7	t	FrmListKaryawan	t
-b52e8eac-3bf6-4ebf-95a0-46ab9e7b0888	mnuJenisPengeluaran	Jenis Pengeluaran	07b24b4b-cf52-4b3c-ab06-51f7312e4813	8	t	FrmListJenisPengeluaran	t
 a6043b21-18d0-4fcd-9ea9-f146542081d5	mnuPembelianProduk	Pembelian Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	1	t	FrmListPembelianProduk	t
 084488a3-092d-4e8c-8bf2-72dcf90262b4	mnuPembayaranHutangPembelianProduk	Pembayaran Hutang Pembelian Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	2	t	FrmListPembayaranHutangPembelianProduk	t
 870ec1d3-5b71-47dc-b241-1b0ae933217c	mnuReturPembelianProduk	Retur Pembelian Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	3	t	FrmListReturPembelianProduk	t
@@ -60,6 +58,9 @@ d5bd3b31-7feb-4c55-9fed-8d67ac18fef4	mnuPenggajian	Penggajian Karyawan	d1bd5f93-
 8c46f173-f586-402d-b54a-ac2e4ba57f1e	mnuLapPenggajian	Penggajian Karyawan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	18	t	FrmLapPenggajianKaryawan	t
 0702e90c-cb7c-42a4-a447-478fba5a7443	mnuHakAksesAplikasi	Hak Akses Aplikasi	593c989d-be87-42bf-a11d-f177afcc2180	3	t	FrmListHakAkses	t
 e8f83478-a577-4cff-a06f-8d921f9367c7	mnuManajemenOperator	Manajemen Operator	593c989d-be87-42bf-a11d-f177afcc2180	4	t	FrmListOperator	t
+e7be0d85-9f96-4095-be35-1da049028cef	mnuJabatan	Jabatan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	7	t	FrmListJabatan	t
+b7ade8cc-22aa-43c8-be9c-af6cb71d11a6	mnuKaryawan	Karyawan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	8	t	FrmListKaryawan	t
+b52e8eac-3bf6-4ebf-95a0-46ab9e7b0888	mnuJenisPengeluaran	Jenis Pengeluaran	07b24b4b-cf52-4b3c-ab06-51f7312e4813	9	t	FrmListJenisPengeluaran	t
 \.
 
 

@@ -1450,6 +1450,19 @@ CREATE TABLE m_kabupaten (
 ALTER TABLE m_kabupaten OWNER TO postgres;
 
 --
+-- Name: m_kartu; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_kartu (
+    kartu_id t_guid NOT NULL,
+    nama_kartu t_nama,
+    is_debit t_bool
+);
+
+
+ALTER TABLE m_kartu OWNER TO postgres;
+
+--
 -- Name: m_karyawan; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1936,7 +1949,12 @@ CREATE TABLE t_jual_produk (
     kurir t_keterangan,
     is_dropship boolean,
     kirim_desa t_alamat_panjang,
-    kirim_kabupaten t_alamat_panjang
+    kirim_kabupaten t_alamat_panjang,
+    mesin_id t_guid,
+    bayar_tunai t_harga,
+    bayar_kartu t_harga,
+    kartu_id t_guid,
+    nomor_kartu t_nota
 );
 
 
@@ -2357,6 +2375,14 @@ ALTER TABLE ONLY m_jenis_pengeluaran
 
 ALTER TABLE ONLY m_kabupaten
     ADD CONSTRAINT m_kabupaten_pkey PRIMARY KEY (kabupaten_id);
+
+
+--
+-- Name: m_kartu_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_kartu
+    ADD CONSTRAINT m_kartu_pkey PRIMARY KEY (kartu_id);
 
 
 --
