@@ -129,7 +129,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_retur_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_retur_jual_produk.tanggal, t_retur_jual_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_retur_jual_produk.tanggal DESC, t_retur_jual_produk.nota");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai }).ToList();
 
@@ -154,7 +154,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_retur_jual_produk.tanggal, t_retur_jual_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_retur_jual_produk.tanggal DESC, t_retur_jual_produk.nota");
 
                 oList = MappingRecordToObject(_sql).ToList();
 
