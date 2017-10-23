@@ -1008,7 +1008,7 @@ namespace OpenRetail.App.Transaksi
                             grid.RowCount = _listOfItemJual.Count;
                         }
 
-                        GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // fokus ke kolom kode produk
+                        GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // fokus ke kolom kode produk
                         break;
 
                     default:
