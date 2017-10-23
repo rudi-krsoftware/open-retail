@@ -151,7 +151,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_customer.nama_customer) LIKE @name");
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_customer.nama_customer) LIKE @name OR LOWER(t_pembayaran_piutang_produk.keterangan) LIKE @name");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_pembayaran_piutang_produk.tanggal, t_pembayaran_piutang_produk.nota");
 
                 name = "%" + name.ToLower() + "%";
