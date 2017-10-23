@@ -54,5 +54,15 @@ namespace OpenRetail.Helper
         /// Script SQL untuk mengupgrade database v5 ke v6
         /// </summary>
         public const string UpgradeStrukturDatabase_v5_to_v6 = "db_v5_to_v6.sql";
+
+
+        public static Dictionary<int, string> ListOfUpgradeDatabaseScript = new Dictionary<int, string>
+                                                                            {
+                                                                                { 2, DatabaseVersionHelper.UpgradeStrukturDatabase_v1_to_v2 },
+                                                                                { 3, DatabaseVersionHelper.UpgradeStrukturDatabase_v2_to_v3 },
+                                                                                { 4, DatabaseVersionHelper.UpgradeStrukturDatabase_v3_to_v4 },
+                                                                                { 5, DatabaseVersionHelper.UpgradeStrukturDatabase_v4_to_v5 },
+                                                                                { 6, DatabaseVersionHelper.UpgradeStrukturDatabase_v5_to_v6 }
+                                                                            };
     }
 }
