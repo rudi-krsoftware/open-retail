@@ -93,8 +93,10 @@ namespace OpenRetail.App.Transaksi
 
             txtNota.Text = this._pembayaranPiutang.nota;
             dtpTanggal.Value = (DateTime)this._pembayaranPiutang.tanggal;
-            
-            txtCustomer.Text = this._customer.nama_customer;
+
+            if (this._customer != null)
+                txtCustomer.Text = this._customer.nama_customer;
+
             txtKeterangan.Text = this._pembayaranPiutang.keterangan;
             
             // simpan data lama
