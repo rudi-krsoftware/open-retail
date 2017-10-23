@@ -89,7 +89,7 @@ namespace OpenRetail.App.Transaksi
             gridListProperties.Add(new GridListControlProperties { Header = "Tanggal", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Tempo", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Nota", Width = 100 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Customer", Width = _pengaturanUmum.jenis_printer == JenisPrinter.InkJet ? 230 : 300 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Customer", Width = _pengaturanUmum.jenis_printer == JenisPrinter.InkJet ? 220 : 300 });
             gridListProperties.Add(new GridListControlProperties { Header = "Keterangan", Width = 350 });
             gridListProperties.Add(new GridListControlProperties { Header = "Piutang", Width = 130 });
             gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang", Width = 130 });
