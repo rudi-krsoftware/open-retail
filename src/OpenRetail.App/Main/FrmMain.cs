@@ -690,5 +690,10 @@ namespace OpenRetail.App.Main
         {
             ShowFormDialog<FrmLapPemasukanPengeluaran>(sender);
         }
+
+        private void mnuLapPenjualanProdukFavorit_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapPenjualanProdukFavorit>(sender);
+        }
     }
 }

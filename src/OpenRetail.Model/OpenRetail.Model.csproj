@@ -143,6 +143,7 @@
     <Compile Include="Report\ReportPiutangPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProdukHeader.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProduk.cs" />
+    <Compile Include="Report\ReportProdukFavorit.cs" />
     <Compile Include="Report\ReportReturPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportReturPembelianProdukHeader.cs" />
     <Compile Include="Report\ReportReturPenjualanProdukDetail.cs" />

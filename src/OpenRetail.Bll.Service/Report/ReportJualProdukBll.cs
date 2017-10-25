@@ -155,5 +155,36 @@ namespace OpenRetail.Bll.Service.Report
 
             return oList;
         }
+
+        public IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulan, int tahun, int limit)
+        {
+            IList<ReportProdukFavorit> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportJualProdukRepository.ProdukFavoritGetByBulan(bulan, tahun, limit);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulanAwal, int bulanAkhir, int tahun, int limit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ReportProdukFavorit> ProdukFavoritGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int limit)
+        {
+            IList<ReportProdukFavorit> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportJualProdukRepository.ProdukFavoritGetByTanggal(tanggalMulai, tanggalSelesai, limit);
+            }
+
+            return oList;
+        }
     }
 }
