@@ -88,6 +88,8 @@
             this.mnuLapPengeluaranBiaya = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapKasbon = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenggajian = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuLapPemasukanPengeluaran = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPengaturan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProfilPerusahaan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPengaturanUmum = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,8 +129,8 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuLapPemasukanPengeluaran = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuLapPenjualanProdukFavorit = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -518,6 +520,8 @@
             this.mnuLapPenjualan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuLapPenjualanProduk,
             this.mnuLapPenjualanPerProduk,
+            this.mnuLapPenjualanProdukFavorit,
+            this.toolStripSeparator19,
             this.mnuLapPiutangPenjualanProduk,
             this.mnuLapPembayaranPiutangPenjualanProduk,
             this.toolStripSeparator8,
@@ -629,6 +633,19 @@
             this.mnuLapPenggajian.Tag = "FrmLapPenggajianKaryawan";
             this.mnuLapPenggajian.Text = "Penggajian Karyawan";
             this.mnuLapPenggajian.Click += new System.EventHandler(this.mnuLapPenggajian_Click);
+            // 
+            // toolStripSeparator18
+            // 
+            this.toolStripSeparator18.Name = "toolStripSeparator18";
+            this.toolStripSeparator18.Size = new System.Drawing.Size(224, 6);
+            // 
+            // mnuLapPemasukanPengeluaran
+            // 
+            this.mnuLapPemasukanPengeluaran.Name = "mnuLapPemasukanPengeluaran";
+            this.mnuLapPemasukanPengeluaran.Size = new System.Drawing.Size(227, 22);
+            this.mnuLapPemasukanPengeluaran.Tag = "FrmLapPemasukanPengeluaran";
+            this.mnuLapPemasukanPengeluaran.Text = "Pemasukan dan Pengeluaran";
+            this.mnuLapPemasukanPengeluaran.Click += new System.EventHandler(this.mnuLapPemasukanPengeluaran_Click);
             // 
             // mnuPengaturan
             // 
@@ -964,18 +981,18 @@
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
-            // toolStripSeparator18
+            // toolStripSeparator19
             // 
-            this.toolStripSeparator18.Name = "toolStripSeparator18";
-            this.toolStripSeparator18.Size = new System.Drawing.Size(224, 6);
+            this.toolStripSeparator19.Name = "toolStripSeparator19";
+            this.toolStripSeparator19.Size = new System.Drawing.Size(277, 6);
             // 
-            // mnuLapPemasukanPengeluaran
+            // mnuLapPenjualanProdukFavorit
             // 
-            this.mnuLapPemasukanPengeluaran.Name = "mnuLapPemasukanPengeluaran";
-            this.mnuLapPemasukanPengeluaran.Size = new System.Drawing.Size(227, 22);
-            this.mnuLapPemasukanPengeluaran.Tag = "FrmLapPemasukanPengeluaran";
-            this.mnuLapPemasukanPengeluaran.Text = "Pemasukan dan Pengeluaran";
-            this.mnuLapPemasukanPengeluaran.Click += new System.EventHandler(this.mnuLapPemasukanPengeluaran_Click);
+            this.mnuLapPenjualanProdukFavorit.Name = "mnuLapPenjualanProdukFavorit";
+            this.mnuLapPenjualanProdukFavorit.Size = new System.Drawing.Size(280, 22);
+            this.mnuLapPenjualanProdukFavorit.Tag = "FrmLapPenjualanProdukFavorit";
+            this.mnuLapPenjualanProdukFavorit.Text = "Penjualan Produk Favorit";
+            this.mnuLapPenjualanProdukFavorit.Click += new System.EventHandler(this.mnuLapPenjualanProdukFavorit_Click);
             // 
             // FrmMain
             // 
@@ -1105,5 +1122,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
         private System.Windows.Forms.ToolStripMenuItem mnuLapPemasukanPengeluaran;
+        private System.Windows.Forms.ToolStripMenuItem mnuLapPenjualanProdukFavorit;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
     }
 }

@@ -35,5 +35,9 @@ namespace OpenRetail.Bll.Api.Report
         IList<ReportPenjualanProduk> PerProdukGetByBulan(int bulan, int tahun);
         IList<ReportPenjualanProduk> PerProdukGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
         IList<ReportPenjualanProduk> PerProdukGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
+        IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulan, int tahun, int limit);
+        IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulanAwal, int bulanAkhir, int tahun, int limit);
+        IList<ReportProdukFavorit> ProdukFavoritGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int limit);
     }
 }

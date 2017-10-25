@@ -49,6 +49,24 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
         }
 
         [TestMethod]
+        public void ProdukFavoritGetByBulanAndTahunTest()
+        {
+            var bulan = 10;
+            var tahun = 2017;
+            var limit = 15;
+
+            var oList = _bll.ProdukFavoritGetByBulan(bulan, tahun, limit);
+            Assert.AreEqual(15, oList.Count);
+
+            var index = 1;
+            var obj = oList[index];
+
+            Assert.IsNotNull(obj);
+            Assert.AreEqual("Access Point TPLINK TL-MR3220 3,5G", obj.nama_produk);
+            Assert.AreEqual(22, obj.jumlah);
+        }
+
+        [TestMethod]
         public void GetByBulanAndTahunTest()
         {
             var bulan = 3;

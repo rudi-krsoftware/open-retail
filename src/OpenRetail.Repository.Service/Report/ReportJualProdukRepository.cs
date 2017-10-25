@@ -62,6 +62,13 @@ namespace OpenRetail.Repository.Service.Report
                                                          GROUP BY m_customer.customer_id, m_customer.nama_customer, t_jual_produk.tanggal, m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon                                            
                                                          ORDER BY t_jual_produk.tanggal, m_produk.nama_produk";
 
+        private const string SQL_TEMPLATE_PRODUK_FAVORIT = @"SELECT m_produk.nama_produk, SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur) AS jumlah
+                                                             FROM public.t_jual_produk INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
+                                                             INNER JOIN public.m_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
+                                                             {WHERE}
+                                                             GROUP BY m_produk.produk_id, m_produk.nama_produk
+                                                             ORDER BY SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur) DESC LIMIT @limit";
+
         private IDapperContext _context;
         private ILog _log;
 
@@ -256,6 +263,55 @@ namespace OpenRetail.Repository.Service.Report
                 whereBuilder.Add("t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
 
                 oList = _context.db.Query<ReportPenjualanProduk>(whereBuilder.ToSql(), new { tanggalMulai, tanggalSelesai })
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+
+        public IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulan, int tahun, int limit)
+        {
+            IList<ReportProdukFavorit> oList = new List<ReportProdukFavorit>();
+
+            try
+            {
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_PRODUK_FAVORIT);
+
+                whereBuilder.Add("EXTRACT(MONTH FROM t_jual_produk.tanggal) = @bulan");
+                whereBuilder.Add("EXTRACT(YEAR FROM t_jual_produk.tanggal) = @tahun");
+
+                oList = _context.db.Query<ReportProdukFavorit>(whereBuilder.ToSql(), new { bulan, tahun, limit })
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulanAwal, int bulanAkhir, int tahun, int limit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ReportProdukFavorit> ProdukFavoritGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int limit)
+        {
+            IList<ReportProdukFavorit> oList = new List<ReportProdukFavorit>();
+
+            try
+            {
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_PRODUK_FAVORIT);
+
+                whereBuilder.Add("t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+
+                oList = _context.db.Query<ReportProdukFavorit>(whereBuilder.ToSql(), new { tanggalMulai, tanggalSelesai, limit })
                                 .ToList();
             }
             catch (Exception ex)
