@@ -96,6 +96,7 @@
     <EmbeddedResource Include="RvNotaPembelianProduk.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="RvPemasukanPengeluaran.rdlc" />
     <EmbeddedResource Include="RvPembayaranPiutangPenjualanProdukDetail.rdlc" />
     <EmbeddedResource Include="RvPembayaranPiutangPenjualanProdukHeader.rdlc" />
     <EmbeddedResource Include="RvKasbonHeader.rdlc" />

@@ -95,6 +95,7 @@
     <Compile Include="RajaOngkir\results.cs" />
     <Compile Include="RajaOngkir\root.cs" />
     <Compile Include="RajaOngkir\status.cs" />
+    <Compile Include="Report\ReportBebanUsaha.cs" />
     <Compile Include="Report\ReportGajiKaryawan.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukHeader.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Report\ReportKasbonDetail.cs" />
     <Compile Include="Report\ReportKasbonHeader.cs" />
     <Compile Include="Report\ReportMesinKasir.cs" />
+    <Compile Include="Report\ReportPemasukanPengeluaran.cs" />
     <Compile Include="Report\ReportPembayaranHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportPembayaranHutangPembelianProdukHeader.cs" />
     <Compile Include="Report\ReportPembayaranPiutangPenjualanProdukDetail.cs" />

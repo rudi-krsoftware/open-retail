@@ -157,6 +157,12 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Laporan\FrmLapPemasukanPengeluaran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapPemasukanPengeluaran.designer.cs">
+      <DependentUpon>FrmLapPemasukanPengeluaran.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\FrmLapPenggajianKaryawan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -603,6 +609,9 @@
     <Compile Include="Transaksi\FrmPreviewNotaPenjualan.Designer.cs">
       <DependentUpon>FrmPreviewNotaPenjualan.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Laporan\FrmLapPemasukanPengeluaran.resx">
+      <DependentUpon>FrmLapPemasukanPengeluaran.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Laporan\FrmLapStokProduk.resx">
       <DependentUpon>FrmLapStokProduk.cs</DependentUpon>
     </EmbeddedResource>
