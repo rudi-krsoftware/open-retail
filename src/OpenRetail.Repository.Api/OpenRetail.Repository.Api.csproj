@@ -91,6 +91,7 @@
     <Compile Include="Report\IReportKartuPiutangRepository.cs" />
     <Compile Include="Report\IReportKasbonRepository.cs" />
     <Compile Include="Report\IReportMesinKasirRepository.cs" />
+    <Compile Include="Report\IReportPemasukanPengeluaranRepository.cs" />
     <Compile Include="Report\IReportPembayaranHutangBeliProdukRepository.cs" />
     <Compile Include="Report\IReportPembayaranPiutangJualProdukRepository.cs" />
     <Compile Include="Report\IReportPengeluaranBiayaRepository.cs" />

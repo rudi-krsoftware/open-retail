@@ -40,6 +40,8 @@
             this.sbNamaAplikasi = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuReferensi = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuKartu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuGolongan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPenyesuaianStok = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,8 +127,8 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuKartu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuLapPemasukanPengeluaran = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -241,6 +243,19 @@
             this.mnuReferensi.Name = "mnuReferensi";
             this.mnuReferensi.Size = new System.Drawing.Size(67, 20);
             this.mnuReferensi.Text = "Referensi";
+            // 
+            // mnuKartu
+            // 
+            this.mnuKartu.Name = "mnuKartu";
+            this.mnuKartu.Size = new System.Drawing.Size(168, 22);
+            this.mnuKartu.Tag = "FrmListKartu";
+            this.mnuKartu.Text = "Kartu";
+            this.mnuKartu.Click += new System.EventHandler(this.mnuKartu_Click);
+            // 
+            // toolStripSeparator17
+            // 
+            this.toolStripSeparator17.Name = "toolStripSeparator17";
+            this.toolStripSeparator17.Size = new System.Drawing.Size(165, 6);
             // 
             // mnuGolongan
             // 
@@ -433,7 +448,9 @@
             this.toolStripSeparator5,
             this.mnuLapPengeluaranBiaya,
             this.mnuLapKasbon,
-            this.mnuLapPenggajian});
+            this.mnuLapPenggajian,
+            this.toolStripSeparator18,
+            this.mnuLapPemasukanPengeluaran});
             this.mnuLaporan.Name = "mnuLaporan";
             this.mnuLaporan.Size = new System.Drawing.Size(62, 20);
             this.mnuLaporan.Text = "Laporan";
@@ -448,7 +465,7 @@
             this.mnuLapKartuHutangPembelianProduk,
             this.mnuLapReturPembelianProduk});
             this.mnuLapPembelian.Name = "mnuLapPembelian";
-            this.mnuLapPembelian.Size = new System.Drawing.Size(187, 22);
+            this.mnuLapPembelian.Size = new System.Drawing.Size(227, 22);
             this.mnuLapPembelian.Text = "Pembelian";
             // 
             // mnuLapPembelianProduk
@@ -507,7 +524,7 @@
             this.mnuLapKartuPiutangPenjualanProduk,
             this.mnuLapReturPenjualanProduk});
             this.mnuLapPenjualan.Name = "mnuLapPenjualan";
-            this.mnuLapPenjualan.Size = new System.Drawing.Size(187, 22);
+            this.mnuLapPenjualan.Size = new System.Drawing.Size(227, 22);
             this.mnuLapPenjualan.Text = "Penjualan";
             // 
             // mnuLapPenjualanProduk
@@ -566,12 +583,12 @@
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(224, 6);
             // 
             // mnuLapStokProduk
             // 
             this.mnuLapStokProduk.Name = "mnuLapStokProduk";
-            this.mnuLapStokProduk.Size = new System.Drawing.Size(187, 22);
+            this.mnuLapStokProduk.Size = new System.Drawing.Size(227, 22);
             this.mnuLapStokProduk.Tag = "FrmLapStokProduk";
             this.mnuLapStokProduk.Text = "Stok Produk";
             this.mnuLapStokProduk.Click += new System.EventHandler(this.mnuLapStokProduk_Click);
@@ -579,7 +596,7 @@
             // mnuLapPenyesuaianStok
             // 
             this.mnuLapPenyesuaianStok.Name = "mnuLapPenyesuaianStok";
-            this.mnuLapPenyesuaianStok.Size = new System.Drawing.Size(187, 22);
+            this.mnuLapPenyesuaianStok.Size = new System.Drawing.Size(227, 22);
             this.mnuLapPenyesuaianStok.Tag = "FrmLapPenyesuaianStok";
             this.mnuLapPenyesuaianStok.Text = "Penyesuaian Stok";
             this.mnuLapPenyesuaianStok.Click += new System.EventHandler(this.mnuLapPenyesuaianStok_Click);
@@ -587,12 +604,12 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(224, 6);
             // 
             // mnuLapPengeluaranBiaya
             // 
             this.mnuLapPengeluaranBiaya.Name = "mnuLapPengeluaranBiaya";
-            this.mnuLapPengeluaranBiaya.Size = new System.Drawing.Size(187, 22);
+            this.mnuLapPengeluaranBiaya.Size = new System.Drawing.Size(227, 22);
             this.mnuLapPengeluaranBiaya.Tag = "FrmLapPengeluaranBiaya";
             this.mnuLapPengeluaranBiaya.Text = "Pengeluaran Biaya";
             this.mnuLapPengeluaranBiaya.Click += new System.EventHandler(this.mnuLapPengeluaranBiaya_Click);
@@ -600,7 +617,7 @@
             // mnuLapKasbon
             // 
             this.mnuLapKasbon.Name = "mnuLapKasbon";
-            this.mnuLapKasbon.Size = new System.Drawing.Size(187, 22);
+            this.mnuLapKasbon.Size = new System.Drawing.Size(227, 22);
             this.mnuLapKasbon.Tag = "FrmLapKasbon";
             this.mnuLapKasbon.Text = "Kasbon";
             this.mnuLapKasbon.Click += new System.EventHandler(this.mnuLapKasbon_Click);
@@ -608,7 +625,7 @@
             // mnuLapPenggajian
             // 
             this.mnuLapPenggajian.Name = "mnuLapPenggajian";
-            this.mnuLapPenggajian.Size = new System.Drawing.Size(187, 22);
+            this.mnuLapPenggajian.Size = new System.Drawing.Size(227, 22);
             this.mnuLapPenggajian.Tag = "FrmLapPenggajianKaryawan";
             this.mnuLapPenggajian.Text = "Penggajian Karyawan";
             this.mnuLapPenggajian.Click += new System.EventHandler(this.mnuLapPenggajian_Click);
@@ -947,18 +964,18 @@
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
-            // toolStripSeparator17
+            // toolStripSeparator18
             // 
-            this.toolStripSeparator17.Name = "toolStripSeparator17";
-            this.toolStripSeparator17.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator18.Name = "toolStripSeparator18";
+            this.toolStripSeparator18.Size = new System.Drawing.Size(224, 6);
             // 
-            // mnuKartu
+            // mnuLapPemasukanPengeluaran
             // 
-            this.mnuKartu.Name = "mnuKartu";
-            this.mnuKartu.Size = new System.Drawing.Size(168, 22);
-            this.mnuKartu.Tag = "FrmListKartu";
-            this.mnuKartu.Text = "Kartu";
-            this.mnuKartu.Click += new System.EventHandler(this.mnuKartu_Click);
+            this.mnuLapPemasukanPengeluaran.Name = "mnuLapPemasukanPengeluaran";
+            this.mnuLapPemasukanPengeluaran.Size = new System.Drawing.Size(227, 22);
+            this.mnuLapPemasukanPengeluaran.Tag = "FrmLapPemasukanPengeluaran";
+            this.mnuLapPemasukanPengeluaran.Text = "Pemasukan dan Pengeluaran";
+            this.mnuLapPemasukanPengeluaran.Click += new System.EventHandler(this.mnuLapPemasukanPengeluaran_Click);
             // 
             // FrmMain
             // 
@@ -1086,5 +1103,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuFanPageOpenRetail;
         private System.Windows.Forms.ToolStripMenuItem mnuKartu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
+        private System.Windows.Forms.ToolStripMenuItem mnuLapPemasukanPengeluaran;
     }
 }

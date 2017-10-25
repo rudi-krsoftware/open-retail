@@ -84,6 +84,7 @@ namespace OpenRetail.Repository.Service
         private IReportPengeluaranBiayaRepository _reportPengeluaranBiayaRepository;
         private IReportKasbonRepository _reportKasbonRepository;
         private IReportGajiKaryawanRepository _reportGajiKaryawanRepository;
+        private IReportPemasukanPengeluaranRepository _reportPemasukanPengeluaranRepository;
 
         private IHeaderNotaRepository _headerNotaRepository;
         private ILabelNotaRepository _labelNotaRepository;
@@ -306,6 +307,11 @@ namespace OpenRetail.Repository.Service
         public IReportGajiKaryawanRepository ReportGajiKaryawanRepository
         {
             get { return _reportGajiKaryawanRepository ?? (_reportGajiKaryawanRepository = new ReportGajiKaryawanRepository(_context, _log)); }
+        }
+
+        public IReportPemasukanPengeluaranRepository ReportPemasukanPengeluaranRepository
+        {
+            get { return _reportPemasukanPengeluaranRepository ?? (_reportPemasukanPengeluaranRepository = new ReportPemasukanPengeluaranRepository(_context, _log)); }
         }
 
         public IKasbonRepository KasbonRepository

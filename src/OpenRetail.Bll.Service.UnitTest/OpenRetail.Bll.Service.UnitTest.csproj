@@ -117,6 +117,7 @@
     <Compile Include="Report\ReportKartuPiutangBllTest.cs" />
     <Compile Include="Report\ReportMesinKasirBllTest.cs" />
     <Compile Include="Report\ReportKasbonBllTest.cs" />
+    <Compile Include="Report\ReportPemasukanPengeluaranBllTest.cs" />
     <Compile Include="Report\ReportPembayaranHutangBeliProdukBllTest.cs" />
     <Compile Include="Report\ReportPembayaranPiutangJualProdukBllTest.cs" />
     <Compile Include="Report\ReportPengeluaranBiayaBllTest.cs" />

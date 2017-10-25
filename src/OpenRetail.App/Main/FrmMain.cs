@@ -685,5 +685,10 @@ namespace OpenRetail.App.Main
         {
             ShowForm<FrmListKartu>(sender, ref _frmListKartu);
         }
+
+        private void mnuLapPemasukanPengeluaran_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapPemasukanPengeluaran>(sender);
+        }
     }
 }
