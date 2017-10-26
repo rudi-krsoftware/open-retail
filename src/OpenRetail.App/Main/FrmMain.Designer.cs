@@ -76,6 +76,9 @@
             this.mnuLapPenjualan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenjualanProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenjualanPerProduk = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLapPenjualanPerKasir = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLapPenjualanProdukFavorit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLapPiutangPenjualanProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPembayaranPiutangPenjualanProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -129,8 +132,6 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuLapPenjualanProdukFavorit = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -520,6 +521,7 @@
             this.mnuLapPenjualan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuLapPenjualanProduk,
             this.mnuLapPenjualanPerProduk,
+            this.mnuLapPenjualanPerKasir,
             this.mnuLapPenjualanProdukFavorit,
             this.toolStripSeparator19,
             this.mnuLapPiutangPenjualanProduk,
@@ -546,6 +548,27 @@
             this.mnuLapPenjualanPerProduk.Tag = "FrmLapPenjualanPerProduk";
             this.mnuLapPenjualanPerProduk.Text = "Penjualan Per Produk";
             this.mnuLapPenjualanPerProduk.Click += new System.EventHandler(this.mnuLapPenjualanPerProduk_Click);
+            // 
+            // mnuLapPenjualanPerKasir
+            // 
+            this.mnuLapPenjualanPerKasir.Name = "mnuLapPenjualanPerKasir";
+            this.mnuLapPenjualanPerKasir.Size = new System.Drawing.Size(280, 22);
+            this.mnuLapPenjualanPerKasir.Tag = "FrmLapPenjualanPerKasir";
+            this.mnuLapPenjualanPerKasir.Text = "Penjualan Per Kasir";
+            this.mnuLapPenjualanPerKasir.Click += new System.EventHandler(this.mnuLapPenjualanPerKasir_Click);            
+            // 
+            // mnuLapPenjualanProdukFavorit
+            // 
+            this.mnuLapPenjualanProdukFavorit.Name = "mnuLapPenjualanProdukFavorit";
+            this.mnuLapPenjualanProdukFavorit.Size = new System.Drawing.Size(280, 22);
+            this.mnuLapPenjualanProdukFavorit.Tag = "FrmLapPenjualanProdukFavorit";
+            this.mnuLapPenjualanProdukFavorit.Text = "Penjualan Produk Favorit";
+            this.mnuLapPenjualanProdukFavorit.Click += new System.EventHandler(this.mnuLapPenjualanProdukFavorit_Click);
+            // 
+            // toolStripSeparator19
+            // 
+            this.toolStripSeparator19.Name = "toolStripSeparator19";
+            this.toolStripSeparator19.Size = new System.Drawing.Size(277, 6);
             // 
             // mnuLapPiutangPenjualanProduk
             // 
@@ -981,19 +1004,6 @@
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
-            // toolStripSeparator19
-            // 
-            this.toolStripSeparator19.Name = "toolStripSeparator19";
-            this.toolStripSeparator19.Size = new System.Drawing.Size(277, 6);
-            // 
-            // mnuLapPenjualanProdukFavorit
-            // 
-            this.mnuLapPenjualanProdukFavorit.Name = "mnuLapPenjualanProdukFavorit";
-            this.mnuLapPenjualanProdukFavorit.Size = new System.Drawing.Size(280, 22);
-            this.mnuLapPenjualanProdukFavorit.Tag = "FrmLapPenjualanProdukFavorit";
-            this.mnuLapPenjualanProdukFavorit.Text = "Penjualan Produk Favorit";
-            this.mnuLapPenjualanProdukFavorit.Click += new System.EventHandler(this.mnuLapPenjualanProdukFavorit_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1124,5 +1134,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLapPemasukanPengeluaran;
         private System.Windows.Forms.ToolStripMenuItem mnuLapPenjualanProdukFavorit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
+        private System.Windows.Forms.ToolStripMenuItem mnuLapPenjualanPerKasir;
     }
 }
