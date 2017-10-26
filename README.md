@@ -6,7 +6,7 @@ OpenRetail [![Donate](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZDVaZWMtSTJpRV
 [![Downloads](https://drive.google.com/uc?id=0BxSptsEQ_0A1Rk91LS1ROUpYNFE)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0) 
 ![Status](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZXotVUd6U0xaQ2M) 
 ![Platform](https://drive.google.com/uc?id=0BxSptsEQ_0A1b1d6dEJEbFlaUlk) 
-[![License](https://drive.google.com/uc?id=0BxSptsEQ_0A1Rk91LS1ROUpYNFE)](http://www.apache.org/licenses/LICENSE-2.0) 
+[![License](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZzU4dnBjeldwN0U)](http://www.apache.org/licenses/LICENSE-2.0) 
 
 
 [![Open Retail](https://openretailblog.files.wordpress.com/2017/09/banner-small.png)](https://openretailblog.wordpress.com/)
