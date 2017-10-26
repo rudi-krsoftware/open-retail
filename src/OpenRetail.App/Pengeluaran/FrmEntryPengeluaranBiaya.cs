@@ -25,14 +25,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using OpenRetail.App.Helper;
-using OpenRetail.App.UI.Template;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.App.Lookup;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using Syncfusion.Windows.Forms.Grid;
-using OpenRetail.App.UserControl;
+using OpenRetail.Helper.UserControl;
 using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
 using log4net;
@@ -226,7 +226,7 @@ namespace OpenRetail.App.Pengeluaran
                 total += item.harga * item.jumlah;
             }
 
-            return total;
+            return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
         private void RefreshTotal()

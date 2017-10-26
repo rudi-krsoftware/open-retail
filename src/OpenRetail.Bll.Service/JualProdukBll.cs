@@ -54,6 +54,19 @@ namespace OpenRetail.Bll.Service
             return obj;
         }
 
+        public JualProduk GetListItemNotaTerakhir(string penggunaId, string mesinId)
+        {
+            JualProduk obj = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                obj = uow.JualProdukRepository.GetListItemNotaTerakhir(penggunaId, mesinId);
+            }
+
+            return obj;
+        }
+
         public IList<JualProduk> GetByName(string name)
         {
             IList<JualProduk> oList = null;

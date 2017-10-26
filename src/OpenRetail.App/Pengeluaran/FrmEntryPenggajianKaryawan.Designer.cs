@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtKehadiran = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtBonus = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKehadiran = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtBonus = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label15 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,30 +39,30 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cmbKaryawan = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtJumlahHari = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtJumlahHari = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtGaji = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtGaji = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label11 = new System.Windows.Forms.Label();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.cmbBulan = new System.Windows.Forms.ComboBox();
             this.cmbTahun = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dtpTanggal = new System.Windows.Forms.DateTimePicker();
-            this.txtJabatan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtJabatan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtAbsen = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtTotal = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtAbsen = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtTotal = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtNota = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtPotongan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNota = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtPotongan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label6 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtJam = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtJam = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtLembur = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtLembur = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtTunjangan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtTunjangan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
@@ -124,7 +124,7 @@
             // txtKehadiran
             // 
             this.txtKehadiran.AutoEnter = true;
-            this.txtKehadiran.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKehadiran.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKehadiran.EnterFocusColor = System.Drawing.Color.White;
             this.txtKehadiran.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKehadiran.LetterOnly = false;
@@ -141,7 +141,7 @@
             // txtBonus
             // 
             this.txtBonus.AutoEnter = true;
-            this.txtBonus.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtBonus.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtBonus.EnterFocusColor = System.Drawing.Color.White;
             this.txtBonus.LeaveFocusColor = System.Drawing.Color.White;
             this.txtBonus.LetterOnly = false;
@@ -249,7 +249,7 @@
             // txtJumlahHari
             // 
             this.txtJumlahHari.AutoEnter = true;
-            this.txtJumlahHari.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJumlahHari.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJumlahHari.EnterFocusColor = System.Drawing.Color.White;
             this.txtJumlahHari.LeaveFocusColor = System.Drawing.Color.White;
             this.txtJumlahHari.LetterOnly = false;
@@ -278,7 +278,7 @@
             // txtGaji
             // 
             this.txtGaji.AutoEnter = true;
-            this.txtGaji.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtGaji.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtGaji.EnterFocusColor = System.Drawing.Color.White;
             this.txtGaji.LeaveFocusColor = System.Drawing.Color.White;
             this.txtGaji.LetterOnly = false;
@@ -359,7 +359,7 @@
             // txtJabatan
             // 
             this.txtJabatan.AutoEnter = false;
-            this.txtJabatan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJabatan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJabatan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtJabatan.Enabled = false;
             this.txtJabatan.EnterFocusColor = System.Drawing.Color.White;
@@ -398,7 +398,7 @@
             // txtAbsen
             // 
             this.txtAbsen.AutoEnter = true;
-            this.txtAbsen.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtAbsen.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtAbsen.EnterFocusColor = System.Drawing.Color.White;
             this.txtAbsen.LeaveFocusColor = System.Drawing.Color.White;
             this.txtAbsen.LetterOnly = false;
@@ -415,7 +415,7 @@
             // txtTotal
             // 
             this.txtTotal.AutoEnter = false;
-            this.txtTotal.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtTotal.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtTotal.Enabled = false;
             this.txtTotal.EnterFocusColor = System.Drawing.Color.White;
             this.txtTotal.LeaveFocusColor = System.Drawing.Color.White;
@@ -445,7 +445,7 @@
             // txtNota
             // 
             this.txtNota.AutoEnter = false;
-            this.txtNota.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNota.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNota.Enabled = false;
             this.txtNota.EnterFocusColor = System.Drawing.Color.White;
             this.txtNota.LeaveFocusColor = System.Drawing.Color.White;
@@ -462,7 +462,7 @@
             // txtPotongan
             // 
             this.txtPotongan.AutoEnter = false;
-            this.txtPotongan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtPotongan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtPotongan.EnterFocusColor = System.Drawing.Color.White;
             this.txtPotongan.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPotongan.LetterOnly = false;
@@ -504,7 +504,7 @@
             // txtJam
             // 
             this.txtJam.AutoEnter = true;
-            this.txtJam.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJam.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJam.EnterFocusColor = System.Drawing.Color.White;
             this.txtJam.LeaveFocusColor = System.Drawing.Color.White;
             this.txtJam.LetterOnly = false;
@@ -532,7 +532,7 @@
             // txtLembur
             // 
             this.txtLembur.AutoEnter = true;
-            this.txtLembur.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtLembur.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtLembur.EnterFocusColor = System.Drawing.Color.White;
             this.txtLembur.LeaveFocusColor = System.Drawing.Color.White;
             this.txtLembur.LetterOnly = false;
@@ -561,7 +561,7 @@
             // txtTunjangan
             // 
             this.txtTunjangan.AutoEnter = true;
-            this.txtTunjangan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtTunjangan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtTunjangan.EnterFocusColor = System.Drawing.Color.White;
             this.txtTunjangan.LeaveFocusColor = System.Drawing.Color.White;
             this.txtTunjangan.LetterOnly = false;
@@ -616,22 +616,22 @@
         private System.Windows.Forms.ComboBox cmbTahun;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker dtpTanggal;
-        private UserControl.AdvancedTextbox txtKehadiran;
-        private UserControl.AdvancedTextbox txtJumlahHari;
-        private UserControl.AdvancedTextbox txtGaji;
-        private UserControl.AdvancedTextbox txtJam;
-        private UserControl.AdvancedTextbox txtLembur;
-        private UserControl.AdvancedTextbox txtJabatan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKehadiran;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJumlahHari;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtGaji;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJam;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtLembur;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJabatan;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private UserControl.AdvancedTextbox txtAbsen;
-        private UserControl.AdvancedTextbox txtTunjangan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtAbsen;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtTunjangan;
         private System.Windows.Forms.Label label15;
-        private UserControl.AdvancedTextbox txtBonus;
-        private UserControl.AdvancedTextbox txtTotal;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtBonus;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtTotal;
         private System.Windows.Forms.Label label5;
-        private UserControl.AdvancedTextbox txtNota;
-        private UserControl.AdvancedTextbox txtPotongan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNota;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtPotongan;
         private System.Windows.Forms.Label label6;
 
 

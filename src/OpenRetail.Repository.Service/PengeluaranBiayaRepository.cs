@@ -148,8 +148,7 @@ namespace OpenRetail.Repository.Service
             var total = obj.item_pengeluaran_biaya.Where(f => f.JenisPengeluaran != null && f.entity_state != EntityState.Deleted)
                                                   .Sum(f => f.jumlah * f.harga);
 
-            total = (int)total;
-            return total;
+            return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
         public int Save(PengeluaranBiaya obj)

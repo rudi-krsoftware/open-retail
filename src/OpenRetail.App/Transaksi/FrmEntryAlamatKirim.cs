@@ -27,8 +27,8 @@ using System.Windows.Forms;
 
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.App.Helper;
-using OpenRetail.App.UI.Template;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.Model;
 
 namespace OpenRetail.App.Transaksi

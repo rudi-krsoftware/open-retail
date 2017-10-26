@@ -75,9 +75,11 @@
     <Compile Include="Kabupaten.cs" />
     <Compile Include="KabupatenAsal.cs" />
     <Compile Include="KabupatenTujuan.cs" />
+    <Compile Include="Kartu.cs" />
     <Compile Include="Kasbon.cs" />
     <Compile Include="LabelAlamatKirim.cs" />
     <Compile Include="LabelNota.cs" />
+    <Compile Include="MesinKasir.cs" />
     <Compile Include="Nota\NotaPembelian.cs" />
     <Compile Include="Nota\NotaPenjualan.cs" />
     <Compile Include="PembayaranKasbon.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="RajaOngkir\results.cs" />
     <Compile Include="RajaOngkir\root.cs" />
     <Compile Include="RajaOngkir\status.cs" />
+    <Compile Include="Report\ReportBebanUsaha.cs" />
     <Compile Include="Report\ReportGajiKaryawan.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukHeader.cs" />
@@ -100,6 +103,8 @@
     <Compile Include="Report\ReportKartuPiutang.cs" />
     <Compile Include="Report\ReportKasbonDetail.cs" />
     <Compile Include="Report\ReportKasbonHeader.cs" />
+    <Compile Include="Report\ReportMesinKasir.cs" />
+    <Compile Include="Report\ReportPemasukanPengeluaran.cs" />
     <Compile Include="Report\ReportPembayaranHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportPembayaranHutangPembelianProdukHeader.cs" />
     <Compile Include="Report\ReportPembayaranPiutangPenjualanProdukDetail.cs" />
@@ -131,6 +136,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReferencesType.cs" />
     <Compile Include="Report\ReportPengeluaranBiaya.cs" />
+    <Compile Include="Report\ReportPenjualanPerKasir.cs" />
     <Compile Include="Report\ReportPenjualanProduk.cs" />
     <Compile Include="Report\ReportPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportPenjualanProdukHeader.cs" />
@@ -138,6 +144,7 @@
     <Compile Include="Report\ReportPiutangPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProdukHeader.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProduk.cs" />
+    <Compile Include="Report\ReportProdukFavorit.cs" />
     <Compile Include="Report\ReportReturPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportReturPembelianProdukHeader.cs" />
     <Compile Include="Report\ReportReturPenjualanProdukDetail.cs" />

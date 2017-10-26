@@ -36,9 +36,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cmbKaryawan = new System.Windows.Forms.ComboBox();
             this.dtpTanggal = new System.Windows.Forms.DateTimePicker();
-            this.txtNota = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtJumlah = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKeterangan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNota = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtJumlah = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKeterangan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,7 +145,7 @@
             // txtNota
             // 
             this.txtNota.AutoEnter = true;
-            this.txtNota.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNota.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNota.EnterFocusColor = System.Drawing.Color.White;
             this.txtNota.LeaveFocusColor = System.Drawing.Color.White;
             this.txtNota.LetterOnly = false;
@@ -161,7 +161,7 @@
             // txtJumlah
             // 
             this.txtJumlah.AutoEnter = true;
-            this.txtJumlah.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtJumlah.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtJumlah.EnterFocusColor = System.Drawing.Color.White;
             this.txtJumlah.LeaveFocusColor = System.Drawing.Color.White;
             this.txtJumlah.LetterOnly = false;
@@ -180,7 +180,7 @@
             // txtKeterangan
             // 
             this.txtKeterangan.AutoEnter = false;
-            this.txtKeterangan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKeterangan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKeterangan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKeterangan.EnterFocusColor = System.Drawing.Color.White;
             this.txtKeterangan.LeaveFocusColor = System.Drawing.Color.White;
@@ -220,9 +220,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbKaryawan;
         private System.Windows.Forms.DateTimePicker dtpTanggal;
-        private UserControl.AdvancedTextbox txtNota;
-        private UserControl.AdvancedTextbox txtJumlah;
-        private UserControl.AdvancedTextbox txtKeterangan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNota;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtJumlah;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKeterangan;
 
 
     }

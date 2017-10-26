@@ -38,9 +38,9 @@
             this.rdoAktif = new System.Windows.Forms.RadioButton();
             this.rdoNonAktif = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtNama = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtPassword = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKonfirmasiPassword = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtNama = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtPassword = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKonfirmasiPassword = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -176,7 +176,7 @@
             // txtNama
             // 
             this.txtNama.AutoEnter = true;
-            this.txtNama.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNama.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNama.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtNama.LeaveFocusColor = System.Drawing.Color.White;
@@ -193,7 +193,7 @@
             // txtPassword
             // 
             this.txtPassword.AutoEnter = true;
-            this.txtPassword.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtPassword.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPassword.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPassword.LeaveFocusColor = System.Drawing.Color.White;
@@ -211,7 +211,7 @@
             // txtKonfirmasiPassword
             // 
             this.txtKonfirmasiPassword.AutoEnter = true;
-            this.txtKonfirmasiPassword.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKonfirmasiPassword.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKonfirmasiPassword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKonfirmasiPassword.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKonfirmasiPassword.LeaveFocusColor = System.Drawing.Color.White;
@@ -255,9 +255,9 @@
         private System.Windows.Forms.RadioButton rdoAktif;
         private System.Windows.Forms.RadioButton rdoNonAktif;
         private System.Windows.Forms.Label label5;
-        private UserControl.AdvancedTextbox txtNama;
-        private UserControl.AdvancedTextbox txtPassword;
-        private UserControl.AdvancedTextbox txtKonfirmasiPassword;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNama;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtPassword;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKonfirmasiPassword;
 
     }
 }

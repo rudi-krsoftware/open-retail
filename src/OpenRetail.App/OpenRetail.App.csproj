@@ -157,28 +157,24 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
-    <Compile Include="Helper\AppConfigHelper.cs" />
-    <Compile Include="Helper\DatabaseVersionHelper.cs" />
-    <Compile Include="Helper\ESCCommandHelper.cs" />
-    <Compile Include="Helper\RawPrinterHelper.cs" />
-    <Compile Include="Helper\ReportViewerPrintHelper.cs" />
-    <Compile Include="Helper\ColorCollection.cs" />
-    <Compile Include="Helper\ColorManagerHelper.cs" />
-    <Compile Include="Helper\CryptoHelper.cs" />
-    <Compile Include="Helper\DateTimeHelper.cs" />
-    <Compile Include="Helper\DayMonthHelper.cs" />
-    <Compile Include="Helper\FillDataHelper.cs" />
-    <Compile Include="Helper\GridControlColSizeHelper.cs" />
-    <Compile Include="Helper\GridListControlHelper.cs" />
-    <Compile Include="Helper\GridListControlProperties.cs" />
-    <Compile Include="Helper\IListener.cs" />
-    <Compile Include="Helper\KeyPressHelper.cs" />
-    <Compile Include="Helper\MsgHelper.cs" />
-    <Compile Include="Helper\NumberHelper.cs" />
-    <Compile Include="Helper\RolePrivilegeHelper.cs" />
-    <Compile Include="Helper\StringHelper.cs" />
-    <Compile Include="Helper\ThreadHelper.cs" />
-    <Compile Include="Helper\Utils.cs" />
+    <Compile Include="Laporan\FrmLapPenjualanPerKasir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapPenjualanPerKasir.designer.cs">
+      <DependentUpon>FrmLapPenjualanPerKasir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporan\FrmLapPenjualanProdukFavorit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapPenjualanProdukFavorit.designer.cs">
+      <DependentUpon>FrmLapPenjualanProdukFavorit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporan\FrmLapPemasukanPengeluaran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapPemasukanPengeluaran.designer.cs">
+      <DependentUpon>FrmLapPemasukanPengeluaran.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\FrmLapPenggajianKaryawan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -402,8 +398,13 @@
     <Compile Include="Pengeluaran\FrmListPengeluaranBiaya.Designer.cs">
       <DependentUpon>FrmListPengeluaranBiaya.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\PrintReportHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Referensi\FrmEntryKartu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmEntryKartu.Designer.cs">
+      <DependentUpon>FrmEntryKartu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Referensi\FrmEntryPenyesuaianStok.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,6 +476,12 @@
     </Compile>
     <Compile Include="Referensi\FrmImportDataGolongan.Designer.cs">
       <DependentUpon>FrmImportDataGolongan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Referensi\FrmListKartu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmListKartu.Designer.cs">
+      <DependentUpon>FrmListKartu.cs</DependentUpon>
     </Compile>
     <Compile Include="Referensi\FrmListPenyesuaianStok.cs">
       <SubType>Form</SubType>
@@ -614,89 +621,15 @@
     <Compile Include="Transaksi\FrmPreviewNotaPenjualan.Designer.cs">
       <DependentUpon>FrmPreviewNotaPenjualan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transaksi\PrinterMiniPOS\IPrinterMiniPOS.cs" />
-    <Compile Include="Transaksi\PrinterMiniPOS\PrinterMiniPOS.cs" />
-    <Compile Include="UI.Template\BaseFrmList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\BaseFrmLookup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmDialogImport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmDialogImport.Designer.cs">
-      <DependentUpon>FrmDialogImport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI.Template\FrmListEmptyBodyWithNavigation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmListEmptyBodyWithNavigation.Designer.cs">
-      <DependentUpon>FrmListEmptyBodyWithNavigation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI.Template\FrmListStandardWithNavigation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmListStandardWithNavigation.Designer.cs">
-      <DependentUpon>FrmListStandardWithNavigation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI.Template\FrmLookupEmptyBody.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmLookupEmptyBody.Designer.cs">
-      <DependentUpon>FrmLookupEmptyBody.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI.Template\FrmLookupStandard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmLookupStandard.Designer.cs">
-      <DependentUpon>FrmLookupStandard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI.Template\FrmEntryStandard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmEntryStandard.Designer.cs">
-      <DependentUpon>FrmEntryStandard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI.Template\FrmListEmptyBody.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmListEmptyBody.Designer.cs">
-      <DependentUpon>FrmListEmptyBody.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI.Template\FrmListStandard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmListStandard.Designer.cs">
-      <DependentUpon>FrmListStandard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI.Template\FrmPreviewReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmPreviewReport.Designer.cs">
-      <DependentUpon>FrmPreviewReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI.Template\FrmSettingReportEmptyBody.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmSettingReportEmptyBody.Designer.cs">
-      <DependentUpon>FrmSettingReportEmptyBody.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI.Template\FrmSettingReportStandard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI.Template\FrmSettingReportStandard.Designer.cs">
-      <DependentUpon>FrmSettingReportStandard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\AdvancedTextbox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControl\FilterRangeTanggal.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\FilterRangeTanggal.Designer.cs">
-      <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="Laporan\FrmLapPenjualanPerKasir.resx">
+      <DependentUpon>FrmLapPenjualanPerKasir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\FrmLapPenjualanProdukFavorit.resx">
+      <DependentUpon>FrmLapPenjualanProdukFavorit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\FrmLapPemasukanPengeluaran.resx">
+      <DependentUpon>FrmLapPemasukanPengeluaran.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Laporan\FrmLapStokProduk.resx">
       <DependentUpon>FrmLapStokProduk.cs</DependentUpon>
     </EmbeddedResource>
@@ -774,6 +707,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Referensi\FrmEntryKartu.resx">
+      <DependentUpon>FrmEntryKartu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntryPenyesuaianStok.resx">
       <DependentUpon>FrmEntryPenyesuaianStok.cs</DependentUpon>
     </EmbeddedResource>
@@ -797,6 +733,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntryGolongan.resx">
       <DependentUpon>FrmEntryGolongan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Referensi\FrmListKartu.resx">
+      <DependentUpon>FrmListKartu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmListPenyesuaianStok.resx">
       <DependentUpon>FrmListPenyesuaianStok.cs</DependentUpon>
@@ -867,42 +806,6 @@
     <EmbeddedResource Include="Transaksi\FrmPreviewNotaPenjualan.resx">
       <DependentUpon>FrmPreviewNotaPenjualan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmDialogImport.resx">
-      <DependentUpon>FrmDialogImport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmListEmptyBodyWithNavigation.resx">
-      <DependentUpon>FrmListEmptyBodyWithNavigation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmListStandardWithNavigation.resx">
-      <DependentUpon>FrmListStandardWithNavigation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmLookupEmptyBody.resx">
-      <DependentUpon>FrmLookupEmptyBody.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmLookupStandard.resx">
-      <DependentUpon>FrmLookupStandard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmEntryStandard.resx">
-      <DependentUpon>FrmEntryStandard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmListEmptyBody.resx">
-      <DependentUpon>FrmListEmptyBody.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmListStandard.resx">
-      <DependentUpon>FrmListStandard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmPreviewReport.resx">
-      <DependentUpon>FrmPreviewReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmSettingReportEmptyBody.resx">
-      <DependentUpon>FrmSettingReportEmptyBody.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI.Template\FrmSettingReportStandard.resx">
-      <DependentUpon>FrmSettingReportStandard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\FilterRangeTanggal.resx">
-      <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -926,6 +829,10 @@
     <ProjectReference Include="..\OpenRetail.Bll.Service\OpenRetail.Bll.Service.csproj">
       <Project>{2a5e29ae-358a-4129-b28a-9a1425a90de0}</Project>
       <Name>OpenRetail.Bll.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenRetail.Helper\OpenRetail.Helper.csproj">
+      <Project>{3316e651-8404-4cd4-a132-2b013489de67}</Project>
+      <Name>OpenRetail.Helper</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">
       <Project>{6b9cabad-1a6c-4323-8548-bd5f3c12613c}</Project>

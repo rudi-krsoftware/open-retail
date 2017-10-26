@@ -34,4 +34,5 @@ psql -U postgres DbOpenRetail < 13_data-provinsi.sql
 psql -U postgres DbOpenRetail < 14_data-kabupaten.sql
 psql -U postgres DbOpenRetail < 15_data-header_nota_mini_pos.sql
 psql -U postgres DbOpenRetail < 16_data-footer_nota_mini_pos.sql
+psql -U postgres DbOpenRetail < 17_data-kartu.sql
 ```

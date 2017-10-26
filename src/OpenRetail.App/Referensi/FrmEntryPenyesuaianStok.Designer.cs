@@ -39,23 +39,23 @@
             this.dtpTanggal = new System.Windows.Forms.DateTimePicker();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtPenambahanStokEtalase = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtPenambahanStokEtalase = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtPenambahanStokGudang = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtPenambahanStokGudang = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cmbAlasanPenyesuaian = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtPenguranganStokEtalase = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtPenguranganStokEtalase = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtPenguranganStokGudang = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKodeProduk = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtNamaProduk = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtStokEtalase = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtStokGudang = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKeterangan = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtPenguranganStokGudang = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKodeProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtNamaProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtStokEtalase = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtStokGudang = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKeterangan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -217,7 +217,7 @@
             // txtPenambahanStokEtalase
             // 
             this.txtPenambahanStokEtalase.AutoEnter = true;
-            this.txtPenambahanStokEtalase.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtPenambahanStokEtalase.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtPenambahanStokEtalase.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPenambahanStokEtalase.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPenambahanStokEtalase.LetterOnly = false;
@@ -246,7 +246,7 @@
             // txtPenambahanStokGudang
             // 
             this.txtPenambahanStokGudang.AutoEnter = true;
-            this.txtPenambahanStokGudang.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtPenambahanStokGudang.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtPenambahanStokGudang.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPenambahanStokGudang.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPenambahanStokGudang.LetterOnly = false;
@@ -332,7 +332,7 @@
             // txtPenguranganStokEtalase
             // 
             this.txtPenguranganStokEtalase.AutoEnter = true;
-            this.txtPenguranganStokEtalase.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtPenguranganStokEtalase.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtPenguranganStokEtalase.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPenguranganStokEtalase.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPenguranganStokEtalase.LetterOnly = false;
@@ -361,7 +361,7 @@
             // txtPenguranganStokGudang
             // 
             this.txtPenguranganStokGudang.AutoEnter = true;
-            this.txtPenguranganStokGudang.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtPenguranganStokGudang.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtPenguranganStokGudang.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPenguranganStokGudang.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPenguranganStokGudang.LetterOnly = false;
@@ -379,7 +379,7 @@
             // txtKodeProduk
             // 
             this.txtKodeProduk.AutoEnter = false;
-            this.txtKodeProduk.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKodeProduk.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKodeProduk.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKodeProduk.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKodeProduk.LetterOnly = false;
@@ -397,7 +397,7 @@
             // txtNamaProduk
             // 
             this.txtNamaProduk.AutoEnter = false;
-            this.txtNamaProduk.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtNamaProduk.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtNamaProduk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNamaProduk.Enabled = false;
             this.txtNamaProduk.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -414,7 +414,7 @@
             // txtStokEtalase
             // 
             this.txtStokEtalase.AutoEnter = false;
-            this.txtStokEtalase.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtStokEtalase.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtStokEtalase.Enabled = false;
             this.txtStokEtalase.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtStokEtalase.LeaveFocusColor = System.Drawing.Color.White;
@@ -432,7 +432,7 @@
             // txtStokGudang
             // 
             this.txtStokGudang.AutoEnter = false;
-            this.txtStokGudang.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtStokGudang.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtStokGudang.Enabled = false;
             this.txtStokGudang.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtStokGudang.LeaveFocusColor = System.Drawing.Color.White;
@@ -450,7 +450,7 @@
             // txtKeterangan
             // 
             this.txtKeterangan.AutoEnter = false;
-            this.txtKeterangan.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKeterangan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKeterangan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKeterangan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKeterangan.LeaveFocusColor = System.Drawing.Color.White;
@@ -505,15 +505,15 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private UserControl.AdvancedTextbox txtKodeProduk;
-        private UserControl.AdvancedTextbox txtPenambahanStokEtalase;
-        private UserControl.AdvancedTextbox txtPenambahanStokGudang;
-        private UserControl.AdvancedTextbox txtPenguranganStokEtalase;
-        private UserControl.AdvancedTextbox txtPenguranganStokGudang;
-        private UserControl.AdvancedTextbox txtNamaProduk;
-        private UserControl.AdvancedTextbox txtStokEtalase;
-        private UserControl.AdvancedTextbox txtStokGudang;
-        private UserControl.AdvancedTextbox txtKeterangan;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKodeProduk;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtPenambahanStokEtalase;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtPenambahanStokGudang;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtPenguranganStokEtalase;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtPenguranganStokGudang;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtNamaProduk;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtStokEtalase;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtStokGudang;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKeterangan;
 
     }
 }

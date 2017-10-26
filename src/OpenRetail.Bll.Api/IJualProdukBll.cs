@@ -31,6 +31,14 @@ namespace OpenRetail.Bll.Api
         string GetLastNota();
         JualProduk GetByID(string id);
 
+        /// <summary>
+        /// Method untuk mendapatkan informasi item nota terakhir untuk keperluan aplikasi kasir
+        /// </summary>
+        /// <param name="penggunaId"></param>
+        /// <param name="mesinId"></param>
+        /// <returns></returns>
+        JualProduk GetListItemNotaTerakhir(string penggunaId, string mesinId);
+
         IList<JualProduk> GetAll(string name);
 
         IList<JualProduk> GetNotaCustomer(string id, string nota);

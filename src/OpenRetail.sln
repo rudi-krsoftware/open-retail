@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.App", "OpenRetai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.Report", "OpenRetail.Report\OpenRetail.Report.csproj", "{0619DAD4-44FE-48AC-BCC9-6F1115574E1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.Helper", "OpenRetail.Helper\OpenRetail.Helper.csproj", "{3316E651-8404-4CD4-A132-2B013489DE67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.App.Cashier", "OpenRetail.App.Cashier\OpenRetail.App.Cashier.csproj", "{5BF4963A-6DA4-4CE0-A2CE-D8088438F009}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{0619DAD4-44FE-48AC-BCC9-6F1115574E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0619DAD4-44FE-48AC-BCC9-6F1115574E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0619DAD4-44FE-48AC-BCC9-6F1115574E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3316E651-8404-4CD4-A132-2B013489DE67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3316E651-8404-4CD4-A132-2B013489DE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3316E651-8404-4CD4-A132-2B013489DE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3316E651-8404-4CD4-A132-2B013489DE67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BF4963A-6DA4-4CE0-A2CE-D8088438F009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF4963A-6DA4-4CE0-A2CE-D8088438F009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF4963A-6DA4-4CE0-A2CE-D8088438F009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF4963A-6DA4-4CE0-A2CE-D8088438F009}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

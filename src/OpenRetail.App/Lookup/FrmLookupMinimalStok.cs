@@ -28,7 +28,7 @@ using System.Windows.Forms;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;

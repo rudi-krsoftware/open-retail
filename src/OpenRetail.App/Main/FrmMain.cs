@@ -31,7 +31,7 @@ using OpenRetail.App.Transaksi;
 using OpenRetail.App.Pengeluaran;
 using OpenRetail.App.Laporan;
 using OpenRetail.App.Pengaturan;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 using ConceptCave.WaitCursor;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
@@ -47,6 +47,7 @@ namespace OpenRetail.App.Main
         //Disable close button
         private const int CP_DISABLE_CLOSE_BUTTON = 0x200;
 
+        private FrmListKartu _frmListKartu;
         private FrmListGolongan _frmListGolongan;
         private FrmListProdukWithNavigation _frmListProduk;
         private FrmListPenyesuaianStok _frmListPenyesuaianStok;
@@ -679,5 +680,25 @@ namespace OpenRetail.App.Main
             else
                 MsgHelper.MsgWarning("Maaf link/url Online Update belum diset !!!\nProses cek update terbaru batal.");
         }
+
+        private void mnuKartu_Click(object sender, EventArgs e)
+        {
+            ShowForm<FrmListKartu>(sender, ref _frmListKartu);
+        }
+
+        private void mnuLapPemasukanPengeluaran_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapPemasukanPengeluaran>(sender);
+        }
+
+        private void mnuLapPenjualanProdukFavorit_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapPenjualanProdukFavorit>(sender);
+        }
+
+        private void mnuLapPenjualanPerKasir_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapPenjualanPerKasir>(sender);
+        }        
     }
 }

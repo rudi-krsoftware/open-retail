@@ -28,14 +28,14 @@ using System.Windows.Forms;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.App.UI.Template;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
 using System.IO;
 using System.Diagnostics;
-using OpenRetail.App.UserControl;
+using OpenRetail.Helper.UserControl;
 
 namespace OpenRetail.App.Referensi
 {

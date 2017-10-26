@@ -36,10 +36,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtKepada1 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKepada2 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKepada3 = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKepada4 = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtKepada1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKepada2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKepada3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKepada4 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.pnlAlamatKirim.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -154,7 +154,7 @@
             // txtKepada1
             // 
             this.txtKepada1.AutoEnter = true;
-            this.txtKepada1.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKepada1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKepada1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKepada1.EnterFocusColor = System.Drawing.Color.White;
             this.txtKepada1.LeaveFocusColor = System.Drawing.Color.White;
@@ -172,7 +172,7 @@
             // txtKepada2
             // 
             this.txtKepada2.AutoEnter = true;
-            this.txtKepada2.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKepada2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKepada2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKepada2.EnterFocusColor = System.Drawing.Color.White;
             this.txtKepada2.LeaveFocusColor = System.Drawing.Color.White;
@@ -190,7 +190,7 @@
             // txtKepada3
             // 
             this.txtKepada3.AutoEnter = true;
-            this.txtKepada3.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKepada3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKepada3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKepada3.EnterFocusColor = System.Drawing.Color.White;
             this.txtKepada3.LeaveFocusColor = System.Drawing.Color.White;
@@ -208,7 +208,7 @@
             // txtKepada4
             // 
             this.txtKepada4.AutoEnter = true;
-            this.txtKepada4.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKepada4.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKepada4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKepada4.EnterFocusColor = System.Drawing.Color.White;
             this.txtKepada4.LeaveFocusColor = System.Drawing.Color.White;
@@ -251,9 +251,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private UserControl.AdvancedTextbox txtKepada1;
-        private UserControl.AdvancedTextbox txtKepada2;
-        private UserControl.AdvancedTextbox txtKepada3;
-        private UserControl.AdvancedTextbox txtKepada4;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKepada1;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKepada2;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKepada3;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKepada4;
     }
 }

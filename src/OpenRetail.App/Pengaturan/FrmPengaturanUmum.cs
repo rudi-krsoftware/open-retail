@@ -28,12 +28,12 @@ using System.Windows.Forms;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.App.UI.Template;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper;
 using System.Drawing.Printing;
 using Microsoft.Reporting.WinForms;
 using ConceptCave.WaitCursor;
-using OpenRetail.App.UserControl;
+using OpenRetail.Helper.UserControl;
 
 namespace OpenRetail.App.Pengaturan
 {
@@ -169,8 +169,22 @@ namespace OpenRetail.App.Pengaturan
             LoadPrinter(this._pengaturanUmum.nama_printer);
             chkCetakOtomatis.Checked = this._pengaturanUmum.is_auto_print;
 
-            // setting khusus printer mini pos
-            chkPrinterMiniPOS.Checked = _pengaturanUmum.is_printer_mini_pos;
+            switch (this._pengaturanUmum.jenis_printer)
+            {
+                case JenisPrinter.DotMatrix:
+                    rdoJenisPrinterDotMatrix.Checked = true;
+                    break;
+
+                case JenisPrinter.MiniPOS:
+                    rdoJenisPrinterMiniPOS.Checked = true;
+                    break;
+
+                default:
+                    rdoJenisPrinterInkJet.Checked = true;
+                    break;
+            }
+
+            // setting khusus printer mini pos            
             chkCetakCustomer.Checked = _pengaturanUmum.is_cetak_customer;
             txtJumlahKarakter.Text = _pengaturanUmum.jumlah_karakter.ToString();
             txtJumlahGulung.Text = _pengaturanUmum.jumlah_gulung.ToString();
@@ -180,7 +194,7 @@ namespace OpenRetail.App.Pengaturan
         {
             chkTampilkanInfoMinimalStokProduk.Checked = _pengaturanUmum.is_show_minimal_stok;
             chkCustomerWajibDiisi.Checked = _pengaturanUmum.is_customer_required;
-            chkSingkatPenulisanOngkir.Checked = _pengaturanUmum.is_singkat_penulisan_ongkir;
+            chkSingkatPenulisanOngkir.Checked = _pengaturanUmum.is_singkat_penulisan_ongkir;            
         }
 
         protected override void Simpan()
@@ -189,8 +203,15 @@ namespace OpenRetail.App.Pengaturan
             {
                 _pengaturanUmum.nama_printer = cmbPrinter.Text;
                 _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
-                
-                _pengaturanUmum.is_printer_mini_pos = chkPrinterMiniPOS.Checked;
+
+                var jenisPrinter = JenisPrinter.InkJet;
+
+                if (rdoJenisPrinterDotMatrix.Checked)
+                    jenisPrinter = JenisPrinter.DotMatrix;
+                else if (rdoJenisPrinterMiniPOS.Checked)
+                    jenisPrinter = JenisPrinter.MiniPOS;
+
+                _pengaturanUmum.jenis_printer = jenisPrinter;
                 _pengaturanUmum.is_cetak_customer = chkCetakCustomer.Checked;
                 _pengaturanUmum.is_show_minimal_stok = chkTampilkanInfoMinimalStokProduk.Checked;
                 _pengaturanUmum.is_customer_required = chkCustomerWajibDiisi.Checked;
@@ -203,9 +224,9 @@ namespace OpenRetail.App.Pengaturan
                 // simpan info printer
                 AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
                 AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
+                AppConfigHelper.SaveValue("jenis_printer", Convert.ToString((int)jenisPrinter), appConfigFile);
 
                 // simpan info printer mini pos
-                AppConfigHelper.SaveValue("isPrinterMiniPOS", chkPrinterMiniPOS.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("isCetakCustomer", chkCetakCustomer.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("isShowMinimalStok", chkTampilkanInfoMinimalStokProduk.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("isCustomerRequired", chkCustomerWajibDiisi.Checked.ToString(), appConfigFile);
@@ -421,6 +442,26 @@ namespace OpenRetail.App.Pengaturan
                 var frmPreviewReport = new FrmPreviewReport("Contoh Nota Penjualan MINI POS", reportName, new ReportDataSource(), parameters);
                 frmPreviewReport.ShowDialog();
             }
+        }
+
+        private void rdoJenisPrinterInkJet_CheckedChanged(object sender, EventArgs e)
+        {
+            txtJumlahKarakter.Enabled = false;
+            txtJumlahGulung.Enabled = false;
+        }
+
+        private void rdoJenisPrinterDotMatrix_CheckedChanged(object sender, EventArgs e)
+        {
+            rdoJenisPrinterInkJet_CheckedChanged(sender, e);
+        }
+
+        private void rdoJenisPrinterMiniPOS_CheckedChanged(object sender, EventArgs e)
+        {
+            txtJumlahKarakter.Enabled = true;
+            txtJumlahKarakter.BackColor = Color.White;
+
+            txtJumlahGulung.Enabled = true;
+            txtJumlahGulung.BackColor = Color.White;
         }
     }
 }

@@ -31,6 +31,7 @@ namespace OpenRetail.Repository.Api
         IDatabaseVersionRepository DatabaseVersionRepository { get; }
         IJenisPengeluaranRepository JenisPengeluaranRepository { get; }
 
+        IKartuRepository KartuRepository { get; }
         IGolonganRepository GolonganRepository { get; }
         IProdukRepository ProdukRepository { get; }
         IHargaGrosirRepository HargaGrosirRepository { get; }
@@ -71,6 +72,8 @@ namespace OpenRetail.Repository.Api
 
         IProfilRepository ProfilRepository { get; }
 
+        IMesinKasirRepository MesinRepository { get; }
+
         IReportBeliProdukRepository ReportBeliProdukRepository { get; }
         IReportHutangBeliProdukRepository ReportHutangBeliProdukRepository { get; }
         IReportPembayaranHutangBeliProdukRepository ReportPembayaranHutangBeliProdukRepository { get; }
@@ -82,11 +85,13 @@ namespace OpenRetail.Repository.Api
         IReportPembayaranPiutangJualProdukRepository ReportPembayaranPiutangJualProdukRepository { get; }
         IReportKartuPiutangRepository ReportKartuPiutangRepository { get; }
         IReportReturJualProdukRepository ReportReturJualProdukRepository { get; }
+        IReportMesinKasirRepository ReportMesinKasirRepository { get; }
 
         IReportStokProdukRepository ReportStokProdukRepository { get; }
         IReportPengeluaranBiayaRepository ReportPengeluaranBiayaRepository { get; }
         IReportKasbonRepository ReportKasbonRepository { get; }
         IReportGajiKaryawanRepository ReportGajiKaryawanRepository { get; }
+        IReportPemasukanPengeluaranRepository ReportPemasukanPengeluaranRepository { get; }
 
         IKabupatenRepository KabupatenRepository { get; }
         IFooterNotaMiniPosRepository FooterNotaMiniPosRepository { get; }

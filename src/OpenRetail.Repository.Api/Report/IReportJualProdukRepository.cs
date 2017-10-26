@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OpenRetail.Model;
 using OpenRetail.Model.Report;
 
 namespace OpenRetail.Repository.Api.Report
@@ -34,5 +35,13 @@ namespace OpenRetail.Repository.Api.Report
         IList<ReportPenjualanProduk> PerProdukGetByBulan(int bulan, int tahun);
         IList<ReportPenjualanProduk> PerProdukGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
         IList<ReportPenjualanProduk> PerProdukGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
+        IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulan, int tahun, int limit);
+        IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulanAwal, int bulanAkhir, int tahun, int limit);
+        IList<ReportProdukFavorit> ProdukFavoritGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int limit);
+
+        IList<ReportPenjualanPerKasir> PerKasirGetByBulan(int bulan, int tahun);
+        IList<ReportPenjualanPerKasir> PerKasirGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+        IList<ReportPenjualanPerKasir> PerKasirGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 }

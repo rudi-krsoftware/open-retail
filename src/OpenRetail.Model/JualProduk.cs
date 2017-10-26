@@ -158,9 +158,19 @@ namespace OpenRetail.Model
         public string label_kepada4 { get; set; }
 
         [JsonIgnore]
-        [Write(false)]
-        [Display(Name = "Jumlah Bayar")]
-        public double jumlah_bayar { get; set; }
+        [Display(Name = "Bayar Tunai")]
+        public double bayar_tunai { get; set; }
+
+        [JsonIgnore]
+        [Display(Name = "Bayar Kartu")]
+        public double bayar_kartu { get; set; }
+
+        [JsonIgnore]
+        [Computed]
+        public double jumlah_bayar
+        {
+            get { return bayar_tunai + bayar_kartu; }
+        }
 
         [JsonIgnore]
         [Write(false)]
@@ -180,6 +190,23 @@ namespace OpenRetail.Model
         [JsonIgnore]
 		[Write(false)]
         public Shift Shift { get; set; }
+
+        [Display(Name = "mesin_id")]
+        public string mesin_id { get; set; }
+
+        [JsonIgnore]
+        [Write(false)]
+        public MesinKasir Mesin { get; set; }
+
+        [Display(Name = "kartu_id")]
+        public string kartu_id { get; set; }
+
+        [JsonIgnore]
+        [Write(false)]
+        public Kartu Kartu { get; set; }
+
+        [Display(Name = "Nomor Kartu")]
+        public string nomor_kartu { get; set; }
 
         [Write(false)]
         public bool is_tunai { get; set; }
@@ -225,6 +252,7 @@ namespace OpenRetail.Model
 			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
 			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.kurir).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.nomor_kartu).Length(0, 20).WithMessage(msgError2);
 
             RuleFor(c => c.label_dari1).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.label_dari2).Length(0, 100).WithMessage(msgError2);

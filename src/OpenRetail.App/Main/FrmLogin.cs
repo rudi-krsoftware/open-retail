@@ -18,7 +18,7 @@
 
 using ConceptCave.WaitCursor;
 using log4net;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using OpenRetail.Model;
@@ -95,7 +95,7 @@ namespace OpenRetail.App.Main
             var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", appConfigFile)) : 5;
             var isCetakCustomer = AppConfigHelper.GetValue("isCetakCustomer", appConfigFile).Length > 0 ? Convert.ToBoolean(AppConfigHelper.GetValue("isCetakCustomer", appConfigFile)) : true;
 
-            MainProgram.pengaturanUmum.is_printer_mini_pos = AppConfigHelper.GetValue("isPrinterMiniPOS", appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.jenis_printer = AppConfigHelper.GetValue("jenis_printer", appConfigFile).Length > 0 ? (JenisPrinter)Convert.ToInt32(AppConfigHelper.GetValue("jenis_printer", appConfigFile)) : JenisPrinter.InkJet;
             MainProgram.pengaturanUmum.is_cetak_customer = isCetakCustomer;
             MainProgram.pengaturanUmum.jumlah_karakter = jumlahKarakter;
             MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;
@@ -158,21 +158,12 @@ namespace OpenRetail.App.Main
             var dbVersion = bll.Get();
             if (dbVersion != null)
             {
-                var listOfUpgradeDatabaseScript = new Dictionary<int, string>
-                {
-                    { 2, DatabaseVersionHelper.UpgradeStrukturDatabase_v1_to_v2 },
-                    { 3, DatabaseVersionHelper.UpgradeStrukturDatabase_v2_to_v3 },
-                    { 4, DatabaseVersionHelper.UpgradeStrukturDatabase_v3_to_v4 },
-                    { 5, DatabaseVersionHelper.UpgradeStrukturDatabase_v4_to_v5 },
-                    { 6, DatabaseVersionHelper.UpgradeStrukturDatabase_v5_to_v6 }
-                };
-
                 var result = true;
                 var upgradeTo = dbVersion.version_number + 1;
                 
                 while (upgradeTo <= newDatabaseVersion)
                 {
-                    var scriptUpgrade = listOfUpgradeDatabaseScript[upgradeTo];
+                    var scriptUpgrade = DatabaseVersionHelper.ListOfUpgradeDatabaseScript[upgradeTo];
                     result = ExecSQL(scriptUpgrade);
 
                     if (!result)

@@ -30,13 +30,13 @@
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtSupplier = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtSupplier = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtAlamat = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtKontak = new OpenRetail.App.UserControl.AdvancedTextbox();
-            this.txtTelepon = new OpenRetail.App.UserControl.AdvancedTextbox();
+            this.txtAlamat = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKontak = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtTelepon = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,7 +80,7 @@
             // txtSupplier
             // 
             this.txtSupplier.AutoEnter = true;
-            this.txtSupplier.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtSupplier.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSupplier.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtSupplier.LeaveFocusColor = System.Drawing.Color.White;
@@ -130,7 +130,7 @@
             // txtAlamat
             // 
             this.txtAlamat.AutoEnter = true;
-            this.txtAlamat.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtAlamat.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtAlamat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtAlamat.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtAlamat.LeaveFocusColor = System.Drawing.Color.White;
@@ -147,7 +147,7 @@
             // txtKontak
             // 
             this.txtKontak.AutoEnter = true;
-            this.txtKontak.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtKontak.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtKontak.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtKontak.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKontak.LeaveFocusColor = System.Drawing.Color.White;
@@ -164,7 +164,7 @@
             // txtTelepon
             // 
             this.txtTelepon.AutoEnter = false;
-            this.txtTelepon.Conversion = OpenRetail.App.UserControl.EConversion.Normal;
+            this.txtTelepon.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
             this.txtTelepon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtTelepon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtTelepon.LetterOnly = false;
@@ -197,12 +197,12 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
-        private UserControl.AdvancedTextbox txtSupplier;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtSupplier;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private UserControl.AdvancedTextbox txtAlamat;
-        private UserControl.AdvancedTextbox txtKontak;
-        private UserControl.AdvancedTextbox txtTelepon;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtAlamat;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtKontak;
+        private OpenRetail.Helper.UserControl.AdvancedTextbox txtTelepon;
     }
 }

@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3316E651-8404-4CD4-A132-2B013489DE67}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenRetail.Helper</RootNamespace>
+    <AssemblyName>OpenRetail.Helper</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.87.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\ClosedXML.0.87.1\lib\net40\ClosedXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Syncfusion.Grid.Base, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Syncfusion.Grid.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Syncfusion.Grid.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Syncfusion.Shared.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Windows, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Syncfusion.Shared.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.16.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\DockPanelSuite.2.16.1\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="AppConfigHelper.cs" />
+    <Compile Include="ClosedXMLHelper.cs" />
+    <Compile Include="ColorCollection.cs" />
+    <Compile Include="ColorManagerHelper.cs" />
+    <Compile Include="CryptoHelper.cs" />
+    <Compile Include="DatabaseVersionHelper.cs" />
+    <Compile Include="DateTimeHelper.cs" />
+    <Compile Include="DayMonthHelper.cs" />
+    <Compile Include="RAWPrinting\ESCCommandHelper.cs" />
+    <Compile Include="FillDataHelper.cs" />
+    <Compile Include="GridControlColSizeHelper.cs" />
+    <Compile Include="GridListControlHelper.cs" />
+    <Compile Include="GridListControlProperties.cs" />
+    <Compile Include="IListener.cs" />
+    <Compile Include="KeyPressHelper.cs" />
+    <Compile Include="MsgHelper.cs" />
+    <Compile Include="NumberHelper.cs" />
+    <Compile Include="RAWPrinting\IRAWPrinting.cs" />
+    <Compile Include="RAWPrinting\PrinterDotMatrix.cs" />
+    <Compile Include="RAWPrinting\PrinterMiniPOS.cs" />
+    <Compile Include="ReportViewerPrinting\ReportPrintHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RAWPrinting\RawPrintHelper.cs" />
+    <Compile Include="ReportViewerPrinting\ReportViewerPrintHelper.cs" />
+    <Compile Include="RolePrivilegeHelper.cs" />
+    <Compile Include="StringHelper.cs" />
+    <Compile Include="ThreadHelper.cs" />
+    <Compile Include="UI.Template\BaseFrmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\BaseFrmLookup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmDialogImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmDialogImport.designer.cs">
+      <DependentUpon>FrmDialogImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmEntryStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmEntryStandard.designer.cs">
+      <DependentUpon>FrmEntryStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmListEmptyBody.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmListEmptyBody.designer.cs">
+      <DependentUpon>FrmListEmptyBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmListEmptyBodyWithNavigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmListEmptyBodyWithNavigation.designer.cs">
+      <DependentUpon>FrmListEmptyBodyWithNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmListStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmListStandard.designer.cs">
+      <DependentUpon>FrmListStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmListStandardWithNavigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmListStandardWithNavigation.designer.cs">
+      <DependentUpon>FrmListStandardWithNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmDialogInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmDialogInfo.designer.cs">
+      <DependentUpon>FrmDialogInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmLookupEmptyBody.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmLookupEmptyBody.designer.cs">
+      <DependentUpon>FrmLookupEmptyBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmLookupStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmLookupStandard.designer.cs">
+      <DependentUpon>FrmLookupStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmPreviewReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmPreviewReport.designer.cs">
+      <DependentUpon>FrmPreviewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmSettingReportEmptyBody.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmSettingReportEmptyBody.designer.cs">
+      <DependentUpon>FrmSettingReportEmptyBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI.Template\FrmSettingReportStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Template\FrmSettingReportStandard.designer.cs">
+      <DependentUpon>FrmSettingReportStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\AdvancedTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControl\FilterRangeTanggal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\FilterRangeTanggal.Designer.cs">
+      <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">
+      <Project>{6b9cabad-1a6c-4323-8548-bd5f3c12613c}</Project>
+      <Name>OpenRetail.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmDialogImport.resx">
+      <DependentUpon>FrmDialogImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmEntryStandard.resx">
+      <DependentUpon>FrmEntryStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmListEmptyBody.resx">
+      <DependentUpon>FrmListEmptyBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmListEmptyBodyWithNavigation.resx">
+      <DependentUpon>FrmListEmptyBodyWithNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmListStandard.resx">
+      <DependentUpon>FrmListStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmListStandardWithNavigation.resx">
+      <DependentUpon>FrmListStandardWithNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmDialogInfo.resx">
+      <DependentUpon>FrmDialogInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmLookupEmptyBody.resx">
+      <DependentUpon>FrmLookupEmptyBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmLookupStandard.resx">
+      <DependentUpon>FrmLookupStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmPreviewReport.resx">
+      <DependentUpon>FrmPreviewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmSettingReportEmptyBody.resx">
+      <DependentUpon>FrmSettingReportEmptyBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI.Template\FrmSettingReportStandard.resx">
+      <DependentUpon>FrmSettingReportStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\FilterRangeTanggal.resx">
+      <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\import-data16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open16.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -124,7 +124,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_retur_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_retur_beli_produk.tanggal, t_retur_beli_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_retur_beli_produk.tanggal DESC, t_retur_beli_produk.nota");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai }).ToList();
 
@@ -154,7 +154,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_retur_beli_produk.tanggal, t_retur_beli_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_retur_beli_produk.tanggal DESC, t_retur_beli_produk.nota");
 
                 oList = MappingRecordToObject(_sql).ToList();
 
@@ -176,7 +176,8 @@ namespace OpenRetail.Repository.Service
         {
             var total = obj.item_retur.Where(f => f.Produk != null && f.entity_state != EntityState.Deleted)
                                       .Sum(f => f.jumlah_retur * f.harga);
-            return total;
+            
+            return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
         public int Save(ReturBeliProduk obj)

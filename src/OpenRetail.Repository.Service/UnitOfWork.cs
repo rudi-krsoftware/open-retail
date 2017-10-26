@@ -35,6 +35,7 @@ namespace OpenRetail.Repository.Service
         private ILog _log;
 
         private IDatabaseVersionRepository _databaseversionRepository;
+        private IKartuRepository _kartuRepository;
         private IAlasanPenyesuaianStokRepository _alasanpenyesuaianstokRepository;
         private IJabatanRepository _jabatanRepository;
         private IJenisPengeluaranRepository _jenispengeluaranRepository;
@@ -58,6 +59,7 @@ namespace OpenRetail.Repository.Service
         private IMenuRepository _menuRepository;
         private IItemMenuRepository _itemmenuRepository;
         private IProfilRepository _profilRepository;
+        private IMesinKasirRepository _mesinRepository;
         private IPengeluaranBiayaRepository _pengeluaranbiayaRepository;
         private IKasbonRepository _kasbonRepository;
         private IPembayaranKasbonRepository _pembayarankasbonRepository;
@@ -76,11 +78,13 @@ namespace OpenRetail.Repository.Service
         private IReportPembayaranPiutangJualProdukRepository _reportPembayaranPiutangJualProdukRepository;
         private IReportKartuPiutangRepository _reportKartuPiutangRepository;
         private IReportReturJualProdukRepository _reportReturJualProdukRepository;
+        private IReportMesinKasirRepository _reportMesinKasirRepository;
 
         private IReportStokProdukRepository _reportStokProdukRepository;
         private IReportPengeluaranBiayaRepository _reportPengeluaranBiayaRepository;
         private IReportKasbonRepository _reportKasbonRepository;
         private IReportGajiKaryawanRepository _reportGajiKaryawanRepository;
+        private IReportPemasukanPengeluaranRepository _reportPemasukanPengeluaranRepository;
 
         private IHeaderNotaRepository _headerNotaRepository;
         private ILabelNotaRepository _labelNotaRepository;
@@ -98,6 +102,11 @@ namespace OpenRetail.Repository.Service
         public IDatabaseVersionRepository DatabaseVersionRepository
         {
             get { return _databaseversionRepository ?? (_databaseversionRepository = new DatabaseVersionRepository(_context, _log)); }
+        }
+
+        public IKartuRepository KartuRepository
+        {
+            get { return _kartuRepository ?? (_kartuRepository = new KartuRepository(_context, _log)); }
         }
 
         public IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository
@@ -215,6 +224,11 @@ namespace OpenRetail.Repository.Service
             get { return _profilRepository ?? (_profilRepository = new ProfilRepository(_context, _log)); }
         }
 
+        public IMesinKasirRepository MesinRepository
+        {
+            get { return _mesinRepository ?? (_mesinRepository = new MesinKasirRepository(_context, _log)); }
+        }
+
         public IReportBeliProdukRepository ReportBeliProdukRepository
         {
             get { return _reportBeliProdukRepository ?? (_reportBeliProdukRepository = new ReportBeliProdukRepository(_context, _log)); }
@@ -265,6 +279,11 @@ namespace OpenRetail.Repository.Service
             get { return _reportReturJualProdukRepository ?? (_reportReturJualProdukRepository = new ReportReturJualProdukRepository(_context, _log)); }
         }
 
+        public IReportMesinKasirRepository ReportMesinKasirRepository
+        {
+            get { return _reportMesinKasirRepository ?? (_reportMesinKasirRepository = new ReportMesinKasirRepository(_context, _log)); }
+        }
+
         public IReportStokProdukRepository ReportStokProdukRepository
         {
             get { return _reportStokProdukRepository ?? (_reportStokProdukRepository = new ReportStokProdukRepository(_context, _log)); }
@@ -288,6 +307,11 @@ namespace OpenRetail.Repository.Service
         public IReportGajiKaryawanRepository ReportGajiKaryawanRepository
         {
             get { return _reportGajiKaryawanRepository ?? (_reportGajiKaryawanRepository = new ReportGajiKaryawanRepository(_context, _log)); }
+        }
+
+        public IReportPemasukanPengeluaranRepository ReportPemasukanPengeluaranRepository
+        {
+            get { return _reportPemasukanPengeluaranRepository ?? (_reportPemasukanPengeluaranRepository = new ReportPemasukanPengeluaranRepository(_context, _log)); }
         }
 
         public IKasbonRepository KasbonRepository

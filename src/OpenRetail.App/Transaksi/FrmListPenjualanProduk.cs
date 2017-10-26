@@ -28,13 +28,13 @@ using System.Windows.Forms;
 using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.App.UI.Template;
-using OpenRetail.App.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
 using Microsoft.Reporting.WinForms;
-using OpenRetail.App.Transaksi.PrinterMiniPOS;
+using OpenRetail.Helper.RAWPrinting;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -89,17 +89,28 @@ namespace OpenRetail.App.Transaksi
             gridListProperties.Add(new GridListControlProperties { Header = "Tanggal", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Tempo", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Nota", Width = 100 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Customer", Width = 230 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Customer", Width = _pengaturanUmum.jenis_printer == JenisPrinter.InkJet ? 220 : 300 });
             gridListProperties.Add(new GridListControlProperties { Header = "Keterangan", Width = 350 });
             gridListProperties.Add(new GridListControlProperties { Header = "Piutang", Width = 130 });
             gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Cetak Nota/Label", Width = 80 });
-            gridListProperties.Add(new GridListControlProperties { Header = "" });
+
+            if (_pengaturanUmum.jenis_printer == JenisPrinter.InkJet)
+            {
+                gridListProperties.Add(new GridListControlProperties { Header = "Cetak Nota/Label", Width = 80 });
+                gridListProperties.Add(new GridListControlProperties { Header = "" });
+            }
+            else
+            {
+                gridListProperties.Add(new GridListControlProperties { Header = "Cetak Nota", Width = 80 });
+            }            
 
             GridListControlHelper.InitializeGridListControl<JualProduk>(this.gridList, _listOfJual, gridListProperties);
 
-            // merge header kolom cetak nota/label
-            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, 9, 0, 10));
+            if (_pengaturanUmum.jenis_printer == JenisPrinter.InkJet)
+            {
+                // merge header kolom cetak nota/label
+                this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, 9, 0, 10));
+            }            
 
             if (_listOfJual.Count > 0)
                 this.gridList.SetSelected(0, true);
@@ -117,16 +128,23 @@ namespace OpenRetail.App.Transaksi
                             {
                                 var jual = _listOfJual[index];
 
-                                if (this._pengaturanUmum.is_printer_mini_pos)
+                                switch (this._pengaturanUmum.jenis_printer)
                                 {
-                                    if (MsgHelper.MsgKonfirmasi("Apakah proses pencetakan ingin dilanjutkan ?"))
-                                        CetakNotaMiniPOS(jual);
+                                    case JenisPrinter.DotMatrix:
+                                        if (MsgHelper.MsgKonfirmasi("Apakah proses pencetakan ingin dilanjutkan ?"))
+                                            CetakNotaDotMatrix(jual);
+                                        break;
+
+                                    case JenisPrinter.MiniPOS:
+                                        if (MsgHelper.MsgKonfirmasi("Apakah proses pencetakan ingin dilanjutkan ?"))
+                                            CetakNotaMiniPOS(jual);
+                                        break;
+
+                                    default:
+                                        var frmCetakNota = new FrmPreviewNotaPenjualan("Preview Nota Penjualan", jual);
+                                        frmCetakNota.ShowDialog();
+                                        break;
                                 }
-                                else
-                                {
-                                    var frmCetakNota = new FrmPreviewNotaPenjualan("Preview Nota Penjualan", jual);
-                                    frmCetakNota.ShowDialog();
-                                }                                
                             }
 
                             break;
@@ -208,18 +226,22 @@ namespace OpenRetail.App.Transaksi
                                     e.Style.CellValue = NumberHelper.NumberToString(totalNota - jual.total_pelunasan);
                                     break;
 
-                                case 9: // button hapus
+                                case 9: // button cetak nota
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     e.Style.CellType = GridCellTypeName.PushButton;                                    
                                     e.Style.BackColor = oldStyleBackColor;
                                     e.Style.Description = "Cetak Nota";
                                     break;
 
-                                case 10: // button hapus
-                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
-                                    e.Style.CellType = GridCellTypeName.PushButton;                                    
-                                    e.Style.BackColor = oldStyleBackColor;
-                                    e.Style.Description = "Cetak Label Nota";
+                                case 10: // button cetak label nota
+                                    if (_pengaturanUmum.jenis_printer == JenisPrinter.InkJet)
+                                    {
+                                        e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                        e.Style.CellType = GridCellTypeName.PushButton;
+                                        e.Style.BackColor = oldStyleBackColor;
+                                        e.Style.Description = "Cetak Label Nota";
+                                    }                                    
+
                                     break;
 
                                 default:
@@ -236,8 +258,14 @@ namespace OpenRetail.App.Transaksi
 
         private void CetakNotaMiniPOS(JualProduk jual)
         {
-            IPrinterMiniPOS printerMiniPos = new PrinterMiniPOS.PrinterMiniPOS(_pengaturanUmum.nama_printer);
+            IRAWPrinting printerMiniPos = new PrinterMiniPOS(_pengaturanUmum.nama_printer);
             printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer);
+        }
+
+        private void CetakNotaDotMatrix(JualProduk jual)
+        {
+            IRAWPrinting printerMiniPos = new PrinterDotMatrix(_pengaturanUmum.nama_printer);
+            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota, _pengaturanUmum.jumlah_gulung);
         }
 
         private void LoadData()

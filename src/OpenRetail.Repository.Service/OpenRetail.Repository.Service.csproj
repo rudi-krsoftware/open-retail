@@ -74,11 +74,13 @@
     <Compile Include="JenisPengeluaranRepository.cs" />
     <Compile Include="JualProdukRepository.cs" />
     <Compile Include="KabupatenRepository.cs" />
+    <Compile Include="KartuRepository.cs" />
     <Compile Include="KaryawanRepository.cs" />
     <Compile Include="KasbonRepository.cs" />
     <Compile Include="LabelNotaRepository.cs" />
     <Compile Include="Log4NetRepository.cs" />
     <Compile Include="MenuRepository.cs" />
+    <Compile Include="MesinKasirRepository.cs" />
     <Compile Include="PembayaranHutangProdukRepository.cs" />
     <Compile Include="PembayaranKasbonRepository.cs" />
     <Compile Include="PembayaranPiutangProdukRepository.cs" />
@@ -95,6 +97,8 @@
     <Compile Include="Report\ReportKartuHutangRepository.cs" />
     <Compile Include="Report\ReportKartuPiutangRepository.cs" />
     <Compile Include="Report\ReportKasbonRepository.cs" />
+    <Compile Include="Report\ReportMesinKasirRepository.cs" />
+    <Compile Include="Report\ReportPemasukanPengeluaranRepository.cs" />
     <Compile Include="Report\ReportPembayaranHutangBeliProdukRepository.cs" />
     <Compile Include="Report\ReportPembayaranPiutangJualProdukRepository.cs" />
     <Compile Include="Report\ReportPengeluaranBiayaRepository.cs" />

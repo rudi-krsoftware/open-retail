@@ -116,8 +116,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_supplier.nama_supplier) LIKE @name");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_pembayaran_hutang_produk.tanggal, t_pembayaran_hutang_produk.nota");
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_supplier.nama_supplier) LIKE @name OR LOWER(t_pembayaran_hutang_produk.keterangan) LIKE @name");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_pembayaran_hutang_produk.tanggal DESC, t_pembayaran_hutang_produk.nota");
 
                 name = "%" + name.ToLower() + "%";
 
@@ -143,7 +143,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_pembayaran_hutang_produk.tanggal, t_pembayaran_hutang_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_pembayaran_hutang_produk.tanggal DESC, t_pembayaran_hutang_produk.nota");
 
                 oList = MappingRecordToObject(_sql).ToList();
 
@@ -167,7 +167,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_pembayaran_hutang_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_pembayaran_hutang_produk.tanggal, t_pembayaran_hutang_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_pembayaran_hutang_produk.tanggal DESC, t_pembayaran_hutang_produk.nota");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai }).ToList();
 

@@ -39,9 +39,11 @@ namespace OpenRetail.Repository.Service
                                               t_jual_produk.label_dari1, t_jual_produk.label_dari2, t_jual_produk.label_dari3, t_jual_produk.label_dari4,
                                               t_jual_produk.label_kepada1, t_jual_produk.label_kepada2, t_jual_produk.label_kepada3, t_jual_produk.label_kepada4,
                                               m_customer.customer_id, m_customer.nama_customer, m_customer.alamat, m_customer.kecamatan, m_customer.kelurahan, m_customer.desa, m_customer.kabupaten, m_customer.kota, m_customer.kode_pos, m_customer.telepon, m_customer.diskon, m_customer.plafon_piutang,
-                                              m_pengguna.pengguna_id, m_pengguna.nama_pengguna
+                                              m_pengguna.pengguna_id, m_pengguna.nama_pengguna,
+                                              t_mesin.mesin_id, t_mesin.saldo_awal
                                               FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
                                               LEFT JOIN m_pengguna ON m_pengguna.pengguna_id = t_jual_produk.pengguna_id
+                                              LEFT JOIN t_mesin ON t_mesin.mesin_id = t_jual_produk.mesin_id
                                               {WHERE}
                                               {ORDER BY}";
         private IDapperContext _context;
@@ -56,7 +58,7 @@ namespace OpenRetail.Repository.Service
 
         private IEnumerable<JualProduk> MappingRecordToObject(string sql, object param = null)
         {
-            IEnumerable<JualProduk> oList = _context.db.Query<JualProduk, Customer, Pengguna, JualProduk>(sql, (j, c, p) =>
+            IEnumerable<JualProduk> oList = _context.db.Query<JualProduk, Customer, Pengguna, MesinKasir, JualProduk>(sql, (j, c, p, m) =>
             {
                 if (c != null)
                 {
@@ -68,8 +70,13 @@ namespace OpenRetail.Repository.Service
                     j.pengguna_id = p.pengguna_id; j.Pengguna = p;
                 }
 
+                if (m != null)
+                {
+                    j.mesin_id = m.mesin_id; j.Mesin = m;
+                }
+
                 return j;
-            }, param, splitOn: "customer_id, pengguna_id");
+            }, param, splitOn: "customer_id, pengguna_id, mesin_id");
 
             return oList;
         }
@@ -135,14 +142,37 @@ namespace OpenRetail.Repository.Service
             return obj;
         }
 
+        public JualProduk GetListItemNotaTerakhir(string penggunaId, string mesinId)
+        {
+            JualProduk obj = null;
+
+            try
+            {
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_jual_produk.tanggal = CURRENT_DATE AND t_jual_produk.pengguna_id = @penggunaId AND t_jual_produk.mesin_id = @mesinId");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal_sistem DESC LIMIT 1");
+
+                obj = MappingRecordToObject(_sql, new { penggunaId, mesinId }).SingleOrDefault();
+
+                if (obj != null)
+                    // load item jual
+                    obj.item_jual = GetItemJual(obj.jual_id);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return obj;
+        }
+
         public IList<JualProduk> GetByName(string name)
         {
             IList<JualProduk> oList = new List<JualProduk>();
 
             try
             {
-                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_customer.nama_customer) LIKE @name");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal, t_jual_produk.nota");
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_customer.nama_customer) LIKE @name OR LOWER(t_jual_produk.keterangan) LIKE @name");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
 
                 name = "%" + name.ToLower() + "%";
 
@@ -169,7 +199,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal, t_jual_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
 
                 oList = MappingRecordToObject(_sql).ToList();
 
@@ -192,8 +222,7 @@ namespace OpenRetail.Repository.Service
             var total = obj.item_jual.Where(f => f.Produk != null && f.entity_state != EntityState.Deleted)
                                      .Sum(f => (f.jumlah - f.jumlah_retur) * (f.harga_jual - (f.diskon / 100 * f.harga_jual)));
 
-            total = (int)total;
-            return total;
+            return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
         public int Save(JualProduk obj)
@@ -442,7 +471,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_customer.nama_customer) LIKE @name");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal, t_jual_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
 
                 name = "%" + name.ToLower() + "%";
 
@@ -484,7 +513,7 @@ namespace OpenRetail.Repository.Service
                     _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_customer.customer_id = @id");
                 }
 
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal, t_jual_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
                 oList = MappingRecordToObject(_sql, param).ToList();
 
                 // load item jual
@@ -516,7 +545,7 @@ namespace OpenRetail.Repository.Service
                     _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_customer.customer_id = @id AND t_jual_produk.tanggal_tempo IS NOT NULL AND (t_jual_produk.total_nota - t_jual_produk.diskon + t_jual_produk.ongkos_kirim + t_jual_produk.ppn) > t_jual_produk.total_pelunasan");
                 }
 
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal, t_jual_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
 
 
                 oList = MappingRecordToObject(_sql, new { id }).ToList();
@@ -542,7 +571,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_customer.customer_id = @id AND LOWER(t_jual_produk.nota) LIKE @nota AND t_jual_produk.tanggal_tempo IS NOT NULL AND (t_jual_produk.total_nota - t_jual_produk.diskon + t_jual_produk.ongkos_kirim + t_jual_produk.ppn) > t_jual_produk.total_pelunasan");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal, t_jual_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
 
                 nota = nota.ToLower() + "%";
                 oList = MappingRecordToObject(_sql, new { id, nota }).ToList();
@@ -568,7 +597,7 @@ namespace OpenRetail.Repository.Service
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal, t_jual_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai }).ToList();
 
@@ -595,7 +624,7 @@ namespace OpenRetail.Repository.Service
                 name = "%" + name.ToLower() + "%";
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai AND LOWER(m_customer.nama_customer) LIKE @name");
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal, t_jual_produk.nota");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai, name }).ToList();
 
