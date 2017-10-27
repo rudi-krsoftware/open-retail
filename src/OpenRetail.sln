@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		VersionInfo.cs = VersionInfo.cs
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.App", "OpenRetail.App\OpenRetail.App.csproj", "{C797EA1B-E0B1-4A57-8906-CF7C621E60EC}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.Model", "OpenRetail.Model\OpenRetail.Model.csproj", "{6B9CABAD-1A6C-4323-8548-BD5F3C12613C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.Repository.Api", "OpenRetail.Repository.Api\OpenRetail.Repository.Api.csproj", "{981AF3C6-F601-45AD-9F33-ABBC7CC1F00F}"
@@ -20,8 +22,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.Bll.Service", "OpenRetail.Bll.Service\OpenRetail.Bll.Service.csproj", "{2A5E29AE-358A-4129-B28A-9A1425A90DE0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.Bll.Service.UnitTest", "OpenRetail.Bll.Service.UnitTest\OpenRetail.Bll.Service.UnitTest.csproj", "{A96A2C8C-B335-4B27-A11A-CF0098E9AB12}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.App", "OpenRetail.App\OpenRetail.App.csproj", "{C797EA1B-E0B1-4A57-8906-CF7C621E60EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.Report", "OpenRetail.Report\OpenRetail.Report.csproj", "{0619DAD4-44FE-48AC-BCC9-6F1115574E1D}"
 EndProject
