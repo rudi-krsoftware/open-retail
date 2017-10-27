@@ -205,6 +205,13 @@ namespace OpenRetail.Model
         [Write(false)]
         public Kartu Kartu { get; set; }
 
+        [Display(Name = "dropshipper_id")]
+        public string dropshipper_id { get; set; }
+
+        [JsonIgnore]
+        [Write(false)]
+        public Dropshipper Dropshipper { get; set; }
+
         [Display(Name = "Nomor Kartu")]
         public string nomor_kartu { get; set; }
 

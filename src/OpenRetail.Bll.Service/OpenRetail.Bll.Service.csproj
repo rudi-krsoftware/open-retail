@@ -65,6 +65,7 @@
     <Compile Include="CustomerBll.cs" />
     <Compile Include="DatabaseVersionBll.cs" />
     <Compile Include="DbConnectionHelper.cs" />
+    <Compile Include="DropshipperBll.cs" />
     <Compile Include="FooterNotaMiniPosBll.cs" />
     <Compile Include="GajiKaryawanBll.cs" />
     <Compile Include="GolonganBll.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="ImportExportDataCustomerBll.cs" />
     <Compile Include="ImportExportDataGolonganBll.cs" />
     <Compile Include="ImportExportDataProdukBll.cs" />
+    <Compile Include="ImportExportDataDropshipperBll.cs" />
     <Compile Include="ImportExportDataSupplierBll.cs" />
     <Compile Include="ItemMenuBll.cs" />
     <Compile Include="JabatanBll.cs" />

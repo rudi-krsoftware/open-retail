@@ -1318,6 +1318,21 @@ CREATE TABLE m_database_version (
 ALTER TABLE m_database_version OWNER TO postgres;
 
 --
+-- Name: m_dropshipper; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_dropshipper (
+    dropshipper_id t_guid NOT NULL,
+    nama_dropshipper t_nama,
+    alamat t_alamat,
+    kontak t_nama,
+    telepon t_telepon
+);
+
+
+ALTER TABLE m_dropshipper OWNER TO postgres;
+
+--
 -- Name: m_footer_nota_mini_pos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1954,7 +1969,8 @@ CREATE TABLE t_jual_produk (
     bayar_tunai t_harga,
     bayar_kartu t_harga,
     kartu_id t_guid,
-    nomor_kartu t_nota
+    nomor_kartu t_nota,
+    dropshipper_id t_guid
 );
 
 
@@ -2303,6 +2319,14 @@ ALTER TABLE ONLY m_customer
 
 ALTER TABLE ONLY m_database_version
     ADD CONSTRAINT m_database_version_pkey PRIMARY KEY (version_number);
+
+
+--
+-- Name: m_dropshipper_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_dropshipper
+    ADD CONSTRAINT m_dropshipper_pkey PRIMARY KEY (dropshipper_id);
 
 
 --
@@ -3289,6 +3313,22 @@ ALTER TABLE ONLY t_jual_produk
 
 ALTER TABLE ONLY t_jual_produk
     ADD CONSTRAINT t_jual_fk3 FOREIGN KEY (shift_id) REFERENCES m_shift(shift_id) ON UPDATE CASCADE;
+
+
+--
+-- Name: t_jual_fk4; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY t_jual_produk
+    ADD CONSTRAINT t_jual_fk4 FOREIGN KEY (dropshipper_id) REFERENCES m_dropshipper(dropshipper_id) ON UPDATE CASCADE;
+
+
+--
+-- Name: t_jual_fk5; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY t_jual_produk
+    ADD CONSTRAINT t_jual_fk5 FOREIGN KEY (kartu_id) REFERENCES m_kartu(kartu_id) ON UPDATE CASCADE;
 
 
 --

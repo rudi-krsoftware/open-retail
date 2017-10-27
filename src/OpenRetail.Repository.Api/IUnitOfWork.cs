@@ -40,7 +40,8 @@ namespace OpenRetail.Repository.Api
 
         ICustomerRepository CustomerRepository { get; }
         ISupplierRepository SupplierRepository { get; }
-        
+        IDropshipperRepository DropshipperRepository { get; }
+
         IJabatanRepository JabatanRepository { get; }
         IKaryawanRepository KaryawanRepository { get; }
         

@@ -48,6 +48,7 @@ namespace OpenRetail.App.Transaksi
         private IJualProdukBll _bll = null;
         private JualProduk _jual = null;
         private Customer _customer = null;
+        private Dropshipper _dropshipper = null;
         private IList<ItemJualProduk> _listOfItemJual = new List<ItemJualProduk>();
         private IList<ItemJualProduk> _listOfItemJualOld = new List<ItemJualProduk>();
         private IList<ItemJualProduk> _listOfItemJualDeleted = new List<ItemJualProduk>();
@@ -100,6 +101,7 @@ namespace OpenRetail.App.Transaksi
             this._bll = bll;
             this._jual = jual;
             this._customer = jual.Customer;
+            this._dropshipper = jual.Dropshipper;
             this._log = MainProgram.log;
             this._pengguna = MainProgram.pengguna;
             this._profil = MainProgram.profil;
@@ -120,6 +122,9 @@ namespace OpenRetail.App.Transaksi
 
             if (this._customer != null)
                 txtCustomer.Text = this._customer.nama_customer;
+
+            if (this._dropshipper != null)
+                txtDropshipper.Text = this._dropshipper.nama_dropshipper;
 
             txtKeterangan.Text = this._jual.keterangan;
             
@@ -162,7 +167,7 @@ namespace OpenRetail.App.Transaksi
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 120 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 270 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 390 });
             gridListProperties.Add(new GridListControlProperties { Header = "Jumlah", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga", Width = 90 });
@@ -512,7 +517,7 @@ namespace OpenRetail.App.Transaksi
             {
                 _jual.customer_id = this._customer.customer_id;
                 _jual.Customer = this._customer;
-            }            
+            }                        
 
             _jual.nota = txtNota.Text;
             _jual.tanggal = dtpTanggal.Value;
@@ -525,7 +530,18 @@ namespace OpenRetail.App.Transaksi
                 _jual.tanggal_tempo = dtpTanggalTempo.Value;
             }
 
+            _jual.dropshipper_id = null;
+            _jual.Dropshipper = null;
             _jual.is_dropship = chkDropship.Checked;
+            if (_jual.is_dropship)
+            {
+                if (this._dropshipper != null)
+                {
+                    _jual.dropshipper_id = this._dropshipper.dropshipper_id;
+                    _jual.Dropshipper = this._dropshipper;
+                }
+            }
+
             _jual.kurir = cmbKurir.Text;
             _jual.ongkos_kirim = NumberHelper.StringToDouble(txtOngkosKirim.Text);
             _jual.ppn = NumberHelper.StringToDouble(txtPPN.Text);
@@ -592,6 +608,8 @@ namespace OpenRetail.App.Transaksi
                     Listener.Ok(this, _isNewData, _jual);
 
                     _customer = null;
+                    _dropshipper = null;
+
                     _listOfItemJual.Clear();
                     _listOfItemJualDeleted.Clear();                                        
 
@@ -741,6 +759,11 @@ namespace OpenRetail.App.Transaksi
                 this._customer = (Customer)data;
                 txtCustomer.Text = this._customer.nama_customer;
                 KeyPressHelper.NextFocus();
+            }
+            else if (data is Dropshipper) // pencarian dropshipper
+            {
+                this._dropshipper = (Dropshipper)data;
+                txtDropshipper.Text = this._dropshipper.nama_dropshipper;
             }
             else if (data is AlamatKirim)
             {
@@ -1082,6 +1105,10 @@ namespace OpenRetail.App.Transaksi
             {
                 ShowEntryCustomer();
             }
+            else if (KeyPressHelper.IsShortcutKey(Keys.F3, e)) //tambah data dropshipper
+            {
+                ShowEntryDropshipper();
+            }
         }
 
         private void ShowEntryProduk()
@@ -1121,6 +1148,21 @@ namespace OpenRetail.App.Transaksi
             frmEntryCustomer.ShowDialog();
         }
 
+        private void ShowEntryDropshipper()
+        {
+            var isGrant = RolePrivilegeHelper.IsHaveHakAkses("mnuDropshipper", _pengguna);
+            if (!isGrant)
+            {
+                MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
+                return;
+            }
+
+            IDropshipperBll dropshipperBll = new DropshipperBll(_log);
+            var frmEntryDropshipper = new FrmEntryDropshipper("Tambah Data Dropshipper", dropshipperBll);
+            frmEntryDropshipper.Listener = this;
+            frmEntryDropshipper.ShowDialog();
+        }
+
         private void FrmEntryPenjualanProduk_KeyDown(object sender, KeyEventArgs e)
         {            
             if (KeyPressHelper.IsShortcutKey(Keys.F1, e)) // tambah data produk
@@ -1130,6 +1172,10 @@ namespace OpenRetail.App.Transaksi
             else if (KeyPressHelper.IsShortcutKey(Keys.F2, e)) // tambahan data customer
             {
                 ShowEntryCustomer();
+            }
+            else if (KeyPressHelper.IsShortcutKey(Keys.F3, e)) // tambahan data dropshipper
+            {
+                ShowEntryDropshipper();
             }
             else if (KeyPressHelper.IsShortcutKey(Keys.F5, e) || KeyPressHelper.IsShortcutKey(Keys.F6, e) || KeyPressHelper.IsShortcutKey(Keys.F7, e))
             {                
@@ -1377,6 +1423,47 @@ namespace OpenRetail.App.Transaksi
                 
                 if (kembali > 0)
                     txtKembali.Text = kembali.ToString();
+            }
+        }
+
+        private void chkDropship_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = (CheckBox)sender;
+
+            lblDropshipper.Visible = chk.Checked;
+            txtDropshipper.Visible = chk.Checked;
+
+            if (chk.Checked)
+                KeyPressHelper.NextFocus();
+        }
+
+        private void txtDropshipper_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e))
+            {
+                var dropshipperName = ((AdvancedTextbox)sender).Text;
+
+                IDropshipperBll bll = new DropshipperBll(_log);
+                var listOfDropshipper = bll.GetByName(dropshipperName);
+
+                if (listOfDropshipper.Count == 0)
+                {
+                    MsgHelper.MsgWarning("Data dropshipper tidak ditemukan");
+                    txtDropshipper.Focus();
+                    txtDropshipper.SelectAll();
+
+                }
+                else if (listOfDropshipper.Count == 1)
+                {
+                    _dropshipper = listOfDropshipper[0];
+                    txtDropshipper.Text = _dropshipper.nama_dropshipper;
+                }
+                else // data lebih dari satu
+                {
+                    var frmLookup = new FrmLookupReferensi("Data Dropshipper", listOfDropshipper);
+                    frmLookup.Listener = this;
+                    frmLookup.ShowDialog();
+                }
             }
         }
     }
