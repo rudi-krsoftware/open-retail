@@ -66,6 +66,7 @@
     <Compile Include="BeliProduk.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DatabaseVersion.cs" />
+    <Compile Include="Dropshipper.cs" />
     <Compile Include="FooterNotaMiniPos.cs" />
     <Compile Include="GajiKaryawan.cs" />
     <Compile Include="HargaGrosir.cs" />

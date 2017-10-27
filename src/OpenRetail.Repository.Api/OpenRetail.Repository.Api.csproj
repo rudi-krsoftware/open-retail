@@ -49,6 +49,7 @@
     <Compile Include="ICustomerRepository.cs" />
     <Compile Include="IDapperContext.cs" />
     <Compile Include="IDatabaseVersionRepository.cs" />
+    <Compile Include="IDropshipperRepository.cs" />
     <Compile Include="IFooterNotaMiniPosRepository.cs" />
     <Compile Include="IGajiKaryawanRepository.cs" />
     <Compile Include="IGolonganRepository.cs" />

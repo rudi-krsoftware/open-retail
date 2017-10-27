@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,19 +20,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace OpenRetail.Model
-{
-    public enum ReferencesType
+using OpenRetail.Model;
+ 
+namespace OpenRetail.Repository.Api
+{        
+    public interface IDropshipperRepository : IBaseRepository<Dropshipper>
     {
-        Supplier = 1, 
-        Customer = 2, 
-        Produk = 3,
-        NotaBeliProduk = 4,
-        NotaJualProduk = 5,
-        JenisPengeluaran = 6,
-        KabupatenAsal = 7, 
-        KabupatenTujuan = 8,
-        Dropshipper = 9
+		Dropshipper GetByID(string id);            
+        IList<Dropshipper> GetByName(string name);
     }
-}
+}     

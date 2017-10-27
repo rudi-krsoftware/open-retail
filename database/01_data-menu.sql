@@ -27,6 +27,7 @@ a0c6daf8-b0c8-4e9d-9702-7a2bb781580c	mnuLapPemasukanPengeluaran	Pemasukan dan Pe
 6f13d6e5-4322-4b4b-8fca-2278b04bd4eb	mnuLapPenjualan	Penjualan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	15	t		t
 b94a2365-c063-491e-a798-c68dccd2d80b	mnuLapPenjualanProdukFavorit	Penjualan Produk Favorit	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	10	t	FrmLapPenjualanProdukFavorit	t
 a1b976fc-99d3-4b5f-89b5-bc7e7fc4c0d2	mnuLapPenjualanPerKasir	Penjualan Per Kasir	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	9	t	FrmLapPenjualanPerKasir	t
+7c7a2763-ed8b-41a7-a42d-b79233d02e02	mnuDropshipper	Dropshipper	07b24b4b-cf52-4b3c-ab06-51f7312e4813	7	t	FrmListDropshipper	t
 5a114aab-28cc-4655-b676-d08075bae831	mnuLapPembelian	Pembelian	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	6	t		t
 07b24b4b-cf52-4b3c-ab06-51f7312e4813	mnuReferensi	Referensi	\N	1	t	\N	t
 73e32548-da86-4db9-b3f9-f2ecd81ea3c9	mnuTransaksi	Transaksi	\N	2	t	\N	t
@@ -61,9 +62,9 @@ d5bd3b31-7feb-4c55-9fed-8d67ac18fef4	mnuPenggajian	Penggajian Karyawan	d1bd5f93-
 8c46f173-f586-402d-b54a-ac2e4ba57f1e	mnuLapPenggajian	Penggajian Karyawan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	20	t	FrmLapPenggajianKaryawan	t
 0702e90c-cb7c-42a4-a447-478fba5a7443	mnuHakAksesAplikasi	Hak Akses Aplikasi	593c989d-be87-42bf-a11d-f177afcc2180	3	t	FrmListHakAkses	t
 e8f83478-a577-4cff-a06f-8d921f9367c7	mnuManajemenOperator	Manajemen Operator	593c989d-be87-42bf-a11d-f177afcc2180	4	t	FrmListOperator	t
-e7be0d85-9f96-4095-be35-1da049028cef	mnuJabatan	Jabatan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	7	t	FrmListJabatan	t
-b7ade8cc-22aa-43c8-be9c-af6cb71d11a6	mnuKaryawan	Karyawan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	8	t	FrmListKaryawan	t
-b52e8eac-3bf6-4ebf-95a0-46ab9e7b0888	mnuJenisPengeluaran	Jenis Pengeluaran	07b24b4b-cf52-4b3c-ab06-51f7312e4813	9	t	FrmListJenisPengeluaran	t
+e7be0d85-9f96-4095-be35-1da049028cef	mnuJabatan	Jabatan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	8	t	FrmListJabatan	t
+b7ade8cc-22aa-43c8-be9c-af6cb71d11a6	mnuKaryawan	Karyawan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	9	t	FrmListKaryawan	t
+b52e8eac-3bf6-4ebf-95a0-46ab9e7b0888	mnuJenisPengeluaran	Jenis Pengeluaran	07b24b4b-cf52-4b3c-ab06-51f7312e4813	10	t	FrmListJenisPengeluaran	t
 \.
 
 
