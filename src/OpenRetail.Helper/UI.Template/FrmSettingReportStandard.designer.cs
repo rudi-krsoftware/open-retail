@@ -38,6 +38,7 @@
             this.chkListBox = new System.Windows.Forms.CheckedListBox();
             this.chkBoxTitle = new System.Windows.Forms.CheckBox();
             this.chkPilihSemua = new System.Windows.Forms.CheckBox();
+            this.txtKeyword = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.rdoTanggal = new System.Windows.Forms.RadioButton();
             this.rdoBulan = new System.Windows.Forms.RadioButton();
@@ -76,7 +77,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(670, 386);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(670, 478);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // pnlFooter
@@ -87,7 +88,7 @@
             this.pnlFooter.Controls.Add(this.btnSelesai);
             this.pnlFooter.Controls.Add(this.btnPreview);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFooter.Location = new System.Drawing.Point(3, 349);
+            this.pnlFooter.Location = new System.Drawing.Point(3, 441);
             this.pnlFooter.Name = "pnlFooter";
             this.pnlFooter.Size = new System.Drawing.Size(664, 34);
             this.pnlFooter.TabIndex = 3;
@@ -143,17 +144,19 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.chkListBox, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.chkListBox, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.chkBoxTitle, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.chkPilihSemua, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.chkPilihSemua, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.txtKeyword, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 43);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(273, 300);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(273, 392);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // chkListBox
@@ -162,10 +165,10 @@
             this.chkListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkListBox.Enabled = false;
             this.chkListBox.FormattingEnabled = true;
-            this.chkListBox.Location = new System.Drawing.Point(3, 28);
+            this.chkListBox.Location = new System.Drawing.Point(3, 54);
             this.chkListBox.Name = "chkListBox";
-            this.chkListBox.Size = new System.Drawing.Size(267, 244);
-            this.chkListBox.TabIndex = 1;
+            this.chkListBox.Size = new System.Drawing.Size(267, 310);
+            this.chkListBox.TabIndex = 2;
             // 
             // chkBoxTitle
             // 
@@ -184,13 +187,34 @@
             this.chkPilihSemua.AutoSize = true;
             this.chkPilihSemua.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkPilihSemua.Enabled = false;
-            this.chkPilihSemua.Location = new System.Drawing.Point(3, 278);
+            this.chkPilihSemua.Location = new System.Drawing.Point(3, 370);
             this.chkPilihSemua.Name = "chkPilihSemua";
             this.chkPilihSemua.Size = new System.Drawing.Size(267, 19);
-            this.chkPilihSemua.TabIndex = 2;
+            this.chkPilihSemua.TabIndex = 3;
             this.chkPilihSemua.Text = "Pilihan semua";
             this.chkPilihSemua.UseVisualStyleBackColor = true;
             this.chkPilihSemua.CheckedChanged += new System.EventHandler(this.chkPilihSemua_CheckedChanged);
+            // 
+            // txtKeyword
+            // 
+            this.txtKeyword.AutoEnter = false;
+            this.txtKeyword.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKeyword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKeyword.Enabled = false;
+            this.txtKeyword.EnterFocusColor = System.Drawing.Color.White;
+            this.txtKeyword.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKeyword.LetterOnly = false;
+            this.txtKeyword.Location = new System.Drawing.Point(3, 28);
+            this.txtKeyword.Name = "txtKeyword";
+            this.txtKeyword.NumericOnly = false;
+            this.txtKeyword.SelectionText = false;
+            this.txtKeyword.Size = new System.Drawing.Size(267, 20);
+            this.txtKeyword.TabIndex = 1;
+            this.txtKeyword.ThousandSeparator = false;
+            this.txtKeyword.TextChanged += new System.EventHandler(this.txtKeyword_TextChanged);
+            this.txtKeyword.Enter += new System.EventHandler(this.txtKeyword_Enter);
+            this.txtKeyword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKeyword_KeyPress);
+            this.txtKeyword.Leave += new System.EventHandler(this.txtKeyword_Leave);
             // 
             // tableLayoutPanel3
             // 
@@ -210,7 +234,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(385, 300);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(385, 392);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // rdoTanggal
@@ -346,7 +370,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 386);
+            this.ClientSize = new System.Drawing.Size(670, 478);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
@@ -398,5 +422,6 @@
         private System.Windows.Forms.Panel pnlFooter;
         private System.Windows.Forms.Button btnSelesai;
         protected System.Windows.Forms.Button btnPreview;
+        protected UserControl.AdvancedTextbox txtKeyword;
     }
 }
