@@ -28,18 +28,21 @@ using System.Windows.Forms;
 using OpenRetail.Helper;
 using Microsoft.Reporting.WinForms;
 using OpenRetail.Model;
+using OpenRetail.Helper.UserControl;
 
 namespace OpenRetail.Helper.UI.Template
 {
     public partial class FrmSettingReportStandard : Form
     {
+        private string _toolTip;
+
         public FrmSettingReportStandard()
         {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
 
             dtpTanggalMulai.Value = DateTime.Today;
-            dtpTanggalSelesai.Value = DateTime.Today;
+            dtpTanggalSelesai.Value = DateTime.Today;  
         }
 
         protected void SetHeader(string header)
@@ -51,6 +54,12 @@ namespace OpenRetail.Helper.UI.Template
         protected void SetCheckBoxTitle(string title)
         {
             this.chkBoxTitle.Text = title;
+        }
+
+        protected void SetToolTip(string toolTip)
+        {
+            this._toolTip = toolTip;
+            txtKeyword.Text = this._toolTip;
         }
 
         /// <summary>
@@ -117,6 +126,10 @@ namespace OpenRetail.Helper.UI.Template
         {
         }
 
+        protected virtual void Cari()
+        {
+        }
+
         protected virtual void PilihSemua()
         {
             for (int i = 0; i < chkListBox.Items.Count; i++)
@@ -127,6 +140,7 @@ namespace OpenRetail.Helper.UI.Template
 
         protected virtual void PilihCheckBoxTitle()
         {
+            txtKeyword.Enabled = chkBoxTitle.Checked;
             chkListBox.Enabled = chkBoxTitle.Checked;
             chkPilihSemua.Enabled = chkBoxTitle.Checked;
 
@@ -138,6 +152,7 @@ namespace OpenRetail.Helper.UI.Template
                 }
 
                 chkPilihSemua.Checked = false;
+                txtKeyword.Text = _toolTip;
             }
         }
 
@@ -188,6 +203,33 @@ namespace OpenRetail.Helper.UI.Template
         {
             if (KeyPressHelper.IsEsc(e))
                 Selesai();
+        }
+
+        private void txtKeyword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e))
+                Cari();
+        }
+
+        private void txtKeyword_Leave(object sender, EventArgs e)
+        {
+            var txt = (AdvancedTextbox)sender;
+
+            if (txt.Text.Length == 0)
+                txt.Text = _toolTip;
+        }
+
+        private void txtKeyword_Enter(object sender, EventArgs e)
+        {
+            ((AdvancedTextbox)sender).Clear();
+        }
+
+        private void txtKeyword_TextChanged(object sender, EventArgs e)
+        {
+            var txt = (AdvancedTextbox)sender;
+
+            if (txt.Text.Length == 0)
+                Cari();
         }
     }
 }

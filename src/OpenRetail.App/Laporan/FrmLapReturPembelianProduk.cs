@@ -50,6 +50,7 @@ namespace OpenRetail.App.Laporan
             InitializeComponent();
             base.SetHeader(header);
             base.SetCheckBoxTitle("Pilih Supplier");
+            base.SetToolTip("Cari Supplier ...");
             base.ReSize(10);
 
             _log = MainProgram.log;
@@ -68,10 +69,23 @@ namespace OpenRetail.App.Laporan
             FillDataHelper.FillSupplier(chkListBox, _listOfSupplier);
         }
 
+        private void LoadSupplier(string name)
+        {
+            ISupplierBll bll = new SupplierBll(_log);
+            _listOfSupplier = bll.GetByName(name);
+
+            FillDataHelper.FillSupplier(chkListBox, _listOfSupplier);
+        }
+
         private void LoadBulanDanTahun()
         {
             FillDataHelper.FillBulan(cmbBulan, true);
             FillDataHelper.FillTahun(cmbTahun, true);
+        }
+
+        protected override void Cari()
+        {
+            LoadSupplier(txtKeyword.Text);
         }
 
         protected override void Preview()

@@ -50,6 +50,7 @@ namespace OpenRetail.App.Laporan
             InitializeComponent();
             base.SetHeader(header);
             base.SetCheckBoxTitle("Pilih Customer");
+            base.SetToolTip("Cari Customer ...");
             base.ReSize(120);
 
             _log = MainProgram.log;
@@ -68,11 +69,24 @@ namespace OpenRetail.App.Laporan
             FillDataHelper.FillCustomer(chkListBox, _listOfCustomer);
         }
 
+        private void LoadCustomer(string name)
+        {
+            ICustomerBll bll = new CustomerBll(_log);
+            _listOfCustomer = bll.GetByName(name);
+
+            FillDataHelper.FillCustomer(chkListBox, _listOfCustomer);
+        }
+
         private void LoadBulanDanTahun()
         {
             FillDataHelper.FillBulan(cmbBulan, true);
             FillDataHelper.FillTahun(cmbTahun, true);
-        }        
+        }
+
+        protected override void Cari()
+        {
+            LoadCustomer(txtKeyword.Text);
+        }
 
         protected override void Preview()
         {
