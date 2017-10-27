@@ -45,6 +45,7 @@ namespace OpenRetail.App.Transaksi
 
         private ILog _log;
         private Customer _customer = null;
+        private Dropshipper _dropshipper = null;
         private JualProduk _jual = null;        
         private Pengguna _pengguna;
         private Profil _profil;
@@ -72,6 +73,7 @@ namespace OpenRetail.App.Transaksi
             this._pengaturanUmum = MainProgram.pengaturanUmum;
             this._jual = jual;
             this._customer = this._jual.Customer;
+            this._dropshipper = this._jual.Dropshipper;
 
             SetLabelNota();
             btnPreviewNota_Click(btnPreviewNota, new EventArgs());
@@ -116,6 +118,13 @@ namespace OpenRetail.App.Transaksi
             txtDari1.Text = dari1;
             txtDari2.Text = dari2;
             txtDari3.Text = dari3;
+
+            if (this._jual.is_dropship && this._dropshipper != null)
+            {
+                txtDari1.Text = this._dropshipper.nama_dropshipper.NullToString();
+                txtDari2.Text = this._dropshipper.alamat.NullToString(); ;
+                txtDari3.Text = string.Format("HP: {0}", this._dropshipper.telepon.NullToString());
+            }
 
             txtKepada1.Text = kepada1;
             txtKepada2.Text = kepada2;

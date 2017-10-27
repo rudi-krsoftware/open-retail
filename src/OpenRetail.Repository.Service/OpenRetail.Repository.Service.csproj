@@ -63,6 +63,7 @@
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="DapperContext.cs" />
     <Compile Include="DatabaseVersionRepository.cs" />
+    <Compile Include="DropshipperRepository.cs" />
     <Compile Include="FooterNotaMiniPosRepository.cs" />
     <Compile Include="GajiKaryawanRepository.cs" />
     <Compile Include="GolonganRepository.cs" />

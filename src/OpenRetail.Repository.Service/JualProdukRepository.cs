@@ -40,10 +40,12 @@ namespace OpenRetail.Repository.Service
                                               t_jual_produk.label_kepada1, t_jual_produk.label_kepada2, t_jual_produk.label_kepada3, t_jual_produk.label_kepada4,
                                               m_customer.customer_id, m_customer.nama_customer, m_customer.alamat, m_customer.kecamatan, m_customer.kelurahan, m_customer.desa, m_customer.kabupaten, m_customer.kota, m_customer.kode_pos, m_customer.telepon, m_customer.diskon, m_customer.plafon_piutang,
                                               m_pengguna.pengguna_id, m_pengguna.nama_pengguna,
-                                              t_mesin.mesin_id, t_mesin.saldo_awal
+                                              t_mesin.mesin_id, t_mesin.saldo_awal,
+                                              m_dropshipper.dropshipper_id, m_dropshipper.nama_dropshipper, m_dropshipper.alamat, m_dropshipper.telepon
                                               FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
                                               LEFT JOIN m_pengguna ON m_pengguna.pengguna_id = t_jual_produk.pengguna_id
                                               LEFT JOIN t_mesin ON t_mesin.mesin_id = t_jual_produk.mesin_id
+                                              LEFT JOIN m_dropshipper ON m_dropshipper.dropshipper_id = t_jual_produk.dropshipper_id
                                               {WHERE}
                                               {ORDER BY}";
         private IDapperContext _context;
@@ -58,7 +60,7 @@ namespace OpenRetail.Repository.Service
 
         private IEnumerable<JualProduk> MappingRecordToObject(string sql, object param = null)
         {
-            IEnumerable<JualProduk> oList = _context.db.Query<JualProduk, Customer, Pengguna, MesinKasir, JualProduk>(sql, (j, c, p, m) =>
+            IEnumerable<JualProduk> oList = _context.db.Query<JualProduk, Customer, Pengguna, MesinKasir, Dropshipper, JualProduk>(sql, (j, c, p, m, d) =>
             {
                 if (c != null)
                 {
@@ -75,8 +77,13 @@ namespace OpenRetail.Repository.Service
                     j.mesin_id = m.mesin_id; j.Mesin = m;
                 }
 
+                if (d != null)
+                {
+                    j.dropshipper_id = d.dropshipper_id; j.Dropshipper = d;
+                }
+
                 return j;
-            }, param, splitOn: "customer_id, pengguna_id, mesin_id");
+            }, param, splitOn: "customer_id, pengguna_id, mesin_id, dropshipper_id");
 
             return oList;
         }
