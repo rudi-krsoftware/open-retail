@@ -79,6 +79,7 @@
             this.mnuLapPenjualanPerProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenjualanPerKasir = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenjualanProdukFavorit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLapCustomerProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLapPiutangPenjualanProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPembayaranPiutangPenjualanProduk = new System.Windows.Forms.ToolStripMenuItem();
@@ -533,6 +534,7 @@
             this.mnuLapPenjualanPerProduk,
             this.mnuLapPenjualanPerKasir,
             this.mnuLapPenjualanProdukFavorit,
+            this.mnuLapCustomerProduk,
             this.toolStripSeparator19,
             this.mnuLapPiutangPenjualanProduk,
             this.mnuLapPembayaranPiutangPenjualanProduk,
@@ -574,6 +576,14 @@
             this.mnuLapPenjualanProdukFavorit.Tag = "FrmLapPenjualanProdukFavorit";
             this.mnuLapPenjualanProdukFavorit.Text = "Penjualan Produk Favorit";
             this.mnuLapPenjualanProdukFavorit.Click += new System.EventHandler(this.mnuLapPenjualanProdukFavorit_Click);
+            // 
+            // mnuLapCustomerProduk
+            // 
+            this.mnuLapCustomerProduk.Name = "mnuLapCustomerProduk";
+            this.mnuLapCustomerProduk.Size = new System.Drawing.Size(280, 22);
+            this.mnuLapCustomerProduk.Tag = "FrmLapCustomerProduk";
+            this.mnuLapCustomerProduk.Text = "Customer Produk";
+            this.mnuLapCustomerProduk.Click += new System.EventHandler(this.mnuLapCustomerProduk_Click);
             // 
             // toolStripSeparator19
             // 
@@ -1146,5 +1156,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripMenuItem mnuLapPenjualanPerKasir;
         private System.Windows.Forms.ToolStripMenuItem mnuDropshipper;
+        private System.Windows.Forms.ToolStripMenuItem mnuLapCustomerProduk;
     }
 }

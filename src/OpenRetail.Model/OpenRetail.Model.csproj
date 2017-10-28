@@ -97,6 +97,7 @@
     <Compile Include="RajaOngkir\root.cs" />
     <Compile Include="RajaOngkir\status.cs" />
     <Compile Include="Report\ReportBebanUsaha.cs" />
+    <Compile Include="Report\ReportCustomerProduk.cs" />
     <Compile Include="Report\ReportGajiKaryawan.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukDetail.cs" />
     <Compile Include="Report\ReportHutangPembelianProdukHeader.cs" />

@@ -705,6 +705,11 @@ namespace OpenRetail.App.Main
         private void mnuDropshipper_Click(object sender, EventArgs e)
         {
             ShowForm<FrmListDropshipper>(sender, ref _frmListDropshipper);
+        }
+
+        private void mnuLapCustomerProduk_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapCustomerProduk>(sender);
         }        
     }
 }

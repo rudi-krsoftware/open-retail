@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RvCustomerProduk.rdlc" />
     <EmbeddedResource Include="RvKartuPiutangPenjualanProduk.rdlc" />
     <EmbeddedResource Include="RvKasbonDetail.rdlc" />
     <EmbeddedResource Include="RvNotaPenjualanMiniPOSTanpaCustomer.rdlc" />
