@@ -89,19 +89,11 @@ namespace OpenRetail.App.Transaksi
             dari2 = string.IsNullOrEmpty(this._jual.label_dari2) ? dari2 : this._jual.label_dari2;
             dari3 = string.IsNullOrEmpty(this._jual.label_dari3) ? dari3 : this._jual.label_dari3;
 
-            var kecamatan = string.IsNullOrEmpty(_customer.kecamatan) ? string.Empty : _customer.kecamatan;
-            var kelurahan = string.IsNullOrEmpty(_customer.kelurahan) ? string.Empty : _customer.kelurahan;
-            var kota = string.IsNullOrEmpty(_customer.kota) ? string.Empty : _customer.kota;
-            var kodePos = (string.IsNullOrEmpty(_customer.kode_pos) || _customer.kode_pos == "0") ? string.Empty : _customer.kode_pos;
-            var telepon = string.IsNullOrEmpty(_customer.telepon) ? string.Empty : _customer.telepon;
-
             // info alamat kirim berdasarkan data customer
             var kepada1 = _customer.nama_customer;
             var kepada2 = _customer.alamat;
-            var kepada3 = string.Format("{0} - {1} - {2} - {3}", kecamatan, kelurahan, kota, kodePos);
-            kepada3 = kepada3.Replace(" -  -  - ", "");
-
-            var kepada4 = telepon;
+            var kepada3 = _customer.get_wilayah_lengkap;
+            var kepada4 = string.Format("HP: {0}", _customer.telepon.NullToString());
 
             // info alamat kirim berdasarkan data alamat yang diedit pada saat penjualan
             kepada1 = string.IsNullOrEmpty(this._jual.kirim_kepada) ? kepada1 : this._jual.kirim_kepada;

@@ -85,22 +85,14 @@ namespace OpenRetail.App.Transaksi
             txtKepada1.Enabled = !chk.Checked;
             txtKepada2.Enabled = !chk.Checked;
             txtKepada3.Enabled = !chk.Checked;
-            txtKepada4.Enabled = !chk.Checked;            
-
-            var kecamatan = string.IsNullOrEmpty(_customer.kecamatan) ? string.Empty : _customer.kecamatan;
-            var kelurahan = string.IsNullOrEmpty(_customer.kelurahan) ? string.Empty : _customer.kelurahan;
-            var kota = string.IsNullOrEmpty(_customer.kota) ? string.Empty : _customer.kota;
-            var kodePos = (string.IsNullOrEmpty(_customer.kode_pos) || _customer.kode_pos == "0") ? string.Empty : _customer.kode_pos;
-            var telepon = string.IsNullOrEmpty(_customer.telepon) ? string.Empty : _customer.telepon;
+            txtKepada4.Enabled = !chk.Checked;
 
             var kepada1 = _customer.nama_customer;
             var kepada2 = _customer.alamat;
-            var kepada3 = string.Format("{0} - {1} - {2} - {3}", kecamatan, kelurahan, kota, kodePos);
-            kepada3 = kepada3.Replace(" -  -  - ", "");
+            var kepada3 = _customer.get_wilayah_lengkap;
+            var kepada4 = string.Format("HP: {0}", _customer.telepon.NullToString());
 
-            var kepada4 = telepon;
-
-            if (!chk.Checked)
+            if (!chk.Checked) // alamat kirim tidak sama dengan alamat customer
             {
                 kepada1 = string.IsNullOrEmpty(_jual.kirim_kepada) ? kepada1 : _jual.kirim_kepada;
                 kepada2 = string.IsNullOrEmpty(_jual.kirim_alamat) ? kepada2 : _jual.kirim_alamat;
@@ -118,7 +110,7 @@ namespace OpenRetail.App.Transaksi
         {
             _jual.is_sdac = chkIsSdac.Checked;
 
-            if (!chkIsSdac.Checked)
+            if (!chkIsSdac.Checked) // alamat kirim tidak sama dengan alamat customer
             {
                 _jual.kirim_kepada = txtKepada1.Text;
                 _jual.kirim_alamat = txtKepada2.Text;
