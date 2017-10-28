@@ -777,23 +777,6 @@ namespace OpenRetail.App.Transaksi
                 this._jual.kirim_alamat = alamatKirim.alamat;
                 this._jual.kirim_kecamatan = alamatKirim.kecamatan;
                 this._jual.kirim_kelurahan = alamatKirim.kelurahan;
-                this._jual.kirim_desa = alamatKirim.desa;
-                this._jual.kirim_kabupaten = alamatKirim.kabupaten;
-            }
-            else if (data is LabelAlamatKirim)
-            {
-                var labelAlamatKirim = (LabelAlamatKirim)data;
-
-                if (this._jual == null)
-                    this._jual = new JualProduk();
-
-                this._jual.label_dari1 = labelAlamatKirim.dari1;
-                this._jual.label_dari2 = labelAlamatKirim.dari2;
-
-                this._jual.label_kepada1 = labelAlamatKirim.kepada1;
-                this._jual.label_kepada2 = labelAlamatKirim.kepada2;
-                this._jual.label_kepada3 = labelAlamatKirim.kepada3;
-                this._jual.label_kepada4 = labelAlamatKirim.kepada4;
             }
             else if (data is costs)
             {
