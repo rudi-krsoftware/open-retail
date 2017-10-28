@@ -36,6 +36,7 @@ namespace OpenRetail.App.Lookup
     {
         private IList<Supplier> _listOfSupplier = null;
         private IList<Customer> _listOfCustomer = null;
+        private IList<Dropshipper> _listOfDropshipper = null;
         private IList<Produk> _listOfProduk = null;
         private IList<JenisPengeluaran> _listOfJenisPengeluaran = null;
         private IList<KabupatenAsal> _listOfKabupatenAsal = null;
@@ -81,6 +82,19 @@ namespace OpenRetail.App.Lookup
 
             InitGridList();
             base.SetActiveBtnPilih(listOfCustomer.Count > 0);
+        }
+
+        public FrmLookupReferensi(string header, IList<Dropshipper> listOfDropshipper)
+            : base()
+        {
+            InitializeComponent();
+
+            base.SetHeader(header);
+            this._listOfDropshipper = listOfDropshipper;
+            this._referensiType = ReferencesType.Dropshipper;
+
+            InitGridList();
+            base.SetActiveBtnPilih(listOfDropshipper.Count > 0);
         }
 
         public FrmLookupReferensi(string header, IList<Produk> listOfProduk)
@@ -163,6 +177,16 @@ namespace OpenRetail.App.Lookup
                     listCount = _listOfSupplier.Count;
                     break;
 
+                case ReferencesType.Dropshipper:
+                    gridListProperties.Add(new GridListControlProperties { Header = "Nama Dropshipper", Width = 200 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Alamat" });
+
+                    GridListControlHelper.InitializeGridListControl<Dropshipper>(this.gridList, _listOfDropshipper, gridListProperties);
+                    this.gridList.Grid.QueryCellInfo += GridDropshipper_QueryCellInfo;
+
+                    listCount = _listOfDropshipper.Count;
+                    break;
+
                 case ReferencesType.Produk:
                     gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 110 });
                     gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 270 });
@@ -201,6 +225,39 @@ namespace OpenRetail.App.Lookup
 
             if (listCount > 0)
                 this.gridList.SetSelected(0, true);
+        }
+
+        private void GridDropshipper_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
+        {            
+            if (_listOfDropshipper.Count > 0)
+            {
+                if (e.RowIndex > 0)
+                {
+                    var rowIndex = e.RowIndex - 1;
+
+                    if (rowIndex < _listOfDropshipper.Count)
+                    {
+                        var dropshipper = _listOfDropshipper[rowIndex];
+
+                        switch (e.ColIndex)
+                        {
+                            case 2:
+                                e.Style.CellValue = dropshipper.nama_dropshipper;
+                                break;
+
+                            case 3:
+                                e.Style.CellValue = dropshipper.alamat;
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        // we handled it, let the grid know
+                        e.Handled = true;
+                    }
+                }
+            }
         }
 
         private void GridKabupatenTujuan_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
@@ -449,7 +506,12 @@ namespace OpenRetail.App.Lookup
                     var customer = _listOfCustomer[rowIndex];
                     this.Listener.Ok(this, customer);
                     break;
-    
+
+                case ReferencesType.Dropshipper:
+                    var dropshipper = _listOfDropshipper[rowIndex];
+                    this.Listener.Ok(this, dropshipper);
+                    break;
+
                 case ReferencesType.Produk:
                     var produk = _listOfProduk[rowIndex];
                     this.Listener.Ok(this, produk);

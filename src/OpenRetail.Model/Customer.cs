@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace OpenRetail.Model
 {        
@@ -70,6 +71,45 @@ namespace OpenRetail.Model
 
 		[Display(Name = "plafon_piutang")]
 		public double plafon_piutang { get; set; }
+
+        [JsonIgnore]
+        [Write(false)]
+        [Display(Name = "get_wilayah_lengkap")]
+        public string get_wilayah_lengkap
+        {
+            get
+            {
+                var kelurahan = this.kelurahan.NullToString();
+                var kecamatan = this.kecamatan.NullToString();
+                var kabupaten = this.kabupaten.NullToString();
+                var kota = this.kota.NullToString();
+                var kodePos = (string.IsNullOrEmpty(this.kode_pos) || this.kode_pos == "0") ? string.Empty : this.kode_pos;
+
+                var sb = new StringBuilder();
+                if (kelurahan.Length > 0)
+                    sb.Append(string.Format("Kel. {0}", kelurahan)).Append(", ");
+
+                if (kecamatan.Length > 0)
+                    sb.Append(string.Format("Kec. {0}", kecamatan)).Append(", ");
+
+                if (kabupaten.Length > 0)
+                    sb.Append(string.Format("Kab. {0}", kabupaten)).Append(", ");
+
+                if (kota.Length > 0)
+                    sb.Append(kota).Append(", ");
+
+                if (kodePos.Length > 0)
+                    sb.Append(kodePos);
+
+                var wilayahLengkap = sb.ToString();
+                if (wilayahLengkap.Right(2) == ", ")
+                {
+                    wilayahLengkap = wilayahLengkap.Left(wilayahLengkap.Length - 2);
+                }
+
+                return wilayahLengkap;
+            }
+        }
 
         [Computed]
 		[Display(Name = "total_piutang")]

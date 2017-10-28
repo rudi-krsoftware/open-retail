@@ -89,5 +89,31 @@ namespace OpenRetail.Model
         {
             return value == null ? "" : value.ToString();
         }
+
+        /// <summary>
+        /// Get substring of specified number of characters on the left.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string Left(this string value, int length)
+        {
+            if (string.IsNullOrEmpty(value)) return string.Empty;
+
+            return value.Length > length ? value.Substring(0, length) : value;
+        }
+
+        /// <summary>
+        /// Get substring of specified number of characters on the right.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string Right(this string value, int length)
+        {
+            if (string.IsNullOrEmpty(value)) return string.Empty;
+
+            return value.Length > length ? value.Substring(value.Length - length) : value;
+        }        
     }
 }

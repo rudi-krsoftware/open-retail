@@ -35,7 +35,6 @@ namespace OpenRetail.App.Transaksi
 {
     public partial class FrmEntryAlamatKirim : FrmEntryStandard
     {
-        //private Customer _customer = null;
         private AlamatKirim _alamatKirim = null;
         private Customer _customer = null;
         private JualProduk _jual = null;
@@ -79,18 +78,12 @@ namespace OpenRetail.App.Transaksi
 
             pnlAlamatKirim.Enabled = !chk.Checked;
 
-            var kecamatan = string.IsNullOrEmpty(_customer.kecamatan) ? string.Empty : _customer.kecamatan;
-            var kelurahan = string.IsNullOrEmpty(_customer.kelurahan) ? string.Empty : _customer.kelurahan;
-            var kota = string.IsNullOrEmpty(_customer.kota) ? string.Empty : _customer.kota;
-            var kodePos = (string.IsNullOrEmpty(_customer.kode_pos) || _customer.kode_pos == "0") ? string.Empty : _customer.kode_pos;
-            var telepon = string.IsNullOrEmpty(_customer.telepon) ? string.Empty : _customer.telepon;
-
             var kepada1 = _customer.nama_customer;
             var kepada2 = _customer.alamat;
-            var kepada3 = string.Format("{0} - {1} - {2} - {3}", kecamatan, kelurahan, kota, kodePos);
-            var kepada4 = telepon;
+            var kepada3 = _customer.get_wilayah_lengkap;
+            var kepada4 = string.Format("HP: {0}", _customer.telepon.NullToString());
 
-            if (!chk.Checked)
+            if (!chk.Checked) // alamat kirim tidak sama dengan alamat customer
             {
                 if (_jual != null)
                 {

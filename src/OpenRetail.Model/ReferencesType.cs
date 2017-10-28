@@ -31,6 +31,8 @@ namespace OpenRetail.Model
         NotaBeliProduk = 4,
         NotaJualProduk = 5,
         JenisPengeluaran = 6,
-        KabupatenAsal = 7, KabupatenTujuan
+        KabupatenAsal = 7, 
+        KabupatenTujuan = 8,
+        Dropshipper = 9
     }
 }

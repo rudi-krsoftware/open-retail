@@ -51,6 +51,7 @@ namespace OpenRetail.App.Laporan
             base.SetHeader(header);
             base.SetCheckBoxTitle("Pilih Jenis Pengeluaran Biaya");
             base.ReSize(120);
+            this.txtKeyword.Visible = false;
 
             _log = MainProgram.log;
 

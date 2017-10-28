@@ -85,6 +85,17 @@ namespace OpenRetail.Repository.Service.Report
                                                                GROUP BY m_produk.nama_produk, t_item_jual_produk.harga_jual
                                                                ORDER BY m_produk.nama_produk";
 
+        private const string SQL_TEMPLATE_CUSTOMER_PRODUK = @"SELECT m_produk.produk_id, m_produk.nama_produk, 
+                                                              COALESCE(m_customer.customer_id, m_customer.customer_id, '6ecdf4af-d9e1-8c33-f22a-3cb8e053c02a') AS customer_id,
+                                                              COALESCE(m_customer.nama_customer, m_customer.nama_customer, '-') AS nama_customer, m_customer.alamat, m_customer.telepon,
+                                                              SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur) AS jumlah
+                                                              FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
+                                                              INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
+                                                              INNER JOIN public.m_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
+                                                              {WHERE}
+                                                              GROUP BY m_produk.produk_id, m_produk.nama_produk, COALESCE(m_customer.customer_id, m_customer.customer_id, '6ecdf4af-d9e1-8c33-f22a-3cb8e053c02a'), COALESCE(m_customer.nama_customer, m_customer.nama_customer, '-'), m_customer.alamat, m_customer.telepon
+                                                              ORDER BY m_produk.nama_produk, COALESCE(m_customer.nama_customer, m_customer.nama_customer, '-')";
+
         private IDapperContext _context;
         private ILog _log;
 
@@ -423,6 +434,54 @@ namespace OpenRetail.Repository.Service.Report
                         oList.Add(detail);
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportCustomerProduk> CustomerProdukGetByBulan(int bulan, int tahun)
+        {
+            IList<ReportCustomerProduk> oList = new List<ReportCustomerProduk>();
+
+            try
+            {
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_CUSTOMER_PRODUK);
+
+                whereBuilder.Add("EXTRACT(MONTH FROM t_jual_produk.tanggal) = @bulan");
+                whereBuilder.Add("EXTRACT(YEAR FROM t_jual_produk.tanggal) = @tahun");
+
+                oList = _context.db.Query<ReportCustomerProduk>(whereBuilder.ToSql(), new { bulan, tahun })
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportCustomerProduk> CustomerProdukGetByBulan(int bulanAwal, int bulanAkhir, int tahun)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ReportCustomerProduk> CustomerProdukGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
+        {
+            IList<ReportCustomerProduk> oList = new List<ReportCustomerProduk>();
+
+            try
+            {
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_CUSTOMER_PRODUK);
+
+                whereBuilder.Add("t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+
+                oList = _context.db.Query<ReportCustomerProduk>(whereBuilder.ToSql(), new { tanggalMulai, tanggalSelesai })
+                                .ToList();
             }
             catch (Exception ex)
             {

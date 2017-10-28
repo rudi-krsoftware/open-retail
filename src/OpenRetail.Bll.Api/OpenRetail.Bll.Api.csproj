@@ -50,6 +50,7 @@
     <Compile Include="ICustomerBll.cs" />
     <Compile Include="IDatabaseVersionBll.cs" />
     <Compile Include="IDbConnectionHelper.cs" />
+    <Compile Include="IDropshipperBll.cs" />
     <Compile Include="IFooterNotaMiniPosBll.cs" />
     <Compile Include="IGajiKaryawanBll.cs" />
     <Compile Include="IGolonganBll.cs" />

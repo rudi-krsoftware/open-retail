@@ -45,6 +45,7 @@ namespace OpenRetail.App.Transaksi
 
         private ILog _log;
         private Customer _customer = null;
+        private Dropshipper _dropshipper = null;
         private JualProduk _jual = null;        
         private Pengguna _pengguna;
         private Profil _profil;
@@ -72,6 +73,7 @@ namespace OpenRetail.App.Transaksi
             this._pengaturanUmum = MainProgram.pengaturanUmum;
             this._jual = jual;
             this._customer = this._jual.Customer;
+            this._dropshipper = this._jual.Dropshipper;
 
             SetLabelNota();
             btnPreviewNota_Click(btnPreviewNota, new EventArgs());
@@ -87,19 +89,11 @@ namespace OpenRetail.App.Transaksi
             dari2 = string.IsNullOrEmpty(this._jual.label_dari2) ? dari2 : this._jual.label_dari2;
             dari3 = string.IsNullOrEmpty(this._jual.label_dari3) ? dari3 : this._jual.label_dari3;
 
-            var kecamatan = string.IsNullOrEmpty(_customer.kecamatan) ? string.Empty : _customer.kecamatan;
-            var kelurahan = string.IsNullOrEmpty(_customer.kelurahan) ? string.Empty : _customer.kelurahan;
-            var kota = string.IsNullOrEmpty(_customer.kota) ? string.Empty : _customer.kota;
-            var kodePos = (string.IsNullOrEmpty(_customer.kode_pos) || _customer.kode_pos == "0") ? string.Empty : _customer.kode_pos;
-            var telepon = string.IsNullOrEmpty(_customer.telepon) ? string.Empty : _customer.telepon;
-
             // info alamat kirim berdasarkan data customer
             var kepada1 = _customer.nama_customer;
             var kepada2 = _customer.alamat;
-            var kepada3 = string.Format("{0} - {1} - {2} - {3}", kecamatan, kelurahan, kota, kodePos);
-            kepada3 = kepada3.Replace(" -  -  - ", "");
-
-            var kepada4 = telepon;
+            var kepada3 = _customer.get_wilayah_lengkap;
+            var kepada4 = string.Format("HP: {0}", _customer.telepon.NullToString());
 
             // info alamat kirim berdasarkan data alamat yang diedit pada saat penjualan
             kepada1 = string.IsNullOrEmpty(this._jual.kirim_kepada) ? kepada1 : this._jual.kirim_kepada;
@@ -116,6 +110,13 @@ namespace OpenRetail.App.Transaksi
             txtDari1.Text = dari1;
             txtDari2.Text = dari2;
             txtDari3.Text = dari3;
+
+            if (this._jual.is_dropship && this._dropshipper != null)
+            {
+                txtDari1.Text = this._dropshipper.nama_dropshipper.NullToString();
+                txtDari2.Text = this._dropshipper.alamat.NullToString(); ;
+                txtDari3.Text = string.Format("HP: {0}", this._dropshipper.telepon.NullToString());
+            }
 
             txtKepada1.Text = kepada1;
             txtKepada2.Text = kepada2;

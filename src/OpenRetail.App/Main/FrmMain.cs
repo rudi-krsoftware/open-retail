@@ -54,6 +54,7 @@ namespace OpenRetail.App.Main
 
         private FrmListCustomer _frmListCustomer;
         private FrmListSupplier _frmListSupplier;
+        private FrmListDropshipper _frmListDropshipper;
 
         private FrmListJabatan _frmListJabatan;
         private FrmListKaryawan _frmListKaryawan;
@@ -699,6 +700,16 @@ namespace OpenRetail.App.Main
         private void mnuLapPenjualanPerKasir_Click(object sender, EventArgs e)
         {
             ShowFormDialog<FrmLapPenjualanPerKasir>(sender);
+        }
+
+        private void mnuDropshipper_Click(object sender, EventArgs e)
+        {
+            ShowForm<FrmListDropshipper>(sender, ref _frmListDropshipper);
+        }
+
+        private void mnuLapCustomerProduk_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapCustomerProduk>(sender);
         }        
     }
 }

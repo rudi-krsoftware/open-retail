@@ -50,6 +50,7 @@ namespace OpenRetail.App.Laporan
             InitializeComponent();
             base.SetHeader(header);
             base.SetCheckBoxTitle("Pilih Karyawan");
+            base.SetToolTip("Cari Karyawan ...");
             base.ReSize(120);
 
             _log = MainProgram.log;
@@ -71,10 +72,23 @@ namespace OpenRetail.App.Laporan
             FillDataHelper.FillKaryawan(chkListBox, _listOfKaryawan);
         }
 
+        private void LoadKaryawan(string name)
+        {
+            IKaryawanBll bll = new KaryawanBll(_log);
+            _listOfKaryawan = bll.GetByName(name);
+
+            FillDataHelper.FillKaryawan(chkListBox, _listOfKaryawan);
+        }
+
         private void LoadBulanDanTahun()
         {
             FillDataHelper.FillBulan(cmbBulan, true);
             FillDataHelper.FillTahun(cmbTahun, true);
+        }
+
+        protected override void Cari()
+        {
+            LoadKaryawan(txtKeyword.Text);
         }
 
         protected override void PilihCheckBoxTampilkanNota()

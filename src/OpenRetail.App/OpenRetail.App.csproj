@@ -157,6 +157,12 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Laporan\FrmLapCustomerProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapCustomerProduk.designer.cs">
+      <DependentUpon>FrmLapCustomerProduk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\FrmLapPenjualanPerKasir.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -435,6 +441,12 @@
     <Compile Include="Referensi\FrmEntryJabatan.Designer.cs">
       <DependentUpon>FrmEntryJabatan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Referensi\FrmEntryDropshipper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmEntryDropshipper.Designer.cs">
+      <DependentUpon>FrmEntryDropshipper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Referensi\FrmEntrySupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -458,6 +470,12 @@
     </Compile>
     <Compile Include="Referensi\FrmImportDataCustomer.Designer.cs">
       <DependentUpon>FrmImportDataCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Referensi\FrmImportDataDropshipper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmImportDataDropshipper.Designer.cs">
+      <DependentUpon>FrmImportDataDropshipper.cs</DependentUpon>
     </Compile>
     <Compile Include="Referensi\FrmImportDataSupplier.cs">
       <SubType>Form</SubType>
@@ -512,6 +530,12 @@
     </Compile>
     <Compile Include="Referensi\FrmListProdukWithNavigation.Designer.cs">
       <DependentUpon>FrmListProdukWithNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Referensi\FrmListDropshipper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmListDropshipper.Designer.cs">
+      <DependentUpon>FrmListDropshipper.cs</DependentUpon>
     </Compile>
     <Compile Include="Referensi\FrmListSupplier.cs">
       <SubType>Form</SubType>
@@ -621,6 +645,9 @@
     <Compile Include="Transaksi\FrmPreviewNotaPenjualan.Designer.cs">
       <DependentUpon>FrmPreviewNotaPenjualan.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Laporan\FrmLapCustomerProduk.resx">
+      <DependentUpon>FrmLapCustomerProduk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Laporan\FrmLapPenjualanPerKasir.resx">
       <DependentUpon>FrmLapPenjualanPerKasir.cs</DependentUpon>
     </EmbeddedResource>
@@ -725,6 +752,9 @@
     <EmbeddedResource Include="Referensi\FrmEntryJabatan.resx">
       <DependentUpon>FrmEntryJabatan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Referensi\FrmEntryDropshipper.resx">
+      <DependentUpon>FrmEntryDropshipper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntrySupplier.resx">
       <DependentUpon>FrmEntrySupplier.cs</DependentUpon>
     </EmbeddedResource>
@@ -751,6 +781,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmListProdukWithNavigation.resx">
       <DependentUpon>FrmListProdukWithNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Referensi\FrmListDropshipper.resx">
+      <DependentUpon>FrmListDropshipper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmListSupplier.resx">
       <DependentUpon>FrmListSupplier.cs</DependentUpon>

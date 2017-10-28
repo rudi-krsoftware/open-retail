@@ -36,10 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtKepada1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
-            this.txtKepada2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
-            this.txtKepada3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
-            this.txtKepada4 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.btnPreviewNota = new System.Windows.Forms.Button();
             this.chkIsSdac = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -50,6 +46,10 @@
             this.lblHeader = new System.Windows.Forms.Label();
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.btnSelesai = new System.Windows.Forms.Button();
+            this.txtKepada1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKepada2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKepada3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKepada4 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -164,74 +164,6 @@
             this.label4.Text = "Kepada #4";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtKepada1
-            // 
-            this.txtKepada1.AutoEnter = true;
-            this.txtKepada1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
-            this.txtKepada1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtKepada1.EnterFocusColor = System.Drawing.Color.White;
-            this.txtKepada1.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtKepada1.LetterOnly = false;
-            this.txtKepada1.Location = new System.Drawing.Point(69, 3);
-            this.txtKepada1.MaxLength = 50;
-            this.txtKepada1.Name = "txtKepada1";
-            this.txtKepada1.NumericOnly = false;
-            this.txtKepada1.SelectionText = false;
-            this.txtKepada1.Size = new System.Drawing.Size(315, 20);
-            this.txtKepada1.TabIndex = 0;
-            this.txtKepada1.ThousandSeparator = false;
-            // 
-            // txtKepada2
-            // 
-            this.txtKepada2.AutoEnter = true;
-            this.txtKepada2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
-            this.txtKepada2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtKepada2.EnterFocusColor = System.Drawing.Color.White;
-            this.txtKepada2.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtKepada2.LetterOnly = false;
-            this.txtKepada2.Location = new System.Drawing.Point(69, 28);
-            this.txtKepada2.MaxLength = 250;
-            this.txtKepada2.Name = "txtKepada2";
-            this.txtKepada2.NumericOnly = false;
-            this.txtKepada2.SelectionText = false;
-            this.txtKepada2.Size = new System.Drawing.Size(315, 20);
-            this.txtKepada2.TabIndex = 1;
-            this.txtKepada2.ThousandSeparator = false;
-            // 
-            // txtKepada3
-            // 
-            this.txtKepada3.AutoEnter = true;
-            this.txtKepada3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
-            this.txtKepada3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtKepada3.EnterFocusColor = System.Drawing.Color.White;
-            this.txtKepada3.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtKepada3.LetterOnly = false;
-            this.txtKepada3.Location = new System.Drawing.Point(69, 53);
-            this.txtKepada3.MaxLength = 250;
-            this.txtKepada3.Name = "txtKepada3";
-            this.txtKepada3.NumericOnly = false;
-            this.txtKepada3.SelectionText = false;
-            this.txtKepada3.Size = new System.Drawing.Size(315, 20);
-            this.txtKepada3.TabIndex = 2;
-            this.txtKepada3.ThousandSeparator = false;
-            // 
-            // txtKepada4
-            // 
-            this.txtKepada4.AutoEnter = false;
-            this.txtKepada4.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
-            this.txtKepada4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtKepada4.EnterFocusColor = System.Drawing.Color.White;
-            this.txtKepada4.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtKepada4.LetterOnly = false;
-            this.txtKepada4.Location = new System.Drawing.Point(69, 78);
-            this.txtKepada4.MaxLength = 250;
-            this.txtKepada4.Name = "txtKepada4";
-            this.txtKepada4.NumericOnly = false;
-            this.txtKepada4.SelectionText = false;
-            this.txtKepada4.Size = new System.Drawing.Size(315, 20);
-            this.txtKepada4.TabIndex = 3;
-            this.txtKepada4.ThousandSeparator = false;
-            // 
             // btnPreviewNota
             // 
             this.btnPreviewNota.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -343,6 +275,74 @@
             this.btnSelesai.Text = "Esc Selesai";
             this.btnSelesai.UseVisualStyleBackColor = true;
             this.btnSelesai.Click += new System.EventHandler(this.btnSelesai_Click);
+            // 
+            // txtKepada1
+            // 
+            this.txtKepada1.AutoEnter = true;
+            this.txtKepada1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKepada1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKepada1.EnterFocusColor = System.Drawing.Color.White;
+            this.txtKepada1.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKepada1.LetterOnly = false;
+            this.txtKepada1.Location = new System.Drawing.Point(69, 3);
+            this.txtKepada1.MaxLength = 50;
+            this.txtKepada1.Name = "txtKepada1";
+            this.txtKepada1.NumericOnly = false;
+            this.txtKepada1.SelectionText = false;
+            this.txtKepada1.Size = new System.Drawing.Size(315, 20);
+            this.txtKepada1.TabIndex = 0;
+            this.txtKepada1.ThousandSeparator = false;
+            // 
+            // txtKepada2
+            // 
+            this.txtKepada2.AutoEnter = true;
+            this.txtKepada2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKepada2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKepada2.EnterFocusColor = System.Drawing.Color.White;
+            this.txtKepada2.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKepada2.LetterOnly = false;
+            this.txtKepada2.Location = new System.Drawing.Point(69, 28);
+            this.txtKepada2.MaxLength = 250;
+            this.txtKepada2.Name = "txtKepada2";
+            this.txtKepada2.NumericOnly = false;
+            this.txtKepada2.SelectionText = false;
+            this.txtKepada2.Size = new System.Drawing.Size(315, 20);
+            this.txtKepada2.TabIndex = 1;
+            this.txtKepada2.ThousandSeparator = false;
+            // 
+            // txtKepada3
+            // 
+            this.txtKepada3.AutoEnter = true;
+            this.txtKepada3.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKepada3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKepada3.EnterFocusColor = System.Drawing.Color.White;
+            this.txtKepada3.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKepada3.LetterOnly = false;
+            this.txtKepada3.Location = new System.Drawing.Point(69, 53);
+            this.txtKepada3.MaxLength = 250;
+            this.txtKepada3.Name = "txtKepada3";
+            this.txtKepada3.NumericOnly = false;
+            this.txtKepada3.SelectionText = false;
+            this.txtKepada3.Size = new System.Drawing.Size(315, 20);
+            this.txtKepada3.TabIndex = 2;
+            this.txtKepada3.ThousandSeparator = false;
+            // 
+            // txtKepada4
+            // 
+            this.txtKepada4.AutoEnter = false;
+            this.txtKepada4.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKepada4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKepada4.EnterFocusColor = System.Drawing.Color.White;
+            this.txtKepada4.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKepada4.LetterOnly = false;
+            this.txtKepada4.Location = new System.Drawing.Point(69, 78);
+            this.txtKepada4.MaxLength = 250;
+            this.txtKepada4.Name = "txtKepada4";
+            this.txtKepada4.NumericOnly = false;
+            this.txtKepada4.SelectionText = false;
+            this.txtKepada4.Size = new System.Drawing.Size(315, 20);
+            this.txtKepada4.TabIndex = 3;
+            this.txtKepada4.ThousandSeparator = false;
             // 
             // FrmPreviewNotaPenjualan
             // 
