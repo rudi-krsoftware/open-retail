@@ -47,7 +47,7 @@ namespace OpenRetail.App
         /// <summary>
         /// Url informasi update terbaru, untuk petunjuknya cek: http://coding4ever.net/blog/2016/01/10/paket-nuget-yang-wajib-dicoba-bagian-number-2-autoupdater-dot-net/
         /// </summary>
-        public static readonly string onlineUpdateUrlInfo = ""; // TODO: set url informasi update
+        public static readonly string onlineUpdateUrlInfo = "https://raw.githubusercontent.com/rudi-krsoftware/open-retail/master/updater/open-retail-auto-updater.xml";
 
         public static readonly string stageOfDevelopment = "";
         public static readonly string appName = "Open Retail Versi {0}{1} - Copyright © {2} Kamarudin";

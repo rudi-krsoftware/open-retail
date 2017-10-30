@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>main-icon-cashier.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoUpdater.NET, Version=1.4.0.0, Culture=neutral, PublicKeyToken=942f95247e354701, processorArchitecture=MSIL">
       <HintPath>..\..\lib\Autoupdater.NET.Official.1.4\lib\net40\AutoUpdater.NET.dll</HintPath>
@@ -124,8 +127,8 @@
     <Reference Include="WaitCursor">
       <HintPath>..\..\lib\WaitCursor.dll</HintPath>
     </Reference>
-    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.16.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\DockPanelSuite.2.16.1\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.1.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\DockPanelSuite.3.0.1\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -256,7 +259,10 @@
       <Name>OpenRetail.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="main-icon-cashier.ico" />
+    <None Include="Resources\background-cashier.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\login2.png" />
   </ItemGroup>
@@ -279,6 +285,27 @@
     <None Include="Resources\donasi-fix.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Debug" goto skip
+
+echo set lokasi folder deploy
+set DeployDir="$(SolutionDir)..\deploy\bin-cashier"
+if not exist %25DeployDir%25 mkdir %25DeployDir%25
+
+echo copy hasil build ke folder deploy
+copy /Y "$(TargetDir)*.*" %25DeployDir%25
+
+echo hapus file build yang tidak diperlukan
+del /s /q %25DeployDir%25\*.xml
+del /s /q %25DeployDir%25\*.pdb
+
+goto exit
+
+:skip
+echo "do nothing"
+
+:exit</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

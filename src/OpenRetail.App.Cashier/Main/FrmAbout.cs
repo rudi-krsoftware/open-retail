@@ -48,8 +48,7 @@ namespace OpenRetail.App.Cashier.Main
             var copyright = currentYear > firstReleaseYear ? string.Format("{0} - {1}", firstReleaseYear, currentYear) : firstReleaseYear.ToString();
 
             lblVersion.Text = string.Format("Version {0}{1}", version, MainProgram.stageOfDevelopment);
-            lblCopyright.Text = string.Format("Copyright © {0} Kamarudin (rudi.krsoftware@gmail.com)", copyright);
-
+            lblCopyright.Text = string.Format("Copyright © {0} Kamarudin | Email: rudi.krsoftware@gmail.com | Phone: +62 813 8176 9915", copyright);
 
             lblUrl1.Text = "https://openretailblog.wordpress.com";
             lblUrl1.LinkClicked += lblUrl_LinkClicked;
