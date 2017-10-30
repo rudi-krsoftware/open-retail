@@ -148,8 +148,8 @@
     <Reference Include="WaitCursor">
       <HintPath>..\..\lib\WaitCursor.dll</HintPath>
     </Reference>
-    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.16.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\DockPanelSuite.2.16.1\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.1.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\DockPanelSuite.3.0.1\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -929,6 +929,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main-icon.ico" />
+    <None Include="Resources\background-server.png" />
     <None Include="Resources\open16.png" />
     <None Include="Resources\donasi-fix.png" />
     <None Include="Resources\label16.png" />

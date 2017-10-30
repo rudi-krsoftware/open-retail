@@ -142,7 +142,7 @@
             // statusStripEx1
             // 
             this.statusStripEx1.BackColor = System.Drawing.SystemColors.Control;
-            this.statusStripEx1.BeforeTouchSize = new System.Drawing.Size(827, 22);
+            this.statusStripEx1.BeforeTouchSize = new System.Drawing.Size(841, 22);
             this.statusStripEx1.Dock = Syncfusion.Windows.Forms.Tools.DockStyleEx.Bottom;
             this.statusStripEx1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sbJam,
@@ -152,11 +152,11 @@
             this.sbOperator,
             this.statusStripLabel6,
             this.sbNamaAplikasi});
-            this.statusStripEx1.Location = new System.Drawing.Point(0, 388);
+            this.statusStripEx1.Location = new System.Drawing.Point(0, 555);
             this.statusStripEx1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(206)))), ((int)(((byte)(255)))));
             this.statusStripEx1.Name = "statusStripEx1";
             this.statusStripEx1.OfficeColorScheme = Syncfusion.Windows.Forms.Tools.ToolStripEx.ColorScheme.Silver;
-            this.statusStripEx1.Size = new System.Drawing.Size(827, 22);
+            this.statusStripEx1.Size = new System.Drawing.Size(841, 22);
             this.statusStripEx1.TabIndex = 3;
             this.statusStripEx1.Text = "statusStripEx1";
             // 
@@ -225,7 +225,7 @@
             this.mnuKeluar});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(827, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(841, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -861,12 +861,12 @@
             this.mainDock.AllowEndUserDocking = false;
             this.mainDock.AllowEndUserNestedDocking = false;
             this.mainDock.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.mainDock.BackgroundImage = global::OpenRetail.App.Properties.Resources.background;
+            this.mainDock.BackgroundImage = global::OpenRetail.App.Properties.Resources.background_server;
             this.mainDock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mainDock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDock.Location = new System.Drawing.Point(0, 24);
             this.mainDock.Name = "mainDock";
-            this.mainDock.Size = new System.Drawing.Size(827, 364);
+            this.mainDock.Size = new System.Drawing.Size(841, 531);
             this.mainDock.TabIndex = 14;
             // 
             // toolStrip1
@@ -890,7 +890,7 @@
             this.tbLapPenjualanProduk});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(827, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(841, 39);
             this.toolStrip1.TabIndex = 19;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1028,11 +1028,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 410);
+            this.ClientSize = new System.Drawing.Size(841, 577);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.mainDock);
             this.Controls.Add(this.statusStripEx1);
             this.Controls.Add(this.menuStrip1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;

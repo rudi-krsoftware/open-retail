@@ -207,10 +207,10 @@ namespace OpenRetail.App.Cashier.Main
 
                 if (isLogin)
                 {
+                    UpgradeDatabase(DatabaseVersionHelper.DatabaseVersion);
+
                     log4net.GlobalContext.Properties["UserName"] = txtUserName.Text;
                     MainProgram.pengguna = penggunaBll.GetByID(txtUserName.Text);
-
-                    UpgradeDatabase(DatabaseVersionHelper.DatabaseVersion);
 
                     SetProfil();
                     SetPengaturanUmum();
