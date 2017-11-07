@@ -124,6 +124,10 @@
       <Project>{24e6fae6-2f30-4b86-bbe7-4c88fb631956}</Project>
       <Name>OpenRetail.Bll.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenRetail.Helper\OpenRetail.Helper.csproj">
+      <Project>{3316e651-8404-4cd4-a132-2b013489de67}</Project>
+      <Name>OpenRetail.Helper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">
       <Project>{6b9cabad-1a6c-4323-8548-bd5f3c12613c}</Project>
       <Name>OpenRetail.Model</Name>

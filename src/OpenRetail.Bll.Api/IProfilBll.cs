@@ -31,6 +31,7 @@ namespace OpenRetail.Bll.Api
         Profil GetByID(string id);
         Profil GetProfil();
 
-		int Save(Profil obj, ref ValidationError validationError);		
+		int Save(Profil obj, ref ValidationError validationError);
+        void Register();
     }
 }     
