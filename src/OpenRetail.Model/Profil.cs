@@ -46,7 +46,15 @@ namespace OpenRetail.Model
 		
 		[Display(Name = "Telepon")]
 		public string telepon { get; set; }
-		
+
+        [Display(Name = "Email")]
+        public string email { get; set; }
+
+        [Display(Name = "Website")]
+        public string website { get; set; }
+
+        public string register_id { get; set; }
+        public bool is_register { get; set; }
 	}
 
     public class ProfilValidator : AbstractValidator<Profil>
@@ -62,6 +70,8 @@ namespace OpenRetail.Model
 			RuleFor(c => c.alamat).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
 			RuleFor(c => c.kota).Length(0, 100).WithMessage(msgError2);
 			RuleFor(c => c.telepon).Length(0, 20).WithMessage(msgError2);
+            RuleFor(c => c.email).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.website).Length(0, 100).WithMessage(msgError2);
 		}
 	}
 }

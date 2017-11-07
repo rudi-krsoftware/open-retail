@@ -102,6 +102,11 @@ namespace OpenRetail.Bll.Service
         public int Delete(Profil obj)
         {
             throw new NotImplementedException();
-        }        
+        }
+
+        public void Register()
+        {
+            throw new NotImplementedException();
+        }
     }
 }     
