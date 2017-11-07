@@ -2,8 +2,8 @@ OpenRetail [![Donate](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZDVaZWMtSTJpRV
 ==============================================
 
 [![Build status](https://ci.appveyor.com/api/projects/status/a2cf5uy7b16w386b?svg=true)](https://ci.appveyor.com/project/rudi-krsoftware/open-retail) 
-[![Release](https://drive.google.com/uc?id=0BxSptsEQ_0A1MzFGMVpVSE9jVFU)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0) 
-[![Downloads](https://drive.google.com/uc?id=0BxSptsEQ_0A1Rk91LS1ROUpYNFE)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0) 
+[![Release](https://drive.google.com/uc?id=0BxSptsEQ_0A1MzFGMVpVSE9jVFU)](https://github.com/rudi-krsoftware/open-retail/releases/latest) 
+[![Downloads](https://drive.google.com/uc?id=0BxSptsEQ_0A1Rk91LS1ROUpYNFE)](https://github.com/rudi-krsoftware/open-retail/releases/latest) 
 ![Status](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZXotVUd6U0xaQ2M) 
 ![Platform](https://drive.google.com/uc?id=0BxSptsEQ_0A1b1d6dEJEbFlaUlk) 
 [![License](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZzU4dnBjeldwN0U)](http://www.apache.org/licenses/LICENSE-2.0) 
