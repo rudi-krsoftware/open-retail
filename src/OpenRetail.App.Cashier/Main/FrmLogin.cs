@@ -90,6 +90,8 @@ namespace OpenRetail.App.Cashier.Main
             MainProgram.pengaturanUmum.jumlah_karakter = jumlahKarakter;
             MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;
 
+            MainProgram.pengaturanUmum.is_stok_produk_boleh_minus = AppConfigHelper.GetValue("isStokProdukBolehMinus", appConfigFile, "true").ToLower() == "true" ? true : false;
+
             // set header nota
             IHeaderNotaBll headerNotaBll = new HeaderNotaBll();
             MainProgram.pengaturanUmum.list_of_header_nota = headerNotaBll.GetAll();

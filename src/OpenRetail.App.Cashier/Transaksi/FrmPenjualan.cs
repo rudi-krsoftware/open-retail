@@ -403,6 +403,16 @@ namespace OpenRetail.App.Cashier.Transaksi
                                 return;
                             }
 
+                            if (!_pengaturanUmum.is_stok_produk_boleh_minus)
+                            {
+                                if (produk.is_stok_minus)
+                                {
+                                    ShowMessage("Maaf stok produk tidak boleh minus", true);
+                                    GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+                                    return;
+                                }
+                            }
+
                             ShowMessage("");
 
                             double diskon = 0;
@@ -449,6 +459,16 @@ namespace OpenRetail.App.Cashier.Transaksi
                         {
                             ShowMessage("");
                             produk = listOfProduk[0];
+
+                            if (!_pengaturanUmum.is_stok_produk_boleh_minus)
+                            {
+                                if (produk.is_stok_minus)
+                                {
+                                    ShowMessage("Maaf stok produk tidak boleh minus", true);
+                                    GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+                                    return;
+                                }
+                            }
 
                             double diskon = 0;
 
@@ -780,6 +800,16 @@ namespace OpenRetail.App.Cashier.Transaksi
             if (data is Produk) // pencarian produk baku
             {
                 var produk = (Produk)data;
+
+                if (!_pengaturanUmum.is_stok_produk_boleh_minus)
+                {
+                    if (produk.is_stok_minus)
+                    {
+                        ShowMessage("Maaf stok produk tidak boleh minus", true);
+                        GridListControlHelper.SelectCellText(this.gridControl, _rowIndex, 3);
+                        return;
+                    }
+                }
 
                 double diskon = 0;
                 if (_customer != null)

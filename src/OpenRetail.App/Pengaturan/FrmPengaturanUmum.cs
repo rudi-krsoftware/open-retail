@@ -194,6 +194,7 @@ namespace OpenRetail.App.Pengaturan
         {
             chkTampilkanInfoMinimalStokProduk.Checked = _pengaturanUmum.is_show_minimal_stok;
             chkCustomerWajibDiisi.Checked = _pengaturanUmum.is_customer_required;
+            chkStokProdukBolehMinus.Checked = _pengaturanUmum.is_stok_produk_boleh_minus;
             chkSingkatPenulisanOngkir.Checked = _pengaturanUmum.is_singkat_penulisan_ongkir;            
         }
 
@@ -215,6 +216,7 @@ namespace OpenRetail.App.Pengaturan
                 _pengaturanUmum.is_cetak_customer = chkCetakCustomer.Checked;
                 _pengaturanUmum.is_show_minimal_stok = chkTampilkanInfoMinimalStokProduk.Checked;
                 _pengaturanUmum.is_customer_required = chkCustomerWajibDiisi.Checked;
+                _pengaturanUmum.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;
                 _pengaturanUmum.is_singkat_penulisan_ongkir = chkSingkatPenulisanOngkir.Checked;
                 _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
                 _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
@@ -230,6 +232,7 @@ namespace OpenRetail.App.Pengaturan
                 AppConfigHelper.SaveValue("isCetakCustomer", chkCetakCustomer.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("isShowMinimalStok", chkTampilkanInfoMinimalStokProduk.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("isCustomerRequired", chkCustomerWajibDiisi.Checked.ToString(), appConfigFile);
+                AppConfigHelper.SaveValue("isStokProdukBolehMinus", chkStokProdukBolehMinus.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("isSingkatPenulisanOngkir", chkSingkatPenulisanOngkir.Checked.ToString(), appConfigFile);
                 AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
                 AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
