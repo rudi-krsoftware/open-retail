@@ -97,6 +97,7 @@
             this.chkTampilkanInfoMinimalStokProduk = new System.Windows.Forms.CheckBox();
             this.chkCustomerWajibDiisi = new System.Windows.Forms.CheckBox();
             this.chkSingkatPenulisanOngkir = new System.Windows.Forms.CheckBox();
+            this.chkStokProdukBolehMinus = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1032,11 +1033,13 @@
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.Controls.Add(this.chkTampilkanInfoMinimalStokProduk, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.chkCustomerWajibDiisi, 0, 1);
-            this.tableLayoutPanel13.Controls.Add(this.chkSingkatPenulisanOngkir, 0, 2);
+            this.tableLayoutPanel13.Controls.Add(this.chkSingkatPenulisanOngkir, 0, 3);
+            this.tableLayoutPanel13.Controls.Add(this.chkStokProdukBolehMinus, 0, 2);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 4;
+            this.tableLayoutPanel13.RowCount = 5;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -1070,12 +1073,23 @@
             // 
             this.chkSingkatPenulisanOngkir.AutoSize = true;
             this.chkSingkatPenulisanOngkir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkSingkatPenulisanOngkir.Location = new System.Drawing.Point(3, 53);
+            this.chkSingkatPenulisanOngkir.Location = new System.Drawing.Point(3, 78);
             this.chkSingkatPenulisanOngkir.Name = "chkSingkatPenulisanOngkir";
             this.chkSingkatPenulisanOngkir.Size = new System.Drawing.Size(410, 19);
-            this.chkSingkatPenulisanOngkir.TabIndex = 2;
+            this.chkSingkatPenulisanOngkir.TabIndex = 3;
             this.chkSingkatPenulisanOngkir.Text = "Singkat penulisan ongkos kirim. Misal 7.000 -> 7, 14.000 -> 14, dst";
             this.chkSingkatPenulisanOngkir.UseVisualStyleBackColor = true;
+            // 
+            // chkStokProdukBolehMinus
+            // 
+            this.chkStokProdukBolehMinus.AutoSize = true;
+            this.chkStokProdukBolehMinus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkStokProdukBolehMinus.Location = new System.Drawing.Point(3, 53);
+            this.chkStokProdukBolehMinus.Name = "chkStokProdukBolehMinus";
+            this.chkStokProdukBolehMinus.Size = new System.Drawing.Size(410, 19);
+            this.chkStokProdukBolehMinus.TabIndex = 2;
+            this.chkStokProdukBolehMinus.Text = "Stok produk boleh minus ketika penjualan";
+            this.chkStokProdukBolehMinus.UseVisualStyleBackColor = true;
             // 
             // FrmPengaturanUmum
             // 
@@ -1190,6 +1204,7 @@
         private System.Windows.Forms.RadioButton rdoJenisPrinterMiniPOS;
         private System.Windows.Forms.RadioButton rdoJenisPrinterDotMatrix;
         private System.Windows.Forms.RadioButton rdoJenisPrinterInkJet;
+        private System.Windows.Forms.CheckBox chkStokProdukBolehMinus;
 
 
 

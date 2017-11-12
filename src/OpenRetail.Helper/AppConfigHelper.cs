@@ -36,7 +36,7 @@ namespace OpenRetail.Helper
             return keyCount > 0;
         }
 
-        public static string GetValue(string sectionName, string appConfigFile)
+        public static string GetValue(string sectionName, string appConfigFile, string defaultValue = "")
         {
             var configFileMap = new ExeConfigurationFileMap();
             configFileMap.ExeConfigFilename = appConfigFile;
@@ -50,6 +50,8 @@ namespace OpenRetail.Helper
             {
                 if (IsSectionExist(sectionName, section))
                     result = section.Settings[sectionName].Value;
+                else
+                    result = defaultValue;
             }
             catch
             {

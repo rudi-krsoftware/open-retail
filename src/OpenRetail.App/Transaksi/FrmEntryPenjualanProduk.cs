@@ -725,9 +725,19 @@ namespace OpenRetail.App.Transaksi
 
         public void Ok(object sender, object data)
         {
-            if (data is Produk) // pencarian produk baku
+            if (data is Produk) // pencarian produk
             {
                 var produk = (Produk)data;
+
+                if (!_pengaturanUmum.is_stok_produk_boleh_minus)
+                {
+                    if (produk.is_stok_minus)
+                    {
+                        MsgHelper.MsgWarning("Maaf stok produk tidak boleh minus");
+                        GridListControlHelper.SelectCellText(this.gridControl, _rowIndex, 3);
+                        return;
+                    }
+                }
 
                 double diskon = 0;
                 if (_customer != null)
@@ -909,6 +919,16 @@ namespace OpenRetail.App.Transaksi
                                 return;
                             }
 
+                            if (!_pengaturanUmum.is_stok_produk_boleh_minus)
+                            {
+                                if (produk.is_stok_minus)
+                                {
+                                    MsgHelper.MsgWarning("Maaf stok produk tidak boleh minus");
+                                    GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+                                    return;
+                                }
+                            }                            
+
                             double diskon = 0;
 
                             if (_customer != null)
@@ -952,6 +972,16 @@ namespace OpenRetail.App.Transaksi
                         else if (listOfProduk.Count == 1)
                         {
                             produk = listOfProduk[0];
+
+                            if (!_pengaturanUmum.is_stok_produk_boleh_minus)
+                            {
+                                if (produk.is_stok_minus)
+                                {
+                                    MsgHelper.MsgWarning("Maaf stok produk tidak boleh minus");
+                                    GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+                                    return;
+                                }
+                            }
 
                             double diskon = 0;
 

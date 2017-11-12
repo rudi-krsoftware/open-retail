@@ -55,6 +55,7 @@ namespace OpenRetail.App.Cashier.Pengaturan
             SetInfoPrinter();
             LoadHeaderNota();
             LoadFooterNota();
+            LoadSettingLainnya();
         }
 
         private void LoadHeaderNota()
@@ -97,6 +98,11 @@ namespace OpenRetail.App.Cashier.Pengaturan
 
                 index++;
             }
+        }
+
+        private void LoadSettingLainnya()
+        {
+            chkStokProdukBolehMinus.Checked = _pengaturanUmum.is_stok_produk_boleh_minus;
         }
 
         private void LoadPrinter(string defaultPrinter)
@@ -146,6 +152,7 @@ namespace OpenRetail.App.Cashier.Pengaturan
             {
                 _pengaturanUmum.nama_printer = cmbPrinter.Text;
                 _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
+                _pengaturanUmum.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;
 
                 var jenisPrinter = JenisPrinter.InkJet;
 
@@ -159,6 +166,8 @@ namespace OpenRetail.App.Cashier.Pengaturan
                 _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
 
                 var appConfigFile = string.Format("{0}\\OpenRetailCashier.exe.config", Utils.GetAppPath());
+
+                AppConfigHelper.SaveValue("isStokProdukBolehMinus", chkStokProdukBolehMinus.Checked.ToString(), appConfigFile);
 
                 // simpan info printer
                 AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
