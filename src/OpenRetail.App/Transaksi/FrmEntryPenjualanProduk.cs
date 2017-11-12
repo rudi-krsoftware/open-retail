@@ -54,8 +54,7 @@ namespace OpenRetail.App.Transaksi
         private IList<ItemJualProduk> _listOfItemJualDeleted = new List<ItemJualProduk>();
         
         private int _rowIndex = 0;
-        private int _colIndex = 0;
-        private bool _isValidKodeProduk = false;
+        private int _colIndex = 0;        
 
         private bool _isNewData = false;
         private ILog _log;
@@ -890,8 +889,6 @@ namespace OpenRetail.App.Transaksi
                 switch (colIndex)
                 {
                     case 2: // kode produk
-                        _isValidKodeProduk = false;
-
                         cc = grid.CurrentCell;
                         var kodeProduk = cc.Renderer.ControlValue.ToString();
 
@@ -911,8 +908,6 @@ namespace OpenRetail.App.Transaksi
                                 GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                                 return;
                             }
-
-                            _isValidKodeProduk = true;
 
                             double diskon = 0;
 
@@ -947,57 +942,50 @@ namespace OpenRetail.App.Transaksi
                         cc = grid.CurrentCell;
                         var namaProduk = cc.Renderer.ControlValue.ToString();
 
-                        if (!_isValidKodeProduk)
+                        var listOfProduk = bll.GetByName(namaProduk);
+
+                        if (listOfProduk.Count == 0)
                         {
-                            var listOfProduk = bll.GetByName(namaProduk);
-
-                            if (listOfProduk.Count == 0)
-                            {
-                                MsgHelper.MsgWarning("Data produk tidak ditemukan");
-                                GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
-                            }
-                            else if (listOfProduk.Count == 1)
-                            {
-                                produk = listOfProduk[0];
-
-                                double diskon = 0;
-
-                                if (_customer != null)
-                                {
-                                    diskon = _customer.diskon;
-                                }
-
-                                if (!(diskon > 0))
-                                {
-                                    var diskonProduk = GetDiskonJualFix(produk, 1, produk.diskon);
-                                    diskon = diskonProduk > 0 ? diskonProduk : produk.Golongan.diskon;
-                                }                                    
-
-                                SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
-                                grid.Refresh();
-                                RefreshTotal();
-
-                                if (grid.RowCount == rowIndex)
-                                {
-                                    _listOfItemJual.Add(new ItemJualProduk());
-                                    grid.RowCount = _listOfItemJual.Count;
-                                }
-
-                                GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
-                            }
-                            else // data lebih dari satu
-                            {
-                                _rowIndex = rowIndex;
-                                _colIndex = colIndex;
-
-                                var frmLookup = new FrmLookupReferensi("Data Produk", listOfProduk);
-                                frmLookup.Listener = this;
-                                frmLookup.ShowDialog();
-                            }
+                            MsgHelper.MsgWarning("Data produk tidak ditemukan");
+                            GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                         }
-                        else
+                        else if (listOfProduk.Count == 1)
                         {
-                            GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
+                            produk = listOfProduk[0];
+
+                            double diskon = 0;
+
+                            if (_customer != null)
+                            {
+                                diskon = _customer.diskon;
+                            }
+
+                            if (!(diskon > 0))
+                            {
+                                var diskonProduk = GetDiskonJualFix(produk, 1, produk.diskon);
+                                diskon = diskonProduk > 0 ? diskonProduk : produk.Golongan.diskon;
+                            }                                    
+
+                            SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
+                            grid.Refresh();
+                            RefreshTotal();
+
+                            if (grid.RowCount == rowIndex)
+                            {
+                                _listOfItemJual.Add(new ItemJualProduk());
+                                grid.RowCount = _listOfItemJual.Count;
+                            }
+
+                            GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                        }
+                        else // data lebih dari satu
+                        {
+                            _rowIndex = rowIndex;
+                            _colIndex = colIndex;
+
+                            var frmLookup = new FrmLookupReferensi("Data Produk", listOfProduk);
+                            frmLookup.Listener = this;
+                            frmLookup.ShowDialog();
                         }
 
                         break;
