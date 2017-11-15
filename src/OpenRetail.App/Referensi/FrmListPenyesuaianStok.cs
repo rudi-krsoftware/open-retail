@@ -33,6 +33,7 @@ using OpenRetail.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using Syncfusion.Styles;
 
 namespace OpenRetail.App.Referensi
 {
@@ -69,25 +70,80 @@ namespace OpenRetail.App.Referensi
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Tanggal", Width = 80 });
             gridListProperties.Add(new GridListControlProperties { Header = "Produk", Width = 250 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Penambahan Stok Etalase", Width = 80 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Penambahan Stok Gudang", Width = 80 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Pengurangan Stok Etalase", Width = 80 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Pengurangan Stok Gudang", Width = 80 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Penambahan", Width = 80 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Penambahan", Width = 80 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Pengurangan", Width = 80 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Pengurangan", Width = 80 });
             gridListProperties.Add(new GridListControlProperties { Header = "Alasan Penyesuaian", Width = 350 });
             gridListProperties.Add(new GridListControlProperties { Header = "Keterangan" });
 
-            GridListControlHelper.InitializeGridListControl<PenyesuaianStok>(this.gridList, _listOfPenyesuaianStok, gridListProperties, rowHeight: 35);
+            GridListControlHelper.InitializeGridListControl<PenyesuaianStok>(this.gridList, _listOfPenyesuaianStok, gridListProperties, false, additionalRowCount: 1);
+            this.gridList.Grid.Model.RowHeights[1] = 25;
+            this.gridList.Grid.Model.Rows.FrozenCount = 1;
+
+            this.gridList.Grid.PrepareViewStyleInfo += delegate(object sender, GridPrepareViewStyleInfoEventArgs e)
+            {
+                var subHeaderHargaJual = new string[] { "Stok Etalase", "Stok Gudang", "Stok Etalase", "Stok Gudang" };
+                if (e.ColIndex > 3 && e.RowIndex == 1)
+                {
+                    var colIndex = 4;
+
+                    foreach (var header in subHeaderHargaJual)
+                    {
+                        if (colIndex == e.ColIndex)
+                            e.Style.Text = header;
+
+                        colIndex++;
+                    }
+                }
+            };
 
             if (_listOfPenyesuaianStok.Count > 0)
-                this.gridList.SetSelected(0, true);
+                this.gridList.SetSelected(1, true);
+
+            // merge cell
+            var column = 1; // kolom no
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 2; // tanggal
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 3; // produk
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 4; // kolom penambahan stok etalase dan gudang
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 0, column + 1));
+
+            column = 6; // kolom pengurangan stok etalase dan gudang
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 0, column + 1));
+
+            column = 8; // alasan penyesuaian
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            column = 9; // keterangan
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
+            var headerStyle = this.gridList.Grid.BaseStylesMap["Column Header"].StyleInfo;
+            headerStyle.CellType = GridCellTypeName.Header;
 
             this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
             {
+                if (e.RowIndex == 1)
+                {
+                    if (e.ColIndex > 3)
+                    {
+                        e.Style.ModifyStyle(headerStyle, StyleModifyType.ApplyNew);
+                    }
+
+                    // we handled it, let the grid know
+                    e.Handled = true;
+                }
+
                 if (_listOfPenyesuaianStok.Count > 0)
                 {
-                    if (e.RowIndex > 0)
+                    if (e.RowIndex > 1)
                     {
-                        var rowIndex = e.RowIndex - 1;
+                        var rowIndex = e.RowIndex - 2;
 
                         if (rowIndex < _listOfPenyesuaianStok.Count)
                         {
@@ -95,6 +151,11 @@ namespace OpenRetail.App.Referensi
 
                             switch (e.ColIndex)
                             {
+                                case 1:
+                                    e.Style.CellValue = e.RowIndex - 1;
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                    break;
+
                                 case 2:
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     e.Style.CellValue = DateTimeHelper.DateToString(penyesuaianStok.tanggal);
@@ -168,7 +229,7 @@ namespace OpenRetail.App.Referensi
 
         protected override void Perbaiki()
         {
-            var index = this.gridList.SelectedIndex;
+            var index = this.gridList.SelectedIndex - 1;
 
             if (!base.IsSelectedItem(index, this.Text))
                 return;
@@ -182,7 +243,7 @@ namespace OpenRetail.App.Referensi
 
         protected override void Hapus()
         {
-            var index = this.gridList.SelectedIndex;
+            var index = this.gridList.SelectedIndex - 1;
 
             if (!base.IsSelectedItem(index, this.Text))
                 return;
@@ -194,7 +255,7 @@ namespace OpenRetail.App.Referensi
                 var result = _bll.Delete(penyesuaianStok);
                 if (result > 0)
                 {
-                    GridListControlHelper.RemoveObject<PenyesuaianStok>(this.gridList, _listOfPenyesuaianStok, penyesuaianStok);
+                    GridListControlHelper.RemoveObject<PenyesuaianStok>(this.gridList, _listOfPenyesuaianStok, penyesuaianStok, additionalRowCount: 1);
                     ResetButton();
                 }
                 else
@@ -213,11 +274,11 @@ namespace OpenRetail.App.Referensi
 
             if (isNewData)
             {
-                GridListControlHelper.AddObject<PenyesuaianStok>(this.gridList, _listOfPenyesuaianStok, penyesuaianStok);
+                GridListControlHelper.AddObject<PenyesuaianStok>(this.gridList, _listOfPenyesuaianStok, penyesuaianStok, additionalRowCount: 1);
                 ResetButton();
             }
             else
-                GridListControlHelper.UpdateObject<PenyesuaianStok>(this.gridList, _listOfPenyesuaianStok, penyesuaianStok);
+                GridListControlHelper.UpdateObject<PenyesuaianStok>(this.gridList, _listOfPenyesuaianStok, penyesuaianStok, additionalRowCount: 1);
         }
     }
 }
