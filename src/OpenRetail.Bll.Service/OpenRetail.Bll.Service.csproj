@@ -103,6 +103,7 @@
     <Compile Include="Report\ReportJualProdukBll.cs" />
     <Compile Include="Report\ReportKartuHutangBll.cs" />
     <Compile Include="Report\ReportKartuPiutangBll.cs" />
+    <Compile Include="Report\ReportKartuStokBll.cs" />
     <Compile Include="Report\ReportKasbonBll.cs" />
     <Compile Include="Report\ReportMesinKasirBll.cs" />
     <Compile Include="Report\ReportPemasukanPengeluaranBll.cs" />

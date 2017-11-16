@@ -82,6 +82,7 @@ namespace OpenRetail.Repository.Service
         private IReportMesinKasirRepository _reportMesinKasirRepository;
 
         private IReportStokProdukRepository _reportStokProdukRepository;
+        private IReportKartuStokRepository _reportKartuStokRepository;
         private IReportPengeluaranBiayaRepository _reportPengeluaranBiayaRepository;
         private IReportKasbonRepository _reportKasbonRepository;
         private IReportGajiKaryawanRepository _reportGajiKaryawanRepository;
@@ -293,6 +294,11 @@ namespace OpenRetail.Repository.Service
         public IReportStokProdukRepository ReportStokProdukRepository
         {
             get { return _reportStokProdukRepository ?? (_reportStokProdukRepository = new ReportStokProdukRepository(_context, _log)); }
+        }
+
+        public IReportKartuStokRepository ReportKartuStokRepository
+        {
+            get { return _reportKartuStokRepository ?? (_reportKartuStokRepository = new ReportKartuStokRepository(_context, _log)); }
         }
 
         public IPengeluaranBiayaRepository PengeluaranBiayaRepository

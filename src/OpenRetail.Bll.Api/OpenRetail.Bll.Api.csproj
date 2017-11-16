@@ -90,6 +90,7 @@
     <Compile Include="Report\IReportJualProdukBll.cs" />
     <Compile Include="Report\IReportKartuHutangBll.cs" />
     <Compile Include="Report\IReportKartuPiutangBll.cs" />
+    <Compile Include="Report\IReportKartuStokBll.cs" />
     <Compile Include="Report\IReportKasbonBll.cs" />
     <Compile Include="Report\IReportMesinKasirBll.cs" />
     <Compile Include="Report\IReportPemasukanPengeluaranBll.cs" />

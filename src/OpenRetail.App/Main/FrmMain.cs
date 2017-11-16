@@ -711,5 +711,10 @@ namespace OpenRetail.App.Main
         {
             ShowFormDialog<FrmLapCustomerProduk>(sender);
         }
+
+        private void mnuLapKartuStokProduk_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapKartuStokProduk>(sender);
+        }
     }
 }
