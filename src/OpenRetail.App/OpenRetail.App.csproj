@@ -163,6 +163,12 @@
     <Compile Include="Laporan\FrmLapCustomerProduk.designer.cs">
       <DependentUpon>FrmLapCustomerProduk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Laporan\FrmLapKartuStokProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapKartuStokProduk.designer.cs">
+      <DependentUpon>FrmLapKartuStokProduk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\FrmLapPenjualanPerKasir.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -647,6 +653,9 @@
     </Compile>
     <EmbeddedResource Include="Laporan\FrmLapCustomerProduk.resx">
       <DependentUpon>FrmLapCustomerProduk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\FrmLapKartuStokProduk.resx">
+      <DependentUpon>FrmLapKartuStokProduk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Laporan\FrmLapPenjualanPerKasir.resx">
       <DependentUpon>FrmLapPenjualanPerKasir.cs</DependentUpon>

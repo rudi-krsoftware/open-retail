@@ -76,6 +76,7 @@
   <ItemGroup>
     <EmbeddedResource Include="RvCustomerProduk.rdlc" />
     <EmbeddedResource Include="RvKartuPiutangPenjualanProduk.rdlc" />
+    <EmbeddedResource Include="RvKartuStok.rdlc" />
     <EmbeddedResource Include="RvKasbonDetail.rdlc" />
     <EmbeddedResource Include="RvNotaPenjualanMiniPOSTanpaCustomer.rdlc" />
     <EmbeddedResource Include="RvNotaPenjualanMiniPOS.rdlc" />

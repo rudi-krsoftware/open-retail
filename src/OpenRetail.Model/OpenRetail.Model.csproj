@@ -103,6 +103,7 @@
     <Compile Include="Report\ReportHutangPembelianProdukHeader.cs" />
     <Compile Include="Report\ReportKartuHutang.cs" />
     <Compile Include="Report\ReportKartuPiutang.cs" />
+    <Compile Include="Report\ReportKartuStok.cs" />
     <Compile Include="Report\ReportKasbonDetail.cs" />
     <Compile Include="Report\ReportKasbonHeader.cs" />
     <Compile Include="Report\ReportMesinKasir.cs" />

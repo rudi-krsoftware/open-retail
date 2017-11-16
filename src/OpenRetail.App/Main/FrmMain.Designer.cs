@@ -89,6 +89,7 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLapStokProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenyesuaianStok = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLapKartuStokProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLapPengeluaranBiaya = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapKasbon = new System.Windows.Forms.ToolStripMenuItem();
@@ -459,6 +460,7 @@
             this.toolStripSeparator6,
             this.mnuLapStokProduk,
             this.mnuLapPenyesuaianStok,
+            this.mnuLapKartuStokProduk,
             this.toolStripSeparator5,
             this.mnuLapPengeluaranBiaya,
             this.mnuLapKasbon,
@@ -647,6 +649,14 @@
             this.mnuLapPenyesuaianStok.Tag = "FrmLapPenyesuaianStok";
             this.mnuLapPenyesuaianStok.Text = "Penyesuaian Stok";
             this.mnuLapPenyesuaianStok.Click += new System.EventHandler(this.mnuLapPenyesuaianStok_Click);
+            // 
+            // mnuLapKartuStokProduk
+            // 
+            this.mnuLapKartuStokProduk.Name = "mnuLapKartuStokProduk";
+            this.mnuLapKartuStokProduk.Size = new System.Drawing.Size(227, 22);
+            this.mnuLapKartuStokProduk.Tag = "FrmLapKartuStokProduk";
+            this.mnuLapKartuStokProduk.Text = "Kartu Stok Produk";
+            this.mnuLapKartuStokProduk.Click += new System.EventHandler(this.mnuLapKartuStokProduk_Click);
             // 
             // toolStripSeparator5
             // 
@@ -1158,5 +1168,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLapPenjualanPerKasir;
         private System.Windows.Forms.ToolStripMenuItem mnuDropshipper;
         private System.Windows.Forms.ToolStripMenuItem mnuLapCustomerProduk;
+        private System.Windows.Forms.ToolStripMenuItem mnuLapKartuStokProduk;
     }
 }
