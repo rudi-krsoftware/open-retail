@@ -36,7 +36,8 @@ namespace OpenRetail.App.Main
 {    
     public partial class FrmLogin : Form
     {
-        private ILog _log;        
+        private ILog _log;
+        private string _appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
 
         public FrmLogin()
         {
@@ -50,8 +51,7 @@ namespace OpenRetail.App.Main
 
         private void LoadAppConfig()
         {
-            var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
-            txtServer.Text = AppConfigHelper.GetValue("server", appConfigFile);
+            txtServer.Text = AppConfigHelper.GetValue("server", _appConfigFile);
 
             if (Utils.IsRunningUnderIDE()) // mode debug, set user dan password default untuk development
             {
@@ -60,7 +60,7 @@ namespace OpenRetail.App.Main
             }
 
             // baca setting pageSize
-            var pageSize = AppConfigHelper.GetValue("pageSize", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("pageSize", appConfigFile)) : 0;
+            var pageSize = AppConfigHelper.GetValue("pageSize", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("pageSize", _appConfigFile)) : 0;
 
             if (pageSize > 0)
                 MainProgram.pageSize = pageSize;
@@ -68,8 +68,7 @@ namespace OpenRetail.App.Main
 
         private void SaveAppConfig()
         {
-            var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
-            AppConfigHelper.SaveValue("server", txtServer.Text, appConfigFile);
+            AppConfigHelper.SaveValue("server", txtServer.Text, _appConfigFile);
         }
 
         private void SetProfil()
@@ -80,23 +79,21 @@ namespace OpenRetail.App.Main
 
         private void SetPengaturanUmum()
         {
-            var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
-
             MainProgram.pengaturanUmum = new PengaturanUmum();
-            MainProgram.pengaturanUmum.nama_printer = AppConfigHelper.GetValue("printerName", appConfigFile);
-            MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", appConfigFile).ToLower() == "true" ? true : false;
-            MainProgram.pengaturanUmum.is_auto_print_label_nota = AppConfigHelper.GetValue("isAutoPrinterLabelNota", appConfigFile).ToLower() == "true" ? true : false;
-            MainProgram.pengaturanUmum.is_show_minimal_stok = AppConfigHelper.GetValue("isShowMinimalStok", appConfigFile).ToLower() == "true" ? true : false;
-            MainProgram.pengaturanUmum.is_customer_required = AppConfigHelper.GetValue("isCustomerRequired", appConfigFile).ToLower() == "true" ? true : false;
-            MainProgram.pengaturanUmum.is_stok_produk_boleh_minus = AppConfigHelper.GetValue("isStokProdukBolehMinus", appConfigFile, "true").ToLower() == "true" ? true : false;
-            MainProgram.pengaturanUmum.is_singkat_penulisan_ongkir = AppConfigHelper.GetValue("isSingkatPenulisanOngkir", appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.nama_printer = AppConfigHelper.GetValue("printerName", _appConfigFile);
+            MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", _appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_auto_print_label_nota = AppConfigHelper.GetValue("isAutoPrinterLabelNota", _appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_show_minimal_stok = AppConfigHelper.GetValue("isShowMinimalStok", _appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_customer_required = AppConfigHelper.GetValue("isCustomerRequired", _appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_stok_produk_boleh_minus = AppConfigHelper.GetValue("isStokProdukBolehMinus", _appConfigFile, "true").ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_singkat_penulisan_ongkir = AppConfigHelper.GetValue("isSingkatPenulisanOngkir", _appConfigFile).ToLower() == "true" ? true : false;
 
             // set info printer mini pos
-            var jumlahKarakter = AppConfigHelper.GetValue("jumlahKarakter", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahKarakter", appConfigFile)) : 40;
-            var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", appConfigFile)) : 5;
-            var isCetakCustomer = AppConfigHelper.GetValue("isCetakCustomer", appConfigFile).Length > 0 ? Convert.ToBoolean(AppConfigHelper.GetValue("isCetakCustomer", appConfigFile)) : true;
+            var jumlahKarakter = AppConfigHelper.GetValue("jumlahKarakter", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahKarakter", _appConfigFile)) : 40;
+            var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", _appConfigFile)) : 5;
+            var isCetakCustomer = AppConfigHelper.GetValue("isCetakCustomer", _appConfigFile).Length > 0 ? Convert.ToBoolean(AppConfigHelper.GetValue("isCetakCustomer", _appConfigFile)) : true;
 
-            MainProgram.pengaturanUmum.jenis_printer = AppConfigHelper.GetValue("jenis_printer", appConfigFile).Length > 0 ? (JenisPrinter)Convert.ToInt32(AppConfigHelper.GetValue("jenis_printer", appConfigFile)) : JenisPrinter.InkJet;
+            MainProgram.pengaturanUmum.jenis_printer = AppConfigHelper.GetValue("jenis_printer", _appConfigFile).Length > 0 ? (JenisPrinter)Convert.ToInt32(AppConfigHelper.GetValue("jenis_printer", _appConfigFile)) : JenisPrinter.InkJet;
             MainProgram.pengaturanUmum.is_cetak_customer = isCetakCustomer;
             MainProgram.pengaturanUmum.jumlah_karakter = jumlahKarakter;
             MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;
@@ -116,6 +113,24 @@ namespace OpenRetail.App.Main
             // set label nota
             ILabelNotaBll labelNotaBll = new LabelNotaBll();
             MainProgram.pengaturanUmum.list_of_label_nota = labelNotaBll.GetAll();
+        }
+
+        private void SetPengaturanBarcode()
+        {
+            MainProgram.pengaturanBarcode = new PengaturanBarcode();
+            MainProgram.pengaturanBarcode.nama_printer = AppConfigHelper.GetValue("printerBarcode", _appConfigFile);
+
+            MainProgram.pengaturanBarcode.header_label = AppConfigHelper.GetValue("headerLabel", _appConfigFile).Length == 0 ? MainProgram.profil.nama_profil.NullToString() 
+                                                                                                                            : AppConfigHelper.GetValue("headerLabel", _appConfigFile);
+
+            MainProgram.pengaturanBarcode.batas_atas_baris1 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris1", _appConfigFile, "43"));
+            MainProgram.pengaturanBarcode.batas_atas_baris2 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris2", _appConfigFile, "187"));
+            MainProgram.pengaturanBarcode.batas_atas_baris3 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris3", _appConfigFile, "344"));
+            MainProgram.pengaturanBarcode.batas_atas_baris4 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris4", _appConfigFile, "496"));
+
+            MainProgram.pengaturanBarcode.batas_kiri_kolom1 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom1", _appConfigFile, "11"));
+            MainProgram.pengaturanBarcode.batas_kiri_kolom2 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom2", _appConfigFile, "277"));
+            MainProgram.pengaturanBarcode.batas_kiri_kolom3 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom3", _appConfigFile, "540"));
         }
 
         /// <summary>
@@ -216,6 +231,7 @@ namespace OpenRetail.App.Main
 
                     SetProfil();
                     SetPengaturanUmum();
+                    SetPengaturanBarcode();
                     LoadKabupaten();
 
                     if (MainProgram.pengaturanUmum.is_show_minimal_stok)

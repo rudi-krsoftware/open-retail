@@ -75,6 +75,10 @@
       <HintPath>..\..\lib\DockPanelSuite.3.0.1\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b5ae55aa76d2d9de, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\VersionInfo.cs">
@@ -191,6 +195,9 @@
       <DependentUpon>FrmSettingReportStandard.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\AdvancedTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControl\BarcodePanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControl\FilterRangeTanggal.cs">

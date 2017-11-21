@@ -157,6 +157,7 @@
     <Compile Include="ReturJualProduk.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="RolePrivilege.cs" />
+    <Compile Include="PengaturanBarcode.cs" />
     <Compile Include="Shift.cs" />
     <Compile Include="Supplier.cs" />
     <Compile Include="ValidationError.cs" />

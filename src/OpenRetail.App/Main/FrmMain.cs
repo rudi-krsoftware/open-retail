@@ -716,5 +716,10 @@ namespace OpenRetail.App.Main
         {
             ShowFormDialog<FrmLapKartuStokProduk>(sender);
         }
+
+        private void mnuCetakLabelBarcodeProduk_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmCetakLabelBarcodeProduk>(sender);
+        }
     }
 }
