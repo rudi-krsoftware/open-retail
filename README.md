@@ -14,7 +14,7 @@ OpenRetail [![Donate](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZDVaZWMtSTJpRV
 Apa itu OpenRetail?
 -------------------
 
-[OpenRetail](https://github.com/rudi-krsoftware/open-retail) adalah software open source yang dikembangkan khusus untuk bidang usaha ritel, grosir, toko bangunan, toko komputer dan bidang usaha lainnya yang sejenis.
+[OpenRetail](https://github.com/rudi-krsoftware/open-retail) adalah software open source yang dikembangkan khusus untuk bidang usaha ritel, grosir, toko bangunan, toko komputer, counter hp dan bidang usaha lainnya yang sejenis.
 
 Saat ini pilihan software untuk usaha retil memang banyak ditambah lagi harga yang bervariasi mulai dari ratusan hingga jutaan rupiah. Tapi untuk software yang gratis, open source dan berkualitas mungkin [OpenRetail](https://github.com/rudi-krsoftware/open-retail) adalah solusinya :-).
 
@@ -23,25 +23,20 @@ Apakah aplikasi ini benar-benar gratis?
 
 Yuph, benar-benar gratis, bahkan lebih dari itu [OpenRetail](https://github.com/rudi-krsoftware/open-retail) adalah software open source sehingga Anda bisa mendownload [kode sumbernya](https://github.com/rudi-krsoftware/open-retail/), mempelajari dan mengembangkan sendiri sesuai kebutuhan, tapi dengan syarat tidak boleh **menghapus** informasi asli tentang pembuat aplikasi ini. 
 
+Panduan Penggunaan OpenRetail
+-----------------------------
+
+Panduan instalasi dan penggunaan [OpenRetail](https://github.com/rudi-krsoftware/open-retail) dapat dilihat di https://github.com/rudi-krsoftware/open-retail/wiki.
+
+Forum atau Diskusi
+------------------
+
+Anda dapat bergabung dalam [Forum Pengguna OpenRetail](https://www.facebook.com/groups/OpenRetail) di Facebook. Group ini merupakan tempat berbagi informasi dan saling membantu menggunakan dan mengembangkan aplikasi [OpenRetail](https://github.com/rudi-krsoftware/open-retail).
+
 Bagaimana jika ingin ikut berkontribusi?
 ----------------------------------------
 
 [OpenRetail](https://github.com/rudi-krsoftware/open-retail) adalah software gratis di bawah lisensi [Apache](http://www.apache.org/licenses/LICENSE-2.0), namun jika Anda merasakan manfaat dari software ini, Anda dapat [berkontribusi](https://github.com/rudi-krsoftware/open-retail/wiki/Cara-Berkontribusi) dalam pengembangannya :-). Untuk informasi lebih lanjut tentang bagaimana cara [berkontribusi](https://github.com/rudi-krsoftware/open-retail/wiki/Cara-Berkontribusi) bisa Anda cek di [sini](https://github.com/rudi-krsoftware/open-retail/wiki/Cara-Berkontribusi).
-
-Catatan Rilis
--------------
-
-Untuk informasi rilis terbaru bisa Anda cek di [sini](https://github.com/rudi-krsoftware/open-retail/releases/latest).
-
-Fitur
---------
-
-OpenRetail mempunyai [segudang fitur](https://github.com/rudi-krsoftware/open-retail/wiki#fitur) untuk mempermudah transaksi usaha retail dan grosir Anda. Untuk fitur lengkapnya bisa Anda cek di [sini.](https://github.com/rudi-krsoftware/open-retail/wiki#fitur).
-
-Rilis Terbaru
--------------
-
-Untuk rilis terbaru OpenRetail bisa Anda download di [sini.](https://github.com/rudi-krsoftware/open-retail/releases)
 
 Prerequisites (Khusus software developer atau programmer)
 ---------------------------------------------------------
