@@ -39,6 +39,9 @@ namespace OpenRetail.Model.Report
         public double stok_gudang { get; set; }
         public double harga_beli { get; set; }
         public double harga_jual { get; set; }
+        public double harga_grosir1 { get; set; }
+        public double harga_grosir2 { get; set; }
+        public double harga_grosir3 { get; set; }
         public string golongan_id { get; set; }
         public string nama_golongan { get; set; }        
         public double asset

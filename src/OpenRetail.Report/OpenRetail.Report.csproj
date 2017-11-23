@@ -107,6 +107,7 @@
     <EmbeddedResource Include="RvPenyesuaianStok.rdlc" />
     <EmbeddedResource Include="RvPengeluaranBiaya.rdlc" />
     <EmbeddedResource Include="RvProdukFavorit.rdlc" />
+    <EmbeddedResource Include="RvStokProdukAdmin.rdlc" />
     <EmbeddedResource Include="RvStokProduk.rdlc" />
     <EmbeddedResource Include="RvPiutangPenjualanProduk.rdlc" />
     <EmbeddedResource Include="RvPiutangPenjualanProdukDetail.rdlc" />

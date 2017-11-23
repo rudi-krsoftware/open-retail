@@ -26,6 +26,7 @@ using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using OpenRetail.Model;
 
 namespace OpenRetail.Repository.Service.Report
 {
@@ -36,6 +37,14 @@ namespace OpenRetail.Repository.Service.Report
                                                           FROM public.m_golongan INNER JOIN public.m_produk ON m_produk.golongan_id = m_golongan.golongan_id
                                                           {WHERE}
                                                           ORDER BY m_produk.nama_produk";
+
+        private const string SQL_TEMPLATE_STOK_PRODUK_BY_SUPPLIER = @"SELECT m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.stok_gudang, m_produk.harga_beli, m_produk.harga_jual, 
+                                                                      m_golongan.golongan_id, m_golongan.nama_golongan
+                                                                      FROM public.m_golongan INNER JOIN public.m_produk ON m_produk.golongan_id = m_golongan.golongan_id
+                                                                      INNER JOIN public.t_item_beli_produk ON t_item_beli_produk.produk_id = m_produk.produk_id
+                                                                      INNER JOIN public.t_beli_produk ON t_item_beli_produk.beli_produk_id = t_beli_produk.beli_produk_id
+                                                                      {WHERE}
+                                                                      ORDER BY m_produk.nama_produk";
 
         private const string SQL_TEMPLATE_PENYESUAIAN_STOK = @"SELECT t_penyesuaian_stok.penyesuaian_stok_id, t_penyesuaian_stok.tanggal, t_penyesuaian_stok.penambahan_stok, t_penyesuaian_stok.pengurangan_stok, t_penyesuaian_stok.penambahan_stok_gudang, t_penyesuaian_stok.pengurangan_stok_gudang, t_penyesuaian_stok.keterangan, 
                                                                m_produk.produk_id, m_produk.nama_produk, m_alasan_penyesuaian_stok.alasan_penyesuaian_stok_id, m_alasan_penyesuaian_stok.alasan
@@ -54,7 +63,28 @@ namespace OpenRetail.Repository.Service.Report
             this._context = context;
             this._log = log;
         }
-        
+
+        private IList<HargaGrosir> GetListHargaGrosir(string produkId)
+        {
+            IHargaGrosirRepository repo = new HargaGrosirRepository(_context, _log);
+
+            return repo.GetListHargaGrosir(produkId);
+        }
+
+        private void SetHargaGrosir(IList<ReportStokProduk> oList)
+        {
+            foreach (var item in oList)
+            {
+                var listOfHargaGrosir = GetListHargaGrosir(item.produk_id);
+                if (listOfHargaGrosir.Count == 3)
+                {
+                    item.harga_grosir1 = listOfHargaGrosir[0].harga_grosir;
+                    item.harga_grosir2 = listOfHargaGrosir[1].harga_grosir;
+                    item.harga_grosir3 = listOfHargaGrosir[2].harga_grosir;
+                }
+            }
+        }
+
         public IList<ReportStokProduk> GetStokByStatus(StatusStok statusStok)
         {
             IList<ReportStokProduk> oList = new List<ReportStokProduk>();
@@ -78,6 +108,8 @@ namespace OpenRetail.Repository.Service.Report
 
                 oList = _context.db.Query<ReportStokProduk>(_sql).ToList();
 
+                if (oList.Count > 0)
+                    SetHargaGrosir(oList);
             }
             catch (Exception ex)
             {
@@ -87,6 +119,91 @@ namespace OpenRetail.Repository.Service.Report
             return oList;
         }
         
+        public IList<ReportStokProduk> GetStokKurangDari(double stok)
+        {
+            IList<ReportStokProduk> oList = new List<ReportStokProduk>();
+
+            try
+            {
+                _sql = SQL_TEMPLATE_STOK_PRODUK.Replace("{WHERE}", "WHERE (m_produk.stok + m_produk.stok_gudang) < @stok");
+
+                oList = _context.db.Query<ReportStokProduk>(_sql, new { stok }).ToList();
+
+                if (oList.Count > 0)
+                    SetHargaGrosir(oList);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportStokProduk> GetStokBerdasarkanSupplier(string supplierId)
+        {
+            IList<ReportStokProduk> oList = new List<ReportStokProduk>();
+
+            try
+            {
+                _sql = SQL_TEMPLATE_STOK_PRODUK_BY_SUPPLIER.Replace("{WHERE}", "WHERE t_beli_produk.supplier_id = @supplierId");
+
+                oList = _context.db.Query<ReportStokProduk>(_sql, new { supplierId }).ToList();
+
+                if (oList.Count > 0)
+                    SetHargaGrosir(oList);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportStokProduk> GetStokBerdasarkanGolongan(string golonganId)
+        {
+            IList<ReportStokProduk> oList = new List<ReportStokProduk>();
+
+            try
+            {
+                _sql = SQL_TEMPLATE_STOK_PRODUK.Replace("{WHERE}", "WHERE m_golongan.golongan_id = @golonganId");
+
+                oList = _context.db.Query<ReportStokProduk>(_sql, new { golonganId }).ToList();
+
+                if (oList.Count > 0)
+                    SetHargaGrosir(oList);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportStokProduk> GetStokBerdasarkanNama(string name)
+        {
+            IList<ReportStokProduk> oList = new List<ReportStokProduk>();
+
+            try
+            {
+                name = "%" + name.ToLower() + "%";
+                _sql = SQL_TEMPLATE_STOK_PRODUK.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name");
+
+                oList = _context.db.Query<ReportStokProduk>(_sql, new { name }).ToList();
+
+                if (oList.Count > 0)
+                    SetHargaGrosir(oList);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
         public IList<ReportPenyesuaianStokProduk> GetPenyesuaianStokByBulan(int bulan, int tahun)
         {
             IList<ReportPenyesuaianStokProduk> oList = new List<ReportPenyesuaianStokProduk>();
@@ -127,6 +244,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }
+        }        
     }
 }

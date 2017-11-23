@@ -43,6 +43,8 @@ namespace OpenRetail.App.Laporan
     public partial class FrmLapStokProduk : FrmSettingReportEmptyBody
     {
         private ILog _log;
+        private IList<Supplier> _listOfSupplier = new List<Supplier>();
+        private IList<Golongan> _listOfGolongan = new List<Golongan>();
 
         public FrmLapStokProduk(string header)
         {
@@ -52,34 +54,87 @@ namespace OpenRetail.App.Laporan
             _log = MainProgram.log;
 
             base.SetHeader(header);
-            cmbStatusStok.SelectedIndex = 0;            
+            cmbStatusStok.SelectedIndex = 0;
+
+            LoadSupplier();
+            LoadGolongan();
+        }
+
+        private void LoadSupplier()
+        {
+            ISupplierBll bll = new SupplierBll(_log);
+            _listOfSupplier = bll.GetAll();
+
+            FillDataHelper.FillSupplier(cmbSupplier, _listOfSupplier);
+
+            if (_listOfSupplier.Count > 0)
+                cmbSupplier.SelectedIndex = 0;
+            else
+                rdoStokBerdasarkanSupplier.Enabled = false;
+        }
+
+        private void LoadGolongan()
+        {
+            IGolonganBll bll = new GolonganBll(_log);
+            _listOfGolongan = bll.GetAll();
+
+            FillDataHelper.FillGolongan(cmbGolongan, _listOfGolongan);
+
+            if (_listOfGolongan.Count > 0)
+                cmbGolongan.SelectedIndex = 0;
+            else
+                rdoStokBerdasarkanGolongan.Enabled = false;
         }
 
         protected override void Preview()
         {
+            var keterangan = string.Empty;
+
+            IReportStokProdukBll reportBll = new ReportStokProdukBll(_log);
+            IList<ReportStokProduk> listOfReportStokProduk = new List<ReportStokProduk>();            
+
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                PreviewReport();   
+                if (rdoStatusStok.Checked)
+                {
+                    keterangan = string.Format("Jumlah stok berdasarkan status stok {0}", cmbStatusStok.Text);
+
+                    var statusStok = (StatusStok)cmbStatusStok.SelectedIndex + 1;
+                    listOfReportStokProduk = reportBll.GetStokByStatus(statusStok);
+                }
+                else if (rdoStokKurangDari.Checked)
+                {
+                    keterangan = string.Format("Jumlah stok kurang dari {0}", txtStok.Text);
+                    listOfReportStokProduk = reportBll.GetStokKurangDari(NumberHelper.StringToDouble(txtStok.Text));
+                }
+                else if (rdoStokBerdasarkanSupplier.Checked)
+                {
+                    keterangan = string.Format("Jumlah stok berdasarkan supplier {0}", cmbSupplier.Text);
+
+                    var supplierId = _listOfSupplier[cmbSupplier.SelectedIndex].supplier_id;
+                    listOfReportStokProduk = reportBll.GetStokBerdasarkanSupplier(supplierId);
+                }
+                else if (rdoStokBerdasarkanGolongan.Checked)
+                {
+                    keterangan = string.Format("Jumlah stok berdasarkan golongan {0}", cmbGolongan.Text);
+
+                    var golonganId = _listOfGolongan[cmbGolongan.SelectedIndex].golongan_id;
+                    listOfReportStokProduk = reportBll.GetStokBerdasarkanGolongan(golonganId);
+                }
+                else if (rdoStokBerdasarkanNama.Checked)
+                {
+                    keterangan = string.Format("Jumlah stok berdasarkan pencarian nama {0}", txtNamaProduk.Text);
+
+                    listOfReportStokProduk = reportBll.GetStokBerdasarkanNama(txtNamaProduk.Text);
+                }
+
+                PreviewReport(listOfReportStokProduk, keterangan);                   
             }
         }
 
-        private void PreviewReport()
+        private void PreviewReport(IList<ReportStokProduk> listOfReportStokProduk, string keterangan)
         {
             var periode = string.Empty;
-
-            IReportStokProdukBll reportBll = new ReportStokProdukBll(_log);
-
-            IList<ReportStokProduk> listOfReportStokProduk = new List<ReportStokProduk>();
-
-            var statusStok = (StatusStok)cmbStatusStok.SelectedIndex + 1;
-
-            listOfReportStokProduk = reportBll.GetStokByStatus(statusStok);
-
-            if (txtNamaProduk.Text.Length > 0)
-            {
-                listOfReportStokProduk = listOfReportStokProduk.Where(f => f.nama_produk.ToLower().Contains(txtNamaProduk.Text.ToLower()))
-                                                               .ToList();
-            }
 
             if (listOfReportStokProduk.Count > 0)
             {
@@ -90,7 +145,7 @@ namespace OpenRetail.App.Laporan
                 };
 
                 var parameters = new List<ReportParameter>();
-                parameters.Add(new ReportParameter("status", string.Format("Status Stok : {0}", cmbStatusStok.Text)));
+                parameters.Add(new ReportParameter("keterangan", keterangan));
 
                 base.ShowReport(this.Text, "RvStokProduk", reportDataSource, parameters);
             }
