@@ -9,7 +9,7 @@ OpenRetail [![Donate](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZDVaZWMtSTJpRV
 [![License](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZzU4dnBjeldwN0U)](http://www.apache.org/licenses/LICENSE-2.0) 
 
 
-[![Open Retail](https://openretailblog.files.wordpress.com/2017/09/banner-small.png)](https://github.com/rudi-krsoftware/open-retail)
+[![Open Retail](https://raw.githubusercontent.com/wiki/rudi-krsoftware/open-retail/images/banner-small.png)](https://github.com/rudi-krsoftware/open-retail)
 
 Apa itu OpenRetail?
 -------------------
