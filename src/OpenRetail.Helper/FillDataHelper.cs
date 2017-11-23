@@ -49,7 +49,27 @@ namespace OpenRetail.Helper
             {
                 chkListbox.Items.Add(supplier.nama_supplier);
             }
-        }        
+        }
+
+        public static void FillSupplier(ComboBox comboBox, IList<Supplier> listOfSupplier)
+        {
+            comboBox.Items.Clear();
+
+            foreach (var supplier in listOfSupplier)
+            {
+                comboBox.Items.Add(supplier.nama_supplier);
+            }
+        }
+
+        public static void FillGolongan(ComboBox comboBox, IList<Golongan> listOfGolongan)
+        {
+            comboBox.Items.Clear();
+
+            foreach (var golongan in listOfGolongan)
+            {
+                comboBox.Items.Add(golongan.nama_golongan);
+            }
+        }
 
         public static void FillCustomer(CheckedListBox chkListbox, IList<Customer> listOfCustomer)
         {

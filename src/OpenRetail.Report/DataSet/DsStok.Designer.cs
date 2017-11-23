@@ -367,6 +367,12 @@ namespace OpenRetail.Report.DataSet {
             
             private global::System.Data.DataColumn columnharga_jual;
             
+            private global::System.Data.DataColumn columnharga_grosir1;
+            
+            private global::System.Data.DataColumn columnharga_grosir2;
+            
+            private global::System.Data.DataColumn columnharga_grosir3;
+            
             private global::System.Data.DataColumn columnasset;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -476,6 +482,30 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn harga_grosir1Column {
+                get {
+                    return this.columnharga_grosir1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn harga_grosir2Column {
+                get {
+                    return this.columnharga_grosir2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn harga_grosir3Column {
+                get {
+                    return this.columnharga_grosir3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn assetColumn {
                 get {
                     return this.columnasset;
@@ -519,7 +549,7 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ReportProdukRow AddReportProdukRow(string golongan_id, string nama_golongan, string produk_id, string nama_produk, string satuan, double stok, double stok_gudang, double harga_beli, double harga_jual, double asset) {
+            public ReportProdukRow AddReportProdukRow(string golongan_id, string nama_golongan, string produk_id, string nama_produk, string satuan, double stok, double stok_gudang, double harga_beli, double harga_jual, double harga_grosir1, double harga_grosir2, double harga_grosir3, double asset) {
                 ReportProdukRow rowReportProdukRow = ((ReportProdukRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         golongan_id,
@@ -531,6 +561,9 @@ namespace OpenRetail.Report.DataSet {
                         stok_gudang,
                         harga_beli,
                         harga_jual,
+                        harga_grosir1,
+                        harga_grosir2,
+                        harga_grosir3,
                         asset};
                 rowReportProdukRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReportProdukRow);
@@ -563,6 +596,9 @@ namespace OpenRetail.Report.DataSet {
                 this.columnstok_gudang = base.Columns["stok_gudang"];
                 this.columnharga_beli = base.Columns["harga_beli"];
                 this.columnharga_jual = base.Columns["harga_jual"];
+                this.columnharga_grosir1 = base.Columns["harga_grosir1"];
+                this.columnharga_grosir2 = base.Columns["harga_grosir2"];
+                this.columnharga_grosir3 = base.Columns["harga_grosir3"];
                 this.columnasset = base.Columns["asset"];
             }
             
@@ -587,6 +623,12 @@ namespace OpenRetail.Report.DataSet {
                 base.Columns.Add(this.columnharga_beli);
                 this.columnharga_jual = new global::System.Data.DataColumn("harga_jual", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnharga_jual);
+                this.columnharga_grosir1 = new global::System.Data.DataColumn("harga_grosir1", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnharga_grosir1);
+                this.columnharga_grosir2 = new global::System.Data.DataColumn("harga_grosir2", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnharga_grosir2);
+                this.columnharga_grosir3 = new global::System.Data.DataColumn("harga_grosir3", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnharga_grosir3);
                 this.columnasset = new global::System.Data.DataColumn("asset", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnasset);
             }
@@ -1677,6 +1719,54 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double harga_grosir1 {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportProduk.harga_grosir1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'harga_grosir1\' in table \'ReportProduk\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportProduk.harga_grosir1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double harga_grosir2 {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportProduk.harga_grosir2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'harga_grosir2\' in table \'ReportProduk\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportProduk.harga_grosir2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double harga_grosir3 {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportProduk.harga_grosir3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'harga_grosir3\' in table \'ReportProduk\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportProduk.harga_grosir3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public double asset {
                 get {
                     try {
@@ -1797,6 +1887,42 @@ namespace OpenRetail.Report.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setharga_jualNull() {
                 this[this.tableReportProduk.harga_jualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isharga_grosir1Null() {
+                return this.IsNull(this.tableReportProduk.harga_grosir1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setharga_grosir1Null() {
+                this[this.tableReportProduk.harga_grosir1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isharga_grosir2Null() {
+                return this.IsNull(this.tableReportProduk.harga_grosir2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setharga_grosir2Null() {
+                this[this.tableReportProduk.harga_grosir2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isharga_grosir3Null() {
+                return this.IsNull(this.tableReportProduk.harga_grosir3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setharga_grosir3Null() {
+                this[this.tableReportProduk.harga_grosir3Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
