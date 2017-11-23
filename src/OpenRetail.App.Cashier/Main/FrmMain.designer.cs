@@ -66,6 +66,7 @@
             this.tbPenjualanProduk = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
+            this.mnuGroupOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -215,6 +216,7 @@
             this.mnuBantuan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBlogOpenRetail,
             this.mnuFanPageOpenRetail,
+            this.mnuGroupOpenRetail,
             this.toolStripSeparator16,
             this.mnuPetunjukPenggunaanOpenRetail,
             this.toolStripSeparator14,
@@ -231,7 +233,7 @@
             this.mnuBlogOpenRetail.Name = "mnuBlogOpenRetail";
             this.mnuBlogOpenRetail.Size = new System.Drawing.Size(264, 22);
             this.mnuBlogOpenRetail.Text = "Blog OpenRetail";
-            this.mnuBlogOpenRetail.Click += new System.EventHandler(this.mnuBlogOpenRetail_Click);
+            this.mnuBlogOpenRetail.Visible = false;
             // 
             // mnuFanPageOpenRetail
             // 
@@ -378,6 +380,13 @@
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
+            // mnuGroupOpenRetail
+            // 
+            this.mnuGroupOpenRetail.Name = "mnuGroupOpenRetail";
+            this.mnuGroupOpenRetail.Size = new System.Drawing.Size(264, 22);
+            this.mnuGroupOpenRetail.Text = "Group OpenRetail";
+            this.mnuGroupOpenRetail.Click += new System.EventHandler(this.mnuGroupOpenRetail_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,5 +452,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuPetunjukPenggunaanOpenRetail;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem mnuFanPageOpenRetail;
+        private System.Windows.Forms.ToolStripMenuItem mnuGroupOpenRetail;
     }
 }

@@ -41,7 +41,6 @@
             this.lblCopyright = new System.Windows.Forms.Label();
             this.lblUrl1 = new System.Windows.Forms.LinkLabel();
             this.lblUrl2 = new System.Windows.Forms.LinkLabel();
-            this.lblUrl3 = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -97,7 +96,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.pnlFooter, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 352);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 336);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -136,12 +135,11 @@
             this.tableLayoutPanel3.Controls.Add(this.lblCopyright, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.lblUrl1, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.lblUrl2, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.lblUrl3, 0, 6);
-            this.tableLayoutPanel3.Controls.Add(this.groupBox1, 0, 7);
+            this.tableLayoutPanel3.Controls.Add(this.groupBox1, 0, 6);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 8;
+            this.tableLayoutPanel3.RowCount = 7;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -149,8 +147,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(536, 311);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(536, 295);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // pictureBox1
@@ -212,25 +209,13 @@
             this.lblUrl2.Text = "lblUrl2";
             this.lblUrl2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblUrl3
-            // 
-            this.lblUrl3.AutoSize = true;
-            this.lblUrl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblUrl3.Location = new System.Drawing.Point(3, 213);
-            this.lblUrl3.Name = "lblUrl3";
-            this.lblUrl3.Size = new System.Drawing.Size(530, 20);
-            this.lblUrl3.TabIndex = 3;
-            this.lblUrl3.TabStop = true;
-            this.lblUrl3.Text = "lblUrl3";
-            this.lblUrl3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel4);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 236);
+            this.groupBox1.Location = new System.Drawing.Point(3, 216);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(530, 72);
+            this.groupBox1.Size = new System.Drawing.Size(530, 76);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
@@ -246,7 +231,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(524, 53);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(524, 57);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label1
@@ -268,7 +253,7 @@
             this.imgDonate.Image = global::OpenRetail.App.Cashier.Properties.Resources.donasi_fix;
             this.imgDonate.Location = new System.Drawing.Point(411, 3);
             this.imgDonate.Name = "imgDonate";
-            this.imgDonate.Size = new System.Drawing.Size(110, 47);
+            this.imgDonate.Size = new System.Drawing.Size(110, 51);
             this.imgDonate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgDonate.TabIndex = 1;
             this.imgDonate.TabStop = false;
@@ -278,7 +263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 393);
+            this.ClientSize = new System.Drawing.Size(536, 377);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -321,7 +306,6 @@
         private System.Windows.Forms.Label lblCopyright;
         private System.Windows.Forms.LinkLabel lblUrl1;
         private System.Windows.Forms.LinkLabel lblUrl2;
-        private System.Windows.Forms.LinkLabel lblUrl3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label1;

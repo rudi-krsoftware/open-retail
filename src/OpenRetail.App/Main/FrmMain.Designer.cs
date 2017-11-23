@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.statusStripEx1 = new Syncfusion.Windows.Forms.Tools.StatusStripEx();
             this.sbJam = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
@@ -117,7 +118,7 @@
             this.mnuKeluar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGantiUser = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKeluarDariProgram = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.mainDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tbGolongan = new System.Windows.Forms.ToolStripButton();
@@ -135,6 +136,7 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
+            this.mnuGroupOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -763,6 +765,7 @@
             this.mnuBantuan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBlogOpenRetail,
             this.mnuFanPageOpenRetail,
+            this.mnuGroupOpenRetail,
             this.toolStripSeparator16,
             this.mnuPetunjukPenggunaanOpenRetail,
             this.toolStripSeparator14,
@@ -779,7 +782,7 @@
             this.mnuBlogOpenRetail.Name = "mnuBlogOpenRetail";
             this.mnuBlogOpenRetail.Size = new System.Drawing.Size(264, 22);
             this.mnuBlogOpenRetail.Text = "Blog OpenRetail";
-            this.mnuBlogOpenRetail.Click += new System.EventHandler(this.mnuBlogOpenRetail_Click);
+            this.mnuBlogOpenRetail.Visible = false;
             // 
             // mnuFanPageOpenRetail
             // 
@@ -1043,6 +1046,13 @@
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
+            // mnuGroupOpenRetail
+            // 
+            this.mnuGroupOpenRetail.Name = "mnuGroupOpenRetail";
+            this.mnuGroupOpenRetail.Size = new System.Drawing.Size(264, 22);
+            this.mnuGroupOpenRetail.Text = "Group OpenRetail";
+            this.mnuGroupOpenRetail.Click += new System.EventHandler(this.mnuGroupOpenRetail_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1179,5 +1189,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLapCustomerProduk;
         private System.Windows.Forms.ToolStripMenuItem mnuLapKartuStokProduk;
         private System.Windows.Forms.ToolStripMenuItem mnuCetakLabelBarcodeProduk;
+        private System.Windows.Forms.ToolStripMenuItem mnuGroupOpenRetail;
     }
 }
