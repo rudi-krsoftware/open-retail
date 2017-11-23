@@ -157,7 +157,7 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::OpenRetail.App.Cashier.Properties.Resources.logofix;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(530, 107);
@@ -266,9 +266,9 @@
             this.imgDonate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.imgDonate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgDonate.Image = global::OpenRetail.App.Cashier.Properties.Resources.donasi_fix;
-            this.imgDonate.Location = new System.Drawing.Point(412, 3);
+            this.imgDonate.Location = new System.Drawing.Point(411, 3);
             this.imgDonate.Name = "imgDonate";
-            this.imgDonate.Size = new System.Drawing.Size(109, 47);
+            this.imgDonate.Size = new System.Drawing.Size(110, 47);
             this.imgDonate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgDonate.TabIndex = 1;
             this.imgDonate.TabStop = false;

@@ -332,7 +332,7 @@
             this.mainDock.AllowEndUserDocking = false;
             this.mainDock.AllowEndUserNestedDocking = false;
             this.mainDock.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.mainDock.BackgroundImage = global::OpenRetail.App.Cashier.Properties.Resources.background_cashier;
+            this.mainDock.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainDock.BackgroundImage")));
             this.mainDock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mainDock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDock.Location = new System.Drawing.Point(0, 24);

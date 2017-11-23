@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.statusStripEx1 = new Syncfusion.Windows.Forms.Tools.StatusStripEx();
             this.sbJam = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
@@ -118,7 +117,7 @@
             this.mnuKeluar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGantiUser = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKeluarDariProgram = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             this.mainDock = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tbGolongan = new System.Windows.Forms.ToolStripButton();
@@ -881,7 +880,7 @@
             this.mainDock.AllowEndUserDocking = false;
             this.mainDock.AllowEndUserNestedDocking = false;
             this.mainDock.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.mainDock.BackgroundImage = global::OpenRetail.App.Properties.Resources.background_server;
+            this.mainDock.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainDock.BackgroundImage")));
             this.mainDock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mainDock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDock.Location = new System.Drawing.Point(0, 24);
