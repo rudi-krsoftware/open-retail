@@ -92,6 +92,7 @@
     <Compile Include="DatabaseVersionHelper.cs" />
     <Compile Include="DateTimeHelper.cs" />
     <Compile Include="DayMonthHelper.cs" />
+    <Compile Include="NetworkHelper.cs" />
     <Compile Include="RAWPrinting\ESCCommandHelper.cs" />
     <Compile Include="FillDataHelper.cs" />
     <Compile Include="GridControlColSizeHelper.cs" />
