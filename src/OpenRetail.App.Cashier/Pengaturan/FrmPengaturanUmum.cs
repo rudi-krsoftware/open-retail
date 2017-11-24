@@ -55,7 +55,6 @@ namespace OpenRetail.App.Cashier.Pengaturan
             SetInfoPrinter();
             LoadHeaderNota();
             LoadFooterNota();
-            LoadSettingLainnya();
         }
 
         private void LoadHeaderNota()
@@ -98,11 +97,6 @@ namespace OpenRetail.App.Cashier.Pengaturan
 
                 index++;
             }
-        }
-
-        private void LoadSettingLainnya()
-        {
-            chkStokProdukBolehMinus.Checked = _pengaturanUmum.is_stok_produk_boleh_minus;
         }
 
         private void LoadPrinter(string defaultPrinter)
@@ -150,33 +144,8 @@ namespace OpenRetail.App.Cashier.Pengaturan
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                _pengaturanUmum.nama_printer = cmbPrinter.Text;
-                _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
-                _pengaturanUmum.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;
-
-                var jenisPrinter = JenisPrinter.InkJet;
-
-                if (rdoJenisPrinterDotMatrix.Checked)
-                    jenisPrinter = JenisPrinter.DotMatrix;
-                else if (rdoJenisPrinterMiniPOS.Checked)
-                    jenisPrinter = JenisPrinter.MiniPOS;
-
-                _pengaturanUmum.jenis_printer = jenisPrinter;
-                _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
-                _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
-
-                var appConfigFile = string.Format("{0}\\OpenRetailCashier.exe.config", Utils.GetAppPath());
-
-                AppConfigHelper.SaveValue("isStokProdukBolehMinus", chkStokProdukBolehMinus.Checked.ToString(), appConfigFile);
-
-                // simpan info printer
-                AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
-                AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
-                AppConfigHelper.SaveValue("jenis_printer", Convert.ToString((int)jenisPrinter), appConfigFile);
-
-                // simpan info printer mini pos
-                AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
-                AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
+                // simpan pengaturan lokal (app.config)
+                SimpanPengaturanLokal();
 
                 // simpan header nota
                 SimpanHeaderNota();
@@ -186,6 +155,37 @@ namespace OpenRetail.App.Cashier.Pengaturan
 
                 this.Close();    
             }            
+        }
+
+        /// <summary>
+        /// Simpan pengaturan aplikasi di masing-masing pc (app.config)
+        /// </summary>
+        private void SimpanPengaturanLokal()
+        {
+            var appConfigFile = string.Format("{0}\\OpenRetailCashier.exe.config", Utils.GetAppPath());
+
+            _pengaturanUmum.nama_printer = cmbPrinter.Text;
+            _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
+
+            var jenisPrinter = JenisPrinter.InkJet;
+
+            if (rdoJenisPrinterDotMatrix.Checked)
+                jenisPrinter = JenisPrinter.DotMatrix;
+            else if (rdoJenisPrinterMiniPOS.Checked)
+                jenisPrinter = JenisPrinter.MiniPOS;
+
+            _pengaturanUmum.jenis_printer = jenisPrinter;
+            _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
+            _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);            
+
+            // simpan info printer
+            AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
+            AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("jenis_printer", Convert.ToString((int)jenisPrinter), appConfigFile);
+
+            // simpan info printer mini pos
+            AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
+            AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
         }
 
         private void SimpanHeaderNota()

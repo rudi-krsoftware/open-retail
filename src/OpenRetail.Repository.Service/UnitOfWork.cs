@@ -40,6 +40,7 @@ namespace OpenRetail.Repository.Service
         private IJabatanRepository _jabatanRepository;
         private IJenisPengeluaranRepository _jenispengeluaranRepository;
         private IGolonganRepository _golonganRepository;
+        private ISettingAplikasiRepository _settingAplikasiRepository;
         private IProdukRepository _produkRepository;
         private IHargaGrosirRepository _hargaGrosirRepository;
         private ICustomerRepository _customerRepository;
@@ -129,6 +130,11 @@ namespace OpenRetail.Repository.Service
         public IGolonganRepository GolonganRepository
         {
             get { return _golonganRepository ?? (_golonganRepository = new GolonganRepository(_context, _log)); }
+        }
+
+        public ISettingAplikasiRepository SettingAplikasiRepository
+        {
+            get { return _settingAplikasiRepository ?? (_settingAplikasiRepository = new SettingAplikasiRepository(_context, _log)); }
         }
 
         public IProdukRepository ProdukRepository

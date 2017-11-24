@@ -79,13 +79,13 @@ namespace OpenRetail.App.Main
 
         private void SetPengaturanUmum()
         {
+            // set pengaturan lokal (setting di simpan di file app.config)
             MainProgram.pengaturanUmum = new PengaturanUmum();
             MainProgram.pengaturanUmum.nama_printer = AppConfigHelper.GetValue("printerName", _appConfigFile);
             MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", _appConfigFile).ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.is_auto_print_label_nota = AppConfigHelper.GetValue("isAutoPrinterLabelNota", _appConfigFile).ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.is_show_minimal_stok = AppConfigHelper.GetValue("isShowMinimalStok", _appConfigFile).ToLower() == "true" ? true : false;
-            MainProgram.pengaturanUmum.is_customer_required = AppConfigHelper.GetValue("isCustomerRequired", _appConfigFile).ToLower() == "true" ? true : false;
-            MainProgram.pengaturanUmum.is_stok_produk_boleh_minus = AppConfigHelper.GetValue("isStokProdukBolehMinus", _appConfigFile, "true").ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.is_customer_required = AppConfigHelper.GetValue("isCustomerRequired", _appConfigFile).ToLower() == "true" ? true : false;            
             MainProgram.pengaturanUmum.is_singkat_penulisan_ongkir = AppConfigHelper.GetValue("isSingkatPenulisanOngkir", _appConfigFile).ToLower() == "true" ? true : false;
 
             // set info printer mini pos
@@ -97,6 +97,16 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum.is_cetak_customer = isCetakCustomer;
             MainProgram.pengaturanUmum.jumlah_karakter = jumlahKarakter;
             MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;
+
+            // set pengaturan global (setting disimpan di database)
+            ISettingAplikasiBll settingAplikasiBll = new SettingAplikasiBll();
+            var settingAplikasi = settingAplikasiBll.GetAll().SingleOrDefault();
+
+            if (settingAplikasi != null)
+            {
+                MainProgram.pengaturanUmum.is_stok_produk_boleh_minus = settingAplikasi.is_stok_produk_boleh_minus;
+                MainProgram.pengaturanUmum.is_update_harga_jual = settingAplikasi.is_update_harga_jual_master_produk;
+            }            
 
             // set header nota
             IHeaderNotaBll headerNotaBll = new HeaderNotaBll();

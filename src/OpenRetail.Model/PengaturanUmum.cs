@@ -56,6 +56,11 @@ namespace OpenRetail.Model
         /// </summary>
         public bool is_stok_produk_boleh_minus { get; set; }
 
+        /// <summary>
+        /// Update harga jual master produk jika terjadi perubahan harga pada saat penjualan
+        /// </summary>
+        public bool is_update_harga_jual { get; set; }
+
         public bool is_singkat_penulisan_ongkir { get; set; }
         public int jumlah_karakter { get; set; }
         public int jumlah_gulung { get; set; }

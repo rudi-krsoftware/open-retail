@@ -80,6 +80,7 @@
     <Compile Include="IReturJualProdukRepository.cs" />
     <Compile Include="IRolePrivilegeRepository.cs" />
     <Compile Include="IRoleRepository.cs" />
+    <Compile Include="ISettingAplikasiRepository.cs" />
     <Compile Include="ISupplierRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
