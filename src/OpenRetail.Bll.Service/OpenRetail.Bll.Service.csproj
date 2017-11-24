@@ -118,6 +118,7 @@
     <Compile Include="ReturJualProdukBll.cs" />
     <Compile Include="RoleBll.cs" />
     <Compile Include="RolePrivilegeBll.cs" />
+    <Compile Include="SettingAplikasiBll.cs" />
     <Compile Include="SupplierBll.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -66,9 +66,6 @@
             this.txtHeaderMiniPOS3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtHeaderMiniPOS4 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtHeaderMiniPOS5 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.chkStokProdukBolehMinus = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -82,8 +79,6 @@
             this.tableLayoutPanel12.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -103,7 +98,6 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
@@ -612,42 +606,6 @@
             this.txtHeaderMiniPOS5.TabIndex = 4;
             this.txtHeaderMiniPOS5.ThousandSeparator = false;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.tableLayoutPanel5);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(416, 254);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "Lainnya";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.chkStokProdukBolehMinus, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(416, 254);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // chkStokProdukBolehMinus
-            // 
-            this.chkStokProdukBolehMinus.AutoSize = true;
-            this.chkStokProdukBolehMinus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkStokProdukBolehMinus.Location = new System.Drawing.Point(3, 3);
-            this.chkStokProdukBolehMinus.Name = "chkStokProdukBolehMinus";
-            this.chkStokProdukBolehMinus.Size = new System.Drawing.Size(410, 19);
-            this.chkStokProdukBolehMinus.TabIndex = 0;
-            this.chkStokProdukBolehMinus.Text = "Stok produk boleh minus ketika penjualan";
-            this.chkStokProdukBolehMinus.UseVisualStyleBackColor = true;
-            // 
             // FrmPengaturanUmum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -674,9 +632,6 @@
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -721,9 +676,6 @@
         private Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS3;
         private Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS4;
         private Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS5;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.CheckBox chkStokProdukBolehMinus;
 
 
 

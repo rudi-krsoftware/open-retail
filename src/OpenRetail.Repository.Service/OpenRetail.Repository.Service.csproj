@@ -112,6 +112,7 @@
     <Compile Include="ReturJualProdukRepository.cs" />
     <Compile Include="RolePrivilegeRepository.cs" />
     <Compile Include="RoleRepository.cs" />
+    <Compile Include="SettingAplikasiRepository.cs" />
     <Compile Include="SupplierRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="WhereBuilder.cs" />
