@@ -237,106 +237,119 @@ ALTER FUNCTION public.f_hapus_header_bayar_piutang_produk() OWNER TO postgres;
 
 CREATE FUNCTION f_kurangi_stok_produk() RETURNS trigger
     LANGUAGE plpgsql
-    AS $$
-DECLARE 
-	var_produk_id 				t_guid;
-    
-	var_stok_sekarang 			t_jumlah; -- stok etalase	
-    var_stok_gudang_sekarang 	t_jumlah; -- stok gudang
-    
-    var_jumlah_lama 		t_jumlah;
-	var_jumlah_baru 		t_jumlah;
-    
-    var_jumlah_retur_lama 	t_jumlah;
-    var_jumlah_retur_baru 	t_jumlah;
-
-	var_harga 				t_harga;
-    
-    is_retur				t_bool;
-  
-BEGIN		
-	is_retur := FALSE;
-            
-    IF TG_OP = 'INSERT' THEN
-    	var_produk_id := NEW.produk_id;
-        var_jumlah_baru = NEW.jumlah;        
-        var_harga = NEW.harga_jual;
-
-	ELSIF TG_OP = 'UPDATE' THEN      
-    	var_produk_id := NEW.produk_id;
-        var_jumlah_baru = NEW.jumlah;
-        var_jumlah_lama = OLD.jumlah;
-        var_harga = NEW.harga_jual;
-        
-        -- jumlah retur
-        var_jumlah_retur_baru = NEW.jumlah_retur;
-        var_jumlah_retur_lama = OLD.jumlah_retur;        
-    ELSE
-    	var_produk_id := OLD.produk_id;
-        var_jumlah_lama = OLD.jumlah;
-        var_harga = OLD.harga_jual;
-    END IF;        
-            
-    SELECT stok, stok_gudang INTO var_stok_sekarang, var_stok_gudang_sekarang
-    FROM m_produk WHERE produk_id = var_produk_id;
-    
-    IF var_stok_sekarang IS NULL THEN -- stok etalase
-        var_stok_sekarang := 0;  
-    END IF;
-    
-    IF var_stok_gudang_sekarang IS NULL THEN -- stok gudang
-        var_stok_gudang_sekarang := 0;  
-    END IF;
-        
-    IF TG_OP = 'UPDATE' THEN -- pengecekan retur
-    	IF var_jumlah_retur_lama <> var_jumlah_retur_baru THEN
-        	is_retur := TRUE;                    
-            
-            IF var_jumlah_retur_lama IS NULL THEN
-                var_jumlah_retur_lama := 0;  
-            END IF;
-            
-            IF var_jumlah_retur_baru IS NULL THEN
-                var_jumlah_retur_baru := 0;  
-            END IF;
-                           
-            var_stok_gudang_sekarang = var_stok_gudang_sekarang - var_jumlah_retur_lama + var_jumlah_retur_baru;
-			            
-            UPDATE m_produk SET stok_gudang = var_stok_gudang_sekarang WHERE produk_id = var_produk_id;
-        END IF;        
-    END IF;
-	
-    IF (is_retur = FALSE) THEN -- bukan retur    	    	        
-        IF TG_OP = 'INSERT' THEN
-            var_stok_gudang_sekarang := var_stok_gudang_sekarang - var_jumlah_baru;
-            
-            IF (var_stok_gudang_sekarang < 0 AND var_stok_sekarang > 0) THEN -- stok gudang kurang, sisanya ambil dari stok etalase
-            	var_stok_sekarang = var_stok_sekarang - abs(var_stok_gudang_sekarang);
-                
-                IF (var_stok_sekarang >= 0) THEN
-                	var_stok_gudang_sekarang := 0; --stok gudang habis
-                ELSE
-                	var_stok_gudang_sekarang := var_stok_sekarang;
-                    var_stok_sekarang := 0;
-                END IF;
-            END IF;
-                        
-            
-        ELSIF TG_OP = 'UPDATE' THEN      
-            var_stok_gudang_sekarang = var_stok_gudang_sekarang + var_jumlah_lama - var_jumlah_baru;
-        ELSE
-            var_stok_gudang_sekarang = var_stok_gudang_sekarang + var_jumlah_lama;
-        END IF;
-        
-        IF TG_OP = 'INSERT' THEN             
-            UPDATE m_produk SET stok = var_stok_sekarang, stok_gudang = var_stok_gudang_sekarang, harga_jual = var_harga WHERE produk_id = var_produk_id;        
-        ELSE        
-            UPDATE m_produk SET stok = var_stok_sekarang, stok_gudang = var_stok_gudang_sekarang WHERE produk_id = var_produk_id;        
-        END IF;    
-    END IF;	
-            
-    RETURN NULL;
-END;
+    AS $$
+DECLARE 
+	var_produk_id 				t_guid;
+    
+	var_stok_sekarang 			t_jumlah; -- stok etalase	
+    var_stok_gudang_sekarang 	t_jumlah; -- stok gudang
+    
+    var_jumlah_lama 		t_jumlah;
+	var_jumlah_baru 		t_jumlah;
+    
+    var_jumlah_retur_lama 	t_jumlah;
+    var_jumlah_retur_baru 	t_jumlah;
+
+	var_harga 				t_harga;
+    
+    is_retur				t_bool;
+    is_update_harga_jual	t_bool;
+    
+BEGIN		
+	is_retur := FALSE;
+                
+    IF TG_OP = 'INSERT' THEN
+    	var_produk_id := NEW.produk_id;
+        var_jumlah_baru = NEW.jumlah;        
+        var_harga = NEW.harga_jual;
+
+	ELSIF TG_OP = 'UPDATE' THEN      
+    	var_produk_id := NEW.produk_id;
+        var_jumlah_baru = NEW.jumlah;
+        var_jumlah_lama = OLD.jumlah;
+        var_harga = NEW.harga_jual;
+        
+        -- jumlah retur
+        var_jumlah_retur_baru = NEW.jumlah_retur;
+        var_jumlah_retur_lama = OLD.jumlah_retur;        
+    ELSE
+    	var_produk_id := OLD.produk_id;
+        var_jumlah_lama = OLD.jumlah;
+        var_harga = OLD.harga_jual;
+    END IF;        
+            
+    SELECT stok, stok_gudang INTO var_stok_sekarang, var_stok_gudang_sekarang
+    FROM m_produk WHERE produk_id = var_produk_id;
+    
+    IF var_stok_sekarang IS NULL THEN -- stok etalase
+        var_stok_sekarang := 0;  
+    END IF;
+    
+    IF var_stok_gudang_sekarang IS NULL THEN -- stok gudang
+        var_stok_gudang_sekarang := 0;  
+    END IF;
+        
+    IF TG_OP = 'UPDATE' THEN -- pengecekan retur
+    	IF var_jumlah_retur_lama <> var_jumlah_retur_baru THEN
+        	is_retur := TRUE;                    
+            
+            IF var_jumlah_retur_lama IS NULL THEN
+                var_jumlah_retur_lama := 0;  
+            END IF;
+            
+            IF var_jumlah_retur_baru IS NULL THEN
+                var_jumlah_retur_baru := 0;  
+            END IF;
+                           
+            var_stok_gudang_sekarang = var_stok_gudang_sekarang - var_jumlah_retur_lama + var_jumlah_retur_baru;
+			            
+            UPDATE m_produk SET stok_gudang = var_stok_gudang_sekarang WHERE produk_id = var_produk_id;
+        END IF;        
+    END IF;
+	
+    IF (is_retur = FALSE) THEN -- bukan retur    	    	        
+        IF TG_OP = 'INSERT' THEN
+            var_stok_gudang_sekarang := var_stok_gudang_sekarang - var_jumlah_baru;
+            
+            IF (var_stok_gudang_sekarang < 0 AND var_stok_sekarang > 0) THEN -- stok gudang kurang, sisanya ambil dari stok etalase
+            	var_stok_sekarang = var_stok_sekarang - abs(var_stok_gudang_sekarang);
+                
+                IF (var_stok_sekarang >= 0) THEN
+                	var_stok_gudang_sekarang := 0; --stok gudang habis
+                ELSE
+                	var_stok_gudang_sekarang := var_stok_sekarang;
+                    var_stok_sekarang := 0;
+                END IF;
+            END IF;
+                        
+            
+        ELSIF TG_OP = 'UPDATE' THEN      
+            var_stok_gudang_sekarang = var_stok_gudang_sekarang + var_jumlah_lama - var_jumlah_baru;
+        ELSE
+            var_stok_gudang_sekarang = var_stok_gudang_sekarang + var_jumlah_lama;
+        END IF;
+        
+        IF TG_OP = 'INSERT' THEN   
+            -- baca setting aplikasi
+        	SELECT is_update_harga_jual_master_produk INTO is_update_harga_jual
+            FROM m_setting_aplikasi LIMIT 1;
+            
+            IF is_update_harga_jual IS NULL THEN
+				is_update_harga_jual := TRUE;
+            END IF;
+    
+        	IF (is_update_harga_jual = TRUE) THEN -- update harga jual di master produk
+            	UPDATE m_produk SET stok = var_stok_sekarang, stok_gudang = var_stok_gudang_sekarang, harga_jual = var_harga WHERE produk_id = var_produk_id;
+            ELSE          
+	            UPDATE m_produk SET stok = var_stok_sekarang, stok_gudang = var_stok_gudang_sekarang WHERE produk_id = var_produk_id;        
+			END IF;         
+        ELSE        
+            UPDATE m_produk SET stok = var_stok_sekarang, stok_gudang = var_stok_gudang_sekarang WHERE produk_id = var_produk_id;        
+        END IF;    
+    END IF;	
+            
+    RETURN NULL;
+END;
 $$;
 
 
@@ -1683,8 +1696,8 @@ COMMENT ON COLUMN m_role_privilege.grant_id IS 'Tambah, Perbaiki, Hapus, Dll';
 
 CREATE TABLE m_setting_aplikasi (
     setting_aplikasi_id t_guid NOT NULL,
-    url_update t_keterangan,
-    db_version integer
+    is_update_harga_jual_master_produk t_bool,
+    is_stok_produk_boleh_minus t_bool
 );
 
 
