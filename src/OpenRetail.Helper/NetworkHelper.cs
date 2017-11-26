@@ -19,35 +19,24 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace OpenRetail.Helper
 {
     public static class NetworkHelper
     {
-        public static bool IsConnected(string ipAddress)
+        [DllImport("wininet.dll")]
+        private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
+
+        public static bool IsConnected()
         {
             var result = false;
 
-            var pingSender = new Ping();
-            var options = new PingOptions();
-
-            // Use the default Ttl value which is 128,
-            // but change the fragmentation behavior.
-            options.DontFragment = true;
-
-            // Create a buffer of 32 bytes of data to be transmitted.
-            string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-
             try
             {
-                byte[] buffer = Encoding.ASCII.GetBytes(data);
-                int timeout = 120;
-
-                PingReply reply = pingSender.Send(ipAddress, timeout, buffer, options);
-
-                result = (reply.Status == IPStatus.Success);
+                var desc = 0;
+                result = InternetGetConnectedState(out desc, 0);
             }
             catch
             {
