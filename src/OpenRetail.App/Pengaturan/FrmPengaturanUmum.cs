@@ -194,45 +194,20 @@ namespace OpenRetail.App.Pengaturan
         {
             chkTampilkanInfoMinimalStokProduk.Checked = _pengaturanUmum.is_show_minimal_stok;
             chkCustomerWajibDiisi.Checked = _pengaturanUmum.is_customer_required;
+            chkStokProdukBolehMinus.Checked = _pengaturanUmum.is_stok_produk_boleh_minus;
+            chkUpdateHargaJual.Checked = _pengaturanUmum.is_update_harga_jual;
             chkSingkatPenulisanOngkir.Checked = _pengaturanUmum.is_singkat_penulisan_ongkir;            
         }
 
         protected override void Simpan()
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
-            {
-                _pengaturanUmum.nama_printer = cmbPrinter.Text;
-                _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
+            {                
+                // simpan pengaturan lokal (app.config)
+                SimpanPengaturanLokal();
 
-                var jenisPrinter = JenisPrinter.InkJet;
-
-                if (rdoJenisPrinterDotMatrix.Checked)
-                    jenisPrinter = JenisPrinter.DotMatrix;
-                else if (rdoJenisPrinterMiniPOS.Checked)
-                    jenisPrinter = JenisPrinter.MiniPOS;
-
-                _pengaturanUmum.jenis_printer = jenisPrinter;
-                _pengaturanUmum.is_cetak_customer = chkCetakCustomer.Checked;
-                _pengaturanUmum.is_show_minimal_stok = chkTampilkanInfoMinimalStokProduk.Checked;
-                _pengaturanUmum.is_customer_required = chkCustomerWajibDiisi.Checked;
-                _pengaturanUmum.is_singkat_penulisan_ongkir = chkSingkatPenulisanOngkir.Checked;
-                _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
-                _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
-
-                var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
-
-                // simpan info printer
-                AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
-                AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
-                AppConfigHelper.SaveValue("jenis_printer", Convert.ToString((int)jenisPrinter), appConfigFile);
-
-                // simpan info printer mini pos
-                AppConfigHelper.SaveValue("isCetakCustomer", chkCetakCustomer.Checked.ToString(), appConfigFile);
-                AppConfigHelper.SaveValue("isShowMinimalStok", chkTampilkanInfoMinimalStokProduk.Checked.ToString(), appConfigFile);
-                AppConfigHelper.SaveValue("isCustomerRequired", chkCustomerWajibDiisi.Checked.ToString(), appConfigFile);
-                AppConfigHelper.SaveValue("isSingkatPenulisanOngkir", chkSingkatPenulisanOngkir.Checked.ToString(), appConfigFile);
-                AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
-                AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
+                // simpan pengaturan global (databases)
+                SimpanPengaturanGlobal();
 
                 // simpan header nota
                 SimpanHeaderNota();
@@ -248,6 +223,67 @@ namespace OpenRetail.App.Pengaturan
 
                 this.Close();    
             }            
+        }
+
+        /// <summary>
+        /// Simpan pengaturan aplikasi di masing-masing pc (app.config)
+        /// </summary>
+        private void SimpanPengaturanLokal()
+        {
+            var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
+
+            _pengaturanUmum.nama_printer = cmbPrinter.Text;
+            _pengaturanUmum.is_auto_print = chkCetakOtomatis.Checked;
+
+            var jenisPrinter = JenisPrinter.InkJet;
+
+            if (rdoJenisPrinterDotMatrix.Checked)
+                jenisPrinter = JenisPrinter.DotMatrix;
+            else if (rdoJenisPrinterMiniPOS.Checked)
+                jenisPrinter = JenisPrinter.MiniPOS;
+
+            _pengaturanUmum.jenis_printer = jenisPrinter;
+            _pengaturanUmum.is_cetak_customer = chkCetakCustomer.Checked;
+            _pengaturanUmum.is_show_minimal_stok = chkTampilkanInfoMinimalStokProduk.Checked;
+            _pengaturanUmum.is_customer_required = chkCustomerWajibDiisi.Checked;
+            _pengaturanUmum.is_singkat_penulisan_ongkir = chkSingkatPenulisanOngkir.Checked;
+            _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
+            _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);                
+
+            // simpan info printer
+            AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
+            AppConfigHelper.SaveValue("isAutoPrinter", chkCetakOtomatis.Checked.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("jenis_printer", Convert.ToString((int)jenisPrinter), appConfigFile);
+
+            // simpan info printer mini pos
+            AppConfigHelper.SaveValue("isCetakCustomer", chkCetakCustomer.Checked.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("isShowMinimalStok", chkTampilkanInfoMinimalStokProduk.Checked.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("isCustomerRequired", chkCustomerWajibDiisi.Checked.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("isSingkatPenulisanOngkir", chkSingkatPenulisanOngkir.Checked.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
+            AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
+        }
+
+        /// <summary>
+        /// Simpan pengaturan aplikasi di database (global)
+        /// </summary>
+        private void SimpanPengaturanGlobal()
+        {
+            ISettingAplikasiBll settingAplikasiBll = new SettingAplikasiBll();
+            var settingAplikasi = settingAplikasiBll.GetAll().SingleOrDefault();
+
+            if (settingAplikasi != null)
+            {
+                settingAplikasi.is_update_harga_jual_master_produk = chkUpdateHargaJual.Checked;
+                settingAplikasi.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;
+
+                var result = settingAplikasiBll.Update(settingAplikasi);
+                if (result > 0)
+                {
+                    _pengaturanUmum.is_update_harga_jual = chkUpdateHargaJual.Checked;
+                    _pengaturanUmum.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;                    
+                }
+            }
         }
 
         private void SimpanHeaderNota()

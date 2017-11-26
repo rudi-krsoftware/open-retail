@@ -152,6 +152,10 @@
       <HintPath>..\..\lib\DockPanelSuite.3.0.1\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b5ae55aa76d2d9de, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\VersionInfo.cs">
@@ -162,6 +166,12 @@
     </Compile>
     <Compile Include="Laporan\FrmLapCustomerProduk.designer.cs">
       <DependentUpon>FrmLapCustomerProduk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporan\FrmLapKartuStokProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapKartuStokProduk.designer.cs">
+      <DependentUpon>FrmLapKartuStokProduk.cs</DependentUpon>
     </Compile>
     <Compile Include="Laporan\FrmLapPenjualanPerKasir.cs">
       <SubType>Form</SubType>
@@ -405,6 +415,12 @@
       <DependentUpon>FrmListPengeluaranBiaya.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Referensi\FrmCetakLabelBarcodeProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmCetakLabelBarcodeProduk.Designer.cs">
+      <DependentUpon>FrmCetakLabelBarcodeProduk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Referensi\FrmEntryKartu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -648,6 +664,9 @@
     <EmbeddedResource Include="Laporan\FrmLapCustomerProduk.resx">
       <DependentUpon>FrmLapCustomerProduk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Laporan\FrmLapKartuStokProduk.resx">
+      <DependentUpon>FrmLapKartuStokProduk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Laporan\FrmLapPenjualanPerKasir.resx">
       <DependentUpon>FrmLapPenjualanPerKasir.cs</DependentUpon>
     </EmbeddedResource>
@@ -734,6 +753,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Referensi\FrmCetakLabelBarcodeProduk.resx">
+      <DependentUpon>FrmCetakLabelBarcodeProduk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntryKartu.resx">
       <DependentUpon>FrmEntryKartu.cs</DependentUpon>
     </EmbeddedResource>

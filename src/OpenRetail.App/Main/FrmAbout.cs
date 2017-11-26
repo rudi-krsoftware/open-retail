@@ -50,14 +50,11 @@ namespace OpenRetail.App.Main
             lblVersion.Text = string.Format("Version {0}{1}", version, MainProgram.stageOfDevelopment);
             lblCopyright.Text = string.Format("Copyright © {0} Kamarudin | Email: rudi.krsoftware@gmail.com | Phone: +62 813 8176 9915", copyright);
 
-            lblUrl1.Text = "https://openretailblog.wordpress.com";
+            lblUrl1.Text = "https://github.com/rudi-krsoftware/open-retail";
             lblUrl1.LinkClicked += lblUrl_LinkClicked;
 
-            lblUrl2.Text = "https://github.com/rudi-krsoftware/open-retail";
+            lblUrl2.Text = "http://coding4ever.net/";
             lblUrl2.LinkClicked += lblUrl_LinkClicked;
-
-            lblUrl3.Text = "http://coding4ever.net/";
-            lblUrl3.LinkClicked += lblUrl_LinkClicked;
         }
 
         private void lblUrl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -84,7 +81,7 @@ namespace OpenRetail.App.Main
 
         private void imgDonate_Click(object sender, EventArgs e)
         {
-            var url = "https://openretailblog.wordpress.com/kontribusi/";
+            var url = "https://github.com/rudi-krsoftware/open-retail/wiki/Cara-Berkontribusi/";
 
             // Navigate to a URL.
             System.Diagnostics.Process.Start(url);

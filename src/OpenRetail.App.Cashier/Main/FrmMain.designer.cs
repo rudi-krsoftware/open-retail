@@ -66,6 +66,7 @@
             this.tbPenjualanProduk = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
+            this.mnuGroupOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -215,6 +216,7 @@
             this.mnuBantuan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBlogOpenRetail,
             this.mnuFanPageOpenRetail,
+            this.mnuGroupOpenRetail,
             this.toolStripSeparator16,
             this.mnuPetunjukPenggunaanOpenRetail,
             this.toolStripSeparator14,
@@ -231,7 +233,7 @@
             this.mnuBlogOpenRetail.Name = "mnuBlogOpenRetail";
             this.mnuBlogOpenRetail.Size = new System.Drawing.Size(264, 22);
             this.mnuBlogOpenRetail.Text = "Blog OpenRetail";
-            this.mnuBlogOpenRetail.Click += new System.EventHandler(this.mnuBlogOpenRetail_Click);
+            this.mnuBlogOpenRetail.Visible = false;
             // 
             // mnuFanPageOpenRetail
             // 
@@ -332,7 +334,7 @@
             this.mainDock.AllowEndUserDocking = false;
             this.mainDock.AllowEndUserNestedDocking = false;
             this.mainDock.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.mainDock.BackgroundImage = global::OpenRetail.App.Cashier.Properties.Resources.background_cashier;
+            this.mainDock.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainDock.BackgroundImage")));
             this.mainDock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mainDock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDock.Location = new System.Drawing.Point(0, 24);
@@ -377,6 +379,13 @@
             this.tbLapPenjualanProduk.Size = new System.Drawing.Size(36, 36);
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
+            // 
+            // mnuGroupOpenRetail
+            // 
+            this.mnuGroupOpenRetail.Name = "mnuGroupOpenRetail";
+            this.mnuGroupOpenRetail.Size = new System.Drawing.Size(264, 22);
+            this.mnuGroupOpenRetail.Text = "Group OpenRetail";
+            this.mnuGroupOpenRetail.Click += new System.EventHandler(this.mnuGroupOpenRetail_Click);
             // 
             // FrmMain
             // 
@@ -443,5 +452,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuPetunjukPenggunaanOpenRetail;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem mnuFanPageOpenRetail;
+        private System.Windows.Forms.ToolStripMenuItem mnuGroupOpenRetail;
     }
 }

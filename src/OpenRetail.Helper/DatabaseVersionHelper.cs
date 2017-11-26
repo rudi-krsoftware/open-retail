@@ -28,7 +28,7 @@ namespace OpenRetail.Helper
         /// <summary>
         /// Versi database yang terakhir
         /// </summary>
-        public const int DatabaseVersion = 7;
+        public const int DatabaseVersion = 8;
 
         /// <summary>
         /// Script SQL untuk mengupgrade database v1 ke v2
@@ -60,6 +60,11 @@ namespace OpenRetail.Helper
         /// </summary>
         public const string UpgradeStrukturDatabase_v6_to_v7 = "db_v6_to_v7.sql";
 
+        /// <summary>
+        /// Script SQL untuk mengupgrade database v7 ke v8
+        /// </summary>
+        public const string UpgradeStrukturDatabase_v7_to_v8 = "db_v7_to_v8.sql";
+
         public static Dictionary<int, string> ListOfUpgradeDatabaseScript = new Dictionary<int, string>
                                                                             {
                                                                                 { 2, DatabaseVersionHelper.UpgradeStrukturDatabase_v1_to_v2 },
@@ -67,7 +72,8 @@ namespace OpenRetail.Helper
                                                                                 { 4, DatabaseVersionHelper.UpgradeStrukturDatabase_v3_to_v4 },
                                                                                 { 5, DatabaseVersionHelper.UpgradeStrukturDatabase_v4_to_v5 },
                                                                                 { 6, DatabaseVersionHelper.UpgradeStrukturDatabase_v5_to_v6 },
-                                                                                { 7, DatabaseVersionHelper.UpgradeStrukturDatabase_v6_to_v7 }
+                                                                                { 7, DatabaseVersionHelper.UpgradeStrukturDatabase_v6_to_v7 },
+                                                                                { 8, DatabaseVersionHelper.UpgradeStrukturDatabase_v7_to_v8 }
                                                                             };
     }
 }

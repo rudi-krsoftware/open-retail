@@ -28,6 +28,11 @@ namespace OpenRetail.Bll.Api.Report
     public interface IReportStokProdukBll
     {
         IList<ReportStokProduk> GetStokByStatus(StatusStok statusStok);
+        IList<ReportStokProduk> GetStokKurangDari(double stok);
+        IList<ReportStokProduk> GetStokBerdasarkanSupplier(string supplierId);
+        IList<ReportStokProduk> GetStokBerdasarkanGolongan(string golonganId);
+        IList<ReportStokProduk> GetStokBerdasarkanNama(string name);
+
         IList<ReportPenyesuaianStokProduk> GetPenyesuaianStokByBulan(int bulan, int tahun);
         IList<ReportPenyesuaianStokProduk> GetPenyesuaianStokByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }

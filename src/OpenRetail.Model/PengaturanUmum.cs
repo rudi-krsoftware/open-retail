@@ -50,6 +50,17 @@ namespace OpenRetail.Model
         public bool is_cetak_customer { get; set; }
         public bool is_show_minimal_stok { get; set; }
         public bool is_customer_required { get; set; }
+
+        /// <summary>
+        /// Validasi stok produk boleh minus ketika penjualan
+        /// </summary>
+        public bool is_stok_produk_boleh_minus { get; set; }
+
+        /// <summary>
+        /// Update harga jual master produk jika terjadi perubahan harga pada saat penjualan
+        /// </summary>
+        public bool is_update_harga_jual { get; set; }
+
         public bool is_singkat_penulisan_ongkir { get; set; }
         public int jumlah_karakter { get; set; }
         public int jumlah_gulung { get; set; }

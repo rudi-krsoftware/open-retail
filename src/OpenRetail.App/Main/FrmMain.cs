@@ -81,8 +81,7 @@ namespace OpenRetail.App.Main
         /// Menu id digunakan untuk mengeset hak akses masing-masing form yang diakses
         /// </summary>
         private Dictionary<string, string> _getMenuID;
-        private ILog _log;
-        private string _openRetailBaseUrl = "https://openretailblog.wordpress.com";
+        private ILog _log;        
 
         private ThreadHelper _lightSleeper = new ThreadHelper();
 
@@ -519,33 +518,33 @@ namespace OpenRetail.App.Main
             System.Diagnostics.Process.Start(url);
         }
 
-        private void mnuBlogOpenRetail_Click(object sender, EventArgs e)
-        {
-            var url = _openRetailBaseUrl;
-            OpenUrl(url);
-        }
-
         private void mnuFanPageOpenRetail_Click(object sender, EventArgs e)
         {
             var url = "https://www.facebook.com/openretail/";
             OpenUrl(url);
         }
 
+        private void mnuGroupOpenRetail_Click(object sender, EventArgs e)
+        {
+            var url = "https://web.facebook.com/groups/openretail/";
+            OpenUrl(url);
+        }
+
         private void mnuPetunjukPenggunaanOpenRetail_Click(object sender, EventArgs e)
         {
-            var url = _openRetailBaseUrl + "/petunjuk-penggunaan-openretail/";
+            var url = "https://github.com/rudi-krsoftware/open-retail/wiki/";
             OpenUrl(url);
         }
 
         private void mnuRegistrasi_Click(object sender, EventArgs e)
         {
-            var url = _openRetailBaseUrl + "/registrasi/";
+            var url = "https://openretailblog.wordpress.com/registrasi/";
             OpenUrl(url);
         }        
 
         private void mnuDukungPengembanganOpenRetail_Click(object sender, EventArgs e)
         {
-            var url = _openRetailBaseUrl + "/kontribusi/";
+            var url = "https://github.com/rudi-krsoftware/open-retail/wiki/Cara-Berkontribusi/";
             OpenUrl(url);
         }
 
@@ -711,5 +710,15 @@ namespace OpenRetail.App.Main
         {
             ShowFormDialog<FrmLapCustomerProduk>(sender);
         }
+
+        private void mnuLapKartuStokProduk_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapKartuStokProduk>(sender);
+        }
+
+        private void mnuCetakLabelBarcodeProduk_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmCetakLabelBarcodeProduk>(sender);
+        }        
     }
 }

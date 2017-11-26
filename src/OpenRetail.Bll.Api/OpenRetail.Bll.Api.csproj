@@ -81,6 +81,7 @@
     <Compile Include="IReturJualProdukBll.cs" />
     <Compile Include="IRoleBll.cs" />
     <Compile Include="IRolePrivilegeBll.cs" />
+    <Compile Include="ISettingAplikasiBll.cs" />
     <Compile Include="ISupplierBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\IBaseReportBll.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Report\IReportJualProdukBll.cs" />
     <Compile Include="Report\IReportKartuHutangBll.cs" />
     <Compile Include="Report\IReportKartuPiutangBll.cs" />
+    <Compile Include="Report\IReportKartuStokBll.cs" />
     <Compile Include="Report\IReportKasbonBll.cs" />
     <Compile Include="Report\IReportMesinKasirBll.cs" />
     <Compile Include="Report\IReportPemasukanPengeluaranBll.cs" />

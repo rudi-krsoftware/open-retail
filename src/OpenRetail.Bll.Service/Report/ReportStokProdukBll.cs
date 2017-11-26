@@ -50,7 +50,59 @@ namespace OpenRetail.Bll.Service.Report
 
             return oList;
         }
-        
+
+        public IList<ReportStokProduk> GetStokKurangDari(double stok)
+        {
+            IList<ReportStokProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportStokProdukRepository.GetStokKurangDari(stok);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportStokProduk> GetStokBerdasarkanSupplier(string supplierId)
+        {
+            IList<ReportStokProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportStokProdukRepository.GetStokBerdasarkanSupplier(supplierId);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportStokProduk> GetStokBerdasarkanGolongan(string golonganId)
+        {
+            IList<ReportStokProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportStokProdukRepository.GetStokBerdasarkanGolongan(golonganId);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportStokProduk> GetStokBerdasarkanNama(string name)
+        {
+            IList<ReportStokProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportStokProdukRepository.GetStokBerdasarkanNama(name);
+            }
+
+            return oList;
+        }
+
         public IList<ReportPenyesuaianStokProduk> GetPenyesuaianStokByBulan(int bulan, int tahun)
         {
             IList<ReportPenyesuaianStokProduk> oList = null;
@@ -75,6 +127,6 @@ namespace OpenRetail.Bll.Service.Report
             }
 
             return oList;
-        }
+        }        
     }
 }

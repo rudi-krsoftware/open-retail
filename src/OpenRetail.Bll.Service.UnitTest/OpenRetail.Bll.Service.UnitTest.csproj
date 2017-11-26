@@ -116,6 +116,7 @@
     <Compile Include="Report\ReportJualProdukBllTest.cs" />
     <Compile Include="Report\ReportKartuHutangBllTest.cs" />
     <Compile Include="Report\ReportKartuPiutangBllTest.cs" />
+    <Compile Include="Report\ReportKartuStokBllTest.cs" />
     <Compile Include="Report\ReportMesinKasirBllTest.cs" />
     <Compile Include="Report\ReportKasbonBllTest.cs" />
     <Compile Include="Report\ReportPemasukanPengeluaranBllTest.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="ReturJualProdukBllTest.cs" />
     <Compile Include="RoleBllTest.cs" />
     <Compile Include="RolePrivilegeBllTest.cs" />
+    <Compile Include="SettingAplikasiBllTest.cs" />
     <Compile Include="SupplierBllTest.cs" />
   </ItemGroup>
   <ItemGroup>

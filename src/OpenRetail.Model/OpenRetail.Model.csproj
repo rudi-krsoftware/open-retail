@@ -103,6 +103,7 @@
     <Compile Include="Report\ReportHutangPembelianProdukHeader.cs" />
     <Compile Include="Report\ReportKartuHutang.cs" />
     <Compile Include="Report\ReportKartuPiutang.cs" />
+    <Compile Include="Report\ReportKartuStok.cs" />
     <Compile Include="Report\ReportKasbonDetail.cs" />
     <Compile Include="Report\ReportKasbonHeader.cs" />
     <Compile Include="Report\ReportMesinKasir.cs" />
@@ -156,6 +157,8 @@
     <Compile Include="ReturJualProduk.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="RolePrivilege.cs" />
+    <Compile Include="PengaturanBarcode.cs" />
+    <Compile Include="SettingAplikasi.cs" />
     <Compile Include="Shift.cs" />
     <Compile Include="Supplier.cs" />
     <Compile Include="ValidationError.cs" />

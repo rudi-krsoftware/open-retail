@@ -38,7 +38,8 @@ namespace OpenRetail.App.Cashier.Main
 {    
     public partial class FrmLogin : Form
     {
-        private ILog _log;        
+        private ILog _log;
+        private string _appConfigFile = string.Format("{0}\\OpenRetailCashier.exe.config", Utils.GetAppPath());
 
         public FrmLogin()
         {
@@ -51,9 +52,8 @@ namespace OpenRetail.App.Cashier.Main
         }
 
         private void LoadAppConfig()
-        {
-            var appConfigFile = string.Format("{0}\\OpenRetailCashier.exe.config", Utils.GetAppPath());
-            txtServer.Text = AppConfigHelper.GetValue("server", appConfigFile);
+        {            
+            txtServer.Text = AppConfigHelper.GetValue("server", _appConfigFile);
 
             if (Utils.IsRunningUnderIDE()) // mode debug, set user dan password default untuk development
             {
@@ -63,9 +63,8 @@ namespace OpenRetail.App.Cashier.Main
         }
 
         private void SaveAppConfig()
-        {
-            var appConfigFile = string.Format("{0}\\OpenRetailCashier.exe.config", Utils.GetAppPath());
-            AppConfigHelper.SaveValue("server", txtServer.Text, appConfigFile);
+        {            
+            AppConfigHelper.SaveValue("server", txtServer.Text, _appConfigFile);
         }
 
         private void SetProfil()
@@ -76,19 +75,27 @@ namespace OpenRetail.App.Cashier.Main
 
         private void SetPengaturanUmum()
         {
-            var appConfigFile = string.Format("{0}\\OpenRetailCashier.exe.config", Utils.GetAppPath());
-
+            // set pengaturan lokal (setting di simpan di file app.config)            
             MainProgram.pengaturanUmum = new PengaturanUmum();
-            MainProgram.pengaturanUmum.nama_printer = AppConfigHelper.GetValue("printerName", appConfigFile);
-            MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.nama_printer = AppConfigHelper.GetValue("printerName", _appConfigFile);
+            MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", _appConfigFile).ToLower() == "true" ? true : false;
 
             // set info printer mini pos
-            var jumlahKarakter = AppConfigHelper.GetValue("jumlahKarakter", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahKarakter", appConfigFile)) : 40;
-            var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", appConfigFile)) : 5;
+            var jumlahKarakter = AppConfigHelper.GetValue("jumlahKarakter", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahKarakter", _appConfigFile)) : 40;
+            var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", _appConfigFile)) : 5;
 
-            MainProgram.pengaturanUmum.jenis_printer = AppConfigHelper.GetValue("jenis_printer", appConfigFile).Length > 0 ? (JenisPrinter)Convert.ToInt32(AppConfigHelper.GetValue("jenis_printer", appConfigFile)) : JenisPrinter.MiniPOS;
+            MainProgram.pengaturanUmum.jenis_printer = AppConfigHelper.GetValue("jenis_printer", _appConfigFile).Length > 0 ? (JenisPrinter)Convert.ToInt32(AppConfigHelper.GetValue("jenis_printer", _appConfigFile)) : JenisPrinter.MiniPOS;
             MainProgram.pengaturanUmum.jumlah_karakter = jumlahKarakter;
             MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;
+
+            // set pengaturan global (setting disimpan di database)
+            ISettingAplikasiBll settingAplikasiBll = new SettingAplikasiBll();
+            var settingAplikasi = settingAplikasiBll.GetAll().SingleOrDefault();
+
+            if (settingAplikasi != null)
+            {
+                MainProgram.pengaturanUmum.is_stok_produk_boleh_minus = settingAplikasi.is_stok_produk_boleh_minus;
+            }
 
             // set header nota
             IHeaderNotaBll headerNotaBll = new HeaderNotaBll();

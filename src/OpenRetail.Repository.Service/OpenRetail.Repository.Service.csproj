@@ -97,6 +97,7 @@
     <Compile Include="Report\ReportJualProdukRepository.cs" />
     <Compile Include="Report\ReportKartuHutangRepository.cs" />
     <Compile Include="Report\ReportKartuPiutangRepository.cs" />
+    <Compile Include="Report\ReportKartuStokRepository.cs" />
     <Compile Include="Report\ReportKasbonRepository.cs" />
     <Compile Include="Report\ReportMesinKasirRepository.cs" />
     <Compile Include="Report\ReportPemasukanPengeluaranRepository.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="ReturJualProdukRepository.cs" />
     <Compile Include="RolePrivilegeRepository.cs" />
     <Compile Include="RoleRepository.cs" />
+    <Compile Include="SettingAplikasiRepository.cs" />
     <Compile Include="SupplierRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="WhereBuilder.cs" />

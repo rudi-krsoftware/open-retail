@@ -44,6 +44,7 @@
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuGolongan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProduk = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCetakLabelBarcodeProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPenyesuaianStok = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuSupplier = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,6 +90,7 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLapStokProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenyesuaianStok = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLapKartuStokProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLapPengeluaranBiaya = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapKasbon = new System.Windows.Forms.ToolStripMenuItem();
@@ -134,6 +136,7 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
+            this.mnuGroupOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -236,6 +239,7 @@
             this.toolStripSeparator17,
             this.mnuGolongan,
             this.mnuProduk,
+            this.mnuCetakLabelBarcodeProduk,
             this.mnuPenyesuaianStok,
             this.toolStripSeparator1,
             this.mnuSupplier,
@@ -253,7 +257,7 @@
             // mnuKartu
             // 
             this.mnuKartu.Name = "mnuKartu";
-            this.mnuKartu.Size = new System.Drawing.Size(168, 22);
+            this.mnuKartu.Size = new System.Drawing.Size(222, 22);
             this.mnuKartu.Tag = "FrmListKartu";
             this.mnuKartu.Text = "Kartu";
             this.mnuKartu.Click += new System.EventHandler(this.mnuKartu_Click);
@@ -261,12 +265,12 @@
             // toolStripSeparator17
             // 
             this.toolStripSeparator17.Name = "toolStripSeparator17";
-            this.toolStripSeparator17.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator17.Size = new System.Drawing.Size(219, 6);
             // 
             // mnuGolongan
             // 
             this.mnuGolongan.Name = "mnuGolongan";
-            this.mnuGolongan.Size = new System.Drawing.Size(168, 22);
+            this.mnuGolongan.Size = new System.Drawing.Size(222, 22);
             this.mnuGolongan.Tag = "FrmListGolongan";
             this.mnuGolongan.Text = "Golongan";
             this.mnuGolongan.Click += new System.EventHandler(this.mnuGolongan_Click);
@@ -274,15 +278,23 @@
             // mnuProduk
             // 
             this.mnuProduk.Name = "mnuProduk";
-            this.mnuProduk.Size = new System.Drawing.Size(168, 22);
+            this.mnuProduk.Size = new System.Drawing.Size(222, 22);
             this.mnuProduk.Tag = "FrmListProduk";
             this.mnuProduk.Text = "Produk";
             this.mnuProduk.Click += new System.EventHandler(this.mnuProduk_Click);
             // 
+            // mnuCetakLabelBarcodeProduk
+            // 
+            this.mnuCetakLabelBarcodeProduk.Name = "mnuCetakLabelBarcodeProduk";
+            this.mnuCetakLabelBarcodeProduk.Size = new System.Drawing.Size(222, 22);
+            this.mnuCetakLabelBarcodeProduk.Tag = "FrmCetakLabelBarcodeProduk";
+            this.mnuCetakLabelBarcodeProduk.Text = "Cetak Label Barcode Produk";
+            this.mnuCetakLabelBarcodeProduk.Click += new System.EventHandler(this.mnuCetakLabelBarcodeProduk_Click);
+            // 
             // mnuPenyesuaianStok
             // 
             this.mnuPenyesuaianStok.Name = "mnuPenyesuaianStok";
-            this.mnuPenyesuaianStok.Size = new System.Drawing.Size(168, 22);
+            this.mnuPenyesuaianStok.Size = new System.Drawing.Size(222, 22);
             this.mnuPenyesuaianStok.Tag = "FrmListPenyesuaianStok";
             this.mnuPenyesuaianStok.Text = "Penyesuaian Stok";
             this.mnuPenyesuaianStok.Click += new System.EventHandler(this.mnuPenyesuaianStok_Click);
@@ -290,12 +302,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(219, 6);
             // 
             // mnuSupplier
             // 
             this.mnuSupplier.Name = "mnuSupplier";
-            this.mnuSupplier.Size = new System.Drawing.Size(168, 22);
+            this.mnuSupplier.Size = new System.Drawing.Size(222, 22);
             this.mnuSupplier.Tag = "FrmListSupplier";
             this.mnuSupplier.Text = "Supplier";
             this.mnuSupplier.Click += new System.EventHandler(this.mnuSupplier_Click);
@@ -303,7 +315,7 @@
             // mnuCustomer
             // 
             this.mnuCustomer.Name = "mnuCustomer";
-            this.mnuCustomer.Size = new System.Drawing.Size(168, 22);
+            this.mnuCustomer.Size = new System.Drawing.Size(222, 22);
             this.mnuCustomer.Tag = "FrmListCustomer";
             this.mnuCustomer.Text = "Customer";
             this.mnuCustomer.Click += new System.EventHandler(this.mnuCustomer_Click);
@@ -311,7 +323,7 @@
             // mnuDropshipper
             // 
             this.mnuDropshipper.Name = "mnuDropshipper";
-            this.mnuDropshipper.Size = new System.Drawing.Size(168, 22);
+            this.mnuDropshipper.Size = new System.Drawing.Size(222, 22);
             this.mnuDropshipper.Tag = "FrmListDropshipper";
             this.mnuDropshipper.Text = "Dropshipper";
             this.mnuDropshipper.Click += new System.EventHandler(this.mnuDropshipper_Click);
@@ -319,12 +331,12 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(219, 6);
             // 
             // mnuJabatan
             // 
             this.mnuJabatan.Name = "mnuJabatan";
-            this.mnuJabatan.Size = new System.Drawing.Size(168, 22);
+            this.mnuJabatan.Size = new System.Drawing.Size(222, 22);
             this.mnuJabatan.Tag = "FrmListJabatan";
             this.mnuJabatan.Text = "Jabatan";
             this.mnuJabatan.Click += new System.EventHandler(this.mnuJabatan_Click);
@@ -332,7 +344,7 @@
             // mnuKaryawan
             // 
             this.mnuKaryawan.Name = "mnuKaryawan";
-            this.mnuKaryawan.Size = new System.Drawing.Size(168, 22);
+            this.mnuKaryawan.Size = new System.Drawing.Size(222, 22);
             this.mnuKaryawan.Tag = "FrmListKaryawan";
             this.mnuKaryawan.Text = "Karyawan";
             this.mnuKaryawan.Click += new System.EventHandler(this.mnuKaryawan_Click);
@@ -340,12 +352,12 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(219, 6);
             // 
             // mnuJenisPengeluaran
             // 
             this.mnuJenisPengeluaran.Name = "mnuJenisPengeluaran";
-            this.mnuJenisPengeluaran.Size = new System.Drawing.Size(168, 22);
+            this.mnuJenisPengeluaran.Size = new System.Drawing.Size(222, 22);
             this.mnuJenisPengeluaran.Tag = "FrmListJenisPengeluaran";
             this.mnuJenisPengeluaran.Text = "Jenis Pengeluaran";
             this.mnuJenisPengeluaran.Click += new System.EventHandler(this.mnuJenisPengeluaran_Click);
@@ -459,6 +471,7 @@
             this.toolStripSeparator6,
             this.mnuLapStokProduk,
             this.mnuLapPenyesuaianStok,
+            this.mnuLapKartuStokProduk,
             this.toolStripSeparator5,
             this.mnuLapPengeluaranBiaya,
             this.mnuLapKasbon,
@@ -648,6 +661,14 @@
             this.mnuLapPenyesuaianStok.Text = "Penyesuaian Stok";
             this.mnuLapPenyesuaianStok.Click += new System.EventHandler(this.mnuLapPenyesuaianStok_Click);
             // 
+            // mnuLapKartuStokProduk
+            // 
+            this.mnuLapKartuStokProduk.Name = "mnuLapKartuStokProduk";
+            this.mnuLapKartuStokProduk.Size = new System.Drawing.Size(227, 22);
+            this.mnuLapKartuStokProduk.Tag = "FrmLapKartuStokProduk";
+            this.mnuLapKartuStokProduk.Text = "Kartu Stok Produk";
+            this.mnuLapKartuStokProduk.Click += new System.EventHandler(this.mnuLapKartuStokProduk_Click);
+            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
@@ -744,6 +765,7 @@
             this.mnuBantuan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBlogOpenRetail,
             this.mnuFanPageOpenRetail,
+            this.mnuGroupOpenRetail,
             this.toolStripSeparator16,
             this.mnuPetunjukPenggunaanOpenRetail,
             this.toolStripSeparator14,
@@ -760,7 +782,7 @@
             this.mnuBlogOpenRetail.Name = "mnuBlogOpenRetail";
             this.mnuBlogOpenRetail.Size = new System.Drawing.Size(264, 22);
             this.mnuBlogOpenRetail.Text = "Blog OpenRetail";
-            this.mnuBlogOpenRetail.Click += new System.EventHandler(this.mnuBlogOpenRetail_Click);
+            this.mnuBlogOpenRetail.Visible = false;
             // 
             // mnuFanPageOpenRetail
             // 
@@ -861,7 +883,7 @@
             this.mainDock.AllowEndUserDocking = false;
             this.mainDock.AllowEndUserNestedDocking = false;
             this.mainDock.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.mainDock.BackgroundImage = global::OpenRetail.App.Properties.Resources.background_server;
+            this.mainDock.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainDock.BackgroundImage")));
             this.mainDock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mainDock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDock.Location = new System.Drawing.Point(0, 24);
@@ -1024,6 +1046,13 @@
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
+            // mnuGroupOpenRetail
+            // 
+            this.mnuGroupOpenRetail.Name = "mnuGroupOpenRetail";
+            this.mnuGroupOpenRetail.Size = new System.Drawing.Size(264, 22);
+            this.mnuGroupOpenRetail.Text = "Group OpenRetail";
+            this.mnuGroupOpenRetail.Click += new System.EventHandler(this.mnuGroupOpenRetail_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1158,5 +1187,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLapPenjualanPerKasir;
         private System.Windows.Forms.ToolStripMenuItem mnuDropshipper;
         private System.Windows.Forms.ToolStripMenuItem mnuLapCustomerProduk;
+        private System.Windows.Forms.ToolStripMenuItem mnuLapKartuStokProduk;
+        private System.Windows.Forms.ToolStripMenuItem mnuCetakLabelBarcodeProduk;
+        private System.Windows.Forms.ToolStripMenuItem mnuGroupOpenRetail;
     }
 }

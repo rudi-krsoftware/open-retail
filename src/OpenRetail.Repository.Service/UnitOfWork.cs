@@ -40,6 +40,7 @@ namespace OpenRetail.Repository.Service
         private IJabatanRepository _jabatanRepository;
         private IJenisPengeluaranRepository _jenispengeluaranRepository;
         private IGolonganRepository _golonganRepository;
+        private ISettingAplikasiRepository _settingAplikasiRepository;
         private IProdukRepository _produkRepository;
         private IHargaGrosirRepository _hargaGrosirRepository;
         private ICustomerRepository _customerRepository;
@@ -82,6 +83,7 @@ namespace OpenRetail.Repository.Service
         private IReportMesinKasirRepository _reportMesinKasirRepository;
 
         private IReportStokProdukRepository _reportStokProdukRepository;
+        private IReportKartuStokRepository _reportKartuStokRepository;
         private IReportPengeluaranBiayaRepository _reportPengeluaranBiayaRepository;
         private IReportKasbonRepository _reportKasbonRepository;
         private IReportGajiKaryawanRepository _reportGajiKaryawanRepository;
@@ -128,6 +130,11 @@ namespace OpenRetail.Repository.Service
         public IGolonganRepository GolonganRepository
         {
             get { return _golonganRepository ?? (_golonganRepository = new GolonganRepository(_context, _log)); }
+        }
+
+        public ISettingAplikasiRepository SettingAplikasiRepository
+        {
+            get { return _settingAplikasiRepository ?? (_settingAplikasiRepository = new SettingAplikasiRepository(_context, _log)); }
         }
 
         public IProdukRepository ProdukRepository
@@ -293,6 +300,11 @@ namespace OpenRetail.Repository.Service
         public IReportStokProdukRepository ReportStokProdukRepository
         {
             get { return _reportStokProdukRepository ?? (_reportStokProdukRepository = new ReportStokProdukRepository(_context, _log)); }
+        }
+
+        public IReportKartuStokRepository ReportKartuStokRepository
+        {
+            get { return _reportKartuStokRepository ?? (_reportKartuStokRepository = new ReportKartuStokRepository(_context, _log)); }
         }
 
         public IPengeluaranBiayaRepository PengeluaranBiayaRepository

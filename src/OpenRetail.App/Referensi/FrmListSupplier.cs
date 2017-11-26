@@ -88,7 +88,7 @@ namespace OpenRetail.App.Referensi
             gridListProperties.Add(new GridListControlProperties { Header = "Alamat", Width = 300 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kontak", Width = 250 });
             gridListProperties.Add(new GridListControlProperties { Header = "Telepon", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Sisa Hutang", Width = 100 });
 
             GridListControlHelper.InitializeGridListControl<Supplier>(this.gridList, _listOfSupplier, gridListProperties);
 

@@ -76,6 +76,7 @@
   <ItemGroup>
     <EmbeddedResource Include="RvCustomerProduk.rdlc" />
     <EmbeddedResource Include="RvKartuPiutangPenjualanProduk.rdlc" />
+    <EmbeddedResource Include="RvKartuStok.rdlc" />
     <EmbeddedResource Include="RvKasbonDetail.rdlc" />
     <EmbeddedResource Include="RvNotaPenjualanMiniPOSTanpaCustomer.rdlc" />
     <EmbeddedResource Include="RvNotaPenjualanMiniPOS.rdlc" />
@@ -106,6 +107,7 @@
     <EmbeddedResource Include="RvPenyesuaianStok.rdlc" />
     <EmbeddedResource Include="RvPengeluaranBiaya.rdlc" />
     <EmbeddedResource Include="RvProdukFavorit.rdlc" />
+    <EmbeddedResource Include="RvStokProdukAdmin.rdlc" />
     <EmbeddedResource Include="RvStokProduk.rdlc" />
     <EmbeddedResource Include="RvPiutangPenjualanProduk.rdlc" />
     <EmbeddedResource Include="RvPiutangPenjualanProdukDetail.rdlc" />

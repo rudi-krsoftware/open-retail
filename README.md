@@ -1,56 +1,51 @@
-OpenRetail [![Donate](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZDVaZWMtSTJpRVU)](https://openretailblog.wordpress.com/kontribusi/)
+OpenRetail [![Donate](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZDVaZWMtSTJpRVU)](https://github.com/rudi-krsoftware/open-retail/wiki/Cara-Berkontribusi)
 ==============================================
 
 [![Build status](https://ci.appveyor.com/api/projects/status/a2cf5uy7b16w386b?svg=true)](https://ci.appveyor.com/project/rudi-krsoftware/open-retail) 
-[![Release](https://drive.google.com/uc?id=0BxSptsEQ_0A1MzFGMVpVSE9jVFU)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0) 
-[![Downloads](https://drive.google.com/uc?id=0BxSptsEQ_0A1Rk91LS1ROUpYNFE)](https://github.com/rudi-krsoftware/open-retail/releases/tag/v1.1.0) 
+[![Release](https://drive.google.com/uc?id=0BxSptsEQ_0A1MzFGMVpVSE9jVFU)](https://github.com/rudi-krsoftware/open-retail/releases/latest) 
+[![Downloads](https://drive.google.com/uc?id=0BxSptsEQ_0A1Rk91LS1ROUpYNFE)](https://github.com/rudi-krsoftware/open-retail/releases/latest) 
 ![Status](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZXotVUd6U0xaQ2M) 
 ![Platform](https://drive.google.com/uc?id=0BxSptsEQ_0A1b1d6dEJEbFlaUlk) 
 [![License](https://drive.google.com/uc?id=0BxSptsEQ_0A1ZzU4dnBjeldwN0U)](http://www.apache.org/licenses/LICENSE-2.0) 
 
 
-[![Open Retail](https://openretailblog.files.wordpress.com/2017/09/banner-small.png)](https://openretailblog.wordpress.com/)
+[![Open Retail](https://raw.githubusercontent.com/wiki/rudi-krsoftware/open-retail/images/banner-small.png)](https://github.com/rudi-krsoftware/open-retail)
 
 Apa itu OpenRetail?
 -------------------
 
-[OpenRetail](https://openretailblog.wordpress.com/) adalah software open source yang dikembangkan khusus untuk bidang usaha ritel, grosir, toko bangunan, toko komputer dan bidang usaha lainnya yang sejenis.
+[OpenRetail](https://github.com/rudi-krsoftware/open-retail) adalah software open source yang dikembangkan khusus untuk bidang usaha ritel, grosir, toko bangunan, toko komputer, counter hp dan bidang usaha lainnya yang sejenis.
 
-Saat ini pilihan software untuk usaha retil memang banyak ditambah lagi harga yang bervariasi mulai dari ratusan hingga jutaan rupiah. Tapi untuk software yang gratis, open source dan berkualitas mungkin [OpenRetail](https://openretailblog.wordpress.com/) adalah solusinya :-).
+Saat ini pilihan software untuk usaha retil memang banyak ditambah lagi harga yang bervariasi mulai dari ratusan hingga jutaan rupiah. Tapi untuk software yang gratis, open source dan berkualitas mungkin [OpenRetail](https://github.com/rudi-krsoftware/open-retail) adalah solusinya :-).
 
 Apakah aplikasi ini benar-benar gratis?
 ---------------------------------------
 
-Yuph, benar-benar gratis, bahkan lebih dari itu [OpenRetail](https://openretailblog.wordpress.com/) adalah software open source sehingga Anda bisa mendownload [kode sumbernya](https://github.com/rudi-krsoftware/open-retail/), mempelajari dan mengembangkan sendiri sesuai kebutuhan, tapi dengan syarat tidak boleh **menghapus** informasi asli tentang pembuat aplikasi ini. 
+Yuph, benar-benar gratis, bahkan lebih dari itu [OpenRetail](https://github.com/rudi-krsoftware/open-retail) adalah software open source sehingga Anda bisa mendownload [kode sumbernya](https://github.com/rudi-krsoftware/open-retail/), mempelajari dan mengembangkan sendiri sesuai kebutuhan, tapi dengan syarat tidak boleh **menghapus** informasi asli tentang pembuat aplikasi ini. 
+
+Panduan Penggunaan OpenRetail
+-----------------------------
+
+Panduan instalasi dan penggunaan [OpenRetail](https://github.com/rudi-krsoftware/open-retail) dapat dilihat di https://github.com/rudi-krsoftware/open-retail/wiki.
+
+Forum atau Diskusi
+------------------
+
+Anda dapat bergabung dalam [Forum Pengguna OpenRetail](https://www.facebook.com/groups/OpenRetail) di Facebook. Group ini merupakan tempat berbagi informasi dan saling membantu menggunakan dan mengembangkan aplikasi [OpenRetail](https://github.com/rudi-krsoftware/open-retail).
 
 Bagaimana jika ingin ikut berkontribusi?
 ----------------------------------------
 
-[OpenRetail](https://openretailblog.wordpress.com/) adalah software gratis di bawah lisensi [Apache](http://www.apache.org/licenses/LICENSE-2.0), namun jika Anda merasakan manfaat dari software ini, Anda dapat [berkontribusi](https://openretailblog.wordpress.com/kontribusi/) dalam pengembangannya :-). Untuk informasi lebih lanjut tentang bagaimana cara [berkontribusi](https://openretailblog.wordpress.com/kontribusi/) bisa Anda cek di [sini](https://openretailblog.wordpress.com/kontribusi/).
-
-Catatan Rilis
--------------
-
-Bisa langsung Anda cek di blog [OpenRetail.](https://openretailblog.wordpress.com/)
-
-Fitur
---------
-
-OpenRetail mempunyai [segudang fitur](https://openretailblog.wordpress.com/fitur/) untuk mempermudah transaksi usaha retail dan grosir Anda. Untuk fitur lengkapnya bisa Anda cek di [sini.](https://openretailblog.wordpress.com/fitur/).
-
-Rilis Terbaru
--------------
-
-Untuk rilis terbaru OpenRetail bisa Anda download di [sini.](https://github.com/rudi-krsoftware/open-retail/releases)
+[OpenRetail](https://github.com/rudi-krsoftware/open-retail) adalah software gratis di bawah lisensi [Apache](http://www.apache.org/licenses/LICENSE-2.0), namun jika Anda merasakan manfaat dari software ini, Anda dapat [berkontribusi](https://github.com/rudi-krsoftware/open-retail/wiki/Cara-Berkontribusi) dalam pengembangannya :-). Untuk informasi lebih lanjut tentang bagaimana cara [berkontribusi](https://github.com/rudi-krsoftware/open-retail/wiki/Cara-Berkontribusi) bisa Anda cek di [sini](https://github.com/rudi-krsoftware/open-retail/wiki/Cara-Berkontribusi).
 
 Prerequisites (Khusus software developer atau programmer)
 ---------------------------------------------------------
 
-[OpenRetail](https://openretailblog.wordpress.com/) adalah software gratis di bawah lisensi [Apache](http://www.apache.org/licenses/LICENSE-2.0). Selain gratis [OpenRetail](https://openretailblog.wordpress.com/) juga merupakan software open source sehingga Anda bisa mendownload [kode sumbernya](https://github.com/rudi-krsoftware/open-retail/), mempelajari dan mengembangkan sendiri sesuai kebutuhan, tapi dengan syarat tidak boleh **menghapus** informasi asli tentang pembuat aplikasi ini.
+[OpenRetail](https://github.com/rudi-krsoftware/open-retail) adalah software gratis di bawah lisensi [Apache](http://www.apache.org/licenses/LICENSE-2.0). Selain gratis [OpenRetail](https://github.com/rudi-krsoftware/open-retail) juga merupakan software open source sehingga Anda bisa mendownload [kode sumbernya](https://github.com/rudi-krsoftware/open-retail/), mempelajari dan mengembangkan sendiri sesuai kebutuhan, tapi dengan syarat tidak boleh **menghapus** informasi asli tentang pembuat aplikasi ini.
 
-Untuk mengembangkan sendiri [OpenRetail](https://openretailblog.wordpress.com/) dibutuhkan keahlian khusus di bidang pemrograman, ditambah keahlian pendukungnya seperti database. [OpenRetail](https://openretailblog.wordpress.com/) dikembangkan/ditulis dengan menggunakan bahasa pemrograman [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)), salah satu bahasa pemrograman yang ada di platform [.NET](https://en.wikipedia.org/wiki/.NET_Framework), sehingga untuk saat ini [OpenRetail](https://openretailblog.wordpress.com/) hanya bisa di install untuk sistem operasi Windows, mulai dari windows XP, Windows Server 2003, Windows Vista, Windows Server 2008 dan Windows 7, windows 8, Windows Server 2012, Windows 10 dan Windows versi terbaru.
+Untuk mengembangkan sendiri [OpenRetail](https://github.com/rudi-krsoftware/open-retail) dibutuhkan keahlian khusus di bidang pemrograman, ditambah keahlian pendukungnya seperti database. [OpenRetail](https://github.com/rudi-krsoftware/open-retail) dikembangkan/ditulis dengan menggunakan bahasa pemrograman [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)), salah satu bahasa pemrograman yang ada di platform [.NET](https://en.wikipedia.org/wiki/.NET_Framework), sehingga untuk saat ini [OpenRetail](https://github.com/rudi-krsoftware/open-retail) hanya bisa di install untuk sistem operasi Windows, mulai dari windows XP, Windows Server 2003, Windows Vista, Windows Server 2008 dan Windows 7, windows 8, Windows Server 2012, Windows 10 dan Windows versi terbaru.
 
-Selain keahlian khusus di bidang pemrograman, dibutuhkan juga tool-tool pendukung yang akan digunakan dalam proses pengembangannya. Berikut adalah tool-tool yang dibutuhkan untuk proses pengembangan [OpenRetail](https://openretailblog.wordpress.com/).
+Selain keahlian khusus di bidang pemrograman, dibutuhkan juga tool-tool pendukung yang akan digunakan dalam proses pengembangannya. Berikut adalah tool-tool yang dibutuhkan untuk proses pengembangan [OpenRetail](https://github.com/rudi-krsoftware/open-retail).
 
 * [Visual Studio Community 2013](https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs) atau versi yang lebih tinggi
 * [.NET Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=17718) atau versi yang lebih tinggi
@@ -70,6 +65,7 @@ Selain keahlian khusus di bidang pemrograman, dibutuhkan juga tool-tool pendukun
     * [Npgsql 2.2.7](http://www.nuget.org/packages/Npgsql/2.2.72)    	    
 	* [RestSharp](https://www.nuget.org/packages/RestSharp/)    	    
     * [Syncfusion Community Edition](https://www.syncfusion.com/products/communitylicense/)
+	* [Zen.Barcode.Rendering.Framework](https://www.nuget.org/packages/Zen.Barcode.Rendering.Framework/)
 
 * Database [PostgreSQL](https://www.postgresql.org/) versi 9.3.16 atau yang lebih tinggi
 

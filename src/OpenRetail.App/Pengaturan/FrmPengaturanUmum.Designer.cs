@@ -97,6 +97,8 @@
             this.chkTampilkanInfoMinimalStokProduk = new System.Windows.Forms.CheckBox();
             this.chkCustomerWajibDiisi = new System.Windows.Forms.CheckBox();
             this.chkSingkatPenulisanOngkir = new System.Windows.Forms.CheckBox();
+            this.chkStokProdukBolehMinus = new System.Windows.Forms.CheckBox();
+            this.chkUpdateHargaJual = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -130,7 +132,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(430, 339);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(433, 339);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
             // tabControl1
@@ -143,7 +145,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(424, 333);
+            this.tabControl1.Size = new System.Drawing.Size(427, 333);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -152,7 +154,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(416, 307);
+            this.tabPage1.Size = new System.Drawing.Size(419, 307);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Printer";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -169,7 +171,7 @@
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.16376F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.83624F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(410, 301);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(413, 301);
             this.tableLayoutPanel8.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -186,7 +188,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(404, 51);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(407, 51);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label1
@@ -207,7 +209,7 @@
             this.cmbPrinter.FormattingEnabled = true;
             this.cmbPrinter.Location = new System.Drawing.Point(133, 3);
             this.cmbPrinter.Name = "cmbPrinter";
-            this.cmbPrinter.Size = new System.Drawing.Size(268, 21);
+            this.cmbPrinter.Size = new System.Drawing.Size(271, 21);
             this.cmbPrinter.TabIndex = 0;
             // 
             // chkCetakOtomatis
@@ -227,7 +229,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 60);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(404, 238);
+            this.panel1.Size = new System.Drawing.Size(407, 238);
             this.panel1.TabIndex = 1;
             // 
             // grpMiniPOS
@@ -242,7 +244,7 @@
             this.grpMiniPOS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpMiniPOS.Location = new System.Drawing.Point(0, 0);
             this.grpMiniPOS.Name = "grpMiniPOS";
-            this.grpMiniPOS.Size = new System.Drawing.Size(404, 238);
+            this.grpMiniPOS.Size = new System.Drawing.Size(407, 238);
             this.grpMiniPOS.TabIndex = 1;
             this.grpMiniPOS.TabStop = false;
             this.grpMiniPOS.Text = " [ Jenis Printer ] ";
@@ -344,7 +346,7 @@
             this.tabPage2.Controls.Add(this.tableLayoutPanel5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(416, 307);
+            this.tabPage2.Size = new System.Drawing.Size(419, 307);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Nota Penjualan";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -363,7 +365,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(416, 307);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(419, 307);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // btnLihatContohNotaPenjualan
@@ -382,7 +384,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 180);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(410, 94);
+            this.groupBox1.Size = new System.Drawing.Size(413, 94);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " [ Label Nota/Info Pengirim ] ";
@@ -405,7 +407,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(404, 75);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(407, 75);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // label7
@@ -432,7 +434,7 @@
             this.txtDari1.Name = "txtDari1";
             this.txtDari1.NumericOnly = false;
             this.txtDari1.SelectionText = false;
-            this.txtDari1.Size = new System.Drawing.Size(334, 20);
+            this.txtDari1.Size = new System.Drawing.Size(337, 20);
             this.txtDari1.TabIndex = 0;
             this.txtDari1.ThousandSeparator = false;
             // 
@@ -471,7 +473,7 @@
             this.txtDari2.Name = "txtDari2";
             this.txtDari2.NumericOnly = false;
             this.txtDari2.SelectionText = false;
-            this.txtDari2.Size = new System.Drawing.Size(334, 20);
+            this.txtDari2.Size = new System.Drawing.Size(337, 20);
             this.txtDari2.TabIndex = 1;
             this.txtDari2.ThousandSeparator = false;
             // 
@@ -488,7 +490,7 @@
             this.txtDari3.Name = "txtDari3";
             this.txtDari3.NumericOnly = false;
             this.txtDari3.SelectionText = false;
-            this.txtDari3.Size = new System.Drawing.Size(334, 20);
+            this.txtDari3.Size = new System.Drawing.Size(337, 20);
             this.txtDari3.TabIndex = 2;
             this.txtDari3.ThousandSeparator = false;
             // 
@@ -498,7 +500,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(410, 171);
+            this.groupBox2.Size = new System.Drawing.Size(413, 171);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = " [ Header Nota ] ";
@@ -528,7 +530,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(404, 152);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(407, 152);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // label2
@@ -599,7 +601,7 @@
             this.txtHeader1.Name = "txtHeader1";
             this.txtHeader1.NumericOnly = false;
             this.txtHeader1.SelectionText = false;
-            this.txtHeader1.Size = new System.Drawing.Size(334, 20);
+            this.txtHeader1.Size = new System.Drawing.Size(337, 20);
             this.txtHeader1.TabIndex = 0;
             this.txtHeader1.ThousandSeparator = false;
             // 
@@ -616,7 +618,7 @@
             this.txtHeader2.Name = "txtHeader2";
             this.txtHeader2.NumericOnly = false;
             this.txtHeader2.SelectionText = false;
-            this.txtHeader2.Size = new System.Drawing.Size(334, 20);
+            this.txtHeader2.Size = new System.Drawing.Size(337, 20);
             this.txtHeader2.TabIndex = 1;
             this.txtHeader2.ThousandSeparator = false;
             // 
@@ -633,7 +635,7 @@
             this.txtHeader3.Name = "txtHeader3";
             this.txtHeader3.NumericOnly = false;
             this.txtHeader3.SelectionText = false;
-            this.txtHeader3.Size = new System.Drawing.Size(334, 20);
+            this.txtHeader3.Size = new System.Drawing.Size(337, 20);
             this.txtHeader3.TabIndex = 2;
             this.txtHeader3.ThousandSeparator = false;
             // 
@@ -650,7 +652,7 @@
             this.txtHeader4.Name = "txtHeader4";
             this.txtHeader4.NumericOnly = false;
             this.txtHeader4.SelectionText = false;
-            this.txtHeader4.Size = new System.Drawing.Size(334, 20);
+            this.txtHeader4.Size = new System.Drawing.Size(337, 20);
             this.txtHeader4.TabIndex = 3;
             this.txtHeader4.ThousandSeparator = false;
             // 
@@ -667,7 +669,7 @@
             this.txtHeader5.Name = "txtHeader5";
             this.txtHeader5.NumericOnly = false;
             this.txtHeader5.SelectionText = false;
-            this.txtHeader5.Size = new System.Drawing.Size(334, 20);
+            this.txtHeader5.Size = new System.Drawing.Size(337, 20);
             this.txtHeader5.TabIndex = 4;
             this.txtHeader5.ThousandSeparator = false;
             // 
@@ -676,7 +678,7 @@
             this.tabPage3.Controls.Add(this.tableLayoutPanel10);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(416, 307);
+            this.tabPage3.Size = new System.Drawing.Size(419, 307);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Nota Penjualan (Mini POS)";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -697,7 +699,7 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(416, 307);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(419, 307);
             this.tableLayoutPanel10.TabIndex = 0;
             // 
             // groupBox4
@@ -706,7 +708,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 154);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(410, 99);
+            this.groupBox4.Size = new System.Drawing.Size(413, 99);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = " [ Footer Nota ] ";
@@ -730,7 +732,7 @@
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(404, 80);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(407, 80);
             this.tableLayoutPanel12.TabIndex = 0;
             // 
             // label16
@@ -779,7 +781,7 @@
             this.txtFooterMiniPOS1.Name = "txtFooterMiniPOS1";
             this.txtFooterMiniPOS1.NumericOnly = false;
             this.txtFooterMiniPOS1.SelectionText = false;
-            this.txtFooterMiniPOS1.Size = new System.Drawing.Size(334, 20);
+            this.txtFooterMiniPOS1.Size = new System.Drawing.Size(337, 20);
             this.txtFooterMiniPOS1.TabIndex = 0;
             this.txtFooterMiniPOS1.ThousandSeparator = false;
             // 
@@ -796,7 +798,7 @@
             this.txtFooterMiniPOS2.Name = "txtFooterMiniPOS2";
             this.txtFooterMiniPOS2.NumericOnly = false;
             this.txtFooterMiniPOS2.SelectionText = false;
-            this.txtFooterMiniPOS2.Size = new System.Drawing.Size(334, 20);
+            this.txtFooterMiniPOS2.Size = new System.Drawing.Size(337, 20);
             this.txtFooterMiniPOS2.TabIndex = 1;
             this.txtFooterMiniPOS2.ThousandSeparator = false;
             // 
@@ -813,7 +815,7 @@
             this.txtFooterMiniPOS3.Name = "txtFooterMiniPOS3";
             this.txtFooterMiniPOS3.NumericOnly = false;
             this.txtFooterMiniPOS3.SelectionText = false;
-            this.txtFooterMiniPOS3.Size = new System.Drawing.Size(334, 20);
+            this.txtFooterMiniPOS3.Size = new System.Drawing.Size(337, 20);
             this.txtFooterMiniPOS3.TabIndex = 2;
             this.txtFooterMiniPOS3.ThousandSeparator = false;
             // 
@@ -823,7 +825,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(410, 145);
+            this.groupBox3.Size = new System.Drawing.Size(413, 145);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = " [ Header Nota ] ";
@@ -853,7 +855,7 @@
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(404, 126);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(407, 126);
             this.tableLayoutPanel11.TabIndex = 0;
             // 
             // label11
@@ -924,7 +926,7 @@
             this.txtHeaderMiniPOS1.Name = "txtHeaderMiniPOS1";
             this.txtHeaderMiniPOS1.NumericOnly = false;
             this.txtHeaderMiniPOS1.SelectionText = false;
-            this.txtHeaderMiniPOS1.Size = new System.Drawing.Size(334, 20);
+            this.txtHeaderMiniPOS1.Size = new System.Drawing.Size(337, 20);
             this.txtHeaderMiniPOS1.TabIndex = 0;
             this.txtHeaderMiniPOS1.ThousandSeparator = false;
             // 
@@ -941,7 +943,7 @@
             this.txtHeaderMiniPOS2.Name = "txtHeaderMiniPOS2";
             this.txtHeaderMiniPOS2.NumericOnly = false;
             this.txtHeaderMiniPOS2.SelectionText = false;
-            this.txtHeaderMiniPOS2.Size = new System.Drawing.Size(334, 20);
+            this.txtHeaderMiniPOS2.Size = new System.Drawing.Size(337, 20);
             this.txtHeaderMiniPOS2.TabIndex = 1;
             this.txtHeaderMiniPOS2.ThousandSeparator = false;
             // 
@@ -958,7 +960,7 @@
             this.txtHeaderMiniPOS3.Name = "txtHeaderMiniPOS3";
             this.txtHeaderMiniPOS3.NumericOnly = false;
             this.txtHeaderMiniPOS3.SelectionText = false;
-            this.txtHeaderMiniPOS3.Size = new System.Drawing.Size(334, 20);
+            this.txtHeaderMiniPOS3.Size = new System.Drawing.Size(337, 20);
             this.txtHeaderMiniPOS3.TabIndex = 2;
             this.txtHeaderMiniPOS3.ThousandSeparator = false;
             // 
@@ -975,7 +977,7 @@
             this.txtHeaderMiniPOS4.Name = "txtHeaderMiniPOS4";
             this.txtHeaderMiniPOS4.NumericOnly = false;
             this.txtHeaderMiniPOS4.SelectionText = false;
-            this.txtHeaderMiniPOS4.Size = new System.Drawing.Size(334, 20);
+            this.txtHeaderMiniPOS4.Size = new System.Drawing.Size(337, 20);
             this.txtHeaderMiniPOS4.TabIndex = 3;
             this.txtHeaderMiniPOS4.ThousandSeparator = false;
             // 
@@ -992,7 +994,7 @@
             this.txtHeaderMiniPOS5.Name = "txtHeaderMiniPOS5";
             this.txtHeaderMiniPOS5.NumericOnly = false;
             this.txtHeaderMiniPOS5.SelectionText = false;
-            this.txtHeaderMiniPOS5.Size = new System.Drawing.Size(334, 20);
+            this.txtHeaderMiniPOS5.Size = new System.Drawing.Size(337, 20);
             this.txtHeaderMiniPOS5.TabIndex = 4;
             this.txtHeaderMiniPOS5.ThousandSeparator = false;
             // 
@@ -1021,7 +1023,7 @@
             this.tabPage4.Controls.Add(this.tableLayoutPanel13);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(416, 307);
+            this.tabPage4.Size = new System.Drawing.Size(419, 307);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Lainnya";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1032,16 +1034,20 @@
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.Controls.Add(this.chkTampilkanInfoMinimalStokProduk, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.chkCustomerWajibDiisi, 0, 1);
-            this.tableLayoutPanel13.Controls.Add(this.chkSingkatPenulisanOngkir, 0, 2);
+            this.tableLayoutPanel13.Controls.Add(this.chkSingkatPenulisanOngkir, 0, 4);
+            this.tableLayoutPanel13.Controls.Add(this.chkStokProdukBolehMinus, 0, 2);
+            this.tableLayoutPanel13.Controls.Add(this.chkUpdateHargaJual, 0, 3);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 4;
+            this.tableLayoutPanel13.RowCount = 6;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(416, 307);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(419, 307);
             this.tableLayoutPanel13.TabIndex = 0;
             // 
             // chkTampilkanInfoMinimalStokProduk
@@ -1050,7 +1056,7 @@
             this.chkTampilkanInfoMinimalStokProduk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkTampilkanInfoMinimalStokProduk.Location = new System.Drawing.Point(3, 3);
             this.chkTampilkanInfoMinimalStokProduk.Name = "chkTampilkanInfoMinimalStokProduk";
-            this.chkTampilkanInfoMinimalStokProduk.Size = new System.Drawing.Size(410, 19);
+            this.chkTampilkanInfoMinimalStokProduk.Size = new System.Drawing.Size(413, 19);
             this.chkTampilkanInfoMinimalStokProduk.TabIndex = 0;
             this.chkTampilkanInfoMinimalStokProduk.Text = "Tampilkan info minimal stok produk";
             this.chkTampilkanInfoMinimalStokProduk.UseVisualStyleBackColor = true;
@@ -1061,7 +1067,7 @@
             this.chkCustomerWajibDiisi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkCustomerWajibDiisi.Location = new System.Drawing.Point(3, 28);
             this.chkCustomerWajibDiisi.Name = "chkCustomerWajibDiisi";
-            this.chkCustomerWajibDiisi.Size = new System.Drawing.Size(410, 19);
+            this.chkCustomerWajibDiisi.Size = new System.Drawing.Size(413, 19);
             this.chkCustomerWajibDiisi.TabIndex = 1;
             this.chkCustomerWajibDiisi.Text = "Customer wajib diisi pada saat penjualan";
             this.chkCustomerWajibDiisi.UseVisualStyleBackColor = true;
@@ -1070,18 +1076,40 @@
             // 
             this.chkSingkatPenulisanOngkir.AutoSize = true;
             this.chkSingkatPenulisanOngkir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkSingkatPenulisanOngkir.Location = new System.Drawing.Point(3, 53);
+            this.chkSingkatPenulisanOngkir.Location = new System.Drawing.Point(3, 103);
             this.chkSingkatPenulisanOngkir.Name = "chkSingkatPenulisanOngkir";
-            this.chkSingkatPenulisanOngkir.Size = new System.Drawing.Size(410, 19);
-            this.chkSingkatPenulisanOngkir.TabIndex = 2;
+            this.chkSingkatPenulisanOngkir.Size = new System.Drawing.Size(413, 19);
+            this.chkSingkatPenulisanOngkir.TabIndex = 4;
             this.chkSingkatPenulisanOngkir.Text = "Singkat penulisan ongkos kirim. Misal 7.000 -> 7, 14.000 -> 14, dst";
             this.chkSingkatPenulisanOngkir.UseVisualStyleBackColor = true;
+            // 
+            // chkStokProdukBolehMinus
+            // 
+            this.chkStokProdukBolehMinus.AutoSize = true;
+            this.chkStokProdukBolehMinus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkStokProdukBolehMinus.Location = new System.Drawing.Point(3, 53);
+            this.chkStokProdukBolehMinus.Name = "chkStokProdukBolehMinus";
+            this.chkStokProdukBolehMinus.Size = new System.Drawing.Size(413, 19);
+            this.chkStokProdukBolehMinus.TabIndex = 2;
+            this.chkStokProdukBolehMinus.Text = "Stok produk boleh minus ketika penjualan";
+            this.chkStokProdukBolehMinus.UseVisualStyleBackColor = true;
+            // 
+            // chkUpdateHargaJual
+            // 
+            this.chkUpdateHargaJual.AutoSize = true;
+            this.chkUpdateHargaJual.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkUpdateHargaJual.Location = new System.Drawing.Point(3, 78);
+            this.chkUpdateHargaJual.Name = "chkUpdateHargaJual";
+            this.chkUpdateHargaJual.Size = new System.Drawing.Size(413, 19);
+            this.chkUpdateHargaJual.TabIndex = 3;
+            this.chkUpdateHargaJual.Text = "Update harga jual master produk jika terjadi perubahan harga pada saat penjualan";
+            this.chkUpdateHargaJual.UseVisualStyleBackColor = true;
             // 
             // FrmPengaturanUmum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 421);
+            this.ClientSize = new System.Drawing.Size(433, 421);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "FrmPengaturanUmum";
             this.Text = "FrmPengaturanUmum";
@@ -1190,6 +1218,8 @@
         private System.Windows.Forms.RadioButton rdoJenisPrinterMiniPOS;
         private System.Windows.Forms.RadioButton rdoJenisPrinterDotMatrix;
         private System.Windows.Forms.RadioButton rdoJenisPrinterInkJet;
+        private System.Windows.Forms.CheckBox chkStokProdukBolehMinus;
+        private System.Windows.Forms.CheckBox chkUpdateHargaJual;
 
 
 

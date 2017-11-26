@@ -55,6 +55,8 @@ namespace OpenRetail.App.Pengaturan
                 txtAlamat.Text = this._profil.alamat;
                 txtKota.Text = this._profil.kota;
                 txtTelepon.Text = this._profil.telepon;
+                txtEmail.Text = this._profil.email;
+                txtWebsite.Text = this._profil.website;
             }            
         }
 
@@ -67,6 +69,8 @@ namespace OpenRetail.App.Pengaturan
             _profil.alamat = txtAlamat.Text;
             _profil.kota = txtKota.Text;
             _profil.telepon = txtTelepon.Text;
+            _profil.email = txtEmail.Text;
+            _profil.website = txtWebsite.Text;
 
             var result = 0;
             var validationError = new ValidationError();
@@ -91,10 +95,10 @@ namespace OpenRetail.App.Pengaturan
             }                
         }
 
-        private void txtTelepon_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtWebsite_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEnter(e))
                 Simpan();
-        }
+        }        
     }
 }

@@ -103,6 +103,7 @@
     <Compile Include="Report\ReportJualProdukBll.cs" />
     <Compile Include="Report\ReportKartuHutangBll.cs" />
     <Compile Include="Report\ReportKartuPiutangBll.cs" />
+    <Compile Include="Report\ReportKartuStokBll.cs" />
     <Compile Include="Report\ReportKasbonBll.cs" />
     <Compile Include="Report\ReportMesinKasirBll.cs" />
     <Compile Include="Report\ReportPemasukanPengeluaranBll.cs" />
@@ -117,12 +118,17 @@
     <Compile Include="ReturJualProdukBll.cs" />
     <Compile Include="RoleBll.cs" />
     <Compile Include="RolePrivilegeBll.cs" />
+    <Compile Include="SettingAplikasiBll.cs" />
     <Compile Include="SupplierBll.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenRetail.Bll.Api\OpenRetail.Bll.Api.csproj">
       <Project>{24e6fae6-2f30-4b86-bbe7-4c88fb631956}</Project>
       <Name>OpenRetail.Bll.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenRetail.Helper\OpenRetail.Helper.csproj">
+      <Project>{3316e651-8404-4cd4-a132-2b013489de67}</Project>
+      <Name>OpenRetail.Helper</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">
       <Project>{6b9cabad-1a6c-4323-8548-bd5f3c12613c}</Project>

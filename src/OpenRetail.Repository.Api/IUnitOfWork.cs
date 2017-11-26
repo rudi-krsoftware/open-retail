@@ -33,6 +33,7 @@ namespace OpenRetail.Repository.Api
 
         IKartuRepository KartuRepository { get; }
         IGolonganRepository GolonganRepository { get; }
+        ISettingAplikasiRepository SettingAplikasiRepository { get; }
         IProdukRepository ProdukRepository { get; }
         IHargaGrosirRepository HargaGrosirRepository { get; }
         IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository { get; }
@@ -89,6 +90,7 @@ namespace OpenRetail.Repository.Api
         IReportMesinKasirRepository ReportMesinKasirRepository { get; }
 
         IReportStokProdukRepository ReportStokProdukRepository { get; }
+        IReportKartuStokRepository ReportKartuStokRepository { get; }
         IReportPengeluaranBiayaRepository ReportPengeluaranBiayaRepository { get; }
         IReportKasbonRepository ReportKasbonRepository { get; }
         IReportGajiKaryawanRepository ReportGajiKaryawanRepository { get; }

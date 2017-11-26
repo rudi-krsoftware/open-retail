@@ -80,6 +80,7 @@
     <Compile Include="IReturJualProdukRepository.cs" />
     <Compile Include="IRolePrivilegeRepository.cs" />
     <Compile Include="IRoleRepository.cs" />
+    <Compile Include="ISettingAplikasiRepository.cs" />
     <Compile Include="ISupplierRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Report\IReportJualProdukRepository.cs" />
     <Compile Include="Report\IReportKartuHutangRepository.cs" />
     <Compile Include="Report\IReportKartuPiutangRepository.cs" />
+    <Compile Include="Report\IReportKartuStokRepository.cs" />
     <Compile Include="Report\IReportKasbonRepository.cs" />
     <Compile Include="Report\IReportMesinKasirRepository.cs" />
     <Compile Include="Report\IReportPemasukanPengeluaranRepository.cs" />
