@@ -31,7 +31,9 @@ Panduan instalasi dan penggunaan [OpenRetail](https://github.com/rudi-krsoftware
 Forum atau Diskusi
 ------------------
 
-Anda dapat bergabung dalam [Forum Pengguna OpenRetail](https://www.facebook.com/groups/OpenRetail) di Facebook. Group ini merupakan tempat berbagi informasi dan saling membantu menggunakan dan mengembangkan aplikasi [OpenRetail](https://github.com/rudi-krsoftware/open-retail).
+* [Melaporkan bug atau error](https://github.com/rudi-krsoftware/open-retail/wiki/Tanya-Jawab#melaporkan-bug-atau-error)
+* [Permintaan fitur baru](https://github.com/rudi-krsoftware/open-retail/wiki/Tanya-Jawab#permintaan-fitur-baru)
+* [Group OpenRetail](https://www.facebook.com/groups/OpenRetail) di Facebook. Group ini merupakan tempat berbagi informasi dan saling membantu menggunakan dan mengembangkan aplikasi [OpenRetail](https://github.com/rudi-krsoftware/open-retail).
 
 Bagaimana jika ingin ikut berkontribusi?
 ----------------------------------------
