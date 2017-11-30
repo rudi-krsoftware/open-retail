@@ -26,6 +26,12 @@ using System.Data.Common;
 
 namespace OpenRetail.BackupAndRestore.Context
 {
+    public interface IDapperContext : IDisposable
+    {
+        IDbConnection db { get; }
+        bool IsOpenConnection();
+    }
+
     public class DapperContext : IDapperContext
     {
         private IDbConnection _db;
@@ -33,16 +39,14 @@ namespace OpenRetail.BackupAndRestore.Context
         private readonly string _providerName;
         private readonly string _connectionString;
 
-        public DapperContext()
+        public DapperContext(string pgPassword)
         {
             var server = ConfigurationManager.AppSettings["server"];
             var port = ConfigurationManager.AppSettings["port"];
-
-            var userId = "postgres";
-            var userPassword = "masterkey";
+            var pgUser = "postgres";
 
             _providerName = "Npgsql";
-            _connectionString = string.Format("Server={0};Port={1};User Id={2};Password={3};", server, port, userId, userPassword);
+            _connectionString = string.Format("Server={0};Port={1};User Id={2};Password={3};", server, port, pgUser, pgPassword);
 
             if (_db == null)
             {

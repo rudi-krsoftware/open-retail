@@ -45,6 +45,7 @@ namespace OpenRetail.BackupAndRestore.Main
 
         private string _port = "5435";
         private string _dbName = "DbOpenRetail";        
+        private string _pgPassword = "masterkey";
 
         private string Result
         {
@@ -215,9 +216,7 @@ namespace OpenRetail.BackupAndRestore.Main
         {
             try
             {
-                _result = "";
-
-                var pgPassword = "masterkey";
+                _result = "";                
 
                 var info = new System.Diagnostics.ProcessStartInfo();
                 info.FileName = "pgsql\\" + cmd + ".exe ";
@@ -229,7 +228,7 @@ namespace OpenRetail.BackupAndRestore.Main
 
                 try 
 	            {	        
-                    info.EnvironmentVariables.Add("PGPASSWORD", pgPassword); 
+                    info.EnvironmentVariables.Add("PGPASSWORD", _pgPassword); 
 	            }
 	            catch
 	            {
@@ -261,7 +260,7 @@ namespace OpenRetail.BackupAndRestore.Main
         {
             var result = false;
 
-            using (IDapperContext context = new DapperContext())
+            using (IDapperContext context = new DapperContext(_pgPassword))
             {
                 result = context.IsOpenConnection();
             }
@@ -275,12 +274,12 @@ namespace OpenRetail.BackupAndRestore.Main
 
             try
             {
-                using (IDapperContext context = new DapperContext())
+                using (IDapperContext context = new DapperContext(_pgPassword))
                 {
                     Result = "Menonaktifkan semua koneksi" + Environment.NewLine;
 
                     var sql = @"SELECT pg_terminate_backend(pid) 
-                                FROM pg_stat_activity where datname = @dbName";
+                                FROM pg_stat_activity WHERE datname = @dbName";
                     context.db.Execute(sql, new { dbName });
 
                     Result = "Menghapus database lama" + Environment.NewLine;

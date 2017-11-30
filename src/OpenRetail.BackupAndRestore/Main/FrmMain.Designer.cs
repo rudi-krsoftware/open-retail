@@ -100,9 +100,9 @@
             this.lblHeader.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.Location = new System.Drawing.Point(3, 7);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(294, 17);
+            this.lblHeader.Size = new System.Drawing.Size(328, 17);
             this.lblHeader.TabIndex = 0;
-            this.lblHeader.Text = "Backup dan Restore OpenRetail Database";
+            this.lblHeader.Text = "Tool Backup dan Restore OpenRetail Database";
             // 
             // tableLayoutPanel2
             // 
@@ -448,7 +448,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Backup dan Restore OpenRetail Database";
+            this.Text = "Tool Backup dan Restore OpenRetail Database";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmMain_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);

@@ -79,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DapperContext.cs" />
-    <Compile Include="Context\IDapperContext.cs" />
     <Compile Include="Main\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
