@@ -733,7 +733,11 @@ namespace OpenRetail.App.Transaksi
                 {
                     if (produk.is_stok_minus)
                     {
-                        MsgHelper.MsgWarning("Maaf stok produk tidak boleh minus");
+                        var msg = "Maaf stok produk minus.\n\n" +
+                                  "Stok saat ini: {0}";
+
+                        MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok));
+
                         GridListControlHelper.SelectCellText(this.gridControl, _rowIndex, 3);
                         return;
                     }
@@ -923,7 +927,11 @@ namespace OpenRetail.App.Transaksi
                             {
                                 if (produk.is_stok_minus)
                                 {
-                                    MsgHelper.MsgWarning("Maaf stok produk tidak boleh minus");
+                                    var msg = "Maaf stok produk minus.\n\n" +
+                                              "Stok saat ini: {0}";
+
+                                    MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok));
+
                                     GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                                     return;
                                 }
@@ -977,7 +985,10 @@ namespace OpenRetail.App.Transaksi
                             {
                                 if (produk.is_stok_minus)
                                 {
-                                    MsgHelper.MsgWarning("Maaf stok produk tidak boleh minus");
+                                    var msg = "Maaf stok produk minus.\n\n" +
+                                              "Stok saat ini: {0}";
+
+                                    MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok));
                                     GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                                     return;
                                 }
@@ -1021,6 +1032,32 @@ namespace OpenRetail.App.Transaksi
                         break;
 
                     case 4: // jumlah
+                        if (!_pengaturanUmum.is_stok_produk_boleh_minus)
+                        {
+                            gridControl_CurrentCellValidated(sender, new EventArgs());
+
+                            var itemJual = _listOfItemJual[rowIndex - 1];
+                            produk = itemJual.Produk;
+
+                            var isValidStok = (produk.sisa_stok - itemJual.jumlah) >= 0;
+
+                            if (!isValidStok)
+                            {
+                                var msg = "Maaf stok produk kurang.\n\n" +
+                                          "Stok saat ini: {0}\n" +
+                                          "Jumlah jual: {1}\n" +
+                                          "Sisa stok: {2}";
+
+                                MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok, itemJual.jumlah, produk.sisa_stok - itemJual.jumlah));
+                                GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+
+                                return;
+                            }
+                        }
+
+                        GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
+                        break;
+
                     case 5: // diskon
                         GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
                         break;
