@@ -419,6 +419,7 @@ namespace OpenRetail.App.Lookup
 
                             case 3:
                                 e.Style.CellValue = produk.nama_produk;
+                                e.Style.CellTipText = e.Style.Text;
                                 break;
 
                             case 4:
