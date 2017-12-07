@@ -182,6 +182,37 @@ namespace OpenRetail.Repository.Service.Report
             return oList;
         }
 
+        public IList<ReportStokProduk> GetStokBerdasarkanKode(IList<string> listOfKode)
+        {
+            IList<ReportStokProduk> oList = new List<ReportStokProduk>();
+
+            try
+            {
+                var sb = new StringBuilder();
+
+                foreach (var item in listOfKode)
+                {
+                    sb.Append("'").Append(item).Append("'").Append(",");
+                }
+
+                var param = sb.ToString();
+                param = param.Substring(0, param.Length - 1);
+
+                _sql = SQL_TEMPLATE_STOK_PRODUK.Replace("{WHERE}", "WHERE LOWER(m_produk.kode_produk) IN (" + param + ")");
+
+                oList = _context.db.Query<ReportStokProduk>(_sql ).ToList();
+
+                if (oList.Count > 0)
+                    SetHargaGrosir(oList);          
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
         public IList<ReportStokProduk> GetStokBerdasarkanNama(string name)
         {
             IList<ReportStokProduk> oList = new List<ReportStokProduk>();
