@@ -438,7 +438,14 @@ namespace OpenRetail.App.Cashier.Transaksi
                                 grid.RowCount = _listOfItemJual.Count;
                             }
 
-                            GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                            if (_pengaturanUmum.is_fokus_input_kolom_jumlah)
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, rowIndex, 4); // fokus ke kolom jumlah
+                            }
+                            else
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                            }                            
                         }
 
                         break;
@@ -492,8 +499,15 @@ namespace OpenRetail.App.Cashier.Transaksi
                                 _listOfItemJual.Add(new ItemJualProduk());
                                 grid.RowCount = _listOfItemJual.Count;
                             }
-                                
-                            GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                                                            
+                            if (_pengaturanUmum.is_fokus_input_kolom_jumlah)
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, rowIndex, 4); // fokus ke kolom jumlah
+                            }
+                            else
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                            }
                         }
                         else // data lebih dari satu
                         {
@@ -833,7 +847,14 @@ namespace OpenRetail.App.Cashier.Transaksi
                     this.gridControl.RowCount = _listOfItemJual.Count;
                 }
 
-                GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex + 1, 2); // pindah kebaris berikutnya
+                if (_pengaturanUmum.is_fokus_input_kolom_jumlah)
+                {
+                    GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex, 4); // fokus ke kolom jumlah
+                }
+                else
+                {
+                    GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex + 1, 2); // pindah kebaris berikutnya
+                }                
             }
             else if (data is Customer) // pencarian customer
             {

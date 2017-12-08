@@ -106,6 +106,7 @@ namespace OpenRetail.App.Main
             {
                 MainProgram.pengaturanUmum.is_stok_produk_boleh_minus = settingAplikasi.is_stok_produk_boleh_minus;
                 MainProgram.pengaturanUmum.is_update_harga_jual = settingAplikasi.is_update_harga_jual_master_produk;
+                MainProgram.pengaturanUmum.is_fokus_input_kolom_jumlah = settingAplikasi.is_fokus_input_kolom_jumlah;
             }            
 
             // set header nota

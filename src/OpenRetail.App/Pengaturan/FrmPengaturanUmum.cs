@@ -195,6 +195,7 @@ namespace OpenRetail.App.Pengaturan
             chkTampilkanInfoMinimalStokProduk.Checked = _pengaturanUmum.is_show_minimal_stok;
             chkCustomerWajibDiisi.Checked = _pengaturanUmum.is_customer_required;
             chkStokProdukBolehMinus.Checked = _pengaturanUmum.is_stok_produk_boleh_minus;
+            chkFokusKeKolomJumlah.Checked = _pengaturanUmum.is_fokus_input_kolom_jumlah;
             chkUpdateHargaJual.Checked = _pengaturanUmum.is_update_harga_jual;
             chkSingkatPenulisanOngkir.Checked = _pengaturanUmum.is_singkat_penulisan_ongkir;            
         }
@@ -276,12 +277,14 @@ namespace OpenRetail.App.Pengaturan
             {
                 settingAplikasi.is_update_harga_jual_master_produk = chkUpdateHargaJual.Checked;
                 settingAplikasi.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;
+                settingAplikasi.is_fokus_input_kolom_jumlah = chkFokusKeKolomJumlah.Checked;
 
                 var result = settingAplikasiBll.Update(settingAplikasi);
                 if (result > 0)
                 {
                     _pengaturanUmum.is_update_harga_jual = chkUpdateHargaJual.Checked;
-                    _pengaturanUmum.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;                    
+                    _pengaturanUmum.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;
+                    _pengaturanUmum.is_fokus_input_kolom_jumlah = chkFokusKeKolomJumlah.Checked;                    
                 }
             }
         }
