@@ -46,9 +46,12 @@ namespace OpenRetail.App.Referensi
         private IList<Produk> _listOfProduk = new List<Produk>();
         private IList<Golongan> _listOfGolongan = new List<Golongan>();
         private ILog _log;
+        private Pengguna _pengguna;
+
         private int _pageNumber = 1;
         private int _pagesCount = 0;
         private int _pageSize = 0;
+        private string _menuId = string.Empty;
 
         public FrmListProdukWithNavigation(string header, Pengguna pengguna, string menuId)
             : base()
@@ -68,9 +71,11 @@ namespace OpenRetail.App.Referensi
             _pageSize = MainProgram.pageSize;
             _log = MainProgram.log;
             _bll = new ProdukBll(_log);
-            
+            _pengguna = pengguna;
+            _menuId = menuId;
+
             // set hak akses untuk SELECT
-            var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
+            var role = _pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
             if (role != null)
             {
                 if (role.is_grant)
@@ -91,7 +96,7 @@ namespace OpenRetail.App.Referensi
             InitGridList();
 
             // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
-            RolePrivilegeHelper.SetHakAkses(this, pengguna, menuId, _listOfGolongan.Count);
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfGolongan.Count);
         }
 
         private void LoadDataGolongan()
@@ -398,7 +403,17 @@ namespace OpenRetail.App.Referensi
         private void btnCari_Click(object sender, EventArgs e)
         {
             _pageNumber = 1;
-            LoadDataProdukByName(txtNamaProduk.Text, cmbSortBy.SelectedIndex);
+
+            // set hak akses untuk SELECT
+            var role = _pengguna.GetRoleByMenuAndGrant(_menuId, GrantState.SELECT);
+            if (role != null)
+            {
+                if (role.is_grant)
+                    LoadDataProdukByName(txtNamaProduk.Text, cmbSortBy.SelectedIndex);
+            }
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfGolongan.Count);
         }
 
         private void cmbGolongan_SelectedIndexChanged(object sender, EventArgs e)
@@ -414,7 +429,17 @@ namespace OpenRetail.App.Referensi
             }
 
             _pageNumber = 1;
-            LoadDataProduk(golonganId, cmbSortBy.SelectedIndex);
+
+            // set hak akses untuk SELECT
+            var role = _pengguna.GetRoleByMenuAndGrant(_menuId, GrantState.SELECT);
+            if (role != null)
+            {
+                if (role.is_grant)
+                    LoadDataProduk(golonganId, cmbSortBy.SelectedIndex);
+            }
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfGolongan.Count);
         }
 
         protected override void Tambah()
@@ -530,22 +555,33 @@ namespace OpenRetail.App.Referensi
 
         private void RefreshData()
         {
-            if (txtNamaProduk.Text.Length > 0)
-                LoadDataProdukByName(txtNamaProduk.Text);
-            else
+            // set hak akses untuk SELECT
+            var role = _pengguna.GetRoleByMenuAndGrant(_menuId, GrantState.SELECT);
+            if (role != null)
             {
-                var golonganId = string.Empty;
-
-                var index = cmbGolongan.SelectedIndex;
-
-                if (index > 0)
+                if (role.is_grant)
                 {
-                    var golongan = _listOfGolongan[index - 1];
-                    golonganId = golongan.golongan_id;
-                }
+                    if (txtNamaProduk.Text.Length > 0)
+                        LoadDataProdukByName(txtNamaProduk.Text);
+                    else
+                    {
+                        var golonganId = string.Empty;
 
-                LoadDataProduk(golonganId);
+                        var index = cmbGolongan.SelectedIndex;
+
+                        if (index > 0)
+                        {
+                            var golongan = _listOfGolongan[index - 1];
+                            golonganId = golongan.golongan_id;
+                        }
+
+                        LoadDataProduk(golonganId);
+                    }
+                }
             }
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfGolongan.Count);
         }
 
         protected override void MoveFirst()
@@ -603,7 +639,17 @@ namespace OpenRetail.App.Referensi
             }
 
             _pageNumber = 1;
-            LoadDataProduk(golonganId, cmbSortBy.SelectedIndex);
+
+            // set hak akses untuk SELECT
+            var role = _pengguna.GetRoleByMenuAndGrant(_menuId, GrantState.SELECT);
+            if (role != null)
+            {
+                if (role.is_grant)
+                    LoadDataProduk(golonganId, cmbSortBy.SelectedIndex);
+            }
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfGolongan.Count);
         }
         
     }

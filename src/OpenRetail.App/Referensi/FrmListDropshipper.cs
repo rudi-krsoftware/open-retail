@@ -44,7 +44,9 @@ namespace OpenRetail.App.Referensi
         private IDropshipperBll _bll; // deklarasi objek business logic layer 
         private IList<Dropshipper> _listOfDropshipper = new List<Dropshipper>();
         private ILog _log;
-        
+        private Pengguna _pengguna;
+        private string _menuId = string.Empty;
+
         public FrmListDropshipper(string header, Pengguna pengguna, string menuId)
             : base()
         {
@@ -62,21 +64,23 @@ namespace OpenRetail.App.Referensi
 
             _log = MainProgram.log;
             _bll = new DropshipperBll(_log);
-            
+            _pengguna = pengguna;
+            _menuId = menuId;
+
             // set hak akses untuk SELECT
-            var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
+            var role = pengguna.GetRoleByMenuAndGrant(_menuId, GrantState.SELECT);
             if (role != null)
                 if (role.is_grant)
                 {
                     LoadData();
 
-                    btnImport.Enabled = pengguna.is_administrator;
+                    btnImport.Enabled = _pengguna.is_administrator;
                 }                    
 
             InitGridList();
 
             // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
-            RolePrivilegeHelper.SetHakAkses(this, pengguna, menuId, _listOfDropshipper.Count);
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfDropshipper.Count);
         }
 
         private void InitGridList()
@@ -282,10 +286,21 @@ namespace OpenRetail.App.Referensi
 
         private void btnCari_Click(object sender, EventArgs e)
         {
-            if (txtNamaDropshipper.Text == "Cari nama dropshipper ...")
-                LoadData();
-            else
-                LoadData(txtNamaDropshipper.Text);
+            // set hak akses untuk SELECT
+            var role = _pengguna.GetRoleByMenuAndGrant(_menuId, GrantState.SELECT);
+            if (role != null)
+            {
+                if (role.is_grant)
+                {
+                    if (txtNamaDropshipper.Text == "Cari nama dropshipper ...")
+                        LoadData();
+                    else
+                        LoadData(txtNamaDropshipper.Text);
+                }
+            }
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfDropshipper.Count);
         }
 
         private void txtNamaDropshipper_KeyPress(object sender, KeyPressEventArgs e)
