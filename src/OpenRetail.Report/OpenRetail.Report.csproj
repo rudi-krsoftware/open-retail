@@ -103,6 +103,8 @@
     <EmbeddedResource Include="RvPembayaranPiutangPenjualanProdukHeader.rdlc" />
     <EmbeddedResource Include="RvKasbonHeader.rdlc" />
     <EmbeddedResource Include="RvGajiKaryawan.rdlc" />
+    <EmbeddedResource Include="RvPenjualanProdukPerGolonganDetail.rdlc" />
+    <EmbeddedResource Include="RvPenjualanProdukPerGolonganHeader.rdlc" />
     <EmbeddedResource Include="RvPenjualanProdukPerKasir.rdlc" />
     <EmbeddedResource Include="RvPenyesuaianStok.rdlc" />
     <EmbeddedResource Include="RvPengeluaranBiaya.rdlc" />

@@ -115,6 +115,22 @@ namespace OpenRetail.Helper.UI.Template
             return listOfCustomerId;
         }
 
+        protected IList<string> GetGolonganId(IList<Golongan> listOfGolongan)
+        {
+            var listOfGolonganId = new List<string>();
+
+            for (var i = 0; i < chkListBox.Items.Count; i++)
+            {
+                if (chkListBox.GetItemChecked(i))
+                {
+                    var golongan = listOfGolongan[i];
+                    listOfGolonganId.Add(golongan.golongan_id);
+                }
+            }
+
+            return listOfGolonganId;
+        }
+
         /// <summary>
         /// Method override untuk menghandle proses preview
         /// </summary>

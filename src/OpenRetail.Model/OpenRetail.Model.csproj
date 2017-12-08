@@ -143,6 +143,7 @@
     <Compile Include="Report\ReportPenjualanProduk.cs" />
     <Compile Include="Report\ReportPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportPenjualanProdukHeader.cs" />
+    <Compile Include="Report\ReportPenjualanProdukPerGolongan.cs" />
     <Compile Include="Report\ReportPenyesuaianStokProduk.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProdukHeader.cs" />
