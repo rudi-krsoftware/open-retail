@@ -55,8 +55,8 @@ namespace OpenRetail.App.Main
 
             if (Utils.IsRunningUnderIDE()) // mode debug, set user dan password default untuk development
             {
-                txtUserName.Text = "kasir";
-                txtPassword.Text = "masuk";
+                txtUserName.Text = "admin";
+                txtPassword.Text = "admin";
             }
 
             // baca setting pageSize
