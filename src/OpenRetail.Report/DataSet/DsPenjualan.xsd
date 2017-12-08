@@ -57,6 +57,8 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="customer_id" msprop:Generator_ColumnVarNameInTable="columncustomer_id" msprop:Generator_ColumnPropNameInRow="customer_id" msprop:Generator_ColumnPropNameInTable="customer_idColumn" msprop:Generator_UserColumnName="customer_id" type="xs:string" minOccurs="0" />
+              <xs:element name="golongan_id" msprop:Generator_ColumnVarNameInTable="columngolongan_id" msprop:Generator_ColumnPropNameInRow="golongan_id" msprop:Generator_ColumnPropNameInTable="golongan_idColumn" msprop:Generator_UserColumnName="golongan_id" type="xs:string" minOccurs="0" />
+              <xs:element name="nama_golongan" msprop:Generator_ColumnVarNameInTable="columnnama_golongan" msprop:Generator_ColumnPropNameInRow="nama_golongan" msprop:Generator_ColumnPropNameInTable="nama_golonganColumn" msprop:Generator_UserColumnName="nama_golongan" type="xs:string" minOccurs="0" />
               <xs:element name="tanggal" msprop:Generator_ColumnVarNameInTable="columntanggal" msprop:Generator_ColumnPropNameInRow="tanggal" msprop:Generator_ColumnPropNameInTable="tanggalColumn" msprop:Generator_UserColumnName="tanggal" type="xs:dateTime" minOccurs="0" />
               <xs:element name="produk_id" msprop:Generator_ColumnVarNameInTable="columnproduk_id" msprop:Generator_ColumnPropNameInRow="produk_id" msprop:Generator_ColumnPropNameInTable="produk_idColumn" msprop:Generator_UserColumnName="produk_id" type="xs:string" minOccurs="0" />
               <xs:element name="nama_produk" msprop:Generator_ColumnVarNameInTable="columnnama_produk" msprop:Generator_ColumnPropNameInRow="nama_produk" msprop:Generator_ColumnPropNameInTable="nama_produkColumn" msprop:Generator_UserColumnName="nama_produk" type="xs:string" minOccurs="0" />
@@ -306,6 +308,15 @@
               <xs:element name="alamat" msprop:Generator_ColumnVarNameInTable="columnalamat" msprop:Generator_ColumnPropNameInRow="alamat" msprop:Generator_ColumnPropNameInTable="alamatColumn" msprop:Generator_UserColumnName="alamat" type="xs:string" minOccurs="0" />
               <xs:element name="telepon" msprop:Generator_ColumnVarNameInTable="columntelepon" msprop:Generator_ColumnPropNameInRow="telepon" msprop:Generator_ColumnPropNameInTable="teleponColumn" msprop:Generator_UserColumnName="telepon" type="xs:string" minOccurs="0" />
               <xs:element name="jumlah" msprop:Generator_ColumnVarNameInTable="columnjumlah" msprop:Generator_ColumnPropNameInRow="jumlah" msprop:Generator_ColumnPropNameInTable="jumlahColumn" msprop:Generator_UserColumnName="jumlah" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReportPenjualanProdukPerGolongan" msprop:Generator_TableClassName="ReportPenjualanProdukPerGolonganDataTable" msprop:Generator_TableVarName="tableReportPenjualanProdukPerGolongan" msprop:Generator_RowChangedName="ReportPenjualanProdukPerGolonganRowChanged" msprop:Generator_TablePropName="ReportPenjualanProdukPerGolongan" msprop:Generator_RowDeletingName="ReportPenjualanProdukPerGolonganRowDeleting" msprop:Generator_RowChangingName="ReportPenjualanProdukPerGolonganRowChanging" msprop:Generator_RowEvHandlerName="ReportPenjualanProdukPerGolonganRowChangeEventHandler" msprop:Generator_RowDeletedName="ReportPenjualanProdukPerGolonganRowDeleted" msprop:Generator_RowClassName="ReportPenjualanProdukPerGolonganRow" msprop:Generator_UserTableName="ReportPenjualanProdukPerGolongan" msprop:Generator_RowEvArgName="ReportPenjualanProdukPerGolonganRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="golongan_id" msprop:Generator_ColumnVarNameInTable="columngolongan_id" msprop:Generator_ColumnPropNameInRow="golongan_id" msprop:Generator_ColumnPropNameInTable="golongan_idColumn" msprop:Generator_UserColumnName="golongan_id" type="xs:string" minOccurs="0" />
+              <xs:element name="nama_golongan" msprop:Generator_ColumnVarNameInTable="columnnama_golongan" msprop:Generator_ColumnPropNameInRow="nama_golongan" msprop:Generator_ColumnPropNameInTable="nama_golonganColumn" msprop:Generator_UserColumnName="nama_golongan" type="xs:string" minOccurs="0" />
+              <xs:element name="sub_total" msprop:Generator_ColumnVarNameInTable="columnsub_total" msprop:Generator_ColumnPropNameInRow="sub_total" msprop:Generator_ColumnPropNameInTable="sub_totalColumn" msprop:Generator_UserColumnName="sub_total" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

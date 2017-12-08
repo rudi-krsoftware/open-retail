@@ -249,5 +249,68 @@ namespace OpenRetail.Bll.Service.Report
 
             return oList;
         }
+
+
+        public IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByBulan(int bulan, int tahun)
+        {
+            IList<ReportPenjualanProdukPerGolongan> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportJualProdukRepository.PerGolonganGetByBulan(bulan, tahun);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByBulan(int bulanAwal, int bulanAkhir, int tahun)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
+        {
+            IList<ReportPenjualanProdukPerGolongan> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportJualProdukRepository.PerGolonganGetByTanggal(tanggalMulai, tanggalSelesai);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportPenjualanProduk> PerGolonganDetailGetByBulan(int bulan, int tahun)
+        {
+            IList<ReportPenjualanProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportJualProdukRepository.PerGolonganDetailGetByBulan(bulan, tahun);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportPenjualanProduk> PerGolonganDetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ReportPenjualanProduk> PerGolonganDetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
+        {
+            IList<ReportPenjualanProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportJualProdukRepository.PerGolonganDetailGetByTanggal(tanggalMulai, tanggalSelesai);
+            }
+
+            return oList;
+        }
     }
 }

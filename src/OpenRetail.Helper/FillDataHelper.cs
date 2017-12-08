@@ -71,6 +71,16 @@ namespace OpenRetail.Helper
             }
         }
 
+        public static void FillGolongan(CheckedListBox chkListbox, IList<Golongan> listOfGolongan)
+        {
+            chkListbox.Items.Clear();
+
+            foreach (var golongan in listOfGolongan)
+            {
+                chkListbox.Items.Add(golongan.nama_golongan);
+            }
+        }
+
         public static void FillCustomer(CheckedListBox chkListbox, IList<Customer> listOfCustomer)
         {
             chkListbox.Items.Clear();
