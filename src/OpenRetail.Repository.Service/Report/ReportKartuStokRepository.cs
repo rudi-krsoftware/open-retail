@@ -117,6 +117,46 @@ namespace OpenRetail.Repository.Service.Report
             return oList;
         }
 
+        public IList<ReportKartuStok> GetByBulan(int bulan, int tahun, IList<string> listOfKode)
+        {
+            IList<ReportKartuStok> oList = new List<ReportKartuStok>();
+
+            try
+            {
+                var sb = new StringBuilder();
+
+                foreach (var item in listOfKode)
+                {
+                    sb.Append("'").Append(item).Append("'").Append(",");
+                }
+
+                var param = sb.ToString();
+                param = param.Substring(0, param.Length - 1);
+
+                _where = "WHERE LOWER(m_produk.kode_produk) IN (" + param + ") AND EXTRACT(MONTH FROM t_beli_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_beli_produk.tanggal) = @tahun";
+                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where);
+
+                _where = "WHERE LOWER(m_produk.kode_produk) IN (" + param + ") AND EXTRACT(MONTH FROM t_retur_jual_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_retur_jual_produk.tanggal) = @tahun";
+                _sql = _sql.Replace("{WHERE_2}", _where);
+
+                _where = "WHERE LOWER(m_produk.kode_produk) IN (" + param + ") AND EXTRACT(MONTH FROM t_jual_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_jual_produk.tanggal) = @tahun";
+                _sql = _sql.Replace("{WHERE_3}", _where);
+
+                _where = "WHERE LOWER(m_produk.kode_produk) IN (" + param + ") AND EXTRACT(MONTH FROM t_retur_beli_produk.tanggal) = @bulan AND EXTRACT(YEAR FROM t_retur_beli_produk.tanggal) = @tahun";
+                _sql = _sql.Replace("{WHERE_4}", _where);
+
+                oList = _context.db.Query<ReportKartuStok>(_sql, new { bulan, tahun })
+                                .ToList();
+
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
         public IList<ReportKartuStok> GetByBulan(int bulanAwal, int bulanAkhir, int tahun)
         {
             throw new NotImplementedException();
@@ -138,6 +178,45 @@ namespace OpenRetail.Repository.Service.Report
                 _sql = _sql.Replace("{WHERE_3}", _where);
 
                 _where = @"WHERE t_retur_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai";
+                _sql = _sql.Replace("{WHERE_4}", _where);
+
+                oList = _context.db.Query<ReportKartuStok>(_sql, new { tanggalMulai, tanggalSelesai })
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportKartuStok> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, IList<string> listOfKode)
+        {            
+            IList<ReportKartuStok> oList = new List<ReportKartuStok>();
+
+            try
+            {
+                var sb = new StringBuilder();
+
+                foreach (var item in listOfKode)
+                {
+                    sb.Append("'").Append(item).Append("'").Append(",");
+                }
+
+                var param = sb.ToString();
+                param = param.Substring(0, param.Length - 1);
+
+                _where = "WHERE LOWER(m_produk.kode_produk) IN (" + param + ") AND t_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai";
+                _sql = SQL_TEMPLATE.Replace("{WHERE_1}", _where);
+
+                _where = "WHERE LOWER(m_produk.kode_produk) IN (" + param + ") AND t_retur_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai";
+                _sql = _sql.Replace("{WHERE_2}", _where);
+
+                _where = "WHERE LOWER(m_produk.kode_produk) IN (" + param + ") AND  t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai";
+                _sql = _sql.Replace("{WHERE_3}", _where);
+
+                _where = "WHERE LOWER(m_produk.kode_produk) IN (" + param + ") AND t_retur_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai";
                 _sql = _sql.Replace("{WHERE_4}", _where);
 
                 oList = _context.db.Query<ReportKartuStok>(_sql, new { tanggalMulai, tanggalSelesai })
@@ -173,6 +252,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }
+        }        
     }
 }

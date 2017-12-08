@@ -211,7 +211,37 @@ namespace OpenRetail.Bll.Service.Report
             }
 
             return oList;
-        }        
+        }
+
+        public IList<ReportKartuStok> GetByBulan(int bulan, int tahun, IList<string> listOfKode)
+        {
+            IList<ReportKartuStok> oList = new List<ReportKartuStok>();
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportKartuStokRepository.GetByBulan(bulan, tahun, listOfKode);
+            }
+
+            if (oList.Count > 0)
+            {
+                var tanggalAwal = oList.Min(f => f.tanggal);
+
+                var listOfSaldoAwal = GetSaldoAwal(tanggalAwal);
+
+                // hitung stok awal
+                IList<ReportKartuStok> listOfDistinctProduk = new List<ReportKartuStok>();
+                HitungStokAwal(oList, ref listOfDistinctProduk);
+
+                // hitung saldo awal
+                HitungSaldoAwal(listOfSaldoAwal);
+
+                // hitung saldo akhir
+                HitungSaldoAkhir(listOfSaldoAwal, oList, listOfDistinctProduk);
+            }
+
+            return oList;
+        }
 
         public IList<ReportKartuStok> GetByBulan(int bulanAwal, int bulanAkhir, int tahun)
         {
@@ -226,6 +256,36 @@ namespace OpenRetail.Bll.Service.Report
             {
                 IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.ReportKartuStokRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+            }
+
+            if (oList.Count > 0)
+            {
+                var tanggalAwal = oList.Min(f => f.tanggal);
+
+                var listOfSaldoAwal = GetSaldoAwal(tanggalAwal);
+
+                // hitung stok awal
+                IList<ReportKartuStok> listOfDistinctProduk = new List<ReportKartuStok>();
+                HitungStokAwal(oList, ref listOfDistinctProduk);
+
+                // hitung saldo awal
+                HitungSaldoAwal(listOfSaldoAwal);
+
+                // hitung saldo akhir
+                HitungSaldoAkhir(listOfSaldoAwal, oList, listOfDistinctProduk);
+            }
+
+            return oList;
+        }
+        
+        public IList<ReportKartuStok> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, IList<string> listOfKode)
+        {
+            IList<ReportKartuStok> oList = new List<ReportKartuStok>();
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportKartuStokRepository.GetByTanggal(tanggalMulai, tanggalSelesai, listOfKode);
             }
 
             if (oList.Count > 0)

@@ -28,7 +28,9 @@ namespace OpenRetail.Bll.Api.Report
     public interface IReportKartuStokBll
     {
         IList<ReportKartuStok> GetByBulan(int bulan, int tahun);
+        IList<ReportKartuStok> GetByBulan(int bulan, int tahun, IList<string> listOfKode);
         IList<ReportKartuStok> GetByBulan(int bulanAwal, int bulanAkhir, int tahun);
         IList<ReportKartuStok> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+        IList<ReportKartuStok> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, IList<string> listOfKode);
     }
 }
