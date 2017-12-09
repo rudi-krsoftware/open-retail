@@ -60,6 +60,8 @@ namespace OpenRetail.App.Cashier.Transaksi
 
             txtTotal.Text = this._jual.total_nota.ToString();
             txtGrandTotal.Text = this._jual.grand_total.ToString();
+
+            this.ActiveControl = txtBayarTunai;
         }
 
         private void AddHandler()
