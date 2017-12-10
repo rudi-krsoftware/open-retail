@@ -444,7 +444,7 @@ namespace OpenRetail.App.Cashier.Transaksi
                             }
                             else
                             {
-                                GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                                GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
                             }                            
                         }
 
@@ -506,7 +506,7 @@ namespace OpenRetail.App.Cashier.Transaksi
                             }
                             else
                             {
-                                GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                                GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
                             }
                         }
                         else // data lebih dari satu
@@ -523,8 +523,41 @@ namespace OpenRetail.App.Cashier.Transaksi
                         break;
 
                     case 4: // jumlah
+                        if (!_pengaturanUmum.is_stok_produk_boleh_minus)
+                        {
+                            gridControl_CurrentCellValidated(sender, new EventArgs());
+
+                            var itemJual = _listOfItemJual[rowIndex - 1];
+                            produk = itemJual.Produk;
+
+                            var isValidStok = (produk.sisa_stok - itemJual.jumlah) >= 0;
+
+                            if (!isValidStok)
+                            {
+                                ShowMessage("Maaf stok produk tidak boleh minus", true);
+                                GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+
+                                return;
+                            }
+                        }
+
+                        if (grid.RowCount == rowIndex)
+                        {
+                            _listOfItemJual.Add(new ItemJualProduk());
+                            grid.RowCount = _listOfItemJual.Count;
+                        }
+
+                        GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
+                        break;
+
                     case 5: // diskon
-                        GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
+                        if (grid.RowCount == rowIndex)
+                        {
+                            _listOfItemJual.Add(new ItemJualProduk());
+                            grid.RowCount = _listOfItemJual.Count;
+                        }
+
+                        GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2);
                         break;
 
                     case 6:
