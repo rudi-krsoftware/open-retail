@@ -973,7 +973,7 @@ namespace OpenRetail.App.Transaksi
                             }
                             else
                             {
-                                GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                                GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
                             }                            
                         }
 
@@ -1037,7 +1037,7 @@ namespace OpenRetail.App.Transaksi
                             }
                             else
                             {
-                                GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                                GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
                             }                            
                         }
                         else // data lebih dari satu
@@ -1076,11 +1076,23 @@ namespace OpenRetail.App.Transaksi
                             }
                         }
 
-                        GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
+                        if (grid.RowCount == rowIndex)
+                        {
+                            _listOfItemJual.Add(new ItemJualProduk());
+                            grid.RowCount = _listOfItemJual.Count;
+                        }
+
+                        GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
                         break;
 
                     case 5: // diskon
-                        GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
+                        if (grid.RowCount == rowIndex)
+                        {
+                            _listOfItemJual.Add(new ItemJualProduk());
+                            grid.RowCount = _listOfItemJual.Count;
+                        }
+
+                        GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
                         break;
 
                     case 6:
