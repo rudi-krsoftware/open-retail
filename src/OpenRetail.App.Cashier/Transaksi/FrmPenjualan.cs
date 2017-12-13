@@ -268,7 +268,7 @@ namespace OpenRetail.App.Cashier.Transaksi
         private void SetStatusBar()
         {
             var infoStatus = "F3 : Input Produk | F4 : Cari Pelanggan | F5 : Edit Jumlah | F6 : Edit Diskon | F7 : Edit Harga | F8 : Cek Nota Terakhir | F10 : Bayar" +
-                             "\r\nCTRL + B : Pembatalan Transaksi | CTRL + L : Laporan Penjualan | CTRL + N : Tanpa Nota/Struk | CTRL + P : Setting Printer | CTRL + X : Tutup Form Transaksi";
+                             "\r\nCTRL + B : Pembatalan Transaksi | CTRL + D: Hapus Item Transaksi | CTRL + L : Laporan Penjualan | CTRL + N : Tanpa Nota/Struk | CTRL + P : Setting Printer | CTRL + X : Tutup Form Transaksi";
 
             lblStatusBar.Text = infoStatus;
         }
@@ -398,7 +398,7 @@ namespace OpenRetail.App.Cashier.Transaksi
 
                             if (produk == null)
                             {
-                                ShowMessage("Data produk tidak ditemukan");
+                                ShowMessage("Data produk tidak ditemukan", true);
                                 GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                                 return;
                             }
@@ -459,7 +459,7 @@ namespace OpenRetail.App.Cashier.Transaksi
 
                         if (listOfProduk.Count == 0)
                         {
-                            ShowMessage("Data produk tidak ditemukan");
+                            ShowMessage("Data produk tidak ditemukan", true);
                             GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                         }
                         else if (listOfProduk.Count == 1)
@@ -601,8 +601,16 @@ namespace OpenRetail.App.Cashier.Transaksi
 
             GridCurrentCell cc = grid.CurrentCell;
 
-            var itemJual = _listOfItemJual[cc.RowIndex - 1];
-            var produk = itemJual.Produk;
+            Produk produk = null;
+            ItemJualProduk itemJual = null;
+
+            var rowIndex = cc.RowIndex - 1;
+
+            if (_listOfItemJual.Count > rowIndex)
+            {
+                itemJual = _listOfItemJual[rowIndex];
+                produk = itemJual.Produk;
+            }            
 
             if (produk != null)
             {
@@ -697,6 +705,15 @@ namespace OpenRetail.App.Cashier.Transaksi
                     if (total > 0)
                     {
                         ResetTransaksi(); // reset transaksi dengan menampilkan pesan konfirmasi
+                    }
+                }
+                else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D) // hapus item transaksi
+                {
+                    total = SumGrid(_listOfItemJual);
+
+                    if (total > 0)
+                    {
+                        HapusItemTransaksi(); // hapus item transaksi
                     }
                 }
                 else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.N) // tanpa nota/struk
@@ -842,8 +859,19 @@ namespace OpenRetail.App.Cashier.Transaksi
             }
         }
 
+        private void HapusItemTransaksi()
+        {
+            var jual = new JualProduk();
+            jual.item_jual = this._listOfItemJual.Where(f => f.Produk != null).ToList();
+
+            var frmHapusTransaksi = new FrmHapusItemTransaksi("Hapus Item Transaksi", jual);
+            frmHapusTransaksi.Listener = this;
+            frmHapusTransaksi.ShowDialog();
+        }
+
         public void Ok(object sender, object data)
         {
+            // filter berdasarkan data
             if (data is Produk) // pencarian produk baku
             {
                 var produk = (Produk)data;
@@ -928,6 +956,32 @@ namespace OpenRetail.App.Cashier.Transaksi
                 lblKembalian.Text = string.Format("Kembalian: {0}", NumberHelper.NumberToString(kembalian));
 
                 ResetTransaksi(false);                
+            }
+            else // filter bardasarkan nama form
+            {
+                var frmName = sender.GetType().Name;
+
+                switch (frmName)
+                {
+                    case "FrmHapusItemTransaksi":
+                        var noTransaksi = (int)((dynamic)data).noTransaksi;
+
+                        var itemJual = _listOfItemJual[noTransaksi - 1];
+                        itemJual.entity_state = EntityState.Deleted;
+
+                        _listOfItemJual.Remove(itemJual);
+
+                        gridControl.RowCount = _listOfItemJual.Count();
+                        gridControl.Refresh();
+
+                        RefreshTotal();
+
+                        GridListControlHelper.SetCurrentCell(gridControl, _listOfItemJual.Count, 2);
+                        break;
+
+                    default:
+                        break;
+                }
             }
         }
         
