@@ -241,6 +241,7 @@ namespace OpenRetail.App.Transaksi
                                     break;
 
                                 case 9: // button cetak nota
+                                    e.Style.Enabled = jual.Customer != null;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     e.Style.CellType = GridCellTypeName.PushButton;                                    
                                     e.Style.BackColor = oldStyleBackColor;
@@ -250,6 +251,7 @@ namespace OpenRetail.App.Transaksi
                                 case 10: // button cetak label nota
                                     if (_pengaturanUmum.jenis_printer == JenisPrinter.InkJet)
                                     {
+                                        e.Style.Enabled = jual.Customer != null;
                                         e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                         e.Style.CellType = GridCellTypeName.PushButton;
                                         e.Style.BackColor = oldStyleBackColor;
