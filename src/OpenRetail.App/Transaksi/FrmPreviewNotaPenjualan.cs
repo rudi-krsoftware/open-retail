@@ -87,8 +87,8 @@ namespace OpenRetail.App.Transaksi
             txtKepada3.Enabled = !chk.Checked;
             txtKepada4.Enabled = !chk.Checked;
 
-            var kepada1 = _customer.nama_customer;
-            var kepada2 = _customer.alamat;
+            var kepada1 = _customer.nama_customer.NullToString();
+            var kepada2 = _customer.alamat.NullToString();
             var kepada3 = _customer.get_wilayah_lengkap;
             var kepada4 = string.Format("HP: {0}", _customer.telepon.NullToString());
 

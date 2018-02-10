@@ -65,7 +65,7 @@ namespace OpenRetail.App.Main
         private FrmListPembayaranHutangPembelianProduk _frmListPembayaranHutangPembelianProduk;
         private FrmListReturPembelianProduk _frmListReturPembelianProduk;
 
-        private FrmListPenjualanProduk _frmListPenjualanProduk;
+        private FrmListPenjualanProdukWithNavigation _frmListPenjualanProduk;
         private FrmListPembayaranPiutangPenjualanProduk _frmListPembayaranPiutangPenjualanProduk;
         private FrmListReturPenjualanProduk _frmListReturPenjualanProduk;
 
@@ -444,7 +444,7 @@ namespace OpenRetail.App.Main
 
         private void mnuPenjualanProduk_Click(object sender, EventArgs e)
         {
-            ShowForm<FrmListPenjualanProduk>(sender, ref _frmListPenjualanProduk);
+            ShowForm<FrmListPenjualanProdukWithNavigation>(sender, ref _frmListPenjualanProduk);
         }
 
         private void mnuPembayaranPiutangPenjualanProduk_Click(object sender, EventArgs e)
