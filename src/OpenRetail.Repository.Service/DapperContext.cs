@@ -183,6 +183,23 @@ namespace OpenRetail.Repository.Service
             return result;
         }
 
+        public int GetPagesCount(string sql, int pageSize, object param = null)
+        {
+            var pagesCount = 0;
+
+            try
+            {
+                var recordCount = _db.QuerySingleOrDefault<int>(sql, param);
+                pagesCount = (int)Math.Ceiling(recordCount / (decimal)pageSize);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return pagesCount;
+        }
+
         public void Dispose()
         {
             if (_db != null)
