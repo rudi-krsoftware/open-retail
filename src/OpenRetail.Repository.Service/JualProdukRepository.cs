@@ -50,6 +50,13 @@ namespace OpenRetail.Repository.Service
                                               {ORDER BY}
                                               {OFFSET}";
 
+        private const string SQL_TEMPLATE_FOR_PAGING = @"SELECT COUNT(*)
+                                                         FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
+                                                         LEFT JOIN m_pengguna ON m_pengguna.pengguna_id = t_jual_produk.pengguna_id
+                                                         LEFT JOIN t_mesin ON t_mesin.mesin_id = t_jual_produk.mesin_id
+                                                         LEFT JOIN m_dropshipper ON m_dropshipper.dropshipper_id = t_jual_produk.dropshipper_id
+                                                         {WHERE}";
+
         private IDapperContext _context;
         private ILog _log;
         private string _sql;
@@ -204,91 +211,20 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
-        private int GetPagesCount(int pageSize)
-        {
-            var pagesCount = 0;
-
-            try
-            {
-                var sql = @"SELECT COUNT(*)
-                            FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
-                            LEFT JOIN m_pengguna ON m_pengguna.pengguna_id = t_jual_produk.pengguna_id
-                            LEFT JOIN t_mesin ON t_mesin.mesin_id = t_jual_produk.mesin_id
-                            LEFT JOIN m_dropshipper ON m_dropshipper.dropshipper_id = t_jual_produk.dropshipper_id";
-
-                var recordCount = _context.db.QuerySingleOrDefault<int>(sql);
-                pagesCount = (int)Math.Ceiling(recordCount / (decimal)pageSize);
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Error:", ex);
-            }
-
-            return pagesCount;
-        }
-
-        private int GetPagesCount(string name, int pageSize)
-        {
-            var pagesCount = 0;
-
-            try
-            {
-                var sql = @"SELECT COUNT(*)
-                            FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
-                            LEFT JOIN m_pengguna ON m_pengguna.pengguna_id = t_jual_produk.pengguna_id
-                            LEFT JOIN t_mesin ON t_mesin.mesin_id = t_jual_produk.mesin_id
-                            LEFT JOIN m_dropshipper ON m_dropshipper.dropshipper_id = t_jual_produk.dropshipper_id
-                            WHERE LOWER(m_customer.nama_customer) LIKE @name OR LOWER(t_jual_produk.keterangan) LIKE @name";
-
-                name = "%" + name.ToLower() + "%";
-
-                var recordCount = _context.db.QuerySingleOrDefault<int>(sql, new { name });
-                pagesCount = (int)Math.Ceiling(recordCount / (decimal)pageSize);
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Error:", ex);
-            }
-
-            return pagesCount;
-        }
-
-        private int GetPagesCount(DateTime tanggalMulai, DateTime tanggalSelesai, int pageSize)
-        {
-            var pagesCount = 0;
-
-            try
-            {
-                var sql = @"SELECT COUNT(*)
-                            FROM public.t_jual_produk LEFT JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
-                            LEFT JOIN m_pengguna ON m_pengguna.pengguna_id = t_jual_produk.pengguna_id
-                            LEFT JOIN t_mesin ON t_mesin.mesin_id = t_jual_produk.mesin_id
-                            LEFT JOIN m_dropshipper ON m_dropshipper.dropshipper_id = t_jual_produk.dropshipper_id
-                            WHERE t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai";
-
-                var recordCount = _context.db.QuerySingleOrDefault<int>(sql, new { tanggalMulai, tanggalSelesai });
-                pagesCount = (int)Math.Ceiling(recordCount / (decimal)pageSize);
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Error:", ex);
-            }
-
-            return pagesCount;
-        }
-
         public IList<JualProduk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount)
         {
             IList<JualProduk> oList = new List<JualProduk>();
 
             try
             {
+                name = "%" + name.ToLower() + "%";
+
+                var sqlPageCount = SQL_TEMPLATE_FOR_PAGING.Replace("{WHERE}", "WHERE LOWER(m_customer.nama_customer) LIKE @name OR LOWER(t_jual_produk.keterangan) LIKE @name");
+                pagesCount = _context.GetPagesCount(sqlPageCount, pageSize, new { name });
+
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_customer.nama_customer) LIKE @name OR LOWER(t_jual_produk.keterangan) LIKE @name");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
-                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
-
-                pagesCount = GetPagesCount(name, pageSize);
-                name = "%" + name.ToLower() + "%";
+                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");                
 
                 oList = MappingRecordToObject(_sql, new { name, pageNumber, pageSize }).ToList();
 
@@ -338,11 +274,12 @@ namespace OpenRetail.Repository.Service
 
             try
             {
+                var sqlPageCount = SQL_TEMPLATE_FOR_PAGING.Replace("{WHERE}", "");
+                pagesCount = _context.GetPagesCount(sqlPageCount, pageSize);
+
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
-
-                pagesCount = GetPagesCount(pageSize);
 
                 oList = MappingRecordToObject(_sql, new { pageNumber, pageSize }).ToList();
 
@@ -769,11 +706,12 @@ namespace OpenRetail.Repository.Service
 
             try
             {
+                var sqlPageCount = SQL_TEMPLATE_FOR_PAGING.Replace("{WHERE}", "WHERE t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+                pagesCount = _context.GetPagesCount(sqlPageCount, pageSize, new { tanggalMulai, tanggalSelesai });
+
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.tanggal DESC, t_jual_produk.nota");
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
-
-                pagesCount = GetPagesCount(tanggalMulai, tanggalSelesai, pageSize);
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai, pageNumber, pageSize }).ToList();
 

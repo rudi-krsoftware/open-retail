@@ -40,6 +40,11 @@ namespace OpenRetail.Repository.Service
                                               {WHERE}
                                               {ORDER BY}
                                               {OFFSET}";
+
+        private const string SQL_TEMPLATE_FOR_PAGING = @"SELECT COUNT(*) 
+                                                         FROM m_produk LEFT JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id
+                                                         {WHERE}";
+
         private IDapperContext _context;
         private ILog _log;
 
@@ -160,80 +165,22 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
-        private int GetPagesCount(int pageSize)
-        {
-            var pagesCount = 0;
-
-            try
-            {
-                var sql = @"SELECT COUNT(*) FROM m_produk LEFT JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id";
-
-                var recordCount = _context.db.QuerySingleOrDefault<int>(sql);
-                pagesCount = (int)Math.Ceiling(recordCount / (decimal)pageSize);
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Error:", ex);
-            }
-
-            return pagesCount;
-        }
-
-        private int GetPagesCountByName(string name, int pageSize)
-        {
-            var pagesCount = 0;
-
-            try
-            {
-                var sql = @"SELECT COUNT(*) FROM m_produk LEFT JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id
-                            WHERE LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name";
-
-                name = "%" + name.ToLower() + "%";
-                var recordCount = _context.db.QuerySingleOrDefault<int>(sql, new { name });
-                pagesCount = (int)Math.Ceiling(recordCount / (decimal)pageSize);
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Error:", ex);
-            }
-
-            return pagesCount;
-        }
-
-        private int GetPagesCountByGolongan(string golonganId, int pageSize)
-        {
-            var pagesCount = 0;
-
-            try
-            {
-                var sql = @"SELECT COUNT(*) FROM m_produk LEFT JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id
-                            WHERE m_produk.golongan_id = @golonganId";
-
-                var recordCount = _context.db.QuerySingleOrDefault<int>(sql, new { golonganId });
-                pagesCount = (int)Math.Ceiling(recordCount / (decimal)pageSize);
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Error:", ex);
-            }
-
-            return pagesCount;
-        }
-
         public IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount)
         {
             IList<Produk> oList = new List<Produk>();
 
             try
             {
+                name = "%" + name.ToLower() + "%";
+
+                var sqlPageCount = SQL_TEMPLATE_FOR_PAGING.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name");
+                pagesCount = _context.GetPagesCount(sqlPageCount, pageSize, new { name });
+
                 sortBy = string.Format("ORDER BY {0}", sortBy);
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name");
                 _sql = _sql.Replace("{ORDER BY}", sortBy);
-                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
-
-                pagesCount = GetPagesCountByName(name, pageSize);
-                name = "%" + name.ToLower() + "%";
+                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");                
 
                 oList = MappingRecordToObject(_sql, new { name, pageNumber, pageSize }).ToList();
 
@@ -281,13 +228,16 @@ namespace OpenRetail.Repository.Service
 
             try
             {
+                var sqlPageCount = SQL_TEMPLATE_FOR_PAGING.Replace("{WHERE}", "WHERE m_produk.golongan_id = @golonganId");
+                pagesCount = _context.GetPagesCount(sqlPageCount, pageSize, new { golonganId });
+
                 sortBy = string.Format("ORDER BY {0}", sortBy);
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_produk.golongan_id = @golonganId");
                 _sql = _sql.Replace("{ORDER BY}", sortBy);
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
 
-                pagesCount = GetPagesCountByGolongan(golonganId, pageSize);
+                
                 oList = MappingRecordToObject(_sql, new { golonganId, pageNumber, pageSize }).ToList();
 
                 foreach (var item in oList)
@@ -386,13 +336,14 @@ namespace OpenRetail.Repository.Service
 
             try
             {
+                var sqlPageCount = SQL_TEMPLATE_FOR_PAGING.Replace("{WHERE}", "");
+                pagesCount = _context.GetPagesCount(sqlPageCount, pageSize);
+
                 sortBy = string.Format("ORDER BY {0}", sortBy);
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
                 _sql = _sql.Replace("{ORDER BY}", sortBy);
-                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
-
-                pagesCount = GetPagesCount(pageSize);
+                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");                
 
                 oList = MappingRecordToObject(_sql, new { pageNumber, pageSize }).ToList();
 
