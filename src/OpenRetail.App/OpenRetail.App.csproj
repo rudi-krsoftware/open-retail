@@ -625,11 +625,11 @@
     <Compile Include="Transaksi\FrmListPembayaranPiutangPenjualanProduk.Designer.cs">
       <DependentUpon>FrmListPembayaranPiutangPenjualanProduk.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transaksi\FrmListPenjualanProduk.cs">
+    <Compile Include="Transaksi\FrmListPenjualanProdukWithNavigation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Transaksi\FrmListPenjualanProduk.Designer.cs">
-      <DependentUpon>FrmListPenjualanProduk.cs</DependentUpon>
+    <Compile Include="Transaksi\FrmListPenjualanProdukWithNavigation.Designer.cs">
+      <DependentUpon>FrmListPenjualanProdukWithNavigation.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaksi\FrmListReturPenjualanProduk.cs">
       <SubType>Form</SubType>
@@ -846,8 +846,8 @@
     <EmbeddedResource Include="Transaksi\FrmListPembayaranPiutangPenjualanProduk.resx">
       <DependentUpon>FrmListPembayaranPiutangPenjualanProduk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Transaksi\FrmListPenjualanProduk.resx">
-      <DependentUpon>FrmListPenjualanProduk.cs</DependentUpon>
+    <EmbeddedResource Include="Transaksi\FrmListPenjualanProdukWithNavigation.resx">
+      <DependentUpon>FrmListPenjualanProdukWithNavigation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmListReturPenjualanProduk.resx">
       <DependentUpon>FrmListReturPenjualanProduk.cs</DependentUpon>

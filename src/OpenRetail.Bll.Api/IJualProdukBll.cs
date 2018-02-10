@@ -39,13 +39,16 @@ namespace OpenRetail.Bll.Api
         /// <returns></returns>
         JualProduk GetListItemNotaTerakhir(string penggunaId, string mesinId);
 
-        IList<JualProduk> GetAll(string name);
+        IList<JualProduk> GetAll(string name);        
+        IList<JualProduk> GetAll(int pageNumber, int pageSize, ref int pagesCount);
 
         IList<JualProduk> GetNotaCustomer(string id, string nota);
         IList<JualProduk> GetNotaKreditByCustomer(string id, bool isLunas);
         IList<JualProduk> GetNotaKreditByNota(string id, string nota);
         IList<JualProduk> GetByName(string name);
+        IList<JualProduk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount);
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+        IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize, ref int pagesCount);
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);
 
         IList<ItemJualProduk> GetItemJual(string jualId);
