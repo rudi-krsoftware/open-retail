@@ -67,6 +67,19 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
+        public IList<BeliProduk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount)
+        {
+            IList<BeliProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.BeliProdukRepository.GetByName(name, pageNumber, pageSize, ref pagesCount);
+            }
+
+            return oList;
+        }
+
         public IList<BeliProduk> GetAll()
         {
             IList<BeliProduk> oList = null;
@@ -75,6 +88,19 @@ namespace OpenRetail.Bll.Service
             {
                 IUnitOfWork uow = new UnitOfWork(context, _log);
                 oList = uow.BeliProdukRepository.GetAll();
+            }
+
+            return oList;
+        }
+
+        public IList<BeliProduk> GetAll(int pageNumber, int pageSize, ref int pagesCount)
+        {
+            IList<BeliProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.BeliProdukRepository.GetAll(pageNumber, pageSize, ref pagesCount);
             }
 
             return oList;
@@ -231,6 +257,19 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
+        public IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize, ref int pagesCount)
+        {
+            IList<BeliProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.BeliProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, pageNumber, pageSize, ref pagesCount);
+            }
+
+            return oList;
+        }
+
         public IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name)
         {
             IList<BeliProduk> oList = null;
@@ -255,6 +294,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return oList;
-        }        
+        }
     }
 }     

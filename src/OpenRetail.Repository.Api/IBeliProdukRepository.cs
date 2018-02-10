@@ -32,6 +32,7 @@ namespace OpenRetail.Repository.Api
 		BeliProduk GetByID(string id);
 
         IList<BeliProduk> GetAll(string name);
+        IList<BeliProduk> GetAll(int pageNumber, int pageSize, ref int pagesCount);
 
         /// <summary>
         /// Method untuk mendapatkan informasi pembelian masing-masing supplier
@@ -58,7 +59,11 @@ namespace OpenRetail.Repository.Api
         IList<BeliProduk> GetNotaKreditByNota(string id, string nota);
 
         IList<BeliProduk> GetByName(string name);
+        IList<BeliProduk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount);
+
         IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+        IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize, ref int pagesCount);
+
         IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);
 
         IList<ItemBeliProduk> GetItemBeli(string beliId);
