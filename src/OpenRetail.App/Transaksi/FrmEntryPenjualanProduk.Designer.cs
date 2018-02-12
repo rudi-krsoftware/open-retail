@@ -312,6 +312,7 @@
             this.txtCustomer.TabIndex = 3;
             this.txtCustomer.Tag = "";
             this.txtCustomer.ThousandSeparator = false;
+            this.txtCustomer.TextChanged += new System.EventHandler(this.txtCustomer_TextChanged);
             this.txtCustomer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomer_KeyPress);
             // 
             // btnSetAlamatKirim

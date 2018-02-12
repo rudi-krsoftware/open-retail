@@ -38,7 +38,28 @@ namespace OpenRetail.Model
 		
 		[Display(Name = "Customer")]
 		public string nama_customer { get; set; }
-		
+
+        public string provinsi_id { get; set; }
+
+        [Write(false)]
+        public Provinsi Provinsi { get; set; }
+
+        public string kabupaten_id { get; set; }
+
+        [Write(false)]
+        public string kabupaten_old { get; set; }
+
+        [Write(false)]
+        public Kabupaten Kabupaten { get; set; }
+
+        public string kecamatan_id { get; set; }
+
+        [Write(false)]
+        public string kecamatan_old { get; set; }
+
+        [Write(false)]
+        public Kecamatan Kecamatan { get; set; }
+
 		[Display(Name = "Alamat")]
 		public string alamat { get; set; }
 
@@ -48,14 +69,8 @@ namespace OpenRetail.Model
         [Display(Name = "Kelurahan")]
         public string kelurahan { get; set; }
 
-        [Display(Name = "Kecamatan")]
-        public string kecamatan { get; set; }        
-
         [Display(Name = "Kota")]
         public string kota { get; set; }
-
-        [Display(Name = "Kabupaten")]
-        public string kabupaten { get; set; }
 
         [Display(Name = "Kode Pos")]
         public string kode_pos { get; set; }
@@ -79,24 +94,22 @@ namespace OpenRetail.Model
         {
             get
             {
-                var kelurahan = this.kelurahan.NullToString();
-                var kecamatan = this.kecamatan.NullToString();
-                var kabupaten = this.kabupaten.NullToString();
-                var kota = this.kota.NullToString();
+                var provinsi = this.Provinsi != null ? this.Provinsi.nama_provinsi : string.Empty;
+                var kabupaten = this.Kabupaten != null ? this.Kabupaten.nama_kabupaten : this.kabupaten_old.NullToString();
+                var kecamatan = this.Kecamatan != null ? this.Kecamatan.nama_kecamatan : this.kecamatan_old.NullToString();
+
                 var kodePos = (string.IsNullOrEmpty(this.kode_pos) || this.kode_pos == "0") ? string.Empty : this.kode_pos;
 
                 var sb = new StringBuilder();
-                if (kelurahan.Length > 0)
-                    sb.Append(string.Format("Kel. {0}", kelurahan)).Append(", ");
 
-                if (kecamatan.Length > 0)
-                    sb.Append(string.Format("Kec. {0}", kecamatan)).Append(", ");
+                if (provinsi.Length > 0)
+                    sb.Append(string.Format("{0}", provinsi)).Append(", ");
 
                 if (kabupaten.Length > 0)
-                    sb.Append(string.Format("Kab. {0}", kabupaten)).Append(", ");
+                    sb.Append(string.Format("{0}", kabupaten)).Append(", ");
 
-                if (kota.Length > 0)
-                    sb.Append(kota).Append(", ");
+                if (kecamatan.Length > 0)
+                    sb.Append(string.Format("{0}", kecamatan)).Append(", ");
 
                 if (kodePos.Length > 0)
                     sb.Append(kodePos);
@@ -139,9 +152,9 @@ namespace OpenRetail.Model
             RuleFor(c => c.alamat).Length(0, 250).WithMessage(msgError2);
             RuleFor(c => c.desa).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.kelurahan).Length(0, 100).WithMessage(msgError2);
-            RuleFor(c => c.kecamatan).Length(0, 100).WithMessage(msgError2);            
+            // RuleFor(c => c.kecamatan).Length(0, 100).WithMessage(msgError2);            
             RuleFor(c => c.kota).Length(0, 100).WithMessage(msgError2);
-            RuleFor(c => c.kabupaten).Length(0, 100).WithMessage(msgError2);
+            // RuleFor(c => c.kabupaten).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.kode_pos).Length(0, 6).WithMessage(msgError2);
 			RuleFor(c => c.kontak).Length(0, 50).WithMessage(msgError2);
 			RuleFor(c => c.telepon).Length(0, 20).WithMessage(msgError2);

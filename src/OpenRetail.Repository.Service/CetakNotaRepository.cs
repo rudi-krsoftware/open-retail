@@ -72,7 +72,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT m_customer.nama_customer, m_customer.alamat, m_customer.kecamatan, m_customer.kelurahan, m_customer.desa, m_customer.kabupaten, m_customer.kota, m_customer.kode_pos, m_customer.kontak, m_customer.telepon, 
+                var sql = @"SELECT m_customer.nama_customer, m_customer.alamat, m_customer.kode_pos, m_customer.kontak, m_customer.telepon, 
+                            m_provinsi2.nama_provinsi AS provinsi, m_kabupaten2.nama_kabupaten AS kabupaten, m_kecamatan.nama_kecamatan AS kecamatan, 
                             t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, t_jual_produk.ppn, t_jual_produk.kurir, t_jual_produk.ongkos_kirim, t_jual_produk.diskon AS diskon_nota, t_jual_produk.total_nota,
                             t_jual_produk.is_sdac, t_jual_produk.is_dropship, t_jual_produk.kirim_kepada, t_jual_produk.kirim_alamat, t_jual_produk.kirim_kecamatan, t_jual_produk.kirim_desa, t_jual_produk.kirim_kabupaten, t_jual_produk.kirim_kelurahan, t_jual_produk.kirim_kota, t_jual_produk.kirim_kode_pos, t_jual_produk.kirim_telepon,
                             t_jual_produk.label_dari1, t_jual_produk.label_dari2, t_jual_produk.label_dari3, t_jual_produk.label_dari4,
@@ -82,6 +83,9 @@ namespace OpenRetail.Repository.Service
                             FROM public.t_jual_produk INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
                             INNER JOIN public.m_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
                             INNER JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
+                            LEFT JOIN public.m_provinsi2 ON m_customer.provinsi_id = m_provinsi2.provinsi_id
+                            LEFT JOIN public.m_kabupaten2 ON m_customer.kabupaten_id = m_kabupaten2.kabupaten_id
+                            LEFT JOIN public.m_kecamatan ON m_customer.kecamatan_id = m_kecamatan.kecamatan_id
                             WHERE t_jual_produk.jual_id = @jualProdukId
                             ORDER BY t_item_jual_produk.tanggal_sistem";
 

@@ -42,7 +42,7 @@ namespace OpenRetail.App.Referensi
     public partial class FrmListCustomer : FrmListEmptyBody, IListener
     {
         private ICustomerBll _bll; // deklarasi objek business logic layer 
-        private IList<Customer> _listOfCustomer = new List<Customer>();
+        private IList<Customer> _listOfCustomer = new List<Customer>();        
         private ILog _log;
         private Pengguna _pengguna;
         private string _menuId = string.Empty;
@@ -61,7 +61,7 @@ namespace OpenRetail.App.Referensi
 
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
-
+            
             _log = MainProgram.log;
             _bll = new CustomerBll(_log);
             _pengguna = pengguna;
@@ -94,12 +94,10 @@ namespace OpenRetail.App.Referensi
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Nama", Width = 150 });
 
-            gridListProperties.Add(new GridListControlProperties { Header = "Alamat", Width = 230 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Desa", Width = 80 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Kelurahan", Width = 80 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Kecamatan", Width = 80 });            
-            gridListProperties.Add(new GridListControlProperties { Header = "Kota", Width = 80 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Kabupaten", Width = 80 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Provinsi", Width = 120 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Kabupaten", Width = 140 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Kecamatan", Width = 140 });            
+            gridListProperties.Add(new GridListControlProperties { Header = "Alamat", Width = 250 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kode Pos", Width = 70 });
 
             gridListProperties.Add(new GridListControlProperties { Header = "Kontak", Width = 100 });
@@ -133,53 +131,44 @@ namespace OpenRetail.App.Referensi
                                     break;
 
                                 case 3:
-                                    e.Style.CellValue = customer.alamat;
+                                    e.Style.CellValue = customer.Provinsi != null ? customer.Provinsi.nama_provinsi : string.Empty;
                                     break;
 
-
                                 case 4:
-                                    e.Style.CellValue = customer.desa;
+                                    e.Style.CellValue = customer.Kabupaten != null ? customer.Kabupaten.nama_kabupaten : customer.kabupaten_old.NullToString();
                                     break;
 
                                 case 5:
-                                    e.Style.CellValue = customer.kelurahan;
+                                    e.Style.CellValue = customer.Kecamatan != null ? customer.Kecamatan.nama_kecamatan : customer.kecamatan_old.NullToString();
                                     break;
 
                                 case 6:
-                                    e.Style.CellValue = customer.kecamatan;
+                                    e.Style.CellValue = customer.alamat;
                                     break;
 
                                 case 7:
-                                    e.Style.CellValue = customer.kota;
-                                    break;
-
-                                case 8:
-                                    e.Style.CellValue = customer.kabupaten;
-                                    break;
-
-                                case 9:
                                     e.Style.CellValue = customer.kode_pos;
                                     break;
 
-                                case 10:
+                                case 8:
                                     e.Style.CellValue = customer.kontak;
                                     break;
 
-                                case 11:
+                                case 9:
                                     e.Style.CellValue = customer.telepon;
                                     break;
 
-                                case 12:
+                                case 10:
                                     e.Style.CellValue = customer.diskon;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
-                                case 13:
+                                case 11:
                                     e.Style.CellValue = NumberHelper.NumberToString(customer.plafon_piutang);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;
 
-                                case 14:
+                                case 12:
                                     e.Style.CellValue = NumberHelper.NumberToString(customer.total_piutang - customer.total_pembayaran_piutang);
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     break;

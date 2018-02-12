@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,10 +20,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace OpenRetail.Model
-{
-    public class KabupatenAsal : Kabupaten
+using OpenRetail.Model;
+ 
+namespace OpenRetail.Repository.Api
+{        
+    public interface IKabupatenRajaOngkirRepository : IBaseRepository<KabupatenRajaOngkir>
     {
+		KabupatenRajaOngkir GetByID(int id);            
+        IList<KabupatenRajaOngkir> GetByName(string name);
     }
-}
+}     

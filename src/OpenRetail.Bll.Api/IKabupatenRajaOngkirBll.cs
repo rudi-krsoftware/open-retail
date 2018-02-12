@@ -26,12 +26,12 @@ using OpenRetail.Model;
  
 namespace OpenRetail.Bll.Api
 {    
-    public interface IKabupatenBll : IBaseBll<Kabupaten>
+    public interface IKabupatenRajaOngkirBll : IBaseBll<KabupatenRajaOngkir>
     {
-        Kabupaten GetByID(int id);    
-        IList<Kabupaten> GetByName(string name);
+        KabupatenRajaOngkir GetByID(int id);    
+        IList<KabupatenRajaOngkir> GetByName(string name);
 
-		int Save(Kabupaten obj, ref ValidationError validationError);
-		int Update(Kabupaten obj, ref ValidationError validationError);
+		int Save(KabupatenRajaOngkir obj, ref ValidationError validationError);
+		int Update(KabupatenRajaOngkir obj, ref ValidationError validationError);
     }
 }     

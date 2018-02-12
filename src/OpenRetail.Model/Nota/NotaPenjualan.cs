@@ -27,10 +27,9 @@ namespace OpenRetail.Model.Nota
     {
         public string nama_customer { get; set; }
         public string alamat { get; set; }
-        public string kecamatan { get; set; }
-        public string kelurahan { get; set; }
+        public string provinsi { get; set; }        
         public string kabupaten { get; set; }
-        public string kota { get; set; }
+        public string kecamatan { get; set; }        
         public string kode_pos { get; set; }
 
         public string kontak { get; set; }

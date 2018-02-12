@@ -43,24 +43,40 @@ namespace OpenRetail.Repository.Service
 
             var itemNota1 = new NotaPenjualan
             {
-                nama_customer = "Adhi Jaya", alamat = "Jl. Wonosari Km. 11", kecamatan = "Piyungan", kelurahan = "Sitimulyo", kota = "Bantul", kode_pos = "55792", telepon = "0813 8176 9915",
+                nama_customer = "Adhi Jaya",
+                alamat = "Jl. Wonosari Km. 11",
+                provinsi = "DI Yogayakrta",
+                kabupaten = "Kab. Bantul",
+                kecamatan = "Piyungan",
+                kode_pos = "55792",
+                telepon = "0813 8176 9915",
                 nota = "201703210056",
                 tanggal = DateTime.Today,
                 kurir = "Tiki reguler",
                 ongkos_kirim = 25000,
                 total_nota = 1542000,
                 is_sdac = true,
-                label_dari1 = "PIXEL KOMPUTER", label_dari2 = "HP: 0813 81769915",
+                label_dari1 = "PIXEL KOMPUTER",
+                label_dari2 = "HP: 0813 81769915",
                 label_kepada1 = "Bpk. Sunardi",
                 label_kepada2 = "Jl. Ring Road Utara",
                 label_kepada3 = "Condong Catur - Sleman - Yogyakarta - 55283",
                 label_kepada4 = "HP: 0813 2828282",
-                kode_produk = "201704070001", nama_produk = "Flashdisk 2 Gb DEAM", harga = 50000, jumlah = 5
+                kode_produk = "201704070001",
+                nama_produk = "Flashdisk 2 Gb DEAM",
+                harga = 50000,
+                jumlah = 5
             };
 
             var itemNota2 = new NotaPenjualan
             {
-                nama_customer = "Adhi Jaya", alamat = "Jl. Wonosari Km. 11", kecamatan = "Piyungan", kelurahan = "Sitimulyo", kota = "Bantul", kode_pos = "55792", telepon = "0813 8176 9915",
+                nama_customer = "Adhi Jaya",
+                alamat = "Jl. Wonosari Km. 11",
+                provinsi = "DI Yogayakrta",
+                kabupaten = "Kab. Bantul",
+                kecamatan = "Piyungan",
+                kode_pos = "55792",
+                telepon = "0813 8176 9915",
                 nota = "201703210056",
                 tanggal = DateTime.Today,
                 kurir = "Tiki reguler",
@@ -78,7 +94,13 @@ namespace OpenRetail.Repository.Service
 
             var itemNota3 = new NotaPenjualan
             {
-                nama_customer = "Adhi Jaya", alamat = "Jl. Wonosari Km. 11", kecamatan = "Piyungan", kelurahan = "Sitimulyo", kota = "Bantul", kode_pos = "55792", telepon = "0813 8176 9915",
+                nama_customer = "Adhi Jaya",
+                alamat = "Jl. Wonosari Km. 11",
+                provinsi = "DI Yogayakrta",
+                kabupaten = "Kab. Bantul",
+                kecamatan = "Piyungan",
+                kode_pos = "55792",
+                telepon = "0813 8176 9915",
                 nota = "201703210056",
                 tanggal = DateTime.Today,
                 kurir = "Tiki reguler",
