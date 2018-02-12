@@ -74,10 +74,14 @@
     <Compile Include="HeaderNotaMiniPos.cs" />
     <Compile Include="ItemPengeluaranBiaya.cs" />
     <Compile Include="Kabupaten.cs" />
-    <Compile Include="KabupatenAsal.cs" />
-    <Compile Include="KabupatenTujuan.cs" />
+    <Compile Include="KabupatenRajaOngkir.cs" />
+    <Compile Include="KabupatenAsalRajaOngkir.cs" />
+    <Compile Include="KabupatenTujuanRajaOngkir.cs" />
     <Compile Include="Kartu.cs" />
     <Compile Include="Kasbon.cs" />
+    <Compile Include="Kecamatan.cs" />
+    <Compile Include="Provinsi.cs" />
+    <Compile Include="Wilayah.cs" />
     <Compile Include="LabelAlamatKirim.cs" />
     <Compile Include="LabelNota.cs" />
     <Compile Include="MesinKasir.cs" />
@@ -86,7 +90,7 @@
     <Compile Include="PembayaranKasbon.cs" />
     <Compile Include="PengaturanUmum.cs" />
     <Compile Include="PengeluaranBiaya.cs" />
-    <Compile Include="Provinsi.cs" />
+    <Compile Include="ProvinsiRajaOngkir.cs" />
     <Compile Include="RajaOngkir\cost.cs" />
     <Compile Include="RajaOngkir\costs.cs" />
     <Compile Include="RajaOngkir\destination_details.cs" />
@@ -143,6 +147,7 @@
     <Compile Include="Report\ReportPenjualanProduk.cs" />
     <Compile Include="Report\ReportPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportPenjualanProdukHeader.cs" />
+    <Compile Include="Report\ReportPenjualanProdukPerGolongan.cs" />
     <Compile Include="Report\ReportPenyesuaianStokProduk.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProdukDetail.cs" />
     <Compile Include="Report\ReportPiutangPenjualanProdukHeader.cs" />

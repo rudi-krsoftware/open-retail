@@ -33,6 +33,7 @@ namespace OpenRetail.Repository.Api
         void Rollback();
 
         string GetGUID();
-        string GetLastNota(string tableName, IDbTransaction transaction = null);		
+        string GetLastNota(string tableName, IDbTransaction transaction = null);
+        int GetPagesCount(string sql, int pageSize, object param = null);
     }
 }

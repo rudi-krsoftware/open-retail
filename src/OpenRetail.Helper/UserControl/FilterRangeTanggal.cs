@@ -57,6 +57,11 @@ namespace OpenRetail.Helper.UserControl
             get { return dtpTanggalSelesai.Value; }
         }
 
+        public bool IsCheckedTampilkanSemuaData
+        {
+            get { return chkTampilkanSemuaData.Checked; }
+        }
+
         private void btnTampilkan_Click(object sender, EventArgs e)
         {
             if (BtnTampilkanClicked != null)

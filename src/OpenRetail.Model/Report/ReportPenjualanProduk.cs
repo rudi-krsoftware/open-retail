@@ -26,6 +26,10 @@ namespace OpenRetail.Model.Report
     public class ReportPenjualanProduk
     {
         public string customer_id { get; set; }
+
+        public string golongan_id { get; set; }
+        public string nama_golongan { get; set; }
+
         public DateTime tanggal { get; set; }
         public string produk_id { get; set; }
         public string nama_produk { get; set; }

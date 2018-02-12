@@ -35,4 +35,8 @@ psql -U postgres DbOpenRetail < 14_data-kabupaten.sql
 psql -U postgres DbOpenRetail < 15_data-header_nota_mini_pos.sql
 psql -U postgres DbOpenRetail < 16_data-footer_nota_mini_pos.sql
 psql -U postgres DbOpenRetail < 17_data-kartu.sql
+psql -U postgres DbOpenRetail < 18_data-setting_aplikasi.sql
+psql -U postgres DbOpenRetail < 19_data-provinsi2.sql
+psql -U postgres DbOpenRetail < 20_data-kabupaten2.sql
+psql -U postgres DbOpenRetail < 21_data-kecamatan.sql
 ```

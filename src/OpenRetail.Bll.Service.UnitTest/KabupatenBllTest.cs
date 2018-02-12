@@ -36,13 +36,13 @@ namespace OpenRetail.Bll.Service.UnitTest
     public class KabupatenBllTest
     {
 		private ILog _log;
-        private IKabupatenBll _bll;
+        private IKabupatenRajaOngkirBll _bll;
 
         [TestInitialize]
         public void Init()
         {
             _log = LogManager.GetLogger(typeof(KabupatenBllTest));
-            _bll = new KabupatenBll(_log);
+            _bll = new KabupatenRajaOngkirBll(_log);
         }
 
         [TestCleanup]

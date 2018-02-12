@@ -37,14 +37,18 @@ using OpenRetail.Bll.Service.Report;
 using ConceptCave.WaitCursor;
 using Microsoft.Reporting.WinForms;
 using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper.UserControl;
+using OpenRetail.App.Lookup;
 
 namespace OpenRetail.App.Laporan
 {
-    public partial class FrmLapStokProduk : FrmSettingReportEmptyBody
+    public partial class FrmLapStokProduk : FrmSettingReportEmptyBody, IListener
     {
         private ILog _log;
+        private Produk _produk = null;
         private IList<Supplier> _listOfSupplier = new List<Supplier>();
         private IList<Golongan> _listOfGolongan = new List<Golongan>();
+        private IList<Produk> _listOfProduk = new List<Produk>();
 
         public FrmLapStokProduk(string header)
         {
@@ -58,6 +62,14 @@ namespace OpenRetail.App.Laporan
 
             LoadSupplier();
             LoadGolongan();
+            AddHandler();
+        }
+
+        private void AddHandler()
+        {
+            rdoStokKurangDari.CheckedChanged += rdoStatusStok_CheckedChanged;
+            rdoStokBerdasarkanSupplier.CheckedChanged += rdoStatusStok_CheckedChanged;
+            rdoStokBerdasarkanGolongan.CheckedChanged += rdoStatusStok_CheckedChanged;
         }
 
         private void LoadSupplier()
@@ -97,7 +109,7 @@ namespace OpenRetail.App.Laporan
             {
                 if (rdoStatusStok.Checked)
                 {
-                    keterangan = string.Format("Jumlah stok berdasarkan status stok {0}", cmbStatusStok.Text);
+                    keterangan = string.Format("Stok berdasarkan status stok {0}", cmbStatusStok.Text);
 
                     var statusStok = (StatusStok)cmbStatusStok.SelectedIndex + 1;
                     listOfReportStokProduk = reportBll.GetStokByStatus(statusStok);
@@ -109,27 +121,51 @@ namespace OpenRetail.App.Laporan
                 }
                 else if (rdoStokBerdasarkanSupplier.Checked)
                 {
-                    keterangan = string.Format("Jumlah stok berdasarkan supplier {0}", cmbSupplier.Text);
+                    keterangan = string.Format("Stok berdasarkan supplier {0}", cmbSupplier.Text);
 
                     var supplierId = _listOfSupplier[cmbSupplier.SelectedIndex].supplier_id;
                     listOfReportStokProduk = reportBll.GetStokBerdasarkanSupplier(supplierId);
                 }
                 else if (rdoStokBerdasarkanGolongan.Checked)
                 {
-                    keterangan = string.Format("Jumlah stok berdasarkan golongan {0}", cmbGolongan.Text);
+                    keterangan = string.Format("Stok berdasarkan golongan {0}", cmbGolongan.Text);
 
                     var golonganId = _listOfGolongan[cmbGolongan.SelectedIndex].golongan_id;
                     listOfReportStokProduk = reportBll.GetStokBerdasarkanGolongan(golonganId);
                 }
-                else if (rdoStokBerdasarkanNama.Checked)
+                else if (rdoStokBerdasarkanProduk.Checked)
                 {
-                    keterangan = string.Format("Jumlah stok berdasarkan pencarian nama {0}", txtNamaProduk.Text);
+                    keterangan = "Stok berdasarkan produk";
 
-                    listOfReportStokProduk = reportBll.GetStokBerdasarkanNama(txtNamaProduk.Text);
+                    IList<string> listOfKode = GetListKodeProduk(_listOfProduk);
+
+                    if (listOfKode.Count == 0)
+                    {
+                        MsgHelper.MsgWarning("Minimal satu nama produk harus dipilih !");
+                        txtNamaProduk.Focus();
+                        return;
+                    }
+
+                    listOfReportStokProduk = reportBll.GetStokBerdasarkanKode(listOfKode);
                 }
 
                 PreviewReport(listOfReportStokProduk, keterangan);                   
             }
+        }
+
+        private IList<String> GetListKodeProduk(IList<Produk> listOfProduk)
+        {
+            var result = new List<string>();
+
+            for (int i = 0; i < listOfProduk.Count; i++)
+            {
+                if (chkListOfProduk.GetItemChecked(i))
+                {
+                    result.Add(listOfProduk[i].kode_produk);
+                }
+            }
+
+            return result;
         }
 
         private void PreviewReport(IList<ReportStokProduk> listOfReportStokProduk, string keterangan)
@@ -153,6 +189,81 @@ namespace OpenRetail.App.Laporan
             {
                 MsgHelper.MsgInfo("Maaf laporan data stok produk tidak ditemukan");
             }
+        }
+
+        private void txtNamaProduk_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e))
+            {
+                var keyword = ((AdvancedTextbox)sender).Text;
+
+                IProdukBll produkBll = new ProdukBll(_log);
+                this._produk = produkBll.GetByKode(keyword);
+
+                if (this._produk == null)
+                {
+                    var listOfProduk = produkBll.GetByName(keyword);
+
+                    if (listOfProduk.Count == 0)
+                    {
+                        MsgHelper.MsgWarning("Data produk tidak ditemukan");
+                        txtNamaProduk.Focus();
+                        txtNamaProduk.SelectAll();
+                    }
+                    else if (listOfProduk.Count == 1)
+                    {
+                        this._produk = listOfProduk[0];
+
+                        FillListProduk(this._produk);
+                    }
+                    else // data lebih dari satu
+                    {
+                        var frmLookup = new FrmLookupReferensi("Data Produk", listOfProduk);
+                        frmLookup.Listener = this;
+                        frmLookup.ShowDialog();
+                    }
+                }
+                else
+                {
+                    FillListProduk(this._produk);
+                }
+            }
+        }
+
+        private void FillListProduk(Produk produk)
+        {
+            txtNamaProduk.Clear();
+            this._listOfProduk.Add(produk);
+            chkListOfProduk.Items.Add(produk.nama_produk);
+            chkListOfProduk.SetItemChecked(chkListOfProduk.Items.Count - 1, true);
+        }
+
+        public void Ok(object sender, object data)
+        {
+            if (data is Produk) // pencarian produk
+            {
+                this._produk = (Produk)data;
+
+                FillListProduk(this._produk);
+            }
+        }
+
+        public void Ok(object sender, bool isNewData, object data)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void rdoStokBerdasarkanProduk_CheckedChanged(object sender, EventArgs e)
+        {
+            txtNamaProduk.Focus();            
+        }
+
+        private void rdoStatusStok_CheckedChanged(object sender, EventArgs e)
+        {
+            _produk = null;
+            _listOfProduk.Clear();
+            txtNamaProduk.Clear();
+            chkListOfProduk.Items.Clear();
         }
     }
 }

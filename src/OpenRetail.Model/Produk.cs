@@ -82,6 +82,12 @@ namespace OpenRetail.Model
             get { return (stok + stok_gudang) < 0; }
         }
 
+        [Computed]
+        public double sisa_stok
+        {
+            get { return (stok + stok_gudang); }
+        }
+
 		[Display(Name = "Minimal Stok Gudang")]
 		public double minimal_stok_gudang { get; set; }
 

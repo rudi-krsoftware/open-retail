@@ -40,6 +40,7 @@ namespace OpenRetail.Repository.Api
         JualProduk GetListItemNotaTerakhir(string penggunaId, string mesinId);
 
         IList<JualProduk> GetAll(string name);
+        IList<JualProduk> GetAll(int pageNumber, int pageSize, ref int pagesCount);
 
         /// <summary>
         /// Method untuk mendapatkan informasi pembelian masing-masing supplier
@@ -66,7 +67,11 @@ namespace OpenRetail.Repository.Api
         IList<JualProduk> GetNotaKreditByNota(string id, string nota);
 
         IList<JualProduk> GetByName(string name);
+        IList<JualProduk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount);
+
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+        IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize, ref int pagesCount);
+
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);
 
         IList<ItemJualProduk> GetItemJual(string jualId);

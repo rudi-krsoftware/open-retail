@@ -78,6 +78,7 @@
             this.mnuLapPenjualan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenjualanProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenjualanPerProduk = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLapPenjualanPerGolongan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenjualanPerKasir = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenjualanProdukFavorit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapCustomerProduk = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,6 +107,7 @@
             this.mnuBantuan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBlogOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFanPageOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGroupOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuPetunjukPenggunaanOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
@@ -136,7 +138,6 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
-            this.mnuGroupOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -545,6 +546,7 @@
             this.mnuLapPenjualan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuLapPenjualanProduk,
             this.mnuLapPenjualanPerProduk,
+            this.mnuLapPenjualanPerGolongan,
             this.mnuLapPenjualanPerKasir,
             this.mnuLapPenjualanProdukFavorit,
             this.mnuLapCustomerProduk,
@@ -573,6 +575,14 @@
             this.mnuLapPenjualanPerProduk.Tag = "FrmLapPenjualanPerProduk";
             this.mnuLapPenjualanPerProduk.Text = "Penjualan Per Produk";
             this.mnuLapPenjualanPerProduk.Click += new System.EventHandler(this.mnuLapPenjualanPerProduk_Click);
+            // 
+            // mnuLapPenjualanPerGolongan
+            // 
+            this.mnuLapPenjualanPerGolongan.Name = "mnuLapPenjualanPerGolongan";
+            this.mnuLapPenjualanPerGolongan.Size = new System.Drawing.Size(280, 22);
+            this.mnuLapPenjualanPerGolongan.Tag = "FrmLapPenjualanPerGolongan";
+            this.mnuLapPenjualanPerGolongan.Text = "Penjualan Per Golongan";
+            this.mnuLapPenjualanPerGolongan.Click += new System.EventHandler(this.mnuLapPenjualanPerGolongan_Click);
             // 
             // mnuLapPenjualanPerKasir
             // 
@@ -790,6 +800,13 @@
             this.mnuFanPageOpenRetail.Size = new System.Drawing.Size(264, 22);
             this.mnuFanPageOpenRetail.Text = "Fan Page OpenRetail";
             this.mnuFanPageOpenRetail.Click += new System.EventHandler(this.mnuFanPageOpenRetail_Click);
+            // 
+            // mnuGroupOpenRetail
+            // 
+            this.mnuGroupOpenRetail.Name = "mnuGroupOpenRetail";
+            this.mnuGroupOpenRetail.Size = new System.Drawing.Size(264, 22);
+            this.mnuGroupOpenRetail.Text = "Group OpenRetail";
+            this.mnuGroupOpenRetail.Click += new System.EventHandler(this.mnuGroupOpenRetail_Click);
             // 
             // toolStripSeparator16
             // 
@@ -1046,13 +1063,6 @@
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
-            // mnuGroupOpenRetail
-            // 
-            this.mnuGroupOpenRetail.Name = "mnuGroupOpenRetail";
-            this.mnuGroupOpenRetail.Size = new System.Drawing.Size(264, 22);
-            this.mnuGroupOpenRetail.Text = "Group OpenRetail";
-            this.mnuGroupOpenRetail.Click += new System.EventHandler(this.mnuGroupOpenRetail_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1190,5 +1200,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLapKartuStokProduk;
         private System.Windows.Forms.ToolStripMenuItem mnuCetakLabelBarcodeProduk;
         private System.Windows.Forms.ToolStripMenuItem mnuGroupOpenRetail;
+        private System.Windows.Forms.ToolStripMenuItem mnuLapPenjualanPerGolongan;
     }
 }

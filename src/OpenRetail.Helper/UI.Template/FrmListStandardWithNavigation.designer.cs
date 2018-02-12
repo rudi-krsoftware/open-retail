@@ -281,7 +281,7 @@
             // updLimit
             // 
             this.updLimit.Increment = new decimal(new int[] {
-            50,
+            100,
             0,
             0,
             0});
@@ -297,7 +297,7 @@
             this.updLimit.Size = new System.Drawing.Size(42, 20);
             this.updLimit.TabIndex = 2;
             this.updLimit.Value = new decimal(new int[] {
-            50,
+            200,
             0,
             0,
             0});
@@ -327,7 +327,7 @@
             this.toolStripSeparator1,
             this.mnuExportData});
             this.mnuPopupImportData.Name = "mnuPopupImportData";
-            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 98);
+            this.mnuPopupImportData.Size = new System.Drawing.Size(189, 76);
             // 
             // mnuBukaFileMaster
             // 

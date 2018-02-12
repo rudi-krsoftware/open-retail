@@ -80,10 +80,11 @@
     <Compile Include="JabatanBll.cs" />
     <Compile Include="JenisPengeluaranBll.cs" />
     <Compile Include="JualProdukBll.cs" />
-    <Compile Include="KabupatenBll.cs" />
+    <Compile Include="KabupatenRajaOngkirBll.cs" />
     <Compile Include="KartuBll.cs" />
     <Compile Include="KaryawanBll.cs" />
     <Compile Include="KasbonBll.cs" />
+    <Compile Include="WilayahBll.cs" />
     <Compile Include="LabelAlamatKirimBll.cs" />
     <Compile Include="LabelNotaBll.cs" />
     <Compile Include="MenuBll.cs" />

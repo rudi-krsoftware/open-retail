@@ -118,7 +118,7 @@ namespace OpenRetail.Helper.RAWPrinting
             {
                 var alamat1 = jual.is_sdac ? jual.Customer.alamat.NullToString() : jual.kirim_alamat.NullToString();
 
-                var gabungAlamat2 = jual.Customer.kecamatan.NullToString();
+                var gabungAlamat2 = jual.Customer.Kecamatan.NullToString();
                 gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kelurahan.NullToString() : jual.Customer.kelurahan.NullToString();
                 gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kota.NullToString() : jual.Customer.kota.NullToString();
                 gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kode_pos.NullToString() : jual.Customer.kode_pos.NullToString();

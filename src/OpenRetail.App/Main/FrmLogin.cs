@@ -106,6 +106,7 @@ namespace OpenRetail.App.Main
             {
                 MainProgram.pengaturanUmum.is_stok_produk_boleh_minus = settingAplikasi.is_stok_produk_boleh_minus;
                 MainProgram.pengaturanUmum.is_update_harga_jual = settingAplikasi.is_update_harga_jual_master_produk;
+                MainProgram.pengaturanUmum.is_fokus_input_kolom_jumlah = settingAplikasi.is_fokus_input_kolom_jumlah;
             }            
 
             // set header nota
@@ -148,8 +149,17 @@ namespace OpenRetail.App.Main
         /// </summary>
         private void LoadKabupaten()
         {
-            IKabupatenBll bll = new KabupatenBll();
+            IKabupatenRajaOngkirBll bll = new KabupatenRajaOngkirBll();
             MainProgram.ListOfKabupaten = bll.GetAll();
+        }
+
+        /// <summary>
+        /// Load data wilayah (provinsi, kabupaten dan kecamatan) untuk alamat customer
+        /// </summary>
+        private void LoadWilayah()
+        {
+            IWilayahBll bll = new WilayahBll();
+            MainProgram.ListOfWilayah = bll.GetAll();
         }
 
         private void LoadInfoMinimalStokProduk()
@@ -243,6 +253,7 @@ namespace OpenRetail.App.Main
                     SetPengaturanUmum();
                     SetPengaturanBarcode();
                     LoadKabupaten();
+                    LoadWilayah();
 
                     if (MainProgram.pengaturanUmum.is_show_minimal_stok)
                     {

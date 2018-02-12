@@ -63,10 +63,10 @@ namespace OpenRetail.Bll.Service
 
             foreach (var item in oList)
             {
-                item.kecamatan = string.IsNullOrEmpty(item.kecamatan) ? "" : item.kecamatan;
-                item.kelurahan = string.IsNullOrEmpty(item.kelurahan) ? "" : item.kelurahan;
+                item.provinsi = string.IsNullOrEmpty(item.provinsi) ? "" : item.provinsi;
                 item.kabupaten = string.IsNullOrEmpty(item.kabupaten) ? "" : item.kabupaten;
-                item.kota = string.IsNullOrEmpty(item.kota) ? "" : item.kota;
+                item.kecamatan = string.IsNullOrEmpty(item.kecamatan) ? "" : item.kecamatan;
+                
                 item.kode_pos = (string.IsNullOrEmpty(item.kode_pos) || item.kode_pos == "0") ? "" : item.kode_pos;
                 item.telepon = string.IsNullOrEmpty(item.telepon) ? "" : item.telepon;
 

@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using OpenRetail.Model;
+using OpenRetail.Model.RajaOngkir;
 using OpenRetail.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using OpenRetail.Helper.UI.Template;
@@ -39,8 +40,8 @@ namespace OpenRetail.App.Lookup
         private IList<Dropshipper> _listOfDropshipper = null;
         private IList<Produk> _listOfProduk = null;
         private IList<JenisPengeluaran> _listOfJenisPengeluaran = null;
-        private IList<KabupatenAsal> _listOfKabupatenAsal = null;
-        private IList<KabupatenTujuan> _listOfKabupatenTujuan = null;
+        private IList<KabupatenAsalRajaOngkir> _listOfKabupatenAsal = null;
+        private IList<KabupatenTujuanRajaOngkir> _listOfKabupatenTujuan = null;
 
         private ReferencesType _referensiType = ReferencesType.Supplier;
         public IListener Listener { private get; set; }
@@ -110,7 +111,7 @@ namespace OpenRetail.App.Lookup
             base.SetActiveBtnPilih(listOfProduk.Count > 0);
         }
 
-        public FrmLookupReferensi(string header, IList<KabupatenAsal> listOfKabupatenAsal)
+        public FrmLookupReferensi(string header, IList<KabupatenAsalRajaOngkir> listOfKabupatenAsal)
             : base()
         {
             InitializeComponent();
@@ -123,7 +124,7 @@ namespace OpenRetail.App.Lookup
             base.SetActiveBtnPilih(listOfKabupatenAsal.Count > 0);
         }
 
-        public FrmLookupReferensi(string header, IList<KabupatenTujuan> listOfKabupatenTujuan)
+        public FrmLookupReferensi(string header, IList<KabupatenTujuanRajaOngkir> listOfKabupatenTujuan)
             : base()
         {
             InitializeComponent();
@@ -204,7 +205,7 @@ namespace OpenRetail.App.Lookup
                     gridListProperties.Add(new GridListControlProperties { Header = "Provinsi", Width = 250 });
                     gridListProperties.Add(new GridListControlProperties { Header = "Kota/Kabupaten", Width = 250 });
                     gridListProperties.Add(new GridListControlProperties { Header = "Kode Pos" });
-                    GridListControlHelper.InitializeGridListControl<KabupatenAsal>(this.gridList, _listOfKabupatenAsal, gridListProperties);
+                    GridListControlHelper.InitializeGridListControl<KabupatenAsalRajaOngkir>(this.gridList, _listOfKabupatenAsal, gridListProperties);
                     this.gridList.Grid.QueryCellInfo += GridKabupatenAsal_QueryCellInfo;
 
                     listCount = _listOfKabupatenAsal.Count;
@@ -214,7 +215,7 @@ namespace OpenRetail.App.Lookup
                     gridListProperties.Add(new GridListControlProperties { Header = "Provinsi", Width = 250 });
                     gridListProperties.Add(new GridListControlProperties { Header = "Kota/Kabupaten", Width = 250 });
                     gridListProperties.Add(new GridListControlProperties { Header = "Kode Pos" });
-                    GridListControlHelper.InitializeGridListControl<KabupatenTujuan>(this.gridList, _listOfKabupatenTujuan, gridListProperties);
+                    GridListControlHelper.InitializeGridListControl<KabupatenTujuanRajaOngkir>(this.gridList, _listOfKabupatenTujuan, gridListProperties);
                     this.gridList.Grid.QueryCellInfo += GridKabupatenTujuan_QueryCellInfo;
 
                     listCount = _listOfKabupatenTujuan.Count;
@@ -419,6 +420,7 @@ namespace OpenRetail.App.Lookup
 
                             case 3:
                                 e.Style.CellValue = produk.nama_produk;
+                                e.Style.CellTipText = e.Style.Text;
                                 break;
 
                             case 4:

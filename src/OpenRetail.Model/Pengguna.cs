@@ -52,6 +52,9 @@ namespace OpenRetail.Model
 		[Display(Name = "Password")]
 		public string pass_pengguna { get; set; }
 
+        [Display(Name = "Email")]
+        public string email { get; set; }
+
         [Write(false)]
         [Display(Name = "Konfirmasi Password")]
         public string konf_pass_pengguna { get; set; }
@@ -119,6 +122,7 @@ namespace OpenRetail.Model
 			RuleFor(c => c.nama_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
 			RuleFor(c => c.pass_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 32).WithMessage(msgError2);
             RuleFor(c => c.konf_pass_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 32).WithMessage(msgError2);
+            RuleFor(c => c.email).Length(0, 100).WithMessage(msgError2);
 		}
 	}
 }

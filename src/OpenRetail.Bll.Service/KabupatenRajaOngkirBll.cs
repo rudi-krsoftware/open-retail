@@ -30,30 +30,30 @@ using OpenRetail.Repository.Service;
  
 namespace OpenRetail.Bll.Service
 {    
-    public class KabupatenBll : IKabupatenBll
+    public class KabupatenRajaOngkirBll : IKabupatenRajaOngkirBll
     {
 		private ILog _log;
-		private KabupatenValidator _validator;
+		private KabupatenRajaOngkirValidator _validator;
 
-        public KabupatenBll()
+        public KabupatenRajaOngkirBll()
         {
-            _validator = new KabupatenValidator();
+            _validator = new KabupatenRajaOngkirValidator();
         }
 
-		public KabupatenBll(ILog log)
+		public KabupatenRajaOngkirBll(ILog log)
         {
 			_log = log;
-            _validator = new KabupatenValidator();
+            _validator = new KabupatenRajaOngkirValidator();
         }
 
-        public Kabupaten GetByID(int id)
+        public KabupatenRajaOngkir GetByID(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Kabupaten> GetByName(string name)
+        public IList<KabupatenRajaOngkir> GetByName(string name)
         {
-            IList<Kabupaten> oList = null;
+            IList<KabupatenRajaOngkir> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
@@ -64,9 +64,9 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-        public IList<Kabupaten> GetAll()
+        public IList<KabupatenRajaOngkir> GetAll()
         {
-            IList<Kabupaten> oList = null;
+            IList<KabupatenRajaOngkir> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
@@ -77,27 +77,27 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-		public int Save(Kabupaten obj)
+		public int Save(KabupatenRajaOngkir obj)
         {
             throw new NotImplementedException();
         }
 
-        public int Save(Kabupaten obj, ref ValidationError validationError)
+        public int Save(KabupatenRajaOngkir obj, ref ValidationError validationError)
         {
             throw new NotImplementedException();
         }
 
-		public int Update(Kabupaten obj)
+		public int Update(KabupatenRajaOngkir obj)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(Kabupaten obj, ref ValidationError validationError)
+        public int Update(KabupatenRajaOngkir obj, ref ValidationError validationError)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(Kabupaten obj)
+        public int Delete(KabupatenRajaOngkir obj)
         {
             throw new NotImplementedException();
         }

@@ -91,7 +91,8 @@ namespace OpenRetail.Repository.Service
 
         private IHeaderNotaRepository _headerNotaRepository;
         private ILabelNotaRepository _labelNotaRepository;
-        private IKabupatenRepository _kabupatenRepository;
+        private IKabupatenRajaOngkirRepository _kabupatenRepository;
+        private IWilayahRepository _wilayahRepository;
 
         private IFooterNotaMiniPosRepository _footernotaminiposRepository;
         private IHeaderNotaMiniPosRepository _headernotaminiposRepository;
@@ -367,9 +368,14 @@ namespace OpenRetail.Repository.Service
             get { return _labelNotaRepository ?? (_labelNotaRepository = new LabelNotaRepository(_context, _log)); }
         }
 
-        public IKabupatenRepository KabupatenRepository
+        public IKabupatenRajaOngkirRepository KabupatenRepository
         {
-            get { return _kabupatenRepository ?? (_kabupatenRepository = new KabupatenRepository(_context, _log)); }
+            get { return _kabupatenRepository ?? (_kabupatenRepository = new KabupatenRajaOngkirRepository(_context, _log)); }
+        }
+
+        public IWilayahRepository WilayahRepository
+        {
+            get { return _wilayahRepository ?? (_wilayahRepository = new WilayahRepository(_context, _log)); }
         }
 
         public IFooterNotaMiniPosRepository FooterNotaMiniPosRepository

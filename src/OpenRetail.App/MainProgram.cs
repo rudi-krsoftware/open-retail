@@ -66,13 +66,14 @@ namespace OpenRetail.App
         /// <summary>
         /// Objek global untuk menyimpan informasi jumlah record per halaman
         /// </summary>
-        public static int pageSize = 50; // nilai default 50 record perhalaman
+        public static int pageSize = 200; // nilai default 50 record perhalaman
 
         public static Profil profil = null;
         public static Pengguna pengguna = null;
         public static PengaturanUmum pengaturanUmum = null;
         public static PengaturanBarcode pengaturanBarcode = null;
-        public static IList<Kabupaten> ListOfKabupaten = null;
+        public static IList<KabupatenRajaOngkir> ListOfKabupaten = null;
+        public static IList<Wilayah> ListOfWilayah = null;
         public static IList<Produk> listOfMinimalStokProduk = new List<Produk>();
         private static bool _isLogout;
 

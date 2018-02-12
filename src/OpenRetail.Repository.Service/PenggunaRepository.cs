@@ -33,7 +33,7 @@ namespace OpenRetail.Repository.Service
 {        
     public class PenggunaRepository : IPenggunaRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT m_pengguna.pengguna_id, m_pengguna.nama_pengguna, m_pengguna.pass_pengguna, m_pengguna.is_active, m_pengguna.status_user, 
+        private const string SQL_TEMPLATE = @"SELECT m_pengguna.pengguna_id, m_pengguna.nama_pengguna, m_pengguna.email, m_pengguna.pass_pengguna, m_pengguna.is_active, m_pengguna.status_user, 
                                               m_role.role_id, m_role.nama_role
                                               FROM public.m_pengguna LEFT JOIN public.m_role ON m_pengguna.role_id = m_role.role_id
                                               {WHERE}
@@ -159,13 +159,13 @@ namespace OpenRetail.Repository.Service
                 // password sudah dienkripsi dari aplikasi
                 if (obj.pass_pengguna != null && obj.pass_pengguna.Length > 0)
                 {
-                    _sql = @"UPDATE m_pengguna SET nama_pengguna = @nama_pengguna, pass_pengguna = @pass_pengguna, role_id = @role_id, is_active = @is_active,
+                    _sql = @"UPDATE m_pengguna SET nama_pengguna = @nama_pengguna, email = @email, pass_pengguna = @pass_pengguna, role_id = @role_id, is_active = @is_active,
                              status_user = @status_user
                              WHERE pengguna_id = @pengguna_id";
                 }
                 else
                 {
-                    _sql = @"UPDATE m_pengguna SET nama_pengguna = @nama_pengguna, role_id = @role_id, is_active = @is_active, status_user = @status_user
+                    _sql = @"UPDATE m_pengguna SET nama_pengguna = @nama_pengguna, email = @email, role_id = @role_id, is_active = @is_active, status_user = @status_user
                              WHERE pengguna_id = @pengguna_id";
                 }
 

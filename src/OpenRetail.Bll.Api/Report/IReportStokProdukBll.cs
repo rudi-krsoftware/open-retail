@@ -31,6 +31,7 @@ namespace OpenRetail.Bll.Api.Report
         IList<ReportStokProduk> GetStokKurangDari(double stok);
         IList<ReportStokProduk> GetStokBerdasarkanSupplier(string supplierId);
         IList<ReportStokProduk> GetStokBerdasarkanGolongan(string golonganId);
+        IList<ReportStokProduk> GetStokBerdasarkanKode(IList<string> listOfKode);
         IList<ReportStokProduk> GetStokBerdasarkanNama(string name);
 
         IList<ReportPenyesuaianStokProduk> GetPenyesuaianStokByBulan(int bulan, int tahun);

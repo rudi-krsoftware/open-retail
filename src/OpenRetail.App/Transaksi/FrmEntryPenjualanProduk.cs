@@ -733,7 +733,11 @@ namespace OpenRetail.App.Transaksi
                 {
                     if (produk.is_stok_minus)
                     {
-                        MsgHelper.MsgWarning("Maaf stok produk tidak boleh minus");
+                        var msg = "Maaf stok produk minus.\n\n" +
+                                  "Stok saat ini: {0}";
+
+                        MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok));
+
                         GridListControlHelper.SelectCellText(this.gridControl, _rowIndex, 3);
                         return;
                     }
@@ -761,7 +765,14 @@ namespace OpenRetail.App.Transaksi
                     this.gridControl.RowCount = _listOfItemJual.Count;
                 }
 
-                GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex + 1, 2); // pindah kebaris berikutnya
+                if (_pengaturanUmum.is_fokus_input_kolom_jumlah)
+                {
+                    GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex, 4); // fokus ke kolom jumlah
+                }
+                else
+                {
+                    GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex + 1, 2); // pindah kebaris berikutnya
+                }                
             }
             else if (data is Customer) // pencarian customer
             {
@@ -923,7 +934,11 @@ namespace OpenRetail.App.Transaksi
                             {
                                 if (produk.is_stok_minus)
                                 {
-                                    MsgHelper.MsgWarning("Maaf stok produk tidak boleh minus");
+                                    var msg = "Maaf stok produk minus.\n\n" +
+                                              "Stok saat ini: {0}";
+
+                                    MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok));
+
                                     GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                                     return;
                                 }
@@ -952,7 +967,14 @@ namespace OpenRetail.App.Transaksi
                                 grid.RowCount = _listOfItemJual.Count;
                             }
 
-                            GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                            if (_pengaturanUmum.is_fokus_input_kolom_jumlah)
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, rowIndex, 4); // fokus ke kolom jumlah
+                            }
+                            else
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
+                            }                            
                         }
 
                         break;
@@ -977,7 +999,10 @@ namespace OpenRetail.App.Transaksi
                             {
                                 if (produk.is_stok_minus)
                                 {
-                                    MsgHelper.MsgWarning("Maaf stok produk tidak boleh minus");
+                                    var msg = "Maaf stok produk minus.\n\n" +
+                                              "Stok saat ini: {0}";
+
+                                    MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok));
                                     GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                                     return;
                                 }
@@ -1006,7 +1031,14 @@ namespace OpenRetail.App.Transaksi
                                 grid.RowCount = _listOfItemJual.Count;
                             }
 
-                            GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                            if (_pengaturanUmum.is_fokus_input_kolom_jumlah)
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, rowIndex, 4); // fokus ke kolom jumlah
+                            }
+                            else
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
+                            }                            
                         }
                         else // data lebih dari satu
                         {
@@ -1021,8 +1053,46 @@ namespace OpenRetail.App.Transaksi
                         break;
 
                     case 4: // jumlah
+                        if (!_pengaturanUmum.is_stok_produk_boleh_minus)
+                        {
+                            gridControl_CurrentCellValidated(sender, new EventArgs());
+
+                            var itemJual = _listOfItemJual[rowIndex - 1];
+                            produk = itemJual.Produk;
+
+                            var isValidStok = (produk.sisa_stok - itemJual.jumlah) >= 0;
+
+                            if (!isValidStok)
+                            {
+                                var msg = "Maaf stok produk kurang.\n\n" +
+                                          "Stok saat ini: {0}\n" +
+                                          "Jumlah jual: {1}\n" +
+                                          "Sisa stok: {2}";
+
+                                MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok, itemJual.jumlah, produk.sisa_stok - itemJual.jumlah));
+                                GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+
+                                return;
+                            }
+                        }
+
+                        if (grid.RowCount == rowIndex)
+                        {
+                            _listOfItemJual.Add(new ItemJualProduk());
+                            grid.RowCount = _listOfItemJual.Count;
+                        }
+
+                        GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
+                        break;
+
                     case 5: // diskon
-                        GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
+                        if (grid.RowCount == rowIndex)
+                        {
+                            _listOfItemJual.Add(new ItemJualProduk());
+                            grid.RowCount = _listOfItemJual.Count;
+                        }
+
+                        GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
                         break;
 
                     case 6:
@@ -1305,10 +1375,11 @@ namespace OpenRetail.App.Transaksi
                 {
                     nama_customer = this._customer.nama_customer,
                     alamat = string.IsNullOrEmpty(this._customer.alamat) ? "" : this._customer.alamat,
-                    kelurahan = this._customer.kelurahan.NullToString(),
-                    kecamatan = this._customer.kecamatan.NullToString(), 
-                    kabupaten = this._customer.kabupaten.NullToString(),
-                    kota = this._customer.kota.NullToString(),
+                    
+                    provinsi = this._customer.Provinsi != null ? this._customer.Provinsi.nama_provinsi : string.Empty,
+                    kabupaten = this._customer.Kabupaten != null ? this._customer.Kabupaten.nama_kabupaten : string.Empty,
+                    kecamatan = this._customer.Kecamatan != null ? this._customer.Kecamatan.nama_kecamatan : string.Empty,
+                    
                     kode_pos = (string.IsNullOrEmpty(this._customer.kode_pos) || this._customer.kode_pos == "0") ? "-" : this._customer.kode_pos,
                     kontak = string.IsNullOrEmpty(this._customer.kontak) ? "" : this._customer.kontak,
                     telepon = string.IsNullOrEmpty(this._customer.telepon) ? "-" : this._customer.telepon,
@@ -1467,6 +1538,11 @@ namespace OpenRetail.App.Transaksi
                     frmLookup.ShowDialog();
                 }
             }
+        }
+
+        private void txtCustomer_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

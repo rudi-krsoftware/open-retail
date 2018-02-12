@@ -61,11 +61,11 @@ namespace OpenRetail.App.Main
 
         private FrmListJenisPengeluaran _frmListJenisPengeluaran;
 
-        private FrmListPembelianProduk _frmListPembelianProduk;
+        private FrmListPembelianProdukWithNavigation _frmListPembelianProduk;
         private FrmListPembayaranHutangPembelianProduk _frmListPembayaranHutangPembelianProduk;
         private FrmListReturPembelianProduk _frmListReturPembelianProduk;
 
-        private FrmListPenjualanProduk _frmListPenjualanProduk;
+        private FrmListPenjualanProdukWithNavigation _frmListPenjualanProduk;
         private FrmListPembayaranPiutangPenjualanProduk _frmListPembayaranPiutangPenjualanProduk;
         private FrmListReturPenjualanProduk _frmListReturPenjualanProduk;
 
@@ -404,7 +404,7 @@ namespace OpenRetail.App.Main
 
         private void mnuPembelianProduk_Click(object sender, EventArgs e)
         {
-            ShowForm<FrmListPembelianProduk>(sender, ref _frmListPembelianProduk);
+            ShowForm<FrmListPembelianProdukWithNavigation>(sender, ref _frmListPembelianProduk);
         }
 
         private void mnuJenisPengeluaran_Click(object sender, EventArgs e)
@@ -444,7 +444,7 @@ namespace OpenRetail.App.Main
 
         private void mnuPenjualanProduk_Click(object sender, EventArgs e)
         {
-            ShowForm<FrmListPenjualanProduk>(sender, ref _frmListPenjualanProduk);
+            ShowForm<FrmListPenjualanProdukWithNavigation>(sender, ref _frmListPenjualanProduk);
         }
 
         private void mnuPembayaranPiutangPenjualanProduk_Click(object sender, EventArgs e)
@@ -719,6 +719,11 @@ namespace OpenRetail.App.Main
         private void mnuCetakLabelBarcodeProduk_Click(object sender, EventArgs e)
         {
             ShowFormDialog<FrmCetakLabelBarcodeProduk>(sender);
+        }
+
+        private void mnuLapPenjualanPerGolongan_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapPenjualanPerGolongan>(sender);
         }        
     }
 }

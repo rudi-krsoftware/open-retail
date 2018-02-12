@@ -96,6 +96,24 @@ namespace OpenRetail.Repository.Service.Report
                                                               GROUP BY m_produk.produk_id, m_produk.nama_produk, COALESCE(m_customer.customer_id, m_customer.customer_id, '6ecdf4af-d9e1-8c33-f22a-3cb8e053c02a'), COALESCE(m_customer.nama_customer, m_customer.nama_customer, '-'), m_customer.alamat, m_customer.telepon
                                                               ORDER BY m_produk.nama_produk, COALESCE(m_customer.nama_customer, m_customer.nama_customer, '-')";
 
+        private const string SQL_TEMPLATE_PER_GOLONGAN_HEADER = @"SELECT m_golongan.golongan_id, m_golongan.nama_golongan,
+                                                                  SUM((t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur) * (t_item_jual_produk.harga_jual - (t_item_jual_produk.harga_jual * t_item_jual_produk.diskon / 100))) AS sub_total
+                                                                  FROM public.m_golongan INNER JOIN public.m_produk ON m_produk.golongan_id = m_golongan.golongan_id
+                                                                  INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
+                                                                  INNER JOIN public.t_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
+                                                                  {WHERE}
+                                                                  GROUP BY m_golongan.golongan_id, m_golongan.nama_golongan
+                                                                  ORDER BY m_golongan.nama_golongan";
+
+        private const string SQL_TEMPLATE_PER_GOLONGAN_DETAIL = @"SELECT m_golongan.golongan_id, m_golongan.nama_golongan, t_jual_produk.tanggal, m_produk.produk_id, m_produk.nama_produk, 
+                                                                  SUM(t_item_jual_produk.jumlah) AS jumlah, SUM(t_item_jual_produk.jumlah_retur) AS jumlah_retur, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon
+                                                                  FROM public.m_golongan INNER JOIN public.m_produk ON m_produk.golongan_id = m_golongan.golongan_id
+                                                                  INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
+                                                                  INNER JOIN public.t_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
+                                                                  {WHERE}
+                                                                  GROUP BY m_golongan.golongan_id, m_golongan.nama_golongan, t_jual_produk.tanggal, m_produk.produk_id, m_produk.nama_produk, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon
+                                                                  ORDER BY m_golongan.nama_golongan, t_jual_produk.tanggal";
+
         private IDapperContext _context;
         private ILog _log;
 
@@ -481,6 +499,103 @@ namespace OpenRetail.Repository.Service.Report
                 whereBuilder.Add("t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
 
                 oList = _context.db.Query<ReportCustomerProduk>(whereBuilder.ToSql(), new { tanggalMulai, tanggalSelesai })
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+
+        public IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByBulan(int bulan, int tahun)
+        {
+            IList<ReportPenjualanProdukPerGolongan> oList = new List<ReportPenjualanProdukPerGolongan>();
+
+            try
+            {
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_PER_GOLONGAN_HEADER);
+
+                whereBuilder.Add("EXTRACT(MONTH FROM t_jual_produk.tanggal) = @bulan");
+                whereBuilder.Add("EXTRACT(YEAR FROM t_jual_produk.tanggal) = @tahun");
+
+                oList = _context.db.Query<ReportPenjualanProdukPerGolongan>(whereBuilder.ToSql(), new { bulan, tahun })
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByBulan(int bulanAwal, int bulanAkhir, int tahun)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
+        {
+            IList<ReportPenjualanProdukPerGolongan> oList = new List<ReportPenjualanProdukPerGolongan>();
+
+            try
+            {
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_PER_GOLONGAN_HEADER);
+
+                whereBuilder.Add("t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+
+                oList = _context.db.Query<ReportPenjualanProdukPerGolongan>(whereBuilder.ToSql(), new { tanggalMulai, tanggalSelesai })
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportPenjualanProduk> PerGolonganDetailGetByBulan(int bulan, int tahun)
+        {
+            IList<ReportPenjualanProduk> oList = new List<ReportPenjualanProduk>();
+
+            try
+            {
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_PER_GOLONGAN_DETAIL);
+
+                whereBuilder.Add("EXTRACT(MONTH FROM t_jual_produk.tanggal) = @bulan");
+                whereBuilder.Add("EXTRACT(YEAR FROM t_jual_produk.tanggal) = @tahun");
+
+                oList = _context.db.Query<ReportPenjualanProduk>(whereBuilder.ToSql(), new { bulan, tahun })
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<ReportPenjualanProduk> PerGolonganDetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<ReportPenjualanProduk> PerGolonganDetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
+        {
+            IList<ReportPenjualanProduk> oList = new List<ReportPenjualanProduk>();
+
+            try
+            {
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_PER_GOLONGAN_DETAIL);
+
+                whereBuilder.Add("t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+
+                oList = _context.db.Query<ReportPenjualanProduk>(whereBuilder.ToSql(), new { tanggalMulai, tanggalSelesai })
                                 .ToList();
             }
             catch (Exception ex)

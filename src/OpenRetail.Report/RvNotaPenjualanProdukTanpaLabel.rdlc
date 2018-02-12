@@ -1604,7 +1604,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="  " &amp; Code.GetWilayahLengkap(First(Fields!is_sdac.Value, "NotaPenjualan"), First(Fields!kelurahan.Value, "NotaPenjualan"), First(Fields!kecamatan.Value, "NotaPenjualan"), First(Fields!kabupaten.Value, "NotaPenjualan"), First(Fields!kota.Value, "NotaPenjualan"), First(Fields!kode_pos.Value, "NotaPenjualan"), First(Fields!kirim_kecamatan.Value, "NotaPenjualan"))</Value>
+                <Value>="  " &amp; Code.GetWilayahLengkap(First(Fields!is_sdac.Value, "NotaPenjualan"), First(Fields!provinsi.Value, "NotaPenjualan"), First(Fields!kabupaten.Value, "NotaPenjualan"), First(Fields!kecamatan.Value, "NotaPenjualan"), First(Fields!kode_pos.Value, "NotaPenjualan"), First(Fields!kirim_kecamatan.Value, "NotaPenjualan"))</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
                 </Style>
@@ -1922,20 +1922,12 @@
           <DataField>alamat</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="desa">
-          <DataField>desa</DataField>
+        <Field Name="provinsi">
+          <DataField>provinsi</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="kecamatan">
           <DataField>kecamatan</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="kelurahan">
-          <DataField>kelurahan</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="kota">
-          <DataField>kota</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="kabupaten">
@@ -2165,26 +2157,22 @@
 	End If
 End Function
 
-Public Function GetWilayahLengkap(ByVal isSdac As Boolean, ByVal kelurahan As String, ByVal kecamatan As String, _
-						   ByVal kabupaten As String, ByVal kota As String, ByVal kodePos As String, ByVal kirimAlamat As String) As String
+Public Function GetWilayahLengkap(ByVal isSdac As Boolean, ByVal provinsi As String, ByVal kabupaten As String, _
+	ByVal kecamatan As String, ByVal kodePos As String, ByVal kirimAlamat As String) As String
 
 	If isSdac Then ' sama dengan alamat customer
 		Dim sb As New System.Text.StringBuilder()
 
-		If kelurahan.Length &gt; 0 Then
-			sb.Append(String.Format("Kel. {0}", kelurahan)).Append(", ")
-		End If
-
-		If kecamatan.Length &gt; 0 Then
-			sb.Append(String.Format("Kec. {0}", kecamatan)).Append(", ")
+		If provinsi.Length &gt; 0 Then
+			sb.Append(String.Format("{0}", provinsi)).Append(", ")
 		End If
 
 		If kabupaten.Length &gt; 0 Then
-			sb.Append(String.Format("Kab. {0}", kabupaten)).Append(", ")
+			sb.Append(String.Format("{0}", kabupaten)).Append(", ")
 		End If
 
-		If kota.Length &gt; 0 Then
-			sb.Append(kota).Append(", ")
+		If kecamatan.Length &gt; 0 Then
+			sb.Append(String.Format("{0}", kecamatan)).Append(", ")
 		End If
 
 		If kodePos.Length &gt; 0 Then

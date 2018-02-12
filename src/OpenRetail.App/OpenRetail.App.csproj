@@ -179,6 +179,12 @@
     <Compile Include="Laporan\FrmLapPenjualanPerKasir.designer.cs">
       <DependentUpon>FrmLapPenjualanPerKasir.cs</DependentUpon>
     </Compile>
+    <Compile Include="Laporan\FrmLapPenjualanPerGolongan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporan\FrmLapPenjualanPerGolongan.Designer.cs">
+      <DependentUpon>FrmLapPenjualanPerGolongan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laporan\FrmLapPenjualanProdukFavorit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -619,11 +625,17 @@
     <Compile Include="Transaksi\FrmListPembayaranPiutangPenjualanProduk.Designer.cs">
       <DependentUpon>FrmListPembayaranPiutangPenjualanProduk.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transaksi\FrmListPenjualanProduk.cs">
+    <Compile Include="Transaksi\FrmListPembelianProdukWithNavigation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Transaksi\FrmListPenjualanProduk.Designer.cs">
-      <DependentUpon>FrmListPenjualanProduk.cs</DependentUpon>
+    <Compile Include="Transaksi\FrmListPembelianProdukWithNavigation.Designer.cs">
+      <DependentUpon>FrmListPembelianProdukWithNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaksi\FrmListPenjualanProdukWithNavigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FrmListPenjualanProdukWithNavigation.Designer.cs">
+      <DependentUpon>FrmListPenjualanProdukWithNavigation.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaksi\FrmListReturPenjualanProduk.cs">
       <SubType>Form</SubType>
@@ -642,12 +654,6 @@
     </Compile>
     <Compile Include="Transaksi\FrmListPembayaranHutangPembelianProduk.Designer.cs">
       <DependentUpon>FrmListPembayaranHutangPembelianProduk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Transaksi\FrmListPembelianProduk.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Transaksi\FrmListPembelianProduk.Designer.cs">
-      <DependentUpon>FrmListPembelianProduk.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaksi\FrmPreviewLabelNotaPenjualan.cs">
       <SubType>Form</SubType>
@@ -840,8 +846,11 @@
     <EmbeddedResource Include="Transaksi\FrmListPembayaranPiutangPenjualanProduk.resx">
       <DependentUpon>FrmListPembayaranPiutangPenjualanProduk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Transaksi\FrmListPenjualanProduk.resx">
-      <DependentUpon>FrmListPenjualanProduk.cs</DependentUpon>
+    <EmbeddedResource Include="Transaksi\FrmListPembelianProdukWithNavigation.resx">
+      <DependentUpon>FrmListPembelianProdukWithNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaksi\FrmListPenjualanProdukWithNavigation.resx">
+      <DependentUpon>FrmListPenjualanProdukWithNavigation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmListReturPenjualanProduk.resx">
       <DependentUpon>FrmListReturPenjualanProduk.cs</DependentUpon>
@@ -851,9 +860,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmListPembayaranHutangPembelianProduk.resx">
       <DependentUpon>FrmListPembayaranHutangPembelianProduk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Transaksi\FrmListPembelianProduk.resx">
-      <DependentUpon>FrmListPembelianProduk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmPreviewLabelNotaPenjualan.resx">
       <DependentUpon>FrmPreviewLabelNotaPenjualan.cs</DependentUpon>

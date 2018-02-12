@@ -60,10 +60,11 @@
     <Compile Include="IJabatanRepository.cs" />
     <Compile Include="IJenisPengeluaranRepository.cs" />
     <Compile Include="IJualProdukRepository.cs" />
-    <Compile Include="IKabupatenRepository.cs" />
+    <Compile Include="IKabupatenRajaOngkirRepository.cs" />
     <Compile Include="IKartuRepository.cs" />
     <Compile Include="IKaryawanRepository.cs" />
     <Compile Include="IKasbonRepository.cs" />
+    <Compile Include="IWilayahRepository.cs" />
     <Compile Include="ILabelNotaRepository.cs" />
     <Compile Include="ILog4NetRepository.cs" />
     <Compile Include="IMenuRepository.cs" />

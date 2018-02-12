@@ -99,6 +99,7 @@
             this.chkSingkatPenulisanOngkir = new System.Windows.Forms.CheckBox();
             this.chkStokProdukBolehMinus = new System.Windows.Forms.CheckBox();
             this.chkUpdateHargaJual = new System.Windows.Forms.CheckBox();
+            this.chkFokusKeKolomJumlah = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1033,19 +1034,21 @@
             this.tableLayoutPanel13.ColumnCount = 1;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.Controls.Add(this.chkTampilkanInfoMinimalStokProduk, 0, 0);
-            this.tableLayoutPanel13.Controls.Add(this.chkCustomerWajibDiisi, 0, 1);
-            this.tableLayoutPanel13.Controls.Add(this.chkSingkatPenulisanOngkir, 0, 4);
-            this.tableLayoutPanel13.Controls.Add(this.chkStokProdukBolehMinus, 0, 2);
-            this.tableLayoutPanel13.Controls.Add(this.chkUpdateHargaJual, 0, 3);
+            this.tableLayoutPanel13.Controls.Add(this.chkCustomerWajibDiisi, 0, 2);
+            this.tableLayoutPanel13.Controls.Add(this.chkStokProdukBolehMinus, 0, 3);
+            this.tableLayoutPanel13.Controls.Add(this.chkUpdateHargaJual, 0, 4);
+            this.tableLayoutPanel13.Controls.Add(this.chkSingkatPenulisanOngkir, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.chkFokusKeKolomJumlah, 0, 5);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 6;
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel13.RowCount = 7;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(419, 307);
             this.tableLayoutPanel13.TabIndex = 0;
@@ -1056,7 +1059,7 @@
             this.chkTampilkanInfoMinimalStokProduk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkTampilkanInfoMinimalStokProduk.Location = new System.Drawing.Point(3, 3);
             this.chkTampilkanInfoMinimalStokProduk.Name = "chkTampilkanInfoMinimalStokProduk";
-            this.chkTampilkanInfoMinimalStokProduk.Size = new System.Drawing.Size(413, 19);
+            this.chkTampilkanInfoMinimalStokProduk.Size = new System.Drawing.Size(413, 17);
             this.chkTampilkanInfoMinimalStokProduk.TabIndex = 0;
             this.chkTampilkanInfoMinimalStokProduk.Text = "Tampilkan info minimal stok produk";
             this.chkTampilkanInfoMinimalStokProduk.UseVisualStyleBackColor = true;
@@ -1065,10 +1068,10 @@
             // 
             this.chkCustomerWajibDiisi.AutoSize = true;
             this.chkCustomerWajibDiisi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkCustomerWajibDiisi.Location = new System.Drawing.Point(3, 28);
+            this.chkCustomerWajibDiisi.Location = new System.Drawing.Point(3, 49);
             this.chkCustomerWajibDiisi.Name = "chkCustomerWajibDiisi";
-            this.chkCustomerWajibDiisi.Size = new System.Drawing.Size(413, 19);
-            this.chkCustomerWajibDiisi.TabIndex = 1;
+            this.chkCustomerWajibDiisi.Size = new System.Drawing.Size(413, 17);
+            this.chkCustomerWajibDiisi.TabIndex = 2;
             this.chkCustomerWajibDiisi.Text = "Customer wajib diisi pada saat penjualan";
             this.chkCustomerWajibDiisi.UseVisualStyleBackColor = true;
             // 
@@ -1076,10 +1079,10 @@
             // 
             this.chkSingkatPenulisanOngkir.AutoSize = true;
             this.chkSingkatPenulisanOngkir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkSingkatPenulisanOngkir.Location = new System.Drawing.Point(3, 103);
+            this.chkSingkatPenulisanOngkir.Location = new System.Drawing.Point(3, 26);
             this.chkSingkatPenulisanOngkir.Name = "chkSingkatPenulisanOngkir";
-            this.chkSingkatPenulisanOngkir.Size = new System.Drawing.Size(413, 19);
-            this.chkSingkatPenulisanOngkir.TabIndex = 4;
+            this.chkSingkatPenulisanOngkir.Size = new System.Drawing.Size(413, 17);
+            this.chkSingkatPenulisanOngkir.TabIndex = 1;
             this.chkSingkatPenulisanOngkir.Text = "Singkat penulisan ongkos kirim. Misal 7.000 -> 7, 14.000 -> 14, dst";
             this.chkSingkatPenulisanOngkir.UseVisualStyleBackColor = true;
             // 
@@ -1087,23 +1090,34 @@
             // 
             this.chkStokProdukBolehMinus.AutoSize = true;
             this.chkStokProdukBolehMinus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkStokProdukBolehMinus.Location = new System.Drawing.Point(3, 53);
+            this.chkStokProdukBolehMinus.Location = new System.Drawing.Point(3, 72);
             this.chkStokProdukBolehMinus.Name = "chkStokProdukBolehMinus";
-            this.chkStokProdukBolehMinus.Size = new System.Drawing.Size(413, 19);
-            this.chkStokProdukBolehMinus.TabIndex = 2;
-            this.chkStokProdukBolehMinus.Text = "Stok produk boleh minus ketika penjualan";
+            this.chkStokProdukBolehMinus.Size = new System.Drawing.Size(413, 17);
+            this.chkStokProdukBolehMinus.TabIndex = 3;
+            this.chkStokProdukBolehMinus.Text = "Stok produk boleh minus pada saat penjualan";
             this.chkStokProdukBolehMinus.UseVisualStyleBackColor = true;
             // 
             // chkUpdateHargaJual
             // 
             this.chkUpdateHargaJual.AutoSize = true;
             this.chkUpdateHargaJual.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkUpdateHargaJual.Location = new System.Drawing.Point(3, 78);
+            this.chkUpdateHargaJual.Location = new System.Drawing.Point(3, 95);
             this.chkUpdateHargaJual.Name = "chkUpdateHargaJual";
-            this.chkUpdateHargaJual.Size = new System.Drawing.Size(413, 19);
-            this.chkUpdateHargaJual.TabIndex = 3;
+            this.chkUpdateHargaJual.Size = new System.Drawing.Size(413, 17);
+            this.chkUpdateHargaJual.TabIndex = 4;
             this.chkUpdateHargaJual.Text = "Update harga jual master produk jika terjadi perubahan harga pada saat penjualan";
             this.chkUpdateHargaJual.UseVisualStyleBackColor = true;
+            // 
+            // chkFokusKeKolomJumlah
+            // 
+            this.chkFokusKeKolomJumlah.AutoSize = true;
+            this.chkFokusKeKolomJumlah.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkFokusKeKolomJumlah.Location = new System.Drawing.Point(3, 118);
+            this.chkFokusKeKolomJumlah.Name = "chkFokusKeKolomJumlah";
+            this.chkFokusKeKolomJumlah.Size = new System.Drawing.Size(355, 17);
+            this.chkFokusKeKolomJumlah.TabIndex = 4;
+            this.chkFokusKeKolomJumlah.Text = "Fokus input ke kolom jumlah setelah entri produk pada saat penjualan";
+            this.chkFokusKeKolomJumlah.UseVisualStyleBackColor = true;
             // 
             // FrmPengaturanUmum
             // 
@@ -1220,6 +1234,7 @@
         private System.Windows.Forms.RadioButton rdoJenisPrinterInkJet;
         private System.Windows.Forms.CheckBox chkStokProdukBolehMinus;
         private System.Windows.Forms.CheckBox chkUpdateHargaJual;
+        private System.Windows.Forms.CheckBox chkFokusKeKolomJumlah;
 
 
 

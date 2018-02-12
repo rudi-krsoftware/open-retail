@@ -90,6 +90,19 @@ namespace OpenRetail.Bll.Service.Report
             return oList;
         }
 
+        public IList<ReportStokProduk> GetStokBerdasarkanKode(IList<string> listOfKode)
+        {
+            IList<ReportStokProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.ReportStokProdukRepository.GetStokBerdasarkanKode(listOfKode);
+            }
+
+            return oList;
+        }
+
         public IList<ReportStokProduk> GetStokBerdasarkanNama(string name)
         {
             IList<ReportStokProduk> oList = null;

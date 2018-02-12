@@ -72,7 +72,7 @@ namespace OpenRetail.Bll.Service
                 var firstRowUsed = ws.FirstRowUsed();
 
                 var colums = new string[] { 
-                                            "NAMA", "ALAMAT", "DESA", "KELURAHAN", "KECAMATAN", "KOTA", "KABUPATEN", 
+                                            "NAMA", "PROVINSI", "KABUPATEN/KOTA", "KECAMATAN", "ALAMAT", 
                                             "KODE POS", "KONTAK", "TELEPON", "DISKON RESELLER", "PLAFON PIUTANG" 
                                           };
 
@@ -124,12 +124,10 @@ namespace OpenRetail.Bll.Service
                 listOfCustomer = customerTable.DataRange.Rows().Select(row => new Customer
                 {
                     nama_customer = row.Field("NAMA").GetString(),
+                    Provinsi = new Provinsi { nama_provinsi = row.Field("PROVINSI").GetString() },
+                    Kabupaten = new Kabupaten { nama_kabupaten = row.Field("KABUPATEN/KOTA").GetString() },
+                    Kecamatan = new Kecamatan { nama_kecamatan = row.Field("KECAMATAN").GetString() },
                     alamat = row.Field("ALAMAT").GetString(),
-                    desa = row.Field("DESA").GetString(),
-                    kelurahan = row.Field("KELURAHAN").GetString(),
-                    kecamatan = row.Field("KECAMATAN").GetString(),                    
-                    kota = row.Field("KOTA").GetString(),
-                    kabupaten = row.Field("KABUPATEN").GetString(),
                     kode_pos = row.Field("KODE POS").GetString(),
                     kontak = row.Field("KONTAK").GetString(),
                     telepon = row.Field("TELEPON").GetString(),
@@ -165,6 +163,27 @@ namespace OpenRetail.Bll.Service
                             if (customer.telepon.Length > 20)
                                 customer.telepon = customer.telepon.Substring(0, 20);
 
+                            var provinsi = uow.WilayahRepository.GetProvinsi(customer.Provinsi.nama_provinsi);
+                            if (provinsi != null)
+                            {
+                                customer.provinsi_id = provinsi.provinsi_id;
+                                customer.Provinsi = new Provinsi { provinsi_id = provinsi.provinsi_id, nama_provinsi = provinsi.nama_provinsi };
+                            }
+
+                            var kabupaten = uow.WilayahRepository.GetKabupaten(customer.Kabupaten.nama_kabupaten);
+                            if (kabupaten != null)
+                            {
+                                customer.kabupaten_id = kabupaten.kabupaten_id;
+                                customer.Kabupaten = new Kabupaten { kabupaten_id = kabupaten.kabupaten_id, nama_kabupaten = kabupaten.nama_kabupaten };
+                            }
+
+                            var kecamatan = uow.WilayahRepository.GetKecamatan(customer.Kecamatan.nama_kecamatan);
+                            if (kecamatan != null)
+                            {
+                                customer.kecamatan_id = kecamatan.kecamatan_id;
+                                customer.Kecamatan = new Kecamatan { kecamatan_id = kecamatan.kecamatan_id, nama_kecamatan = kecamatan.nama_kecamatan };
+                            }
+
                             result = Convert.ToBoolean(uow.CustomerRepository.Save(customer));
                         }
                     }
@@ -197,10 +216,12 @@ namespace OpenRetail.Bll.Service
                     // Set header table
                     ws.Cell(1, 1).Value = "NO";
                     ws.Cell(1, 2).Value = "NAMA";
-                    ws.Cell(1, 3).Value = "ALAMAT";
-                    ws.Cell(1, 4).Value = "KECAMATAN";
-                    ws.Cell(1, 5).Value = "KELURAHAN";
-                    ws.Cell(1, 6).Value = "KOTA";
+
+                    ws.Cell(1, 3).Value = "PROVINSI";
+                    ws.Cell(1, 4).Value = "KABUPATEN/KOTA";
+                    ws.Cell(1, 5).Value = "KECAMATAN";
+
+                    ws.Cell(1, 6).Value = "ALAMAT";
                     ws.Cell(1, 7).Value = "KODE POS";
                     ws.Cell(1, 8).Value = "KONTAK";
                     ws.Cell(1, 9).Value = "TELEPON";
@@ -212,10 +233,12 @@ namespace OpenRetail.Bll.Service
                     {
                         ws.Cell(1 + noUrut, 1).Value = noUrut;
                         ws.Cell(1 + noUrut, 2).Value = customer.nama_customer;
-                        ws.Cell(1 + noUrut, 3).Value = customer.alamat;
-                        ws.Cell(1 + noUrut, 4).Value = customer.kecamatan;
-                        ws.Cell(1 + noUrut, 5).Value = customer.kelurahan;
-                        ws.Cell(1 + noUrut, 6).Value = customer.kota;
+
+                        ws.Cell(1 + noUrut, 3).Value = customer.Provinsi != null ? customer.Provinsi.nama_provinsi : string.Empty;
+                        ws.Cell(1 + noUrut, 4).Value = customer.Kabupaten != null ? customer.Kabupaten.nama_kabupaten : customer.kabupaten_old.NullToString();
+                        ws.Cell(1 + noUrut, 5).Value = customer.Kecamatan != null ? customer.Kecamatan.nama_kecamatan : customer.kecamatan_old.NullToString();
+
+                        ws.Cell(1 + noUrut, 6).Value = customer.alamat;
                         ws.Cell(1 + noUrut, 7).SetValue(customer.kode_pos).SetDataType(XLCellValues.Text);
                         ws.Cell(1 + noUrut, 8).Value = customer.kontak;
                         ws.Cell(1 + noUrut, 9).SetValue(customer.telepon).SetDataType(XLCellValues.Text);

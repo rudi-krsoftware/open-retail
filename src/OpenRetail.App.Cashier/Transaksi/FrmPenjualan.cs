@@ -268,7 +268,7 @@ namespace OpenRetail.App.Cashier.Transaksi
         private void SetStatusBar()
         {
             var infoStatus = "F3 : Input Produk | F4 : Cari Pelanggan | F5 : Edit Jumlah | F6 : Edit Diskon | F7 : Edit Harga | F8 : Cek Nota Terakhir | F10 : Bayar" +
-                             "\r\nCTRL + B : Pembatalan Transaksi | CTRL + L : Laporan Penjualan | CTRL + N : Tanpa Nota/Struk | CTRL + P : Setting Printer | CTRL + X : Tutup Form Transaksi";
+                             "\r\nCTRL + B : Pembatalan Transaksi | CTRL + D: Hapus Item Transaksi | CTRL + L : Laporan Penjualan | CTRL + N : Tanpa Nota/Struk | CTRL + P : Setting Printer | CTRL + X : Tutup Form Transaksi";
 
             lblStatusBar.Text = infoStatus;
         }
@@ -398,7 +398,7 @@ namespace OpenRetail.App.Cashier.Transaksi
 
                             if (produk == null)
                             {
-                                ShowMessage("Data produk tidak ditemukan");
+                                ShowMessage("Data produk tidak ditemukan", true);
                                 GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                                 return;
                             }
@@ -438,7 +438,14 @@ namespace OpenRetail.App.Cashier.Transaksi
                                 grid.RowCount = _listOfItemJual.Count;
                             }
 
-                            GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                            if (_pengaturanUmum.is_fokus_input_kolom_jumlah)
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, rowIndex, 4); // fokus ke kolom jumlah
+                            }
+                            else
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
+                            }                            
                         }
 
                         break;
@@ -452,7 +459,7 @@ namespace OpenRetail.App.Cashier.Transaksi
 
                         if (listOfProduk.Count == 0)
                         {
-                            ShowMessage("Data produk tidak ditemukan");
+                            ShowMessage("Data produk tidak ditemukan", true);
                             GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                         }
                         else if (listOfProduk.Count == 1)
@@ -492,8 +499,15 @@ namespace OpenRetail.App.Cashier.Transaksi
                                 _listOfItemJual.Add(new ItemJualProduk());
                                 grid.RowCount = _listOfItemJual.Count;
                             }
-                                
-                            GridListControlHelper.SetCurrentCell(grid, rowIndex + 1, 2); // pindah kebaris berikutnya
+                                                            
+                            if (_pengaturanUmum.is_fokus_input_kolom_jumlah)
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, rowIndex, 4); // fokus ke kolom jumlah
+                            }
+                            else
+                            {
+                                GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
+                            }
                         }
                         else // data lebih dari satu
                         {
@@ -509,8 +523,41 @@ namespace OpenRetail.App.Cashier.Transaksi
                         break;
 
                     case 4: // jumlah
+                        if (!_pengaturanUmum.is_stok_produk_boleh_minus)
+                        {
+                            gridControl_CurrentCellValidated(sender, new EventArgs());
+
+                            var itemJual = _listOfItemJual[rowIndex - 1];
+                            produk = itemJual.Produk;
+
+                            var isValidStok = (produk.sisa_stok - itemJual.jumlah) >= 0;
+
+                            if (!isValidStok)
+                            {
+                                ShowMessage("Maaf stok produk tidak boleh minus", true);
+                                GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+
+                                return;
+                            }
+                        }
+
+                        if (grid.RowCount == rowIndex)
+                        {
+                            _listOfItemJual.Add(new ItemJualProduk());
+                            grid.RowCount = _listOfItemJual.Count;
+                        }
+
+                        GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2); // pindah kebaris berikutnya
+                        break;
+
                     case 5: // diskon
-                        GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
+                        if (grid.RowCount == rowIndex)
+                        {
+                            _listOfItemJual.Add(new ItemJualProduk());
+                            grid.RowCount = _listOfItemJual.Count;
+                        }
+
+                        GridListControlHelper.SetCurrentCell(grid, _listOfItemJual.Count, 2);
                         break;
 
                     case 6:
@@ -554,8 +601,16 @@ namespace OpenRetail.App.Cashier.Transaksi
 
             GridCurrentCell cc = grid.CurrentCell;
 
-            var itemJual = _listOfItemJual[cc.RowIndex - 1];
-            var produk = itemJual.Produk;
+            Produk produk = null;
+            ItemJualProduk itemJual = null;
+
+            var rowIndex = cc.RowIndex - 1;
+
+            if (_listOfItemJual.Count > rowIndex)
+            {
+                itemJual = _listOfItemJual[rowIndex];
+                produk = itemJual.Produk;
+            }            
 
             if (produk != null)
             {
@@ -650,6 +705,15 @@ namespace OpenRetail.App.Cashier.Transaksi
                     if (total > 0)
                     {
                         ResetTransaksi(); // reset transaksi dengan menampilkan pesan konfirmasi
+                    }
+                }
+                else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D) // hapus item transaksi
+                {
+                    total = SumGrid(_listOfItemJual);
+
+                    if (total > 0)
+                    {
+                        HapusItemTransaksi(); // hapus item transaksi
                     }
                 }
                 else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.N) // tanpa nota/struk
@@ -795,8 +859,19 @@ namespace OpenRetail.App.Cashier.Transaksi
             }
         }
 
+        private void HapusItemTransaksi()
+        {
+            var jual = new JualProduk();
+            jual.item_jual = this._listOfItemJual.Where(f => f.Produk != null).ToList();
+
+            var frmHapusTransaksi = new FrmHapusItemTransaksi("Hapus Item Transaksi", jual);
+            frmHapusTransaksi.Listener = this;
+            frmHapusTransaksi.ShowDialog();
+        }
+
         public void Ok(object sender, object data)
         {
+            // filter berdasarkan data
             if (data is Produk) // pencarian produk baku
             {
                 var produk = (Produk)data;
@@ -833,7 +908,14 @@ namespace OpenRetail.App.Cashier.Transaksi
                     this.gridControl.RowCount = _listOfItemJual.Count;
                 }
 
-                GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex + 1, 2); // pindah kebaris berikutnya
+                if (_pengaturanUmum.is_fokus_input_kolom_jumlah)
+                {
+                    GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex, 4); // fokus ke kolom jumlah
+                }
+                else
+                {
+                    GridListControlHelper.SetCurrentCell(this.gridControl, _rowIndex + 1, 2); // pindah kebaris berikutnya
+                }                
             }
             else if (data is Customer) // pencarian customer
             {
@@ -874,6 +956,32 @@ namespace OpenRetail.App.Cashier.Transaksi
                 lblKembalian.Text = string.Format("Kembalian: {0}", NumberHelper.NumberToString(kembalian));
 
                 ResetTransaksi(false);                
+            }
+            else // filter bardasarkan nama form
+            {
+                var frmName = sender.GetType().Name;
+
+                switch (frmName)
+                {
+                    case "FrmHapusItemTransaksi":
+                        var noTransaksi = (int)((dynamic)data).noTransaksi;
+
+                        var itemJual = _listOfItemJual[noTransaksi - 1];
+                        itemJual.entity_state = EntityState.Deleted;
+
+                        _listOfItemJual.Remove(itemJual);
+
+                        gridControl.RowCount = _listOfItemJual.Count();
+                        gridControl.Refresh();
+
+                        RefreshTotal();
+
+                        GridListControlHelper.SetCurrentCell(gridControl, _listOfItemJual.Count, 2);
+                        break;
+
+                    default:
+                        break;
+                }
             }
         }
         

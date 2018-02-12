@@ -44,6 +44,8 @@ namespace OpenRetail.App.Referensi
         private ISupplierBll _bll; // deklarasi objek business logic layer 
         private IList<Supplier> _listOfSupplier = new List<Supplier>();
         private ILog _log;
+        private Pengguna _pengguna;
+        private string _menuId = string.Empty;
 
         public FrmListSupplier(string header, Pengguna pengguna, string menuId)
             : base()
@@ -62,9 +64,11 @@ namespace OpenRetail.App.Referensi
 
             _log = MainProgram.log;
             _bll = new SupplierBll(_log);
-            
+            _pengguna = pengguna;
+            _menuId = menuId;
+
             // set hak akses untuk SELECT
-            var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
+            var role = _pengguna.GetRoleByMenuAndGrant(_menuId, GrantState.SELECT);
             if (role != null)
                 if (role.is_grant)
                 {
@@ -76,7 +80,7 @@ namespace OpenRetail.App.Referensi
             InitGridList();
 
             // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
-            RolePrivilegeHelper.SetHakAkses(this, pengguna, menuId, _listOfSupplier.Count);
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfSupplier.Count);
         }
 
         private void InitGridList()
@@ -293,10 +297,21 @@ namespace OpenRetail.App.Referensi
 
         private void btnCari_Click(object sender, EventArgs e)
         {
-            if (txtNamaSupplier.Text == "Cari nama supplier ...")
-                LoadData();
-            else
-                LoadData(txtNamaSupplier.Text);
+            // set hak akses untuk SELECT
+            var role = _pengguna.GetRoleByMenuAndGrant(_menuId, GrantState.SELECT);
+            if (role != null)
+            {
+                if (role.is_grant)
+                {
+                    if (txtNamaSupplier.Text == "Cari nama supplier ...")
+                        LoadData();
+                    else
+                        LoadData(txtNamaSupplier.Text);
+                }
+            }
+
+            // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
+            RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfSupplier.Count);
         }
 
         private void txtNamaSupplier_KeyPress(object sender, KeyPressEventArgs e)

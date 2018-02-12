@@ -39,7 +39,13 @@ namespace OpenRetail.Repository.Service
                                               m_supplier.supplier_id, m_supplier.nama_supplier, m_supplier.alamat
                                               FROM public.t_beli_produk INNER JOIN public.m_supplier ON t_beli_produk.supplier_id = m_supplier.supplier_id
                                               {WHERE}
-                                              {ORDER BY}";
+                                              {ORDER BY}
+                                              {OFFSET}";
+
+        private const string SQL_TEMPLATE_FOR_PAGING = @"SELECT COUNT(*)
+                                                         FROM public.t_beli_produk INNER JOIN public.m_supplier ON t_beli_produk.supplier_id = m_supplier.supplier_id
+                                                         {WHERE}";
+
         private IDapperContext _context;
         private ILog _log;
         private string _sql;
@@ -96,6 +102,7 @@ namespace OpenRetail.Repository.Service
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_beli_produk.beli_produk_id = @id");
                 _sql = _sql.Replace("{ORDER BY}", "");
+                _sql = _sql.Replace("{OFFSET}", "");
 
                 obj = MappingRecordToObject(_sql, new { id }).SingleOrDefault();
 
@@ -119,10 +126,42 @@ namespace OpenRetail.Repository.Service
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_supplier.nama_supplier) LIKE @name OR LOWER(t_beli_produk.keterangan) LIKE @name");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
+                _sql = _sql.Replace("{OFFSET}", "");
 
                 name = "%" + name.ToLower() + "%";
 
                 oList = MappingRecordToObject(_sql, new { name }).ToList();
+
+                // load item beli
+                foreach (var item in oList)
+                {
+                    item.item_beli = GetItemBeli(item.beli_produk_id);
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<BeliProduk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount)
+        {            
+            IList<BeliProduk> oList = new List<BeliProduk>();
+
+            try
+            {
+                name = "%" + name.ToLower() + "%";
+
+                var sqlPageCount = SQL_TEMPLATE_FOR_PAGING.Replace("{WHERE}", "WHERE LOWER(m_supplier.nama_supplier) LIKE @name OR LOWER(t_beli_produk.keterangan) LIKE @name");
+                pagesCount = _context.GetPagesCount(sqlPageCount, pageSize, new { name });
+
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_supplier.nama_supplier) LIKE @name OR LOWER(t_beli_produk.keterangan) LIKE @name");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
+                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
+
+                oList = MappingRecordToObject(_sql, new { name, pageNumber, pageSize }).ToList();
 
                 // load item beli
                 foreach (var item in oList)
@@ -146,8 +185,38 @@ namespace OpenRetail.Repository.Service
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
+                _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql).ToList();
+
+                // load item beli
+                foreach (var item in oList)
+                {
+                    item.item_beli = GetItemBeli(item.beli_produk_id);
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<BeliProduk> GetAll(int pageNumber, int pageSize, ref int pagesCount)
+        {
+            IList<BeliProduk> oList = new List<BeliProduk>();
+
+            try
+            {
+                var sqlPageCount = SQL_TEMPLATE_FOR_PAGING.Replace("{WHERE}", "");
+                pagesCount = _context.GetPagesCount(sqlPageCount, pageSize);
+
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
+                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");                
+
+                oList = MappingRecordToObject(_sql, new { pageNumber, pageSize }).ToList();
 
                 // load item beli
                 foreach (var item in oList)
@@ -171,6 +240,7 @@ namespace OpenRetail.Repository.Service
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_supplier.nama_supplier) LIKE @name");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
+                _sql = _sql.Replace("{OFFSET}", "");
 
                 name = "%" + name.ToLower() + "%";
 
@@ -218,6 +288,8 @@ namespace OpenRetail.Repository.Service
                 }
 
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
+                _sql = _sql.Replace("{OFFSET}", "");
+
                 oList = MappingRecordToObject(_sql, param).ToList();
 
                 // load item beli
@@ -250,7 +322,7 @@ namespace OpenRetail.Repository.Service
                 }
 
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
-
+                _sql = _sql.Replace("{OFFSET}", "");
                 
                 oList = MappingRecordToObject(_sql, new { id }).ToList();
 
@@ -276,6 +348,7 @@ namespace OpenRetail.Repository.Service
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_supplier.supplier_id = @id AND LOWER(t_beli_produk.nota) LIKE @nota AND t_beli_produk.tanggal_tempo IS NOT NULL AND (t_beli_produk.total_nota - t_beli_produk.diskon + t_beli_produk.ppn) > t_beli_produk.total_pelunasan");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
+                _sql = _sql.Replace("{OFFSET}", "");
 
                 nota = nota.ToLower() + "%";
                 oList = MappingRecordToObject(_sql, new { id, nota }).ToList();
@@ -302,8 +375,38 @@ namespace OpenRetail.Repository.Service
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
+                _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai }).ToList();
+
+                // load item beli
+                foreach (var item in oList)
+                {
+                    item.item_beli = GetItemBeli(item.beli_produk_id);
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
+        public IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize, ref int pagesCount)
+        {
+            IList<BeliProduk> oList = new List<BeliProduk>();
+
+            try
+            {
+                var sqlPageCount = SQL_TEMPLATE_FOR_PAGING.Replace("{WHERE}", "WHERE t_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+                pagesCount = _context.GetPagesCount(sqlPageCount, pageSize, new { tanggalMulai, tanggalSelesai });
+
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
+                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");                
+
+                oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai, pageNumber, pageSize }).ToList();
 
                 // load item beli
                 foreach (var item in oList)
@@ -329,6 +432,7 @@ namespace OpenRetail.Repository.Service
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai AND LOWER(m_supplier.nama_supplier) LIKE @name");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
+                _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai, name }).ToList();
 

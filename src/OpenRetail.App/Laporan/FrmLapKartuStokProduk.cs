@@ -37,12 +37,16 @@ using ConceptCave.WaitCursor;
 using Microsoft.Reporting.WinForms;
 using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
+using OpenRetail.Helper.UserControl;
+using OpenRetail.App.Lookup;
 
 namespace OpenRetail.App.Laporan
 {
-    public partial class FrmLapKartuStokProduk : FrmSettingReportEmptyBody
+    public partial class FrmLapKartuStokProduk : FrmSettingReportEmptyBody, IListener
     {
         private ILog _log;
+        private Produk _produk = null;
+        private IList<Produk> _listOfProduk = new List<Produk>();
 
         public FrmLapKartuStokProduk(string header)
         {
@@ -78,7 +82,7 @@ namespace OpenRetail.App.Laporan
             var periode = string.Empty;
 
             IReportKartuStokBll reportBll = new ReportKartuStokBll(_log);
-            IList<ReportKartuStok> listOfReport;
+            IList<ReportKartuStok> listOfReport = new List<ReportKartuStok>();
 
             if (rdoTanggal.Checked)
             {
@@ -93,7 +97,21 @@ namespace OpenRetail.App.Laporan
 
                 periode = dtpTanggalMulai.Value == dtpTanggalSelesai.Value ? string.Format("Periode : {0}", tanggalMulai) : string.Format("Periode : {0} s.d {1}", tanggalMulai, tanggalSelesai);
 
-                listOfReport = reportBll.GetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
+                if (chkFilterTambahan.Checked)
+                {
+                    IList<string> listOfKode = GetListKodeProduk(_listOfProduk);
+
+                    if (listOfKode.Count == 0)
+                    {
+                        MsgHelper.MsgWarning("Minimal satu nama produk harus dipilih !");
+                        txtNamaProduk.Focus();
+                        return;
+                    }
+
+                    listOfReport = reportBll.GetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value, listOfKode);
+                }
+                else
+                    listOfReport = reportBll.GetByTanggal(dtpTanggalMulai.Value, dtpTanggalSelesai.Value);
             }
             else
             {
@@ -102,7 +120,21 @@ namespace OpenRetail.App.Laporan
                 var bulan = cmbBulan.SelectedIndex + 1;
                 var tahun = int.Parse(cmbTahun.Text);
 
-                listOfReport = reportBll.GetByBulan(bulan, tahun);
+                if (chkFilterTambahan.Checked)
+                {
+                    IList<string> listOfKode = GetListKodeProduk(_listOfProduk);
+
+                    if (listOfKode.Count == 0)
+                    {
+                        MsgHelper.MsgWarning("Minimal satu nama produk harus dipilih !");
+                        txtNamaProduk.Focus();
+                        return;
+                    }
+
+                    listOfReport = reportBll.GetByBulan(bulan, tahun, listOfKode);
+                }
+                else
+                    listOfReport = reportBll.GetByBulan(bulan, tahun);
             }
 
             if (listOfReport.Count > 0)
@@ -121,6 +153,101 @@ namespace OpenRetail.App.Laporan
             else
             {
                 MsgHelper.MsgInfo("Maaf laporan data kartu stok tidak ditemukan");
+            }
+        }
+
+        private IList<String> GetListKodeProduk(IList<Produk> listOfProduk)
+        {
+            var result = new List<string>();
+
+            for (int i = 0; i < listOfProduk.Count; i++)
+            {
+                if (chkListOfProduk.GetItemChecked(i))
+                {
+                    result.Add(listOfProduk[i].kode_produk);
+                }
+            }
+
+            return result;
+        }
+
+        private void txtNamaProduk_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e))
+            {
+                var keyword = ((AdvancedTextbox)sender).Text;
+
+                IProdukBll produkBll = new ProdukBll(_log);
+                this._produk = produkBll.GetByKode(keyword);
+
+                if (this._produk == null)
+                {
+                    var listOfProduk = produkBll.GetByName(keyword);
+
+                    if (listOfProduk.Count == 0)
+                    {
+                        MsgHelper.MsgWarning("Data produk tidak ditemukan");
+                        txtNamaProduk.Focus();
+                        txtNamaProduk.SelectAll();
+                    }
+                    else if (listOfProduk.Count == 1)
+                    {
+                        this._produk = listOfProduk[0];
+
+                        FillListProduk(this._produk);
+                    }
+                    else // data lebih dari satu
+                    {
+                        var frmLookup = new FrmLookupReferensi("Data Produk", listOfProduk);
+                        frmLookup.Listener = this;
+                        frmLookup.ShowDialog();
+                    }
+                }
+                else
+                {
+                    FillListProduk(this._produk);
+                }
+            }
+        }
+
+        private void FillListProduk(Produk produk)
+        {
+            txtNamaProduk.Clear();
+            this._listOfProduk.Add(produk);
+            chkListOfProduk.Items.Add(produk.nama_produk);
+            chkListOfProduk.SetItemChecked(chkListOfProduk.Items.Count - 1, true);
+        }
+
+        public void Ok(object sender, object data)
+        {
+            if (data is Produk) // pencarian produk
+            {
+                this._produk = (Produk)data;
+
+                FillListProduk(this._produk);
+            }
+        }
+
+        public void Ok(object sender, bool isNewData, object data)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void chkFilterTambahan_CheckedChanged(object sender, EventArgs e)
+        {
+            var chkFilter = (CheckBox)sender;
+
+            txtNamaProduk.Enabled = chkFilter.Checked;
+            chkListOfProduk.Enabled = chkFilter.Checked;
+
+            if (chkFilter.Checked)
+                txtNamaProduk.Focus();
+            else
+            {
+                _produk = null;
+                _listOfProduk.Clear();
+                txtNamaProduk.Clear();
+                chkListOfProduk.Items.Clear();
             }
         }
     }

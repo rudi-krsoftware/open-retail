@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,10 +20,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace OpenRetail.Model
-{
-    public class KabupatenTujuan : Kabupaten
+using OpenRetail.Model;
+ 
+namespace OpenRetail.Bll.Api
+{    
+    public interface IKabupatenRajaOngkirBll : IBaseBll<KabupatenRajaOngkir>
     {
+        KabupatenRajaOngkir GetByID(int id);    
+        IList<KabupatenRajaOngkir> GetByName(string name);
+
+		int Save(KabupatenRajaOngkir obj, ref ValidationError validationError);
+		int Update(KabupatenRajaOngkir obj, ref ValidationError validationError);
     }
-}
+}     

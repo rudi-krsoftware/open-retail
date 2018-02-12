@@ -52,6 +52,9 @@ namespace OpenRetail.Model
         [Display(Name = "Kota")]
         public string kota { get; set; }
 
+        [Display(Name = "Provinsi")]
+        public string Provinsi { get; set; }
+
         [Display(Name = "Kabupaten")]
         public string kabupaten { get; set; }
 
