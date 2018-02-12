@@ -149,8 +149,17 @@ namespace OpenRetail.App.Main
         /// </summary>
         private void LoadKabupaten()
         {
-            IKabupatenBll bll = new KabupatenBll();
+            IKabupatenRajaOngkirBll bll = new KabupatenRajaOngkirBll();
             MainProgram.ListOfKabupaten = bll.GetAll();
+        }
+
+        /// <summary>
+        /// Load data wilayah (provinsi, kabupaten dan kecamatan) untuk alamat customer
+        /// </summary>
+        private void LoadWilayah()
+        {
+            IWilayahBll bll = new WilayahBll();
+            MainProgram.ListOfWilayah = bll.GetAll();
         }
 
         private void LoadInfoMinimalStokProduk()
@@ -244,6 +253,7 @@ namespace OpenRetail.App.Main
                     SetPengaturanUmum();
                     SetPengaturanBarcode();
                     LoadKabupaten();
+                    LoadWilayah();
 
                     if (MainProgram.pengaturanUmum.is_show_minimal_stok)
                     {

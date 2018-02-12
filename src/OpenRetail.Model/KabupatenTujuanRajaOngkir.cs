@@ -23,7 +23,7 @@ using System.Text;
 
 namespace OpenRetail.Model
 {
-    public class KabupatenTujuan : Kabupaten
+    public class KabupatenTujuanRajaOngkir : KabupatenRajaOngkir
     {
     }
 }

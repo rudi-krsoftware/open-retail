@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -23,12 +23,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 using OpenRetail.Model;
- 
-namespace OpenRetail.Repository.Api
-{        
-    public interface IKabupatenRepository : IBaseRepository<Kabupaten>
+
+namespace OpenRetail.Bll.Api
+{
+    public interface IWilayahBll : IBaseBll<Wilayah>
     {
-		Kabupaten GetByID(int id);            
-        IList<Kabupaten> GetByName(string name);
     }
-}     
+}

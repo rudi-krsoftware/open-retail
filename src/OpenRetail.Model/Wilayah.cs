@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,36 +20,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
-using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("m_provinsi2")]
-    public class Provinsi
+{
+    public class Wilayah
     {
-		[ExplicitKey]
-		[Display(Name = "provinsi_id")]		
-		public string provinsi_id { get; set; }
-		
-		[Display(Name = "nama_provinsi")]
-		public string nama_provinsi { get; set; }
-		
-	}
-
-    public class ProvinsiValidator : AbstractValidator<Provinsi>
-    {
-        public ProvinsiValidator()
-        {
-            CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
-
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
-            var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
-
-			RuleFor(c => c.nama_provinsi).NotEmpty().WithMessage(msgError1).Length(1, 250).WithMessage(msgError2);
-		}
-	}
+        public string provinsi_id { get; set; }
+        public string nama_provinsi { get; set; }
+        public string kabupaten_id { get; set; }
+        public string nama_kabupaten { get; set; }
+        public string kecamatan_id { get; set; }
+        public string nama_kecamatan { get; set; }
+    }
 }

@@ -7,6 +7,7 @@ Untuk mempermudah input sebagian data Master, OpenRetail menyediakan fasilitas u
 * Master Produk
 * Master Supplier
 * Master Customer
+* Master Dropshipper
 
 Caranya adalah dengan mengcopykan folder `File Import Excel` ke folder hasil build dari project `OpenRetail.App` yaitu folder `bin\Debug` atau `bin\Release`.
 

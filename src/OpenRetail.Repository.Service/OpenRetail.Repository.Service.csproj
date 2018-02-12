@@ -74,10 +74,11 @@
     <Compile Include="JabatanRepository.cs" />
     <Compile Include="JenisPengeluaranRepository.cs" />
     <Compile Include="JualProdukRepository.cs" />
-    <Compile Include="KabupatenRepository.cs" />
+    <Compile Include="KabupatenRajaOngkirRepository.cs" />
     <Compile Include="KartuRepository.cs" />
     <Compile Include="KaryawanRepository.cs" />
     <Compile Include="KasbonRepository.cs" />
+    <Compile Include="WilayahRepository.cs" />
     <Compile Include="LabelNotaRepository.cs" />
     <Compile Include="Log4NetRepository.cs" />
     <Compile Include="MenuRepository.cs" />

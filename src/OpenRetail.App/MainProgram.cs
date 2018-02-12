@@ -72,7 +72,8 @@ namespace OpenRetail.App
         public static Pengguna pengguna = null;
         public static PengaturanUmum pengaturanUmum = null;
         public static PengaturanBarcode pengaturanBarcode = null;
-        public static IList<Kabupaten> ListOfKabupaten = null;
+        public static IList<KabupatenRajaOngkir> ListOfKabupaten = null;
+        public static IList<Wilayah> ListOfWilayah = null;
         public static IList<Produk> listOfMinimalStokProduk = new List<Produk>();
         private static bool _isLogout;
 

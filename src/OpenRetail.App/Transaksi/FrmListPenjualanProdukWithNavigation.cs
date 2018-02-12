@@ -42,6 +42,7 @@ namespace OpenRetail.App.Transaksi
     {
         private IJualProdukBll _bll; // deklarasi objek business logic layer 
         private IList<JualProduk> _listOfJual = new List<JualProduk>();
+        private IList<Wilayah> _listOfWilayah = new List<Wilayah>();
         private ILog _log;
         private Pengguna _pengguna;
         private PengaturanUmum _pengaturanUmum;
@@ -62,6 +63,7 @@ namespace OpenRetail.App.Transaksi
 
             _pageSize = MainProgram.pageSize;
             _log = MainProgram.log;
+            _listOfWilayah = MainProgram.ListOfWilayah;
             _bll = new JualProdukBll(_log);
             _pengguna = pengguna;
             _pengaturanUmum = MainProgram.pengaturanUmum;
@@ -222,7 +224,10 @@ namespace OpenRetail.App.Transaksi
 
                                 case 5:
                                     if (jual.Customer != null)
+                                    {
+                                        SetWilayahCustomer(jual.Customer);
                                         e.Style.CellValue = jual.Customer.nama_customer;
+                                    }                                        
 
                                     break;
 
@@ -270,6 +275,38 @@ namespace OpenRetail.App.Transaksi
                     }
                 }
             };
+        }
+
+        private void SetWilayahCustomer(Customer obj)
+        {
+            Provinsi provinsi = null;
+            Kabupaten kabupaten = null;
+            Kecamatan kecamatan = null;
+
+            if (!string.IsNullOrEmpty(obj.provinsi_id))
+            {
+                provinsi = _listOfWilayah.Where(f => f.provinsi_id == obj.provinsi_id)
+                                         .Select(f => new Provinsi { provinsi_id = f.provinsi_id, nama_provinsi = f.nama_provinsi })
+                                         .FirstOrDefault();
+            }
+
+            if (!string.IsNullOrEmpty(obj.kabupaten_id))
+            {
+                kabupaten = _listOfWilayah.Where(f => f.kabupaten_id == obj.kabupaten_id)
+                                          .Select(f => new Kabupaten { kabupaten_id = f.kabupaten_id, nama_kabupaten = f.nama_kabupaten })
+                                          .FirstOrDefault();
+            }
+
+            if (!string.IsNullOrEmpty(obj.kecamatan_id))
+            {
+                kecamatan = _listOfWilayah.Where(f => f.kecamatan_id == obj.kecamatan_id)
+                                          .Select(f => new Kecamatan { kecamatan_id = f.kecamatan_id, nama_kecamatan = f.nama_kecamatan })
+                                          .FirstOrDefault();
+            }
+
+            obj.Provinsi = provinsi;
+            obj.Kabupaten = kabupaten;
+            obj.Kecamatan = kecamatan;
         }
 
         private void CetakNotaMiniPOS(JualProduk jual)

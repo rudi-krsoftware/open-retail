@@ -38,7 +38,7 @@ namespace OpenRetail.Repository.Service
                                               t_jual_produk.is_sdac, t_jual_produk.is_dropship, t_jual_produk.kirim_kepada, t_jual_produk.kirim_alamat, t_jual_produk.kirim_kecamatan, t_jual_produk.kirim_desa, t_jual_produk.kirim_kabupaten, t_jual_produk.kirim_kelurahan, t_jual_produk.kirim_kota, t_jual_produk.kirim_kode_pos, t_jual_produk.kirim_telepon,
                                               t_jual_produk.label_dari1, t_jual_produk.label_dari2, t_jual_produk.label_dari3, t_jual_produk.label_dari4,
                                               t_jual_produk.label_kepada1, t_jual_produk.label_kepada2, t_jual_produk.label_kepada3, t_jual_produk.label_kepada4,
-                                              m_customer.customer_id, m_customer.nama_customer, m_customer.alamat, m_customer.kecamatan, m_customer.kelurahan, m_customer.desa, m_customer.kabupaten, m_customer.kota, m_customer.kode_pos, m_customer.telepon, m_customer.diskon, m_customer.plafon_piutang,
+                                              m_customer.customer_id, m_customer.nama_customer, m_customer.provinsi_id, m_customer.kabupaten_id, m_customer.kecamatan_id, m_customer.alamat, m_customer.kode_pos, m_customer.telepon, m_customer.diskon, m_customer.plafon_piutang,
                                               m_pengguna.pengguna_id, m_pengguna.nama_pengguna,
                                               t_mesin.mesin_id, t_mesin.saldo_awal,
                                               m_dropshipper.dropshipper_id, m_dropshipper.nama_dropshipper, m_dropshipper.alamat, m_dropshipper.telepon

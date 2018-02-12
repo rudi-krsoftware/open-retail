@@ -42,9 +42,9 @@ namespace OpenRetail.App.Lookup
     public partial class FrmLookupCekOngkir : FrmLookupEmptyBody, IListener
     {
         private IList<costs> _listOfCost = new List<costs>();
-        private IList<Kabupaten> _listOfkabupaten = new List<Kabupaten>();
-        private KabupatenAsal _kabupatenAsal = null;
-        private KabupatenTujuan _kabupatenTujuan = null;
+        private IList<KabupatenRajaOngkir> _listOfkabupaten = new List<KabupatenRajaOngkir>();
+        private KabupatenAsalRajaOngkir _kabupatenAsal = null;
+        private KabupatenTujuanRajaOngkir _kabupatenTujuan = null;
 
         public IListener Listener { private get; set; }
 
@@ -236,15 +236,15 @@ namespace OpenRetail.App.Lookup
 
         public void Ok(object sender, object data)
         {
-            if (data is KabupatenAsal) // hasil pencarian kabupaten asal
+            if (data is KabupatenAsalRajaOngkir) // hasil pencarian kabupaten asal
             {
-                this._kabupatenAsal = (KabupatenAsal)data;
+                this._kabupatenAsal = (KabupatenAsalRajaOngkir)data;
                 txtKabupatenAsal.Text = this._kabupatenAsal.nama_kabupaten;
                 KeyPressHelper.NextFocus();
             }
-            else if (data is KabupatenTujuan) // hasil pencarian kabupaten tujuan
+            else if (data is KabupatenTujuanRajaOngkir) // hasil pencarian kabupaten tujuan
             {
-                this._kabupatenTujuan = (KabupatenTujuan)data;
+                this._kabupatenTujuan = (KabupatenTujuanRajaOngkir)data;
                 txtKabupatenTujuan.Text = this._kabupatenTujuan.nama_kabupaten;
                 KeyPressHelper.NextFocus();
             }
@@ -274,7 +274,7 @@ namespace OpenRetail.App.Lookup
             {
                 var kabupaten = ((AdvancedTextbox)sender).Text;
 
-                IList<KabupatenAsal> listOfKabupaten = GetKabupatenByName<KabupatenAsal>(kabupaten);
+                IList<KabupatenAsalRajaOngkir> listOfKabupaten = GetKabupatenByName<KabupatenAsalRajaOngkir>(kabupaten);
 
                 if (listOfKabupaten.Count == 0)
                 {
@@ -304,7 +304,7 @@ namespace OpenRetail.App.Lookup
             {
                 var kabupaten = ((AdvancedTextbox)sender).Text;
 
-                IList<KabupatenTujuan> listOfKabupaten = GetKabupatenByName<KabupatenTujuan>(kabupaten);
+                IList<KabupatenTujuanRajaOngkir> listOfKabupaten = GetKabupatenByName<KabupatenTujuanRajaOngkir>(kabupaten);
 
                 if (listOfKabupaten.Count == 0)
                 {

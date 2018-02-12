@@ -1313,7 +1313,10 @@ CREATE TABLE m_customer (
     kode_pos t_kode_pos,
     diskon t_jumlah,
     desa t_alamat,
-    kabupaten t_alamat
+    kabupaten t_alamat,
+    provinsi_id character(2),
+    kabupaten_id character(4),
+    kecamatan_id character(7)
 );
 
 
@@ -1478,6 +1481,19 @@ CREATE TABLE m_kabupaten (
 ALTER TABLE m_kabupaten OWNER TO postgres;
 
 --
+-- Name: m_kabupaten2; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_kabupaten2 (
+    kabupaten_id character(4) NOT NULL,
+    provinsi_id character(2),
+    nama_kabupaten t_alamat_panjang
+);
+
+
+ALTER TABLE m_kabupaten2 OWNER TO postgres;
+
+--
 -- Name: m_kartu; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1511,6 +1527,19 @@ CREATE TABLE m_karyawan (
 
 
 ALTER TABLE m_karyawan OWNER TO postgres;
+
+--
+-- Name: m_kecamatan; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_kecamatan (
+    kecamatan_id character(7) NOT NULL,
+    kabupaten_id character(4),
+    nama_kecamatan t_alamat_panjang
+);
+
+
+ALTER TABLE m_kecamatan OWNER TO postgres;
 
 --
 -- Name: m_label_nota; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -1561,7 +1590,8 @@ CREATE TABLE m_pengguna (
     nama_pengguna t_nama,
     pass_pengguna t_password,
     is_active t_bool,
-    status_user integer DEFAULT 2
+    status_user integer DEFAULT 2,
+    email t_keterangan
 );
 
 
@@ -1657,6 +1687,18 @@ CREATE TABLE m_provinsi (
 ALTER TABLE m_provinsi OWNER TO postgres;
 
 --
+-- Name: m_provinsi2; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE m_provinsi2 (
+    provinsi_id character(2) NOT NULL,
+    nama_provinsi t_alamat_panjang
+);
+
+
+ALTER TABLE m_provinsi2 OWNER TO postgres;
+
+--
 -- Name: m_role; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1697,7 +1739,8 @@ COMMENT ON COLUMN m_role_privilege.grant_id IS 'Tambah, Perbaiki, Hapus, Dll';
 CREATE TABLE m_setting_aplikasi (
     setting_aplikasi_id t_guid NOT NULL,
     is_update_harga_jual_master_produk t_bool,
-    is_stok_produk_boleh_minus t_bool
+    is_stok_produk_boleh_minus t_bool,
+    is_fokus_input_kolom_jumlah t_bool
 );
 
 
@@ -2411,6 +2454,14 @@ ALTER TABLE ONLY m_jenis_pengeluaran
 
 
 --
+-- Name: m_kabupaten2_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_kabupaten2
+    ADD CONSTRAINT m_kabupaten2_pkey PRIMARY KEY (kabupaten_id);
+
+
+--
 -- Name: m_kabupaten_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2432,6 +2483,14 @@ ALTER TABLE ONLY m_kartu
 
 ALTER TABLE ONLY m_karyawan
     ADD CONSTRAINT m_karyawan_pkey PRIMARY KEY (karyawan_id);
+
+
+--
+-- Name: m_kecamatan_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_kecamatan
+    ADD CONSTRAINT m_kecamatan_pkey PRIMARY KEY (kecamatan_id);
 
 
 --
@@ -2480,6 +2539,14 @@ ALTER TABLE ONLY m_produk
 
 ALTER TABLE ONLY m_profil
     ADD CONSTRAINT m_profil_pkey PRIMARY KEY (profil_id);
+
+
+--
+-- Name: m_provinsi2_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY m_provinsi2
+    ADD CONSTRAINT m_provinsi2_pkey PRIMARY KEY (provinsi_id);
 
 
 --
@@ -3029,6 +3096,14 @@ ALTER TABLE ONLY m_item_menu
 
 
 --
+-- Name: m_kabupaten2_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY m_kabupaten2
+    ADD CONSTRAINT m_kabupaten2_fk FOREIGN KEY (provinsi_id) REFERENCES m_provinsi2(provinsi_id) ON UPDATE CASCADE;
+
+
+--
 -- Name: m_kabupaten_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3042,6 +3117,14 @@ ALTER TABLE ONLY m_kabupaten
 
 ALTER TABLE ONLY m_karyawan
     ADD CONSTRAINT m_karyawan_fk FOREIGN KEY (jabatan_id) REFERENCES m_jabatan(jabatan_id) ON UPDATE CASCADE;
+
+
+--
+-- Name: m_kecamatan_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY m_kecamatan
+    ADD CONSTRAINT m_kecamatan_fk FOREIGN KEY (kabupaten_id) REFERENCES m_kabupaten2(kabupaten_id) ON UPDATE CASCADE;
 
 
 --

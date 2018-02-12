@@ -1375,10 +1375,11 @@ namespace OpenRetail.App.Transaksi
                 {
                     nama_customer = this._customer.nama_customer,
                     alamat = string.IsNullOrEmpty(this._customer.alamat) ? "" : this._customer.alamat,
-                    kelurahan = this._customer.kelurahan.NullToString(),
-                    kecamatan = this._customer.kecamatan.NullToString(), 
-                    kabupaten = this._customer.kabupaten.NullToString(),
-                    kota = this._customer.kota.NullToString(),
+                    
+                    provinsi = this._customer.Provinsi != null ? this._customer.Provinsi.nama_provinsi : string.Empty,
+                    kabupaten = this._customer.Kabupaten != null ? this._customer.Kabupaten.nama_kabupaten : string.Empty,
+                    kecamatan = this._customer.Kecamatan != null ? this._customer.Kecamatan.nama_kecamatan : string.Empty,
+                    
                     kode_pos = (string.IsNullOrEmpty(this._customer.kode_pos) || this._customer.kode_pos == "0") ? "-" : this._customer.kode_pos,
                     kontak = string.IsNullOrEmpty(this._customer.kontak) ? "" : this._customer.kontak,
                     telepon = string.IsNullOrEmpty(this._customer.telepon) ? "-" : this._customer.telepon,
@@ -1537,6 +1538,11 @@ namespace OpenRetail.App.Transaksi
                     frmLookup.ShowDialog();
                 }
             }
+        }
+
+        private void txtCustomer_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

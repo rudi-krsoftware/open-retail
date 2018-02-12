@@ -404,20 +404,12 @@
           <DataField>alamat</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="desa">
-          <DataField>desa</DataField>
+        <Field Name="provinsi">
+          <DataField>provinsi</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="kecamatan">
           <DataField>kecamatan</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="kelurahan">
-          <DataField>kelurahan</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="kota">
-          <DataField>kota</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="kabupaten">

@@ -31,7 +31,7 @@ using OpenRetail.Repository.Api;
  
 namespace OpenRetail.Repository.Service
 {        
-    public class KabupatenRepository : IKabupatenRepository
+    public class KabupatenRajaOngkirRepository : IKabupatenRajaOngkirRepository
     {
         private const string SQL_TEMPLATE = @"SELECT m_kabupaten.kabupaten_id, m_kabupaten.tipe, m_kabupaten.nama_kabupaten, m_kabupaten.kode_pos, 
                                               m_provinsi.provinsi_id, m_provinsi.nama_provinsi
@@ -43,15 +43,15 @@ namespace OpenRetail.Repository.Service
 
         private string _sql;
 		
-        public KabupatenRepository(IDapperContext context, ILog log)
+        public KabupatenRajaOngkirRepository(IDapperContext context, ILog log)
         {
             this._context = context;
             this._log = log;
         }
 
-        private IEnumerable<Kabupaten> MappingRecordToObject(string sql, object param = null)
+        private IEnumerable<KabupatenRajaOngkir> MappingRecordToObject(string sql, object param = null)
         {
-            IEnumerable<Kabupaten> oList = _context.db.Query<Kabupaten, Provinsi, Kabupaten>(sql, (k, p) =>
+            IEnumerable<KabupatenRajaOngkir> oList = _context.db.Query<KabupatenRajaOngkir, ProvinsiRajaOngkir, KabupatenRajaOngkir>(sql, (k, p) =>
             {
                 if (p != null)
                 {
@@ -64,14 +64,14 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
-        public Kabupaten GetByID(int id)
+        public KabupatenRajaOngkir GetByID(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Kabupaten> GetByName(string name)
+        public IList<KabupatenRajaOngkir> GetByName(string name)
         {
-            IList<Kabupaten> oList = new List<Kabupaten>();
+            IList<KabupatenRajaOngkir> oList = new List<KabupatenRajaOngkir>();
 
             try
             {
@@ -89,9 +89,9 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
-        public IList<Kabupaten> GetAll()
+        public IList<KabupatenRajaOngkir> GetAll()
         {
-            IList<Kabupaten> oList = new List<Kabupaten>();
+            IList<KabupatenRajaOngkir> oList = new List<KabupatenRajaOngkir>();
 
             try
             {
@@ -107,17 +107,17 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
-        public int Save(Kabupaten obj)
+        public int Save(KabupatenRajaOngkir obj)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(Kabupaten obj)
+        public int Update(KabupatenRajaOngkir obj)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(Kabupaten obj)
+        public int Delete(KabupatenRajaOngkir obj)
         {
             throw new NotImplementedException();
         }
