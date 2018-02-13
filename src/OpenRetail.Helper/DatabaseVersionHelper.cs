@@ -28,42 +28,47 @@ namespace OpenRetail.Helper
         /// <summary>
         /// Versi database yang terakhir
         /// </summary>
-        public const int DatabaseVersion = 8;
+        public const int DatabaseVersion = 9;
 
         /// <summary>
         /// Script SQL untuk mengupgrade database v1 ke v2
         /// </summary>
-        public const string UpgradeStrukturDatabase_v1_to_v2 = "db_v1_to_v2.sql";
+        private const string UpgradeStrukturDatabase_v1_to_v2 = "db_v1_to_v2.sql";
 
         /// <summary>
         /// Script SQL untuk mengupgrade database v2 ke v3
         /// </summary>
-        public const string UpgradeStrukturDatabase_v2_to_v3 = "db_v2_to_v3.sql";
+        private const string UpgradeStrukturDatabase_v2_to_v3 = "db_v2_to_v3.sql";
 
         /// <summary>
         /// Script SQL untuk mengupgrade database v3 ke v4
         /// </summary>
-        public const string UpgradeStrukturDatabase_v3_to_v4 = "db_v3_to_v4.sql";
+        private const string UpgradeStrukturDatabase_v3_to_v4 = "db_v3_to_v4.sql";
 
         /// <summary>
         /// Script SQL untuk mengupgrade database v4 ke v5
         /// </summary>
-        public const string UpgradeStrukturDatabase_v4_to_v5 = "db_v4_to_v5.sql";
+        private const string UpgradeStrukturDatabase_v4_to_v5 = "db_v4_to_v5.sql";
 
         /// <summary>
         /// Script SQL untuk mengupgrade database v5 ke v6
         /// </summary>
-        public const string UpgradeStrukturDatabase_v5_to_v6 = "db_v5_to_v6.sql";
+        private const string UpgradeStrukturDatabase_v5_to_v6 = "db_v5_to_v6.sql";
 
         /// <summary>
         /// Script SQL untuk mengupgrade database v6 ke v7
         /// </summary>
-        public const string UpgradeStrukturDatabase_v6_to_v7 = "db_v6_to_v7.sql";
+        private const string UpgradeStrukturDatabase_v6_to_v7 = "db_v6_to_v7.sql";
 
         /// <summary>
         /// Script SQL untuk mengupgrade database v7 ke v8
         /// </summary>
-        public const string UpgradeStrukturDatabase_v7_to_v8 = "db_v7_to_v8.sql";
+        private const string UpgradeStrukturDatabase_v7_to_v8 = "db_v7_to_v8.sql";
+
+        /// <summary>
+        /// Script SQL untuk mengupgrade database v8 ke v9
+        /// </summary>
+        private const string UpgradeStrukturDatabase_v8_to_v9 = "db_v8_to_v9.sql";
 
         public static Dictionary<int, string> ListOfUpgradeDatabaseScript = new Dictionary<int, string>
                                                                             {
@@ -73,7 +78,8 @@ namespace OpenRetail.Helper
                                                                                 { 5, DatabaseVersionHelper.UpgradeStrukturDatabase_v4_to_v5 },
                                                                                 { 6, DatabaseVersionHelper.UpgradeStrukturDatabase_v5_to_v6 },
                                                                                 { 7, DatabaseVersionHelper.UpgradeStrukturDatabase_v6_to_v7 },
-                                                                                { 8, DatabaseVersionHelper.UpgradeStrukturDatabase_v7_to_v8 }
+                                                                                { 8, DatabaseVersionHelper.UpgradeStrukturDatabase_v7_to_v8 },
+                                                                                { 9, DatabaseVersionHelper.UpgradeStrukturDatabase_v8_to_v9 }
                                                                             };
     }
 }

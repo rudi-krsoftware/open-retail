@@ -68,8 +68,7 @@ namespace OpenRetail.App.Pengaturan
             var gridListProperties = new List<GridListControlProperties>();
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nama Operator", Width = 450 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Email", Width = 300 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nama Operator", Width = 800 });
             gridListProperties.Add(new GridListControlProperties { Header = "Role", Width = 300 });
             gridListProperties.Add(new GridListControlProperties { Header = "Status Aktif" });
 
@@ -97,17 +96,13 @@ namespace OpenRetail.App.Pengaturan
                                     break;
 
                                 case 3:
-                                    e.Style.CellValue = userOperator.email;
-                                    break;
-
-                                case 4:
                                     var role = userOperator.Role;
                                     if (role != null)
                                         e.Style.CellValue = role.nama_role;
 
                                     break;
 
-                                case 5:
+                                case 4:
                                     e.Style.CellValue = userOperator.is_active ? "Aktif" : "Non Aktif";
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;

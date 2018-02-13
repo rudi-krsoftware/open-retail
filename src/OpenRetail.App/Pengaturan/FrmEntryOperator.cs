@@ -70,7 +70,6 @@ namespace OpenRetail.App.Pengaturan
             LoadRole();
 
             txtNama.Text = this._operator.nama_pengguna;
-            txtEmail.Text = this._operator.email.NullToString();
 
             try
             {
@@ -119,7 +118,6 @@ namespace OpenRetail.App.Pengaturan
                 _operator = new Pengguna();
 
             _operator.nama_pengguna = txtNama.Text;
-            _operator.email = txtEmail.Text;
             _operator.pass_pengguna = txtPassword.Text;
 
             if (txtKonfirmasiPassword.Text.Length > 0)
