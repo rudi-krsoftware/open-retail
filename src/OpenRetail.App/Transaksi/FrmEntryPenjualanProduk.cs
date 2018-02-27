@@ -733,7 +733,7 @@ namespace OpenRetail.App.Transaksi
                 {
                     if (produk.is_stok_minus)
                     {
-                        var msg = "Maaf stok produk minus.\n\n" +
+                        var msg = "Maaf stok produk kurang.\n\n" +
                                   "Stok saat ini: {0}";
 
                         MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok));
@@ -934,7 +934,7 @@ namespace OpenRetail.App.Transaksi
                             {
                                 if (produk.is_stok_minus)
                                 {
-                                    var msg = "Maaf stok produk minus.\n\n" +
+                                    var msg = "Maaf stok produk kurang.\n\n" +
                                               "Stok saat ini: {0}";
 
                                     MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok));
@@ -999,7 +999,7 @@ namespace OpenRetail.App.Transaksi
                             {
                                 if (produk.is_stok_minus)
                                 {
-                                    var msg = "Maaf stok produk minus.\n\n" +
+                                    var msg = "Maaf stok produk kurang.\n\n" +
                                               "Stok saat ini: {0}";
 
                                     MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok));
