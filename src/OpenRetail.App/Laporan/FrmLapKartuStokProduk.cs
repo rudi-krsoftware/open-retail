@@ -164,7 +164,7 @@ namespace OpenRetail.App.Laporan
             {
                 if (chkListOfProduk.GetItemChecked(i))
                 {
-                    result.Add(listOfProduk[i].kode_produk);
+                    result.Add(listOfProduk[i].kode_produk.ToLower());
                 }
             }
 
