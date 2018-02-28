@@ -79,7 +79,7 @@ namespace OpenRetail.Model
         [Computed]
         public bool is_stok_minus 
         {
-            get { return (stok + stok_gudang) < 0; }
+            get { return (stok + stok_gudang) <= 0; }
         }
 
         [Computed]
