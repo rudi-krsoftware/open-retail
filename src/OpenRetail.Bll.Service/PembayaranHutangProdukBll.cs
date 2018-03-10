@@ -80,6 +80,19 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
+        public IList<ItemPembayaranHutangProduk> GetHistoriPembayaran(string beliId)
+        {
+            IList<ItemPembayaranHutangProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.PembayaranHutangProdukRepository.GetHistoriPembayaran(beliId);
+            }
+
+            return oList;
+        }
+
 		public int Save(PembayaranHutangProduk obj)
         {
             throw new NotImplementedException();
@@ -190,6 +203,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return oList;
-        }
+        }        
     }
 }     

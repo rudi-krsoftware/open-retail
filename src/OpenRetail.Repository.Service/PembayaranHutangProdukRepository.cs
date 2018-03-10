@@ -160,6 +160,35 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
+        public IList<ItemPembayaranHutangProduk> GetHistoriPembayaran(string beliId)
+        {
+            IList<ItemPembayaranHutangProduk> oList = new List<ItemPembayaranHutangProduk>();
+
+            try
+            {
+                var sql = @"SELECT t_item_pembayaran_hutang_produk.item_pembayaran_hutang_produk_id, t_item_pembayaran_hutang_produk.nominal, t_item_pembayaran_hutang_produk.keterangan, 
+                            t_pembayaran_hutang_produk.pembayaran_hutang_produk_id, t_pembayaran_hutang_produk.tanggal, t_pembayaran_hutang_produk.nota, m_pengguna.pengguna_id, m_pengguna.nama_pengguna
+                            FROM public.t_item_pembayaran_hutang_produk INNER JOIN public.t_pembayaran_hutang_produk ON t_item_pembayaran_hutang_produk.pembayaran_hutang_produk_id = t_pembayaran_hutang_produk.pembayaran_hutang_produk_id
+                            INNER JOIN public.m_pengguna ON t_pembayaran_hutang_produk.pengguna_id = m_pengguna.pengguna_id
+                            WHERE t_item_pembayaran_hutang_produk.beli_produk_id = @beliId
+                            ORDER BY t_pembayaran_hutang_produk.tanggal";
+
+                oList = _context.db.Query<ItemPembayaranHutangProduk, PembayaranHutangProduk, Pengguna, ItemPembayaranHutangProduk>(sql, (ip, ph, p) =>
+                {
+                    ph.Pengguna = p;
+                    ip.PembayaranHutangProduk = ph;
+
+                    return ip;
+                }, new { beliId }, splitOn: "pembayaran_hutang_produk_id, pengguna_id").ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
         public IList<PembayaranHutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
             IList<PembayaranHutangProduk> oList = new List<PembayaranHutangProduk>();

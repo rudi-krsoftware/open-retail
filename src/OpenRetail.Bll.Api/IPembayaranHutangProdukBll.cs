@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Api
         ItemPembayaranHutangProduk GetByBeliID(string id);
         IList<PembayaranHutangProduk> GetByName(string name);
         IList<PembayaranHutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+        IList<ItemPembayaranHutangProduk> GetHistoriPembayaran(string beliId);
 
 		int Save(PembayaranHutangProduk obj, bool isSaveFromPembelian, ref ValidationError validationError);
 		int Update(PembayaranHutangProduk obj, bool isUpdateFromPembelian, ref ValidationError validationError);

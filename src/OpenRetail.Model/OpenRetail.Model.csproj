@@ -80,6 +80,7 @@
     <Compile Include="Kartu.cs" />
     <Compile Include="Kasbon.cs" />
     <Compile Include="Kecamatan.cs" />
+    <Compile Include="PaymentHistoryType.cs" />
     <Compile Include="Provinsi.cs" />
     <Compile Include="Wilayah.cs" />
     <Compile Include="LabelAlamatKirim.cs" />

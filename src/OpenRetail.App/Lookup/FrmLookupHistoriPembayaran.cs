@@ -37,26 +37,60 @@ namespace OpenRetail.App.Lookup
 {
     public partial class FrmLookupHistoriPembayaran : Form
     {
-        private IList<ItemPembayaranPiutangProduk> _listOfHistoriPembayaran = null;
+        private IList<ItemPembayaranPiutangProduk> _listOfHistoriPembayaranPiutang = null;
+        private IList<ItemPembayaranHutangProduk> _listOfHistoriPembayaranHutang = null;
+        private PaymentHistoryType _paymentType = PaymentHistoryType.PembayaranHutang;
         private ILog _log;
 
-        public FrmLookupHistoriPembayaran(string header, JualProduk jual, IList<ItemPembayaranPiutangProduk> listOfHistoriPembayaran)
+        public FrmLookupHistoriPembayaran(string header)
         {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
+            this._log = MainProgram.log;
 
             this.Text = header;
             this.lblHeader.Text = header;
+        }
+
+        public FrmLookupHistoriPembayaran(string header, BeliProduk beli, IList<ItemPembayaranHutangProduk> listOfHistoriPembayaran)
+            : this(header)
+        {
+            this.groupBox1.Text = " [ Informasi Pembelian ] ";
+            this.label3.Text = "Supplier";
+            this._listOfHistoriPembayaranHutang = listOfHistoriPembayaran;
+            this._paymentType = PaymentHistoryType.PembayaranHutang;
+
+            txtTanggal.Text = DateTimeHelper.DateToString(beli.tanggal);
+            txtNota.Text = beli.nota;
+            txtCustomerOrSupplier.Text = beli.Supplier.nama_supplier;
+            txtTotal.Text = NumberHelper.NumberToString(SumGrid(listOfHistoriPembayaran));
+
+            InitGridList();
+        }
+
+        public FrmLookupHistoriPembayaran(string header, JualProduk jual, IList<ItemPembayaranPiutangProduk> listOfHistoriPembayaran)
+            : this(header)
+        {
             this.groupBox1.Text = " [ Informasi Penjualan ] ";
             this.label3.Text = "Customer";
-            this._listOfHistoriPembayaran = listOfHistoriPembayaran;
-            this._log = MainProgram.log;
+            this._listOfHistoriPembayaranPiutang = listOfHistoriPembayaran;
+            this._paymentType = PaymentHistoryType.PembayaranPiutang;
 
             txtTanggal.Text = DateTimeHelper.DateToString(jual.tanggal);
             txtNota.Text = jual.nota;
             txtCustomerOrSupplier.Text = jual.Customer.nama_customer;
-
+            txtTotal.Text = NumberHelper.NumberToString(SumGrid(listOfHistoriPembayaran));
             InitGridList();
+        }
+
+        private double SumGrid(IList<ItemPembayaranHutangProduk> listOfHistoriPembayaran)
+        {
+            return listOfHistoriPembayaran.Sum(f => f.nominal);
+        }
+
+        private double SumGrid(IList<ItemPembayaranPiutangProduk> listOfHistoriPembayaran)
+        {
+            return listOfHistoriPembayaran.Sum(f => f.nominal);
         }
 
         private void InitGridList()
@@ -65,62 +99,129 @@ namespace OpenRetail.App.Lookup
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Tanggal", Width = 90 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nota", Width = 90 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nominal", Width = 90 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nota", Width = 90 });            
             gridListProperties.Add(new GridListControlProperties { Header = "Keterangan", Width = 250 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Operator" });
+            gridListProperties.Add(new GridListControlProperties { Header = "Operator", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nominal" });
 
-            GridListControlHelper.InitializeGridListControl<ItemPembayaranPiutangProduk>(this.gridList, _listOfHistoriPembayaran, gridListProperties);
+            var listCount = 0;
 
-            if (_listOfHistoriPembayaran.Count > 0)
-                this.gridList.SetSelected(0, true);
-
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            switch (this._paymentType)
             {
-                if (_listOfHistoriPembayaran.Count > 0)
+                case PaymentHistoryType.PembayaranHutang:
+                    GridListControlHelper.InitializeGridListControl<ItemPembayaranHutangProduk>(this.gridList, _listOfHistoriPembayaranHutang, gridListProperties);
+                    this.gridList.Grid.QueryCellInfo += GridPembayaranHutang_QueryCellInfo;
+                    listCount = _listOfHistoriPembayaranHutang.Count;
+
+                    break;
+
+                case PaymentHistoryType.PembayaranPiutang:
+                    GridListControlHelper.InitializeGridListControl<ItemPembayaranPiutangProduk>(this.gridList, _listOfHistoriPembayaranPiutang, gridListProperties);
+                    this.gridList.Grid.QueryCellInfo += GridPembayaranPiutang_QueryCellInfo;
+                    listCount = _listOfHistoriPembayaranPiutang.Count;
+
+                    break;
+
+                default:
+                    break;
+            }
+
+            if (listCount > 0)
+                this.gridList.SetSelected(0, true);
+        }
+
+        private void GridPembayaranHutang_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
+        {
+            if (_listOfHistoriPembayaranHutang.Count > 0)
+            {
+                if (e.RowIndex > 0)
                 {
-                    if (e.RowIndex > 0)
+                    var rowIndex = e.RowIndex - 1;
+
+                    if (rowIndex < _listOfHistoriPembayaranHutang.Count)
                     {
-                        var rowIndex = e.RowIndex - 1;
+                        var historiPembayaran = _listOfHistoriPembayaranHutang[rowIndex];
 
-                        if (rowIndex < _listOfHistoriPembayaran.Count)
+                        switch (e.ColIndex)
                         {
-                            var historiPembayaran = _listOfHistoriPembayaran[rowIndex];
+                            case 2:
+                                e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                e.Style.CellValue = DateTimeHelper.DateToString(historiPembayaran.PembayaranHutangProduk.tanggal);
+                                break;
 
-                            switch (e.ColIndex)
-                            {
-                                case 2:
-                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
-                                    e.Style.CellValue = DateTimeHelper.DateToString(historiPembayaran.PembayaranPiutangProduk.tanggal);
-                                    break;
+                            case 3:
+                                e.Style.CellValue = historiPembayaran.PembayaranHutangProduk.nota;
+                                break;                            
 
-                                case 3:
-                                    e.Style.CellValue = historiPembayaran.PembayaranPiutangProduk.nota;
-                                    break;
+                            case 4:
+                                e.Style.CellValue = historiPembayaran.keterangan;
+                                break;
 
-                                case 4:
-                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
-                                    e.Style.CellValue = NumberHelper.NumberToString(historiPembayaran.nominal);
-                                    break;
+                            case 5:
+                                e.Style.CellValue = historiPembayaran.PembayaranHutangProduk.Pengguna.nama_pengguna;
+                                break;
 
-                                case 5:
-                                    e.Style.CellValue = historiPembayaran.keterangan;
-                                    break;
+                            case 6:
+                                e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
+                                e.Style.CellValue = NumberHelper.NumberToString(historiPembayaran.nominal);
+                                break;
 
-                                case 6:
-                                    e.Style.CellValue = historiPembayaran.PembayaranPiutangProduk.Pengguna.nama_pengguna;
-                                    break;
-                                
-                                default:
-                                    break;
-                            }
-
-                            // we handled it, let the grid know
-                            e.Handled = true;
+                            default:
+                                break;
                         }
+
+                        // we handled it, let the grid know
+                        e.Handled = true;
                     }
                 }
-            };
+            }
+        }
+
+        void GridPembayaranPiutang_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
+        {            
+            if (_listOfHistoriPembayaranPiutang.Count > 0)
+            {
+                if (e.RowIndex > 0)
+                {
+                    var rowIndex = e.RowIndex - 1;
+
+                    if (rowIndex < _listOfHistoriPembayaranPiutang.Count)
+                    {
+                        var historiPembayaran = _listOfHistoriPembayaranPiutang[rowIndex];
+
+                        switch (e.ColIndex)
+                        {
+                            case 2:
+                                e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                e.Style.CellValue = DateTimeHelper.DateToString(historiPembayaran.PembayaranPiutangProduk.tanggal);
+                                break;
+
+                            case 3:
+                                e.Style.CellValue = historiPembayaran.PembayaranPiutangProduk.nota;
+                                break;                            
+
+                            case 4:
+                                e.Style.CellValue = historiPembayaran.keterangan;
+                                break;
+
+                            case 5:
+                                e.Style.CellValue = historiPembayaran.PembayaranPiutangProduk.Pengguna.nama_pengguna;
+                                break;
+
+                            case 6:
+                                e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
+                                e.Style.CellValue = NumberHelper.NumberToString(historiPembayaran.nominal);
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        // we handled it, let the grid know
+                        e.Handled = true;
+                    }
+                }
+            }
         }
 
         private void btnOk_Click(object sender, EventArgs e)

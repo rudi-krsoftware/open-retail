@@ -36,8 +36,6 @@
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.btnOk = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.gridList = new Syncfusion.Windows.Forms.Grid.GridListControl();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,15 +45,21 @@
             this.txtNota = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtCustomerOrSupplier = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gridList = new Syncfusion.Windows.Forms.Grid.GridListControl();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtTotal = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -134,33 +138,16 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.groupBox2, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 103F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(698, 349);
             this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // gridList
-            // 
-            this.gridList.BackColor = System.Drawing.SystemColors.Control;
-            this.gridList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.gridList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridList.ItemHeight = 17;
-            this.gridList.Location = new System.Drawing.Point(3, 16);
-            this.gridList.Name = "gridList";
-            this.gridList.Properties.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.gridList.SelectedIndex = -1;
-            this.gridList.Size = new System.Drawing.Size(686, 221);
-            this.gridList.TabIndex = 0;
-            this.gridList.TopIndex = 0;
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTip1.ToolTipTitle = "Informasi";
             // 
             // groupBox1
             // 
@@ -281,10 +268,71 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 106);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(692, 240);
+            this.groupBox2.Size = new System.Drawing.Size(692, 215);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = " [ Histori Pembayaran ] ";
+            // 
+            // gridList
+            // 
+            this.gridList.BackColor = System.Drawing.SystemColors.Control;
+            this.gridList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gridList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridList.ItemHeight = 17;
+            this.gridList.Location = new System.Drawing.Point(3, 16);
+            this.gridList.Name = "gridList";
+            this.gridList.Properties.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.gridList.SelectedIndex = -1;
+            this.gridList.Size = new System.Drawing.Size(686, 196);
+            this.gridList.TabIndex = 0;
+            this.gridList.TopIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.txtTotal);
+            this.flowLayoutPanel1.Controls.Add(this.label4);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 324);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(698, 25);
+            this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.AutoEnter = false;
+            this.txtTotal.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.EnterFocusColor = System.Drawing.Color.White;
+            this.txtTotal.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtTotal.LetterOnly = false;
+            this.txtTotal.Location = new System.Drawing.Point(568, 3);
+            this.txtTotal.MaxLength = 20;
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.NumericOnly = true;
+            this.txtTotal.SelectionText = false;
+            this.txtTotal.Size = new System.Drawing.Size(127, 20);
+            this.txtTotal.TabIndex = 0;
+            this.txtTotal.Text = "0";
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotal.ThousandSeparator = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(531, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 26);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Total";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Informasi";
             // 
             // FrmLookupHistoriPembayaran
             // 
@@ -308,11 +356,13 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pnlFooter.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridList)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridList)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -337,5 +387,8 @@
         private Helper.UserControl.AdvancedTextbox txtNota;
         private Helper.UserControl.AdvancedTextbox txtCustomerOrSupplier;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Helper.UserControl.AdvancedTextbox txtTotal;
+        private System.Windows.Forms.Label label4;
     }
 }
