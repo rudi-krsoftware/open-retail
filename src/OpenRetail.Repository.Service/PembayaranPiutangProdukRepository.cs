@@ -219,6 +219,35 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
+        public IList<ItemPembayaranPiutangProduk> GetHistoriPembayaran(string jualId)
+        {
+            IList<ItemPembayaranPiutangProduk> oList = new List<ItemPembayaranPiutangProduk>();
+
+            try
+            {
+                var sql = @"SELECT t_item_pembayaran_piutang_produk.item_pembayaran_piutang_id, t_item_pembayaran_piutang_produk.nominal, t_item_pembayaran_piutang_produk.keterangan, 
+                            t_pembayaran_piutang_produk.pembayaran_piutang_id, t_pembayaran_piutang_produk.tanggal, t_pembayaran_piutang_produk.nota, m_pengguna.pengguna_id, m_pengguna.nama_pengguna
+                            FROM public.t_item_pembayaran_piutang_produk INNER JOIN public.t_pembayaran_piutang_produk ON t_item_pembayaran_piutang_produk.pembayaran_piutang_id = t_pembayaran_piutang_produk.pembayaran_piutang_id
+                            INNER JOIN public.m_pengguna ON t_pembayaran_piutang_produk.pengguna_id = m_pengguna.pengguna_id
+                            WHERE t_item_pembayaran_piutang_produk.jual_id = @jualId
+                            ORDER BY t_pembayaran_piutang_produk.tanggal";
+
+                oList = _context.db.Query<ItemPembayaranPiutangProduk, PembayaranPiutangProduk, Pengguna, ItemPembayaranPiutangProduk>(sql, (ip, pp, p) =>
+                {
+                    pp.Pengguna = p;
+                    ip.PembayaranPiutangProduk = pp;
+
+                    return ip;
+                }, new { jualId }, splitOn: "pembayaran_piutang_id, pengguna_id").ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
+
         public int Save(PembayaranPiutangProduk obj)
         {
             throw new NotImplementedException();

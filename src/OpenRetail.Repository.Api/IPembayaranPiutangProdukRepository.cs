@@ -35,6 +35,7 @@ namespace OpenRetail.Repository.Api
 		PembayaranPiutangProduk GetByID(string id);
         ItemPembayaranPiutangProduk GetByJualID(string id);
         IList<PembayaranPiutangProduk> GetByName(string name);
-        IList<PembayaranPiutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);  
+        IList<PembayaranPiutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+        IList<ItemPembayaranPiutangProduk> GetHistoriPembayaran(string jualId);
     }
 }     

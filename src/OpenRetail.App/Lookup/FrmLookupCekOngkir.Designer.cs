@@ -70,12 +70,8 @@
             this.gridList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridList.ItemHeight = 17;
             this.gridList.Location = new System.Drawing.Point(3, 86);
-            this.gridList.MultiColumn = false;
             this.gridList.Name = "gridList";
             this.gridList.Properties.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.gridList.Properties.ForceImmediateRepaint = false;
-            this.gridList.Properties.MarkColHeader = false;
-            this.gridList.Properties.MarkRowHeader = false;
             this.gridList.SelectedIndex = -1;
             this.gridList.Size = new System.Drawing.Size(511, 290);
             this.gridList.TabIndex = 1;

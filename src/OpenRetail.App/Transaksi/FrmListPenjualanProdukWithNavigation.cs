@@ -35,6 +35,7 @@ using ConceptCave.WaitCursor;
 using log4net;
 using Microsoft.Reporting.WinForms;
 using OpenRetail.Helper.RAWPrinting;
+using OpenRetail.App.Lookup;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -99,10 +100,11 @@ namespace OpenRetail.App.Transaksi
             gridListProperties.Add(new GridListControlProperties { Header = "Tanggal", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Tempo", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Nota", Width = 100 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Customer", Width = _pengaturanUmum.jenis_printer == JenisPrinter.InkJet ? 220 : 300 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Customer", Width = _pengaturanUmum.jenis_printer == JenisPrinter.InkJet ? 180 : 260 });
             gridListProperties.Add(new GridListControlProperties { Header = "Keterangan", Width = 350 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Piutang", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang", Width = 130 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Piutang", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Sisa Piutang", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Histori Pembayaran", Width = 80 });
 
             if (_pengaturanUmum.jenis_printer == JenisPrinter.InkJet)
             {
@@ -112,14 +114,16 @@ namespace OpenRetail.App.Transaksi
             else
             {
                 gridListProperties.Add(new GridListControlProperties { Header = "Cetak Nota", Width = 80 });
-            }            
+            }
 
-            GridListControlHelper.InitializeGridListControl<JualProduk>(this.gridList, _listOfJual, gridListProperties, false);
+            
+
+            GridListControlHelper.InitializeGridListControl<JualProduk>(this.gridList, _listOfJual, gridListProperties, false, rowHeight: 40);
 
             if (_pengaturanUmum.jenis_printer == JenisPrinter.InkJet)
             {
                 // merge header kolom cetak nota/label
-                this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, 9, 0, 10));
+                this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, 10, 0, 11));
             }            
 
             if (_listOfJual.Count > 0)
@@ -133,7 +137,28 @@ namespace OpenRetail.App.Transaksi
 
                     switch (e.ColIndex)
                     {
-                        case 9: // cetak nota jual
+                        case 9: // histori pembayaran
+                            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                            {
+                                var jual = _listOfJual[index];
+
+                                IPembayaranPiutangProdukBll bll = new PembayaranPiutangProdukBll(_log);
+                                var listOfHistoriPembayaran = bll.GetHistoriPembayaran(jual.jual_id);
+
+                                if (listOfHistoriPembayaran.Count > 0)
+                                {
+                                    var frmHistoriPembayaran = new FrmLookupHistoriPembayaran("Histori Pembayaran Piutang", jual, listOfHistoriPembayaran);
+                                    frmHistoriPembayaran.ShowDialog();
+                                }
+                                else
+                                {
+                                    MsgHelper.MsgInfo("Belum ada informasi histori pembayaran");
+                                }
+                            }
+
+                            break;
+
+                        case 10: // cetak nota jual
                             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                             {
                                 var jual = _listOfJual[index];
@@ -159,7 +184,7 @@ namespace OpenRetail.App.Transaksi
 
                             break;
 
-                        case 10: // cetak label nota jual
+                        case 11: // cetak label nota jual
                             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                             {
                                 var jual = _listOfJual[index];
@@ -245,7 +270,16 @@ namespace OpenRetail.App.Transaksi
                                     e.Style.CellValue = NumberHelper.NumberToString(totalNota - jual.total_pelunasan);
                                     break;
 
-                                case 9: // button cetak nota
+                                case 9: // button history pembayaran
+                                    e.Style.Enabled = jual.tanggal_tempo != null;
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                    e.Style.CellType = GridCellTypeName.PushButton;                                    
+                                    e.Style.BackColor = oldStyleBackColor;
+                                    e.Style.Description = "Cek Histori";
+
+                                    break;
+
+                                case 10: // button cetak nota
                                     e.Style.Enabled = jual.Customer != null;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     e.Style.CellType = GridCellTypeName.PushButton;                                    
@@ -253,7 +287,7 @@ namespace OpenRetail.App.Transaksi
                                     e.Style.Description = "Cetak Nota";
                                     break;
 
-                                case 10: // button cetak label nota
+                                case 11: // button cetak label nota
                                     if (_pengaturanUmum.jenis_printer == JenisPrinter.InkJet)
                                     {
                                         e.Style.Enabled = jual.Customer != null;
