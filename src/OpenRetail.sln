@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.App.Cashier", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.BackupAndRestore", "OpenRetail.BackupAndRestore\OpenRetail.BackupAndRestore.csproj", "{634F17D6-5CE7-4CFA-B8CD-C7711A5197FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRetail.WebAPI", "OpenRetail.WebAPI\OpenRetail.WebAPI.csproj", "{BFAA19EC-5437-4247-9202-C8A90A824590}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{634F17D6-5CE7-4CFA-B8CD-C7711A5197FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634F17D6-5CE7-4CFA-B8CD-C7711A5197FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634F17D6-5CE7-4CFA-B8CD-C7711A5197FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFAA19EC-5437-4247-9202-C8A90A824590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFAA19EC-5437-4247-9202-C8A90A824590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFAA19EC-5437-4247-9202-C8A90A824590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFAA19EC-5437-4247-9202-C8A90A824590}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

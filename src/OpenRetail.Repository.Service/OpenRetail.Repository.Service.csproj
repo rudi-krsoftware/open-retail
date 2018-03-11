@@ -42,6 +42,14 @@
       <HintPath>..\..\lib\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\RestSharp.105.2.3\lib\net4\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -56,7 +64,15 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Referensi\CustomerWebAPIRepository.cs" />
+    <Compile Include="Referensi\GolonganWebAPIRepository.cs" />
+    <Compile Include="Referensi\JabatanWebAPIRepository.cs" />
+    <Compile Include="Referensi\JenisPengeluaranWebAPIRepository.cs" />
+    <Compile Include="Referensi\KaryawanWebAPIRepository.cs" />
+    <Compile Include="Pengeluaran\PengeluaranBiayaWebAPIRepository.cs" />
+    <Compile Include="Referensi\ProdukWebAPIRepository.cs" />
     <Compile Include="Referensi\AlasanPenyesuaianStokRepository.cs" />
+    <Compile Include="Referensi\SupplierWebAPIRepository.cs" />
     <Compile Include="Transaksi\BeliProdukRepository.cs" />
     <Compile Include="Transaksi\CetakNotaDummyRepository.cs" />
     <Compile Include="Transaksi\CetakNotaRepository.cs" />

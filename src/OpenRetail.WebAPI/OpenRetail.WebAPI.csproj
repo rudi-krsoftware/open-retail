@@ -195,33 +195,33 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutoMapperConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\GolonganController.cs" />
+    <Compile Include="Controllers\Referensi\CustomerController.cs" />
+    <Compile Include="Controllers\Referensi\GolonganController.cs" />
     <Compile Include="Controllers\Helper\FluentValidationExtensionMethod.cs" />
     <Compile Include="Controllers\Helper\HttpActionResultHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IBaseApiController.cs" />
-    <Compile Include="Controllers\JabatanController.cs" />
-    <Compile Include="Controllers\JenisPengeluaranController.cs" />
-    <Compile Include="Controllers\KaryawanController.cs" />
-    <Compile Include="Controllers\PengeluaranBiayaController.cs" />
-    <Compile Include="Controllers\ProdukController.cs" />
-    <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\Referensi\JabatanController.cs" />
+    <Compile Include="Controllers\Referensi\JenisPengeluaranController.cs" />
+    <Compile Include="Controllers\Referensi\KaryawanController.cs" />
+    <Compile Include="Controllers\Pengeluaran\PengeluaranBiayaController.cs" />
+    <Compile Include="Controllers\Referensi\ProdukController.cs" />
+    <Compile Include="Controllers\Referensi\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DTO\CustomerDTO.cs" />
-    <Compile Include="Models\DTO\GolonganDTO.cs" />
-    <Compile Include="Models\DTO\HargaGrosirDTO.cs" />
-    <Compile Include="Models\DTO\ItemPengeluaranBiayaDTO.cs" />
-    <Compile Include="Models\DTO\JabatanDTO.cs" />
-    <Compile Include="Models\DTO\JenisPengeluaranDTO.cs" />
-    <Compile Include="Models\DTO\KaryawanDTO.cs" />
-    <Compile Include="Models\DTO\PengeluaranBiayaDTO.cs" />
-    <Compile Include="Models\DTO\ProdukDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\CustomerDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\GolonganDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\HargaGrosirDTO.cs" />
+    <Compile Include="Models\DTO\Pengeluaran\ItemPengeluaranBiayaDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\JabatanDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\JenisPengeluaranDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\KaryawanDTO.cs" />
+    <Compile Include="Models\DTO\Pengeluaran\PengeluaranBiayaDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\ProdukDTO.cs" />
     <Compile Include="Models\ResponsePackage.cs" />
     <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\DTO\SupplierDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\SupplierDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

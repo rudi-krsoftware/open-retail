@@ -72,7 +72,7 @@
     <Compile Include="Referensi\HargaGrosir.cs" />
     <Compile Include="Transaksi\HeaderNota.cs" />
     <Compile Include="Transaksi\HeaderNotaMiniPos.cs" />
-    <Compile Include="Transaksi\ItemPengeluaranBiaya.cs" />
+    <Compile Include="Pengeluaran\ItemPengeluaranBiaya.cs" />
     <Compile Include="Referensi\Kabupaten.cs" />
     <Compile Include="Referensi\KabupatenRajaOngkir.cs" />
     <Compile Include="Referensi\KabupatenAsalRajaOngkir.cs" />
