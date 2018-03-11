@@ -57,46 +57,46 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
-    <Compile Include="AlamatKirimBll.cs" />
-    <Compile Include="AlasanPenyesuaianStokBll.cs" />
-    <Compile Include="BeliProdukBll.cs" />
-    <Compile Include="CetakNotaBll.cs" />
-    <Compile Include="CetakNotaDummyBll.cs" />
-    <Compile Include="CustomerBll.cs" />
+    <Compile Include="Transaksi\AlamatKirimBll.cs" />
+    <Compile Include="Referensi\AlasanPenyesuaianStokBll.cs" />
+    <Compile Include="Transaksi\BeliProdukBll.cs" />
+    <Compile Include="Transaksi\CetakNotaBll.cs" />
+    <Compile Include="Transaksi\CetakNotaDummyBll.cs" />
+    <Compile Include="Referensi\CustomerBll.cs" />
     <Compile Include="DatabaseVersionBll.cs" />
     <Compile Include="DbConnectionHelper.cs" />
-    <Compile Include="DropshipperBll.cs" />
-    <Compile Include="FooterNotaMiniPosBll.cs" />
-    <Compile Include="GajiKaryawanBll.cs" />
-    <Compile Include="GolonganBll.cs" />
-    <Compile Include="HeaderNotaBll.cs" />
-    <Compile Include="HeaderNotaMiniPosBll.cs" />
-    <Compile Include="ImportExportDataCustomerBll.cs" />
-    <Compile Include="ImportExportDataGolonganBll.cs" />
-    <Compile Include="ImportExportDataProdukBll.cs" />
-    <Compile Include="ImportExportDataDropshipperBll.cs" />
-    <Compile Include="ImportExportDataSupplierBll.cs" />
-    <Compile Include="ItemMenuBll.cs" />
-    <Compile Include="JabatanBll.cs" />
-    <Compile Include="JenisPengeluaranBll.cs" />
-    <Compile Include="JualProdukBll.cs" />
-    <Compile Include="KabupatenRajaOngkirBll.cs" />
-    <Compile Include="KartuBll.cs" />
-    <Compile Include="KaryawanBll.cs" />
-    <Compile Include="KasbonBll.cs" />
-    <Compile Include="WilayahBll.cs" />
-    <Compile Include="LabelAlamatKirimBll.cs" />
-    <Compile Include="LabelNotaBll.cs" />
-    <Compile Include="MenuBll.cs" />
-    <Compile Include="MesinKasirBll.cs" />
-    <Compile Include="PembayaranHutangProdukBll.cs" />
-    <Compile Include="PembayaranKasbonBll.cs" />
-    <Compile Include="PembayaranPiutangProdukBll.cs" />
-    <Compile Include="PengeluaranBiayaBll.cs" />
-    <Compile Include="PenggunaBll.cs" />
-    <Compile Include="PenyesuaianStokBll.cs" />
-    <Compile Include="ProdukBll.cs" />
-    <Compile Include="ProfilBll.cs" />
+    <Compile Include="Referensi\DropshipperBll.cs" />
+    <Compile Include="Transaksi\FooterNotaMiniPosBll.cs" />
+    <Compile Include="Pengeluaran\GajiKaryawanBll.cs" />
+    <Compile Include="Referensi\GolonganBll.cs" />
+    <Compile Include="Transaksi\HeaderNotaBll.cs" />
+    <Compile Include="Transaksi\HeaderNotaMiniPosBll.cs" />
+    <Compile Include="Referensi\ImportExportDataCustomerBll.cs" />
+    <Compile Include="Referensi\ImportExportDataGolonganBll.cs" />
+    <Compile Include="Referensi\ImportExportDataProdukBll.cs" />
+    <Compile Include="Referensi\ImportExportDataDropshipperBll.cs" />
+    <Compile Include="Referensi\ImportExportDataSupplierBll.cs" />
+    <Compile Include="Referensi\ItemMenuBll.cs" />
+    <Compile Include="Referensi\JabatanBll.cs" />
+    <Compile Include="Referensi\JenisPengeluaranBll.cs" />
+    <Compile Include="Transaksi\JualProdukBll.cs" />
+    <Compile Include="Referensi\KabupatenRajaOngkirBll.cs" />
+    <Compile Include="Referensi\KartuBll.cs" />
+    <Compile Include="Referensi\KaryawanBll.cs" />
+    <Compile Include="Pengeluaran\KasbonBll.cs" />
+    <Compile Include="Referensi\WilayahBll.cs" />
+    <Compile Include="Transaksi\LabelAlamatKirimBll.cs" />
+    <Compile Include="Transaksi\LabelNotaBll.cs" />
+    <Compile Include="Referensi\MenuBll.cs" />
+    <Compile Include="Transaksi\MesinKasirBll.cs" />
+    <Compile Include="Transaksi\PembayaranHutangProdukBll.cs" />
+    <Compile Include="Pengeluaran\PembayaranKasbonBll.cs" />
+    <Compile Include="Transaksi\PembayaranPiutangProdukBll.cs" />
+    <Compile Include="Pengeluaran\PengeluaranBiayaBll.cs" />
+    <Compile Include="Pengaturan\PenggunaBll.cs" />
+    <Compile Include="Referensi\PenyesuaianStokBll.cs" />
+    <Compile Include="Referensi\ProdukBll.cs" />
+    <Compile Include="Pengaturan\ProfilBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\ReportBeliProdukBll.cs" />
     <Compile Include="Report\ReportGajiKaryawanBll.cs" />
@@ -115,12 +115,12 @@
     <Compile Include="Report\ReportReturBeliProdukBll.cs" />
     <Compile Include="Report\ReportReturJualProdukBll.cs" />
     <Compile Include="Report\ReportStokProdukBll.cs" />
-    <Compile Include="ReturBeliProdukBll.cs" />
-    <Compile Include="ReturJualProdukBll.cs" />
-    <Compile Include="RoleBll.cs" />
-    <Compile Include="RolePrivilegeBll.cs" />
-    <Compile Include="SettingAplikasiBll.cs" />
-    <Compile Include="SupplierBll.cs" />
+    <Compile Include="Transaksi\ReturBeliProdukBll.cs" />
+    <Compile Include="Transaksi\ReturJualProdukBll.cs" />
+    <Compile Include="Pengaturan\RoleBll.cs" />
+    <Compile Include="Pengaturan\RolePrivilegeBll.cs" />
+    <Compile Include="Pengaturan\SettingAplikasiBll.cs" />
+    <Compile Include="Referensi\SupplierBll.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenRetail.Bll.Api\OpenRetail.Bll.Api.csproj">
@@ -147,6 +147,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
