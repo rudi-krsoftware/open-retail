@@ -157,6 +157,8 @@ namespace OpenRetail.App.Transaksi
         private void SetPengaturanPrinter()
         {
             chkDropship.Visible = this._pengaturanUmum.jenis_printer == JenisPrinter.InkJet;
+            lblDropshipper.Visible = chkDropship.Visible;
+            txtDropshipper.Visible = chkDropship.Visible;
             chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
         }
 
@@ -1503,11 +1505,14 @@ namespace OpenRetail.App.Transaksi
         {
             var chk = (CheckBox)sender;
 
-            lblDropshipper.Visible = chk.Checked;
-            txtDropshipper.Visible = chk.Checked;
+            if (chk.Visible)
+            {
+                lblDropshipper.Visible = chk.Checked;
+                txtDropshipper.Visible = chk.Checked;
 
-            if (chk.Checked)
-                KeyPressHelper.NextFocus();
+                if (chk.Checked)
+                    KeyPressHelper.NextFocus();
+            }            
         }
 
         private void txtDropshipper_KeyPress(object sender, KeyPressEventArgs e)
