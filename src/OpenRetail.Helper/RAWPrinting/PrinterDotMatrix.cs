@@ -259,6 +259,19 @@ namespace OpenRetail.Helper.RAWPrinting
             textToPrint.Append(StringHelper.PrintChar(' ', 6)).Append("------------");
             textToPrint.Append(StringHelper.PrintChar(' ', 37)).Append("-------------");
 
+            if (jual.keterangan.Length > 0)
+            {
+                textToPrint.Append(ESCCommandHelper.LineFeed(1)).Append("Keterangan: ").Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append("* ");
+
+                var splitKeterangan = StringHelper.SplitByLength(jual.keterangan, 78);
+                foreach (var ket in splitKeterangan)
+                {
+                    textToPrint.Append(ket).Append(ESCCommandHelper.LineFeed(1));
+                }
+
+            }
+
             rowCount += 6;
 
             // perhitungan sisa kertas untuk keperluan line feed

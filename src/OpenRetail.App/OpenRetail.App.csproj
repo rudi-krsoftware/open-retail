@@ -305,6 +305,12 @@
     <Compile Include="Lookup\FrmLookupItemNota.Designer.cs">
       <DependentUpon>FrmLookupItemNota.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lookup\FrmLookupHistoriPembayaran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lookup\FrmLookupHistoriPembayaran.Designer.cs">
+      <DependentUpon>FrmLookupHistoriPembayaran.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lookup\FrmLookupMinimalStok.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -690,6 +696,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lookup\FrmLookupItemNota.resx">
       <DependentUpon>FrmLookupItemNota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lookup\FrmLookupHistoriPembayaran.resx">
+      <DependentUpon>FrmLookupHistoriPembayaran.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lookup\FrmLookupMinimalStok.resx">
       <DependentUpon>FrmLookupMinimalStok.cs</DependentUpon>

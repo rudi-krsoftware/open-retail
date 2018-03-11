@@ -119,6 +119,19 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
+        public IList<ItemPembayaranPiutangProduk> GetHistoriPembayaran(string jualId)
+        {
+            IList<ItemPembayaranPiutangProduk> oList = null;
+
+            using (IDapperContext context = new DapperContext())
+            {
+                IUnitOfWork uow = new UnitOfWork(context, _log);
+                oList = uow.PembayaranPiutangProdukRepository.GetHistoriPembayaran(jualId);
+            }
+
+            return oList;
+        }
+
 		public int Save(PembayaranPiutangProduk obj)
         {
             throw new NotImplementedException();

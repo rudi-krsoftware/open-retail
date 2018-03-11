@@ -128,5 +128,22 @@ namespace OpenRetail.Helper
 
             return words[index];
         }
+
+        /// <summary>
+        /// Fungsi untuk memecah string berdasarkan jumlah karakter yang diinginkan
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> SplitByLength(string s, int length)
+        {
+            for (int i = 0; i < s.Length; i += length)
+            {
+                if (length + i > s.Length)
+                    length = s.Length - i;
+
+                yield return s.Substring(i, length);
+            }
+        }
     }
 }

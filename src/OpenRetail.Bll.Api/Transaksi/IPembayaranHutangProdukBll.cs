@@ -24,17 +24,18 @@ using System.Threading.Tasks;
 
 using OpenRetail.Model;
  
-namespace OpenRetail.Repository.Api
-{        
-    public interface IPembayaranPiutangProdukRepository : IBaseRepository<PembayaranPiutangProduk>
+namespace OpenRetail.Bll.Api
+{    
+    public interface IPembayaranHutangProdukBll : IBaseBll<PembayaranHutangProduk>
     {
-        int Save(PembayaranPiutangProduk obj, bool isSaveFromPenjualan);
-        int Update(PembayaranPiutangProduk obj, bool isUpdateFromPenjualan);
-
         string GetLastNota();
-		PembayaranPiutangProduk GetByID(string id);
-        ItemPembayaranPiutangProduk GetByJualID(string id);
-        IList<PembayaranPiutangProduk> GetByName(string name);
-        IList<PembayaranPiutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);  
+        PembayaranHutangProduk GetByID(string id);
+        ItemPembayaranHutangProduk GetByBeliID(string id);
+        IList<PembayaranHutangProduk> GetByName(string name);
+        IList<PembayaranHutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+        IList<ItemPembayaranHutangProduk> GetHistoriPembayaran(string beliId);
+
+		int Save(PembayaranHutangProduk obj, bool isSaveFromPembelian, ref ValidationError validationError);
+		int Update(PembayaranHutangProduk obj, bool isUpdateFromPembelian, ref ValidationError validationError);
     }
 }     

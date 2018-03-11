@@ -1894,6 +1894,72 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Keterangan:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <Color>=IIf(Len(First(Fields!keterangan.Value, "NotaPenjualan")) &gt; 0, "Black", "White")</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>6.87954cm</Top>
+        <Left>0cm</Left>
+        <Height>0.50475cm</Height>
+        <Width>1.95319cm</Width>
+        <ZIndex>35</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!keterangan.Value, "NotaPenjualan")</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <Color>=IIf(Len(First(Fields!keterangan.Value, "NotaPenjualan")) &gt; 0, "Black", "White")</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox9</rd:DefaultName>
+        <Top>6.87954cm</Top>
+        <Left>1.81208cm</Left>
+        <Height>1.6936cm</Height>
+        <Width>7.58945cm</Width>
+        <ZIndex>36</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>10.58015cm</Height>
     <Style />
@@ -2010,6 +2076,10 @@
           <DataField>tanggal_tempo</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="keterangan">
+          <DataField>keterangan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ppn">
           <DataField>ppn</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
@@ -2109,7 +2179,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DsPenjualan</rd:DataSetName>
-        <rd:SchemaPath>D:\Data\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPenjualan.xsd</rd:SchemaPath>
+        <rd:SchemaPath>E:\Data\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPenjualan.xsd</rd:SchemaPath>
         <rd:TableName>NotaPenjualan</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

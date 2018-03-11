@@ -26,15 +26,16 @@ using OpenRetail.Model;
  
 namespace OpenRetail.Repository.Api
 {        
-    public interface IPembayaranHutangProdukRepository : IBaseRepository<PembayaranHutangProduk>
+    public interface IPembayaranPiutangProdukRepository : IBaseRepository<PembayaranPiutangProduk>
     {
-        int Save(PembayaranHutangProduk obj, bool isSaveFromPembelian);
-        int Update(PembayaranHutangProduk obj, bool isUpdateFromPembelian);
+        int Save(PembayaranPiutangProduk obj, bool isSaveFromPenjualan);
+        int Update(PembayaranPiutangProduk obj, bool isUpdateFromPenjualan);
 
         string GetLastNota();
-		PembayaranHutangProduk GetByID(string id);
-        ItemPembayaranHutangProduk GetByBeliID(string id);
-        IList<PembayaranHutangProduk> GetByName(string name);
-        IList<PembayaranHutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);  
+		PembayaranPiutangProduk GetByID(string id);
+        ItemPembayaranPiutangProduk GetByJualID(string id);
+        IList<PembayaranPiutangProduk> GetByName(string name);
+        IList<PembayaranPiutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+        IList<ItemPembayaranPiutangProduk> GetHistoriPembayaran(string jualId);
     }
 }     

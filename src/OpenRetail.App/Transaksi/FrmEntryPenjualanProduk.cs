@@ -109,9 +109,9 @@ namespace OpenRetail.App.Transaksi
             txtNota.Text = this._jual.nota;
             dtpTanggal.Value = (DateTime)this._jual.tanggal;
             dtpTanggalTempo.Value = dtpTanggal.Value;
-
-            SetPengaturanPrinter();            
+                        
             chkDropship.Checked = this._jual.is_dropship;
+            SetPengaturanPrinter();
 
             if (!this._jual.tanggal_tempo.IsNull())
             {
@@ -156,7 +156,12 @@ namespace OpenRetail.App.Transaksi
 
         private void SetPengaturanPrinter()
         {
-            chkDropship.Visible = this._pengaturanUmum.jenis_printer == JenisPrinter.InkJet;
+            if (!(this._pengaturanUmum.jenis_printer == JenisPrinter.InkJet))
+            {
+                chkDropship.Visible = false;
+                chkDropship.Checked = false;
+            }
+
             chkCetakNotaJual.Checked = this._pengaturanUmum.is_auto_print;
         }
 
@@ -1507,7 +1512,7 @@ namespace OpenRetail.App.Transaksi
             txtDropshipper.Visible = chk.Checked;
 
             if (chk.Checked)
-                KeyPressHelper.NextFocus();
+                KeyPressHelper.NextFocus();          
         }
 
         private void txtDropshipper_KeyPress(object sender, KeyPressEventArgs e)
@@ -1538,11 +1543,6 @@ namespace OpenRetail.App.Transaksi
                     frmLookup.ShowDialog();
                 }
             }
-        }
-
-        private void txtCustomer_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

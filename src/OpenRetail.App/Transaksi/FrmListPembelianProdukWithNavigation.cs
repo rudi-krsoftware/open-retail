@@ -33,6 +33,7 @@ using OpenRetail.Helper;
 using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.App.Lookup;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -95,13 +96,49 @@ namespace OpenRetail.App.Transaksi
             gridListProperties.Add(new GridListControlProperties { Header = "Nota", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Supplier", Width = 300 });
             gridListProperties.Add(new GridListControlProperties { Header = "Keterangan", Width = 300 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Hutang", Width = 150 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Sisa Hutang" });
+            gridListProperties.Add(new GridListControlProperties { Header = "Hutang", Width = 140 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Sisa Hutang", Width = 140 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Histori Pembayaran" });
 
             GridListControlHelper.InitializeGridListControl<BeliProduk>(this.gridList, _listOfBeli, gridListProperties, false);
 
             if (_listOfBeli.Count > 0)
                 this.gridList.SetSelected(0, true);
+
+            this.gridList.Grid.PushButtonClick += delegate(object sender, GridCellPushButtonClickEventArgs e)
+            {
+                if (e.RowIndex > 0)
+                {
+                    var index = e.RowIndex - 1;
+
+                    switch (e.ColIndex)
+                    {
+                        case 9: // histori pembayaran
+                            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                            {
+                                var beli = _listOfBeli[index];
+
+                                IPembayaranHutangProdukBll bll = new PembayaranHutangProdukBll(_log);
+                                var listOfHistoriPembayaran = bll.GetHistoriPembayaran(beli.beli_produk_id);
+
+                                if (listOfHistoriPembayaran.Count > 0)
+                                {
+                                    var frmHistoriPembayaran = new FrmLookupHistoriPembayaran("Histori Pembayaran Hutang", beli, listOfHistoriPembayaran);
+                                    frmHistoriPembayaran.ShowDialog();
+                                }
+                                else
+                                {
+                                    MsgHelper.MsgInfo("Belum ada informasi histori pembayaran");
+                                }
+                            }
+
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            };
 
             this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
             {
@@ -166,6 +203,14 @@ namespace OpenRetail.App.Transaksi
                                 case 8:
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
                                     e.Style.CellValue = NumberHelper.NumberToString(totalNota - beli.total_pelunasan);
+                                    break;
+
+                                case 9: // button history pembayaran
+                                    e.Style.Enabled = beli.tanggal_tempo != null;
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                    e.Style.CellType = GridCellTypeName.PushButton;
+                                    e.Style.Description = "Cek Histori";
+
                                     break;
 
                                 default:

@@ -1552,7 +1552,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="  " &amp; First(Iif(Fields!is_sdac.Value = False, Fields!kirim_kelurahan.Value, Fields!telepon.Value), "NotaPenjualan")</Value>
+                <Value>="  " &amp; Code.GetTelepon(First(Fields!is_sdac.Value, "NotaPenjualan"), First(Fields!telepon.Value, "NotaPenjualan"), First(Fields!kirim_kelurahan.Value, "NotaPenjualan"))</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -1583,7 +1583,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="  " &amp; First(Iif(Fields!is_sdac.Value = False, Fields!kirim_kecamatan.Value, Fields!kecamatan.Value &amp; " - " &amp; Fields!kelurahan.Value &amp; " - " &amp; Fields!kota.Value &amp; " - " &amp; Fields!kode_pos.Value), "NotaPenjualan")</Value>
+                <Value>="  " &amp; Code.GetWilayahLengkap(First(Fields!is_sdac.Value, "NotaPenjualan"), First(Fields!provinsi.Value, "NotaPenjualan"), First(Fields!kabupaten.Value, "NotaPenjualan"), First(Fields!kecamatan.Value, "NotaPenjualan"), First(Fields!kode_pos.Value, "NotaPenjualan"), First(Fields!kirim_kecamatan.Value, "NotaPenjualan"))</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -2247,20 +2247,12 @@
           <DataField>alamat</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="desa">
-          <DataField>desa</DataField>
+        <Field Name="provinsi">
+          <DataField>provinsi</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="kecamatan">
           <DataField>kecamatan</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="kelurahan">
-          <DataField>kelurahan</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="kota">
-          <DataField>kota</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="kabupaten">
@@ -2346,6 +2338,10 @@
         <Field Name="ongkos_kirim">
           <DataField>ongkos_kirim</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="label_ongkos_kirim">
+          <DataField>label_ongkos_kirim</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="total_nota">
           <DataField>total_nota</DataField>
@@ -2478,6 +2474,47 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
+  <Code>Public Function GetTelepon(ByVal isSdac As Boolean, ByVal telepon As String, ByVal kirimTelepon As String) As String
+	If isSdac Then ' sama dengan alamat customer
+		Return String.Format("HP: {0}", telepon)
+	Else
+		Return kirimTelepon
+	End If
+End Function
+
+Public Function GetWilayahLengkap(ByVal isSdac As Boolean, ByVal provinsi As String, ByVal kabupaten As String, _
+	ByVal kecamatan As String, ByVal kodePos As String, ByVal kirimAlamat As String) As String
+
+	If isSdac Then ' sama dengan alamat customer
+		Dim sb As New System.Text.StringBuilder()
+
+		If provinsi.Length &gt; 0 Then
+			sb.Append(String.Format("{0}", provinsi)).Append(", ")
+		End If
+
+		If kabupaten.Length &gt; 0 Then
+			sb.Append(String.Format("{0}", kabupaten)).Append(", ")
+		End If
+
+		If kecamatan.Length &gt; 0 Then
+			sb.Append(String.Format("{0}", kecamatan)).Append(", ")
+		End If
+
+		If kodePos.Length &gt; 0 Then
+			sb.Append(kodePos)
+		End If
+
+		Dim alamat As String = sb.ToString()
+
+		If alamat.Substring(alamat.Length - 2) = ", " Then
+			alamat = alamat.Substring(0, alamat.Length - 2)
+		End If
+
+		Return alamat
+	Else
+		Return kirimAlamat
+	End If
+End Function</Code>
   <EmbeddedImages>
     <EmbeddedImage Name="dropship">
       <MIMEType>image/png</MIMEType>

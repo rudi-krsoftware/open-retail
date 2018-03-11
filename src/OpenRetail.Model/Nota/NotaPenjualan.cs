@@ -64,6 +64,7 @@ namespace OpenRetail.Model.Nota
         public string nota { get; set; }
         public DateTime tanggal { get; set; }
         public DateTime tanggal_tempo { get; set; }
+        public string keterangan { get; set; }
         public double ppn { get; set; }
         public double diskon_nota { get; set; }
         public string kurir { get; set; }

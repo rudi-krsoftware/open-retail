@@ -5395,6 +5395,8 @@ namespace OpenRetail.Report.DataSet {
             
             private global::System.Data.DataColumn columntanggal_tempo;
             
+            private global::System.Data.DataColumn columnketerangan;
+            
             private global::System.Data.DataColumn columnppn;
             
             private global::System.Data.DataColumn columndiskon_nota;
@@ -5641,6 +5643,14 @@ namespace OpenRetail.Report.DataSet {
             public global::System.Data.DataColumn tanggal_tempoColumn {
                 get {
                     return this.columntanggal_tempo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn keteranganColumn {
+                get {
+                    return this.columnketerangan;
                 }
             }
             
@@ -5895,6 +5905,7 @@ namespace OpenRetail.Report.DataSet {
                         string nota, 
                         System.DateTime tanggal, 
                         System.DateTime tanggal_tempo, 
+                        string keterangan, 
                         double ppn, 
                         double diskon_nota, 
                         string kurir, 
@@ -5942,6 +5953,7 @@ namespace OpenRetail.Report.DataSet {
                         nota,
                         tanggal,
                         tanggal_tempo,
+                        keterangan,
                         ppn,
                         diskon_nota,
                         kurir,
@@ -6009,6 +6021,7 @@ namespace OpenRetail.Report.DataSet {
                 this.columnnota = base.Columns["nota"];
                 this.columntanggal = base.Columns["tanggal"];
                 this.columntanggal_tempo = base.Columns["tanggal_tempo"];
+                this.columnketerangan = base.Columns["keterangan"];
                 this.columnppn = base.Columns["ppn"];
                 this.columndiskon_nota = base.Columns["diskon_nota"];
                 this.columnkurir = base.Columns["kurir"];
@@ -6080,6 +6093,8 @@ namespace OpenRetail.Report.DataSet {
                 base.Columns.Add(this.columntanggal);
                 this.columntanggal_tempo = new global::System.Data.DataColumn("tanggal_tempo", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntanggal_tempo);
+                this.columnketerangan = new global::System.Data.DataColumn("keterangan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnketerangan);
                 this.columnppn = new global::System.Data.DataColumn("ppn", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnppn);
                 this.columndiskon_nota = new global::System.Data.DataColumn("diskon_nota", typeof(double), null, global::System.Data.MappingType.Element);
@@ -12046,6 +12061,22 @@ namespace OpenRetail.Report.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string keterangan {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaPenjualan.keteranganColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'keterangan\' in table \'NotaPenjualan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaPenjualan.keteranganColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public double ppn {
                 get {
                     try {
@@ -12678,6 +12709,18 @@ namespace OpenRetail.Report.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Settanggal_tempoNull() {
                 this[this.tableNotaPenjualan.tanggal_tempoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsketeranganNull() {
+                return this.IsNull(this.tableNotaPenjualan.keteranganColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetketeranganNull() {
+                this[this.tableNotaPenjualan.keteranganColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
