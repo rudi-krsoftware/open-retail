@@ -35,7 +35,7 @@ namespace OpenRetail.Helper.RAWPrinting
             _printerName = printerName;
         }
 
-        public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true)
+        public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true)
         {
             throw new NotImplementedException();
         }
@@ -45,7 +45,7 @@ namespace OpenRetail.Helper.RAWPrinting
             throw new NotImplementedException();
         }
 
-        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80)
+        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80, bool isCetakKeteranganNota = true)
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
 
@@ -259,7 +259,7 @@ namespace OpenRetail.Helper.RAWPrinting
             textToPrint.Append(StringHelper.PrintChar(' ', 6)).Append("------------");
             textToPrint.Append(StringHelper.PrintChar(' ', 37)).Append("-------------");
 
-            if (jual.keterangan.Length > 0)
+            if (isCetakKeteranganNota && jual.keterangan.Length > 0)
             {
                 textToPrint.Append(ESCCommandHelper.LineFeed(1)).Append("Keterangan: ").Append(ESCCommandHelper.LineFeed(1));
                 textToPrint.Append("* ");

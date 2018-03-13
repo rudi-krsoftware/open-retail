@@ -659,11 +659,16 @@ namespace OpenRetail.App.Transaksi
 
                 foreach (var item in listOfItemNota)
                 {
+                    if (!_pengaturanUmum.is_cetak_keterangan_nota)
+                        item.keterangan = string.Empty;
+
                     if (item.label_dari1.Length == 0)
                         item.label_dari1 = this._pengaturanUmum.list_of_label_nota[0].keterangan;
 
                     if (item.label_dari2.Length == 0)
                         item.label_dari2 = this._pengaturanUmum.list_of_label_nota[1].keterangan;
+
+                    
                 }
 
                 // set footer nota
@@ -689,7 +694,7 @@ namespace OpenRetail.App.Transaksi
         private void CetakNotaDotMatrix(JualProduk jual)
         {
             IRAWPrinting printerMiniPos = new PrinterDotMatrix(_pengaturanUmum.nama_printer);
-            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota);
+            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota, isCetakKeteranganNota: _pengaturanUmum.is_cetak_keterangan_nota);
         }
 
         protected override void Selesai()

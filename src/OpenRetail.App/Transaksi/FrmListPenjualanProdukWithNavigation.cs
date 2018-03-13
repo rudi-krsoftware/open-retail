@@ -352,7 +352,7 @@ namespace OpenRetail.App.Transaksi
         private void CetakNotaDotMatrix(JualProduk jual)
         {
             IRAWPrinting printerMiniPos = new PrinterDotMatrix(_pengaturanUmum.nama_printer);
-            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota, _pengaturanUmum.jumlah_gulung);
+            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota, _pengaturanUmum.jumlah_gulung, isCetakKeteranganNota: _pengaturanUmum.is_cetak_keterangan_nota);
         }
 
         private void LoadData()
