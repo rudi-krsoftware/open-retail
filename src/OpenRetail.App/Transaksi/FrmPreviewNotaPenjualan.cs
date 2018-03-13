@@ -153,6 +153,9 @@ namespace OpenRetail.App.Transaksi
                 {
                     item.is_sdac = chkIsSdac.Checked;
 
+                    if (!_pengaturanUmum.is_cetak_keterangan_nota)
+                        item.keterangan = string.Empty;
+
                     if (!chkIsSdac.Checked)
                     {
                         item.kirim_kepada = txtKepada1.Text;
