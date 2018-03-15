@@ -36,7 +36,8 @@ namespace OpenRetail.Helper.RAWPrinting
         /// <param name="listOfFooterNota">list objek footer nota</param>        
         /// <param name="jumlahKarakter">maksimal jumlah karakter yang tercetak</param>
         /// <param name="lineFeed">jumlah gulung kertas setelah pencetakan selesai</param>
-        void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true);
+        void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, 
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0);
 
         /// <summary>
         /// Override method untuk mencetak laporan kasir menggunakan printer mini pos

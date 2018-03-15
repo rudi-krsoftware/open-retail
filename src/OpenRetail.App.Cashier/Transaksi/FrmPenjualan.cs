@@ -1075,7 +1075,8 @@ namespace OpenRetail.App.Cashier.Transaksi
         private void CetakNotaMiniPOS(JualProduk jual)
         {
             IRAWPrinting printerMiniPos = new PrinterMiniPOS(_pengaturanUmum.nama_printer);
-            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _customer != null);
+            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, 
+                _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _customer != null, ukuranFont: _pengaturanUmum.ukuran_font);
         }
     }
 }

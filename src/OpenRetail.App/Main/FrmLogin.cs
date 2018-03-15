@@ -93,11 +93,13 @@ namespace OpenRetail.App.Main
             var jumlahKarakter = AppConfigHelper.GetValue("jumlahKarakter", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahKarakter", _appConfigFile)) : 40;
             var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", _appConfigFile)) : 5;
             var isCetakCustomer = AppConfigHelper.GetValue("isCetakCustomer", _appConfigFile).Length > 0 ? Convert.ToBoolean(AppConfigHelper.GetValue("isCetakCustomer", _appConfigFile)) : true;
+            var ukuranFont = AppConfigHelper.GetValue("ukuranFont", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("ukuranFont", _appConfigFile)) : 0;
 
             MainProgram.pengaturanUmum.jenis_printer = AppConfigHelper.GetValue("jenis_printer", _appConfigFile).Length > 0 ? (JenisPrinter)Convert.ToInt32(AppConfigHelper.GetValue("jenis_printer", _appConfigFile)) : JenisPrinter.InkJet;
             MainProgram.pengaturanUmum.is_cetak_customer = isCetakCustomer;
             MainProgram.pengaturanUmum.jumlah_karakter = jumlahKarakter;
             MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;
+            MainProgram.pengaturanUmum.ukuran_font = ukuranFont;
 
             // set pengaturan global (setting disimpan di database)
             ISettingAplikasiBll settingAplikasiBll = new SettingAplikasiBll();

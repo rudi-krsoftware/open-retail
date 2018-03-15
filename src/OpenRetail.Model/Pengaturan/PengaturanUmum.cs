@@ -66,6 +66,7 @@ namespace OpenRetail.Model
         public bool is_singkat_penulisan_ongkir { get; set; }
         public int jumlah_karakter { get; set; }
         public int jumlah_gulung { get; set; }
+        public int ukuran_font { get; set; }
         public IList<HeaderNota> list_of_header_nota { get; set; }
         public IList<HeaderNotaMiniPos> list_of_header_nota_mini_pos { get; set; }
         public IList<FooterNotaMiniPos> list_of_footer_nota_mini_pos { get; set; }

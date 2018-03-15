@@ -167,7 +167,8 @@ namespace OpenRetail.Helper.RAWPrinting
             }
         }
 
-        public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true)
+        public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota,
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0)
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
 
@@ -176,8 +177,10 @@ namespace OpenRetail.Helper.RAWPrinting
             if (!Utils.IsRunningUnderIDE())
             {
                 textToPrint.Append(ESCCommandHelper.InitializePrinter());
-                textToPrint.Append(ESCCommandHelper.LineSpacing());
                 textToPrint.Append(ESCCommandHelper.CenterText());
+
+                if (ukuranFont > 0)
+                    textToPrint.Append(ESCCommandHelper.FontNormal(ukuranFont));
             }
 
             // cetak header

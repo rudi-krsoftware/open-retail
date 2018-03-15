@@ -38,6 +38,8 @@
             this.chkCetakOtomatis = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpMiniPOS = new System.Windows.Forms.GroupBox();
+            this.chkUkuranFont = new System.Windows.Forms.CheckBox();
+            this.txtUkuranFont = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtJumlahGulung = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtJumlahKarakter = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label10 = new System.Windows.Forms.Label();
@@ -129,7 +131,7 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.96774F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.03226F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(410, 248);
-            this.tableLayoutPanel8.TabIndex = 1;
+            this.tableLayoutPanel8.TabIndex = 0;
             // 
             // tableLayoutPanel4
             // 
@@ -191,6 +193,8 @@
             // 
             // grpMiniPOS
             // 
+            this.grpMiniPOS.Controls.Add(this.chkUkuranFont);
+            this.grpMiniPOS.Controls.Add(this.txtUkuranFont);
             this.grpMiniPOS.Controls.Add(this.txtJumlahGulung);
             this.grpMiniPOS.Controls.Add(this.txtJumlahKarakter);
             this.grpMiniPOS.Controls.Add(this.label10);
@@ -201,9 +205,38 @@
             this.grpMiniPOS.Location = new System.Drawing.Point(0, 0);
             this.grpMiniPOS.Name = "grpMiniPOS";
             this.grpMiniPOS.Size = new System.Drawing.Size(404, 191);
-            this.grpMiniPOS.TabIndex = 1;
+            this.grpMiniPOS.TabIndex = 0;
             this.grpMiniPOS.TabStop = false;
             this.grpMiniPOS.Text = " [ Jenis Printer ] ";
+            // 
+            // chkUkuranFont
+            // 
+            this.chkUkuranFont.AutoSize = true;
+            this.chkUkuranFont.Location = new System.Drawing.Point(26, 108);
+            this.chkUkuranFont.Name = "chkUkuranFont";
+            this.chkUkuranFont.Size = new System.Drawing.Size(99, 17);
+            this.chkUkuranFont.TabIndex = 4;
+            this.chkUkuranFont.Text = "Set ukuran font";
+            this.chkUkuranFont.UseVisualStyleBackColor = true;
+            this.chkUkuranFont.CheckedChanged += new System.EventHandler(this.chkUkuranFont_CheckedChanged);
+            // 
+            // txtUkuranFont
+            // 
+            this.txtUkuranFont.AutoEnter = true;
+            this.txtUkuranFont.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtUkuranFont.Enabled = false;
+            this.txtUkuranFont.EnterFocusColor = System.Drawing.Color.White;
+            this.txtUkuranFont.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtUkuranFont.LetterOnly = false;
+            this.txtUkuranFont.Location = new System.Drawing.Point(205, 108);
+            this.txtUkuranFont.MaxLength = 2;
+            this.txtUkuranFont.Name = "txtUkuranFont";
+            this.txtUkuranFont.NumericOnly = true;
+            this.txtUkuranFont.SelectionText = false;
+            this.txtUkuranFont.Size = new System.Drawing.Size(41, 20);
+            this.txtUkuranFont.TabIndex = 5;
+            this.txtUkuranFont.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUkuranFont.ThousandSeparator = false;
             // 
             // txtJumlahGulung
             // 
@@ -219,7 +252,7 @@
             this.txtJumlahGulung.NumericOnly = true;
             this.txtJumlahGulung.SelectionText = false;
             this.txtJumlahGulung.Size = new System.Drawing.Size(41, 20);
-            this.txtJumlahGulung.TabIndex = 2;
+            this.txtJumlahGulung.TabIndex = 3;
             this.txtJumlahGulung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtJumlahGulung.ThousandSeparator = false;
             // 
@@ -237,7 +270,7 @@
             this.txtJumlahKarakter.NumericOnly = true;
             this.txtJumlahKarakter.SelectionText = false;
             this.txtJumlahKarakter.Size = new System.Drawing.Size(41, 20);
-            this.txtJumlahKarakter.TabIndex = 1;
+            this.txtJumlahKarakter.TabIndex = 2;
             this.txtJumlahKarakter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtJumlahKarakter.ThousandSeparator = false;
             // 
@@ -267,7 +300,7 @@
             this.rdoJenisPrinterMiniPOS.Location = new System.Drawing.Point(6, 42);
             this.rdoJenisPrinterMiniPOS.Name = "rdoJenisPrinterMiniPOS";
             this.rdoJenisPrinterMiniPOS.Size = new System.Drawing.Size(69, 17);
-            this.rdoJenisPrinterMiniPOS.TabIndex = 2;
+            this.rdoJenisPrinterMiniPOS.TabIndex = 1;
             this.rdoJenisPrinterMiniPOS.TabStop = true;
             this.rdoJenisPrinterMiniPOS.Text = "Mini POS";
             this.rdoJenisPrinterMiniPOS.UseVisualStyleBackColor = true;
@@ -279,7 +312,7 @@
             this.rdoJenisPrinterDotMatrix.Location = new System.Drawing.Point(6, 19);
             this.rdoJenisPrinterDotMatrix.Name = "rdoJenisPrinterDotMatrix";
             this.rdoJenisPrinterDotMatrix.Size = new System.Drawing.Size(73, 17);
-            this.rdoJenisPrinterDotMatrix.TabIndex = 2;
+            this.rdoJenisPrinterDotMatrix.TabIndex = 0;
             this.rdoJenisPrinterDotMatrix.TabStop = true;
             this.rdoJenisPrinterDotMatrix.Text = "Dot Matrix";
             this.rdoJenisPrinterDotMatrix.UseVisualStyleBackColor = true;
@@ -676,6 +709,8 @@
         private Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS3;
         private Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS4;
         private Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS5;
+        private System.Windows.Forms.CheckBox chkUkuranFont;
+        private Helper.UserControl.AdvancedTextbox txtUkuranFont;
 
 
 
