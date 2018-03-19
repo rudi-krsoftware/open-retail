@@ -1249,19 +1249,16 @@ namespace OpenRetail.App.Transaksi
         }
 
         private void gridControl_KeyDown(object sender, KeyEventArgs e)
-        {
-            // kasus khusus untuk shortcut F2, tidak jalan jika dipanggil melalui event Form KeyDown
-            if (KeyPressHelper.IsShortcutKey(Keys.F2, e)) // tambahan data customer
-            {
-                ShowEntryCustomer();
-            }
-            else if (KeyPressHelper.IsShortcutKey(Keys.F3, e)) //tambah data dropshipper
-            {
-                ShowEntryDropshipper();
-            }
+        {            
+            Shortcut(sender, e);
         }
 
         private void FrmEntryPenjualanProduk_KeyDown(object sender, KeyEventArgs e)
+        {
+            Shortcut(sender, e);
+        }
+
+        private void Shortcut(object sender, KeyEventArgs e)
         {
             if (KeyPressHelper.IsShortcutKey(Keys.F1, e)) // tambah data produk
             {
@@ -1269,6 +1266,8 @@ namespace OpenRetail.App.Transaksi
             }
             else if (KeyPressHelper.IsShortcutKey(Keys.F2, e)) // tambahan data customer
             {
+                // kasus khusus untuk shortcut F2, tidak jalan jika dipanggil melalui event Form KeyDown, 
+                // harus di panggil di event gridControl_KeyDown
                 ShowEntryCustomer();
             }
             else if (KeyPressHelper.IsShortcutKey(Keys.F3, e)) // tambahan data dropshipper
