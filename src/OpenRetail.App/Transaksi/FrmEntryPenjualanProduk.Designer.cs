@@ -112,7 +112,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 155F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(922, 549);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1026, 549);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -140,7 +140,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(916, 124);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1020, 124);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label2
@@ -197,7 +197,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(68, 50);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(848, 25);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(952, 25);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // rdoTunai
@@ -279,7 +279,7 @@
             this.txtKeterangan.Name = "txtKeterangan";
             this.txtKeterangan.NumericOnly = false;
             this.txtKeterangan.SelectionText = false;
-            this.txtKeterangan.Size = new System.Drawing.Size(842, 20);
+            this.txtKeterangan.Size = new System.Drawing.Size(946, 20);
             this.txtKeterangan.TabIndex = 4;
             this.txtKeterangan.Tag = "keterangan";
             this.txtKeterangan.ThousandSeparator = false;
@@ -293,7 +293,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(68, 75);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(848, 25);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(952, 25);
             this.flowLayoutPanel2.TabIndex = 3;
             // 
             // txtCustomer
@@ -334,7 +334,7 @@
             this.flowLayoutPanel4.Location = new System.Drawing.Point(68, 0);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(848, 25);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(952, 25);
             this.flowLayoutPanel4.TabIndex = 0;
             // 
             // txtNota
@@ -372,7 +372,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 186);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(916, 205);
+            this.panel1.Size = new System.Drawing.Size(1020, 205);
             this.panel1.TabIndex = 1;
             // 
             // gridControl
@@ -409,7 +409,7 @@
             this.gridControl.RowHeightEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridRowHeight[] {
             new Syncfusion.Windows.Forms.Grid.GridRowHeight(0, 25)});
             this.gridControl.SerializeCellsBehavior = Syncfusion.Windows.Forms.Grid.GridSerializeCellsBehavior.SerializeIntoCode;
-            this.gridControl.Size = new System.Drawing.Size(906, 195);
+            this.gridControl.Size = new System.Drawing.Size(1010, 195);
             this.gridControl.SmartSizeBox = false;
             this.gridControl.TabIndex = 0;
             this.gridControl.Text = "gridControl1";
@@ -451,7 +451,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(916, 149);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1020, 149);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // label10
@@ -460,7 +460,7 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(692, 25);
+            this.label10.Size = new System.Drawing.Size(796, 25);
             this.label10.TabIndex = 0;
             this.label10.Text = "F1: Tambah data produk | F2: Tambah data customer | F3 : Tambah data dropshipper " +
     "| F5: Edit jumlah | F6: Edit diskon | F7: Edit harga | F8: Bayar";
@@ -474,7 +474,7 @@
             this.txtPPN.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPPN.LeaveFocusColor = System.Drawing.Color.White;
             this.txtPPN.LetterOnly = false;
-            this.txtPPN.Location = new System.Drawing.Point(777, 78);
+            this.txtPPN.Location = new System.Drawing.Point(881, 78);
             this.txtPPN.MaxLength = 20;
             this.txtPPN.Name = "txtPPN";
             this.txtPPN.NumericOnly = true;
@@ -490,7 +490,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label9.Location = new System.Drawing.Point(742, 75);
+            this.label9.Location = new System.Drawing.Point(846, 75);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 25);
             this.label9.TabIndex = 0;
@@ -501,7 +501,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label8.Location = new System.Drawing.Point(731, 50);
+            this.label8.Location = new System.Drawing.Point(835, 50);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 25);
             this.label8.TabIndex = 0;
@@ -516,7 +516,7 @@
             this.txtDiskon.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDiskon.LeaveFocusColor = System.Drawing.Color.White;
             this.txtDiskon.LetterOnly = false;
-            this.txtDiskon.Location = new System.Drawing.Point(777, 53);
+            this.txtDiskon.Location = new System.Drawing.Point(881, 53);
             this.txtDiskon.MaxLength = 20;
             this.txtDiskon.Name = "txtDiskon";
             this.txtDiskon.NumericOnly = true;
@@ -532,7 +532,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(701, 25);
+            this.label11.Location = new System.Drawing.Point(805, 25);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(70, 25);
             this.label11.TabIndex = 0;
@@ -549,7 +549,7 @@
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 25);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(698, 25);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(802, 25);
             this.flowLayoutPanel3.TabIndex = 1;
             // 
             // chkCetakNotaJual
@@ -628,7 +628,7 @@
             "POS Standard",
             "Paket POS",
             "POS Kilat Khusus"});
-            this.cmbKurir.Location = new System.Drawing.Point(777, 3);
+            this.cmbKurir.Location = new System.Drawing.Point(881, 3);
             this.cmbKurir.Name = "cmbKurir";
             this.cmbKurir.Size = new System.Drawing.Size(136, 21);
             this.cmbKurir.TabIndex = 3;
@@ -638,7 +638,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(701, 0);
+            this.label12.Location = new System.Drawing.Point(805, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(70, 25);
             this.label12.TabIndex = 6;
@@ -650,7 +650,7 @@
             this.flowLayoutPanel5.Controls.Add(this.txtOngkosKirim);
             this.flowLayoutPanel5.Controls.Add(this.btnCekOngkir);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(774, 25);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(878, 25);
             this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
             this.flowLayoutPanel5.Size = new System.Drawing.Size(142, 25);
@@ -691,7 +691,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(701, 100);
+            this.label13.Location = new System.Drawing.Point(805, 100);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(70, 25);
             this.label13.TabIndex = 7;
@@ -701,7 +701,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(777, 150);
+            this.label14.Location = new System.Drawing.Point(881, 150);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(41, 13);
             this.label14.TabIndex = 7;
@@ -711,7 +711,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Location = new System.Drawing.Point(701, 125);
+            this.label15.Location = new System.Drawing.Point(805, 125);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(70, 25);
             this.label15.TabIndex = 7;
@@ -726,7 +726,7 @@
             this.txtJumlahBayar.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtJumlahBayar.LeaveFocusColor = System.Drawing.Color.White;
             this.txtJumlahBayar.LetterOnly = false;
-            this.txtJumlahBayar.Location = new System.Drawing.Point(777, 103);
+            this.txtJumlahBayar.Location = new System.Drawing.Point(881, 103);
             this.txtJumlahBayar.MaxLength = 20;
             this.txtJumlahBayar.Name = "txtJumlahBayar";
             this.txtJumlahBayar.NumericOnly = true;
@@ -747,7 +747,7 @@
             this.txtKembali.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtKembali.LeaveFocusColor = System.Drawing.Color.White;
             this.txtKembali.LetterOnly = false;
-            this.txtKembali.Location = new System.Drawing.Point(777, 128);
+            this.txtKembali.Location = new System.Drawing.Point(881, 128);
             this.txtKembali.MaxLength = 20;
             this.txtKembali.Name = "txtKembali";
             this.txtKembali.NumericOnly = true;
@@ -766,7 +766,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(916, 47);
+            this.panel2.Size = new System.Drawing.Size(1020, 47);
             this.panel2.TabIndex = 4;
             // 
             // tableLayoutPanel6
@@ -781,7 +781,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(914, 45);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1018, 45);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // label1
@@ -802,7 +802,7 @@
             this.lblTotal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.Red;
-            this.lblTotal.Location = new System.Drawing.Point(875, 0);
+            this.lblTotal.Location = new System.Drawing.Point(979, 0);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(36, 45);
             this.lblTotal.TabIndex = 1;
@@ -818,7 +818,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(922, 631);
+            this.ClientSize = new System.Drawing.Size(1026, 631);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "FrmEntryPenjualanProduk";
             this.Text = "FrmEntryPenjualanProduk";

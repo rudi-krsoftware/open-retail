@@ -7,21 +7,21 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="10" ViewPortY="20" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:ReportPenjualanProdukHeader" ZOrder="16" X="539" Y="32" Height="258" Width="246" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:ReportPenjualanProdukDetail" ZOrder="11" X="254" Y="32" Height="68" Width="239" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:ReportPenjualanProduk" ZOrder="8" X="31" Y="30" Height="257" Width="204" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
+    <Shape ID="DesignTable:ReportPenjualanProdukDetail" ZOrder="4" X="333" Y="84" Height="256" Width="239" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="252" />
+    <Shape ID="DesignTable:ReportPenjualanProduk" ZOrder="2" X="31" Y="30" Height="257" Width="204" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:ReportPiutangPenjualanProdukHeader" ZOrder="13" X="32" Y="214" Height="68" Width="292" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
     <Shape ID="DesignTable:ReportPiutangPenjualanProdukDetail" ZOrder="14" X="987" Y="165" Height="277" Width="284" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="273" />
     <Shape ID="DesignTable:ReportPiutangPenjualanProduk" ZOrder="12" X="980" Y="42" Height="106" Width="250" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
-    <Shape ID="DesignTable:ReportPembayaranPiutangPenjualanProdukDetail" ZOrder="7" X="807" Y="40" Height="49" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="45" />
-    <Shape ID="DesignTable:ReportPembayaranPiutangPenjualanProdukHeader" ZOrder="6" X="891" Y="82" Height="201" Width="344" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
+    <Shape ID="DesignTable:ReportPembayaranPiutangPenjualanProdukDetail" ZOrder="9" X="807" Y="40" Height="49" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="45" />
+    <Shape ID="DesignTable:ReportPembayaranPiutangPenjualanProdukHeader" ZOrder="8" X="891" Y="82" Height="201" Width="344" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
     <Shape ID="DesignTable:ReportKartuPiutang" ZOrder="15" X="553" Y="132" Height="163" Width="278" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
-    <Shape ID="DesignTable:ReportReturPenjualanProdukHeader" ZOrder="9" X="875" Y="192" Height="182" Width="278" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
-    <Shape ID="DesignTable:ReportReturPenjualanProdukDetail" ZOrder="10" X="962" Y="113" Height="163" Width="271" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
-    <Shape ID="DesignTable:NotaPenjualan" ZOrder="2" X="294" Y="153" Height="256" Width="157" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="252" />
-    <Shape ID="DesignTable:ReportProdukFavorit" ZOrder="5" X="737" Y="222" Height="87" Width="188" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:ReportPenjualanPerKasir" ZOrder="4" X="236" Y="77" Height="125" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
-    <Shape ID="DesignTable:ReportCustomerProduk" ZOrder="3" X="30" Y="294" Height="220" Width="203" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
-    <Shape ID="DesignTable:ReportPenjualanProdukPerGolongan" ZOrder="1" X="563" Y="339" Height="86" Width="280" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
+    <Shape ID="DesignTable:ReportReturPenjualanProdukHeader" ZOrder="10" X="875" Y="192" Height="182" Width="278" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
+    <Shape ID="DesignTable:ReportReturPenjualanProdukDetail" ZOrder="11" X="962" Y="113" Height="163" Width="271" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
+    <Shape ID="DesignTable:NotaPenjualan" ZOrder="3" X="630" Y="114" Height="257" Width="157" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
+    <Shape ID="DesignTable:ReportProdukFavorit" ZOrder="7" X="737" Y="222" Height="87" Width="188" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:ReportPenjualanPerKasir" ZOrder="1" X="236" Y="77" Height="257" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
+    <Shape ID="DesignTable:ReportCustomerProduk" ZOrder="6" X="30" Y="294" Height="220" Width="203" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
+    <Shape ID="DesignTable:ReportPenjualanProdukPerGolongan" ZOrder="5" X="563" Y="339" Height="86" Width="280" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

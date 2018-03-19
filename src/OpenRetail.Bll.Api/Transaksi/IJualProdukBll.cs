@@ -46,7 +46,7 @@ namespace OpenRetail.Bll.Api
         IList<JualProduk> GetNotaKreditByCustomer(string id, bool isLunas);
         IList<JualProduk> GetNotaKreditByNota(string id, string nota);
         IList<JualProduk> GetByName(string name);
-        IList<JualProduk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount);
+        IList<JualProduk> GetByName(string name, bool isCekKeteranganItemJual, int pageNumber, int pageSize, ref int pagesCount);
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize, ref int pagesCount);
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);

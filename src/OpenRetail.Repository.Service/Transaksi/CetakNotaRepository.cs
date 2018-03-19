@@ -79,7 +79,7 @@ namespace OpenRetail.Repository.Service
                             t_jual_produk.label_dari1, t_jual_produk.label_dari2, t_jual_produk.label_dari3, t_jual_produk.label_dari4,
                             t_jual_produk.label_kepada1, t_jual_produk.label_kepada2, t_jual_produk.label_kepada3, t_jual_produk.label_kepada4,
                             m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan,
-                            t_item_jual_produk.harga_jual AS harga, t_item_jual_produk.jumlah, t_item_jual_produk.jumlah_retur, t_item_jual_produk.diskon
+                            COALESCE(t_item_jual_produk.keterangan, t_item_jual_produk.keterangan, '') AS keterangan_item, t_item_jual_produk.harga_jual AS harga, t_item_jual_produk.jumlah, t_item_jual_produk.jumlah_retur, t_item_jual_produk.diskon
                             FROM public.t_jual_produk INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
                             INNER JOIN public.m_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
                             INNER JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id

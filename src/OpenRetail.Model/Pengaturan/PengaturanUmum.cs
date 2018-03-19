@@ -64,6 +64,8 @@ namespace OpenRetail.Model
         public bool is_update_harga_jual { get; set; }
 
         public bool is_singkat_penulisan_ongkir { get; set; }
+        public bool is_tampilkan_keterangan_tambahan_item_jual { get; set; }
+        public string keterangan_tambahan_item_jual { get; set; }
         public int jumlah_karakter { get; set; }
         public int jumlah_gulung { get; set; }
         public int ukuran_font { get; set; }

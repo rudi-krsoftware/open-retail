@@ -863,7 +863,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!nama_produk.Value</Value>
+                              <Value>=IIf(Len(Fields!keterangan.Value) &gt; 0, Fields!nama_produk.Value &amp; " / " &amp; Fields!keterangan.Value, Fields!nama_produk.Value)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1666,7 +1666,7 @@
     <Height>3.38379cm</Height>
     <Style />
   </Body>
-  <Width>20.43873cm</Width>
+  <Width>20.43874cm</Width>
   <Page>
     <PageHeight>27.94cm</PageHeight>
     <PageWidth>22.59cm</PageWidth>
@@ -1746,6 +1746,10 @@
           <DataField>harga_jual</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
+        <Field Name="keterangan">
+          <DataField>keterangan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="diskon_rupiah_harga_jual">
           <DataField>diskon_rupiah_harga_jual</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
@@ -1761,7 +1765,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DsPenjualan</rd:DataSetName>
-        <rd:SchemaPath>D:\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPenjualan.xsd</rd:SchemaPath>
+        <rd:SchemaPath>E:\Data\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPenjualan.xsd</rd:SchemaPath>
         <rd:TableName>ReportPenjualanProdukDetail</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

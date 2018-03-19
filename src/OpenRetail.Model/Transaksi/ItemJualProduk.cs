@@ -62,6 +62,9 @@ namespace OpenRetail.Model
 		[Write(false)]
         public Produk Produk { get; set; }
 
+        [Display(Name = "Keterangan tambahan")]
+        public string keterangan { get; set; }
+
 		[Display(Name = "Harga Beli")]
 		public double harga_beli { get; set; }
 		
@@ -121,6 +124,7 @@ namespace OpenRetail.Model
 			RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
 			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
 			RuleFor(c => c.produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
 		}
 	}
 }

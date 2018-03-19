@@ -33,6 +33,7 @@ namespace OpenRetail.Model.Report
         public DateTime tanggal { get; set; }
         public string produk_id { get; set; }
         public string nama_produk { get; set; }
+        public string keterangan { get; set; }
         public string satuan { get; set; }
         public double jumlah { get; set; }
         public double diskon { get; set; }
