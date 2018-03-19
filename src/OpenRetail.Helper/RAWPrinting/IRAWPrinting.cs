@@ -45,7 +45,7 @@ namespace OpenRetail.Helper.RAWPrinting
         /// <param name="listOfMesinKasir"></param>
         /// <param name="listOfHeaderNota"></param>
         /// <param name="jumlahKarakter"></param>
-        void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed);
+        void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0);
 
         /// <summary>
         /// Override method untuk mencetak nota jual menggunakan printer dot matrix

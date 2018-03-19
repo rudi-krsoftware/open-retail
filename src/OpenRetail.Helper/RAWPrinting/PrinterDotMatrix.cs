@@ -41,7 +41,7 @@ namespace OpenRetail.Helper.RAWPrinting
             throw new NotImplementedException();
         }
 
-        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed)
+        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0)
         {
             throw new NotImplementedException();
         }
