@@ -116,8 +116,6 @@ namespace OpenRetail.App.Transaksi
                 gridListProperties.Add(new GridListControlProperties { Header = "Cetak Nota", Width = 80 });
             }
 
-            
-
             GridListControlHelper.InitializeGridListControl<JualProduk>(this.gridList, _listOfJual, gridListProperties, false, rowHeight: 40);
 
             if (_pengaturanUmum.jenis_printer == JenisPrinter.InkJet)
@@ -380,7 +378,7 @@ namespace OpenRetail.App.Transaksi
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                _listOfJual = _bll.GetByName(customerName, _pageNumber, _pageSize, ref _pagesCount);
+                _listOfJual = _bll.GetByName(customerName, _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual, _pageNumber, _pageSize, ref _pagesCount);
                 GridListControlHelper.Refresh<JualProduk>(this.gridList, _listOfJual);
 
                 base.SetInfoHalaman(_pageNumber, _pagesCount);

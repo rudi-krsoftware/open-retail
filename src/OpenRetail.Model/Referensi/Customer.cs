@@ -115,9 +115,13 @@ namespace OpenRetail.Model
                     sb.Append(kodePos);
 
                 var wilayahLengkap = sb.ToString();
-                if (wilayahLengkap.Right(2) == ", ")
+
+                if (wilayahLengkap.Length > 2)
                 {
-                    wilayahLengkap = wilayahLengkap.Left(wilayahLengkap.Length - 2);
+                    if (wilayahLengkap.Right(2) == ", ")
+                    {
+                        wilayahLengkap = wilayahLengkap.Left(wilayahLengkap.Length - 2);
+                    }
                 }
 
                 return wilayahLengkap;

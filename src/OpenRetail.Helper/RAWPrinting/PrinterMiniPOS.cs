@@ -253,6 +253,9 @@ namespace OpenRetail.Helper.RAWPrinting
                 var produk = StringHelper.FixedLength(item.Produk.nama_produk, garisPemisah.Length);
                 textToPrint.Append(produk).Append(ESCCommandHelper.LineFeed(1));
 
+                if (item.keterangan.Length > 0)
+                    textToPrint.Append(item.keterangan).Append(ESCCommandHelper.LineFeed(1));
+
                 var jumlah = StringHelper.RightAlignment(item.jumlah.ToString(), 4);
                 textToPrint.Append(jumlah);
 

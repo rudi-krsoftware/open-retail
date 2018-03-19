@@ -205,7 +205,9 @@ namespace OpenRetail.App.Pengaturan
             chkStokProdukBolehMinus.Checked = _pengaturanUmum.is_stok_produk_boleh_minus;
             chkFokusKeKolomJumlah.Checked = _pengaturanUmum.is_fokus_input_kolom_jumlah;
             chkUpdateHargaJual.Checked = _pengaturanUmum.is_update_harga_jual;
-            chkSingkatPenulisanOngkir.Checked = _pengaturanUmum.is_singkat_penulisan_ongkir;            
+            chkSingkatPenulisanOngkir.Checked = _pengaturanUmum.is_singkat_penulisan_ongkir;
+            chkTampilkanKeteranganTambahanItemJual.Checked = _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual;
+            txtKeteranganTambahanItemJual.Text = _pengaturanUmum.keterangan_tambahan_item_jual;
         }
 
         protected override void Simpan()
@@ -259,7 +261,7 @@ namespace OpenRetail.App.Pengaturan
             _pengaturanUmum.is_singkat_penulisan_ongkir = chkSingkatPenulisanOngkir.Checked;
             _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
             _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
-            _pengaturanUmum.ukuran_font = Convert.ToInt32(txtUkuranFont.Text);                
+            _pengaturanUmum.ukuran_font = Convert.ToInt32(txtUkuranFont.Text);            
 
             // simpan info printer
             AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
@@ -290,13 +292,17 @@ namespace OpenRetail.App.Pengaturan
                 settingAplikasi.is_update_harga_jual_master_produk = chkUpdateHargaJual.Checked;
                 settingAplikasi.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;
                 settingAplikasi.is_fokus_input_kolom_jumlah = chkFokusKeKolomJumlah.Checked;
+                settingAplikasi.is_tampilkan_keterangan_tambahan_item_jual = chkTampilkanKeteranganTambahanItemJual.Checked;
+                settingAplikasi.keterangan_tambahan_item_jual = txtKeteranganTambahanItemJual.Text;
 
                 var result = settingAplikasiBll.Update(settingAplikasi);
                 if (result > 0)
                 {
                     _pengaturanUmum.is_update_harga_jual = chkUpdateHargaJual.Checked;
                     _pengaturanUmum.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;
-                    _pengaturanUmum.is_fokus_input_kolom_jumlah = chkFokusKeKolomJumlah.Checked;                    
+                    _pengaturanUmum.is_fokus_input_kolom_jumlah = chkFokusKeKolomJumlah.Checked;
+                    _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual = chkTampilkanKeteranganTambahanItemJual.Checked;
+                    _pengaturanUmum.keterangan_tambahan_item_jual = txtKeteranganTambahanItemJual.Text;
                 }
             }
         }
@@ -530,6 +536,16 @@ namespace OpenRetail.App.Pengaturan
             txtUkuranFont.Text = "0";
             if (chk.Checked)
                 txtUkuranFont.Text = _pengaturanUmum.ukuran_font.ToString();
+        }
+
+        private void chkTampilkanKeteranganTambahanItemJual_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = (CheckBox)sender;
+            txtKeteranganTambahanItemJual.Enabled = chk.Checked;
+
+            txtKeteranganTambahanItemJual.Text = "Keterangan";
+            if (chk.Checked)
+                txtKeteranganTambahanItemJual.Text = _pengaturanUmum.keterangan_tambahan_item_jual;
         }
     }
 }

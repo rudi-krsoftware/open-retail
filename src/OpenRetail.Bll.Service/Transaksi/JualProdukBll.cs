@@ -80,14 +80,14 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-        public IList<JualProduk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount)
+        public IList<JualProduk> GetByName(string name, bool isCekKeteranganItemJual, int pageNumber, int pageSize, ref int pagesCount)
         {
             IList<JualProduk> oList = null;
 
             using (IDapperContext context = new DapperContext())
             {
                 IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.JualProdukRepository.GetByName(name, pageNumber, pageSize, ref pagesCount);
+                oList = uow.JualProdukRepository.GetByName(name, isCekKeteranganItemJual, pageNumber, pageSize, ref pagesCount);
             }
 
             return oList;

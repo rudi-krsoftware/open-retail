@@ -98,6 +98,8 @@ namespace OpenRetail.App.Cashier.Main
             {
                 MainProgram.pengaturanUmum.is_stok_produk_boleh_minus = settingAplikasi.is_stok_produk_boleh_minus;
                 MainProgram.pengaturanUmum.is_fokus_input_kolom_jumlah = settingAplikasi.is_fokus_input_kolom_jumlah;
+                MainProgram.pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual = settingAplikasi.is_tampilkan_keterangan_tambahan_item_jual;
+                MainProgram.pengaturanUmum.keterangan_tambahan_item_jual = settingAplikasi.keterangan_tambahan_item_jual;
             }
 
             // set header nota

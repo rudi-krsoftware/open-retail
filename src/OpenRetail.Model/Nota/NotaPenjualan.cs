@@ -75,6 +75,7 @@ namespace OpenRetail.Model.Nota
         public string kode_produk { get; set; }
         public string nama_produk { get; set; }
         public string satuan { get; set; }
+        public string keterangan_item { get; set; }
         public double harga { get; set; }
         public double jumlah { get; set; }
         public double jumlah_retur { get; set; }

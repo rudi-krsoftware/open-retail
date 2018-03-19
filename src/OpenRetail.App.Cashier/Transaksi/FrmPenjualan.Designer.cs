@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle1 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
             Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle2 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
             Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle3 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
@@ -41,6 +40,8 @@
             Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo6 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
             Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo7 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
             Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo8 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
+            Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo9 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
+            Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo10 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl = new Syncfusion.Windows.Forms.Grid.GridControl();
             this.pnlHeader = new System.Windows.Forms.Panel();
@@ -61,8 +62,8 @@
             this.lblStatusBar = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblKembalian = new System.Windows.Forms.Label();
-            this.tmrTanggalJam = new System.Windows.Forms.Timer(this.components);
-            this.tmrResetPesan = new System.Windows.Forms.Timer(this.components);
+            this.tmrTanggalJam = new System.Windows.Forms.Timer();
+            this.tmrResetPesan = new System.Windows.Forms.Timer();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.pnlHeader.SuspendLayout();
@@ -200,6 +201,24 @@
             gridCellInfo8.StyleInfo.Font.Strikeout = false;
             gridCellInfo8.StyleInfo.Font.Underline = false;
             gridCellInfo8.StyleInfo.Font.Unit = System.Drawing.GraphicsUnit.Point;
+            gridCellInfo9.Col = -1;
+            gridCellInfo9.Row = -1;
+            gridCellInfo9.StyleInfo.Font.Bold = false;
+            gridCellInfo9.StyleInfo.Font.Facename = "Tahoma";
+            gridCellInfo9.StyleInfo.Font.Italic = false;
+            gridCellInfo9.StyleInfo.Font.Size = 8.25F;
+            gridCellInfo9.StyleInfo.Font.Strikeout = false;
+            gridCellInfo9.StyleInfo.Font.Underline = false;
+            gridCellInfo9.StyleInfo.Font.Unit = System.Drawing.GraphicsUnit.Point;
+            gridCellInfo10.Col = -1;
+            gridCellInfo10.Row = -1;
+            gridCellInfo10.StyleInfo.Font.Bold = false;
+            gridCellInfo10.StyleInfo.Font.Facename = "Tahoma";
+            gridCellInfo10.StyleInfo.Font.Italic = false;
+            gridCellInfo10.StyleInfo.Font.Size = 8.25F;
+            gridCellInfo10.StyleInfo.Font.Strikeout = false;
+            gridCellInfo10.StyleInfo.Font.Underline = false;
+            gridCellInfo10.StyleInfo.Font.Unit = System.Drawing.GraphicsUnit.Point;
             this.gridControl.GridCells.AddRange(new Syncfusion.Windows.Forms.Grid.GridCellInfo[] {
             gridCellInfo1,
             gridCellInfo2,
@@ -208,7 +227,9 @@
             gridCellInfo5,
             gridCellInfo6,
             gridCellInfo7,
-            gridCellInfo8});
+            gridCellInfo8,
+            gridCellInfo9,
+            gridCellInfo10});
             this.gridControl.Location = new System.Drawing.Point(3, 219);
             this.gridControl.Name = "gridControl";
             this.gridControl.RowHeightEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridRowHeight[] {

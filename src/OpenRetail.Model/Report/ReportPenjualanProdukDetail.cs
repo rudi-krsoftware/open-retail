@@ -38,6 +38,7 @@ namespace OpenRetail.Model.Report
         public double jumlah_retur { get; set; }
         public double harga_beli { get; set; }
         public double harga_jual { get; set; }
+        public string keterangan { get; set; }
 
         public double diskon_rupiah_harga_jual
         {
