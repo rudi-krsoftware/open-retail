@@ -131,7 +131,7 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-			try
+            try
             {
                 var client = new RestClient(_apiUrl);
                 var request = new RestRequest("save", Method.POST);
@@ -156,7 +156,7 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-			try
+            try
             {
                 var client = new RestClient(_apiUrl);
                 var request = new RestRequest("update", Method.POST);

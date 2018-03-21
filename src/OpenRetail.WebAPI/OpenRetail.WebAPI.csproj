@@ -210,6 +210,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\Referensi\KecamatanDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\KabupatenDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\ProvinsiDTO.cs" />
     <Compile Include="Models\DTO\Referensi\CustomerDTO.cs" />
     <Compile Include="Models\DTO\Referensi\GolonganDTO.cs" />
     <Compile Include="Models\DTO\Referensi\HargaGrosirDTO.cs" />

@@ -20,6 +20,9 @@ namespace OpenRetail.WebAPI
                 config.CreateMap<HargaGrosirDTO, HargaGrosir>();
                 config.CreateMap<JenisPengeluaranDTO, JenisPengeluaran>();
                 config.CreateMap<JabatanDTO, Jabatan>();
+                config.CreateMap<ProvinsiDTO, Provinsi>();
+                config.CreateMap<KabupatenDTO, Kabupaten>();
+                config.CreateMap<KecamatanDTO, Kecamatan>();
                 config.CreateMap<CustomerDTO, Customer>();
                 config.CreateMap<SupplierDTO, Supplier>();
                 config.CreateMap<PengeluaranBiayaDTO, PengeluaranBiaya>();

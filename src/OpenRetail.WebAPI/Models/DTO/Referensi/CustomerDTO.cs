@@ -38,7 +38,22 @@ namespace OpenRetail.WebAPI.Models.DTO
 		
 		[Display(Name = "alamat")]
 		public string alamat { get; set; }
-		
+
+        public string provinsi_id { get; set; }
+
+        [JsonIgnore]
+        public ProvinsiDTO Provinsi { get; set; }
+
+        public string kabupaten_id { get; set; }
+
+        [JsonIgnore]
+        public KabupatenDTO Kabupaten { get; set; }
+
+        public string kecamatan_id { get; set; }
+
+        [JsonIgnore]
+        public KecamatanDTO Kecamatan { get; set; }
+
 		[Display(Name = "kontak")]
 		public string kontak { get; set; }
 		
@@ -53,9 +68,6 @@ namespace OpenRetail.WebAPI.Models.DTO
 		
 		[Display(Name = "total_pembayaran_piutang")]
 		public double total_pembayaran_piutang { get; set; }
-		
-		[Display(Name = "kecamatan")]
-		public string kecamatan { get; set; }
 		
 		[Display(Name = "kelurahan")]
 		public string kelurahan { get; set; }
@@ -100,7 +112,9 @@ namespace OpenRetail.WebAPI.Models.DTO
         {
             RuleFor(c => c.nama_customer).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
             RuleFor(c => c.alamat).Length(0, 100).WithMessage(msgError2);
-            RuleFor(c => c.kecamatan).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.provinsi_id).Length(0, 2).WithMessage(msgError2);
+            RuleFor(c => c.kabupaten_id).Length(0, 4).WithMessage(msgError2);
+            RuleFor(c => c.kecamatan_id).Length(0, 7).WithMessage(msgError2);
             RuleFor(c => c.kelurahan).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.kota).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.kode_pos).Length(0, 6).WithMessage(msgError2);
