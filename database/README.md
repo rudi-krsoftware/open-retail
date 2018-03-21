@@ -40,3 +40,5 @@ psql -U postgres DbOpenRetail < 19_data-provinsi2.sql
 psql -U postgres DbOpenRetail < 20_data-kabupaten2.sql
 psql -U postgres DbOpenRetail < 21_data-kecamatan.sql
 ```
+
+Selain cara manual untuk melakukan import struktur database, Anda juga bisa menggunakan file instalasi untuk database development (OpenRetailDatabase-vx.x.x-dev-Setup.exe) yang bisa Anda download di https://github.com/rudi-krsoftware/open-retail/releases.

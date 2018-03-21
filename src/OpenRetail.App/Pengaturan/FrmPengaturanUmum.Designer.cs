@@ -38,6 +38,8 @@
             this.chkCetakOtomatis = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpMiniPOS = new System.Windows.Forms.GroupBox();
+            this.chkUkuranFont = new System.Windows.Forms.CheckBox();
+            this.txtUkuranFont = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtJumlahGulung = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtJumlahKarakter = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label10 = new System.Windows.Forms.Label();
@@ -101,6 +103,10 @@
             this.chkSingkatPenulisanOngkir = new System.Windows.Forms.CheckBox();
             this.chkFokusKeKolomJumlah = new System.Windows.Forms.CheckBox();
             this.chkCetakKeteranganNota = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtKeteranganTambahanItemJual = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.chkTampilkanKeteranganTambahanItemJual = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -122,6 +128,7 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -174,7 +181,7 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.16376F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.83624F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(413, 301);
-            this.tableLayoutPanel8.TabIndex = 1;
+            this.tableLayoutPanel8.TabIndex = 0;
             // 
             // tableLayoutPanel4
             // 
@@ -236,6 +243,8 @@
             // 
             // grpMiniPOS
             // 
+            this.grpMiniPOS.Controls.Add(this.chkUkuranFont);
+            this.grpMiniPOS.Controls.Add(this.txtUkuranFont);
             this.grpMiniPOS.Controls.Add(this.txtJumlahGulung);
             this.grpMiniPOS.Controls.Add(this.txtJumlahKarakter);
             this.grpMiniPOS.Controls.Add(this.label10);
@@ -247,9 +256,38 @@
             this.grpMiniPOS.Location = new System.Drawing.Point(0, 0);
             this.grpMiniPOS.Name = "grpMiniPOS";
             this.grpMiniPOS.Size = new System.Drawing.Size(407, 238);
-            this.grpMiniPOS.TabIndex = 1;
+            this.grpMiniPOS.TabIndex = 0;
             this.grpMiniPOS.TabStop = false;
             this.grpMiniPOS.Text = " [ Jenis Printer ] ";
+            // 
+            // chkUkuranFont
+            // 
+            this.chkUkuranFont.AutoSize = true;
+            this.chkUkuranFont.Location = new System.Drawing.Point(29, 132);
+            this.chkUkuranFont.Name = "chkUkuranFont";
+            this.chkUkuranFont.Size = new System.Drawing.Size(99, 17);
+            this.chkUkuranFont.TabIndex = 5;
+            this.chkUkuranFont.Text = "Set ukuran font";
+            this.chkUkuranFont.UseVisualStyleBackColor = true;
+            this.chkUkuranFont.CheckedChanged += new System.EventHandler(this.chkUkuranFont_CheckedChanged);
+            // 
+            // txtUkuranFont
+            // 
+            this.txtUkuranFont.AutoEnter = true;
+            this.txtUkuranFont.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtUkuranFont.Enabled = false;
+            this.txtUkuranFont.EnterFocusColor = System.Drawing.Color.White;
+            this.txtUkuranFont.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtUkuranFont.LetterOnly = false;
+            this.txtUkuranFont.Location = new System.Drawing.Point(208, 132);
+            this.txtUkuranFont.MaxLength = 2;
+            this.txtUkuranFont.Name = "txtUkuranFont";
+            this.txtUkuranFont.NumericOnly = true;
+            this.txtUkuranFont.SelectionText = false;
+            this.txtUkuranFont.Size = new System.Drawing.Size(41, 20);
+            this.txtUkuranFont.TabIndex = 6;
+            this.txtUkuranFont.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUkuranFont.ThousandSeparator = false;
             // 
             // txtJumlahGulung
             // 
@@ -265,7 +303,7 @@
             this.txtJumlahGulung.NumericOnly = true;
             this.txtJumlahGulung.SelectionText = false;
             this.txtJumlahGulung.Size = new System.Drawing.Size(41, 20);
-            this.txtJumlahGulung.TabIndex = 2;
+            this.txtJumlahGulung.TabIndex = 4;
             this.txtJumlahGulung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtJumlahGulung.ThousandSeparator = false;
             // 
@@ -283,7 +321,7 @@
             this.txtJumlahKarakter.NumericOnly = true;
             this.txtJumlahKarakter.SelectionText = false;
             this.txtJumlahKarakter.Size = new System.Drawing.Size(41, 20);
-            this.txtJumlahKarakter.TabIndex = 1;
+            this.txtJumlahKarakter.TabIndex = 3;
             this.txtJumlahKarakter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtJumlahKarakter.ThousandSeparator = false;
             // 
@@ -300,7 +338,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(26, 85);
+            this.label9.Location = new System.Drawing.Point(26, 86);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(150, 13);
             this.label9.TabIndex = 0;
@@ -325,7 +363,7 @@
             this.rdoJenisPrinterDotMatrix.Location = new System.Drawing.Point(9, 42);
             this.rdoJenisPrinterDotMatrix.Name = "rdoJenisPrinterDotMatrix";
             this.rdoJenisPrinterDotMatrix.Size = new System.Drawing.Size(73, 17);
-            this.rdoJenisPrinterDotMatrix.TabIndex = 2;
+            this.rdoJenisPrinterDotMatrix.TabIndex = 1;
             this.rdoJenisPrinterDotMatrix.TabStop = true;
             this.rdoJenisPrinterDotMatrix.Text = "Dot Matrix";
             this.rdoJenisPrinterDotMatrix.UseVisualStyleBackColor = true;
@@ -337,7 +375,7 @@
             this.rdoJenisPrinterInkJet.Location = new System.Drawing.Point(9, 19);
             this.rdoJenisPrinterInkJet.Name = "rdoJenisPrinterInkJet";
             this.rdoJenisPrinterInkJet.Size = new System.Drawing.Size(96, 17);
-            this.rdoJenisPrinterInkJet.TabIndex = 2;
+            this.rdoJenisPrinterInkJet.TabIndex = 0;
             this.rdoJenisPrinterInkJet.TabStop = true;
             this.rdoJenisPrinterInkJet.Text = "InkJet/Laserjet";
             this.rdoJenisPrinterInkJet.UseVisualStyleBackColor = true;
@@ -1041,10 +1079,11 @@
             this.tableLayoutPanel13.Controls.Add(this.chkSingkatPenulisanOngkir, 0, 1);
             this.tableLayoutPanel13.Controls.Add(this.chkFokusKeKolomJumlah, 0, 6);
             this.tableLayoutPanel13.Controls.Add(this.chkCetakKeteranganNota, 0, 3);
+            this.tableLayoutPanel13.Controls.Add(this.panel2, 0, 7);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 8;
+            this.tableLayoutPanel13.RowCount = 9;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
@@ -1052,7 +1091,8 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(419, 307);
             this.tableLayoutPanel13.TabIndex = 0;
             // 
@@ -1133,6 +1173,55 @@
             this.chkCetakKeteranganNota.Text = "Informasi keterangan ikut dicetak di nota penjualan";
             this.chkCetakKeteranganNota.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtKeteranganTambahanItemJual);
+            this.panel2.Controls.Add(this.label20);
+            this.panel2.Controls.Add(this.chkTampilkanKeteranganTambahanItemJual);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 161);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(419, 44);
+            this.panel2.TabIndex = 7;
+            // 
+            // txtKeteranganTambahanItemJual
+            // 
+            this.txtKeteranganTambahanItemJual.AutoEnter = false;
+            this.txtKeteranganTambahanItemJual.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKeteranganTambahanItemJual.Enabled = false;
+            this.txtKeteranganTambahanItemJual.EnterFocusColor = System.Drawing.Color.White;
+            this.txtKeteranganTambahanItemJual.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKeteranganTambahanItemJual.LetterOnly = false;
+            this.txtKeteranganTambahanItemJual.Location = new System.Drawing.Point(53, 20);
+            this.txtKeteranganTambahanItemJual.Name = "txtKeteranganTambahanItemJual";
+            this.txtKeteranganTambahanItemJual.NumericOnly = false;
+            this.txtKeteranganTambahanItemJual.SelectionText = false;
+            this.txtKeteranganTambahanItemJual.Size = new System.Drawing.Size(209, 20);
+            this.txtKeteranganTambahanItemJual.TabIndex = 2;
+            this.txtKeteranganTambahanItemJual.Text = "Keterangan";
+            this.txtKeteranganTambahanItemJual.ThousandSeparator = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(19, 22);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(33, 13);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Label";
+            // 
+            // chkTampilkanKeteranganTambahanItemJual
+            // 
+            this.chkTampilkanKeteranganTambahanItemJual.AutoSize = true;
+            this.chkTampilkanKeteranganTambahanItemJual.Location = new System.Drawing.Point(3, 3);
+            this.chkTampilkanKeteranganTambahanItemJual.Name = "chkTampilkanKeteranganTambahanItemJual";
+            this.chkTampilkanKeteranganTambahanItemJual.Size = new System.Drawing.Size(291, 17);
+            this.chkTampilkanKeteranganTambahanItemJual.TabIndex = 0;
+            this.chkTampilkanKeteranganTambahanItemJual.Text = "Tampilkan kolom keterangan tambahan di input item jual";
+            this.chkTampilkanKeteranganTambahanItemJual.UseVisualStyleBackColor = true;
+            this.chkTampilkanKeteranganTambahanItemJual.CheckedChanged += new System.EventHandler(this.chkTampilkanKeteranganTambahanItemJual_CheckedChanged);
+            // 
             // FrmPengaturanUmum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1171,6 +1260,8 @@
             this.tabPage4.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
             this.tableLayoutPanel13.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1250,6 +1341,12 @@
         private System.Windows.Forms.CheckBox chkUpdateHargaJual;
         private System.Windows.Forms.CheckBox chkFokusKeKolomJumlah;
         private System.Windows.Forms.CheckBox chkCetakKeteranganNota;
+        private System.Windows.Forms.CheckBox chkUkuranFont;
+        private Helper.UserControl.AdvancedTextbox txtUkuranFont;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox chkTampilkanKeteranganTambahanItemJual;
+        private System.Windows.Forms.Label label20;
+        private Helper.UserControl.AdvancedTextbox txtKeteranganTambahanItemJual;
 
 
 

@@ -36,8 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoUpdater.NET, Version=1.4.0.0, Culture=neutral, PublicKeyToken=942f95247e354701, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\Autoupdater.NET.Official.1.4\lib\net40\AutoUpdater.NET.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\AutoUpdater.NET.dll</HintPath>
     </Reference>
     <Reference Include="CrashReporter.NET, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\lib\CrashReporter.NET.Official.1.5.2\lib\net40\CrashReporter.NET.dll</HintPath>

@@ -188,6 +188,13 @@ namespace OpenRetail.App.Pengaturan
             chkCetakCustomer.Checked = _pengaturanUmum.is_cetak_customer;
             txtJumlahKarakter.Text = _pengaturanUmum.jumlah_karakter.ToString();
             txtJumlahGulung.Text = _pengaturanUmum.jumlah_gulung.ToString();
+
+            if (rdoJenisPrinterMiniPOS.Checked)
+            {
+                chkUkuranFont.Checked = _pengaturanUmum.ukuran_font > 0;
+                txtUkuranFont.Text = _pengaturanUmum.ukuran_font.ToString();
+                txtUkuranFont.Enabled = chkUkuranFont.Checked;
+            }            
         }
 
         private void LoadSettingLainnya()
@@ -198,7 +205,9 @@ namespace OpenRetail.App.Pengaturan
             chkStokProdukBolehMinus.Checked = _pengaturanUmum.is_stok_produk_boleh_minus;
             chkFokusKeKolomJumlah.Checked = _pengaturanUmum.is_fokus_input_kolom_jumlah;
             chkUpdateHargaJual.Checked = _pengaturanUmum.is_update_harga_jual;
-            chkSingkatPenulisanOngkir.Checked = _pengaturanUmum.is_singkat_penulisan_ongkir;            
+            chkSingkatPenulisanOngkir.Checked = _pengaturanUmum.is_singkat_penulisan_ongkir;
+            chkTampilkanKeteranganTambahanItemJual.Checked = _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual;
+            txtKeteranganTambahanItemJual.Text = _pengaturanUmum.keterangan_tambahan_item_jual;
         }
 
         protected override void Simpan()
@@ -251,7 +260,8 @@ namespace OpenRetail.App.Pengaturan
             _pengaturanUmum.is_cetak_keterangan_nota = chkCetakKeteranganNota.Checked;
             _pengaturanUmum.is_singkat_penulisan_ongkir = chkSingkatPenulisanOngkir.Checked;
             _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
-            _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);                
+            _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
+            _pengaturanUmum.ukuran_font = Convert.ToInt32(txtUkuranFont.Text);            
 
             // simpan info printer
             AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
@@ -266,6 +276,7 @@ namespace OpenRetail.App.Pengaturan
             AppConfigHelper.SaveValue("isSingkatPenulisanOngkir", chkSingkatPenulisanOngkir.Checked.ToString(), appConfigFile);
             AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
             AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
+            AppConfigHelper.SaveValue("ukuranFont", txtUkuranFont.Text, appConfigFile);
         }
 
         /// <summary>
@@ -281,13 +292,17 @@ namespace OpenRetail.App.Pengaturan
                 settingAplikasi.is_update_harga_jual_master_produk = chkUpdateHargaJual.Checked;
                 settingAplikasi.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;
                 settingAplikasi.is_fokus_input_kolom_jumlah = chkFokusKeKolomJumlah.Checked;
+                settingAplikasi.is_tampilkan_keterangan_tambahan_item_jual = chkTampilkanKeteranganTambahanItemJual.Checked;
+                settingAplikasi.keterangan_tambahan_item_jual = txtKeteranganTambahanItemJual.Text;
 
                 var result = settingAplikasiBll.Update(settingAplikasi);
                 if (result > 0)
                 {
                     _pengaturanUmum.is_update_harga_jual = chkUpdateHargaJual.Checked;
                     _pengaturanUmum.is_stok_produk_boleh_minus = chkStokProdukBolehMinus.Checked;
-                    _pengaturanUmum.is_fokus_input_kolom_jumlah = chkFokusKeKolomJumlah.Checked;                    
+                    _pengaturanUmum.is_fokus_input_kolom_jumlah = chkFokusKeKolomJumlah.Checked;
+                    _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual = chkTampilkanKeteranganTambahanItemJual.Checked;
+                    _pengaturanUmum.keterangan_tambahan_item_jual = txtKeteranganTambahanItemJual.Text;
                 }
             }
         }
@@ -490,6 +505,10 @@ namespace OpenRetail.App.Pengaturan
         {
             txtJumlahKarakter.Enabled = false;
             txtJumlahGulung.Enabled = false;
+            chkUkuranFont.Enabled = false;
+            chkUkuranFont.Checked = false;  
+            txtUkuranFont.Enabled = false;
+            txtUkuranFont.Text = "0";
         }
 
         private void rdoJenisPrinterDotMatrix_CheckedChanged(object sender, EventArgs e)
@@ -504,6 +523,29 @@ namespace OpenRetail.App.Pengaturan
 
             txtJumlahGulung.Enabled = true;
             txtJumlahGulung.BackColor = Color.White;
+
+            chkUkuranFont.Enabled = true;
+            chkUkuranFont.Checked = _pengaturanUmum.ukuran_font > 0;
+        }
+
+        private void chkUkuranFont_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = (CheckBox)sender;
+            txtUkuranFont.Enabled = chk.Checked;
+
+            txtUkuranFont.Text = "0";
+            if (chk.Checked)
+                txtUkuranFont.Text = _pengaturanUmum.ukuran_font.ToString();
+        }
+
+        private void chkTampilkanKeteranganTambahanItemJual_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = (CheckBox)sender;
+            txtKeteranganTambahanItemJual.Enabled = chk.Checked;
+
+            txtKeteranganTambahanItemJual.Text = "Keterangan";
+            if (chk.Checked)
+                txtKeteranganTambahanItemJual.Text = _pengaturanUmum.keterangan_tambahan_item_jual;
         }
     }
 }

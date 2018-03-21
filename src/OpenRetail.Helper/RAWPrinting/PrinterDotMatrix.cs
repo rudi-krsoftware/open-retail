@@ -35,12 +35,13 @@ namespace OpenRetail.Helper.RAWPrinting
             _printerName = printerName;
         }
 
-        public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true)
+        public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, 
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0)
         {
             throw new NotImplementedException();
         }
 
-        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed)
+        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0)
         {
             throw new NotImplementedException();
         }
@@ -117,14 +118,19 @@ namespace OpenRetail.Helper.RAWPrinting
             if (namaCustomer.Length > 0)
             {
                 var alamat1 = jual.is_sdac ? jual.Customer.alamat.NullToString() : jual.kirim_alamat.NullToString();
+                var alamat2 = string.Empty;
 
-                var gabungAlamat2 = jual.Customer.Kecamatan.NullToString();
-                gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kelurahan.NullToString() : jual.Customer.kelurahan.NullToString();
-                gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kota.NullToString() : jual.Customer.kota.NullToString();
-                gabungAlamat2 += gabungAlamat2.Length > 0 ? " - " + jual.Customer.kode_pos.NullToString() : jual.Customer.kode_pos.NullToString();
+                var sb = new StringBuilder();
 
-                var alamat2 = jual.is_sdac ? gabungAlamat2 : jual.kirim_kecamatan.NullToString();
-                var alamat3 = jual.is_sdac ? jual.Customer.telepon.NullToString() : jual.kirim_kelurahan.NullToString();
+                if (jual.is_sdac)
+                {
+                    var customer = jual.Customer;
+                    alamat2 = customer == null ? string.Empty : customer.get_wilayah_lengkap;
+                }
+                else
+                {
+                    alamat2 = jual.kirim_kecamatan;
+                }
 
                 textToPrint.Append("Kepada : ").Append(namaCustomer).Append(ESCCommandHelper.LineFeed(1));
                 rowCount++;
@@ -143,13 +149,6 @@ namespace OpenRetail.Helper.RAWPrinting
                 if (alamat2.Length > 0)
                 {
                     textToPrint.Append(StringHelper.PrintChar(' ', 9)).Append(StringHelper.FixedLength(alamat2, jumlahKarakter - 10)).Append(ESCCommandHelper.LineFeed(1));
-                    rowCount++;
-                    isAddLineFeed = false;
-                }
-
-                if (alamat3.Length > 0)
-                {
-                    textToPrint.Append(StringHelper.PrintChar(' ', 9)).Append(StringHelper.FixedLength(alamat3, jumlahKarakter - 10)).Append(ESCCommandHelper.LineFeed(1));
                     rowCount++;
                     isAddLineFeed = false;
                 }
@@ -207,6 +206,9 @@ namespace OpenRetail.Helper.RAWPrinting
                 var subTotal = (item.jumlah - item.jumlah_retur) * item.harga_setelah_diskon;
                 var strSubTotal = StringHelper.RightAlignment(NumberHelper.NumberToString(subTotal), lengthSubTotal);
                 textToPrint.Append(strSubTotal).Append(ESCCommandHelper.LineFeed(1));
+
+                if (item.keterangan.Length > 0)
+                    textToPrint.Append(StringHelper.PrintChar(' ', 4)).Append(item.keterangan).Append(ESCCommandHelper.LineFeed(1));
 
                 noUrut++;
                 rowCount++;

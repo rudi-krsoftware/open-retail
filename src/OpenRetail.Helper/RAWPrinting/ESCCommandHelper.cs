@@ -106,5 +106,15 @@ namespace OpenRetail.Helper
 
             return sb.ToString();
         }
+
+        public static string FontNormal(int size)
+        {
+            var sb = new StringBuilder();
+            sb.Append((char)27); // Chr$(&H1B
+            sb.Append((char)33); // !
+            sb.Append((char)size); //
+
+            return sb.ToString();
+        }
     }
 }

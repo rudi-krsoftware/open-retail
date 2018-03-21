@@ -260,22 +260,22 @@
                           <TablixBody>
                             <TablixColumns>
                               <TablixColumn>
-                                <Width>0.3125in</Width>
+                                <Width>0.2691in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>3.375in</Width>
+                                <Width>3.59201in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>0.44792in</Width>
+                                <Width>0.40452in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>0.48958in</Width>
+                                <Width>0.44618in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>0.73958in</Width>
+                                <Width>0.69618in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>1.13542in</Width>
+                                <Width>1.09202in</Width>
                               </TablixColumn>
                             </TablixColumns>
                             <TablixRows>
@@ -540,7 +540,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Fields!nama_produk.Value</Value>
+                                                <Value>=IIf(Len(Fields!keterangan.Value) &gt; 0, Fields!nama_produk.Value &amp; " / " &amp; Fields!keterangan.Value, Fields!nama_produk.Value)</Value>
                                                 <Style>
                                                   <FontSize>8pt</FontSize>
                                                 </Style>
@@ -561,6 +561,7 @@
                                           <PaddingBottom>2pt</PaddingBottom>
                                         </Style>
                                       </Textbox>
+                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                   <TablixCell>
@@ -943,7 +944,7 @@
                           <DataSetName>DsReportPenjualanPerKasir</DataSetName>
                           <Top>1.08958in</Top>
                           <Height>0.62499in</Height>
-                          <Width>6.5in</Width>
+                          <Width>6.50001in</Width>
                           <ZIndex>8</ZIndex>
                           <Style>
                             <Border>
@@ -1239,6 +1240,10 @@
           <DataField>nama_produk</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="keterangan">
+          <DataField>keterangan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="harga_jual">
           <DataField>harga_jual</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
@@ -1270,7 +1275,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DsPenjualan</rd:DataSetName>
-        <rd:SchemaPath>D:\Data\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPenjualan.xsd</rd:SchemaPath>
+        <rd:SchemaPath>E:\Data\Project Non IC\Aplikasi Open Retail\src\OpenRetail.Report\DataSet\DsPenjualan.xsd</rd:SchemaPath>
         <rd:TableName>ReportPenjualanPerKasir</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

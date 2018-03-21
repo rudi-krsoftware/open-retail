@@ -1740,7 +1740,9 @@ CREATE TABLE m_setting_aplikasi (
     setting_aplikasi_id t_guid NOT NULL,
     is_update_harga_jual_master_produk t_bool,
     is_stok_produk_boleh_minus t_bool,
-    is_fokus_input_kolom_jumlah t_bool
+    is_fokus_input_kolom_jumlah t_bool,
+    is_tampilkan_keterangan_tambahan_item_jual t_bool,
+    keterangan_tambahan_item_jual t_keterangan
 );
 
 
@@ -1892,7 +1894,8 @@ CREATE TABLE t_item_jual_produk (
     jumlah t_jumlah,
     diskon t_jumlah,
     tanggal_sistem timestamp without time zone DEFAULT now(),
-    jumlah_retur t_jumlah
+    jumlah_retur t_jumlah,
+    keterangan t_keterangan
 );
 
 

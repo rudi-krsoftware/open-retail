@@ -40,11 +40,11 @@ namespace OpenRetail.Helper.RAWPrinting
             throw new NotImplementedException();
         }
 
-        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed)
+        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0)
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
             var textToPrint = new StringBuilder();            
-
+            
             var totalSaldoAwal = 0d;
             var totalItem = 0;
             var totalDiskon = 0d;
@@ -55,9 +55,10 @@ namespace OpenRetail.Helper.RAWPrinting
             if (!Utils.IsRunningUnderIDE())
             {
                 textToPrint.Append(ESCCommandHelper.InitializePrinter());
-                textToPrint.Append(ESCCommandHelper.LineSpacing());
-                textToPrint.Append(ESCCommandHelper.CenterText());
-            }
+
+                if (ukuranFont > 0)
+                    textToPrint.Append(ESCCommandHelper.FontNormal(ukuranFont));
+            }                
 
             // cetak header
             foreach (var header in listOfHeaderNota)
@@ -69,7 +70,7 @@ namespace OpenRetail.Helper.RAWPrinting
                         header.keterangan = StringHelper.FixedLength(header.keterangan, garisPemisah.Length);
                     }
 
-                    textToPrint.Append(header.keterangan).Append(ESCCommandHelper.LineFeed(1));
+                    textToPrint.Append(CenterText(header.keterangan.Length, jumlahKarakter)).Append(header.keterangan).Append(ESCCommandHelper.LineFeed(1));
                 }
             }
 
@@ -167,7 +168,8 @@ namespace OpenRetail.Helper.RAWPrinting
             }
         }
 
-        public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true)
+        public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota,
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0)
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
 
@@ -176,8 +178,9 @@ namespace OpenRetail.Helper.RAWPrinting
             if (!Utils.IsRunningUnderIDE())
             {
                 textToPrint.Append(ESCCommandHelper.InitializePrinter());
-                textToPrint.Append(ESCCommandHelper.LineSpacing());
-                textToPrint.Append(ESCCommandHelper.CenterText());
+
+                if (ukuranFont > 0)
+                    textToPrint.Append(ESCCommandHelper.FontNormal(ukuranFont));
             }
 
             // cetak header
@@ -190,7 +193,7 @@ namespace OpenRetail.Helper.RAWPrinting
                         header.keterangan = StringHelper.FixedLength(header.keterangan, garisPemisah.Length);
                     }
 
-                    textToPrint.Append(header.keterangan).Append(ESCCommandHelper.LineFeed(1));
+                    textToPrint.Append(CenterText(header.keterangan.Length, jumlahKarakter)).Append(header.keterangan).Append(ESCCommandHelper.LineFeed(1));
                 }
             }
 
@@ -250,6 +253,9 @@ namespace OpenRetail.Helper.RAWPrinting
                 var produk = StringHelper.FixedLength(item.Produk.nama_produk, garisPemisah.Length);
                 textToPrint.Append(produk).Append(ESCCommandHelper.LineFeed(1));
 
+                if (item.keterangan.Length > 0)
+                    textToPrint.Append(item.keterangan).Append(ESCCommandHelper.LineFeed(1));
+
                 var jumlah = StringHelper.RightAlignment(item.jumlah.ToString(), 4);
                 textToPrint.Append(jumlah);
 
@@ -307,11 +313,6 @@ namespace OpenRetail.Helper.RAWPrinting
             // cetak garis
             textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(2));
 
-            if (!Utils.IsRunningUnderIDE())
-            {
-                textToPrint.Append(ESCCommandHelper.CenterText());
-            }
-
             // cetak footer
             foreach (var footer in listOfFooterNota)
             {
@@ -321,8 +322,8 @@ namespace OpenRetail.Helper.RAWPrinting
                     {
                         footer.keterangan = StringHelper.FixedLength(footer.keterangan, garisPemisah.Length);
                     }
-
-                    textToPrint.Append(footer.keterangan).Append(ESCCommandHelper.LineFeed(1));
+                    
+                    textToPrint.Append(CenterText(footer.keterangan.Length, jumlahKarakter)).Append(footer.keterangan).Append(ESCCommandHelper.LineFeed(1));
                 }
             }
 
@@ -336,6 +337,15 @@ namespace OpenRetail.Helper.RAWPrinting
             {
                 RawPrintHelper.SendStringToFile(textToPrint.ToString());
             }
-        }        
+        }
+
+        private string CenterText(int panjangString, int jumlahKarakter)
+        {
+            var div = (double)(jumlahKarakter - panjangString) / 2;
+            var posisiTengah = Math.Ceiling(div);
+            var result = StringHelper.PrintChar(' ', Convert.ToInt32(posisiTengah));
+
+            return result;
+        }
     }
 }

@@ -36,5 +36,7 @@ namespace OpenRetail.Model
         public bool is_update_harga_jual_master_produk { get; set; }
         public bool is_stok_produk_boleh_minus { get; set; }
         public bool is_fokus_input_kolom_jumlah { get; set; }
+        public bool is_tampilkan_keterangan_tambahan_item_jual { get; set; }
+        public string keterangan_tambahan_item_jual { get; set; }
     }
 }

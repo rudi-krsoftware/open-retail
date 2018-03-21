@@ -20,25 +20,25 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.41389in</Width>
+              <Width>0.40496in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.99107in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.4125in</Width>
+              <Width>2.40357in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.61321in</Width>
+              <Width>0.60428in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.48889in</Width>
+              <Width>0.47996in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.83403in</Width>
+              <Width>0.8251in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.01806in</Width>
+              <Width>1.00913in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -557,7 +557,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!nama_produk.Value</Value>
+                              <Value>=IIf(Len(Fields!keterangan_item.Value) &gt; 0, Fields!nama_produk.Value &amp; " / " &amp; Fields!keterangan_item.Value, Fields!nama_produk.Value)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -598,6 +598,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -844,7 +845,7 @@
         <DataSetName>NotaPenjualan</DataSetName>
         <Top>2.30292in</Top>
         <Height>0.375in</Height>
-        <Width>6.78058in</Width>
+        <Width>6.71808in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1964,7 +1965,7 @@
     <Height>10.58015cm</Height>
     <Style />
   </Body>
-  <Width>17.22267cm</Width>
+  <Width>17.145cm</Width>
   <Page>
     <PageHeight>27.94cm</PageHeight>
     <PageWidth>20.32cm</PageWidth>
@@ -2110,6 +2111,10 @@
         </Field>
         <Field Name="nama_produk">
           <DataField>nama_produk</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="keterangan_item">
+          <DataField>keterangan_item</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="satuan">

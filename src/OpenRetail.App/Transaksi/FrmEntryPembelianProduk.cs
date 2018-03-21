@@ -501,7 +501,7 @@ namespace OpenRetail.App.Transaksi
             {
                 var produk = (Produk)data;
 
-                SetItemProduk(this.gridControl, _rowIndex, _colIndex + 1, produk);
+                SetItemProduk(this.gridControl, _rowIndex, produk);
                 this.gridControl.Refresh();
                 RefreshTotal();
 
@@ -570,7 +570,7 @@ namespace OpenRetail.App.Transaksi
             }
         }
 
-        private void SetItemProduk(GridControl grid, int rowIndex, int colIndex, Produk produk, double jumlah = 1, double harga = 0, double diskon = 0)
+        private void SetItemProduk(GridControl grid, int rowIndex, Produk produk, double jumlah = 1, double harga = 0, double diskon = 0)
         {
             ItemBeliProduk itemBeli;
 
@@ -639,7 +639,7 @@ namespace OpenRetail.App.Transaksi
 
                             _isValidKodeProduk = true;
 
-                            SetItemProduk(grid, rowIndex, colIndex, produk);
+                            SetItemProduk(grid, rowIndex, produk);
                             grid.Refresh();
                             RefreshTotal();
 
@@ -666,7 +666,7 @@ namespace OpenRetail.App.Transaksi
                             {
                                 produk = listOfProduk[0];
 
-                                SetItemProduk(grid, rowIndex, colIndex, produk);
+                                SetItemProduk(grid, rowIndex, produk);
                                 grid.Refresh();
                                 RefreshTotal();
 
@@ -758,7 +758,7 @@ namespace OpenRetail.App.Transaksi
                         break;
                 }
 
-                SetItemProduk(grid, cc.RowIndex, cc.ColIndex, produk, itemBeli.jumlah, itemBeli.harga, itemBeli.diskon);
+                SetItemProduk(grid, cc.RowIndex, produk, itemBeli.jumlah, itemBeli.harga, itemBeli.diskon);
                 grid.Refresh();
 
                 RefreshTotal();

@@ -138,6 +138,13 @@ namespace OpenRetail.App.Cashier.Pengaturan
             // setting khusus printer mini pos            
             txtJumlahKarakter.Text = _pengaturanUmum.jumlah_karakter.ToString();
             txtJumlahGulung.Text = _pengaturanUmum.jumlah_gulung.ToString();
+
+            if (rdoJenisPrinterMiniPOS.Checked)
+            {
+                chkUkuranFont.Checked = _pengaturanUmum.ukuran_font > 0;
+                txtUkuranFont.Text = _pengaturanUmum.ukuran_font.ToString();
+                txtUkuranFont.Enabled = chkUkuranFont.Checked;
+            }
         }
 
         protected override void Simpan()
@@ -176,7 +183,8 @@ namespace OpenRetail.App.Cashier.Pengaturan
 
             _pengaturanUmum.jenis_printer = jenisPrinter;
             _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
-            _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);            
+            _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
+            _pengaturanUmum.ukuran_font = Convert.ToInt32(txtUkuranFont.Text);                
 
             // simpan info printer
             AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
@@ -186,6 +194,7 @@ namespace OpenRetail.App.Cashier.Pengaturan
             // simpan info printer mini pos
             AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
             AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
+            AppConfigHelper.SaveValue("ukuranFont", txtUkuranFont.Text, appConfigFile);
         }
 
         private void SimpanHeaderNota()
@@ -240,14 +249,37 @@ namespace OpenRetail.App.Cashier.Pengaturan
         {
             txtJumlahKarakter.Enabled = false;
             txtJumlahGulung.Enabled = false;
-            groupBox4.Enabled = false;  
+            chkUkuranFont.Enabled = false;
+            chkUkuranFont.Checked = false;
+            txtUkuranFont.Enabled = false;
+            txtUkuranFont.Text = "0";
+
+            groupBox4.Enabled = false;            
         }
 
         private void rdoJenisPrinterMiniPOS_CheckedChanged(object sender, EventArgs e)
         {
             txtJumlahKarakter.Enabled = true;
+            txtJumlahKarakter.BackColor = Color.White;
+
             txtJumlahGulung.Enabled = true;
+            txtJumlahGulung.BackColor = Color.White;
+
+            chkUkuranFont.Enabled = true;
+            chkUkuranFont.Checked = _pengaturanUmum.ukuran_font > 0;
+
             groupBox4.Enabled = true;
+
+        }
+
+        private void chkUkuranFont_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = (CheckBox)sender;
+            txtUkuranFont.Enabled = chk.Checked;
+
+            txtUkuranFont.Text = "0";
+            if (chk.Checked)
+                txtUkuranFont.Text = _pengaturanUmum.ukuran_font.ToString();
         }
     }
 }

@@ -116,8 +116,6 @@ namespace OpenRetail.App.Transaksi
                 gridListProperties.Add(new GridListControlProperties { Header = "Cetak Nota", Width = 80 });
             }
 
-            
-
             GridListControlHelper.InitializeGridListControl<JualProduk>(this.gridList, _listOfJual, gridListProperties, false, rowHeight: 40);
 
             if (_pengaturanUmum.jenis_printer == JenisPrinter.InkJet)
@@ -346,7 +344,8 @@ namespace OpenRetail.App.Transaksi
         private void CetakNotaMiniPOS(JualProduk jual)
         {
             IRAWPrinting printerMiniPos = new PrinterMiniPOS(_pengaturanUmum.nama_printer);
-            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer);
+            printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, 
+                _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer, ukuranFont: _pengaturanUmum.ukuran_font);
         }
 
         private void CetakNotaDotMatrix(JualProduk jual)
@@ -379,7 +378,7 @@ namespace OpenRetail.App.Transaksi
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                _listOfJual = _bll.GetByName(customerName, _pageNumber, _pageSize, ref _pagesCount);
+                _listOfJual = _bll.GetByName(customerName, _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual, _pageNumber, _pageSize, ref _pagesCount);
                 GridListControlHelper.Refresh<JualProduk>(this.gridList, _listOfJual);
 
                 base.SetInfoHalaman(_pageNumber, _pagesCount);
