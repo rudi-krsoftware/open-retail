@@ -313,7 +313,7 @@ namespace OpenRetail.App.Cashier.Transaksi
             ((Timer)sender).Enabled = false;
         }
 
-        private void SetItemProduk(GridControl grid, int rowIndex, int colIndex, Produk produk,
+        private void SetItemProduk(GridControl grid, int rowIndex, Produk produk,
             double jumlah = 1, double harga = 0, double diskon = 0, string keterangan = "")
         {
             var itemJual = new ItemJualProduk();
@@ -465,7 +465,7 @@ namespace OpenRetail.App.Cashier.Transaksi
                             }
                             else
                             {
-                                SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
+                                SetItemProduk(grid, rowIndex, produk, diskon: diskon);
 
                                 if (grid.RowCount == rowIndex)
                                 {
@@ -549,7 +549,7 @@ namespace OpenRetail.App.Cashier.Transaksi
                             }
                             else
                             {
-                                SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
+                                SetItemProduk(grid, rowIndex, produk, diskon: diskon);
 
                                 if (grid.RowCount == rowIndex)
                                 {
@@ -726,7 +726,7 @@ namespace OpenRetail.App.Cashier.Transaksi
                         break;
                 }
 
-                SetItemProduk(grid, cc.RowIndex, cc.ColIndex, produk, itemJual.jumlah, itemJual.harga_jual, itemJual.diskon, itemJual.keterangan);
+                SetItemProduk(grid, cc.RowIndex, produk, itemJual.jumlah, itemJual.harga_jual, itemJual.diskon, itemJual.keterangan);
                 grid.Refresh();
 
                 RefreshTotal();
@@ -1001,7 +1001,7 @@ namespace OpenRetail.App.Cashier.Transaksi
                 }
                 else
                 {
-                    SetItemProduk(this.gridControl, _rowIndex, _colIndex + 1, produk, diskon: diskon);
+                    SetItemProduk(this.gridControl, _rowIndex, produk, diskon: diskon);
 
                     if (this.gridControl.RowCount == _rowIndex)
                     {

@@ -385,7 +385,7 @@ namespace OpenRetail.App.Transaksi
 
                 if (!IsExist(produk.produk_id))
                 {
-                    SetItemProduk(this.gridControl, _rowIndex, _colIndex + 1, itemJual, itemJual.jumlah - itemJual.jumlah_retur, itemJual.harga_jual);
+                    SetItemProduk(this.gridControl, _rowIndex, itemJual, itemJual.jumlah - itemJual.jumlah_retur, itemJual.harga_jual);
                     this.gridControl.Refresh();
                     RefreshTotal();
 
@@ -520,7 +520,7 @@ namespace OpenRetail.App.Transaksi
 
                             if (!IsExist(itemJual.produk_id))
                             {
-                                SetItemProduk(grid, rowIndex, colIndex, itemJual, itemJual.jumlah - itemJual.jumlah_retur, itemJual.harga_jual);
+                                SetItemProduk(grid, rowIndex, itemJual, itemJual.jumlah - itemJual.jumlah_retur, itemJual.harga_jual);
                                 grid.Refresh();
 
                                 RefreshTotal();
@@ -556,7 +556,7 @@ namespace OpenRetail.App.Transaksi
 
                                 if (!IsExist(itemJual.produk_id))
                                 {
-                                    SetItemProduk(grid, rowIndex, colIndex, itemJual, itemJual.jumlah - itemJual.jumlah_retur, itemJual.harga_jual);
+                                    SetItemProduk(grid, rowIndex, itemJual, itemJual.jumlah - itemJual.jumlah_retur, itemJual.harga_jual);
                                     grid.Refresh();
 
                                     GridListControlHelper.SetCurrentCell(grid, rowIndex, colIndex + 1);
@@ -637,7 +637,7 @@ namespace OpenRetail.App.Transaksi
             }
         }
 
-        private void SetItemProduk(GridControl grid, int rowIndex, int colIndex, ItemJualProduk itemJual, double jumlahRetur = 0, double harga = 0)
+        private void SetItemProduk(GridControl grid, int rowIndex, ItemJualProduk itemJual, double jumlahRetur = 0, double harga = 0)
         {
             ItemReturJualProduk itemRetur;
 
@@ -698,7 +698,7 @@ namespace OpenRetail.App.Transaksi
                             break;
                     }
 
-                    SetItemProduk(grid, cc.RowIndex, cc.ColIndex, itemJual, obj.jumlah_retur, obj.harga_jual);
+                    SetItemProduk(grid, cc.RowIndex, itemJual, obj.jumlah_retur, obj.harga_jual);
                     grid.Refresh();
 
                     RefreshTotal();

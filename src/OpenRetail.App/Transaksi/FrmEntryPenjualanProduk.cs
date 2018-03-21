@@ -798,7 +798,7 @@ namespace OpenRetail.App.Transaksi
                 }
                 else
                 {
-                    SetItemProduk(this.gridControl, _rowIndex, _colIndex + 1, produk, diskon: diskon);
+                    SetItemProduk(this.gridControl, _rowIndex, produk, diskon: diskon);
 
                     if (this.gridControl.RowCount == _rowIndex)
                     {
@@ -924,7 +924,7 @@ namespace OpenRetail.App.Transaksi
             }
         }        
 
-        private void SetItemProduk(GridControl grid, int rowIndex, int colIndex, Produk produk, 
+        private void SetItemProduk(GridControl grid, int rowIndex, Produk produk, 
             double jumlah = 1, double harga = 0, double diskon = 0, string keterangan = "")
         {
             ItemJualProduk itemJual;
@@ -1046,7 +1046,7 @@ namespace OpenRetail.App.Transaksi
                             }
                             else
                             {
-                                SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
+                                SetItemProduk(grid, rowIndex, produk, diskon: diskon);
 
                                 if (grid.RowCount == rowIndex)
                                 {
@@ -1132,7 +1132,7 @@ namespace OpenRetail.App.Transaksi
                             }
                             else
                             {
-                                SetItemProduk(grid, rowIndex, colIndex, produk, diskon: diskon);
+                                SetItemProduk(grid, rowIndex, produk, diskon: diskon);
 
                                 if (grid.RowCount == rowIndex)
                                 {
@@ -1305,7 +1305,7 @@ namespace OpenRetail.App.Transaksi
                         break;
                 }
                 
-                SetItemProduk(grid, cc.RowIndex, cc.ColIndex, produk, itemJual.jumlah, itemJual.harga_jual, itemJual.diskon, itemJual.keterangan);
+                SetItemProduk(grid, cc.RowIndex, produk, itemJual.jumlah, itemJual.harga_jual, itemJual.diskon, itemJual.keterangan);
                 grid.Refresh();
 
                 RefreshTotal();
