@@ -147,7 +147,7 @@ namespace OpenRetail.App.Referensi
             {
                 _listOfKaryawan = _bll.GetAll();
 
-                IJabatanBll jabatanBll = new JabatanBll(_log);
+                IJabatanBll jabatanBll = new JabatanBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 _listOfJabatan = jabatanBll.GetAll();
             }
 
