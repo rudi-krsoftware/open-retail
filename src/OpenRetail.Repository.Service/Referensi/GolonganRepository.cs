@@ -100,7 +100,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                obj.golongan_id = _context.GetGUID();
+                if (obj.golongan_id == null)
+                    obj.golongan_id = _context.GetGUID();
 
                 _context.db.Insert<Golongan>(obj);
                 result = 1;

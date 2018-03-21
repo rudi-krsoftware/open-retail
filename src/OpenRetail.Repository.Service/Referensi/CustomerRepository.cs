@@ -181,7 +181,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                obj.customer_id = _context.GetGUID();
+                if (obj.customer_id == null)
+                    obj.customer_id = _context.GetGUID();
 
                 _context.db.Insert<Customer>(obj);
                 result = 1;

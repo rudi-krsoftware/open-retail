@@ -69,11 +69,9 @@ namespace OpenRetail.Model
 		[Display(Name = "jenis_pengeluaran_id")]
 		public string jenis_pengeluaran_id { get; set; }
 
-        [JsonIgnore]
 		[Write(false)]
         public JenisPengeluaran JenisPengeluaran { get; set; }
 
-        [JsonIgnore]
         [Write(false)]
         public EntityState entity_state { get; set; }
 	}

@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace OpenRetail.Model
 {
@@ -61,7 +62,8 @@ namespace OpenRetail.Model
         [Display(Name = "is_active")]
         public bool is_active { get; set; }
 
-        [Write(false)]
+        [JsonIgnore]
+        [Write(false)]        
         [Display(Name = "Keterangan")]
         public string keterangan { get; set; }
 
@@ -70,7 +72,7 @@ namespace OpenRetail.Model
 
         [Display(Name = "Gaji Lembur")]
         public double gaji_lembur { get; set; }
-
+        
         [Computed]
         [Display(Name = "total_kasbon")]
         public double total_kasbon { get; set; }

@@ -33,6 +33,8 @@ namespace OpenRetail.Repository.Service
     {
         private IDapperContext _context;
         private ILog _log;
+        private bool _isUseWebAPI;
+        private string _baseUrl = string.Empty;
 
         private IDatabaseVersionRepository _databaseversionRepository;
         private IKartuRepository _kartuRepository;
@@ -103,6 +105,13 @@ namespace OpenRetail.Repository.Service
             this._log = log;
         }
 
+        public UnitOfWork(bool isUseWebAPI, string baseUrl, ILog log)
+        {
+            this._isUseWebAPI = isUseWebAPI;
+            this._baseUrl = baseUrl;
+            this._log = log;            
+        }
+
         public IDatabaseVersionRepository DatabaseVersionRepository
         {
             get { return _databaseversionRepository ?? (_databaseversionRepository = new DatabaseVersionRepository(_context, _log)); }
@@ -120,17 +129,62 @@ namespace OpenRetail.Repository.Service
 
         public IJabatanRepository JabatanRepository
         {
-            get { return _jabatanRepository ?? (_jabatanRepository = new JabatanRepository(_context, _log)); }
+            get
+            {
+                if (_jabatanRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _jabatanRepository = new JabatanWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _jabatanRepository = new JabatanRepository(_context, _log);
+                    }
+                }
+
+                return _jabatanRepository;
+            }
         }
 
         public IJenisPengeluaranRepository JenisPengeluaranRepository
         {
-            get { return _jenispengeluaranRepository ?? (_jenispengeluaranRepository = new JenisPengeluaranRepository(_context, _log)); }
+            get 
+            { 
+                if (_jenispengeluaranRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _jenispengeluaranRepository = new JenisPengeluaranWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _jenispengeluaranRepository = new JenisPengeluaranRepository(_context, _log);
+                    }
+                }
+
+                return _jenispengeluaranRepository;
+            }
         }
 
         public IGolonganRepository GolonganRepository
         {
-            get { return _golonganRepository ?? (_golonganRepository = new GolonganRepository(_context, _log)); }
+            get 
+            {
+                if (_golonganRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _golonganRepository = new GolonganWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _golonganRepository = new GolonganRepository(_context, _log);
+                    }
+                }                
+
+                return _golonganRepository;
+            }
         }
 
         public ISettingAplikasiRepository SettingAplikasiRepository
@@ -140,7 +194,22 @@ namespace OpenRetail.Repository.Service
 
         public IProdukRepository ProdukRepository
         {
-            get { return _produkRepository ?? (_produkRepository = new ProdukRepository(_context, _log)); }
+            get
+            {
+                if (_produkRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _produkRepository = new ProdukWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _produkRepository = new ProdukRepository(_context, _log);
+                    }
+                }
+
+                return _produkRepository;
+            }
         }
 
         public IHargaGrosirRepository HargaGrosirRepository
@@ -150,12 +219,42 @@ namespace OpenRetail.Repository.Service
 
         public ICustomerRepository CustomerRepository
         {
-            get { return _customerRepository ?? (_customerRepository = new CustomerRepository(_context, _log)); }
+            get
+            {
+                if (_customerRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _customerRepository = new CustomerWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _customerRepository = new CustomerRepository(_context, _log);
+                    }
+                }
+
+                return _customerRepository;
+            }
         }
 
         public ISupplierRepository SupplierRepository
         {
-            get { return _supplierRepository ?? (_supplierRepository = new SupplierRepository(_context, _log)); }
+            get
+            {
+                if (_supplierRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _supplierRepository = new SupplierWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _supplierRepository = new SupplierRepository(_context, _log);
+                    }
+                }
+
+                return _supplierRepository;
+            }
         }
 
         public IDropshipperRepository DropshipperRepository
@@ -165,7 +264,22 @@ namespace OpenRetail.Repository.Service
 
         public IKaryawanRepository KaryawanRepository
         {
-            get { return _karyawanRepository ?? (_karyawanRepository = new KaryawanRepository(_context, _log)); }
+            get
+            {
+                if (_karyawanRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _karyawanRepository = new KaryawanWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _karyawanRepository = new KaryawanRepository(_context, _log);
+                    }
+                }
+
+                return _karyawanRepository;
+            }
         }
 
         public IBeliProdukRepository BeliProdukRepository
@@ -310,7 +424,22 @@ namespace OpenRetail.Repository.Service
 
         public IPengeluaranBiayaRepository PengeluaranBiayaRepository
         {
-            get { return _pengeluaranbiayaRepository ?? (_pengeluaranbiayaRepository = new PengeluaranBiayaRepository(_context, _log)); }
+            get
+            {
+                if (_pengeluaranbiayaRepository == null)
+                {
+                    if (_isUseWebAPI)
+                    {
+                        _pengeluaranbiayaRepository = new PengeluaranBiayaWebAPIRepository(_baseUrl, _log);
+                    }
+                    else
+                    {
+                        _pengeluaranbiayaRepository = new PengeluaranBiayaRepository(_context, _log);
+                    }
+                }
+
+                return _pengeluaranbiayaRepository;
+            }
         }
 
         public IReportPengeluaranBiayaRepository ReportPengeluaranBiayaRepository

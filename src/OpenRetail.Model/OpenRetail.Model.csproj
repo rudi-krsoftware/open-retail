@@ -72,7 +72,7 @@
     <Compile Include="Referensi\HargaGrosir.cs" />
     <Compile Include="Transaksi\HeaderNota.cs" />
     <Compile Include="Transaksi\HeaderNotaMiniPos.cs" />
-    <Compile Include="Transaksi\ItemPengeluaranBiaya.cs" />
+    <Compile Include="Pengeluaran\ItemPengeluaranBiaya.cs" />
     <Compile Include="Referensi\Kabupaten.cs" />
     <Compile Include="Referensi\KabupatenRajaOngkir.cs" />
     <Compile Include="Referensi\KabupatenAsalRajaOngkir.cs" />
@@ -168,6 +168,9 @@
     <Compile Include="Referensi\Shift.cs" />
     <Compile Include="Referensi\Supplier.cs" />
     <Compile Include="ValidationError.cs" />
+    <Compile Include="WebAPI\OpenRetailWebApiGetResponse.cs" />
+    <Compile Include="WebAPI\OpenRetailWebApiPostResponse.cs" />
+    <Compile Include="WebAPI\Status.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

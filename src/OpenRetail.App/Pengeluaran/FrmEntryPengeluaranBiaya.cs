@@ -258,7 +258,7 @@ namespace OpenRetail.App.Pengeluaran
             _pengeluaran.item_pengeluaran_biaya = this._listOfItemPengeluaran.Where(f => f.JenisPengeluaran != null).ToList();
 
             if (!_isNewData) // update
-                _pengeluaran.item_pengeluaran_biaya_deleted = _listOfItemPengeluaranDeleted;
+                _pengeluaran.item_pengeluaran_biaya_deleted = _listOfItemPengeluaranDeleted.ToList();
 
             var result = 0;
             var validationError = new ValidationError();
@@ -418,7 +418,7 @@ namespace OpenRetail.App.Pengeluaran
                         GridCurrentCell cc = grid.CurrentCell;
                         var namaProduk = cc.Renderer.ControlValue.ToString();
 
-                        IJenisPengeluaranBll bll = new JenisPengeluaranBll(_log);
+                        IJenisPengeluaranBll bll = new JenisPengeluaranBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                         var listOfJenisPengeluaran = bll.GetByName(namaProduk);
 
                         if (listOfJenisPengeluaran.Count == 0)
@@ -535,7 +535,7 @@ namespace OpenRetail.App.Pengeluaran
                 return;
             }
 
-            IJenisPengeluaranBll jenisPengeluaranBll = new JenisPengeluaranBll(_log);
+            IJenisPengeluaranBll jenisPengeluaranBll = new JenisPengeluaranBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             var frmEntryJenisPengeluaran = new FrmEntryJenisPengeluaran("Tambah Data Jenis Biaya", jenisPengeluaranBll);
             frmEntryJenisPengeluaran.Listener = this;
             frmEntryJenisPengeluaran.ShowDialog();

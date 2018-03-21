@@ -68,6 +68,8 @@ namespace OpenRetail.App
         /// </summary>
         public static int pageSize = 200; // nilai default 50 record perhalaman
 
+        public static bool isUseWebAPI = true;
+        public static string baseUrl = "http://localhost:50472/";
         public static Profil profil = null;
         public static Pengguna pengguna = null;
         public static PengaturanUmum pengaturanUmum = null;
@@ -85,6 +87,8 @@ namespace OpenRetail.App
         {
             if (!Utils.IsRunningUnderIDE())
             {
+                isUseWebAPI = false;
+
                 Application.ThreadException += delegate(object sender, ThreadExceptionEventArgs e)
                 {
                     ReportCrash(e.Exception);

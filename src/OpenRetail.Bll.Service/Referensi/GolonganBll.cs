@@ -33,7 +33,11 @@ namespace OpenRetail.Bll.Service
     public class GolonganBll : IGolonganBll
     {
         private ILog _log;
-		private GolonganValidator _validator;
+        private IUnitOfWork _unitOfWork;
+        private GolonganValidator _validator;
+
+        private bool _isUseWebAPI;
+        private string _baseUrl;		
 
         public GolonganBll(ILog log)
         {
@@ -41,15 +45,30 @@ namespace OpenRetail.Bll.Service
             _validator = new GolonganValidator();
         }
 
+        public GolonganBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
+        }
+
         public Golongan GetByID(string id)
         {
             Golongan obj = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.GolonganRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.GolonganRepository.GetByID(id);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.GolonganRepository.GetByID(id);
+                }
+            }            
 
             return obj;
         }
@@ -58,11 +77,19 @@ namespace OpenRetail.Bll.Service
         {
             IList<Golongan> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.GolonganRepository.GetByName(name);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.GolonganRepository.GetByName(name);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.GolonganRepository.GetByName(name);
+                }
+            }            
 
             return oList;
         }
@@ -71,11 +98,19 @@ namespace OpenRetail.Bll.Service
         {
             IList<Golongan> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.GolonganRepository.GetAll();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.GolonganRepository.GetAll();
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.GolonganRepository.GetAll();
+                }
+            }            
 
             return oList;
         }
@@ -84,11 +119,21 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.GolonganRepository.Save(obj);
+                obj.golongan_id = Guid.NewGuid().ToString();
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);                
+                result = _unitOfWork.GolonganRepository.Save(obj);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.GolonganRepository.Save(obj);
+                }
+            }            
 
             return result;
         }
@@ -114,11 +159,19 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.GolonganRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.GolonganRepository.Update(obj);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.GolonganRepository.Update(obj);
+                }
+            }            
 
             return result;
         }
@@ -143,12 +196,20 @@ namespace OpenRetail.Bll.Service
         public int Delete(Golongan obj)
         {
             var result = 0;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.GolonganRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.GolonganRepository.Delete(obj);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.GolonganRepository.Delete(obj);
+                }
+            }            
 
             return result;
         }
