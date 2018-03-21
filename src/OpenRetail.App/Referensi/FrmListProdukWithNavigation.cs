@@ -70,7 +70,7 @@ namespace OpenRetail.App.Referensi
 
             _pageSize = MainProgram.pageSize;
             _log = MainProgram.log;
-            _bll = new ProdukBll(_log);
+            _bll = new ProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _pengguna = pengguna;
             _menuId = menuId;
 
