@@ -36,8 +36,8 @@ namespace OpenRetail.Helper.RAWPrinting
         /// <param name="listOfFooterNota">list objek footer nota</param>        
         /// <param name="jumlahKarakter">maksimal jumlah karakter yang tercetak</param>
         /// <param name="lineFeed">jumlah gulung kertas setelah pencetakan selesai</param>
-        void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, 
-            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0);
+        void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota,
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0, string infoCopyright1 = "", string infoCopyright2 = "");
 
         /// <summary>
         /// Override method untuk mencetak laporan kasir menggunakan printer mini pos
@@ -45,7 +45,8 @@ namespace OpenRetail.Helper.RAWPrinting
         /// <param name="listOfMesinKasir"></param>
         /// <param name="listOfHeaderNota"></param>
         /// <param name="jumlahKarakter"></param>
-        void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0);
+        void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0,
+            string infoCopyright1 = "", string infoCopyright2 = "");
 
         /// <summary>
         /// Override method untuk mencetak nota jual menggunakan printer dot matrix
@@ -54,6 +55,6 @@ namespace OpenRetail.Helper.RAWPrinting
         /// <param name="listOfHeaderNota">List of header nota</param>
         /// <param name="jumlahBaris">Maksimal jumlah baris yang tercetak dalam satu halaman</param>
         /// <param name="jumlahKarakter">Maksimal jumlah karakter/kolom</param>
-        void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80, bool isCetakKeteranganNota = true);
+        void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80, bool isCetakKeteranganNota = true, string infoCopyright = "");
     }
 }

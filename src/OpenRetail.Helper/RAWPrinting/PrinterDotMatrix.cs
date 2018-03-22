@@ -35,18 +35,19 @@ namespace OpenRetail.Helper.RAWPrinting
             _printerName = printerName;
         }
 
-        public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota, 
-            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0)
+        public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota,
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0, string infoCopyright1 = "", string infoCopyright2 = "")
         {
             throw new NotImplementedException();
         }
 
-        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0)
+        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0,
+            string infoCopyright1 = "", string infoCopyright2 = "")
         {
             throw new NotImplementedException();
         }
 
-        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80, bool isCetakKeteranganNota = true)
+        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80, bool isCetakKeteranganNota = true, string infoCopyright = "")
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
 
@@ -263,6 +264,7 @@ namespace OpenRetail.Helper.RAWPrinting
 
             if (isCetakKeteranganNota && jual.keterangan.Length > 0)
             {
+                textToPrint.Append(ESCCommandHelper.LineFeed(1));
                 textToPrint.Append(ESCCommandHelper.LineFeed(1)).Append("Keterangan: ").Append(ESCCommandHelper.LineFeed(1));
                 textToPrint.Append("* ");
 
@@ -272,6 +274,18 @@ namespace OpenRetail.Helper.RAWPrinting
                     textToPrint.Append(ket).Append(ESCCommandHelper.LineFeed(1));
                 }
 
+            }
+
+            if (infoCopyright.Length > 0)
+            {
+                textToPrint.Append(ESCCommandHelper.LineFeed(1));
+
+                if (!Utils.IsRunningUnderIDE())
+                {
+                    textToPrint.Append(ESCCommandHelper.CenterText());
+                }
+
+                textToPrint.Append(infoCopyright).Append(ESCCommandHelper.LineFeed(1));
             }
 
             rowCount += 6;

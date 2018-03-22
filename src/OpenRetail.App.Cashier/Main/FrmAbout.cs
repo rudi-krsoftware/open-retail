@@ -41,13 +41,11 @@ namespace OpenRetail.App.Cashier.Main
 
         private void ShowInfoAbout()
         {
-            var version = Utils.GetCurrentVersion("OpenRetail");
-
             var firstReleaseYear = 2017;
             var currentYear = DateTime.Today.Year;
             var copyright = currentYear > firstReleaseYear ? string.Format("{0} - {1}", firstReleaseYear, currentYear) : firstReleaseYear.ToString();
 
-            lblVersion.Text = string.Format("Version {0}{1}", version, MainProgram.stageOfDevelopment);
+            lblVersion.Text = string.Format("Version {0}{1}", MainProgram.currentVersion, MainProgram.stageOfDevelopment);
             lblCopyright.Text = string.Format("Copyright © {0} Kamarudin | Email: rudi.krsoftware@gmail.com | Phone: +62 813 8176 9915", copyright);
 
             lblUrl1.Text = "https://github.com/rudi-krsoftware/open-retail";

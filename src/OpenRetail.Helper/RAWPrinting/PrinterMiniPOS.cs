@@ -35,12 +35,13 @@ namespace OpenRetail.Helper.RAWPrinting
             _printerName = printerName;
         }
 
-        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80, bool isCetakKeteranganNota = true)
+        public void Cetak(JualProduk jual, IList<HeaderNota> listOfHeaderNota, int jumlahBaris = 29, int jumlahKarakter = 80, bool isCetakKeteranganNota = true, string infoCopyright = "")
         {
             throw new NotImplementedException();
         }
 
-        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0)
+        public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0,
+            string infoCopyright1 = "", string infoCopyright2 = "")
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
             var textToPrint = new StringBuilder();            
@@ -156,6 +157,13 @@ namespace OpenRetail.Helper.RAWPrinting
                 textToPrint.Append(">> Belum ada transaksi <<").Append(ESCCommandHelper.LineFeed(1));
             }            
 
+            if (infoCopyright1.Length > 0)
+            {
+                textToPrint.Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append(CenterText(infoCopyright1.Length, jumlahKarakter)).Append(infoCopyright1).Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append(CenterText(infoCopyright2.Length, jumlahKarakter)).Append(infoCopyright2).Append(ESCCommandHelper.LineFeed(1));
+            }
+
             textToPrint.Append(ESCCommandHelper.LineFeed(lineFeed));
 
             if (!Utils.IsRunningUnderIDE())
@@ -169,7 +177,7 @@ namespace OpenRetail.Helper.RAWPrinting
         }
 
         public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota,
-            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0)
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0, string infoCopyright1 = "", string infoCopyright2 = "")
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
 
@@ -325,6 +333,13 @@ namespace OpenRetail.Helper.RAWPrinting
                     
                     textToPrint.Append(CenterText(footer.keterangan.Length, jumlahKarakter)).Append(footer.keterangan).Append(ESCCommandHelper.LineFeed(1));
                 }
+            }
+
+            if (infoCopyright1.Length > 0)
+            {
+                textToPrint.Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append(CenterText(infoCopyright1.Length, jumlahKarakter)).Append(infoCopyright1).Append(ESCCommandHelper.LineFeed(1));
+                textToPrint.Append(CenterText(infoCopyright2.Length, jumlahKarakter)).Append(infoCopyright2).Append(ESCCommandHelper.LineFeed(1));
             }
 
             textToPrint.Append(ESCCommandHelper.LineFeed(lineFeed));

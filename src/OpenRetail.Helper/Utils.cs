@@ -52,7 +52,7 @@ namespace OpenRetail.Helper
         /// </summary>
         /// <param name="appExe">Assembly name</param>
         /// <returns></returns>
-        public static string GetCurrentVersion(string appExe)
+        public static string GetCurrentVersion()
         {
             var fvi = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
             var version = fvi.ProductMajorPart + "." + fvi.ProductMinorPart + "." + fvi.ProductBuildPart;

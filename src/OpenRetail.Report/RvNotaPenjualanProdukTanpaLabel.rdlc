@@ -830,7 +830,7 @@
         <DataSetName>NotaPenjualan</DataSetName>
         <Top>2.15292in</Top>
         <Height>0.375in</Height>
-        <Width>6.71946in</Width>
+        <Width>6.71947in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1948,8 +1948,41 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="infoCopyright">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!infoCopyright.Value</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>infoCopyright</rd:DefaultName>
+        <Top>10.16387cm</Top>
+        <Left>0.00001cm</Left>
+        <Height>0.50475cm</Height>
+        <Width>17.14499cm</Width>
+        <ZIndex>36</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>10.1039cm</Height>
+    <Height>10.66862cm</Height>
     <Style />
   </Body>
   <Width>17.22267cm</Width>
@@ -2217,6 +2250,12 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="kota">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="infoCopyright">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
