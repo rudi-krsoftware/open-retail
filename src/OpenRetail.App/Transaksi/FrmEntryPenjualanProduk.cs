@@ -81,6 +81,7 @@ namespace OpenRetail.App.Transaksi
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
             dtpTanggalTempo.Value = dtpTanggal.Value;
+            btnPreviewNota.Visible = _pengaturanUmum.jenis_printer == JenisPrinter.InkJet;
 
             SetPengaturanPrinter();
 
@@ -109,6 +110,7 @@ namespace OpenRetail.App.Transaksi
             txtNota.Text = this._jual.nota;
             dtpTanggal.Value = (DateTime)this._jual.tanggal;
             dtpTanggalTempo.Value = dtpTanggal.Value;
+            btnPreviewNota.Visible = _pengaturanUmum.jenis_printer == JenisPrinter.InkJet;
                         
             chkDropship.Checked = this._jual.is_dropship;
             SetPengaturanPrinter();
