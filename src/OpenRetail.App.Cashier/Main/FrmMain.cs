@@ -227,8 +227,7 @@ namespace OpenRetail.App.Cashier.Main
             var currentYear = DateTime.Today.Year;
             var copyright = currentYear > firstReleaseYear ? string.Format("{0} - {1}", firstReleaseYear, currentYear) : firstReleaseYear.ToString();
 
-            var versi = Utils.GetCurrentVersion("OpenRetail");
-            var appName = string.Format(MainProgram.appName, versi, MainProgram.stageOfDevelopment, copyright);
+            var appName = string.Format(MainProgram.appName, MainProgram.currentVersion, MainProgram.stageOfDevelopment, copyright);
 
             this.Text = appName;
             sbNamaAplikasi.Text = appName.Replace("&", "&&");

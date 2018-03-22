@@ -51,6 +51,7 @@ namespace OpenRetail.App
 
         public static readonly string stageOfDevelopment = "";
         public static readonly string appName = "Open Retail Versi {0}{1} - Copyright © {2} Kamarudin";
+        public static readonly string currentVersion = Utils.GetCurrentVersion();
 
         /// <summary>
         /// Kode unik untuk enkripsi password menggunakan metode md5
