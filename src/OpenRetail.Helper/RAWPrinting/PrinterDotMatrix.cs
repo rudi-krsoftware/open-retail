@@ -262,7 +262,7 @@ namespace OpenRetail.Helper.RAWPrinting
             textToPrint.Append(StringHelper.PrintChar(' ', 6)).Append("------------");
             textToPrint.Append(StringHelper.PrintChar(' ', 37)).Append("-------------");
 
-            if (isCetakKeteranganNota && jual.keterangan.Length > 0)
+            if (isCetakKeteranganNota && jual.keterangan.NullToString().Length > 0)
             {
                 textToPrint.Append(ESCCommandHelper.LineFeed(1));
                 textToPrint.Append(ESCCommandHelper.LineFeed(1)).Append("Keterangan: ").Append(ESCCommandHelper.LineFeed(1));
