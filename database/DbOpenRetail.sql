@@ -1668,7 +1668,8 @@ CREATE TABLE m_profil (
     email t_keterangan,
     website t_keterangan,
     register_id t_guid,
-    is_register boolean DEFAULT false
+    is_register boolean DEFAULT false,
+    hash t_keterangan
 );
 
 
