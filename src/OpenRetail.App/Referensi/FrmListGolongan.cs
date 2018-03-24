@@ -170,14 +170,17 @@ namespace OpenRetail.App.Referensi
             {
                 var golongan = _listOfGolongan[index];
 
-                var result = _bll.Delete(golongan);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<Golongan>(this.gridList, _listOfGolongan, golongan);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var result = _bll.Delete(golongan);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<Golongan>(this.gridList, _listOfGolongan, golongan);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 

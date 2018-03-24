@@ -207,14 +207,17 @@ namespace OpenRetail.App.Referensi
             {
                 var supplier = _listOfSupplier[index];
 
-                var result = _bll.Delete(supplier);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<Supplier>(this.gridList, _listOfSupplier, supplier);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var result = _bll.Delete(supplier);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<Supplier>(this.gridList, _listOfSupplier, supplier);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 

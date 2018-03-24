@@ -151,14 +151,17 @@ namespace OpenRetail.App.Referensi
             {
                 var jenisPengeluaran = _listOfJenisPengeluaran[index];
 
-                var result = _bll.Delete(jenisPengeluaran);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<JenisPengeluaran>(this.gridList, _listOfJenisPengeluaran, jenisPengeluaran);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var result = _bll.Delete(jenisPengeluaran);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<JenisPengeluaran>(this.gridList, _listOfJenisPengeluaran, jenisPengeluaran);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 
