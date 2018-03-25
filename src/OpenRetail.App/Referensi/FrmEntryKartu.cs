@@ -29,6 +29,7 @@ using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
+using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Referensi
 {
@@ -82,34 +83,37 @@ namespace OpenRetail.App.Referensi
             var result = 0;
             var validationError = new ValidationError();
 
-            if (_isNewData)
-                result = _bll.Save(_kartu, ref validationError);
-            else
-                result = _bll.Update(_kartu, ref validationError);
-
-            if (result > 0) 
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                Listener.Ok(this, _isNewData, _kartu);
-
                 if (_isNewData)
-                {
-                    base.ResetForm(this);
-                    txtNamaKartu.Focus();
-                }
+                    result = _bll.Save(_kartu, ref validationError);
                 else
-                    this.Close();
+                    result = _bll.Update(_kartu, ref validationError);
 
-            }
-            else
-            {
-                if (validationError.Message.NullToString().Length > 0)
+                if (result > 0)
                 {
-                    MsgHelper.MsgWarning(validationError.Message);
-                    base.SetFocusObject(validationError.PropertyName, this);
+                    Listener.Ok(this, _isNewData, _kartu);
+
+                    if (_isNewData)
+                    {
+                        base.ResetForm(this);
+                        txtNamaKartu.Focus();
+                    }
+                    else
+                        this.Close();
+
                 }
                 else
-                    MsgHelper.MsgUpdateError();
-            }                
+                {
+                    if (validationError.Message.NullToString().Length > 0)
+                    {
+                        MsgHelper.MsgWarning(validationError.Message);
+                        base.SetFocusObject(validationError.PropertyName, this);
+                    }
+                    else
+                        MsgHelper.MsgUpdateError();
+                }   
+            }                         
         }
     }
 }

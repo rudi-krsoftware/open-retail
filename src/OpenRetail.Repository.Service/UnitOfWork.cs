@@ -119,7 +119,10 @@ namespace OpenRetail.Repository.Service
 
         public IKartuRepository KartuRepository
         {
-            get { return _kartuRepository ?? (_kartuRepository = new KartuRepository(_context, _log)); }
+            get 
+            {
+                return _kartuRepository ?? (_kartuRepository = _isUseWebAPI ? (IKartuRepository)new KartuWebAPIRepository(_baseUrl, _log) : new KartuRepository(_context, _log));
+            }
         }
 
         public IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository

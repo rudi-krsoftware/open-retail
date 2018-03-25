@@ -78,6 +78,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Referensi\AlasanPenyesuaianStokBllTest.cs" />
+    <Compile Include="Referensi\KartuWebAPIBllTest.cs" />
     <Compile Include="Transaksi\BeliProdukBllTest.cs" />
     <Compile Include="Transaksi\CetakNotaBllTest.cs" />
     <Compile Include="Referensi\CustomerBllTest.cs" />

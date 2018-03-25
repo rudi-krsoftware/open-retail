@@ -50,7 +50,7 @@ namespace OpenRetail.App.Referensi
             InitializeComponent();
 
             _log = MainProgram.log;
-            _bll = new KartuBll(_log);
+            _bll = new KartuBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
 
             // set hak akses untuk SELECT
             var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
@@ -162,14 +162,17 @@ namespace OpenRetail.App.Referensi
             {
                 var kartu = _listOfKartu[index];
 
-                var result = _bll.Delete(kartu);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<Kartu>(this.gridList, _listOfKartu, kartu);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var result = _bll.Delete(kartu);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<Kartu>(this.gridList, _listOfKartu, kartu);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 
