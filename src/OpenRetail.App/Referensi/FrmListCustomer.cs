@@ -258,14 +258,17 @@ namespace OpenRetail.App.Referensi
             {
                 var customer = _listOfCustomer[index];
 
-                var result = _bll.Delete(customer);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<Customer>(this.gridList, _listOfCustomer, customer);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var result = _bll.Delete(customer);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<Customer>(this.gridList, _listOfCustomer, customer);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 

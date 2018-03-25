@@ -68,6 +68,7 @@
     <Compile Include="Referensi\GolonganWebAPIRepository.cs" />
     <Compile Include="Referensi\JabatanWebAPIRepository.cs" />
     <Compile Include="Referensi\JenisPengeluaranWebAPIRepository.cs" />
+    <Compile Include="Referensi\KartuWebAPIRepository.cs" />
     <Compile Include="Referensi\KaryawanWebAPIRepository.cs" />
     <Compile Include="Pengeluaran\PengeluaranBiayaWebAPIRepository.cs" />
     <Compile Include="Referensi\ProdukWebAPIRepository.cs" />

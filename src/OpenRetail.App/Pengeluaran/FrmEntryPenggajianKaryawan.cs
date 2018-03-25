@@ -207,7 +207,7 @@ namespace OpenRetail.App.Pengeluaran
             }
             else
             {
-                if (validationError.Message != null && validationError.Message.Length > 0)
+                if (validationError.Message.NullToString().Length > 0)
                 {
                     MsgHelper.MsgWarning(validationError.Message);
                     base.SetFocusObject(validationError.PropertyName, this);

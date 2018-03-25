@@ -331,7 +331,7 @@ namespace OpenRetail.App.Transaksi
                 }
                 else
                 {
-                    if (validationError.Message.Length > 0)
+                    if (validationError.Message.NullToString().Length > 0)
                     {
                         MsgHelper.MsgWarning(validationError.Message);
                         base.SetFocusObject(validationError.PropertyName, this);

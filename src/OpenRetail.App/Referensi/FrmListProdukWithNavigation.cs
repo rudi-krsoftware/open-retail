@@ -485,14 +485,17 @@ namespace OpenRetail.App.Referensi
             {
                 var produk = _listOfProduk[index];
 
-                var result = _bll.Delete(produk);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<Produk>(this.gridList, _listOfProduk, produk, additionalRowCount: 1);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var result = _bll.Delete(produk);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<Produk>(this.gridList, _listOfProduk, produk, additionalRowCount: 1);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 

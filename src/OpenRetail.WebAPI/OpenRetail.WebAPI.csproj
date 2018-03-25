@@ -203,6 +203,7 @@
     <Compile Include="Controllers\IBaseApiController.cs" />
     <Compile Include="Controllers\Referensi\JabatanController.cs" />
     <Compile Include="Controllers\Referensi\JenisPengeluaranController.cs" />
+    <Compile Include="Controllers\Referensi\KartuController.cs" />
     <Compile Include="Controllers\Referensi\KaryawanController.cs" />
     <Compile Include="Controllers\Pengeluaran\PengeluaranBiayaController.cs" />
     <Compile Include="Controllers\Referensi\ProdukController.cs" />
@@ -210,6 +211,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\Referensi\KartuDTO.cs" />
     <Compile Include="Models\DTO\Referensi\KecamatanDTO.cs" />
     <Compile Include="Models\DTO\Referensi\KabupatenDTO.cs" />
     <Compile Include="Models\DTO\Referensi\ProvinsiDTO.cs" />

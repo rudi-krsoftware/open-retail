@@ -30,6 +30,7 @@ using OpenRetail.Bll.Api;
 using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
 using OpenRetail.Helper.UserControl;
+using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Referensi
 {
@@ -206,40 +207,43 @@ namespace OpenRetail.App.Referensi
             var result = 0;
             var validationError = new ValidationError();
 
-            if (_isNewData)
-                result = _bll.Save(_produk, ref validationError);
-            else
-                result = _bll.Update(_produk, ref validationError);
-
-            if (result > 0) 
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                Listener.Ok(this, _isNewData, _produk);
-
                 if (_isNewData)
-                {
-                    base.ResetForm(this);
+                    result = _bll.Save(_produk, ref validationError);
+                else
+                    result = _bll.Update(_produk, ref validationError);
 
-                    txtKodeProduk.Text = this._bll.GetLastKodeProduk();
-                    txtKodeProduk.Focus();
+                if (result > 0)
+                {
+                    Listener.Ok(this, _isNewData, _produk);
+
+                    if (_isNewData)
+                    {
+                        base.ResetForm(this);
+
+                        txtKodeProduk.Text = this._bll.GetLastKodeProduk();
+                        txtKodeProduk.Focus();
+                    }
+                    else
+                        this.Close();
+
                 }
                 else
-                    this.Close();
-
-            }
-            else
-            {
-                if (validationError.Message != null && validationError.Message.Length > 0)
                 {
-                    MsgHelper.MsgWarning(validationError.Message);
-                    base.SetFocusObject(validationError.PropertyName, this);
-                }
-                else
-                {
-                    MsgHelper.MsgDuplicate("kode produk");
-                    txtKodeProduk.Focus();
-                    txtKodeProduk.SelectAll();
-                }                    
-            }                
+                    if (validationError.Message.NullToString().Length > 0)
+                    {
+                        MsgHelper.MsgWarning(validationError.Message);
+                        base.SetFocusObject(validationError.PropertyName, this);
+                    }
+                    else
+                    {
+                        MsgHelper.MsgDuplicate("kode produk");
+                        txtKodeProduk.Focus();
+                        txtKodeProduk.SelectAll();
+                    }
+                }         
+            }                   
         }
 
         private void txtMinStokGudang_KeyPress(object sender, KeyPressEventArgs e)

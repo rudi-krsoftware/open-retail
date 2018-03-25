@@ -29,6 +29,7 @@ using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
+using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Referensi
 {
@@ -202,34 +203,37 @@ namespace OpenRetail.App.Referensi
             var result = 0;
             var validationError = new ValidationError();
 
-            if (_isNewData)
-                result = _bll.Save(_customer, ref validationError);
-            else
-                result = _bll.Update(_customer, ref validationError);
-
-            if (result > 0) 
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                Listener.Ok(this, _isNewData, _customer);
-
                 if (_isNewData)
-                {
-                    base.ResetForm(this);
-                    txtCustomer.Focus();
-                }
+                    result = _bll.Save(_customer, ref validationError);
                 else
-                    this.Close();
+                    result = _bll.Update(_customer, ref validationError);
 
-            }
-            else
-            {
-                if (validationError.Message.Length > 0)
+                if (result > 0)
                 {
-                    MsgHelper.MsgWarning(validationError.Message);
-                    base.SetFocusObject(validationError.PropertyName, this);
+                    Listener.Ok(this, _isNewData, _customer);
+
+                    if (_isNewData)
+                    {
+                        base.ResetForm(this);
+                        txtCustomer.Focus();
+                    }
+                    else
+                        this.Close();
+
                 }
                 else
-                    MsgHelper.MsgUpdateError();
-            }                
+                {
+                    if (validationError.Message.NullToString().Length > 0)
+                    {
+                        MsgHelper.MsgWarning(validationError.Message);
+                        base.SetFocusObject(validationError.PropertyName, this);
+                    }
+                    else
+                        MsgHelper.MsgUpdateError();
+                } 
+            }                           
         }
 
         private void txtPlafonPiutang_KeyPress(object sender, KeyPressEventArgs e)

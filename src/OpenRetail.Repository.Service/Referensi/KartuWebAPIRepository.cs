@@ -23,21 +23,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 using log4net;
-using Dapper.Contrib.Extensions;
+using RestSharp;
+using Newtonsoft.Json;
 
 using OpenRetail.Model;
+using OpenRetail.Model.WebAPI;
 using OpenRetail.Repository.Api;
  
 namespace OpenRetail.Repository.Service
 {        
-    public class KartuRepository : IKartuRepository
+    public class KartuWebAPIRepository : IKartuRepository
     {
-        private IDapperContext _context;
-		private ILog _log;
+        private string _apiUrl = string.Empty;
+        private ILog _log;
 		
-        public KartuRepository(IDapperContext context, ILog log)
+        public KartuWebAPIRepository(string baseUrl, ILog log)
         {
-            this._context = context;
+            this._apiUrl = baseUrl + "api/kartu/";
             this._log = log;
         }
 
@@ -45,9 +47,14 @@ namespace OpenRetail.Repository.Service
         {
             Kartu obj = null;
 
-            try
+			try
             {
-                obj = _context.db.Get<Kartu>(id);
+                var client = new RestClient(_apiUrl);
+                var request = new RestRequest(string.Format("get_by_id?id={0}", id), Method.GET);
+                var response = client.Execute<OpenRetailWebApiGetResponse<Kartu>>(request).Data;
+
+                if (response.Results.Count > 0)
+                    obj = response.Results[0];
             }
             catch (Exception ex)
             {
@@ -66,11 +73,14 @@ namespace OpenRetail.Repository.Service
         {
             IList<Kartu> oList = new List<Kartu>();
 
-            try
+			try
             {
-                oList = _context.db.GetAll<Kartu>()
-                                .OrderBy(f => f.nama_kartu)
-                                .ToList();
+                var client = new RestClient(_apiUrl);
+                var request = new RestRequest("get_all", Method.GET);
+                var response = client.Execute<OpenRetailWebApiGetResponse<Kartu>>(request).Data;
+
+                if (response.Results.Count > 0)
+                    oList = response.Results;
             }
             catch (Exception ex)
             {
@@ -84,13 +94,18 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-            try
+			try
             {
-                if (obj.kartu_id == null)
-                    obj.kartu_id = _context.GetGUID();
+                var client = new RestClient(_apiUrl);
+                var request = new RestRequest("save", Method.POST);
 
-                _context.db.Insert<Kartu>(obj);
-                result = 1;
+                request.RequestFormat = DataFormat.Json;
+                request.AddBody(obj);
+
+                var response = client.Execute(request);
+                var responseContent = JsonConvert.DeserializeObject<OpenRetailWebApiPostResponse>(response.Content);
+
+                result = Convert.ToInt32(responseContent.Results);
             }
             catch (Exception ex)
             {
@@ -104,9 +119,18 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-            try
+			try
             {
-                result = _context.db.Update<Kartu>(obj) ? 1 : 0;
+                var client = new RestClient(_apiUrl);
+                var request = new RestRequest("update", Method.POST);
+
+                request.RequestFormat = DataFormat.Json;
+                request.AddBody(obj);
+
+                var response = client.Execute(request);
+                var responseContent = JsonConvert.DeserializeObject<OpenRetailWebApiPostResponse>(response.Content);
+
+                result = Convert.ToInt32(responseContent.Results);
             }
             catch (Exception ex)
             {
@@ -120,9 +144,18 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-            try
+			try
             {
-                result = _context.db.Delete<Kartu>(obj) ? 1 : 0;
+                var client = new RestClient(_apiUrl);
+                var request = new RestRequest("delete", Method.POST);
+
+                request.RequestFormat = DataFormat.Json;
+                request.AddBody(obj);
+
+                var response = client.Execute(request);
+                var responseContent = JsonConvert.DeserializeObject<OpenRetailWebApiPostResponse>(response.Content);
+
+                result = Convert.ToInt32(responseContent.Results);
             }
             catch (Exception ex)
             {
