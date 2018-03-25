@@ -68,7 +68,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(0, obj.plafon_piutang);
             Assert.AreEqual(0, obj.total_piutang);
             Assert.AreEqual(0, obj.total_pembayaran_piutang);
-            Assert.AreEqual("Sleman", obj.kecamatan);
+            Assert.AreEqual("Sleman", obj.Kecamatan.nama_kecamatan);
             Assert.AreEqual("Condong Catur", obj.kelurahan);
             Assert.AreEqual("Yogyakarta", obj.kota);
             Assert.AreEqual("28115", obj.kode_pos);
@@ -94,7 +94,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(0, obj.plafon_piutang);
             Assert.AreEqual(0, obj.total_piutang);
             Assert.AreEqual(0, obj.total_pembayaran_piutang);
-            Assert.AreEqual("Sleman", obj.kecamatan);
+            Assert.AreEqual("Sleman", obj.Kecamatan.nama_kecamatan);
             Assert.AreEqual("Condong Catur", obj.kelurahan);
             Assert.AreEqual("Yogyakarta", obj.kota);
             Assert.AreEqual("28115", obj.kode_pos);
@@ -118,7 +118,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(0, obj.plafon_piutang);
             Assert.AreEqual(0, obj.total_piutang);
             Assert.AreEqual(0, obj.total_pembayaran_piutang);
-            Assert.AreEqual("Sleman", obj.kecamatan);
+            Assert.AreEqual("Sleman", obj.Kecamatan.nama_kecamatan);
             Assert.AreEqual("Condong Catur", obj.kelurahan);
             Assert.AreEqual("Yogyakarta", obj.kota);
             Assert.AreEqual("28115", obj.kode_pos);
