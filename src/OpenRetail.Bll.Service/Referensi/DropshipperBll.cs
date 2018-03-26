@@ -32,23 +32,42 @@ namespace OpenRetail.Bll.Service
 {    
     public class DropshipperBll : IDropshipperBll
     {
-		private ILog _log;
-		private DropshipperValidator _validator;
+        private ILog _log;
+        private IUnitOfWork _unitOfWork;
+        private DropshipperValidator _validator;
 
-		public DropshipperBll(ILog log)
+        private bool _isUseWebAPI;
+        private string _baseUrl;
+
+        public DropshipperBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new DropshipperValidator();
+        }
+
+        public DropshipperBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
         }
 
         public Dropshipper GetByID(string id)
         {
             Dropshipper obj = null;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.DropshipperRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.DropshipperRepository.GetByID(id);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.DropshipperRepository.GetByID(id);
+                }
             }
 
             return obj;
@@ -58,10 +77,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Dropshipper> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.DropshipperRepository.GetByName(name);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.DropshipperRepository.GetByName(name);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.DropshipperRepository.GetByName(name);
+                }
             }
 
             return oList;
@@ -71,23 +98,41 @@ namespace OpenRetail.Bll.Service
         {
             IList<Dropshipper> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.DropshipperRepository.GetAll();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.DropshipperRepository.GetAll();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.DropshipperRepository.GetAll();
+                }
             }
 
             return oList;
         }
 
-		public int Save(Dropshipper obj)
+        public int Save(Dropshipper obj)
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.DropshipperRepository.Save(obj);
+                obj.dropshipper_id = Guid.NewGuid().ToString();
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.DropshipperRepository.Save(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.DropshipperRepository.Save(obj);
+                }
             }
 
             return result;
@@ -95,7 +140,7 @@ namespace OpenRetail.Bll.Service
 
         public int Save(Dropshipper obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -110,14 +155,22 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(Dropshipper obj)
+        public int Update(Dropshipper obj)
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.DropshipperRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.DropshipperRepository.Update(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.DropshipperRepository.Update(obj);
+                }
             }
 
             return result;
@@ -144,10 +197,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.DropshipperRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.DropshipperRepository.Delete(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.DropshipperRepository.Delete(obj);
+                }
             }
 
             return result;

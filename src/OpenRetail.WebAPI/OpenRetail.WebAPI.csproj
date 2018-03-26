@@ -196,6 +196,7 @@
     <Compile Include="AutoMapperConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\Referensi\CustomerController.cs" />
+    <Compile Include="Controllers\Referensi\DropshipperController.cs" />
     <Compile Include="Controllers\Referensi\GolonganController.cs" />
     <Compile Include="Controllers\Helper\FluentValidationExtensionMethod.cs" />
     <Compile Include="Controllers\Helper\HttpActionResultHelper.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\Referensi\DropshipperDTO.cs" />
     <Compile Include="Models\DTO\Referensi\KartuDTO.cs" />
     <Compile Include="Models\DTO\Referensi\KecamatanDTO.cs" />
     <Compile Include="Models\DTO\Referensi\KabupatenDTO.cs" />

@@ -63,7 +63,7 @@ namespace OpenRetail.App.Referensi
             base.WindowState = FormWindowState.Maximized;
 
             _log = MainProgram.log;
-            _bll = new DropshipperBll(_log);
+            _bll = new DropshipperBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _pengguna = pengguna;
             _menuId = menuId;
 
@@ -196,14 +196,17 @@ namespace OpenRetail.App.Referensi
             {
                 var dropshipper = _listOfDropshipper[index];
 
-                var result = _bll.Delete(dropshipper);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<Dropshipper>(this.gridList, _listOfDropshipper, dropshipper);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var result = _bll.Delete(dropshipper);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<Dropshipper>(this.gridList, _listOfDropshipper, dropshipper);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 

@@ -16,6 +16,7 @@ namespace OpenRetail.WebAPI
             Mapper.Initialize((config) =>
             {
                 config.CreateMap<KartuDTO, Kartu>();
+                config.CreateMap<DropshipperDTO, Dropshipper>();
                 config.CreateMap<GolonganDTO, Golongan>();
                 config.CreateMap<ProdukDTO, Produk>();
                 config.CreateMap<HargaGrosirDTO, HargaGrosir>();

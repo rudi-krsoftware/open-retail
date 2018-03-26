@@ -190,7 +190,10 @@ namespace OpenRetail.Repository.Service
 
         public IDropshipperRepository DropshipperRepository
         {
-            get { return _dropshipperRepository ?? (_dropshipperRepository = new DropshipperRepository(_context, _log)); }
+            get 
+            { 
+                return _dropshipperRepository ?? (_dropshipperRepository = _isUseWebAPI ? (IDropshipperRepository)new DropshipperWebAPIRepository(_baseUrl, _log) : new DropshipperRepository(_context, _log));
+            }
         }
 
         public IKaryawanRepository KaryawanRepository

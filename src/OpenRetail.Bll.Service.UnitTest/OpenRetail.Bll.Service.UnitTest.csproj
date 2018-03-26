@@ -78,6 +78,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Referensi\CustomerWebAPIBllTest.cs" />
+    <Compile Include="Referensi\DropshipperWebAPIBllTest.cs" />
     <Compile Include="Referensi\GolonganWebAPIBllTest.cs" />
     <Compile Include="Referensi\JabatanWebAPIBllTest.cs" />
     <Compile Include="Referensi\JenisPengeluaranWebAPIBllTest.cs" />

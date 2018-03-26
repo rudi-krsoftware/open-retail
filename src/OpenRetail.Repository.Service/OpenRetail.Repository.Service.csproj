@@ -65,6 +65,7 @@
       <Link>VersionInfo.cs</Link>
     </Compile>
     <Compile Include="Referensi\CustomerWebAPIRepository.cs" />
+    <Compile Include="Referensi\DropshipperWebAPIRepository.cs" />
     <Compile Include="Referensi\GolonganWebAPIRepository.cs" />
     <Compile Include="Referensi\JabatanWebAPIRepository.cs" />
     <Compile Include="Referensi\JenisPengeluaranWebAPIRepository.cs" />
