@@ -23,31 +23,38 @@ using System.Text;
 using System.Threading.Tasks;
 
 using log4net;
-using Dapper.Contrib.Extensions;
+using RestSharp;
+using Newtonsoft.Json;
 
 using OpenRetail.Model;
+using OpenRetail.Model.WebAPI;
 using OpenRetail.Repository.Api;
  
 namespace OpenRetail.Repository.Service
 {        
-    public class AlasanPenyesuaianStokRepository : IAlasanPenyesuaianStokRepository
+    public class AlasanPenyesuaianStokWebAPIRepository : IAlasanPenyesuaianStokRepository
     {
-        private IDapperContext _context;
+        private string _apiUrl = string.Empty;
         private ILog _log;
-
-        public AlasanPenyesuaianStokRepository(IDapperContext context, ILog log)
+		
+        public AlasanPenyesuaianStokWebAPIRepository(string baseUrl, ILog log)
         {
-            this._context = context;
+            this._apiUrl = baseUrl + "api/alasan_penyesuaian_stok/";
             this._log = log;
         }
 
         public AlasanPenyesuaianStok GetByID(string id)
         {
             AlasanPenyesuaianStok obj = null;
-            
-            try
+
+			try
             {
-                obj = _context.db.Get<AlasanPenyesuaianStok>(id);
+                var client = new RestClient(_apiUrl);
+                var request = new RestRequest(string.Format("get_by_id?id={0}", id), Method.GET);
+                var response = client.Execute<OpenRetailWebApiGetResponse<AlasanPenyesuaianStok>>(request).Data;
+
+                if (response.Results.Count > 0)
+                    obj = response.Results[0];
             }
             catch (Exception ex)
             {
@@ -66,11 +73,14 @@ namespace OpenRetail.Repository.Service
         {
             IList<AlasanPenyesuaianStok> oList = new List<AlasanPenyesuaianStok>();
 
-            try
+			try
             {
-                oList = _context.db.GetAll<AlasanPenyesuaianStok>()
-                                .OrderBy(f => f.alasan)
-                                .ToList();
+                var client = new RestClient(_apiUrl);
+                var request = new RestRequest("get_all", Method.GET);
+                var response = client.Execute<OpenRetailWebApiGetResponse<AlasanPenyesuaianStok>>(request).Data;
+
+                if (response.Results.Count > 0)
+                    oList = response.Results;
             }
             catch (Exception ex)
             {
@@ -84,13 +94,18 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-            try
+			try
             {
-                if (obj.alasan_penyesuaian_stok_id == null)
-                    obj.alasan_penyesuaian_stok_id = _context.GetGUID();
+                var client = new RestClient(_apiUrl);
+                var request = new RestRequest("save", Method.POST);
 
-                _context.db.Insert<AlasanPenyesuaianStok>(obj);
-                result = 1;
+                request.RequestFormat = DataFormat.Json;
+                request.AddBody(obj);
+
+                var response = client.Execute(request);
+                var responseContent = JsonConvert.DeserializeObject<OpenRetailWebApiPostResponse>(response.Content);
+
+                result = Convert.ToInt32(responseContent.Results);
             }
             catch (Exception ex)
             {
@@ -104,9 +119,18 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-            try
+			try
             {
-                result = _context.db.Update<AlasanPenyesuaianStok>(obj) ? 1 : 0;
+                var client = new RestClient(_apiUrl);
+                var request = new RestRequest("update", Method.POST);
+
+                request.RequestFormat = DataFormat.Json;
+                request.AddBody(obj);
+
+                var response = client.Execute(request);
+                var responseContent = JsonConvert.DeserializeObject<OpenRetailWebApiPostResponse>(response.Content);
+
+                result = Convert.ToInt32(responseContent.Results);
             }
             catch (Exception ex)
             {
@@ -120,9 +144,18 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-            try
+			try
             {
-                result = _context.db.Delete<AlasanPenyesuaianStok>(obj) ? 1 : 0;
+                var client = new RestClient(_apiUrl);
+                var request = new RestRequest("delete", Method.POST);
+
+                request.RequestFormat = DataFormat.Json;
+                request.AddBody(obj);
+
+                var response = client.Execute(request);
+                var responseContent = JsonConvert.DeserializeObject<OpenRetailWebApiPostResponse>(response.Content);
+
+                result = Convert.ToInt32(responseContent.Results);
             }
             catch (Exception ex)
             {

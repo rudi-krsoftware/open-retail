@@ -49,7 +49,7 @@ namespace OpenRetail.App.Referensi
             InitializeComponent();
 
             _log = MainProgram.log;
-            _bll = new PenyesuaianStokBll(_log);
+            _bll = new PenyesuaianStokBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
 
             // set hak akses untuk SELECT
             var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
@@ -252,14 +252,17 @@ namespace OpenRetail.App.Referensi
             {
                 var penyesuaianStok = _listOfPenyesuaianStok[index];
 
-                var result = _bll.Delete(penyesuaianStok);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<PenyesuaianStok>(this.gridList, _listOfPenyesuaianStok, penyesuaianStok, additionalRowCount: 1);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var result = _bll.Delete(penyesuaianStok);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<PenyesuaianStok>(this.gridList, _listOfPenyesuaianStok, penyesuaianStok, additionalRowCount: 1);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 

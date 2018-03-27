@@ -64,6 +64,7 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Referensi\AlasanPenyesuaianStokWebAPIRepository.cs" />
     <Compile Include="Referensi\CustomerWebAPIRepository.cs" />
     <Compile Include="Referensi\DropshipperWebAPIRepository.cs" />
     <Compile Include="Referensi\GolonganWebAPIRepository.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Referensi\KartuWebAPIRepository.cs" />
     <Compile Include="Referensi\KaryawanWebAPIRepository.cs" />
     <Compile Include="Pengeluaran\PengeluaranBiayaWebAPIRepository.cs" />
+    <Compile Include="Referensi\PenyesuaianStokWebAPIRepository.cs" />
     <Compile Include="Referensi\ProdukWebAPIRepository.cs" />
     <Compile Include="Referensi\AlasanPenyesuaianStokRepository.cs" />
     <Compile Include="Referensi\SupplierWebAPIRepository.cs" />

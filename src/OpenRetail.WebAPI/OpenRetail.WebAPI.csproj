@@ -195,6 +195,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutoMapperConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\Referensi\AlasanPenyesuaianStokController.cs" />
     <Compile Include="Controllers\Referensi\CustomerController.cs" />
     <Compile Include="Controllers\Referensi\DropshipperController.cs" />
     <Compile Include="Controllers\Referensi\GolonganController.cs" />
@@ -207,15 +208,18 @@
     <Compile Include="Controllers\Referensi\KartuController.cs" />
     <Compile Include="Controllers\Referensi\KaryawanController.cs" />
     <Compile Include="Controllers\Pengeluaran\PengeluaranBiayaController.cs" />
+    <Compile Include="Controllers\Referensi\PenyesuaianStokController.cs" />
     <Compile Include="Controllers\Referensi\ProdukController.cs" />
     <Compile Include="Controllers\Referensi\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\Referensi\AlasanPenyesuaianStokDTO.cs" />
     <Compile Include="Models\DTO\Referensi\DropshipperDTO.cs" />
     <Compile Include="Models\DTO\Referensi\KartuDTO.cs" />
     <Compile Include="Models\DTO\Referensi\KecamatanDTO.cs" />
     <Compile Include="Models\DTO\Referensi\KabupatenDTO.cs" />
+    <Compile Include="Models\DTO\Referensi\PenyesuaianStokDTO.cs" />
     <Compile Include="Models\DTO\Referensi\ProvinsiDTO.cs" />
     <Compile Include="Models\DTO\Referensi\CustomerDTO.cs" />
     <Compile Include="Models\DTO\Referensi\GolonganDTO.cs" />

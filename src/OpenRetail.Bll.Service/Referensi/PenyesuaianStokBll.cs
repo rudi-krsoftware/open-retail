@@ -32,23 +32,42 @@ namespace OpenRetail.Bll.Service
 {    
     public class PenyesuaianStokBll : IPenyesuaianStokBll
     {
-		private ILog _log;
-		private PenyesuaianStokValidator _validator;
+        private ILog _log;
+        private IUnitOfWork _unitOfWork;
+        private PenyesuaianStokValidator _validator;
 
-		public PenyesuaianStokBll(ILog log)
+        private bool _isUseWebAPI;
+        private string _baseUrl;
+
+        public PenyesuaianStokBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new PenyesuaianStokValidator();
+        }
+
+        public PenyesuaianStokBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
         }
 
         public PenyesuaianStok GetByID(string id)
         {
             PenyesuaianStok obj = null;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.PenyesuaianStokRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.PenyesuaianStokRepository.GetByID(id);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.PenyesuaianStokRepository.GetByID(id);
+                }
             }
 
             return obj;
@@ -58,10 +77,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<PenyesuaianStok> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PenyesuaianStokRepository.GetByName(name);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.PenyesuaianStokRepository.GetByName(name);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PenyesuaianStokRepository.GetByName(name);
+                }
             }
 
             return oList;
@@ -71,10 +98,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<PenyesuaianStok> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PenyesuaianStokRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.PenyesuaianStokRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PenyesuaianStokRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                }
             }
 
             return oList;
@@ -84,23 +119,41 @@ namespace OpenRetail.Bll.Service
         {
             IList<PenyesuaianStok> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PenyesuaianStokRepository.GetAll();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.PenyesuaianStokRepository.GetAll();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PenyesuaianStokRepository.GetAll();
+                }
             }
 
             return oList;
         }
 
-		public int Save(PenyesuaianStok obj)
+        public int Save(PenyesuaianStok obj)
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PenyesuaianStokRepository.Save(obj);
+                obj.penyesuaian_stok_id = Guid.NewGuid().ToString();
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.PenyesuaianStokRepository.Save(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PenyesuaianStokRepository.Save(obj);
+                }
             }
 
             return result;
@@ -108,7 +161,7 @@ namespace OpenRetail.Bll.Service
 
         public int Save(PenyesuaianStok obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -123,14 +176,22 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(PenyesuaianStok obj)
+        public int Update(PenyesuaianStok obj)
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PenyesuaianStokRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.PenyesuaianStokRepository.Update(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PenyesuaianStokRepository.Update(obj);
+                }
             }
 
             return result;
@@ -157,10 +218,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PenyesuaianStokRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.PenyesuaianStokRepository.Delete(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PenyesuaianStokRepository.Delete(obj);
+                }
             }
 
             return result;

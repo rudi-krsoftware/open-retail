@@ -77,6 +77,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Referensi\AlasanPenyesuaianStokWebAPIBllTest.cs" />
     <Compile Include="Referensi\CustomerWebAPIBllTest.cs" />
     <Compile Include="Referensi\DropshipperWebAPIBllTest.cs" />
     <Compile Include="Referensi\GolonganWebAPIBllTest.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Referensi\JenisPengeluaranWebAPIBllTest.cs" />
     <Compile Include="Referensi\KaryawanWebAPIBllTest.cs" />
     <Compile Include="Pengeluaran\PengeluaranBiayaWebAPIBllTest.cs" />
+    <Compile Include="Referensi\PenyesuaianStokWebAPIBllTest.cs" />
     <Compile Include="Referensi\ProdukWebAPIBllTest.cs" />
     <Compile Include="Referensi\AlasanPenyesuaianStokBllTest.cs" />
     <Compile Include="Referensi\KartuWebAPIBllTest.cs" />

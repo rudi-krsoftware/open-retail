@@ -127,7 +127,10 @@ namespace OpenRetail.Repository.Service
 
         public IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository
         {
-            get { return _alasanpenyesuaianstokRepository ?? (_alasanpenyesuaianstokRepository = new AlasanPenyesuaianStokRepository(_context, _log)); }
+            get 
+            {
+                return _alasanpenyesuaianstokRepository ?? (_alasanpenyesuaianstokRepository = _isUseWebAPI ? (IAlasanPenyesuaianStokRepository)new AlasanPenyesuaianStokWebAPIRepository(_baseUrl, _log) : new AlasanPenyesuaianStokRepository(_context, _log));
+            }
         }
 
         public IJabatanRepository JabatanRepository
@@ -241,7 +244,10 @@ namespace OpenRetail.Repository.Service
 
         public IPenyesuaianStokRepository PenyesuaianStokRepository
         {
-            get { return _penyesuaianstokRepository ?? (_penyesuaianstokRepository = new PenyesuaianStokRepository(_context, _log)); }
+            get
+            {
+                return _penyesuaianstokRepository ?? (_penyesuaianstokRepository = _isUseWebAPI ? (IPenyesuaianStokRepository)new PenyesuaianStokWebAPIRepository(_baseUrl, _log) : new PenyesuaianStokRepository(_context, _log));
+            }
         }
 
         public IPenggunaRepository PenggunaRepository
