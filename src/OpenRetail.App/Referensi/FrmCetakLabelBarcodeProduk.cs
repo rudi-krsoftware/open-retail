@@ -233,7 +233,7 @@ namespace OpenRetail.App.Referensi
             {
                 var keyword = ((AdvancedTextbox)sender).Text;
 
-                IProdukBll produkBll = new ProdukBll(_log);
+                IProdukBll produkBll = new ProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 this._produk = produkBll.GetByKode(keyword);
 
                 if (this._produk == null)
