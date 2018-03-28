@@ -380,12 +380,18 @@ namespace OpenRetail.Repository.Service
 
         public IKasbonRepository KasbonRepository
         {
-            get { return _kasbonRepository ?? (_kasbonRepository = new KasbonRepository(_context, _log)); }
+            get
+            {
+                return _kasbonRepository ?? (_kasbonRepository = _isUseWebAPI ? (IKasbonRepository)new KasbonWebAPIRepository(_baseUrl, _log) : new KasbonRepository(_context, _log));
+            }
         }
 
         public IPembayaranKasbonRepository PembayaranKasbonRepository
         {
-            get { return _pembayarankasbonRepository ?? (_pembayarankasbonRepository = new PembayaranKasbonRepository(_context, _log)); }
+            get
+            {
+                return _pembayarankasbonRepository ?? (_pembayarankasbonRepository = _isUseWebAPI ? (IPembayaranKasbonRepository)new PembayaranKasbonWebAPIRepository(_baseUrl, _log) : new PembayaranKasbonRepository(_context, _log));
+            }
         }
 
         public IGajiKaryawanRepository GajiKaryawanRepository

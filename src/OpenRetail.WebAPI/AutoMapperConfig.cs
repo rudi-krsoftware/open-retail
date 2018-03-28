@@ -15,6 +15,7 @@ namespace OpenRetail.WebAPI
         {
             Mapper.Initialize((config) =>
             {
+                // referensi
                 config.CreateMap<KartuDTO, Kartu>();
                 config.CreateMap<AlasanPenyesuaianStokDTO, AlasanPenyesuaianStok>();
                 config.CreateMap<PenyesuaianStokDTO, PenyesuaianStok>();
@@ -28,10 +29,18 @@ namespace OpenRetail.WebAPI
                 config.CreateMap<KabupatenDTO, Kabupaten>();
                 config.CreateMap<KecamatanDTO, Kecamatan>();
                 config.CreateMap<CustomerDTO, Customer>();
-                config.CreateMap<SupplierDTO, Supplier>();
+                config.CreateMap<SupplierDTO, Supplier>();                
+                config.CreateMap<KaryawanDTO, Karyawan>();
+
+                // pengeluaran
                 config.CreateMap<PengeluaranBiayaDTO, PengeluaranBiaya>();
                 config.CreateMap<ItemPengeluaranBiayaDTO, ItemPengeluaranBiaya>();
-                config.CreateMap<KaryawanDTO, Karyawan>();
+                config.CreateMap<KasbonDTO, Kasbon>();
+                config.CreateMap<PembayaranKasbonDTO, PembayaranKasbon>();
+
+                // pengaturan
+                config.CreateMap<RoleDTO, Role>();
+                config.CreateMap<PenggunaDTO, Pengguna>();
             });
         }
     }

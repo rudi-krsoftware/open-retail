@@ -64,6 +64,8 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Pengeluaran\KasbonWebAPIRepository.cs" />
+    <Compile Include="Pengeluaran\PembayaranKasbonWebAPIRepository.cs" />
     <Compile Include="Referensi\AlasanPenyesuaianStokWebAPIRepository.cs" />
     <Compile Include="Referensi\CustomerWebAPIRepository.cs" />
     <Compile Include="Referensi\DropshipperWebAPIRepository.cs" />

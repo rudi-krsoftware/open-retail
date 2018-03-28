@@ -32,23 +32,42 @@ namespace OpenRetail.Bll.Service
 {    
     public class PembayaranKasbonBll : IPembayaranKasbonBll
     {
-		private ILog _log;
-		private PembayaranKasbonValidator _validator;
+        private ILog _log;
+        private IUnitOfWork _unitOfWork;
+        private PembayaranKasbonValidator _validator;
 
-		public PembayaranKasbonBll(ILog log)
+        private bool _isUseWebAPI;
+        private string _baseUrl;
+
+        public PembayaranKasbonBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new PembayaranKasbonValidator();
+        }
+
+        public PembayaranKasbonBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
         }
 
         public string GetLastNota()
         {
             var lastNota = string.Empty;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                lastNota = uow.PembayaranKasbonRepository.GetLastNota();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                lastNota = _unitOfWork.PembayaranKasbonRepository.GetLastNota();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    lastNota = _unitOfWork.PembayaranKasbonRepository.GetLastNota();
+                }
             }
 
             return lastNota;
@@ -57,11 +76,19 @@ namespace OpenRetail.Bll.Service
         public PembayaranKasbon GetByID(string id)
         {
             PembayaranKasbon obj = null;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.PembayaranKasbonRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.PembayaranKasbonRepository.GetByID(id);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.PembayaranKasbonRepository.GetByID(id);
+                }
             }
 
             return obj;
@@ -76,10 +103,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<PembayaranKasbon> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PembayaranKasbonRepository.GetByKasbonId(kasbonId);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.PembayaranKasbonRepository.GetByKasbonId(kasbonId);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PembayaranKasbonRepository.GetByKasbonId(kasbonId);
+                }
             }
 
             return oList;
@@ -89,10 +124,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<PembayaranKasbon> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PembayaranKasbonRepository.GetByGajiKaryawan(gajiKaryawanId);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.PembayaranKasbonRepository.GetByGajiKaryawan(gajiKaryawanId);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PembayaranKasbonRepository.GetByGajiKaryawan(gajiKaryawanId);
+                }
             }
 
             return oList;
@@ -107,10 +150,20 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PembayaranKasbonRepository.Save(obj);
+				obj.pembayaran_kasbon_id = Guid.NewGuid().ToString();
+            
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.PembayaranKasbonRepository.Save(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+				{
+					_unitOfWork = new UnitOfWork(context, _log);
+					result = _unitOfWork.PembayaranKasbonRepository.Save(obj);
+				}
             }
 
             return result;
@@ -137,10 +190,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PembayaranKasbonRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.PembayaranKasbonRepository.Update(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PembayaranKasbonRepository.Update(obj);
+                }
             }
 
             return result;
@@ -167,10 +228,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PembayaranKasbonRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.PembayaranKasbonRepository.Delete(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PembayaranKasbonRepository.Delete(obj);
+                }
             }
 
             return result;

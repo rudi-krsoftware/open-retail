@@ -77,6 +77,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Pengeluaran\KasbonWebAPIBllTest.cs" />
+    <Compile Include="Pengeluaran\PembayaranKasbonWebAPIBllTest.cs" />
     <Compile Include="Referensi\AlasanPenyesuaianStokWebAPIBllTest.cs" />
     <Compile Include="Referensi\CustomerWebAPIBllTest.cs" />
     <Compile Include="Referensi\DropshipperWebAPIBllTest.cs" />

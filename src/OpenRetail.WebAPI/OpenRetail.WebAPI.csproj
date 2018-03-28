@@ -195,6 +195,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutoMapperConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\Pengeluaran\KasbonController.cs" />
+    <Compile Include="Controllers\Pengeluaran\PembayaranKasbonController.cs" />
     <Compile Include="Controllers\Referensi\AlasanPenyesuaianStokController.cs" />
     <Compile Include="Controllers\Referensi\CustomerController.cs" />
     <Compile Include="Controllers\Referensi\DropshipperController.cs" />
@@ -214,6 +216,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\Pengaturan\PenggunaDTO.cs" />
+    <Compile Include="Models\DTO\Pengaturan\RoleDTO.cs" />
+    <Compile Include="Models\DTO\Pengeluaran\KasbonDTO.cs" />
+    <Compile Include="Models\DTO\Pengeluaran\PembayaranKasbonDTO.cs" />
     <Compile Include="Models\DTO\Referensi\AlasanPenyesuaianStokDTO.cs" />
     <Compile Include="Models\DTO\Referensi\DropshipperDTO.cs" />
     <Compile Include="Models\DTO\Referensi\KartuDTO.cs" />
@@ -262,7 +268,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

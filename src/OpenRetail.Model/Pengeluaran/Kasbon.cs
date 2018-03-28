@@ -44,7 +44,7 @@ namespace OpenRetail.Model
 		[Display(Name = "Karyawan")]
 		public string karyawan_id { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
 		[Write(false)]
         public Karyawan Karyawan { get; set; }
 
@@ -72,12 +72,10 @@ namespace OpenRetail.Model
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
 
-        [JsonIgnore]
         [Computed]
 		[Display(Name = "total_pelunasan")]
 		public double total_pelunasan { get; set; }
 
-        [JsonIgnore]
         [Computed]
         public double sisa
         {
@@ -85,7 +83,7 @@ namespace OpenRetail.Model
         }
 
         [Write(false)]
-        public IList<PembayaranKasbon> item_pembayaran_kasbon { get; set; }
+        public List<PembayaranKasbon> item_pembayaran_kasbon { get; set; }
 	}
 
     public class KasbonValidator : AbstractValidator<Kasbon>

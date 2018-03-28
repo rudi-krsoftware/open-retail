@@ -56,7 +56,7 @@ namespace OpenRetail.App.Pengeluaran
             ColorManagerHelper.SetTheme(this, this);            
 
             _log = MainProgram.log;
-            _bll = new KasbonBll(_log);
+            _bll = new KasbonBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _pengguna = pengguna;
             _menuId = menuId;
 
@@ -66,8 +66,8 @@ namespace OpenRetail.App.Pengeluaran
             {
                 if (role.is_grant)
                 {
-                    LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
                     LoadDataKaryawan();
+                    LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);                    
                 }                    
 
                 filterRangeTanggal.Enabled = role.is_grant;
@@ -167,7 +167,7 @@ namespace OpenRetail.App.Pengeluaran
             if (gridList.SelectedIndex < 0)
                 return;
 
-            if (_listOfKasbon.Count > 0)
+            if (_listOfKasbon.Count > 0 && !(gridList.SelectedIndex > _listOfKasbon.Count))
             {
                 var kasbon = _listOfKasbon[gridList.SelectedIndex];
                 if (kasbon != null)
@@ -264,6 +264,8 @@ namespace OpenRetail.App.Pengeluaran
             if (gridList.SelectedIndex < 0)
                 return;
 
+            ResetButtonHistoriPembayaran(false);
+
             if (_listOfHistoriPembayaranKasbon.Count > 0)
             {
                 ResetButtonHistoriPembayaran(true);
@@ -281,7 +283,7 @@ namespace OpenRetail.App.Pengeluaran
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                IKaryawanBll bll = new KaryawanBll(_log);
+                IKaryawanBll bll = new KaryawanBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 _listOfKaryawan = bll.GetAll();
             }
         }
@@ -376,16 +378,19 @@ namespace OpenRetail.App.Pengeluaran
             {
                 var kasbon = _listOfKasbon[index];
 
-                var result = _bll.Delete(kasbon);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<Kasbon>(this.gridList, _listOfKasbon, kasbon);
-                    GridListHandleSelectionChanged(this.gridList);
+                    var result = _bll.Delete(kasbon);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<Kasbon>(this.gridList, _listOfKasbon, kasbon);
+                        GridListHandleSelectionChanged(this.gridList);
 
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 
@@ -490,14 +495,17 @@ namespace OpenRetail.App.Pengeluaran
 
             var kasbon = _listOfKasbon[this.gridList.SelectedIndex];           
 
-            var pembayaranKasbon = _listOfHistoriPembayaranKasbon[index];
-            pembayaranKasbon.old_nominal = pembayaranKasbon.nominal;
+            if (_listOfHistoriPembayaranKasbon.Count > 0)
+            {
+                var pembayaranKasbon = _listOfHistoriPembayaranKasbon[index];
+                pembayaranKasbon.old_nominal = pembayaranKasbon.nominal;
 
-            LogicalThreadContext.Properties["OldValue"] = pembayaranKasbon.ToJson();
+                LogicalThreadContext.Properties["OldValue"] = pembayaranKasbon.ToJson();
 
-            var frm = new FrmEntryPembayaranKasbon("Edit Data Pembayaran Kasbon", kasbon, pembayaranKasbon);
-            frm.Listener = this;
-            frm.ShowDialog();
+                var frm = new FrmEntryPembayaranKasbon("Edit Data Pembayaran Kasbon", kasbon, pembayaranKasbon);
+                frm.Listener = this;
+                frm.ShowDialog();
+            }            
         }
 
         private void btnHapusPembayaran_Click(object sender, EventArgs e)
@@ -511,24 +519,27 @@ namespace OpenRetail.App.Pengeluaran
             {
                 var pembayaranKasbon = _listOfHistoriPembayaranKasbon[index];
 
-                IPembayaranKasbonBll bll = new PembayaranKasbonBll(_log);
+                IPembayaranKasbonBll bll = new PembayaranKasbonBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
 
-                var result = bll.Delete(pembayaranKasbon);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    var kasbon = _listOfKasbon[this.gridList.SelectedIndex];
+                    var result = bll.Delete(pembayaranKasbon);
+                    if (result > 0)
+                    {
+                        var kasbon = _listOfKasbon[this.gridList.SelectedIndex];
 
-                    kasbon.total_pelunasan -= pembayaranKasbon.nominal;
-                    kasbon.item_pembayaran_kasbon.Remove(pembayaranKasbon);
+                        kasbon.total_pelunasan -= pembayaranKasbon.nominal;
+                        kasbon.item_pembayaran_kasbon.Remove(pembayaranKasbon);
 
-                    GridListControlHelper.UpdateObject<Kasbon>(this.gridList, _listOfKasbon, kasbon);
-                    GridListControlHelper.RemoveObject<PembayaranKasbon>(this.gridListHistoriPembayaran, _listOfHistoriPembayaranKasbon, pembayaranKasbon);
+                        GridListControlHelper.UpdateObject<Kasbon>(this.gridList, _listOfKasbon, kasbon);
+                        GridListControlHelper.RemoveObject<PembayaranKasbon>(this.gridListHistoriPembayaran, _listOfHistoriPembayaranKasbon, pembayaranKasbon);
 
-                    btnTambahPembayaran.Enabled = kasbon.sisa > 0;
-                    ResetButtonHistoriPembayaran(_listOfHistoriPembayaranKasbon.Count > 0);
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                        btnTambahPembayaran.Enabled = kasbon.sisa > 0;
+                        ResetButtonHistoriPembayaran(_listOfHistoriPembayaranKasbon.Count > 0);
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 
