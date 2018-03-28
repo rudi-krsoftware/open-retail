@@ -51,7 +51,6 @@ namespace OpenRetail.App
 
         public static readonly string stageOfDevelopment = "";
         public static readonly string appName = "Open Retail Versi {0}{1} - Copyright © {2} Kamarudin";
-        public static readonly string currentVersion = Utils.GetCurrentVersion();
 
         /// <summary>
         /// Kode unik untuk enkripsi password menggunakan metode md5
@@ -70,7 +69,7 @@ namespace OpenRetail.App
         public static int pageSize = 200; // nilai default 50 record perhalaman
 
         public static bool isUseWebAPI = true;
-        public static string baseUrl = "http://localhost:50472/"; //"http://35.197.136.220/openretailapi/"
+        public static string baseUrl = "http://localhost:50472/";
         public static Profil profil = null;
         public static Pengguna pengguna = null;
         public static PengaturanUmum pengaturanUmum = null;
