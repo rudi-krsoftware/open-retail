@@ -195,6 +195,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutoMapperConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\Pengeluaran\GajiKaryawanController.cs" />
     <Compile Include="Controllers\Pengeluaran\KasbonController.cs" />
     <Compile Include="Controllers\Pengeluaran\PembayaranKasbonController.cs" />
     <Compile Include="Controllers\Referensi\AlasanPenyesuaianStokController.cs" />
@@ -218,6 +219,7 @@
     </Compile>
     <Compile Include="Models\DTO\Pengaturan\PenggunaDTO.cs" />
     <Compile Include="Models\DTO\Pengaturan\RoleDTO.cs" />
+    <Compile Include="Models\DTO\Pengeluaran\GajiKaryawanDTO.cs" />
     <Compile Include="Models\DTO\Pengeluaran\KasbonDTO.cs" />
     <Compile Include="Models\DTO\Pengeluaran\PembayaranKasbonDTO.cs" />
     <Compile Include="Models\DTO\Referensi\AlasanPenyesuaianStokDTO.cs" />

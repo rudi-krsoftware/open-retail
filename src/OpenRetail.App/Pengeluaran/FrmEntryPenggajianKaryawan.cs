@@ -30,6 +30,7 @@ using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
+using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Pengeluaran
 {
@@ -185,39 +186,42 @@ namespace OpenRetail.App.Pengeluaran
             var result = 0;
             var validationError = new ValidationError();
 
-            if (_isNewData)
-                result = _bll.Save(_gaji, ref validationError);
-            else
-                result = _bll.Update(_gaji, ref validationError);
-
-            if (result > 0) 
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                Listener.Ok(this, _isNewData, _gaji);
-
                 if (_isNewData)
-                {
-                    cmbKaryawan.SelectedIndex = 0;
-                    cmbKaryawan.Focus();
+                    result = _bll.Save(_gaji, ref validationError);
+                else
+                    result = _bll.Update(_gaji, ref validationError);
 
-                    txtNota.Text = _bll.GetLastNota();
+                if (result > 0)
+                {
+                    Listener.Ok(this, _isNewData, _gaji);
+
+                    if (_isNewData)
+                    {
+                        cmbKaryawan.SelectedIndex = 0;
+                        cmbKaryawan.Focus();
+
+                        txtNota.Text = _bll.GetLastNota();
+                    }
+                    else
+                        this.Close();
+
                 }
                 else
-                    this.Close();
-
-            }
-            else
-            {
-                if (validationError.Message.NullToString().Length > 0)
                 {
-                    MsgHelper.MsgWarning(validationError.Message);
-                    base.SetFocusObject(validationError.PropertyName, this);
+                    if (validationError.Message.NullToString().Length > 0)
+                    {
+                        MsgHelper.MsgWarning(validationError.Message);
+                        base.SetFocusObject(validationError.PropertyName, this);
+                    }
+                    else
+                    {
+                        var pesan = string.Format("Maaf, Data yang Anda masukkan gagal disimpan !\nCek apakah data gaji '{0}' sudah diinputkan.", _gaji.Karyawan.nama_karyawan);
+                        MsgHelper.MsgWarning(pesan);
+                    }
                 }
-                else
-                {
-                    var pesan = string.Format("Maaf, Data yang Anda masukkan gagal disimpan !\nCek apakah data gaji '{0}' sudah diinputkan.", _gaji.Karyawan.nama_karyawan);
-                    MsgHelper.MsgWarning(pesan);
-                }
-            }                
+            }                            
         }
 
         private void cmbKaryawan_SelectedIndexChanged(object sender, EventArgs e)

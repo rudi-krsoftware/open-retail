@@ -32,23 +32,42 @@ namespace OpenRetail.Bll.Service
 {    
     public class GajiKaryawanBll : IGajiKaryawanBll
     {
-		private ILog _log;
-		private GajiKaryawanValidator _validator;
+        private ILog _log;
+        private IUnitOfWork _unitOfWork;
+        private GajiKaryawanValidator _validator;
 
-		public GajiKaryawanBll(ILog log)
+        private bool _isUseWebAPI;
+        private string _baseUrl;
+
+        public GajiKaryawanBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new GajiKaryawanValidator();
+        }
+
+        public GajiKaryawanBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
         }
 
         public string GetLastNota()
         {
             var lastNota = string.Empty;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                lastNota = uow.GajiKaryawanRepository.GetLastNota();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                lastNota = _unitOfWork.GajiKaryawanRepository.GetLastNota();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    lastNota = _unitOfWork.GajiKaryawanRepository.GetLastNota();
+                }
             }
 
             return lastNota;
@@ -57,11 +76,19 @@ namespace OpenRetail.Bll.Service
         public GajiKaryawan GetByID(string id)
         {
             GajiKaryawan obj = null;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.GajiKaryawanRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.GajiKaryawanRepository.GetByID(id);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.GajiKaryawanRepository.GetByID(id);
+                }
             }
 
             return obj;
@@ -81,10 +108,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<GajiKaryawan> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.GajiKaryawanRepository.GetByBulanAndTahun(bulan, tahun);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.GajiKaryawanRepository.GetByBulanAndTahun(bulan, tahun);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.GajiKaryawanRepository.GetByBulanAndTahun(bulan, tahun);
+                }
             }
 
             return oList;
@@ -94,10 +129,20 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.GajiKaryawanRepository.Save(obj);
+                obj.gaji_karyawan_id = Guid.NewGuid().ToString();
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.GajiKaryawanRepository.Save(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.GajiKaryawanRepository.Save(obj);
+                }
             }
 
             return result;
@@ -124,10 +169,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.GajiKaryawanRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.GajiKaryawanRepository.Update(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.GajiKaryawanRepository.Update(obj);
+                }
             }
 
             return result;
@@ -154,10 +207,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.GajiKaryawanRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.GajiKaryawanRepository.Delete(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.GajiKaryawanRepository.Delete(obj);
+                }
             }
 
             return result;

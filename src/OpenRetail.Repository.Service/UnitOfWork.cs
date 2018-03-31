@@ -396,7 +396,10 @@ namespace OpenRetail.Repository.Service
 
         public IGajiKaryawanRepository GajiKaryawanRepository
         {
-            get { return _gajikaryawanRepository ?? (_gajikaryawanRepository = new GajiKaryawanRepository(_context, _log)); }
+            get
+            {
+                return _gajikaryawanRepository ?? (_gajikaryawanRepository = _isUseWebAPI ? (IGajiKaryawanRepository)new GajiKaryawanWebAPIRepository(_baseUrl, _log) : new GajiKaryawanRepository(_context, _log));
+            }
         }
 
         public ICetakNotaRepository CetakNotaDummyRepository

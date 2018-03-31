@@ -54,7 +54,7 @@ namespace OpenRetail.App.Pengeluaran
             base.WindowState = FormWindowState.Maximized;
 
             _log = MainProgram.log;
-            _bll = new GajiKaryawanBll(_log);
+            _bll = new GajiKaryawanBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _pengguna = pengguna;
             _menuId = menuId;
 
@@ -84,7 +84,7 @@ namespace OpenRetail.App.Pengeluaran
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                IKaryawanBll bll = new KaryawanBll(_log);
+                IKaryawanBll bll = new KaryawanBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 _listOfKaryawan = bll.GetAll();
             }
         }
@@ -263,14 +263,17 @@ namespace OpenRetail.App.Pengeluaran
             {
                 var pengeluaran = _listOfGaji[index];
 
-                var result = _bll.Delete(pengeluaran);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<GajiKaryawan>(this.gridList, _listOfGaji, pengeluaran);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var result = _bll.Delete(pengeluaran);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<GajiKaryawan>(this.gridList, _listOfGaji, pengeluaran);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 
