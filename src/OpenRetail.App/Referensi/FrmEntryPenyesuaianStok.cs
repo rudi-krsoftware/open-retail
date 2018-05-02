@@ -33,6 +33,7 @@ using OpenRetail.Bll.Service;
 using OpenRetail.Helper.UserControl;
 using OpenRetail.App.Lookup;
 using log4net;
+using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Referensi
 {
@@ -99,7 +100,7 @@ namespace OpenRetail.App.Referensi
 
         private void LoadAlasanPenyesuaianStok()
         {
-            IAlasanPenyesuaianStokBll bll = new AlasanPenyesuaianStokBll(_log);
+            IAlasanPenyesuaianStokBll bll = new AlasanPenyesuaianStokBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _listOfAlasanPenyesuaian = bll.GetAll();
 
             cmbAlasanPenyesuaian.Items.Clear();
@@ -149,36 +150,39 @@ namespace OpenRetail.App.Referensi
             var result = 0;
             var validationError = new ValidationError();
 
-            if (_isNewData)
-                result = _bll.Save(_penyesuaianStok, ref validationError);
-            else
-                result = _bll.Update(_penyesuaianStok, ref validationError);
-
-            if (result > 0) 
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                Listener.Ok(this, _isNewData, _penyesuaianStok);
-
                 if (_isNewData)
+                    result = _bll.Save(_penyesuaianStok, ref validationError);
+                else
+                    result = _bll.Update(_penyesuaianStok, ref validationError);
+
+                if (result > 0)
                 {
-                    base.ResetForm(this);
-                    this._produk = null;
-                    txtKodeProduk.Focus();
+                    Listener.Ok(this, _isNewData, _penyesuaianStok);
+
+                    if (_isNewData)
+                    {
+                        base.ResetForm(this);
+                        this._produk = null;
+                        txtKodeProduk.Focus();
+
+                    }
+                    else
+                        this.Close();
 
                 }
                 else
-                    this.Close();
-
-            }
-            else
-            {
-                if (validationError.Message.NullToString().Length > 0)
                 {
-                    MsgHelper.MsgWarning(validationError.Message);
-                    base.SetFocusObject(validationError.PropertyName, this);
-                }
-                else
-                    MsgHelper.MsgUpdateError();
-            }                
+                    if (validationError.Message.NullToString().Length > 0)
+                    {
+                        MsgHelper.MsgWarning(validationError.Message);
+                        base.SetFocusObject(validationError.PropertyName, this);
+                    }
+                    else
+                        MsgHelper.MsgUpdateError();
+                }       
+            }                     
         }
 
         private void txtGolongan_KeyPress(object sender, KeyPressEventArgs e)
@@ -199,7 +203,7 @@ namespace OpenRetail.App.Referensi
             {
                 var keyword = ((AdvancedTextbox)sender).Text;
 
-                IProdukBll produkBll = new ProdukBll(_log);
+                IProdukBll produkBll = new ProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 this._produk = produkBll.GetByKode(keyword);
 
                 if (this._produk == null)

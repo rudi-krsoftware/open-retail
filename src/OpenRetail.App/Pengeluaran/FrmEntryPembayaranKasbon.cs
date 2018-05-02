@@ -31,6 +31,7 @@ using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
+using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Pengeluaran
 {
@@ -55,7 +56,7 @@ namespace OpenRetail.App.Pengeluaran
             base.SetHeader(header);
 
             this._log = MainProgram.log;
-            this._bll = new PembayaranKasbonBll(this._log);
+            this._bll = new PembayaranKasbonBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             this._kasbon = kasbon;
             this._pengguna = MainProgram.pengguna;
 
@@ -75,7 +76,7 @@ namespace OpenRetail.App.Pengeluaran
             base.SetButtonSelesaiToBatal();
 
             this._log = MainProgram.log;
-            this._bll = new PembayaranKasbonBll(this._log);
+            this._bll = new PembayaranKasbonBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             this._kasbon = kasbon;
             this._pembayaranKasbon = pembayaranKasbon;
             this._pengguna = MainProgram.pengguna;
@@ -108,24 +109,27 @@ namespace OpenRetail.App.Pengeluaran
             var result = 0;
             var validationError = new ValidationError();
 
-            if (_isNewData)
-                result = _bll.Save(_pembayaranKasbon, ref validationError);
-            else
-                result = _bll.Update(_pembayaranKasbon, ref validationError);
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                if (_isNewData)
+                    result = _bll.Save(_pembayaranKasbon, ref validationError);
+                else
+                    result = _bll.Update(_pembayaranKasbon, ref validationError);
 
-            if (result > 0) 
-            {
-                Listener.Ok(this, _isNewData, _pembayaranKasbon);
-                this.Close();
-            }
-            else
-            {
-                if (validationError.Message.NullToString().Length > 0)
+                if (result > 0)
                 {
-                    MsgHelper.MsgWarning(validationError.Message);
-                    base.SetFocusObject(validationError.PropertyName, this);
+                    Listener.Ok(this, _isNewData, _pembayaranKasbon);
+                    this.Close();
                 }
-            }                
+                else
+                {
+                    if (validationError.Message.NullToString().Length > 0)
+                    {
+                        MsgHelper.MsgWarning(validationError.Message);
+                        base.SetFocusObject(validationError.PropertyName, this);
+                    }
+                }
+            }                            
         }
 
         private void txtKeterangan_KeyPress(object sender, KeyPressEventArgs e)

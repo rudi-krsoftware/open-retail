@@ -40,6 +40,14 @@
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\RestSharp.105.2.3\lib\net4\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Syncfusion.Grid.Base, Version=15.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Syncfusion.Grid.Base.dll</HintPath>
@@ -114,6 +122,7 @@
     </Compile>
     <Compile Include="RAWPrinting\RawPrintHelper.cs" />
     <Compile Include="ReportViewerPrinting\ReportViewerPrintHelper.cs" />
+    <Compile Include="RestSharpHelper.cs" />
     <Compile Include="RolePrivilegeHelper.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="ThreadHelper.cs" />

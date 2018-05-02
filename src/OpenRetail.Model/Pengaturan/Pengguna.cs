@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace OpenRetail.Model
 {
@@ -43,6 +44,7 @@ namespace OpenRetail.Model
 		[Display(Name = "role_id")]
 		public string role_id { get; set; }
 
+        [JsonIgnore]
 		[Write(false)]
         public Role Role { get; set; }
 
@@ -77,6 +79,7 @@ namespace OpenRetail.Model
             }
         }
 
+        [JsonIgnore]
         [Write(false)]
         public IList<RolePrivilege> role_privileges { get; set; }
 

@@ -128,7 +128,7 @@ namespace OpenRetail.Repository.Service
 
                     foreach (var kasbon in oList)
                     {
-                        kasbon.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByKasbonId(kasbon.kasbon_id);
+                        kasbon.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByKasbonId(kasbon.kasbon_id).ToList();
                     }
                 }
             }
@@ -157,7 +157,7 @@ namespace OpenRetail.Repository.Service
 
                     foreach (var kasbon in oList)
                     {
-                        kasbon.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByKasbonId(kasbon.kasbon_id);
+                        kasbon.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByKasbonId(kasbon.kasbon_id).ToList();
                     }
                 }                
             }
@@ -186,7 +186,7 @@ namespace OpenRetail.Repository.Service
 
                     foreach (var kasbon in oList)
                     {
-                        kasbon.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByKasbonId(kasbon.kasbon_id);
+                        kasbon.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByKasbonId(kasbon.kasbon_id).ToList();
                     }
                 }
             }
@@ -204,7 +204,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                obj.kasbon_id = _context.GetGUID();
+                if (obj.kasbon_id == null)
+                    obj.kasbon_id = _context.GetGUID();
 
                 _context.db.Insert<Kasbon>(obj);
 

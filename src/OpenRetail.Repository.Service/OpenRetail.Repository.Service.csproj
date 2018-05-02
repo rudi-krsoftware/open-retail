@@ -64,13 +64,19 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Pengeluaran\GajiKaryawanWebAPIRepository.cs" />
+    <Compile Include="Pengeluaran\KasbonWebAPIRepository.cs" />
+    <Compile Include="Pengeluaran\PembayaranKasbonWebAPIRepository.cs" />
+    <Compile Include="Referensi\AlasanPenyesuaianStokWebAPIRepository.cs" />
     <Compile Include="Referensi\CustomerWebAPIRepository.cs" />
+    <Compile Include="Referensi\DropshipperWebAPIRepository.cs" />
     <Compile Include="Referensi\GolonganWebAPIRepository.cs" />
     <Compile Include="Referensi\JabatanWebAPIRepository.cs" />
     <Compile Include="Referensi\JenisPengeluaranWebAPIRepository.cs" />
     <Compile Include="Referensi\KartuWebAPIRepository.cs" />
     <Compile Include="Referensi\KaryawanWebAPIRepository.cs" />
     <Compile Include="Pengeluaran\PengeluaranBiayaWebAPIRepository.cs" />
+    <Compile Include="Referensi\PenyesuaianStokWebAPIRepository.cs" />
     <Compile Include="Referensi\ProdukWebAPIRepository.cs" />
     <Compile Include="Referensi\AlasanPenyesuaianStokRepository.cs" />
     <Compile Include="Referensi\SupplierWebAPIRepository.cs" />
@@ -139,6 +145,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenRetail.Helper\OpenRetail.Helper.csproj">
+      <Project>{3316e651-8404-4cd4-a132-2b013489de67}</Project>
+      <Name>OpenRetail.Helper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenRetail.Model\OpenRetail.Model.csproj">
       <Project>{6b9cabad-1a6c-4323-8548-bd5f3c12613c}</Project>
       <Name>OpenRetail.Model</Name>

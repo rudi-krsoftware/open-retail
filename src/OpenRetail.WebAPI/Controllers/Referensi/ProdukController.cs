@@ -160,7 +160,7 @@ namespace OpenRetail.WebAPI.Controllers
 
             try
             {
-                var results = _unitOfWork.ProdukRepository.GetByName(name);
+                var results = _unitOfWork.ProdukRepository.GetByName(name.NullToString());
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, results);
@@ -185,7 +185,7 @@ namespace OpenRetail.WebAPI.Controllers
             try
             {
                 var pagesCount = 0;
-                var results = _unitOfWork.ProdukRepository.GetByName(name, sortBy, pageNumber, pageSize, ref pagesCount);
+                var results = _unitOfWork.ProdukRepository.GetByName(name.NullToString(), sortBy, pageNumber, pageSize, ref pagesCount);
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, results, pagesCount);

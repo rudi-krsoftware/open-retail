@@ -86,7 +86,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                obj.alasan_penyesuaian_stok_id = _context.GetGUID();
+                if (obj.alasan_penyesuaian_stok_id == null)
+                    obj.alasan_penyesuaian_stok_id = _context.GetGUID();
 
                 _context.db.Insert<AlasanPenyesuaianStok>(obj);
                 result = 1;

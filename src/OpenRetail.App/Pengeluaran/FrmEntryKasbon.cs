@@ -30,6 +30,7 @@ using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
+using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Pengeluaran
 {
@@ -118,24 +119,27 @@ namespace OpenRetail.App.Pengeluaran
             var result = 0;
             var validationError = new ValidationError();
 
-            if (_isNewData)
-                result = _bll.Save(_kasbon, ref validationError);
-            else
-                result = _bll.Update(_kasbon, ref validationError);
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                if (_isNewData)
+                    result = _bll.Save(_kasbon, ref validationError);
+                else
+                    result = _bll.Update(_kasbon, ref validationError);
 
-            if (result > 0) 
-            {
-                Listener.Ok(this, _isNewData, _kasbon);
-                this.Close();
-            }
-            else
-            {
-                if (validationError.Message.NullToString().Length > 0)
+                if (result > 0)
                 {
-                    MsgHelper.MsgWarning(validationError.Message);
-                    base.SetFocusObject(validationError.PropertyName, this);
+                    Listener.Ok(this, _isNewData, _kasbon);
+                    this.Close();
                 }
-            }                
+                else
+                {
+                    if (validationError.Message.NullToString().Length > 0)
+                    {
+                        MsgHelper.MsgWarning(validationError.Message);
+                        base.SetFocusObject(validationError.PropertyName, this);
+                    }
+                }
+            }                            
         }
 
         private void txtKeterangan_KeyPress(object sender, KeyPressEventArgs e)

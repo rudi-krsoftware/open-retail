@@ -44,7 +44,6 @@ namespace OpenRetail.Model
 		[Display(Name = "Karyawan")]
 		public string karyawan_id { get; set; }
 
-        [JsonIgnore]
 		[Write(false)]
         public Karyawan Karyawan { get; set; }
 
@@ -142,7 +141,7 @@ namespace OpenRetail.Model
         }
 
         [Write(false)]
-        public IList<PembayaranKasbon> item_pembayaran_kasbon { get; set; }
+        public List<PembayaranKasbon> item_pembayaran_kasbon { get; set; }
 
         [JsonIgnore]
         [Write(false)]

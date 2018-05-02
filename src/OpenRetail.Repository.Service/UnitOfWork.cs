@@ -127,7 +127,10 @@ namespace OpenRetail.Repository.Service
 
         public IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository
         {
-            get { return _alasanpenyesuaianstokRepository ?? (_alasanpenyesuaianstokRepository = new AlasanPenyesuaianStokRepository(_context, _log)); }
+            get 
+            {
+                return _alasanpenyesuaianstokRepository ?? (_alasanpenyesuaianstokRepository = _isUseWebAPI ? (IAlasanPenyesuaianStokRepository)new AlasanPenyesuaianStokWebAPIRepository(_baseUrl, _log) : new AlasanPenyesuaianStokRepository(_context, _log));
+            }
         }
 
         public IJabatanRepository JabatanRepository
@@ -190,7 +193,10 @@ namespace OpenRetail.Repository.Service
 
         public IDropshipperRepository DropshipperRepository
         {
-            get { return _dropshipperRepository ?? (_dropshipperRepository = new DropshipperRepository(_context, _log)); }
+            get 
+            { 
+                return _dropshipperRepository ?? (_dropshipperRepository = _isUseWebAPI ? (IDropshipperRepository)new DropshipperWebAPIRepository(_baseUrl, _log) : new DropshipperRepository(_context, _log));
+            }
         }
 
         public IKaryawanRepository KaryawanRepository
@@ -238,7 +244,10 @@ namespace OpenRetail.Repository.Service
 
         public IPenyesuaianStokRepository PenyesuaianStokRepository
         {
-            get { return _penyesuaianstokRepository ?? (_penyesuaianstokRepository = new PenyesuaianStokRepository(_context, _log)); }
+            get
+            {
+                return _penyesuaianstokRepository ?? (_penyesuaianstokRepository = _isUseWebAPI ? (IPenyesuaianStokRepository)new PenyesuaianStokWebAPIRepository(_baseUrl, _log) : new PenyesuaianStokRepository(_context, _log));
+            }
         }
 
         public IPenggunaRepository PenggunaRepository
@@ -371,17 +380,26 @@ namespace OpenRetail.Repository.Service
 
         public IKasbonRepository KasbonRepository
         {
-            get { return _kasbonRepository ?? (_kasbonRepository = new KasbonRepository(_context, _log)); }
+            get
+            {
+                return _kasbonRepository ?? (_kasbonRepository = _isUseWebAPI ? (IKasbonRepository)new KasbonWebAPIRepository(_baseUrl, _log) : new KasbonRepository(_context, _log));
+            }
         }
 
         public IPembayaranKasbonRepository PembayaranKasbonRepository
         {
-            get { return _pembayarankasbonRepository ?? (_pembayarankasbonRepository = new PembayaranKasbonRepository(_context, _log)); }
+            get
+            {
+                return _pembayarankasbonRepository ?? (_pembayarankasbonRepository = _isUseWebAPI ? (IPembayaranKasbonRepository)new PembayaranKasbonWebAPIRepository(_baseUrl, _log) : new PembayaranKasbonRepository(_context, _log));
+            }
         }
 
         public IGajiKaryawanRepository GajiKaryawanRepository
         {
-            get { return _gajikaryawanRepository ?? (_gajikaryawanRepository = new GajiKaryawanRepository(_context, _log)); }
+            get
+            {
+                return _gajikaryawanRepository ?? (_gajikaryawanRepository = _isUseWebAPI ? (IGajiKaryawanRepository)new GajiKaryawanWebAPIRepository(_baseUrl, _log) : new GajiKaryawanRepository(_context, _log));
+            }
         }
 
         public ICetakNotaRepository CetakNotaDummyRepository

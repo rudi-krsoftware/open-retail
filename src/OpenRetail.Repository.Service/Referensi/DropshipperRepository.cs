@@ -100,7 +100,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                obj.dropshipper_id = _context.GetGUID();
+                if (obj.dropshipper_id == null)
+                    obj.dropshipper_id = _context.GetGUID();
 
                 _context.db.Insert<Dropshipper>(obj);
                 result = 1;

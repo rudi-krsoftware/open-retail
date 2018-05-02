@@ -32,23 +32,42 @@ namespace OpenRetail.Bll.Service
 {    
     public class KasbonBll : IKasbonBll
     {
-		private ILog _log;
-		private KasbonValidator _validator;
+        private ILog _log;
+        private IUnitOfWork _unitOfWork;
+        private KasbonValidator _validator;
 
-		public KasbonBll(ILog log)
+        private bool _isUseWebAPI;
+        private string _baseUrl;
+
+        public KasbonBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new KasbonValidator();
+        }
+
+        public KasbonBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
         }
 
         public Kasbon GetByID(string id)
         {
             Kasbon obj = null;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.KasbonRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                obj = _unitOfWork.KasbonRepository.GetByID(id);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.KasbonRepository.GetByID(id);
+                }
             }
 
             return obj;
@@ -63,23 +82,39 @@ namespace OpenRetail.Bll.Service
         {
             IList<Kasbon> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.KasbonRepository.GetByStatus(isLunas);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.KasbonRepository.GetByStatus(isLunas);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    IUnitOfWork uow = new UnitOfWork(context, _log);
+                    oList = uow.KasbonRepository.GetByStatus(isLunas);
+                }
+            }            
 
             return oList;
         }
 
         public IList<Kasbon> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
-            IList<Kasbon> oList = null;
+            IList<Kasbon> oList = null;            
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.KasbonRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.KasbonRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    IUnitOfWork uow = new UnitOfWork(context, _log);
+                    oList = uow.KasbonRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                }
             }
 
             return oList;
@@ -89,11 +124,19 @@ namespace OpenRetail.Bll.Service
         {
             IList<Kasbon> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.KasbonRepository.GetByKaryawanId(karyawanId);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.KasbonRepository.GetByKaryawanId(karyawanId);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    IUnitOfWork uow = new UnitOfWork(context, _log);
+                    oList = uow.KasbonRepository.GetByKaryawanId(karyawanId);
+                }
+            }            
 
             return oList;
         }
@@ -102,10 +145,18 @@ namespace OpenRetail.Bll.Service
         {
             IList<Kasbon> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.KasbonRepository.GetAll();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.KasbonRepository.GetAll();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.KasbonRepository.GetAll();
+                }
             }
 
             return oList;
@@ -115,10 +166,20 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.KasbonRepository.Save(obj);
+                obj.kasbon_id = Guid.NewGuid().ToString();
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.KasbonRepository.Save(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.KasbonRepository.Save(obj);
+                }
             }
 
             return result;
@@ -145,10 +206,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.KasbonRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.KasbonRepository.Update(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.KasbonRepository.Update(obj);
+                }
             }
 
             return result;
@@ -175,10 +244,18 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.KasbonRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                result = _unitOfWork.KasbonRepository.Delete(obj);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.KasbonRepository.Delete(obj);
+                }
             }
 
             return result;
@@ -188,10 +265,18 @@ namespace OpenRetail.Bll.Service
         {
             var lastNota = string.Empty;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                lastNota = uow.KasbonRepository.GetLastNota();
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                lastNota = _unitOfWork.KasbonRepository.GetLastNota();
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    lastNota = _unitOfWork.KasbonRepository.GetLastNota();
+                }
             }
 
             return lastNota;

@@ -111,7 +111,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var gaji in oList)
                 {
-                    gaji.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByGajiKaryawan(gaji.gaji_karyawan_id);
+                    gaji.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByGajiKaryawan(gaji.gaji_karyawan_id).ToList();
                 }
 
             }
@@ -152,7 +152,8 @@ namespace OpenRetail.Repository.Service
 
                 var transaction = _context.transaction;
 
-                obj.gaji_karyawan_id = _context.GetGUID();
+                if (obj.gaji_karyawan_id == null)
+                    obj.gaji_karyawan_id = _context.GetGUID();
 
                 // insert header
                 _context.db.Insert<GajiKaryawan>(obj, transaction);

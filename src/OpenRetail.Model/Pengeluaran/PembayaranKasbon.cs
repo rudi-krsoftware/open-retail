@@ -71,18 +71,15 @@ namespace OpenRetail.Model
 		[Display(Name = "Jumlah")]
 		public double nominal { get; set; }
 
-        [JsonIgnore]
         [Write(false)]
         public double old_nominal { get; set; }
 
-        [JsonIgnore]
         [Write(false)]
         public double sisa_kasbon { get; set; }
 
 		[Display(Name = "Keterangan")]
 		public string keterangan { get; set; }
 
-        [JsonIgnore]
         [Write(false)]
         public EntityState entity_state { get; set; }
 

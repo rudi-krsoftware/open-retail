@@ -149,7 +149,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                obj.penyesuaian_stok_id = _context.GetGUID();
+                if (obj.penyesuaian_stok_id == null)
+                    obj.penyesuaian_stok_id = _context.GetGUID();
 
                 _context.db.Insert<PenyesuaianStok>(obj);
                 result = 1;

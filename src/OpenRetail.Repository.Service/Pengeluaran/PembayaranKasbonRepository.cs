@@ -53,6 +53,8 @@ namespace OpenRetail.Repository.Service
             try
             {
                 obj = _context.db.Get<PembayaranKasbon>(id);
+                if (obj != null)
+                    obj.entity_state = EntityState.Unchanged;
             }
             catch (Exception ex)
             {
@@ -74,7 +76,8 @@ namespace OpenRetail.Repository.Service
             try
             {
                 oList = _context.db.GetAll<PembayaranKasbon>()
-                                .Where(f => f.kasbon_id == kasbonId)
+                                .Where(f => f.kasbon_id == kasbonId)                                
+                                .Select(f => { f.entity_state = EntityState.Unchanged; return f; })
                                 .OrderBy(f => f.tanggal)
                                 .ToList();
             }
@@ -94,6 +97,7 @@ namespace OpenRetail.Repository.Service
             {
                 oList = _context.db.GetAll<PembayaranKasbon>()
                                 .Where(f => f.gaji_karyawan_id == gajiKaryawanId)
+                                .Select(f => { f.entity_state = EntityState.Unchanged; return f; })
                                 .OrderBy(f => f.tanggal)
                                 .ToList();
 
@@ -121,7 +125,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                obj.pembayaran_kasbon_id = _context.GetGUID();
+                if (obj.pembayaran_kasbon_id == null)
+                    obj.pembayaran_kasbon_id = _context.GetGUID();
 
                 _context.db.Insert<PembayaranKasbon>(obj);
 
