@@ -240,12 +240,16 @@ namespace OpenRetail.App.Cashier.Transaksi
         {
             HargaGrosir hargaGrosir = null;
 
-            if (produk.list_of_harga_grosir.Count > 0)
+            if (produk.list_of_harga_grosir.Count(f => f.jumlah_minimal > 0) > 0)
             {
                 hargaGrosir = produk.list_of_harga_grosir
-                                    .Where(f => f.produk_id == produk.produk_id && f.jumlah_minimal <= jumlah)
+                                    .Where(f => f.produk_id == produk.produk_id && (f.jumlah_minimal > 0 && f.jumlah_minimal <= jumlah))
                                     .LastOrDefault();
-            }
+                
+                // harga grosir tidak ada yang cocok, set harga retil
+                if (hargaGrosir == null)
+                    hargaGrosir = new HargaGrosir { harga_ke = 1, harga_grosir = produk.harga_jual, diskon = produk.diskon };
+            }            
 
             return hargaGrosir;
         }
