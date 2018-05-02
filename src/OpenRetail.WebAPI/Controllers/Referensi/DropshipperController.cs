@@ -95,7 +95,7 @@ namespace OpenRetail.WebAPI.Controllers
 
             try
             {
-                var results = _unitOfWork.DropshipperRepository.GetByName(name);
+                var results = _unitOfWork.DropshipperRepository.GetByName(name.NullToString());
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, results);

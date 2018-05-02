@@ -25,7 +25,7 @@ using System.Threading.Tasks;
 using log4net;
 using RestSharp;
 using Newtonsoft.Json;
-
+using OpenRetail.Helper;
 using OpenRetail.Model;
 using OpenRetail.Model.WebAPI;
 using OpenRetail.Repository.Api;
@@ -49,9 +49,8 @@ namespace OpenRetail.Repository.Service
 
 			try
             {
-                var client = new RestClient(_apiUrl);
-                var request = new RestRequest(string.Format("get_by_id?id={0}", id), Method.GET);
-                var response = client.Execute<OpenRetailWebApiGetResponse<Supplier>>(request).Data;
+                var api = string.Format("get_by_id?id={0}", id);
+                var response = RestSharpHelper<OpenRetailWebApiGetResponse<Supplier>>.GetRequest(_apiUrl, api).Data;
 
                 if (response.Results.Count > 0)
                     obj = response.Results[0];
@@ -70,9 +69,8 @@ namespace OpenRetail.Repository.Service
 
 			try
             {
-                var client = new RestClient(_apiUrl);
-                var request = new RestRequest(string.Format("get_by_name?name={0}", name), Method.GET);
-                var response = client.Execute<OpenRetailWebApiGetResponse<Supplier>>(request).Data;
+                var api = string.Format("get_by_name?name={0}", name);
+                var response = RestSharpHelper<OpenRetailWebApiGetResponse<Supplier>>.GetRequest(_apiUrl, api).Data;
 
                 if (response.Results.Count > 0)
                     oList = response.Results;
@@ -91,9 +89,8 @@ namespace OpenRetail.Repository.Service
 
 			try
             {
-                var client = new RestClient(_apiUrl);
-                var request = new RestRequest("get_all", Method.GET);
-                var response = client.Execute<OpenRetailWebApiGetResponse<Supplier>>(request).Data;
+                var api = "get_all";
+                var response = RestSharpHelper<OpenRetailWebApiGetResponse<Supplier>>.GetRequest(_apiUrl, api).Data;
 
                 if (response.Results.Count > 0)
                     oList = response.Results;
@@ -112,16 +109,11 @@ namespace OpenRetail.Repository.Service
 
 			try
             {
-                var client = new RestClient(_apiUrl);
-                var request = new RestRequest("save", Method.POST);
+                var api = "save";
+                var response = RestSharpHelper<OpenRetailWebApiPostResponse>.PostRequest(_apiUrl, api, obj);
 
-                request.RequestFormat = DataFormat.Json;
-                request.AddBody(obj);
+                result = Convert.ToInt32(response.Results);
 
-                var response = client.Execute(request);
-                var responseContent = JsonConvert.DeserializeObject<OpenRetailWebApiPostResponse>(response.Content);
-
-                result = Convert.ToInt32(responseContent.Results);
             }
             catch (Exception ex)
             {
@@ -137,16 +129,10 @@ namespace OpenRetail.Repository.Service
 
 			try
             {
-                var client = new RestClient(_apiUrl);
-                var request = new RestRequest("update", Method.POST);
+                var api = "update";
+                var response = RestSharpHelper<OpenRetailWebApiPostResponse>.PostRequest(_apiUrl, api, obj);
 
-                request.RequestFormat = DataFormat.Json;
-                request.AddBody(obj);
-
-                var response = client.Execute(request);
-                var responseContent = JsonConvert.DeserializeObject<OpenRetailWebApiPostResponse>(response.Content);
-
-                result = Convert.ToInt32(responseContent.Results);
+                result = Convert.ToInt32(response.Results);
             }
             catch (Exception ex)
             {
@@ -162,16 +148,10 @@ namespace OpenRetail.Repository.Service
 
 			try
             {
-                var client = new RestClient(_apiUrl);
-                var request = new RestRequest("delete", Method.POST);
+                var api = "delete";
+                var response = RestSharpHelper<OpenRetailWebApiPostResponse>.PostRequest(_apiUrl, api, obj);
 
-                request.RequestFormat = DataFormat.Json;
-                request.AddBody(obj);
-
-                var response = client.Execute(request);
-                var responseContent = JsonConvert.DeserializeObject<OpenRetailWebApiPostResponse>(response.Content);
-
-                result = Convert.ToInt32(responseContent.Results);
+                result = Convert.ToInt32(response.Results);
             }
             catch (Exception ex)
             {

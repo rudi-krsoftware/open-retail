@@ -94,7 +94,7 @@ namespace OpenRetail.WebAPI.Controllers
 
             try
             {
-                var results = _unitOfWork.GolonganRepository.GetByName(name, useLikeOperator);
+                var results = _unitOfWork.GolonganRepository.GetByName(name.NullToString(), useLikeOperator);
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, results);

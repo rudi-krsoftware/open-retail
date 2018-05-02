@@ -96,7 +96,7 @@ namespace OpenRetail.WebAPI.Controllers
 
             try
             {
-                var results = _unitOfWork.PenyesuaianStokRepository.GetByName(name);
+                var results = _unitOfWork.PenyesuaianStokRepository.GetByName(name.NullToString());
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, results);
