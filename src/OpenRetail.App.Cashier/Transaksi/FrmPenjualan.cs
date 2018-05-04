@@ -506,6 +506,13 @@ namespace OpenRetail.App.Cashier.Transaksi
                         cc = grid.CurrentCell;
                         var namaProduk = cc.Renderer.ControlValue.ToString();
 
+                        if (namaProduk.Length == 0)
+                        {
+                            ShowMessage("Nama produk tidak boleh kosong", true);
+                            GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+                            return;
+                        }
+
                         var listOfProduk = bll.GetByName(namaProduk);
 
                         if (listOfProduk.Count == 0)
