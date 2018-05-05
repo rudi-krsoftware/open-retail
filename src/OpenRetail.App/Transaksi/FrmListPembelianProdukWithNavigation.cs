@@ -10,7 +10,7 @@
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
+ * License for the specific language governing permissions and limitations GetByID
  * the License.
  *
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
@@ -309,6 +309,7 @@ namespace OpenRetail.App.Transaksi
 
             var beli = _listOfBeli[index];
             beli.tanggal_tempo_old = beli.tanggal_tempo;
+            beli.item_beli = _bll.GetItemBeli(beli.beli_produk_id);
 
             LogicalThreadContext.Properties["OldValue"] = beli.ToJson();
 
