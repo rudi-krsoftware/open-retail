@@ -897,8 +897,9 @@ namespace OpenRetail.App.Cashier.Transaksi
                                 {
                                     ShowMessage("Belum ada info nota terakhir", true);
                                     return;
-                                }                                    
+                                }
 
+                                jual.item_jual = _bll.GetItemJual(jual.jual_id);
                                 var frmInfoNota = new FrmInfoNotaTerakhir("Info Nota Terakhir", jual);
                                 frmInfoNota.ShowDialog();
                                 

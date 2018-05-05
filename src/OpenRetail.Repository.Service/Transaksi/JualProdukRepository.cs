@@ -172,10 +172,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 obj = MappingRecordToObject(_sql, new { id }).SingleOrDefault();
-
-                if (obj != null)
-                    // load item jual
-                    obj.item_jual = GetItemJual(obj.jual_id);
             }
             catch (Exception ex)
             {
@@ -196,10 +192,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 obj = MappingRecordToObject(_sql, new { penggunaId, mesinId }).SingleOrDefault();
-
-                if (obj != null)
-                    // load item jual
-                    obj.item_jual = GetItemJual(obj.jual_id);
             }
             catch (Exception ex)
             {
@@ -222,12 +214,6 @@ namespace OpenRetail.Repository.Service
                 name = "%" + name.ToLower() + "%";
 
                 oList = MappingRecordToObject(_sql, new { name }).ToList();
-
-                // load item jual
-                foreach (var item in oList)
-                {
-                    item.item_jual = GetItemJual(item.jual_id);
-                }
             }
             catch (Exception ex)
             {
@@ -261,12 +247,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");                
 
                 oList = MappingRecordToObject(_sql, new { name, pageNumber, pageSize }).ToList();
-
-                // load item jual
-                foreach (var item in oList)
-                {
-                    item.item_jual = GetItemJual(item.jual_id);
-                }
             }
             catch (Exception ex)
             {
@@ -287,12 +267,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql).ToList();
-
-                // load item jual
-                foreach (var item in oList)
-                {
-                    item.item_jual = GetItemJual(item.jual_id);
-                }
             }
             catch (Exception ex)
             {
@@ -316,12 +290,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
 
                 oList = MappingRecordToObject(_sql, new { pageNumber, pageSize }).ToList();
-
-                // load item jual
-                foreach (var item in oList)
-                {
-                    item.item_jual = GetItemJual(item.jual_id);
-                }
             }
             catch (Exception ex)
             {
@@ -591,12 +559,6 @@ namespace OpenRetail.Repository.Service
                 name = "%" + name.ToLower() + "%";
 
                 oList = MappingRecordToObject(_sql, new { name }).ToList();
-
-                // load item beli
-                foreach (var item in oList)
-                {
-                    item.item_jual = GetItemJual(item.jual_id);
-                }
             }
             catch (Exception ex)
             {
@@ -632,12 +594,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql, param).ToList();
-
-                // load item jual
-                foreach (var item in oList)
-                {
-                    item.item_jual = GetItemJual(item.jual_id);
-                }
             }
             catch (Exception ex)
             {
@@ -666,12 +622,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql, new { id }).ToList();
-
-                // load item jual, aktifkan perintah berikut
-                //foreach (var item in oList)
-                //{
-                //    item.item_jual = GetItemJual(item.jual_id);
-                //}
             }
             catch (Exception ex)
             {
@@ -693,12 +643,6 @@ namespace OpenRetail.Repository.Service
 
                 nota = nota.ToLower() + "%";
                 oList = MappingRecordToObject(_sql, new { id, nota }).ToList();
-
-                // load item jual, aktifkan perintah berikut
-                //foreach (var item in oList)
-                //{
-                //    item.item_jual = GetItemJual(item.jual_id);
-                //}
             }
             catch (Exception ex)
             {
@@ -719,12 +663,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai }).ToList();
-
-                // load item jual
-                foreach (var item in oList)
-                {
-                    item.item_jual = GetItemJual(item.jual_id);
-                }
             }
             catch (Exception ex)
             {
@@ -748,12 +686,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai, pageNumber, pageSize }).ToList();
-
-                // load item jual
-                foreach (var item in oList)
-                {
-                    item.item_jual = GetItemJual(item.jual_id);
-                }
             }
             catch (Exception ex)
             {
@@ -776,12 +708,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai, name }).ToList();
-
-                // load item jual
-                foreach (var item in oList)
-                {
-                    item.item_jual = GetItemJual(item.jual_id);
-                }
             }
             catch (Exception ex)
             {
