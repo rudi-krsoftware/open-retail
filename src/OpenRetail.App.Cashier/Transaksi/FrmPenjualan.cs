@@ -240,12 +240,16 @@ namespace OpenRetail.App.Cashier.Transaksi
         {
             HargaGrosir hargaGrosir = null;
 
-            if (produk.list_of_harga_grosir.Count > 0)
+            if (produk.list_of_harga_grosir.Count(f => f.jumlah_minimal > 0) > 0)
             {
                 hargaGrosir = produk.list_of_harga_grosir
-                                    .Where(f => f.produk_id == produk.produk_id && f.jumlah_minimal <= jumlah)
+                                    .Where(f => f.produk_id == produk.produk_id && (f.jumlah_minimal > 0 && f.jumlah_minimal <= jumlah))
                                     .LastOrDefault();
-            }
+                
+                // harga grosir tidak ada yang cocok, set harga retil
+                if (hargaGrosir == null)
+                    hargaGrosir = new HargaGrosir { harga_ke = 1, harga_grosir = produk.harga_jual, diskon = produk.diskon };
+            }            
 
             return hargaGrosir;
         }
@@ -502,7 +506,14 @@ namespace OpenRetail.App.Cashier.Transaksi
                         cc = grid.CurrentCell;
                         var namaProduk = cc.Renderer.ControlValue.ToString();
 
-                        var listOfProduk = bll.GetByName(namaProduk);
+                        if (namaProduk.Length == 0)
+                        {
+                            ShowMessage("Nama produk tidak boleh kosong", true);
+                            GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+                            return;
+                        }
+
+                        var listOfProduk = bll.GetByName(namaProduk, false);
 
                         if (listOfProduk.Count == 0)
                         {
@@ -513,6 +524,9 @@ namespace OpenRetail.App.Cashier.Transaksi
                         {
                             ShowMessage("");
                             produk = listOfProduk[0];
+
+                            IHargaGrosirBll hargaGrosirBll = new HargaGrosirBll(_log);
+                            produk.list_of_harga_grosir = hargaGrosirBll.GetListHargaGrosir(produk.produk_id).ToList();	
 
                             if (!_pengaturanUmum.is_stok_produk_boleh_minus)
                             {
@@ -886,8 +900,9 @@ namespace OpenRetail.App.Cashier.Transaksi
                                 {
                                     ShowMessage("Belum ada info nota terakhir", true);
                                     return;
-                                }                                    
+                                }
 
+                                jual.item_jual = _bll.GetItemJual(jual.jual_id);
                                 var frmInfoNota = new FrmInfoNotaTerakhir("Info Nota Terakhir", jual);
                                 frmInfoNota.ShowDialog();
                                 
@@ -966,6 +981,9 @@ namespace OpenRetail.App.Cashier.Transaksi
             if (data is Produk) // pencarian produk baku
             {
                 var produk = (Produk)data;
+
+                IHargaGrosirBll hargaGrosirBll = new HargaGrosirBll(_log);
+                produk.list_of_harga_grosir = hargaGrosirBll.GetListHargaGrosir(produk.produk_id).ToList();	
 
                 if (!_pengaturanUmum.is_stok_produk_boleh_minus)
                 {

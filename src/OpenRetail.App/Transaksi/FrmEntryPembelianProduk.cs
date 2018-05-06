@@ -653,9 +653,17 @@ namespace OpenRetail.App.Transaksi
                         cc = grid.CurrentCell;
                         var namaProduk = cc.Renderer.ControlValue.ToString();
 
+                        if (namaProduk.Length == 0)
+                        {
+                            MsgHelper.MsgWarning("Nama produk tidak boleh kosong");
+                            GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
+
+                            return;
+                        }
+
                         if (!_isValidKodeProduk)
                         {
-                            var listOfProduk = bll.GetByName(namaProduk);
+                            var listOfProduk = bll.GetByName(namaProduk, false);
 
                             if (listOfProduk.Count == 0)
                             {
@@ -782,7 +790,7 @@ namespace OpenRetail.App.Transaksi
                 MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
                 return;
             }
-
+            
             IGolonganBll golonganBll = new GolonganBll(_log);
             var listOfGolongan = golonganBll.GetAll();
 

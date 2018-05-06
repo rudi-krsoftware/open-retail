@@ -438,6 +438,7 @@ namespace OpenRetail.App.Transaksi
 
             var jual = _listOfJual[index];
             jual.tanggal_tempo_old = jual.tanggal_tempo;
+            jual.item_jual = _bll.GetItemJual(jual.jual_id);
 
             LogicalThreadContext.Properties["OldValue"] = jual.ToJson();
 

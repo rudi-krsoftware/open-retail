@@ -104,13 +104,13 @@ namespace OpenRetail.Repository.Service
             return result;
         }
 
-        public IList<Produk> GetByName(string name)
+        public IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true)
         {
             IList<Produk> oList = new List<Produk>();
 
 			try
             {
-                var api = string.Format("get_by_name?name={0}", name);
+                var api = string.Format("get_by_name?name={0}&isLoadHargaGrosir={1}", name, isLoadHargaGrosir);
                 var response = RestSharpHelper<OpenRetailWebApiGetResponse<Produk>>.GetRequest(_apiUrl, api).Data;
 
                 if (response.Results.Count > 0)
@@ -124,13 +124,13 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
-        public IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount)
+        public IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount, bool isLoadHargaGrosir = true)
         {
             IList<Produk> oList = new List<Produk>();
 
             try
             {
-                var api = string.Format("get_by_name_with_paging?name={0}&sortBy={1}&pageNumber={2}&pageSize={3}", name, sortBy, pageNumber, pageSize);
+                var api = string.Format("get_by_name_with_paging?name={0}&sortBy={1}&pageNumber={2}&pageSize={3}&isLoadHargaGrosir={4}", name, sortBy, pageNumber, pageSize, isLoadHargaGrosir);
                 var response = RestSharpHelper<OpenRetailWebApiGetResponse<Produk>>.GetRequest(_apiUrl, api).Data;
 
                 if (response.Results.Count > 0)

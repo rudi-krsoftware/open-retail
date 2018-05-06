@@ -40,8 +40,8 @@ namespace OpenRetail.WebAPI.Controllers
         IHttpActionResult GetByKode(string kodeProduk);
         IHttpActionResult GetLastKodeProduk();
 
-        IHttpActionResult GetByName(string name);
-        IHttpActionResult GetByName(string name, string sortBy, int pageNumber, int pageSize);
+        IHttpActionResult GetByName(string name, bool isLoadHargaGrosir = true);
+        IHttpActionResult GetByName(string name, string sortBy, int pageNumber, int pageSize, bool isLoadHargaGrosir = true);
         IHttpActionResult GetByGolongan(string golonganId);
         IHttpActionResult GetByGolongan(string golonganId, string sortBy, int pageNumber, int pageSize);
         IHttpActionResult GetInfoMinimalStok();
@@ -153,14 +153,14 @@ namespace OpenRetail.WebAPI.Controllers
         }
 
 		[HttpGet, Route("get_by_name")]
-        public IHttpActionResult GetByName(string name)
+        public IHttpActionResult GetByName(string name, bool isLoadHargaGrosir = true)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
             _response = Content(_httpStatusCode, new ResponsePackage(_httpStatusCode));
 
             try
             {
-                var results = _unitOfWork.ProdukRepository.GetByName(name.NullToString());
+                var results = _unitOfWork.ProdukRepository.GetByName(name.NullToString(), isLoadHargaGrosir);
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, results);
@@ -177,7 +177,7 @@ namespace OpenRetail.WebAPI.Controllers
         }
 
         [HttpGet, Route("get_by_name_with_paging")]
-        public IHttpActionResult GetByName(string name, string sortBy, int pageNumber, int pageSize)
+        public IHttpActionResult GetByName(string name, string sortBy, int pageNumber, int pageSize, bool isLoadHargaGrosir = true)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
             _response = Content(_httpStatusCode, new ResponsePackage(_httpStatusCode));
@@ -185,7 +185,7 @@ namespace OpenRetail.WebAPI.Controllers
             try
             {
                 var pagesCount = 0;
-                var results = _unitOfWork.ProdukRepository.GetByName(name.NullToString(), sortBy, pageNumber, pageSize, ref pagesCount);
+                var results = _unitOfWork.ProdukRepository.GetByName(name.NullToString(), sortBy, pageNumber, pageSize, ref pagesCount, isLoadHargaGrosir);
 
                 _httpStatusCode = HttpStatusCode.OK;
                 var output = GenerateOutput(_httpStatusCode, results, pagesCount);

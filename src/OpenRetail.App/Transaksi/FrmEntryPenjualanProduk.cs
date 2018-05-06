@@ -413,13 +413,17 @@ namespace OpenRetail.App.Transaksi
         private HargaGrosir GetHargaGrosir(Produk produk, double jumlah)
         {
             HargaGrosir hargaGrosir = null;
-
-            if (produk.list_of_harga_grosir.Count > 0)
+            
+            if (produk.list_of_harga_grosir.Count(f => f.jumlah_minimal > 0) > 0)
             {
                 hargaGrosir = produk.list_of_harga_grosir
-                                    .Where(f => f.produk_id == produk.produk_id && f.jumlah_minimal <= jumlah)
+                                    .Where(f => f.produk_id == produk.produk_id && (f.jumlah_minimal > 0 && f.jumlah_minimal <= jumlah))
                                     .LastOrDefault();
-            }
+
+                // harga grosir tidak ada yang cocok, set harga retil
+                if (hargaGrosir == null)
+                    hargaGrosir = new HargaGrosir { harga_ke = 1, harga_grosir = produk.harga_jual, diskon = produk.diskon };
+            }            
 
             return hargaGrosir;
         }
@@ -762,6 +766,9 @@ namespace OpenRetail.App.Transaksi
             {
                 var produk = (Produk)data;
 
+                IHargaGrosirBll hargaGrosirBll = new HargaGrosirBll(_log);
+                produk.list_of_harga_grosir = hargaGrosirBll.GetListHargaGrosir(produk.produk_id).ToList();
+
                 if (!_pengaturanUmum.is_stok_produk_boleh_minus)
                 {
                     if (produk.is_stok_minus)
@@ -1084,8 +1091,15 @@ namespace OpenRetail.App.Transaksi
 
                         cc = grid.CurrentCell;
                         var namaProduk = cc.Renderer.ControlValue.ToString();
+                        if (namaProduk.Length == 0)
+                        {
+                            MsgHelper.MsgWarning("Nama produk tidak boleh kosong");
+                            GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
 
-                        var listOfProduk = bll.GetByName(namaProduk);
+                            return;
+                        }
+                        
+                        var listOfProduk = bll.GetByName(namaProduk, false);
 
                         if (listOfProduk.Count == 0)
                         {
@@ -1093,8 +1107,11 @@ namespace OpenRetail.App.Transaksi
                             GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
                         }
                         else if (listOfProduk.Count == 1)
-                        {
+                        {                            
                             produk = listOfProduk[0];
+
+                            IHargaGrosirBll hargaGrosirBll = new HargaGrosirBll(_log);
+                            produk.list_of_harga_grosir = hargaGrosirBll.GetListHargaGrosir(produk.produk_id).ToList();
 
                             if (!_pengaturanUmum.is_stok_produk_boleh_minus)
                             {
