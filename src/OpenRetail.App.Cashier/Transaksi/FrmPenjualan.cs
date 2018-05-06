@@ -513,7 +513,7 @@ namespace OpenRetail.App.Cashier.Transaksi
                             return;
                         }
 
-                        var listOfProduk = bll.GetByName(namaProduk);
+                        var listOfProduk = bll.GetByName(namaProduk, false);
 
                         if (listOfProduk.Count == 0)
                         {
@@ -524,6 +524,9 @@ namespace OpenRetail.App.Cashier.Transaksi
                         {
                             ShowMessage("");
                             produk = listOfProduk[0];
+
+                            IHargaGrosirBll hargaGrosirBll = new HargaGrosirBll(_log);
+                            produk.list_of_harga_grosir = hargaGrosirBll.GetListHargaGrosir(produk.produk_id).ToList();	
 
                             if (!_pengaturanUmum.is_stok_produk_boleh_minus)
                             {
@@ -978,6 +981,9 @@ namespace OpenRetail.App.Cashier.Transaksi
             if (data is Produk) // pencarian produk baku
             {
                 var produk = (Produk)data;
+
+                IHargaGrosirBll hargaGrosirBll = new HargaGrosirBll(_log);
+                produk.list_of_harga_grosir = hargaGrosirBll.GetListHargaGrosir(produk.produk_id).ToList();	
 
                 if (!_pengaturanUmum.is_stok_produk_boleh_minus)
                 {

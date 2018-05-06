@@ -32,8 +32,8 @@ namespace OpenRetail.Repository.Api
         Produk GetByKode(string kodeProduk);
         string GetLastKodeProduk();
 
-        IList<Produk> GetByName(string name);
-        IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount);
+        IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true);
+        IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount, bool isLoadHargaGrosir = true);
         IList<Produk> GetByGolongan(string golonganId);
         IList<Produk> GetByGolongan(string golonganId, string sortBy, int pageNumber, int pageSize, ref int pagesCount);
         IList<Produk> GetInfoMinimalStok();

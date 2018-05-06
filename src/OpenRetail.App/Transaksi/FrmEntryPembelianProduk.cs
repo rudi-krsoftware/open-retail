@@ -663,7 +663,7 @@ namespace OpenRetail.App.Transaksi
 
                         if (!_isValidKodeProduk)
                         {
-                            var listOfProduk = bll.GetByName(namaProduk);
+                            var listOfProduk = bll.GetByName(namaProduk, false);
 
                             if (listOfProduk.Count == 0)
                             {
@@ -790,7 +790,7 @@ namespace OpenRetail.App.Transaksi
                 MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
                 return;
             }
-
+            
             IGolonganBll golonganBll = new GolonganBll(_log);
             var listOfGolongan = golonganBll.GetAll();
 
