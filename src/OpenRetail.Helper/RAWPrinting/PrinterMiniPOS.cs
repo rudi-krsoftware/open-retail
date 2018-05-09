@@ -41,7 +41,7 @@ namespace OpenRetail.Helper.RAWPrinting
         }
 
         public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0,
-            string infoCopyright1 = "", string infoCopyright2 = "")
+            string autocutCode = "", string infoCopyright1 = "", string infoCopyright2 = "")
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
             var textToPrint = new StringBuilder();            
@@ -168,6 +168,12 @@ namespace OpenRetail.Helper.RAWPrinting
 
             if (!Utils.IsRunningUnderIDE())
             {
+                if (autocutCode.Length > 0)
+                    textToPrint.Append(ESCCommandHelper.CustomeCode(autocutCode));
+            }                
+
+            if (!Utils.IsRunningUnderIDE())
+            {
                 RawPrintHelper.SendStringToPrinter(_printerName, textToPrint.ToString());
             }
             else
@@ -177,7 +183,8 @@ namespace OpenRetail.Helper.RAWPrinting
         }
 
         public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota,
-            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0, string infoCopyright1 = "", string infoCopyright2 = "")
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0,
+            string autocutCode = "", string openCashDrawerCode = "", string infoCopyright1 = "", string infoCopyright2 = "")
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
 
@@ -343,6 +350,15 @@ namespace OpenRetail.Helper.RAWPrinting
             }
 
             textToPrint.Append(ESCCommandHelper.LineFeed(lineFeed));
+
+            if (!Utils.IsRunningUnderIDE())
+            {
+                if (autocutCode.Length > 0)
+                    textToPrint.Append(ESCCommandHelper.CustomeCode(autocutCode));
+
+                if (openCashDrawerCode.Length > 0)
+                    textToPrint.Append(ESCCommandHelper.CustomeCode(openCashDrawerCode));
+            }
 
             if (!Utils.IsRunningUnderIDE())
             {

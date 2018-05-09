@@ -46,6 +46,19 @@ namespace OpenRetail.Helper
             return sb.ToString();
         }
 
+        public static string CustomeCode(string customeCode)
+        {
+            var sequence = new StringBuilder();
+            var splitCode = customeCode.Split(',');
+
+            foreach (var code in splitCode)
+            {
+                sequence.Append((char)int.Parse(code));
+            }
+
+            return sequence.ToString();
+        }
+
         public static string LineSpacing(int spacing = 20)
         {
             var sb = new StringBuilder();

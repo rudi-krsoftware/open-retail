@@ -153,9 +153,12 @@ namespace OpenRetail.App.Cashier.Laporan
         {
             if (MsgHelper.MsgKonfirmasi("Apakah proses pencetakan ingin dilanjutkan ?"))
             {
+                var autocutCode = _pengaturanUmum.is_autocut ? _pengaturanUmum.autocut_code : string.Empty;
+
                 IRAWPrinting printerMiniPos = new PrinterMiniPOS(_pengaturanUmum.nama_printer);
+
                 printerMiniPos.Cetak(_listOfMesinKasir, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.jumlah_karakter, 
-                    _pengaturanUmum.jumlah_gulung, ukuranFont: _pengaturanUmum.ukuran_font);
+                    _pengaturanUmum.jumlah_gulung, ukuranFont: _pengaturanUmum.ukuran_font, autocutCode: autocutCode);
 
                 this.Close();
             }            

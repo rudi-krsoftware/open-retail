@@ -37,7 +37,8 @@ namespace OpenRetail.Helper.RAWPrinting
         /// <param name="jumlahKarakter">maksimal jumlah karakter yang tercetak</param>
         /// <param name="lineFeed">jumlah gulung kertas setelah pencetakan selesai</param>
         void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota,
-            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0, string infoCopyright1 = "", string infoCopyright2 = "");
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0, 
+            string autocutCode = "", string openCashDrawerCode = "", string infoCopyright1 = "", string infoCopyright2 = "");
 
         /// <summary>
         /// Override method untuk mencetak laporan kasir menggunakan printer mini pos
@@ -46,7 +47,7 @@ namespace OpenRetail.Helper.RAWPrinting
         /// <param name="listOfHeaderNota"></param>
         /// <param name="jumlahKarakter"></param>
         void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0,
-            string infoCopyright1 = "", string infoCopyright2 = "");
+            string autocutCode = "", string infoCopyright1 = "", string infoCopyright2 = "");
 
         /// <summary>
         /// Override method untuk mencetak nota jual menggunakan printer dot matrix

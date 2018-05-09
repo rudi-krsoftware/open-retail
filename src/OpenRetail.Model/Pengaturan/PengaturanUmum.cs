@@ -53,6 +53,12 @@ namespace OpenRetail.Model
         public bool is_cetak_keterangan_nota { get; set; }
         public bool is_fokus_input_kolom_jumlah { get; set; }
 
+        public bool is_autocut { get; set; }
+        public string autocut_code { get; set; }
+
+        public bool is_open_cash_drawer { get; set; }
+        public string open_cash_drawer_code { get; set; }
+
         /// <summary>
         /// Validasi stok produk boleh minus ketika penjualan
         /// </summary>

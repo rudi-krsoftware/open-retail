@@ -85,6 +85,12 @@ namespace OpenRetail.App.Cashier.Main
             var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", _appConfigFile)) : 5;
             var ukuranFont = AppConfigHelper.GetValue("ukuranFont", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("ukuranFont", _appConfigFile)) : 0;
 
+            MainProgram.pengaturanUmum.is_autocut = AppConfigHelper.GetValue("isAutocut", _appConfigFile, "false").ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.autocut_code = AppConfigHelper.GetValue("autocutCode", _appConfigFile, "27,112,0,75,250");
+
+            MainProgram.pengaturanUmum.is_open_cash_drawer = AppConfigHelper.GetValue("isOpenCashDrawer", _appConfigFile, "false").ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.open_cash_drawer_code = AppConfigHelper.GetValue("openCashDrawerCode", _appConfigFile, "27,112,0,25,250");
+
             MainProgram.pengaturanUmum.jenis_printer = AppConfigHelper.GetValue("jenis_printer", _appConfigFile).Length > 0 ? (JenisPrinter)Convert.ToInt32(AppConfigHelper.GetValue("jenis_printer", _appConfigFile)) : JenisPrinter.MiniPOS;
             MainProgram.pengaturanUmum.jumlah_karakter = jumlahKarakter;
             MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;

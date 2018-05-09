@@ -194,6 +194,9 @@ namespace OpenRetail.App.Pengaturan
                 chkUkuranFont.Checked = _pengaturanUmum.ukuran_font > 0;
                 txtUkuranFont.Text = _pengaturanUmum.ukuran_font.ToString();
                 txtUkuranFont.Enabled = chkUkuranFont.Checked;
+
+                chkAutocut.Checked = _pengaturanUmum.is_autocut;
+                chkOpenCashDrawer.Checked = _pengaturanUmum.is_open_cash_drawer;
             }            
         }
 
@@ -261,7 +264,9 @@ namespace OpenRetail.App.Pengaturan
             _pengaturanUmum.is_singkat_penulisan_ongkir = chkSingkatPenulisanOngkir.Checked;
             _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
             _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
-            _pengaturanUmum.ukuran_font = Convert.ToInt32(txtUkuranFont.Text);            
+            _pengaturanUmum.ukuran_font = Convert.ToInt32(txtUkuranFont.Text);
+            _pengaturanUmum.is_autocut = chkAutocut.Checked;
+            _pengaturanUmum.is_open_cash_drawer = chkOpenCashDrawer.Checked;
 
             // simpan info printer
             AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
@@ -277,6 +282,10 @@ namespace OpenRetail.App.Pengaturan
             AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
             AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
             AppConfigHelper.SaveValue("ukuranFont", txtUkuranFont.Text, appConfigFile);
+            AppConfigHelper.SaveValue("isAutocut", chkAutocut.Checked.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("autocutCode", _pengaturanUmum.autocut_code, appConfigFile);
+            AppConfigHelper.SaveValue("isOpenCashDrawer", chkOpenCashDrawer.Checked.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("openCashDrawerCode", _pengaturanUmum.open_cash_drawer_code, appConfigFile);
         }
 
         /// <summary>
@@ -509,6 +518,14 @@ namespace OpenRetail.App.Pengaturan
             chkUkuranFont.Checked = false;  
             txtUkuranFont.Enabled = false;
             txtUkuranFont.Text = "0";
+
+            chkAutocut.Enabled = false;
+            chkAutocut.Checked = false;
+            chkOpenCashDrawer.Enabled = false;
+            chkOpenCashDrawer.Checked = false;
+
+            btnShowAutocutCode.Enabled = false;
+            btnShowOpenCashDrawerCode.Enabled = false;
         }
 
         private void rdoJenisPrinterDotMatrix_CheckedChanged(object sender, EventArgs e)
@@ -526,6 +543,12 @@ namespace OpenRetail.App.Pengaturan
 
             chkUkuranFont.Enabled = true;
             chkUkuranFont.Checked = _pengaturanUmum.ukuran_font > 0;
+
+            chkAutocut.Enabled = true;
+            chkAutocut.Checked = _pengaturanUmum.is_autocut;
+
+            chkOpenCashDrawer.Enabled = true;
+            chkOpenCashDrawer.Checked = _pengaturanUmum.is_open_cash_drawer;
         }
 
         private void chkUkuranFont_CheckedChanged(object sender, EventArgs e)
@@ -546,6 +569,30 @@ namespace OpenRetail.App.Pengaturan
             txtKeteranganTambahanItemJual.Text = "Keterangan";
             if (chk.Checked)
                 txtKeteranganTambahanItemJual.Text = _pengaturanUmum.keterangan_tambahan_item_jual;
+        }
+
+        private void btnShowAutocutCode_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmEntryCustomeCode("Edit Kode Autocut", _pengaturanUmum, true);
+            frm.ShowDialog();
+        }
+
+        private void btnShowOpenCashDrawerCode_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmEntryCustomeCode("Edit Kode Open Cash Drawer", _pengaturanUmum, false);
+            frm.ShowDialog();
+        }
+
+        private void chkAutocut_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = (CheckBox)sender;
+            btnShowAutocutCode.Enabled = chk.Checked;
+        }
+
+        private void chkOpenCashDrawer_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = (CheckBox)sender;
+            btnShowOpenCashDrawerCode.Enabled = chk.Checked;
         }
     }
 }

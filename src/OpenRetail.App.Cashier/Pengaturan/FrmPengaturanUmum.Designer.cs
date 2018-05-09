@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -38,6 +39,10 @@
             this.chkCetakOtomatis = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpMiniPOS = new System.Windows.Forms.GroupBox();
+            this.btnShowOpenCashDrawerCode = new System.Windows.Forms.Button();
+            this.btnShowAutocutCode = new System.Windows.Forms.Button();
+            this.chkOpenCashDrawer = new System.Windows.Forms.CheckBox();
+            this.chkAutocut = new System.Windows.Forms.CheckBox();
             this.chkUkuranFont = new System.Windows.Forms.CheckBox();
             this.txtUkuranFont = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtJumlahGulung = new OpenRetail.Helper.UserControl.AdvancedTextbox();
@@ -68,6 +73,7 @@
             this.txtHeaderMiniPOS3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtHeaderMiniPOS4 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtHeaderMiniPOS5 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -193,6 +199,10 @@
             // 
             // grpMiniPOS
             // 
+            this.grpMiniPOS.Controls.Add(this.btnShowOpenCashDrawerCode);
+            this.grpMiniPOS.Controls.Add(this.btnShowAutocutCode);
+            this.grpMiniPOS.Controls.Add(this.chkOpenCashDrawer);
+            this.grpMiniPOS.Controls.Add(this.chkAutocut);
             this.grpMiniPOS.Controls.Add(this.chkUkuranFont);
             this.grpMiniPOS.Controls.Add(this.txtUkuranFont);
             this.grpMiniPOS.Controls.Add(this.txtJumlahGulung);
@@ -208,6 +218,52 @@
             this.grpMiniPOS.TabIndex = 0;
             this.grpMiniPOS.TabStop = false;
             this.grpMiniPOS.Text = " [ Jenis Printer ] ";
+            // 
+            // btnShowOpenCashDrawerCode
+            // 
+            this.btnShowOpenCashDrawerCode.Enabled = false;
+            this.btnShowOpenCashDrawerCode.Image = global::OpenRetail.App.Cashier.Properties.Resources.code32;
+            this.btnShowOpenCashDrawerCode.Location = new System.Drawing.Point(205, 154);
+            this.btnShowOpenCashDrawerCode.Name = "btnShowOpenCashDrawerCode";
+            this.btnShowOpenCashDrawerCode.Size = new System.Drawing.Size(41, 23);
+            this.btnShowOpenCashDrawerCode.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.btnShowOpenCashDrawerCode, "Tampilkan kode open cash drawer");
+            this.btnShowOpenCashDrawerCode.UseVisualStyleBackColor = true;
+            this.btnShowOpenCashDrawerCode.Click += new System.EventHandler(this.btnShowOpenCashDrawerCode_Click);
+            // 
+            // btnShowAutocutCode
+            // 
+            this.btnShowAutocutCode.Enabled = false;
+            this.btnShowAutocutCode.Image = global::OpenRetail.App.Cashier.Properties.Resources.code32;
+            this.btnShowAutocutCode.Location = new System.Drawing.Point(205, 130);
+            this.btnShowAutocutCode.Name = "btnShowAutocutCode";
+            this.btnShowAutocutCode.Size = new System.Drawing.Size(41, 23);
+            this.btnShowAutocutCode.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.btnShowAutocutCode, "Tampilkan kode autocut");
+            this.btnShowAutocutCode.UseVisualStyleBackColor = true;
+            this.btnShowAutocutCode.Click += new System.EventHandler(this.btnShowAutocutCode_Click);
+            // 
+            // chkOpenCashDrawer
+            // 
+            this.chkOpenCashDrawer.AutoSize = true;
+            this.chkOpenCashDrawer.Location = new System.Drawing.Point(26, 158);
+            this.chkOpenCashDrawer.Name = "chkOpenCashDrawer";
+            this.chkOpenCashDrawer.Size = new System.Drawing.Size(116, 17);
+            this.chkOpenCashDrawer.TabIndex = 4;
+            this.chkOpenCashDrawer.Text = "Open Cash Drawer";
+            this.chkOpenCashDrawer.UseVisualStyleBackColor = true;
+            this.chkOpenCashDrawer.CheckedChanged += new System.EventHandler(this.chkOpenCashDrawer_CheckedChanged);
+            // 
+            // chkAutocut
+            // 
+            this.chkAutocut.AutoSize = true;
+            this.chkAutocut.Location = new System.Drawing.Point(26, 134);
+            this.chkAutocut.Name = "chkAutocut";
+            this.chkAutocut.Size = new System.Drawing.Size(63, 17);
+            this.chkAutocut.TabIndex = 4;
+            this.chkAutocut.Text = "Autocut";
+            this.chkAutocut.UseVisualStyleBackColor = true;
+            this.chkAutocut.CheckedChanged += new System.EventHandler(this.chkAutocut_CheckedChanged);
             // 
             // chkUkuranFont
             // 
@@ -639,6 +695,11 @@
             this.txtHeaderMiniPOS5.TabIndex = 4;
             this.txtHeaderMiniPOS5.ThousandSeparator = false;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Informasi";
+            // 
             // FrmPengaturanUmum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -711,6 +772,11 @@
         private Helper.UserControl.AdvancedTextbox txtHeaderMiniPOS5;
         private System.Windows.Forms.CheckBox chkUkuranFont;
         private Helper.UserControl.AdvancedTextbox txtUkuranFont;
+        private System.Windows.Forms.Button btnShowAutocutCode;
+        private System.Windows.Forms.CheckBox chkOpenCashDrawer;
+        private System.Windows.Forms.CheckBox chkAutocut;
+        private System.Windows.Forms.Button btnShowOpenCashDrawerCode;
+        private System.Windows.Forms.ToolTip toolTip1;
 
 
 

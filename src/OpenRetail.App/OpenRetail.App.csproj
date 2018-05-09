@@ -348,6 +348,12 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="MainProgram.cs" />
+    <Compile Include="Pengaturan\FrmEntryCustomeCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengaturan\FrmEntryCustomeCode.Designer.cs">
+      <DependentUpon>FrmEntryCustomeCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pengaturan\FrmPengaturanUmum.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -719,6 +725,9 @@
     <EmbeddedResource Include="Main\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pengaturan\FrmEntryCustomeCode.resx">
+      <DependentUpon>FrmEntryCustomeCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pengaturan\FrmPengaturanUmum.resx">
       <DependentUpon>FrmPengaturanUmum.cs</DependentUpon>
     </EmbeddedResource>
@@ -966,6 +975,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main-icon.ico" />
+    <None Include="Resources\code32.png" />
+    <None Include="Resources\code16.png" />
+    <None Include="Resources\code.png" />
     <None Include="Resources\background-server.png" />
     <None Include="Resources\open16.png" />
     <None Include="Resources\donasi-fix.png" />
