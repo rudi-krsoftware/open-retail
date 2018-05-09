@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("OpenRetail.BackupAndRestore")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("KR Software")]
 [assembly: AssemblyProduct("OpenRetail.BackupAndRestore")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
+[assembly: AssemblyCopyright("Copyright © 2017-2018. Kamarudin")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
