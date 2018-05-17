@@ -1,4 +1,4 @@
-﻿namespace OpenRetail.App.Transaksi
+namespace OpenRetail.App.Transaksi
 {
     partial class FrmEntryPenjualanProduk
     {
@@ -401,19 +401,16 @@
             gridBaseStyle2,
             gridBaseStyle3,
             gridBaseStyle4});
-            this.gridControl.ColWidthEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridColWidth[] {
-            new Syncfusion.Windows.Forms.Grid.GridColWidth(0, 35)});
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(5, 5);
             this.gridControl.Name = "gridControl";
-            this.gridControl.RowHeightEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridRowHeight[] {
-            new Syncfusion.Windows.Forms.Grid.GridRowHeight(0, 25)});
             this.gridControl.SerializeCellsBehavior = Syncfusion.Windows.Forms.Grid.GridSerializeCellsBehavior.SerializeIntoCode;
             this.gridControl.Size = new System.Drawing.Size(1010, 195);
             this.gridControl.SmartSizeBox = false;
             this.gridControl.TabIndex = 0;
             this.gridControl.Text = "gridControl1";
             this.gridControl.UseRightToLeftCompatibleTextBox = true;
+            this.gridControl.CurrentCellActivated += new System.EventHandler(this.gridControl_CurrentCellActivated);
             this.gridControl.CurrentCellValidated += new System.EventHandler(this.gridControl_CurrentCellValidated);
             this.gridControl.CurrentCellKeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridControl_CurrentCellKeyPress);
             this.gridControl.CurrentCellKeyDown += new System.Windows.Forms.KeyEventHandler(this.gridControl_CurrentCellKeyDown);
