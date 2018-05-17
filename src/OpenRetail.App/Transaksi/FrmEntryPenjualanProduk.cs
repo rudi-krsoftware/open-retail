@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -63,6 +63,7 @@ namespace OpenRetail.App.Transaksi
         private PengaturanUmum _pengaturanUmum;
 
         public IListener Listener { private get; set; }
+        public double oldJumlah { get; private set; }
 
         public FrmEntryPenjualanProduk(string header, IJualProdukBll bll) 
             : base()
@@ -973,6 +974,26 @@ namespace OpenRetail.App.Transaksi
             return obj;
         }
 
+        /// <summary>
+        /// Mendapatkan jumlah awal dari item saat edit penjualan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridControl_CurrentCellActivated(object sender, EventArgs e)
+        {
+            var grid = (GridControl)sender;
+            var rowIndex = grid.CurrentCell.RowIndex;
+            var colIndex = grid.CurrentCell.ColIndex;
+
+            if (!(rowIndex > _listOfItemJualOld.Count))
+            {
+                if (colIndex == 5)
+                {
+                    oldJumlah = _listOfItemJualOld[rowIndex - 1].jumlah;
+                }
+            }
+        }
+
         private void gridControl_CurrentCellKeyDown(object sender, KeyEventArgs e)
         {
             if (KeyPressHelper.IsEnter(e))
@@ -1199,9 +1220,10 @@ namespace OpenRetail.App.Transaksi
                             gridControl_CurrentCellValidated(sender, new EventArgs());
 
                             var itemJual = _listOfItemJual[rowIndex - 1];
-                            produk = itemJual.Produk;
 
-                            var isValidStok = (produk.sisa_stok - itemJual.jumlah) >= 0;
+                            produk = bll.GetByKode(_listOfItemJual[rowIndex - 1].Produk.kode_produk);
+
+                            var isValidStok = (oldJumlah + produk.sisa_stok - itemJual.jumlah) >= 0;
 
                             if (!isValidStok)
                             {
