@@ -1264,7 +1264,7 @@ namespace OpenRetail.App.Transaksi
                             var itemJual = _listOfItemJual[rowIndex - 1];
                             produk = itemJual.Produk;
 
-                            var isValidStok = (produk.sisa_stok - itemJual.jumlah) >= 0;
+                            var isValidStok = (produk.sisa_stok + itemJual.old_jumlah - itemJual.jumlah) >= 0;
 
                             if (!isValidStok)
                             {
@@ -1273,7 +1273,7 @@ namespace OpenRetail.App.Transaksi
                                           "Jumlah jual: {1}\n" +
                                           "Sisa stok: {2}";
 
-                                MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok, itemJual.jumlah, produk.sisa_stok - itemJual.jumlah));
+                                MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok, itemJual.jumlah, produk.sisa_stok + itemJual.old_jumlah - itemJual.jumlah));
                                 GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
 
                                 return;
