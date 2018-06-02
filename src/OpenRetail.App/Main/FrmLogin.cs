@@ -31,6 +31,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace OpenRetail.App.Main
 {    
@@ -155,6 +156,27 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanBarcode.batas_kiri_kolom3 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom3", _appConfigFile, "540"));
         }
 
+        private void SetSettingPort()
+        {
+            MainProgram.settingPort = new SettingPort();
+            MainProgram.settingPort.portNumber = AppConfigHelper.GetValue("portNumber", _appConfigFile, "COM1");
+            MainProgram.settingPort.baudRate = Convert.ToInt32(AppConfigHelper.GetValue("baudRate", _appConfigFile, "9600"));
+            MainProgram.settingPort.parity = (Parity)Convert.ToInt32(AppConfigHelper.GetValue("parity", _appConfigFile, "1"));
+            MainProgram.settingPort.dataBits = Convert.ToInt32(AppConfigHelper.GetValue("dataBits", _appConfigFile, "8"));
+            MainProgram.settingPort.stopBits = (StopBits)Convert.ToInt32(AppConfigHelper.GetValue("stopBits", _appConfigFile, "1")); ;
+        }
+
+        private void SetSettingCustomerDisplay()
+        {
+            MainProgram.settingCustomerDisplay = new SettingCustomerDisplay();
+            MainProgram.settingCustomerDisplay.is_active_customer_display = AppConfigHelper.GetValue("isActiveCustomerDisplay", _appConfigFile, "false").ToLower() == "true" ? true : false;
+            MainProgram.settingCustomerDisplay.opening_sentence_line1 = AppConfigHelper.GetValue("customerDisplayOpeningSentenceLine1", _appConfigFile, "Selamat Datang di");
+            MainProgram.settingCustomerDisplay.opening_sentence_line2 = AppConfigHelper.GetValue("customerDisplayOpeningSentenceLine2", _appConfigFile, "KR Software");
+            MainProgram.settingCustomerDisplay.closing_sentence_line1 = AppConfigHelper.GetValue("customerDisplayClosingSentenceLine1", _appConfigFile, "Terima Kasih");
+            MainProgram.settingCustomerDisplay.closing_sentence_line2 = AppConfigHelper.GetValue("customerDisplayClosingSentenceLine2", _appConfigFile, "Selamat Dtg Kembali");
+            MainProgram.settingCustomerDisplay.delay_display_closing_sentence = Convert.ToInt32(AppConfigHelper.GetValue("customerDisplayDelayDisplayClosingSentence", _appConfigFile, "5"));
+        }
+
         /// <summary>
         /// Load data kabupaten untuk keperluan pengecekan ongkos kirim
         /// </summary>
@@ -263,6 +285,8 @@ namespace OpenRetail.App.Main
                     SetProfil();
                     SetPengaturanUmum();
                     SetPengaturanBarcode();
+                    SetSettingPort();
+                    SetSettingCustomerDisplay();
                     LoadKabupaten();
                     LoadWilayah();
 

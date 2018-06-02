@@ -58,6 +58,8 @@ namespace OpenRetail.App.Cashier
         public static Profil profil = null;
         public static Pengguna pengguna = null;
         public static PengaturanUmum pengaturanUmum = null;
+        public static SettingPort settingPort = null;
+        public static SettingCustomerDisplay settingCustomerDisplay = null;
         public static IList<Kartu> listOfKartu = null;
         public static string mesinId;
 

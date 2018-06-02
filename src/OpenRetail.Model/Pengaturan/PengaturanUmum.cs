@@ -78,6 +78,6 @@ namespace OpenRetail.Model
         public IList<HeaderNota> list_of_header_nota { get; set; }
         public IList<HeaderNotaMiniPos> list_of_header_nota_mini_pos { get; set; }
         public IList<FooterNotaMiniPos> list_of_footer_nota_mini_pos { get; set; }
-        public IList<LabelNota> list_of_label_nota { get; set; }
+        public IList<LabelNota> list_of_label_nota { get; set; }        
     }
 }

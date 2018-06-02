@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle1 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
             Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle2 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
             Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle3 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
@@ -42,6 +43,10 @@
             Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo8 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
             Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo9 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
             Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo10 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
+            Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo11 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
+            Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo12 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
+            Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo13 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
+            Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo14 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl = new Syncfusion.Windows.Forms.Grid.GridControl();
             this.pnlHeader = new System.Windows.Forms.Panel();
@@ -62,8 +67,9 @@
             this.lblStatusBar = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblKembalian = new System.Windows.Forms.Label();
-            this.tmrTanggalJam = new System.Windows.Forms.Timer();
-            this.tmrResetPesan = new System.Windows.Forms.Timer();
+            this.tmrTanggalJam = new System.Windows.Forms.Timer(this.components);
+            this.tmrResetPesan = new System.Windows.Forms.Timer(this.components);
+            this.tmrDisplayKalimatPenutup = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             this.pnlHeader.SuspendLayout();
@@ -219,6 +225,42 @@
             gridCellInfo10.StyleInfo.Font.Strikeout = false;
             gridCellInfo10.StyleInfo.Font.Underline = false;
             gridCellInfo10.StyleInfo.Font.Unit = System.Drawing.GraphicsUnit.Point;
+            gridCellInfo11.Col = -1;
+            gridCellInfo11.Row = -1;
+            gridCellInfo11.StyleInfo.Font.Bold = false;
+            gridCellInfo11.StyleInfo.Font.Facename = "Tahoma";
+            gridCellInfo11.StyleInfo.Font.Italic = false;
+            gridCellInfo11.StyleInfo.Font.Size = 8.25F;
+            gridCellInfo11.StyleInfo.Font.Strikeout = false;
+            gridCellInfo11.StyleInfo.Font.Underline = false;
+            gridCellInfo11.StyleInfo.Font.Unit = System.Drawing.GraphicsUnit.Point;
+            gridCellInfo12.Col = -1;
+            gridCellInfo12.Row = -1;
+            gridCellInfo12.StyleInfo.Font.Bold = false;
+            gridCellInfo12.StyleInfo.Font.Facename = "Tahoma";
+            gridCellInfo12.StyleInfo.Font.Italic = false;
+            gridCellInfo12.StyleInfo.Font.Size = 8.25F;
+            gridCellInfo12.StyleInfo.Font.Strikeout = false;
+            gridCellInfo12.StyleInfo.Font.Underline = false;
+            gridCellInfo12.StyleInfo.Font.Unit = System.Drawing.GraphicsUnit.Point;
+            gridCellInfo13.Col = -1;
+            gridCellInfo13.Row = -1;
+            gridCellInfo13.StyleInfo.Font.Bold = false;
+            gridCellInfo13.StyleInfo.Font.Facename = "Tahoma";
+            gridCellInfo13.StyleInfo.Font.Italic = false;
+            gridCellInfo13.StyleInfo.Font.Size = 8.25F;
+            gridCellInfo13.StyleInfo.Font.Strikeout = false;
+            gridCellInfo13.StyleInfo.Font.Underline = false;
+            gridCellInfo13.StyleInfo.Font.Unit = System.Drawing.GraphicsUnit.Point;
+            gridCellInfo14.Col = -1;
+            gridCellInfo14.Row = -1;
+            gridCellInfo14.StyleInfo.Font.Bold = false;
+            gridCellInfo14.StyleInfo.Font.Facename = "Tahoma";
+            gridCellInfo14.StyleInfo.Font.Italic = false;
+            gridCellInfo14.StyleInfo.Font.Size = 8.25F;
+            gridCellInfo14.StyleInfo.Font.Strikeout = false;
+            gridCellInfo14.StyleInfo.Font.Underline = false;
+            gridCellInfo14.StyleInfo.Font.Unit = System.Drawing.GraphicsUnit.Point;
             this.gridControl.GridCells.AddRange(new Syncfusion.Windows.Forms.Grid.GridCellInfo[] {
             gridCellInfo1,
             gridCellInfo2,
@@ -229,7 +271,11 @@
             gridCellInfo7,
             gridCellInfo8,
             gridCellInfo9,
-            gridCellInfo10});
+            gridCellInfo10,
+            gridCellInfo11,
+            gridCellInfo12,
+            gridCellInfo13,
+            gridCellInfo14});
             this.gridControl.Location = new System.Drawing.Point(3, 219);
             this.gridControl.Name = "gridControl";
             this.gridControl.RowHeightEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridRowHeight[] {
@@ -496,6 +542,11 @@
             this.tmrResetPesan.Interval = 1500;
             this.tmrResetPesan.Tick += new System.EventHandler(this.tmrResetPesan_Tick);
             // 
+            // tmrDisplayKalimatPenutup
+            // 
+            this.tmrDisplayKalimatPenutup.Interval = 1000;
+            this.tmrDisplayKalimatPenutup.Tick += new System.EventHandler(this.tmrDisplayKalimatPenutup_Tick);
+            // 
             // FrmPenjualan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,5 +599,6 @@
         private System.Windows.Forms.Panel pnlFooter;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblKembalian;
+        private System.Windows.Forms.Timer tmrDisplayKalimatPenutup;
     }
 }

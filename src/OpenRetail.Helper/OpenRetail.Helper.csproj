@@ -38,6 +38,10 @@
       <HintPath>..\..\lib\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GodSharp.SerialPort, Version=1.1.2.37214, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\GodSharp.SerialPort.1.1.2\lib\net35\GodSharp.SerialPort.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -124,6 +128,7 @@
     <Compile Include="ReportViewerPrinting\ReportViewerPrintHelper.cs" />
     <Compile Include="RestSharpHelper.cs" />
     <Compile Include="RolePrivilegeHelper.cs" />
+    <Compile Include="GodSerialPortHelper.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="ThreadHelper.cs" />
     <Compile Include="UI.Template\BaseFrmList.cs">

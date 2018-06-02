@@ -44,10 +44,11 @@
             this.mnuLaporan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenjualanProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPengaturan = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSettingPrinter = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPengaturanAplikasi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBantuan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBlogOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFanPageOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGroupOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuPetunjukPenggunaanOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
@@ -66,7 +67,6 @@
             this.tbPenjualanProduk = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
-            this.mnuGroupOpenRetail = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -165,7 +165,7 @@
             this.mnuTransaksi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuPenjualanProduk});
             this.mnuTransaksi.Name = "mnuTransaksi";
-            this.mnuTransaksi.Size = new System.Drawing.Size(68, 20);
+            this.mnuTransaksi.Size = new System.Drawing.Size(67, 20);
             this.mnuTransaksi.Text = "Transaksi";
             // 
             // mnuPenjualanProduk
@@ -197,19 +197,19 @@
             // mnuPengaturan
             // 
             this.mnuPengaturan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuSettingPrinter});
+            this.mnuPengaturanAplikasi});
             this.mnuPengaturan.Name = "mnuPengaturan";
             this.mnuPengaturan.Size = new System.Drawing.Size(80, 20);
             this.mnuPengaturan.Text = "Pengaturan";
             // 
-            // mnuSettingPrinter
+            // mnuPengaturanAplikasi
             // 
-            this.mnuSettingPrinter.Name = "mnuSettingPrinter";
-            this.mnuSettingPrinter.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.mnuSettingPrinter.Size = new System.Drawing.Size(190, 22);
-            this.mnuSettingPrinter.Tag = "FrmPengaturanUmum";
-            this.mnuSettingPrinter.Text = "Setting Printer";
-            this.mnuSettingPrinter.Click += new System.EventHandler(this.mnuSettingPrinter_Click);
+            this.mnuPengaturanAplikasi.Name = "mnuPengaturanAplikasi";
+            this.mnuPengaturanAplikasi.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.mnuPengaturanAplikasi.Size = new System.Drawing.Size(220, 22);
+            this.mnuPengaturanAplikasi.Tag = "FrmPengaturanUmum";
+            this.mnuPengaturanAplikasi.Text = "Pengaturan Aplikasi";
+            this.mnuPengaturanAplikasi.Click += new System.EventHandler(this.mnuPengaturanAplikasi_Click);
             // 
             // mnuBantuan
             // 
@@ -241,6 +241,13 @@
             this.mnuFanPageOpenRetail.Size = new System.Drawing.Size(264, 22);
             this.mnuFanPageOpenRetail.Text = "Fan Page OpenRetail";
             this.mnuFanPageOpenRetail.Click += new System.EventHandler(this.mnuFanPageOpenRetail_Click);
+            // 
+            // mnuGroupOpenRetail
+            // 
+            this.mnuGroupOpenRetail.Name = "mnuGroupOpenRetail";
+            this.mnuGroupOpenRetail.Size = new System.Drawing.Size(264, 22);
+            this.mnuGroupOpenRetail.Text = "Group OpenRetail";
+            this.mnuGroupOpenRetail.Click += new System.EventHandler(this.mnuGroupOpenRetail_Click);
             // 
             // toolStripSeparator16
             // 
@@ -296,7 +303,7 @@
             // mnuCekUpdateTerbaru
             // 
             this.mnuCekUpdateTerbaru.Name = "mnuCekUpdateTerbaru";
-            this.mnuCekUpdateTerbaru.Size = new System.Drawing.Size(179, 22);
+            this.mnuCekUpdateTerbaru.Size = new System.Drawing.Size(178, 22);
             this.mnuCekUpdateTerbaru.Text = "Cek Update Terbaru";
             this.mnuCekUpdateTerbaru.Click += new System.EventHandler(this.mnuCekUpdateTerbaru_Click);
             // 
@@ -380,13 +387,6 @@
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
-            // mnuGroupOpenRetail
-            // 
-            this.mnuGroupOpenRetail.Name = "mnuGroupOpenRetail";
-            this.mnuGroupOpenRetail.Size = new System.Drawing.Size(264, 22);
-            this.mnuGroupOpenRetail.Text = "Group OpenRetail";
-            this.mnuGroupOpenRetail.Click += new System.EventHandler(this.mnuGroupOpenRetail_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -442,7 +442,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuBantuan;
         private System.Windows.Forms.ToolStripMenuItem mnuRegistrasi;
         private System.Windows.Forms.ToolStripMenuItem mnuAbout;
-        private System.Windows.Forms.ToolStripMenuItem mnuSettingPrinter;
+        private System.Windows.Forms.ToolStripMenuItem mnuPengaturanAplikasi;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripMenuItem mnuBlogOpenRetail;
         private System.Windows.Forms.ToolStripMenuItem mnuDukungPengembanganOpenRetail;

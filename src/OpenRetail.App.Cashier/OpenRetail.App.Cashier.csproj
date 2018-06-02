@@ -51,6 +51,10 @@
       <HintPath>..\..\lib\Dapper.Contrib.1.50.0\lib\net40\Dapper.Contrib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GodSharp.SerialPort, Version=1.1.2.37214, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\GodSharp.SerialPort.1.1.2\lib\net35\GodSharp.SerialPort.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\lib\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -199,6 +203,9 @@
       <DependentUpon>FrmBayar.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaksi\FrmPenjualan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaksi\FrmPenjualan.CustomerDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Transaksi\FrmPenjualan.Designer.cs">
