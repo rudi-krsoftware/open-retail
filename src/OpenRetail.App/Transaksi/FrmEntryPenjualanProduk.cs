@@ -86,6 +86,7 @@ namespace OpenRetail.App.Transaksi
             dtpTanggal.Value = DateTime.Today;
             dtpTanggalTempo.Value = dtpTanggal.Value;
             btnPreviewNota.Visible = _pengaturanUmum.jenis_printer == JenisPrinter.InkJet;
+            txtPPN.Text = _pengaturanUmum.default_ppn.ToString();
 
             SetPengaturanPrinter();
 
@@ -474,6 +475,14 @@ namespace OpenRetail.App.Transaksi
             return result;
         }
 
+        private void UpdateDefaultPPN(double ppn)
+        {
+            var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
+            _pengaturanUmum.default_ppn = ppn;
+
+            AppConfigHelper.SaveValue("defaultPPN", ppn.ToString(), appConfigFile);
+        }
+
         protected override void Simpan()
         {
             if (_pengaturanUmum.is_customer_required)
@@ -652,8 +661,9 @@ namespace OpenRetail.App.Transaksi
                     _dropshipper = null;
 
                     _listOfItemJual.Clear();
-                    _listOfItemJualDeleted.Clear();                                        
+                    _listOfItemJualDeleted.Clear();
 
+                    UpdateDefaultPPN(_jual.ppn);
                     this.Close();
                 }
                 else

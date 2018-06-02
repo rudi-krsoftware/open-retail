@@ -97,6 +97,8 @@ namespace OpenRetail.App.Cashier.Main
             MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;
             MainProgram.pengaturanUmum.ukuran_font = ukuranFont;
 
+            MainProgram.pengaturanUmum.default_ppn = Convert.ToDouble(AppConfigHelper.GetValue("defaultPPN", _appConfigFile, "0"));
+
             // set pengaturan global (setting disimpan di database)
             ISettingAplikasiBll settingAplikasiBll = new SettingAplikasiBll();
             var settingAplikasi = settingAplikasiBll.GetAll().SingleOrDefault();

@@ -47,6 +47,7 @@
             Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo12 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
             Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo13 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
             Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo14 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
+            Syncfusion.Windows.Forms.Grid.GridCellInfo gridCellInfo15 = new Syncfusion.Windows.Forms.Grid.GridCellInfo();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gridControl = new Syncfusion.Windows.Forms.Grid.GridControl();
             this.pnlHeader = new System.Windows.Forms.Panel();
@@ -261,6 +262,15 @@
             gridCellInfo14.StyleInfo.Font.Strikeout = false;
             gridCellInfo14.StyleInfo.Font.Underline = false;
             gridCellInfo14.StyleInfo.Font.Unit = System.Drawing.GraphicsUnit.Point;
+            gridCellInfo15.Col = -1;
+            gridCellInfo15.Row = -1;
+            gridCellInfo15.StyleInfo.Font.Bold = false;
+            gridCellInfo15.StyleInfo.Font.Facename = "Tahoma";
+            gridCellInfo15.StyleInfo.Font.Italic = false;
+            gridCellInfo15.StyleInfo.Font.Size = 8.25F;
+            gridCellInfo15.StyleInfo.Font.Strikeout = false;
+            gridCellInfo15.StyleInfo.Font.Underline = false;
+            gridCellInfo15.StyleInfo.Font.Unit = System.Drawing.GraphicsUnit.Point;
             this.gridControl.GridCells.AddRange(new Syncfusion.Windows.Forms.Grid.GridCellInfo[] {
             gridCellInfo1,
             gridCellInfo2,
@@ -275,7 +285,8 @@
             gridCellInfo11,
             gridCellInfo12,
             gridCellInfo13,
-            gridCellInfo14});
+            gridCellInfo14,
+            gridCellInfo15});
             this.gridControl.Location = new System.Drawing.Point(3, 219);
             this.gridControl.Name = "gridControl";
             this.gridControl.RowHeightEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridRowHeight[] {

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle5 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
-            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle6 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
-            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle7 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
-            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle8 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle13 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle14 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle15 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle16 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,16 +75,16 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtJumlahBayar = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtKembali = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtJumlahBayar = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tmrDisplayKalimatPenutup = new System.Windows.Forms.Timer(this.components);
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label16 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -95,9 +95,9 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -381,30 +381,30 @@
             // 
             // gridControl
             // 
-            gridBaseStyle5.Name = "Header";
-            gridBaseStyle5.StyleInfo.Borders.Bottom = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
-            gridBaseStyle5.StyleInfo.Borders.Left = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
-            gridBaseStyle5.StyleInfo.Borders.Right = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
-            gridBaseStyle5.StyleInfo.Borders.Top = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
-            gridBaseStyle5.StyleInfo.CellType = "Header";
-            gridBaseStyle5.StyleInfo.Font.Bold = true;
-            gridBaseStyle5.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.Vertical, System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(199)))), ((int)(((byte)(184))))), System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(234)))), ((int)(((byte)(216))))));
-            gridBaseStyle5.StyleInfo.VerticalAlignment = Syncfusion.Windows.Forms.Grid.GridVerticalAlignment.Middle;
-            gridBaseStyle6.Name = "Standard";
-            gridBaseStyle6.StyleInfo.Font.Facename = "Tahoma";
-            gridBaseStyle6.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(System.Drawing.SystemColors.Window);
-            gridBaseStyle7.Name = "Column Header";
-            gridBaseStyle7.StyleInfo.BaseStyle = "Header";
-            gridBaseStyle7.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Center;
-            gridBaseStyle8.Name = "Row Header";
-            gridBaseStyle8.StyleInfo.BaseStyle = "Header";
-            gridBaseStyle8.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Left;
-            gridBaseStyle8.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.Horizontal, System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(199)))), ((int)(((byte)(184))))), System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(234)))), ((int)(((byte)(216))))));
+            gridBaseStyle13.Name = "Header";
+            gridBaseStyle13.StyleInfo.Borders.Bottom = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle13.StyleInfo.Borders.Left = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle13.StyleInfo.Borders.Right = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle13.StyleInfo.Borders.Top = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle13.StyleInfo.CellType = "Header";
+            gridBaseStyle13.StyleInfo.Font.Bold = true;
+            gridBaseStyle13.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.Vertical, System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(199)))), ((int)(((byte)(184))))), System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(234)))), ((int)(((byte)(216))))));
+            gridBaseStyle13.StyleInfo.VerticalAlignment = Syncfusion.Windows.Forms.Grid.GridVerticalAlignment.Middle;
+            gridBaseStyle14.Name = "Standard";
+            gridBaseStyle14.StyleInfo.Font.Facename = "Tahoma";
+            gridBaseStyle14.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(System.Drawing.SystemColors.Window);
+            gridBaseStyle15.Name = "Column Header";
+            gridBaseStyle15.StyleInfo.BaseStyle = "Header";
+            gridBaseStyle15.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Center;
+            gridBaseStyle16.Name = "Row Header";
+            gridBaseStyle16.StyleInfo.BaseStyle = "Header";
+            gridBaseStyle16.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Left;
+            gridBaseStyle16.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.Horizontal, System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(199)))), ((int)(((byte)(184))))), System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(234)))), ((int)(((byte)(216))))));
             this.gridControl.BaseStylesMap.AddRange(new Syncfusion.Windows.Forms.Grid.GridBaseStyle[] {
-            gridBaseStyle5,
-            gridBaseStyle6,
-            gridBaseStyle7,
-            gridBaseStyle8});
+            gridBaseStyle13,
+            gridBaseStyle14,
+            gridBaseStyle15,
+            gridBaseStyle16});
             this.gridControl.ColWidthEntries.AddRange(new Syncfusion.Windows.Forms.Grid.GridColWidth[] {
             new Syncfusion.Windows.Forms.Grid.GridColWidth(0, 35)});
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -494,22 +494,22 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label9.Location = new System.Drawing.Point(846, 75);
+            this.label9.Location = new System.Drawing.Point(823, 75);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 25);
+            this.label9.Size = new System.Drawing.Size(52, 25);
             this.label9.TabIndex = 0;
-            this.label9.Text = "PPN";
+            this.label9.Text = "PPN (Rp)";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label8.Location = new System.Drawing.Point(835, 50);
+            this.label8.Location = new System.Drawing.Point(812, 50);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 25);
+            this.label8.Size = new System.Drawing.Size(63, 25);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Diskon";
+            this.label8.Text = "Diskon (Rp)";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtDiskon
@@ -722,6 +722,37 @@
             this.label15.Text = "Kembali";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // txtKembali
+            // 
+            this.txtKembali.AutoEnter = false;
+            this.txtKembali.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKembali.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKembali.Enabled = false;
+            this.txtKembali.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtKembali.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKembali.LetterOnly = false;
+            this.txtKembali.Location = new System.Drawing.Point(881, 128);
+            this.txtKembali.MaxLength = 20;
+            this.txtKembali.Name = "txtKembali";
+            this.txtKembali.NumericOnly = true;
+            this.txtKembali.SelectionText = false;
+            this.txtKembali.Size = new System.Drawing.Size(136, 20);
+            this.txtKembali.TabIndex = 8;
+            this.txtKembali.Text = "0";
+            this.txtKembali.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtKembali.ThousandSeparator = true;
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.Controls.Add(this.txtJumlahBayar);
+            this.flowLayoutPanel6.Controls.Add(this.label16);
+            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(878, 100);
+            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(142, 25);
+            this.flowLayoutPanel6.TabIndex = 7;
+            // 
             // txtJumlahBayar
             // 
             this.txtJumlahBayar.AutoEnter = true;
@@ -742,25 +773,16 @@
             this.txtJumlahBayar.Enter += new System.EventHandler(this.txtJumlahBayar_Enter);
             this.txtJumlahBayar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtJumlahBayar_KeyPress);
             // 
-            // txtKembali
+            // label16
             // 
-            this.txtKembali.AutoEnter = false;
-            this.txtKembali.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
-            this.txtKembali.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtKembali.Enabled = false;
-            this.txtKembali.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtKembali.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtKembali.LetterOnly = false;
-            this.txtKembali.Location = new System.Drawing.Point(881, 128);
-            this.txtKembali.MaxLength = 20;
-            this.txtKembali.Name = "txtKembali";
-            this.txtKembali.NumericOnly = true;
-            this.txtKembali.SelectionText = false;
-            this.txtKembali.Size = new System.Drawing.Size(136, 20);
-            this.txtKembali.TabIndex = 8;
-            this.txtKembali.Text = "0";
-            this.txtKembali.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtKembali.ThousandSeparator = true;
+            this.label16.AutoSize = true;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Location = new System.Drawing.Point(105, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 26);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Enter";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel2
             // 
@@ -823,28 +845,6 @@
             this.tmrDisplayKalimatPenutup.Interval = 1000;
             this.tmrDisplayKalimatPenutup.Tick += new System.EventHandler(this.tmrDisplayKalimatPenutup_Tick);
             // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.Controls.Add(this.txtJumlahBayar);
-            this.flowLayoutPanel6.Controls.Add(this.label16);
-            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(878, 100);
-            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(142, 25);
-            this.flowLayoutPanel6.TabIndex = 7;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label16.Location = new System.Drawing.Point(105, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(32, 26);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Enter";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // FrmEntryPenjualanProduk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -873,11 +873,11 @@
             this.flowLayoutPanel3.PerformLayout();
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel6.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
