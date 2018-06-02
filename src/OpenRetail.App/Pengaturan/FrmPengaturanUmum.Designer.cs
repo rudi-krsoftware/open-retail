@@ -99,6 +99,29 @@
             this.txtHeaderMiniPOS5 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.btnLihatContohNotaPenjualanMiniPOS = new System.Windows.Forms.Button();
             this.chkCetakCustomer = new System.Windows.Forms.CheckBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.chkIsActiveCustomerDisplay = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cmbPort = new System.Windows.Forms.ComboBox();
+            this.btnTesKoneksi = new System.Windows.Forms.Button();
+            this.grpKalimatPembuka = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtKalimatPembukaBaris1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKalimatPembukaBaris2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.grpKalimatPenutup = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.updTampilKalimatPenutup = new System.Windows.Forms.NumericUpDown();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtKalimatPenutupBaris1 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.txtKalimatPenutupBaris2 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.chkTampilkanInfoMinimalStokProduk = new System.Windows.Forms.CheckBox();
@@ -132,6 +155,15 @@
             this.tableLayoutPanel12.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.grpKalimatPembuka.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            this.grpKalimatPenutup.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updTampilKalimatPenutup)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -155,6 +187,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
@@ -1114,6 +1147,324 @@
             this.chkCetakCustomer.Text = "Cetak informasi customer";
             this.chkCetakCustomer.UseVisualStyleBackColor = true;
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.tableLayoutPanel9);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(419, 307);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Customer Display";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 1;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Controls.Add(this.chkIsActiveCustomerDisplay, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.flowLayoutPanel1, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.grpKalimatPembuka, 0, 2);
+            this.tableLayoutPanel9.Controls.Add(this.grpKalimatPenutup, 0, 3);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 4;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(419, 307);
+            this.tableLayoutPanel9.TabIndex = 0;
+            // 
+            // chkIsActiveCustomerDisplay
+            // 
+            this.chkIsActiveCustomerDisplay.AutoSize = true;
+            this.chkIsActiveCustomerDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkIsActiveCustomerDisplay.Location = new System.Drawing.Point(3, 3);
+            this.chkIsActiveCustomerDisplay.Name = "chkIsActiveCustomerDisplay";
+            this.chkIsActiveCustomerDisplay.Size = new System.Drawing.Size(413, 19);
+            this.chkIsActiveCustomerDisplay.TabIndex = 0;
+            this.chkIsActiveCustomerDisplay.Text = "Aktifkan Customer Display";
+            this.chkIsActiveCustomerDisplay.UseVisualStyleBackColor = true;
+            this.chkIsActiveCustomerDisplay.CheckedChanged += new System.EventHandler(this.chkIsActiveCustomerDisplay_CheckedChanged);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.label21);
+            this.flowLayoutPanel1.Controls.Add(this.cmbPort);
+            this.flowLayoutPanel1.Controls.Add(this.btnTesKoneksi);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(419, 28);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label21.Location = new System.Drawing.Point(3, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(26, 29);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Port";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmbPort
+            // 
+            this.cmbPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPort.Enabled = false;
+            this.cmbPort.FormattingEnabled = true;
+            this.cmbPort.Location = new System.Drawing.Point(35, 3);
+            this.cmbPort.Name = "cmbPort";
+            this.cmbPort.Size = new System.Drawing.Size(65, 21);
+            this.cmbPort.TabIndex = 0;
+            // 
+            // btnTesKoneksi
+            // 
+            this.btnTesKoneksi.Enabled = false;
+            this.btnTesKoneksi.Location = new System.Drawing.Point(106, 3);
+            this.btnTesKoneksi.Name = "btnTesKoneksi";
+            this.btnTesKoneksi.Size = new System.Drawing.Size(75, 23);
+            this.btnTesKoneksi.TabIndex = 1;
+            this.btnTesKoneksi.Text = "Tes koneksi";
+            this.btnTesKoneksi.UseVisualStyleBackColor = true;
+            this.btnTesKoneksi.Click += new System.EventHandler(this.btnTesKoneksi_Click);
+            // 
+            // grpKalimatPembuka
+            // 
+            this.grpKalimatPembuka.Controls.Add(this.tableLayoutPanel14);
+            this.grpKalimatPembuka.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpKalimatPembuka.Enabled = false;
+            this.grpKalimatPembuka.Location = new System.Drawing.Point(3, 56);
+            this.grpKalimatPembuka.Name = "grpKalimatPembuka";
+            this.grpKalimatPembuka.Size = new System.Drawing.Size(413, 78);
+            this.grpKalimatPembuka.TabIndex = 2;
+            this.grpKalimatPembuka.TabStop = false;
+            this.grpKalimatPembuka.Text = " [ Kalimat Pembuka ] ";
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 2;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Controls.Add(this.label22, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.label23, 0, 1);
+            this.tableLayoutPanel14.Controls.Add(this.txtKalimatPembukaBaris1, 1, 0);
+            this.tableLayoutPanel14.Controls.Add(this.txtKalimatPembukaBaris2, 1, 1);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 3;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(407, 59);
+            this.tableLayoutPanel14.TabIndex = 0;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label22.Location = new System.Drawing.Point(3, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(46, 25);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Baris #1";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label23.Location = new System.Drawing.Point(3, 25);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(46, 25);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Baris #2";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtKalimatPembukaBaris1
+            // 
+            this.txtKalimatPembukaBaris1.AutoEnter = true;
+            this.txtKalimatPembukaBaris1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKalimatPembukaBaris1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKalimatPembukaBaris1.EnterFocusColor = System.Drawing.Color.White;
+            this.txtKalimatPembukaBaris1.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKalimatPembukaBaris1.LetterOnly = false;
+            this.txtKalimatPembukaBaris1.Location = new System.Drawing.Point(55, 3);
+            this.txtKalimatPembukaBaris1.MaxLength = 20;
+            this.txtKalimatPembukaBaris1.Name = "txtKalimatPembukaBaris1";
+            this.txtKalimatPembukaBaris1.NumericOnly = false;
+            this.txtKalimatPembukaBaris1.SelectionText = false;
+            this.txtKalimatPembukaBaris1.Size = new System.Drawing.Size(349, 20);
+            this.txtKalimatPembukaBaris1.TabIndex = 0;
+            this.txtKalimatPembukaBaris1.ThousandSeparator = false;
+            // 
+            // txtKalimatPembukaBaris2
+            // 
+            this.txtKalimatPembukaBaris2.AutoEnter = true;
+            this.txtKalimatPembukaBaris2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKalimatPembukaBaris2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKalimatPembukaBaris2.EnterFocusColor = System.Drawing.Color.White;
+            this.txtKalimatPembukaBaris2.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKalimatPembukaBaris2.LetterOnly = false;
+            this.txtKalimatPembukaBaris2.Location = new System.Drawing.Point(55, 28);
+            this.txtKalimatPembukaBaris2.MaxLength = 20;
+            this.txtKalimatPembukaBaris2.Name = "txtKalimatPembukaBaris2";
+            this.txtKalimatPembukaBaris2.NumericOnly = false;
+            this.txtKalimatPembukaBaris2.SelectionText = false;
+            this.txtKalimatPembukaBaris2.Size = new System.Drawing.Size(349, 20);
+            this.txtKalimatPembukaBaris2.TabIndex = 1;
+            this.txtKalimatPembukaBaris2.ThousandSeparator = false;
+            // 
+            // grpKalimatPenutup
+            // 
+            this.grpKalimatPenutup.Controls.Add(this.tableLayoutPanel15);
+            this.grpKalimatPenutup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpKalimatPenutup.Enabled = false;
+            this.grpKalimatPenutup.Location = new System.Drawing.Point(3, 140);
+            this.grpKalimatPenutup.Name = "grpKalimatPenutup";
+            this.grpKalimatPenutup.Size = new System.Drawing.Size(413, 164);
+            this.grpKalimatPenutup.TabIndex = 3;
+            this.grpKalimatPenutup.TabStop = false;
+            this.grpKalimatPenutup.Text = " [ Kalimat Penutup ] ";
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 2;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Controls.Add(this.flowLayoutPanel2, 0, 2);
+            this.tableLayoutPanel15.Controls.Add(this.label24, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.label25, 0, 1);
+            this.tableLayoutPanel15.Controls.Add(this.txtKalimatPenutupBaris1, 1, 0);
+            this.tableLayoutPanel15.Controls.Add(this.txtKalimatPenutupBaris2, 1, 1);
+            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 4;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(407, 145);
+            this.tableLayoutPanel15.TabIndex = 0;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.tableLayoutPanel15.SetColumnSpan(this.flowLayoutPanel2, 2);
+            this.flowLayoutPanel2.Controls.Add(this.label26);
+            this.flowLayoutPanel2.Controls.Add(this.updTampilKalimatPenutup);
+            this.flowLayoutPanel2.Controls.Add(this.label27);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 50);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(407, 25);
+            this.flowLayoutPanel2.TabIndex = 2;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label26.Location = new System.Drawing.Point(3, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(56, 26);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Tampilkan";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // updTampilKalimatPenutup
+            // 
+            this.updTampilKalimatPenutup.Location = new System.Drawing.Point(65, 3);
+            this.updTampilKalimatPenutup.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.updTampilKalimatPenutup.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.updTampilKalimatPenutup.Name = "updTampilKalimatPenutup";
+            this.updTampilKalimatPenutup.Size = new System.Drawing.Size(35, 20);
+            this.updTampilKalimatPenutup.TabIndex = 1;
+            this.updTampilKalimatPenutup.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label27.Location = new System.Drawing.Point(106, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(128, 26);
+            this.label27.TabIndex = 0;
+            this.label27.Text = "detik setelah pembayaran";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label24.Location = new System.Drawing.Point(3, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(46, 25);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "Baris #1";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label25.Location = new System.Drawing.Point(3, 25);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(46, 25);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "Baris #2";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtKalimatPenutupBaris1
+            // 
+            this.txtKalimatPenutupBaris1.AutoEnter = true;
+            this.txtKalimatPenutupBaris1.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKalimatPenutupBaris1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKalimatPenutupBaris1.EnterFocusColor = System.Drawing.Color.White;
+            this.txtKalimatPenutupBaris1.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKalimatPenutupBaris1.LetterOnly = false;
+            this.txtKalimatPenutupBaris1.Location = new System.Drawing.Point(55, 3);
+            this.txtKalimatPenutupBaris1.MaxLength = 20;
+            this.txtKalimatPenutupBaris1.Name = "txtKalimatPenutupBaris1";
+            this.txtKalimatPenutupBaris1.NumericOnly = false;
+            this.txtKalimatPenutupBaris1.SelectionText = false;
+            this.txtKalimatPenutupBaris1.Size = new System.Drawing.Size(349, 20);
+            this.txtKalimatPenutupBaris1.TabIndex = 0;
+            this.txtKalimatPenutupBaris1.ThousandSeparator = false;
+            // 
+            // txtKalimatPenutupBaris2
+            // 
+            this.txtKalimatPenutupBaris2.AutoEnter = true;
+            this.txtKalimatPenutupBaris2.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKalimatPenutupBaris2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKalimatPenutupBaris2.EnterFocusColor = System.Drawing.Color.White;
+            this.txtKalimatPenutupBaris2.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKalimatPenutupBaris2.LetterOnly = false;
+            this.txtKalimatPenutupBaris2.Location = new System.Drawing.Point(55, 28);
+            this.txtKalimatPenutupBaris2.MaxLength = 20;
+            this.txtKalimatPenutupBaris2.Name = "txtKalimatPenutupBaris2";
+            this.txtKalimatPenutupBaris2.NumericOnly = false;
+            this.txtKalimatPenutupBaris2.SelectionText = false;
+            this.txtKalimatPenutupBaris2.Size = new System.Drawing.Size(349, 20);
+            this.txtKalimatPenutupBaris2.TabIndex = 1;
+            this.txtKalimatPenutupBaris2.ThousandSeparator = false;
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.tableLayoutPanel13);
@@ -1318,6 +1669,20 @@
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.grpKalimatPembuka.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
+            this.grpKalimatPenutup.ResumeLayout(false);
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updTampilKalimatPenutup)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
             this.tableLayoutPanel13.PerformLayout();
@@ -1413,6 +1778,29 @@
         private System.Windows.Forms.Button btnShowOpenCashDrawerCode;
         private System.Windows.Forms.CheckBox chkOpenCashDrawer;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.CheckBox chkIsActiveCustomerDisplay;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox cmbPort;
+        private System.Windows.Forms.Button btnTesKoneksi;
+        private System.Windows.Forms.GroupBox grpKalimatPembuka;
+        private System.Windows.Forms.GroupBox grpKalimatPenutup;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.NumericUpDown updTampilKalimatPenutup;
+        private System.Windows.Forms.Label label27;
+        private Helper.UserControl.AdvancedTextbox txtKalimatPembukaBaris1;
+        private Helper.UserControl.AdvancedTextbox txtKalimatPembukaBaris2;
+        private Helper.UserControl.AdvancedTextbox txtKalimatPenutupBaris1;
+        private Helper.UserControl.AdvancedTextbox txtKalimatPenutupBaris2;
 
 
 

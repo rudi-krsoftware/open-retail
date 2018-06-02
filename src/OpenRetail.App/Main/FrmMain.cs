@@ -478,7 +478,7 @@ namespace OpenRetail.App.Main
 
             if (RolePrivilegeHelper.IsHaveHakAkses(menuName, MainProgram.pengguna, GrantState.UPDATE))
             {
-                var frmPengaturan = new FrmPengaturanUmum(header, MainProgram.pengaturanUmum);
+                var frmPengaturan = new FrmPengaturanUmum(header, MainProgram.pengaturanUmum, MainProgram.settingPort, MainProgram.settingCustomerDisplay);
                 frmPengaturan.ShowDialog();
             }
             else
