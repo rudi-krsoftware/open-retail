@@ -57,15 +57,16 @@ namespace OpenRetail.App.Referensi
             base.SetHeader(header);
             this._listOfGolongan = listOfGolongan;
             this._bll = bll;
-
             this._isNewData = true;
-            txtKodeProduk.Text = this._bll.GetLastKodeProduk();
 
             LoadDataGolongan();
             LoadInputGrosir();
 
             if (golongan != null)
                 cmbGolongan.SelectedItem = golongan.nama_golongan;
+
+            txtKodeProduk.Text = this._bll.GetLastKodeProduk();
+            txtKeuntungan.Text = golongan.persentase_keuntungan.ToString();            
         }
 
         public FrmEntryProduk(string header, Produk produk, IList<Golongan> listOfGolongan, IProdukBll bll)
@@ -80,21 +81,22 @@ namespace OpenRetail.App.Referensi
             this._bll = bll;
             this._produk = produk;
 
+            LoadInputGrosir();
+            LoadDataGolongan();
+
+            if (this._produk.Golongan != null)
+                cmbGolongan.SelectedItem = this._produk.Golongan.nama_golongan;
+
             txtKodeProduk.Text = this._produk.kode_produk;
             txtNamaProduk.Text = this._produk.nama_produk;
             txtSatuan.Text = this._produk.satuan;
             txtHargaBeli.Text = this._produk.harga_beli.ToString();
+            txtKeuntungan.Text = this._produk.persentase_keuntungan.ToString();
             txtHargaJual.Text = this._produk.harga_jual.ToString();
             txtDiskon.Text = this._produk.diskon.ToString();
             txtStok.Text = this._produk.stok.ToString();
             txtStokGudang.Text = this._produk.stok_gudang.ToString();
-            txtMinStokGudang.Text = this._produk.minimal_stok_gudang.ToString();
-
-            LoadInputGrosir();
-
-            LoadDataGolongan();
-            if (this._produk.Golongan != null)
-                cmbGolongan.SelectedItem = this._produk.Golongan.nama_golongan;
+            txtMinStokGudang.Text = this._produk.minimal_stok_gudang.ToString();            
         }
 
         private void LoadInputGrosir()
@@ -200,6 +202,7 @@ namespace OpenRetail.App.Referensi
             _produk.harga_beli = NumberHelper.StringToDouble(txtHargaBeli.Text);
             _produk.harga_jual = NumberHelper.StringToDouble(txtHargaJual.Text);
             _produk.diskon = NumberHelper.StringToDouble(txtDiskon.Text, true);
+            _produk.persentase_keuntungan = NumberHelper.StringToDouble(txtKeuntungan.Text, true);
             _produk.stok = NumberHelper.StringToDouble(txtStok.Text, true);
             _produk.stok_gudang = NumberHelper.StringToDouble(txtStokGudang.Text, true);
             _produk.minimal_stok_gudang = NumberHelper.StringToDouble(txtMinStokGudang.Text, true);
@@ -250,6 +253,25 @@ namespace OpenRetail.App.Referensi
         {
             if (KeyPressHelper.IsEnter(e))
                 Simpan();
+        }
+
+        private void HitungHargaRetail(object sender, EventArgs e)
+        {
+            double hargaBeli = NumberHelper.StringToNumber(txtHargaBeli.Text);
+            double keuntungan = NumberHelper.StringToDouble(txtKeuntungan.Text, true);
+
+            if (keuntungan > 0)
+            {
+                var hargaJual = hargaBeli + (hargaBeli * keuntungan / 100);
+                txtHargaJual.Text = hargaJual.ToString();
+            }
+        }
+
+        private void cmbGolongan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var golongan = _listOfGolongan[cmbGolongan.SelectedIndex];
+            if (golongan != null)
+                txtKeuntungan.Text = golongan.persentase_keuntungan.ToString();
         }        
     }
 }

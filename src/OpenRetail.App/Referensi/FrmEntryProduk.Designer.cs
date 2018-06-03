@@ -42,7 +42,6 @@
             this.txtKodeProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtNamaProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtSatuan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
-            this.txtHargaBeli = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtHargaJual = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtStok = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtStokGudang = new OpenRetail.Helper.UserControl.AdvancedTextbox();
@@ -71,10 +70,15 @@
             this.txtHargaGrosir3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtJumlahMinimalGrosir3 = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtHargaBeli = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtKeuntungan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -95,7 +99,6 @@
             this.tableLayoutPanel3.Controls.Add(this.txtKodeProduk, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtNamaProduk, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.txtSatuan, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.txtHargaBeli, 1, 4);
             this.tableLayoutPanel3.Controls.Add(this.txtHargaJual, 1, 6);
             this.tableLayoutPanel3.Controls.Add(this.txtStok, 1, 14);
             this.tableLayoutPanel3.Controls.Add(this.txtStokGudang, 1, 15);
@@ -115,6 +118,7 @@
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 1, 8);
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel2, 1, 10);
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel3, 1, 12);
+            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel4, 1, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -251,6 +255,7 @@
             this.cmbGolongan.Size = new System.Drawing.Size(378, 21);
             this.cmbGolongan.TabIndex = 15;
             this.cmbGolongan.Tag = "ignore";
+            this.cmbGolongan.SelectedIndexChanged += new System.EventHandler(this.cmbGolongan_SelectedIndexChanged);
             // 
             // txtKodeProduk
             // 
@@ -300,24 +305,6 @@
             this.txtSatuan.TabIndex = 2;
             this.txtSatuan.Tag = "satuan";
             this.txtSatuan.ThousandSeparator = false;
-            // 
-            // txtHargaBeli
-            // 
-            this.txtHargaBeli.AutoEnter = true;
-            this.txtHargaBeli.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
-            this.txtHargaBeli.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtHargaBeli.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtHargaBeli.LetterOnly = false;
-            this.txtHargaBeli.Location = new System.Drawing.Point(106, 103);
-            this.txtHargaBeli.MaxLength = 20;
-            this.txtHargaBeli.Name = "txtHargaBeli";
-            this.txtHargaBeli.NumericOnly = true;
-            this.txtHargaBeli.SelectionText = false;
-            this.txtHargaBeli.Size = new System.Drawing.Size(100, 20);
-            this.txtHargaBeli.TabIndex = 3;
-            this.txtHargaBeli.Text = "0";
-            this.txtHargaBeli.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtHargaBeli.ThousandSeparator = true;
             // 
             // txtHargaJual
             // 
@@ -739,6 +726,69 @@
             this.txtJumlahMinimalGrosir3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtJumlahMinimalGrosir3.ThousandSeparator = false;
             // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.txtHargaBeli);
+            this.flowLayoutPanel4.Controls.Add(this.label21);
+            this.flowLayoutPanel4.Controls.Add(this.txtKeuntungan);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(103, 100);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(384, 25);
+            this.flowLayoutPanel4.TabIndex = 3;
+            // 
+            // txtHargaBeli
+            // 
+            this.txtHargaBeli.AutoEnter = true;
+            this.txtHargaBeli.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtHargaBeli.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtHargaBeli.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtHargaBeli.LetterOnly = false;
+            this.txtHargaBeli.Location = new System.Drawing.Point(3, 3);
+            this.txtHargaBeli.MaxLength = 20;
+            this.txtHargaBeli.Name = "txtHargaBeli";
+            this.txtHargaBeli.NumericOnly = true;
+            this.txtHargaBeli.SelectionText = false;
+            this.txtHargaBeli.Size = new System.Drawing.Size(100, 20);
+            this.txtHargaBeli.TabIndex = 0;
+            this.txtHargaBeli.Text = "0";
+            this.txtHargaBeli.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtHargaBeli.ThousandSeparator = true;
+            this.txtHargaBeli.TextChanged += new System.EventHandler(this.HitungHargaRetail);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label21.Location = new System.Drawing.Point(109, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(82, 26);
+            this.label21.TabIndex = 6;
+            this.label21.Text = "Keuntungan (%)";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtKeuntungan
+            // 
+            this.txtKeuntungan.AutoEnter = true;
+            this.txtKeuntungan.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKeuntungan.Enabled = false;
+            this.txtKeuntungan.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtKeuntungan.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKeuntungan.LetterOnly = false;
+            this.txtKeuntungan.Location = new System.Drawing.Point(197, 3);
+            this.txtKeuntungan.MaxLength = 8;
+            this.txtKeuntungan.Name = "txtKeuntungan";
+            this.txtKeuntungan.NumericOnly = true;
+            this.txtKeuntungan.SelectionText = false;
+            this.txtKeuntungan.Size = new System.Drawing.Size(40, 20);
+            this.txtKeuntungan.TabIndex = 1;
+            this.txtKeuntungan.Tag = "ignore";
+            this.txtKeuntungan.Text = "0";
+            this.txtKeuntungan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtKeuntungan.ThousandSeparator = false;
+            this.txtKeuntungan.TextChanged += new System.EventHandler(this.HitungHargaRetail);
+            // 
             // FrmEntryProduk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -756,6 +806,8 @@
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -805,6 +857,9 @@
         private OpenRetail.Helper.UserControl.AdvancedTextbox txtHargaGrosir3;
         private System.Windows.Forms.Label label20;
         private OpenRetail.Helper.UserControl.AdvancedTextbox txtJumlahMinimalGrosir3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Label label21;
+        private Helper.UserControl.AdvancedTextbox txtKeuntungan;
 
     }
 }

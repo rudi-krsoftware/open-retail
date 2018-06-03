@@ -65,6 +65,7 @@ namespace OpenRetail.App.Referensi
             this._golongan = golongan;
 
             txtGolongan.Text = this._golongan.nama_golongan;
+            txtKeuntungan.Text = this._golongan.persentase_keuntungan.ToString();
             txtDiskon.Text = this._golongan.diskon.ToString();
         }
 
@@ -74,6 +75,7 @@ namespace OpenRetail.App.Referensi
                 _golongan = new Golongan();
 
             _golongan.nama_golongan = txtGolongan.Text;
+            _golongan.persentase_keuntungan = NumberHelper.StringToDouble(txtKeuntungan.Text, true);
             _golongan.diskon = NumberHelper.StringToDouble(txtDiskon.Text, true);
 
             var result = 0;

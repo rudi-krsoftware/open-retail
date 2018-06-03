@@ -71,7 +71,7 @@ namespace OpenRetail.Bll.Service
                 // Look for the first row used
                 var firstRowUsed = ws.FirstRowUsed();
 
-                var colums = new string[] { "GOLONGAN", "DISKON" };
+                var colums = new string[] { "GOLONGAN", "KEUNTUNGAN (%)", "DISKON" };
 
                 for (int i = 0; i < colums.Length; i++)
                 {
@@ -121,6 +121,7 @@ namespace OpenRetail.Bll.Service
                 listOfGolongan = golonganTable.DataRange.Rows().Select(row => new Golongan
                 {
                     nama_golongan = row.Field("GOLONGAN").GetString(),
+                    persentase_keuntungan = row.Field("KEUNTUNGAN (%)").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("KEUNTUNGAN (%)").GetString()),
                     diskon = row.Field("DISKON").GetString().Length == 0 ? 0 : Convert.ToDouble(row.Field("DISKON").GetString())
                 }).ToList();
 
@@ -180,14 +181,16 @@ namespace OpenRetail.Bll.Service
                     // Set header table
                     ws.Cell(1, 1).Value = "NO";
                     ws.Cell(1, 2).Value = "GOLONGAN";
-                    ws.Cell(1, 3).Value = "DISKON";
+                    ws.Cell(1, 3).Value = "KEUNTUNGAN (%)";
+                    ws.Cell(1, 4).Value = "DISKON";
 
                     var noUrut = 1;
                     foreach (var golongan in listOfObject)
                     {
                         ws.Cell(1 + noUrut, 1).Value = noUrut;
                         ws.Cell(1 + noUrut, 2).Value = golongan.nama_golongan;
-                        ws.Cell(1 + noUrut, 3).Value = golongan.diskon;
+                        ws.Cell(1 + noUrut, 3).Value = golongan.persentase_keuntungan;
+                        ws.Cell(1 + noUrut, 4).Value = golongan.diskon;
 
                         noUrut++;
                     }
