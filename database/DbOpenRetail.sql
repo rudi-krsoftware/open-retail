@@ -1369,7 +1369,8 @@ ALTER TABLE m_footer_nota_mini_pos OWNER TO postgres;
 CREATE TABLE m_golongan (
     golongan_id t_guid NOT NULL,
     nama_golongan t_nama,
-    diskon t_jumlah
+    diskon t_jumlah,
+    persentase_keuntungan t_jumlah
 );
 
 
@@ -1635,7 +1636,8 @@ CREATE TABLE m_produk (
     minimal_stok t_jumlah DEFAULT 0,
     stok_gudang t_jumlah,
     minimal_stok_gudang t_jumlah,
-    diskon t_jumlah
+    diskon t_jumlah,
+    persentase_keuntungan t_jumlah
 );
 
 
@@ -2769,6 +2771,41 @@ CREATE INDEX m_customer_idx ON m_customer USING btree (nama_customer);
 
 
 --
+-- Name: m_kabupaten2_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_kabupaten2_idx ON m_kabupaten2 USING btree (provinsi_id);
+
+
+--
+-- Name: m_kabupaten2_idx1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_kabupaten2_idx1 ON m_kabupaten2 USING btree (nama_kabupaten);
+
+
+--
+-- Name: m_kabupaten_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_kabupaten_idx ON m_kabupaten USING btree (nama_kabupaten);
+
+
+--
+-- Name: m_kecamatan_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_kecamatan_idx ON m_kecamatan USING btree (kabupaten_id);
+
+
+--
+-- Name: m_kecamatan_idx1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_kecamatan_idx1 ON m_kecamatan USING btree (nama_kecamatan);
+
+
+--
 -- Name: m_produk_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2780,6 +2817,27 @@ CREATE INDEX m_produk_idx ON m_produk USING btree (nama_produk);
 --
 
 CREATE INDEX m_produk_idx1 ON m_produk USING btree (kode_produk);
+
+
+--
+-- Name: m_produk_idx2; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_produk_idx2 ON m_produk USING btree (golongan_id);
+
+
+--
+-- Name: m_provinsi2_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_provinsi2_idx ON m_provinsi2 USING btree (nama_provinsi);
+
+
+--
+-- Name: m_provinsi_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_provinsi_idx ON m_provinsi USING btree (nama_provinsi);
 
 
 --
@@ -2808,6 +2866,20 @@ CREATE INDEX t_beli_produk_idx1 ON t_beli_produk USING btree (nota);
 --
 
 CREATE INDEX t_beli_produk_idx2 ON t_beli_produk USING btree (tanggal_tempo);
+
+
+--
+-- Name: t_beli_produk_idx3; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_beli_produk_idx3 ON t_beli_produk USING btree (supplier_id);
+
+
+--
+-- Name: t_beli_produk_idx4; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_beli_produk_idx4 ON t_beli_produk USING btree (pengguna_id);
 
 
 --
@@ -2853,6 +2925,20 @@ CREATE INDEX t_jual_produk_idx2 ON t_jual_produk USING btree (tanggal_tempo);
 
 
 --
+-- Name: t_jual_produk_idx3; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_jual_produk_idx3 ON t_jual_produk USING btree (customer_id);
+
+
+--
+-- Name: t_jual_produk_idx4; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_jual_produk_idx4 ON t_jual_produk USING btree (pengguna_id);
+
+
+--
 -- Name: t_kasbon_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2867,6 +2953,20 @@ CREATE INDEX t_kasbon_idx1 ON t_kasbon USING btree (nota);
 
 
 --
+-- Name: t_mesin_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_mesin_idx ON t_mesin USING btree (tanggal);
+
+
+--
+-- Name: t_mesin_idx1; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_mesin_idx1 ON t_mesin USING btree (pengguna_id);
+
+
+--
 -- Name: t_pembayaran_hutang_produk_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2878,6 +2978,13 @@ CREATE INDEX t_pembayaran_hutang_produk_idx ON t_pembayaran_hutang_produk USING 
 --
 
 CREATE INDEX t_pembayaran_hutang_produk_idx1 ON t_pembayaran_hutang_produk USING btree (nota);
+
+
+--
+-- Name: t_pembayaran_hutang_produk_idx2; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_pembayaran_hutang_produk_idx2 ON t_pembayaran_hutang_produk USING btree (supplier_id);
 
 
 --
@@ -2906,6 +3013,13 @@ CREATE INDEX t_pembayaran_piutang_produk_idx ON t_pembayaran_piutang_produk USIN
 --
 
 CREATE INDEX t_pembayaran_piutang_produk_idx1 ON t_pembayaran_piutang_produk USING btree (nota);
+
+
+--
+-- Name: t_pembayaran_piutang_produk_idx2; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX t_pembayaran_piutang_produk_idx2 ON t_pembayaran_piutang_produk USING btree (customer_id);
 
 
 --
