@@ -58,6 +58,12 @@ namespace OpenRetail.Model
         [Display(Name = "Diskon")]
         public double diskon { get; set; }
 
+        /// <summary>
+        /// Untuk menentukan harga jual otomatis berdasarkan persentasi keuntungan
+        /// </summary>
+        [Display(Name = "Persentase Keuntungan")]
+        public double persentase_keuntungan { get; set; }
+
 		[Display(Name = "Kode Produk")]
 		public string kode_produk { get; set; }
 

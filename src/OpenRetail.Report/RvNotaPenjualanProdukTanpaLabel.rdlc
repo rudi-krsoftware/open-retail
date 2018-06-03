@@ -2294,8 +2294,10 @@ Public Function GetWilayahLengkap(ByVal isSdac As Boolean, ByVal provinsi As Str
 
 		Dim alamat As String = sb.ToString()
 
-		If alamat.Substring(alamat.Length - 2) = ", " Then
-			alamat = alamat.Substring(0, alamat.Length - 2)
+		If alamat.Length &gt; 0 Then
+			If alamat.Substring(alamat.Length - 2) = ", " Then
+				alamat = alamat.Substring(0, alamat.Length - 2)
+			End If
 		End If
 
 		Return alamat

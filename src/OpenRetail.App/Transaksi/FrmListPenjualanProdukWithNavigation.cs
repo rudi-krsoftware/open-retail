@@ -343,9 +343,14 @@ namespace OpenRetail.App.Transaksi
 
         private void CetakNotaMiniPOS(JualProduk jual)
         {
+            var autocutCode = _pengaturanUmum.is_autocut ? _pengaturanUmum.autocut_code : string.Empty;
+            var openCashDrawerCode = _pengaturanUmum.is_open_cash_drawer ? _pengaturanUmum.open_cash_drawer_code : string.Empty;
+
             IRAWPrinting printerMiniPos = new PrinterMiniPOS(_pengaturanUmum.nama_printer);
+
             printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, 
-                _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer, ukuranFont: _pengaturanUmum.ukuran_font);
+                _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer, ukuranFont: _pengaturanUmum.ukuran_font,
+                autocutCode: autocutCode, openCashDrawerCode: openCashDrawerCode);
         }
 
         private void CetakNotaDotMatrix(JualProduk jual)

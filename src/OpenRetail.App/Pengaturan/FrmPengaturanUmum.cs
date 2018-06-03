@@ -34,6 +34,8 @@ using System.Drawing.Printing;
 using Microsoft.Reporting.WinForms;
 using ConceptCave.WaitCursor;
 using OpenRetail.Helper.UserControl;
+using System.IO.Ports;
+using GodSharp;
 
 namespace OpenRetail.App.Pengaturan
 {
@@ -44,18 +46,24 @@ namespace OpenRetail.App.Pengaturan
         private IList<AdvancedTextbox> _listOfTxtFooterNotaMiniPOS = new List<AdvancedTextbox>();
         private IList<AdvancedTextbox> _listOfTxtLabelNota = new List<AdvancedTextbox>();
         private PengaturanUmum _pengaturanUmum = null;
-        
-        public FrmPengaturanUmum(string header, PengaturanUmum pengaturanUmum)
-            : base()
+        private SettingPort _settingPort = null;
+        private SettingCustomerDisplay _settingCustomerDisplay = null;
+
+        public FrmPengaturanUmum(string header, PengaturanUmum pengaturanUmum,
+            SettingPort settingPort, SettingCustomerDisplay settingCustomerDisplay) : base()
         {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
 
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();
-            this._pengaturanUmum = pengaturanUmum;            
-            
+            this._pengaturanUmum = pengaturanUmum;
+            this._settingPort = settingPort;
+            this._settingCustomerDisplay = settingCustomerDisplay;
+
             SetInfoPrinter();
+            SetInfoPort(_settingPort.portNumber);
+            SetInfoCustomerDisplay();
             LoadHeaderNota();
             LoadHeaderNotaMiniPOS();
             LoadFooterNotaMinniPOS();
@@ -163,6 +171,41 @@ namespace OpenRetail.App.Pengaturan
             }
         }
 
+        private void SetInfoPort(string defaultPort)
+        {
+            cmbPort.Items.Clear();
+            foreach (var port in SerialPort.GetPortNames())
+            {
+                cmbPort.Items.Add(port);
+            }
+
+            if (cmbPort.Items.Count == 0)
+            {
+                for (int i = 1; i < 10; i++)
+                {
+                    cmbPort.Items.Add(string.Format("COM{0}", i.ToString()));
+                }
+            }
+
+            if (defaultPort.Length > 0)
+                cmbPort.Text = defaultPort;
+            else
+            {
+                if (cmbPort.Items.Count > 0)
+                    cmbPort.SelectedIndex = 0;
+            }
+        }
+
+        private void SetInfoCustomerDisplay()
+        {
+            chkIsActiveCustomerDisplay.Checked = _settingCustomerDisplay.is_active_customer_display;
+            txtKalimatPembukaBaris1.Text = _settingCustomerDisplay.opening_sentence_line1;
+            txtKalimatPembukaBaris2.Text = _settingCustomerDisplay.opening_sentence_line2;
+            txtKalimatPenutupBaris1.Text = _settingCustomerDisplay.closing_sentence_line1;
+            txtKalimatPenutupBaris2.Text = _settingCustomerDisplay.closing_sentence_line2;
+            updTampilKalimatPenutup.Value = _settingCustomerDisplay.delay_display_closing_sentence;
+        }
+
         private void SetInfoPrinter()
         {
             // setting general
@@ -194,6 +237,9 @@ namespace OpenRetail.App.Pengaturan
                 chkUkuranFont.Checked = _pengaturanUmum.ukuran_font > 0;
                 txtUkuranFont.Text = _pengaturanUmum.ukuran_font.ToString();
                 txtUkuranFont.Enabled = chkUkuranFont.Checked;
+
+                chkAutocut.Checked = _pengaturanUmum.is_autocut;
+                chkOpenCashDrawer.Checked = _pengaturanUmum.is_open_cash_drawer;
             }            
         }
 
@@ -261,7 +307,9 @@ namespace OpenRetail.App.Pengaturan
             _pengaturanUmum.is_singkat_penulisan_ongkir = chkSingkatPenulisanOngkir.Checked;
             _pengaturanUmum.jumlah_karakter = Convert.ToInt32(txtJumlahKarakter.Text);
             _pengaturanUmum.jumlah_gulung = Convert.ToInt32(txtJumlahGulung.Text);
-            _pengaturanUmum.ukuran_font = Convert.ToInt32(txtUkuranFont.Text);            
+            _pengaturanUmum.ukuran_font = Convert.ToInt32(txtUkuranFont.Text);
+            _pengaturanUmum.is_autocut = chkAutocut.Checked;
+            _pengaturanUmum.is_open_cash_drawer = chkOpenCashDrawer.Checked;
 
             // simpan info printer
             AppConfigHelper.SaveValue("printerName", cmbPrinter.Text, appConfigFile);
@@ -277,6 +325,29 @@ namespace OpenRetail.App.Pengaturan
             AppConfigHelper.SaveValue("jumlahKarakter", txtJumlahKarakter.Text, appConfigFile);
             AppConfigHelper.SaveValue("jumlahGulung", txtJumlahGulung.Text, appConfigFile);
             AppConfigHelper.SaveValue("ukuranFont", txtUkuranFont.Text, appConfigFile);
+            AppConfigHelper.SaveValue("isAutocut", chkAutocut.Checked.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("autocutCode", _pengaturanUmum.autocut_code, appConfigFile);
+            AppConfigHelper.SaveValue("isOpenCashDrawer", chkOpenCashDrawer.Checked.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("openCashDrawerCode", _pengaturanUmum.open_cash_drawer_code, appConfigFile);
+
+            // simpan setting port
+            _settingPort.portNumber = cmbPort.Text;
+            AppConfigHelper.SaveValue("portNumber", cmbPort.Text, appConfigFile);
+
+            // simpan setting customer display
+            _settingCustomerDisplay.is_active_customer_display = chkIsActiveCustomerDisplay.Checked;
+            _settingCustomerDisplay.opening_sentence_line1 = txtKalimatPembukaBaris1.Text;
+            _settingCustomerDisplay.opening_sentence_line2 = txtKalimatPembukaBaris2.Text;
+            _settingCustomerDisplay.closing_sentence_line1 = txtKalimatPenutupBaris1.Text;
+            _settingCustomerDisplay.closing_sentence_line2 = txtKalimatPenutupBaris2.Text;
+            _settingCustomerDisplay.delay_display_closing_sentence = (int)updTampilKalimatPenutup.Value;
+
+            AppConfigHelper.SaveValue("isActiveCustomerDisplay", _settingCustomerDisplay.is_active_customer_display.ToString(), appConfigFile);
+            AppConfigHelper.SaveValue("customerDisplayOpeningSentenceLine1", _settingCustomerDisplay.opening_sentence_line1, appConfigFile);
+            AppConfigHelper.SaveValue("customerDisplayOpeningSentenceLine2", _settingCustomerDisplay.opening_sentence_line2, appConfigFile);
+            AppConfigHelper.SaveValue("customerDisplayClosingSentenceLine1", _settingCustomerDisplay.closing_sentence_line1, appConfigFile);
+            AppConfigHelper.SaveValue("customerDisplayClosingSentenceLine2", _settingCustomerDisplay.closing_sentence_line2, appConfigFile);
+            AppConfigHelper.SaveValue("customerDisplayDelayDisplayClosingSentence", _settingCustomerDisplay.delay_display_closing_sentence.ToString(), appConfigFile);
         }
 
         /// <summary>
@@ -509,6 +580,14 @@ namespace OpenRetail.App.Pengaturan
             chkUkuranFont.Checked = false;  
             txtUkuranFont.Enabled = false;
             txtUkuranFont.Text = "0";
+
+            chkAutocut.Enabled = false;
+            chkAutocut.Checked = false;
+            chkOpenCashDrawer.Enabled = false;
+            chkOpenCashDrawer.Checked = false;
+
+            btnShowAutocutCode.Enabled = false;
+            btnShowOpenCashDrawerCode.Enabled = false;
         }
 
         private void rdoJenisPrinterDotMatrix_CheckedChanged(object sender, EventArgs e)
@@ -526,6 +605,12 @@ namespace OpenRetail.App.Pengaturan
 
             chkUkuranFont.Enabled = true;
             chkUkuranFont.Checked = _pengaturanUmum.ukuran_font > 0;
+
+            chkAutocut.Enabled = true;
+            chkAutocut.Checked = _pengaturanUmum.is_autocut;
+
+            chkOpenCashDrawer.Enabled = true;
+            chkOpenCashDrawer.Checked = _pengaturanUmum.is_open_cash_drawer;
         }
 
         private void chkUkuranFont_CheckedChanged(object sender, EventArgs e)
@@ -546,6 +631,67 @@ namespace OpenRetail.App.Pengaturan
             txtKeteranganTambahanItemJual.Text = "Keterangan";
             if (chk.Checked)
                 txtKeteranganTambahanItemJual.Text = _pengaturanUmum.keterangan_tambahan_item_jual;
+        }
+
+        private void btnShowAutocutCode_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmEntryCustomeCode("Edit Kode Autocut", _pengaturanUmum, true);
+            frm.ShowDialog();
+        }
+
+        private void btnShowOpenCashDrawerCode_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmEntryCustomeCode("Edit Kode Open Cash Drawer", _pengaturanUmum, false);
+            frm.ShowDialog();
+        }
+
+        private void chkAutocut_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = (CheckBox)sender;
+            btnShowAutocutCode.Enabled = chk.Checked;
+        }
+
+        private void chkOpenCashDrawer_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = (CheckBox)sender;
+            btnShowOpenCashDrawerCode.Enabled = chk.Checked;
+        }
+
+        private void chkIsActiveCustomerDisplay_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = (CheckBox)sender;
+
+            cmbPort.Enabled = chk.Checked;
+            btnTesKoneksi.Enabled = chk.Checked;
+            grpKalimatPembuka.Enabled = chk.Checked;
+            grpKalimatPenutup.Enabled = chk.Checked;
+        }
+
+        private void btnTesKoneksi_Click(object sender, EventArgs e)
+        {
+            const int MAX_LENGTH = 20;
+
+            var appName = "OpenRetail Server";
+            var version = string.Format("v{0}", MainProgram.currentVersion);
+
+            var displayLine1 = string.Format("{0}{1}", StringHelper.CenterAlignment(appName.Length, MAX_LENGTH), appName);
+            var displayLine2 = string.Format("{0}{1}", StringHelper.CenterAlignment(version.Length, MAX_LENGTH), version);
+
+            System.Diagnostics.Debug.Print("displayLine1: {0}", displayLine1);
+            System.Diagnostics.Debug.Print("displayLine2: {0}", displayLine2);
+
+            if (!Utils.IsRunningUnderIDE())
+            {
+                GodSerialPort serialPort = null;
+
+                if (!GodSerialPortHelper.IsConnected(serialPort, _settingPort))
+                {
+                    MsgHelper.MsgWarning("Koneksi ke customer display, silahkan coba port yang lain.");
+                    return;
+                }
+
+                GodSerialPortHelper.SendStringToCustomerDisplay(displayLine1, displayLine2, serialPort);
+            }
         }
     }
 }

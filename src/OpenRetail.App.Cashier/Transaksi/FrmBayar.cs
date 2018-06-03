@@ -58,6 +58,7 @@ namespace OpenRetail.App.Cashier.Transaksi
             AddHandler();
             LoadKartu();
 
+            txtPPN.Text = MainProgram.pengaturanUmum.default_ppn.ToString();
             txtTotal.Text = this._jual.total_nota.ToString();
             txtGrandTotal.Text = this._jual.grand_total.ToString();
 
@@ -108,6 +109,14 @@ namespace OpenRetail.App.Cashier.Transaksi
             {
                 txtKembalian.Text = kembalian.ToString();
             }                
+        }
+
+        private void UpdateDefaultPPN(double ppn)
+        {
+            var appConfigFile = string.Format("{0}\\OpenRetailCashier.exe.config", Utils.GetAppPath());
+            MainProgram.pengaturanUmum.default_ppn = ppn;
+
+            AppConfigHelper.SaveValue("defaultPPN", ppn.ToString(), appConfigFile);
         }
 
         protected override void Simpan()
@@ -185,6 +194,8 @@ namespace OpenRetail.App.Cashier.Transaksi
                 if (result > 0)
                 {
                     Listener.Ok(this, _jual);
+
+                    UpdateDefaultPPN(_jual.ppn);
                     this.Close();
                 }
                 else

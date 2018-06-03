@@ -61,6 +61,8 @@ namespace OpenRetail.App.Transaksi
         private Pengguna _pengguna;
         private Profil _profil;
         private PengaturanUmum _pengaturanUmum;
+        private SettingPort _settingPort;
+        private SettingCustomerDisplay _settingCustomerDisplay;
 
         public IListener Listener { private get; set; }
 
@@ -77,17 +79,23 @@ namespace OpenRetail.App.Transaksi
             this._pengguna = MainProgram.pengguna;
             this._profil = MainProgram.profil;
             this._pengaturanUmum = MainProgram.pengaturanUmum;
+            this._settingPort = MainProgram.settingPort;
+            this._settingCustomerDisplay = MainProgram.settingCustomerDisplay;
 
             txtNota.Text = bll.GetLastNota();
             dtpTanggal.Value = DateTime.Today;
             dtpTanggalTempo.Value = dtpTanggal.Value;
             btnPreviewNota.Visible = _pengaturanUmum.jenis_printer == JenisPrinter.InkJet;
+            txtPPN.Text = _pengaturanUmum.default_ppn.ToString();
 
             SetPengaturanPrinter();
 
             _listOfItemJual.Add(new ItemJualProduk()); // add dummy objek
 
             InitGridControl(gridControl);
+
+            DisplayKalimatPembuka();
+            tmrDisplayKalimatPenutup.Interval = _settingCustomerDisplay.delay_display_closing_sentence * 1000;
         }        
 
         public FrmEntryPenjualanProduk(string header, JualProduk jual, IJualProdukBll bll)
@@ -106,6 +114,8 @@ namespace OpenRetail.App.Transaksi
             this._pengguna = MainProgram.pengguna;
             this._profil = MainProgram.profil;
             this._pengaturanUmum = MainProgram.pengaturanUmum;
+            this._settingPort = MainProgram.settingPort;
+            this._settingCustomerDisplay = MainProgram.settingCustomerDisplay;
 
             txtNota.Text = this._jual.nota;
             dtpTanggal.Value = (DateTime)this._jual.tanggal;
@@ -154,6 +164,9 @@ namespace OpenRetail.App.Transaksi
             InitGridControl(gridControl);
 
             RefreshTotal();
+
+            DisplayKalimatPembuka();
+            tmrDisplayKalimatPenutup.Interval = _settingCustomerDisplay.delay_display_closing_sentence * 1000;
         }
 
         private void SetPengaturanPrinter()
@@ -462,6 +475,14 @@ namespace OpenRetail.App.Transaksi
             return result;
         }
 
+        private void UpdateDefaultPPN(double ppn)
+        {
+            var appConfigFile = string.Format("{0}\\OpenRetail.exe.config", Utils.GetAppPath());
+            _pengaturanUmum.default_ppn = ppn;
+
+            AppConfigHelper.SaveValue("defaultPPN", ppn.ToString(), appConfigFile);
+        }
+
         protected override void Simpan()
         {
             if (_pengaturanUmum.is_customer_required)
@@ -640,8 +661,9 @@ namespace OpenRetail.App.Transaksi
                     _dropshipper = null;
 
                     _listOfItemJual.Clear();
-                    _listOfItemJualDeleted.Clear();                                        
+                    _listOfItemJualDeleted.Clear();
 
+                    UpdateDefaultPPN(_jual.ppn);
                     this.Close();
                 }
                 else
@@ -712,9 +734,14 @@ namespace OpenRetail.App.Transaksi
 
         private void CetakNotaMiniPOS(JualProduk jual)
         {
+            var autocutCode = _pengaturanUmum.is_autocut ? _pengaturanUmum.autocut_code : string.Empty;
+            var openCashDrawerCode = _pengaturanUmum.is_open_cash_drawer ? _pengaturanUmum.open_cash_drawer_code : string.Empty;
+
             IRAWPrinting printerMiniPos = new PrinterMiniPOS(_pengaturanUmum.nama_printer);
+
             printerMiniPos.Cetak(jual, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.list_of_footer_nota_mini_pos, 
-                _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer, ukuranFont: _pengaturanUmum.ukuran_font);
+                _pengaturanUmum.jumlah_karakter, _pengaturanUmum.jumlah_gulung, _pengaturanUmum.is_cetak_customer, ukuranFont: _pengaturanUmum.ukuran_font,
+                autocutCode: autocutCode, openCashDrawerCode: openCashDrawerCode);
         }
 
         private void CetakNotaDotMatrix(JualProduk jual)
@@ -795,6 +822,8 @@ namespace OpenRetail.App.Transaksi
                     diskon = diskonProduk > 0 ? diskonProduk : produk.Golongan.diskon;
                 }
 
+                ItemJualProduk itemJual = null;
+
                 // cek item produk sudah diinputkan atau belum ?
                 var itemProduk = GetExistItemProduk(produk.produk_id);
 
@@ -804,10 +833,13 @@ namespace OpenRetail.App.Transaksi
 
                     UpdateItemProduk(this.gridControl, index);
                     this.gridControl.GetCellRenderer(_rowIndex, _colIndex).ControlText = string.Empty;
+
+                    itemJual = _listOfItemJual[index];
                 }
                 else
                 {
                     SetItemProduk(this.gridControl, _rowIndex, produk, diskon: diskon);
+                    itemJual = _listOfItemJual[_rowIndex - 1];
 
                     if (this.gridControl.RowCount == _rowIndex)
                     {
@@ -817,7 +849,8 @@ namespace OpenRetail.App.Transaksi
                 }
 
                 this.gridControl.Refresh();
-                RefreshTotal();                
+                RefreshTotal();
+                DisplayItemProduct(itemJual);
 
                 if (_pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual)
                 {
@@ -1043,6 +1076,8 @@ namespace OpenRetail.App.Transaksi
                                 diskon = diskonProduk > 0 ? diskonProduk : produk.Golongan.diskon;
                             }
 
+                            ItemJualProduk itemJual = null;
+
                             // cek item produk sudah diinputkan atau belum ?
                             var itemProduk = GetExistItemProduk(produk.produk_id);
 
@@ -1052,10 +1087,13 @@ namespace OpenRetail.App.Transaksi
 
                                 UpdateItemProduk(grid, index);
                                 cc.Renderer.ControlText = string.Empty;
+
+                                itemJual = _listOfItemJual[index];
                             }
                             else
                             {
                                 SetItemProduk(grid, rowIndex, produk, diskon: diskon);
+                                itemJual = _listOfItemJual[rowIndex - 1];
 
                                 if (grid.RowCount == rowIndex)
                                 {
@@ -1066,6 +1104,7 @@ namespace OpenRetail.App.Transaksi
                                 
                             grid.Refresh();
                             RefreshTotal();
+                            DisplayItemProduct(itemJual);
 
                             if (_pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual)
                             {
@@ -1139,6 +1178,8 @@ namespace OpenRetail.App.Transaksi
                                 diskon = diskonProduk > 0 ? diskonProduk : produk.Golongan.diskon;
                             }
 
+                            ItemJualProduk itemJual = null;
+
                             // cek item produk sudah diinputkan atau belum ?
                             var itemProduk = GetExistItemProduk(produk.produk_id);
 
@@ -1148,10 +1189,14 @@ namespace OpenRetail.App.Transaksi
 
                                 UpdateItemProduk(grid, index);
                                 cc.Renderer.ControlText = string.Empty;
+
+                                itemJual = _listOfItemJual[index];
                             }
                             else
                             {
                                 SetItemProduk(grid, rowIndex, produk, diskon: diskon);
+
+                                itemJual = _listOfItemJual[rowIndex - 1];
 
                                 if (grid.RowCount == rowIndex)
                                 {
@@ -1162,6 +1207,7 @@ namespace OpenRetail.App.Transaksi
 
                             grid.Refresh();
                             RefreshTotal();
+                            DisplayItemProduct(itemJual);
 
                             if (_pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual)
                             {
@@ -1218,7 +1264,7 @@ namespace OpenRetail.App.Transaksi
                             var itemJual = _listOfItemJual[rowIndex - 1];
                             produk = itemJual.Produk;
 
-                            var isValidStok = (produk.sisa_stok - itemJual.jumlah) >= 0;
+                            var isValidStok = (produk.sisa_stok + itemJual.old_jumlah - itemJual.jumlah) >= 0;
 
                             if (!isValidStok)
                             {
@@ -1227,7 +1273,7 @@ namespace OpenRetail.App.Transaksi
                                           "Jumlah jual: {1}\n" +
                                           "Sisa stok: {2}";
 
-                                MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok, itemJual.jumlah, produk.sisa_stok - itemJual.jumlah));
+                                MsgHelper.MsgWarning(string.Format(msg, produk.sisa_stok, itemJual.jumlah, produk.sisa_stok + itemJual.old_jumlah - itemJual.jumlah));
                                 GridListControlHelper.SelectCellText(grid, rowIndex, colIndex);
 
                                 return;
@@ -1328,6 +1374,12 @@ namespace OpenRetail.App.Transaksi
                 grid.Refresh();
 
                 RefreshTotal();
+
+                if (cc.ColIndex == 5 || cc.ColIndex == 6 || cc.ColIndex == 7)
+                {
+                    itemJual = _listOfItemJual[cc.RowIndex - 1];
+                    DisplayItemProduct(itemJual);
+                }
             }           
         }
 
@@ -1387,7 +1439,7 @@ namespace OpenRetail.App.Transaksi
                 }
             }
             else if (KeyPressHelper.IsShortcutKey(Keys.F8, e)) // bayar
-            {
+            {                
                 txtJumlahBayar.Text = "0";
                 txtKembali.Text = "0";
                 txtJumlahBayar.Focus();
@@ -1645,20 +1697,40 @@ namespace OpenRetail.App.Transaksi
                 KeyPressHelper.NextFocus();
         }
 
-        private void txtJumlahBayar_TextChanged(object sender, EventArgs e)
+        private void txtJumlahBayar_Enter(object sender, EventArgs e)
         {
-            txtKembali.Text = "0";
-
-            var total = NumberHelper.StringToNumber(lblTotal.Text);
-            if (total > 0)
-            {
-                var jumlahBayar = NumberHelper.StringToNumber(((AdvancedTextbox)sender).Text);
-                var kembali = jumlahBayar - total;
-                
-                if (kembali > 0)
-                    txtKembali.Text = kembali.ToString();
-            }
+            if (lblTotal.Text != "0")
+                DisplayTotal(lblTotal.Text);
         }
+
+        private void txtJumlahBayar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e))
+            {
+                txtKembali.Text = "0";
+
+                var total = NumberHelper.StringToNumber(lblTotal.Text);
+                if (total > 0)
+                {
+                    var jumlahBayar = NumberHelper.StringToNumber(((AdvancedTextbox)sender).Text);
+                    var kembali = jumlahBayar - total;
+
+                    if (kembali >= 0)
+                    {
+                        txtKembali.Text = kembali.ToString();
+
+                        DisplayKembalian(txtKembali.Text);
+                        tmrDisplayKalimatPenutup.Enabled = true;
+                    }                        
+                    else
+                    {
+                        MsgHelper.MsgWarning("Jumlah bayar kurang !");
+                        txtJumlahBayar.Focus();
+                        txtJumlahBayar.SelectAll();
+                    }
+                }                
+            }
+        }        
 
         private void chkDropship_CheckedChanged(object sender, EventArgs e)
         {
@@ -1700,5 +1772,11 @@ namespace OpenRetail.App.Transaksi
                 }
             }
         }
+
+        private void tmrDisplayKalimatPenutup_Tick(object sender, EventArgs e)
+        {
+            DisplayKalimatPenutup();
+            ((Timer)sender).Enabled = false;
+        }        
     }
 }

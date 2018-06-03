@@ -79,6 +79,7 @@ namespace OpenRetail.App.Referensi
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Golongan", Width = 700 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Keuntungan (%)", Width = 400 });
             gridListProperties.Add(new GridListControlProperties { Header = "Diskon" });
 
             GridListControlHelper.InitializeGridListControl<Golongan>(this.gridList, _listOfGolongan, gridListProperties);
@@ -105,6 +106,11 @@ namespace OpenRetail.App.Referensi
                                     break;
 
                                 case 3:
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                    e.Style.CellValue = golongan.persentase_keuntungan;
+                                    break;
+
+                                case 4:
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     e.Style.CellValue = golongan.diskon;
                                     break;

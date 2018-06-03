@@ -31,6 +31,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace OpenRetail.App.Main
 {    
@@ -88,12 +89,19 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum.is_customer_required = AppConfigHelper.GetValue("isCustomerRequired", _appConfigFile).ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.is_cetak_keterangan_nota = AppConfigHelper.GetValue("isCetakKeteranganNota", _appConfigFile, "true").ToLower() == "true" ? true : false;            
             MainProgram.pengaturanUmum.is_singkat_penulisan_ongkir = AppConfigHelper.GetValue("isSingkatPenulisanOngkir", _appConfigFile).ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.default_ppn = Convert.ToDouble(AppConfigHelper.GetValue("defaultPPN", _appConfigFile, "0"));
 
             // set info printer mini pos
             var jumlahKarakter = AppConfigHelper.GetValue("jumlahKarakter", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahKarakter", _appConfigFile)) : 40;
             var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", _appConfigFile)) : 5;
             var isCetakCustomer = AppConfigHelper.GetValue("isCetakCustomer", _appConfigFile).Length > 0 ? Convert.ToBoolean(AppConfigHelper.GetValue("isCetakCustomer", _appConfigFile)) : true;
             var ukuranFont = AppConfigHelper.GetValue("ukuranFont", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("ukuranFont", _appConfigFile)) : 0;
+
+            MainProgram.pengaturanUmum.is_autocut = AppConfigHelper.GetValue("isAutocut", _appConfigFile, "false").ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.autocut_code = AppConfigHelper.GetValue("autocutCode", _appConfigFile, "27,112,0,75,250");
+
+            MainProgram.pengaturanUmum.is_open_cash_drawer = AppConfigHelper.GetValue("isOpenCashDrawer", _appConfigFile, "false").ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.open_cash_drawer_code = AppConfigHelper.GetValue("openCashDrawerCode", _appConfigFile, "27,112,0,25,250");
 
             MainProgram.pengaturanUmum.jenis_printer = AppConfigHelper.GetValue("jenis_printer", _appConfigFile).Length > 0 ? (JenisPrinter)Convert.ToInt32(AppConfigHelper.GetValue("jenis_printer", _appConfigFile)) : JenisPrinter.InkJet;
             MainProgram.pengaturanUmum.is_cetak_customer = isCetakCustomer;
@@ -147,6 +155,27 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanBarcode.batas_kiri_kolom1 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom1", _appConfigFile, "11"));
             MainProgram.pengaturanBarcode.batas_kiri_kolom2 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom2", _appConfigFile, "277"));
             MainProgram.pengaturanBarcode.batas_kiri_kolom3 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom3", _appConfigFile, "540"));
+        }
+
+        private void SetSettingPort()
+        {
+            MainProgram.settingPort = new SettingPort();
+            MainProgram.settingPort.portNumber = AppConfigHelper.GetValue("portNumber", _appConfigFile, "COM1");
+            MainProgram.settingPort.baudRate = Convert.ToInt32(AppConfigHelper.GetValue("baudRate", _appConfigFile, "9600"));
+            MainProgram.settingPort.parity = (Parity)Convert.ToInt32(AppConfigHelper.GetValue("parity", _appConfigFile, "1"));
+            MainProgram.settingPort.dataBits = Convert.ToInt32(AppConfigHelper.GetValue("dataBits", _appConfigFile, "8"));
+            MainProgram.settingPort.stopBits = (StopBits)Convert.ToInt32(AppConfigHelper.GetValue("stopBits", _appConfigFile, "1")); ;
+        }
+
+        private void SetSettingCustomerDisplay()
+        {
+            MainProgram.settingCustomerDisplay = new SettingCustomerDisplay();
+            MainProgram.settingCustomerDisplay.is_active_customer_display = AppConfigHelper.GetValue("isActiveCustomerDisplay", _appConfigFile, "false").ToLower() == "true" ? true : false;
+            MainProgram.settingCustomerDisplay.opening_sentence_line1 = AppConfigHelper.GetValue("customerDisplayOpeningSentenceLine1", _appConfigFile, "Selamat Datang di");
+            MainProgram.settingCustomerDisplay.opening_sentence_line2 = AppConfigHelper.GetValue("customerDisplayOpeningSentenceLine2", _appConfigFile, "KR Software");
+            MainProgram.settingCustomerDisplay.closing_sentence_line1 = AppConfigHelper.GetValue("customerDisplayClosingSentenceLine1", _appConfigFile, "Terima Kasih");
+            MainProgram.settingCustomerDisplay.closing_sentence_line2 = AppConfigHelper.GetValue("customerDisplayClosingSentenceLine2", _appConfigFile, "Selamat Dtg Kembali");
+            MainProgram.settingCustomerDisplay.delay_display_closing_sentence = Convert.ToInt32(AppConfigHelper.GetValue("customerDisplayDelayDisplayClosingSentence", _appConfigFile, "5"));
         }
 
         /// <summary>
@@ -257,6 +286,8 @@ namespace OpenRetail.App.Main
                     SetProfil();
                     SetPengaturanUmum();
                     SetPengaturanBarcode();
+                    SetSettingPort();
+                    SetSettingCustomerDisplay();
                     LoadKabupaten();
                     LoadWilayah();
 

@@ -33,6 +33,7 @@ using OpenRetail.Helper;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using OpenRetail.Model;
+using System.IO.Ports;
 
 namespace OpenRetail.App.Cashier.Main
 {    
@@ -85,10 +86,18 @@ namespace OpenRetail.App.Cashier.Main
             var jumlahGulung = AppConfigHelper.GetValue("jumlahGulung", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("jumlahGulung", _appConfigFile)) : 5;
             var ukuranFont = AppConfigHelper.GetValue("ukuranFont", _appConfigFile).Length > 0 ? Convert.ToInt32(AppConfigHelper.GetValue("ukuranFont", _appConfigFile)) : 0;
 
+            MainProgram.pengaturanUmum.is_autocut = AppConfigHelper.GetValue("isAutocut", _appConfigFile, "false").ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.autocut_code = AppConfigHelper.GetValue("autocutCode", _appConfigFile, "27,112,0,75,250");
+
+            MainProgram.pengaturanUmum.is_open_cash_drawer = AppConfigHelper.GetValue("isOpenCashDrawer", _appConfigFile, "false").ToLower() == "true" ? true : false;
+            MainProgram.pengaturanUmum.open_cash_drawer_code = AppConfigHelper.GetValue("openCashDrawerCode", _appConfigFile, "27,112,0,25,250");
+
             MainProgram.pengaturanUmum.jenis_printer = AppConfigHelper.GetValue("jenis_printer", _appConfigFile).Length > 0 ? (JenisPrinter)Convert.ToInt32(AppConfigHelper.GetValue("jenis_printer", _appConfigFile)) : JenisPrinter.MiniPOS;
             MainProgram.pengaturanUmum.jumlah_karakter = jumlahKarakter;
             MainProgram.pengaturanUmum.jumlah_gulung = jumlahGulung;
             MainProgram.pengaturanUmum.ukuran_font = ukuranFont;
+
+            MainProgram.pengaturanUmum.default_ppn = Convert.ToDouble(AppConfigHelper.GetValue("defaultPPN", _appConfigFile, "0"));
 
             // set pengaturan global (setting disimpan di database)
             ISettingAplikasiBll settingAplikasiBll = new SettingAplikasiBll();
@@ -117,6 +126,27 @@ namespace OpenRetail.App.Cashier.Main
             // set label nota
             ILabelNotaBll labelNotaBll = new LabelNotaBll();
             MainProgram.pengaturanUmum.list_of_label_nota = labelNotaBll.GetAll();
+        }
+
+        private void SetSettingPort()
+        {
+            MainProgram.settingPort = new SettingPort();
+            MainProgram.settingPort.portNumber = AppConfigHelper.GetValue("portNumber", _appConfigFile, "COM1");
+            MainProgram.settingPort.baudRate = Convert.ToInt32(AppConfigHelper.GetValue("baudRate", _appConfigFile, "9600"));
+            MainProgram.settingPort.parity = (Parity)Convert.ToInt32(AppConfigHelper.GetValue("parity", _appConfigFile, "1"));
+            MainProgram.settingPort.dataBits = Convert.ToInt32(AppConfigHelper.GetValue("dataBits", _appConfigFile, "8"));
+            MainProgram.settingPort.stopBits = (StopBits)Convert.ToInt32(AppConfigHelper.GetValue("stopBits", _appConfigFile, "1")); ;
+        }
+
+        private void SetSettingCustomerDisplay()
+        {
+            MainProgram.settingCustomerDisplay = new SettingCustomerDisplay();
+            MainProgram.settingCustomerDisplay.is_active_customer_display = AppConfigHelper.GetValue("isActiveCustomerDisplay", _appConfigFile, "false").ToLower() == "true" ? true : false;
+            MainProgram.settingCustomerDisplay.opening_sentence_line1 = AppConfigHelper.GetValue("customerDisplayOpeningSentenceLine1", _appConfigFile, "Selamat Datang di");
+            MainProgram.settingCustomerDisplay.opening_sentence_line2 = AppConfigHelper.GetValue("customerDisplayOpeningSentenceLine2", _appConfigFile, "KR Software");
+            MainProgram.settingCustomerDisplay.closing_sentence_line1 = AppConfigHelper.GetValue("customerDisplayClosingSentenceLine1", _appConfigFile, "Terima Kasih");
+            MainProgram.settingCustomerDisplay.closing_sentence_line2 = AppConfigHelper.GetValue("customerDisplayClosingSentenceLine2", _appConfigFile, "Selamat Dtg Kembali");
+            MainProgram.settingCustomerDisplay.delay_display_closing_sentence = Convert.ToInt32(AppConfigHelper.GetValue("customerDisplayDelayDisplayClosingSentence", _appConfigFile, "5"));
         }
 
         /// <summary>
@@ -226,6 +256,8 @@ namespace OpenRetail.App.Cashier.Main
 
                     SetProfil();
                     SetPengaturanUmum();
+                    SetSettingPort();
+                    SetSettingCustomerDisplay();
                     LoadKartu();
 
                     var saldoAwal = NumberHelper.StringToDouble(txtSaldoAwal.Text);

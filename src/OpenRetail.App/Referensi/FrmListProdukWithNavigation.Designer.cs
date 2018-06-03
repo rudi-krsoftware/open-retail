@@ -44,10 +44,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridList)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnImport
-            // 
-            this.btnImport.Location = new System.Drawing.Point(882, 4);
-            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 1;
