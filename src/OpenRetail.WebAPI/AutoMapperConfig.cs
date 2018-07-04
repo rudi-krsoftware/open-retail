@@ -39,6 +39,11 @@ namespace OpenRetail.WebAPI
                 config.CreateMap<PembayaranKasbonDTO, PembayaranKasbon>();
                 config.CreateMap<GajiKaryawanDTO, GajiKaryawan>();
 
+                // transaksi
+                config.CreateMap<JualProdukDTO, JualProduk>();
+                config.CreateMap<ItemJualProdukDTO, ItemJualProduk>();
+                config.CreateMap<ReturJualProdukDTO, ReturJualProduk>();
+
                 // pengaturan
                 config.CreateMap<RoleDTO, Role>();
                 config.CreateMap<PenggunaDTO, Pengguna>();
