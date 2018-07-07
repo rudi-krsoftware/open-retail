@@ -164,7 +164,7 @@ namespace OpenRetail.App.Main
             MainProgram.settingPort.baudRate = Convert.ToInt32(AppConfigHelper.GetValue("baudRate", _appConfigFile, "9600"));
             MainProgram.settingPort.parity = (Parity)Convert.ToInt32(AppConfigHelper.GetValue("parity", _appConfigFile, "1"));
             MainProgram.settingPort.dataBits = Convert.ToInt32(AppConfigHelper.GetValue("dataBits", _appConfigFile, "8"));
-            MainProgram.settingPort.stopBits = (StopBits)Convert.ToInt32(AppConfigHelper.GetValue("stopBits", _appConfigFile, "1")); ;
+            MainProgram.settingPort.stopBits = (StopBits)Convert.ToInt32(AppConfigHelper.GetValue("stopBits", _appConfigFile, "1"));
         }
 
         private void SetSettingCustomerDisplay()

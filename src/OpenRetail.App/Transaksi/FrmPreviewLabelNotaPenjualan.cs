@@ -114,7 +114,7 @@ namespace OpenRetail.App.Transaksi
             if (this._jual.is_dropship && this._dropshipper != null)
             {
                 txtDari1.Text = this._dropshipper.nama_dropshipper.NullToString();
-                txtDari2.Text = this._dropshipper.alamat.NullToString(); ;
+                txtDari2.Text = this._dropshipper.alamat.NullToString();
                 txtDari3.Text = string.Format("HP: {0}", this._dropshipper.telepon.NullToString());
             }
 

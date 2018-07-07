@@ -66,7 +66,6 @@ namespace OpenRetail.Model
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
 
-        [JsonIgnore]
         [Write(false)]
         public EntityState entity_state { get; set; }
 	}

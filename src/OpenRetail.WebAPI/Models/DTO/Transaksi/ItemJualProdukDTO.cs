@@ -49,7 +49,6 @@ namespace OpenRetail.WebAPI.Models.DTO
 		[Display(Name = "produk_id")]
 		public string produk_id { get; set; }
 
-        [JsonIgnore]
         public ProdukDTO Produk { get; set; }
 
         [Display(Name = "Keterangan tambahan")]

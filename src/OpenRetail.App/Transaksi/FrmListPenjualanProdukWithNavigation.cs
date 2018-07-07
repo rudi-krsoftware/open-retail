@@ -65,7 +65,7 @@ namespace OpenRetail.App.Transaksi
             _pageSize = MainProgram.pageSize;
             _log = MainProgram.log;
             _listOfWilayah = MainProgram.ListOfWilayah;
-            _bll = new JualProdukBll(_log);
+            _bll = new JualProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _pengguna = pengguna;
             _pengaturanUmum = MainProgram.pengaturanUmum;
             _menuId = menuId;            
@@ -429,9 +429,12 @@ namespace OpenRetail.App.Transaksi
 
         protected override void Tambah()
         {
-            var frm = new FrmEntryPenjualanProduk("Tambah Data " + this.Text, _bll);
-            frm.Listener = this;
-            frm.ShowDialog();
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                var frm = new FrmEntryPenjualanProduk("Tambah Data " + this.Text, _bll);
+                frm.Listener = this;
+                frm.ShowDialog();
+            }            
         }
 
         protected override void Perbaiki()
@@ -441,15 +444,18 @@ namespace OpenRetail.App.Transaksi
             if (!base.IsSelectedItem(index, this.TabText))
                 return;
 
-            var jual = _listOfJual[index];
-            jual.tanggal_tempo_old = jual.tanggal_tempo;
-            jual.item_jual = _bll.GetItemJual(jual.jual_id);
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                var jual = _listOfJual[index];
+                jual.tanggal_tempo_old = jual.tanggal_tempo;
+                jual.item_jual = _bll.GetItemJual(jual.jual_id).ToList();
 
-            LogicalThreadContext.Properties["OldValue"] = jual.ToJson();
+                LogicalThreadContext.Properties["OldValue"] = jual.ToJson();
 
-            var frm = new FrmEntryPenjualanProduk("Edit Data " + this.Text, jual, _bll);
-            frm.Listener = this;
-            frm.ShowDialog();
+                var frm = new FrmEntryPenjualanProduk("Edit Data " + this.Text, jual, _bll);
+                frm.Listener = this;
+                frm.ShowDialog();
+            }            
         }
 
         protected override void Hapus()
@@ -461,16 +467,18 @@ namespace OpenRetail.App.Transaksi
 
             if (MsgHelper.MsgDelete())
             {
-                var jual = _listOfJual[index];
-
-                var result = _bll.Delete(jual);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<JualProduk>(this.gridList, _listOfJual, jual);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var jual = _listOfJual[index];
+                    var result = _bll.Delete(jual);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<JualProduk>(this.gridList, _listOfJual, jual);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 

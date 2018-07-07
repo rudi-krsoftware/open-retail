@@ -58,7 +58,6 @@ namespace OpenRetail.Model
 		[Display(Name = "produk_id")]
 		public string produk_id { get; set; }
 
-        [JsonIgnore]
 		[Write(false)]
         public Produk Produk { get; set; }
 
@@ -111,7 +110,6 @@ namespace OpenRetail.Model
             get { return (jumlah - jumlah_retur) * harga_setelah_diskon; }
         }
 
-        [JsonIgnore]
         [Write(false)]
         public EntityState entity_state { get; set; }
 	}

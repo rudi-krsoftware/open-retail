@@ -55,7 +55,7 @@ namespace OpenRetail.Model
 		[Display(Name = "Customer")]
 		public string customer_id { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
 		[Write(false)]
         public Customer Customer { get; set; }
 
@@ -165,7 +165,7 @@ namespace OpenRetail.Model
         [Display(Name = "Bayar Kartu")]
         public double bayar_kartu { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         [Computed]
         public double jumlah_bayar
         {
@@ -218,21 +218,21 @@ namespace OpenRetail.Model
         [Write(false)]
         public bool is_tunai { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         [Computed]
         public double total_pelunasan_old { get; set; }        
 
         /// <summary>
         /// total nota setelah dikurangi diskon kemudian ditambah ppn
         /// </summary>
-        [JsonIgnore]
+        //[JsonIgnore]
         [Computed]
         public double grand_total
         {
             get { return total_nota - diskon + ongkos_kirim + ppn; }
         }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         [Computed]
         public double sisa_nota
         {
@@ -240,10 +240,10 @@ namespace OpenRetail.Model
         }
 
         [Write(false)]
-        public IList<ItemJualProduk> item_jual { get; set; }
+        public List<ItemJualProduk> item_jual { get; set; }
 
         [Write(false)]
-        public IList<ItemJualProduk> item_jual_deleted { get; set; }
+        public List<ItemJualProduk> item_jual_deleted { get; set; }
 	}
 
     public class JualProdukValidator : AbstractValidator<JualProduk>

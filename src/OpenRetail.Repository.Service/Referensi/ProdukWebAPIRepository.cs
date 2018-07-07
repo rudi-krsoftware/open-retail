@@ -247,7 +247,7 @@ namespace OpenRetail.Repository.Service
                 _log.Error("Error:", ex);
             }
 
-            return oList; ;
+            return oList;
         }
 
         public IList<Produk> GetAll(string sortBy, int pageNumber, int pageSize, ref int pagesCount)
@@ -270,7 +270,7 @@ namespace OpenRetail.Repository.Service
                 _log.Error("Error:", ex);
             }
 
-            return oList; ;
+            return oList;
         }
 
         public int Save(Produk obj)
