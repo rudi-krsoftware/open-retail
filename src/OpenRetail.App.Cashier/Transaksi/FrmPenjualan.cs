@@ -954,7 +954,7 @@ namespace OpenRetail.App.Cashier.Transaksi
                                     return;
                                 }
 
-                                jual.item_jual = _bll.GetItemJual(jual.jual_id);
+                                jual.item_jual = _bll.GetItemJual(jual.jual_id).ToList();
                                 var frmInfoNota = new FrmInfoNotaTerakhir("Info Nota Terakhir", jual);
                                 frmInfoNota.ShowDialog();
                                 

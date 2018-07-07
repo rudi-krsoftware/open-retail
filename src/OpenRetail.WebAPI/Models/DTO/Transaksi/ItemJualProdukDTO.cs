@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -22,22 +22,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using FluentValidation;
+using System.ComponentModel.DataAnnotations;
+using OpenRetail.Model;
 
-namespace OpenRetail.Model
-{        
-	[Table("t_item_jual_produk")]
-    public class ItemJualProduk
+namespace OpenRetail.WebAPI.Models.DTO
+{
+    public class ItemJualProdukDTO
     {
-        public ItemJualProduk()
-        {
-            entity_state = EntityState.Added;
-        }
-
-		[ExplicitKey]
 		[Display(Name = "item_jual_id")]		
 		public string item_jual_id { get; set; }
 		
@@ -45,21 +38,18 @@ namespace OpenRetail.Model
 		public string jual_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
-        public JualProduk JualProduk { get; set; }
+        public JualProdukDTO JualProduk { get; set; }
 
 		[Display(Name = "pengguna_id")]
 		public string pengguna_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
-        public Pengguna Pengguna { get; set; }
+        public PenggunaDTO Pengguna { get; set; }
 
 		[Display(Name = "produk_id")]
 		public string produk_id { get; set; }
 
-		[Write(false)]
-        public Produk Produk { get; set; }
+        public ProdukDTO Produk { get; set; }
 
         [Display(Name = "Keterangan tambahan")]
         public string keterangan { get; set; }
@@ -70,7 +60,6 @@ namespace OpenRetail.Model
 		[Display(Name = "Harga Jual")]
 		public double harga_jual { get; set; }
 
-        [Write(false)]
         [Display(Name = "Old Jumlah")]
         public double old_jumlah { get; set; }
 
@@ -81,52 +70,63 @@ namespace OpenRetail.Model
 		public double diskon { get; set; }
 
         [JsonIgnore]
-        [Write(false)]
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
         
-        [Write(false)]
 		[Display(Name = "jumlah_retur")]
 		public double jumlah_retur { get; set; }
 
-        [JsonIgnore]
-        [Computed]
         public double diskon_rupiah
         {
             get { return diskon / 100 * harga_jual; }
         }
 
-        [JsonIgnore]
-        [Computed]
         public double harga_setelah_diskon
         {
             get { return harga_jual - diskon_rupiah; }
         }
 
-        [JsonIgnore]
-        [Computed]
         public double sub_total
         {
             get { return (jumlah - jumlah_retur) * harga_setelah_diskon; }
         }
 
-        [Write(false)]
         public EntityState entity_state { get; set; }
-	}
+    }
 
-    public class ItemJualProdukValidator : AbstractValidator<ItemJualProduk>
+    public class ItemJualProdukDTOValidator : AbstractValidator<ItemJualProdukDTO>
     {
-        public ItemJualProdukValidator()
+        public ItemJualProdukDTOValidator()
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
-            var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+
+            RuleSet("save", () =>
+            {
+                DefaultRule(msgError1, msgError2);
+            });
+
+            RuleSet("update", () =>
+            {
+                RuleFor(c => c.item_jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+                DefaultRule(msgError1, msgError2);
+            });
+
+            RuleSet("delete", () =>
+            {
+                RuleFor(c => c.item_jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            });
+        }
+
+        private void DefaultRule(string msgError1, string msgError2)
+        {
+            RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
             RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
-		}
-	}
+        }
+    }
 }

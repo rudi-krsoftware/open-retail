@@ -174,7 +174,7 @@ namespace OpenRetail.App.Transaksi
                     var jual = itemPembayaran.JualProduk;
                     if (jual != null)
                     {
-                        grand_total = jual.grand_total; ;
+                        grand_total = jual.grand_total;
                         sisaNota = jual.sisa_nota;
                     }
 

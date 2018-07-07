@@ -101,7 +101,6 @@ namespace OpenRetail.Model
             get { return (jumlah - jumlah_retur) * harga_setelah_diskon; }
         }
 
-        [JsonIgnore]
         [Write(false)]
         public EntityState entity_state { get; set; }
     }

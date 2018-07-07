@@ -172,7 +172,7 @@ namespace OpenRetail.App.Transaksi
                     var beli = itemPembayaran.BeliProduk;
                     if (beli != null)
                     {
-                        grand_total = beli.grand_total; ;
+                        grand_total = beli.grand_total;
                         sisaNota = beli.sisa_nota;
                     }
 
