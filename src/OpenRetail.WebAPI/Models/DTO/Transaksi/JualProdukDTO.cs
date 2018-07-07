@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -22,41 +22,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using FluentValidation;
+using System.ComponentModel.DataAnnotations;
+using OpenRetail.Model;
 
-namespace OpenRetail.Model
-{        
-	[Table("t_jual_produk")]
-    public class JualProduk
+namespace OpenRetail.WebAPI.Models.DTO
+{
+    public class JualProdukDTO
     {
         private Nullable<DateTime> _tanggal_tempo;
 
-        public JualProduk()
+        public JualProdukDTO()
         {
             is_sdac = true;
-            item_jual = new List<ItemJualProduk>();
-            item_jual_deleted = new List<ItemJualProduk>();
+            item_jual = new List<ItemJualProdukDTO>();
+            item_jual_deleted = new List<ItemJualProdukDTO>();
         }
 
-		[ExplicitKey]
 		[Display(Name = "jual_id")]		
 		public string jual_id { get; set; }
 		
 		[Display(Name = "pengguna_id")]
 		public string pengguna_id { get; set; }
 
-        [JsonIgnore]
-		[Write(false)]        
-        public Pengguna Pengguna { get; set; }
-
 		[Display(Name = "Customer")]
 		public string customer_id { get; set; }
 
-        //[JsonIgnore]
-		[Write(false)]
+        [JsonIgnore]
         public Customer Customer { get; set; }
 
 		[Display(Name = "Nota")]
@@ -73,7 +66,6 @@ namespace OpenRetail.Model
         }
 
         [JsonIgnore]
-        [Write(false)]
         public Nullable<DateTime> tanggal_tempo_old { get; set; }
 
 		[Display(Name = "PPN")]
@@ -88,11 +80,9 @@ namespace OpenRetail.Model
         [Display(Name = "Ongkos Kirim")]
         public double ongkos_kirim { get; set; }
 
-        [Computed]
 		[Display(Name = "total_nota")]
 		public double total_nota { get; set; }
 
-        [Computed]
 		[Display(Name = "total_pelunasan")]
 		public double total_pelunasan { get; set; }
 		
@@ -161,103 +151,104 @@ namespace OpenRetail.Model
         [Display(Name = "Bayar Tunai")]
         public double bayar_tunai { get; set; }
 
-        [JsonIgnore]
         [Display(Name = "Bayar Kartu")]
         public double bayar_kartu { get; set; }
 
-        //[JsonIgnore]
-        [Computed]
         public double jumlah_bayar
         {
             get { return bayar_tunai + bayar_kartu; }
         }
 
         [JsonIgnore]
-        [Write(false)]
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
 		
 		[Display(Name = "retur_jual_id")]
 		public string retur_jual_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
-        public ReturJualProduk ReturJualProduk { get; set; }
+        public ReturJualProdukDTO ReturJualProduk { get; set; }
 
 		[Display(Name = "shift_id")]
 		public string shift_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
         public Shift Shift { get; set; }
 
         [Display(Name = "mesin_id")]
         public string mesin_id { get; set; }
 
         [JsonIgnore]
-        [Write(false)]
         public MesinKasir Mesin { get; set; }
 
         [Display(Name = "kartu_id")]
         public string kartu_id { get; set; }
 
         [JsonIgnore]
-        [Write(false)]
-        public Kartu Kartu { get; set; }
+        public KartuDTO Kartu { get; set; }
 
         [Display(Name = "dropshipper_id")]
         public string dropshipper_id { get; set; }
 
         [JsonIgnore]
-        [Write(false)]
-        public Dropshipper Dropshipper { get; set; }
+        public DropshipperDTO Dropshipper { get; set; }
 
         [Display(Name = "Nomor Kartu")]
         public string nomor_kartu { get; set; }
 
-        [Write(false)]
         public bool is_tunai { get; set; }
 
-        //[JsonIgnore]
-        [Computed]
         public double total_pelunasan_old { get; set; }        
 
         /// <summary>
         /// total nota setelah dikurangi diskon kemudian ditambah ppn
         /// </summary>
-        //[JsonIgnore]
-        [Computed]
         public double grand_total
         {
             get { return total_nota - diskon + ongkos_kirim + ppn; }
         }
 
-        //[JsonIgnore]
-        [Computed]
         public double sisa_nota
         {
             get { return grand_total - total_pelunasan; }
         }
 
-        [Write(false)]
-        public List<ItemJualProduk> item_jual { get; set; }
+        public IList<ItemJualProdukDTO> item_jual { get; set; }
 
-        [Write(false)]
-        public List<ItemJualProduk> item_jual_deleted { get; set; }
-	}
+        public IList<ItemJualProdukDTO> item_jual_deleted { get; set; }
+    }
 
-    public class JualProdukValidator : AbstractValidator<JualProduk>
+    public class JualProdukDTOValidator : AbstractValidator<JualProdukDTO>
     {
-        public JualProdukValidator()
+        public JualProdukDTOValidator()
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
-            var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
-			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
+            RuleSet("save", () =>
+            {
+                DefaultRule(msgError1, msgError2);
+            });
+
+            RuleSet("update", () =>
+            {
+                RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+                DefaultRule(msgError1, msgError2);
+            });
+
+            RuleSet("delete", () =>
+            {
+                RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            });
+        }
+
+        private void DefaultRule(string msgError1, string msgError2)
+        {
+            RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
+            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.kurir).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.nomor_kartu).Length(0, 20).WithMessage(msgError2);
 
@@ -270,6 +261,6 @@ namespace OpenRetail.Model
             RuleFor(c => c.label_kepada2).Length(0, 250).WithMessage(msgError2);
             RuleFor(c => c.label_kepada3).Length(0, 250).WithMessage(msgError2);
             RuleFor(c => c.label_kepada4).Length(0, 250).WithMessage(msgError2);
-		}
-	}
+        }
+    }
 }

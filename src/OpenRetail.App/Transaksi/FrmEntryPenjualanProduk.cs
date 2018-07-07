@@ -609,7 +609,7 @@ namespace OpenRetail.App.Transaksi
             }
 
             if (!_isNewData) // update
-                _jual.item_jual_deleted = _listOfItemJualDeleted;
+                _jual.item_jual_deleted = _listOfItemJualDeleted.ToList();
 
             var result = 0;
             var validationError = new ValidationError();
@@ -793,7 +793,7 @@ namespace OpenRetail.App.Transaksi
             {
                 var produk = (Produk)data;
 
-                IHargaGrosirBll hargaGrosirBll = new HargaGrosirBll(_log);
+                IHargaGrosirBll hargaGrosirBll = new HargaGrosirBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 produk.list_of_harga_grosir = hargaGrosirBll.GetListHargaGrosir(produk.produk_id).ToList();
 
                 if (!_pengaturanUmum.is_stok_produk_boleh_minus)
@@ -941,7 +941,7 @@ namespace OpenRetail.App.Transaksi
             {
                 var customerName = ((AdvancedTextbox)sender).Text;
 
-                ICustomerBll bll = new CustomerBll(_log);
+                ICustomerBll bll = new CustomerBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 var listOfCustomer = bll.GetByName(customerName);
 
                 if (listOfCustomer.Count == 0)
@@ -1022,7 +1022,7 @@ namespace OpenRetail.App.Transaksi
                 var rowIndex = grid.CurrentCell.RowIndex;
                 var colIndex = grid.CurrentCell.ColIndex;
 
-                IProdukBll bll = new ProdukBll(_log);
+                IProdukBll bll = new ProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 Produk produk = null;
                 GridCurrentCell cc;
 
@@ -1149,7 +1149,7 @@ namespace OpenRetail.App.Transaksi
                         {                            
                             produk = listOfProduk[0];
 
-                            IHargaGrosirBll hargaGrosirBll = new HargaGrosirBll(_log);
+                            IHargaGrosirBll hargaGrosirBll = new HargaGrosirBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                             produk.list_of_harga_grosir = hargaGrosirBll.GetListHargaGrosir(produk.produk_id).ToList();
 
                             if (!_pengaturanUmum.is_stok_produk_boleh_minus)
@@ -1455,14 +1455,14 @@ namespace OpenRetail.App.Transaksi
                 return;
             }
 
-            IGolonganBll golonganBll = new GolonganBll(_log);
+            IGolonganBll golonganBll = new GolonganBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             var listOfGolongan = golonganBll.GetAll();
 
             Golongan golongan = null;
             if (listOfGolongan.Count > 0)
                 golongan = listOfGolongan[0];
 
-            IProdukBll produkBll = new ProdukBll(_log);
+            IProdukBll produkBll = new ProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             var frmEntryProduk = new FrmEntryProduk("Tambah Data Produk", golongan, listOfGolongan, produkBll);
             frmEntryProduk.Listener = this;
             frmEntryProduk.ShowDialog();
@@ -1477,7 +1477,7 @@ namespace OpenRetail.App.Transaksi
                 return;
             }
 
-            ICustomerBll customerBll = new CustomerBll(_log);
+            ICustomerBll customerBll = new CustomerBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             var frmEntryCustomer = new FrmEntryCustomer("Tambah Data Customer", customerBll);
             frmEntryCustomer.Listener = this;
             frmEntryCustomer.ShowDialog();
@@ -1492,7 +1492,7 @@ namespace OpenRetail.App.Transaksi
                 return;
             }
 
-            IDropshipperBll dropshipperBll = new DropshipperBll(_log);
+            IDropshipperBll dropshipperBll = new DropshipperBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             var frmEntryDropshipper = new FrmEntryDropshipper("Tambah Data Dropshipper", dropshipperBll);
             frmEntryDropshipper.Listener = this;
             frmEntryDropshipper.ShowDialog();
@@ -1749,7 +1749,7 @@ namespace OpenRetail.App.Transaksi
             {
                 var dropshipperName = ((AdvancedTextbox)sender).Text;
 
-                IDropshipperBll bll = new DropshipperBll(_log);
+                IDropshipperBll bll = new DropshipperBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 var listOfDropshipper = bll.GetByName(dropshipperName);
 
                 if (listOfDropshipper.Count == 0)

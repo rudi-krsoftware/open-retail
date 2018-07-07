@@ -86,7 +86,6 @@ namespace OpenRetail.Model
 		[Write(false)]
         public ItemJualProduk ItemJualProduk { get; set; }
 
-        [JsonIgnore]
         [Write(false)]
         public EntityState entity_state { get; set; }
 	}

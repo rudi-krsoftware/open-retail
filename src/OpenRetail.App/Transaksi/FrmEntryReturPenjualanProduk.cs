@@ -134,7 +134,7 @@ namespace OpenRetail.App.Transaksi
         private void LoadItemJual(JualProduk jualProduk)
         {
             IJualProdukBll bll = new JualProdukBll(_log);
-            _jual.item_jual = bll.GetItemJual(_jual.jual_id);
+            _jual.item_jual = bll.GetItemJual(_jual.jual_id).ToList();
         }
 
         private void InitGridControl(GridControl grid)
@@ -410,7 +410,7 @@ namespace OpenRetail.App.Transaksi
                 IJualProdukBll bll = new JualProdukBll(_log);
 
                 this._jual = (JualProduk)data;
-                this._jual.item_jual = bll.GetItemJual(this._jual.jual_id);
+                this._jual.item_jual = bll.GetItemJual(this._jual.jual_id).ToList();
                 txtNotaJual.Text = this._jual.nota;
 
                 KeyPressHelper.NextFocus();
@@ -747,7 +747,7 @@ namespace OpenRetail.App.Transaksi
                 else if (listOfJual.Count == 1)
                 {
                     _jual = listOfJual[0];
-                    _jual.item_jual = bll.GetItemJual(_jual.jual_id);
+                    _jual.item_jual = bll.GetItemJual(_jual.jual_id).ToList();
 
                     txtNotaJual.Text = _jual.nota;
                     KeyPressHelper.NextFocus();
