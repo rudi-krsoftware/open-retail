@@ -35,6 +35,8 @@ namespace OpenRetail.Bll.Service
     public class ImportExportDataProdukBll : IImportExportDataBll<Produk>
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
+
         private string _fileName;
         private XLWorkbook _workbook;
 
@@ -180,13 +182,13 @@ namespace OpenRetail.Bll.Service
 
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
+                    _unitOfWork = new UnitOfWork(context, _log);
                     
                     foreach (var produk in listOfProduk)
                     {
                         if (produk.nama_produk.Length > 0 && produk.Golongan.nama_golongan.Length > 0)
                         {
-                            var golongan = uow.GolonganRepository.GetByName(produk.Golongan.nama_golongan, false)
+                            var golongan = _unitOfWork.GolonganRepository.GetByName(produk.Golongan.nama_golongan, false)
                                                                  .FirstOrDefault();
 
                             if (golongan != null)
@@ -196,7 +198,7 @@ namespace OpenRetail.Bll.Service
                             }
 
                             if (produk.kode_produk.Length == 0)
-                                produk.kode_produk = uow.ProdukRepository.GetLastKodeProduk();
+                                produk.kode_produk = _unitOfWork.ProdukRepository.GetLastKodeProduk();
 
                             if (produk.kode_produk.Length > 15)
                                 produk.kode_produk = produk.kode_produk.Substring(0, 15);
@@ -207,10 +209,10 @@ namespace OpenRetail.Bll.Service
                             if (produk.satuan.Length > 20)
                                 produk.satuan = produk.satuan.Substring(0, 20);
 
-                            var oldProduk = uow.ProdukRepository.GetByKode(produk.kode_produk);
+                            var oldProduk = _unitOfWork.ProdukRepository.GetByKode(produk.kode_produk);
                             if (oldProduk == null)
                             {
-                                result = Convert.ToBoolean(uow.ProdukRepository.Save(produk));
+                                result = Convert.ToBoolean(_unitOfWork.ProdukRepository.Save(produk));
                             }                                
                             else
                             {
@@ -233,7 +235,7 @@ namespace OpenRetail.Bll.Service
                                     }                                    
                                 }
 
-                                result = Convert.ToBoolean(uow.ProdukRepository.Update(produk));
+                                result = Convert.ToBoolean(_unitOfWork.ProdukRepository.Update(produk));
                             }
                         }                        
                     }                    

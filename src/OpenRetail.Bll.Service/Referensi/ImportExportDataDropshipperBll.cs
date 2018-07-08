@@ -35,6 +35,8 @@ namespace OpenRetail.Bll.Service
     public class ImportExportDataDropshipperBll : IImportExportDataBll<Dropshipper>
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
+
         private string _fileName;
         private XLWorkbook _workbook;
 
@@ -135,7 +137,7 @@ namespace OpenRetail.Bll.Service
 
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
+                    _unitOfWork = new UnitOfWork(context, _log);
 
                     foreach (var dropshipper in listOfDropshipper)
                     {
@@ -150,7 +152,7 @@ namespace OpenRetail.Bll.Service
                             if (dropshipper.telepon.Length > 20)
                                 dropshipper.telepon = dropshipper.telepon.Substring(0, 20);
 
-                            result = Convert.ToBoolean(uow.DropshipperRepository.Save(dropshipper));
+                            result = Convert.ToBoolean(_unitOfWork.DropshipperRepository.Save(dropshipper));
                         }                        
                     }                    
                 }

@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class PenggunaBll : IPenggunaBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private PenggunaValidator _validator;
 
 		public PenggunaBll(ILog log)
@@ -47,8 +48,8 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.PenggunaRepository.GetByID(userName);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.PenggunaRepository.GetByID(userName);
             }
 
             return obj;
@@ -60,8 +61,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PenggunaRepository.IsValidPengguna(userName, password);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.PenggunaRepository.IsValidPengguna(userName, password);
             }
 
             return result;
@@ -78,8 +79,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PenggunaRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.PenggunaRepository.GetAll();
             }
 
             return oList;
@@ -91,8 +92,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PenggunaRepository.Save(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.PenggunaRepository.Save(obj);
             }
 
             return result;
@@ -124,8 +125,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PenggunaRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.PenggunaRepository.Update(obj);
             }
 
             return result;
@@ -137,8 +138,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PenggunaRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.PenggunaRepository.Delete(obj);
             }
 
             return result;

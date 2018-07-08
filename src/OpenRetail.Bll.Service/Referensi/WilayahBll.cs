@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class WilayahBll : IWilayahBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
         public WilayahBll()
         {
@@ -64,8 +65,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.WilayahRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.WilayahRepository.GetAll();
             }
 
             return oList;

@@ -65,8 +65,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    obj = uow.JualProdukRepository.GetByID(id);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.JualProdukRepository.GetByID(id);
                 }
             }            
 
@@ -86,8 +86,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    obj = uow.JualProdukRepository.GetListItemNotaTerakhir(penggunaId, mesinId);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.JualProdukRepository.GetListItemNotaTerakhir(penggunaId, mesinId);
                 }
             }            
 
@@ -107,8 +107,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetByName(name);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetByName(name);
                 }
             }            
 
@@ -128,8 +128,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetByName(name, isCekKeteranganItemJual, pageNumber, pageSize, ref pagesCount);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetByName(name, isCekKeteranganItemJual, pageNumber, pageSize, ref pagesCount);
                 }
             }            
 
@@ -149,8 +149,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetAll();
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetAll();
                 }
             }            
 
@@ -170,8 +170,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetAll(pageNumber, pageSize, ref pagesCount);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetAll(pageNumber, pageSize, ref pagesCount);
                 }
             }
 
@@ -198,8 +198,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    result = uow.JualProdukRepository.Save(obj);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.JualProdukRepository.Save(obj);
                 }
             }
 
@@ -241,8 +241,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    result = uow.JualProdukRepository.Update(obj);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.JualProdukRepository.Update(obj);
                 }
             }            
 
@@ -279,8 +279,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    result = uow.JualProdukRepository.Delete(obj);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.JualProdukRepository.Delete(obj);
                 }
             }            
 
@@ -300,8 +300,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    lastNota = uow.JualProdukRepository.GetLastNota();
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    lastNota = _unitOfWork.JualProdukRepository.GetLastNota();
                 }
             }            
 
@@ -321,8 +321,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetAll(name);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetAll(name);
                 }
             }            
 
@@ -342,8 +342,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetNotaCustomer(id, nota);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetNotaCustomer(id, nota);
                 }
             }            
 
@@ -363,8 +363,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetNotaKreditByCustomer(id, isLunas);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetNotaKreditByCustomer(id, isLunas);
                 }
             }            
 
@@ -384,8 +384,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetNotaKreditByNota(id, nota);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetNotaKreditByNota(id, nota);
                 }
             }            
 
@@ -405,8 +405,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
                 }
             }            
 
@@ -426,8 +426,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, pageNumber, pageSize, ref pagesCount);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, pageNumber, pageSize, ref pagesCount);
                 }
             }            
 
@@ -447,8 +447,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, name);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, name);
                 }
             }            
 
@@ -468,8 +468,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.JualProdukRepository.GetItemJual(jualId);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetItemJual(jualId);
                 }
             }            
 

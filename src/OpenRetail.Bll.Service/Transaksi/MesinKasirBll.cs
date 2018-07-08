@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class MesinKasirBll : IMesinKasirBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private MesinValidator _validator;
 
 		public MesinKasirBll(ILog log)
@@ -47,8 +48,8 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.MesinRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.MesinRepository.GetByID(id);
             }
 
             return obj;
@@ -70,8 +71,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.MesinRepository.Save(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.MesinRepository.Save(obj);
             }
 
             return result;
@@ -100,8 +101,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.MesinRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.MesinRepository.Update(obj);
             }
 
             return result;
@@ -130,8 +131,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.MesinRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.MesinRepository.Delete(obj);
             }
 
             return result;

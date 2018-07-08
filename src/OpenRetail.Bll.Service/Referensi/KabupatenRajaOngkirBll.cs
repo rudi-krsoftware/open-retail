@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class KabupatenRajaOngkirBll : IKabupatenRajaOngkirBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private KabupatenRajaOngkirValidator _validator;
 
         public KabupatenRajaOngkirBll()
@@ -57,8 +58,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.KabupatenRepository.GetByName(name);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.KabupatenRepository.GetByName(name);
             }
 
             return oList;
@@ -70,8 +71,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.KabupatenRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.KabupatenRepository.GetAll();
             }
 
             return oList;

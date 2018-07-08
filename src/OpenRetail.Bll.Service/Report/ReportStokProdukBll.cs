@@ -32,6 +32,7 @@ namespace OpenRetail.Bll.Service.Report
     public class ReportStokProdukBll : IReportStokProdukBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
         public ReportStokProdukBll(ILog log)
         {
@@ -44,8 +45,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportStokProdukRepository.GetStokByStatus(statusStok);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportStokProdukRepository.GetStokByStatus(statusStok);
             }
 
             return oList;
@@ -57,8 +58,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportStokProdukRepository.GetStokKurangDari(stok);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportStokProdukRepository.GetStokKurangDari(stok);
             }
 
             return oList;
@@ -70,8 +71,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportStokProdukRepository.GetStokBerdasarkanSupplier(supplierId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportStokProdukRepository.GetStokBerdasarkanSupplier(supplierId);
             }
 
             return oList;
@@ -83,8 +84,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportStokProdukRepository.GetStokBerdasarkanGolongan(golonganId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportStokProdukRepository.GetStokBerdasarkanGolongan(golonganId);
             }
 
             return oList;
@@ -96,8 +97,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportStokProdukRepository.GetStokBerdasarkanKode(listOfKode);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportStokProdukRepository.GetStokBerdasarkanKode(listOfKode);
             }
 
             return oList;
@@ -109,8 +110,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportStokProdukRepository.GetStokBerdasarkanNama(name);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportStokProdukRepository.GetStokBerdasarkanNama(name);
             }
 
             return oList;
@@ -122,8 +123,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportStokProdukRepository.GetPenyesuaianStokByBulan(bulan, tahun);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportStokProdukRepository.GetPenyesuaianStokByBulan(bulan, tahun);
             }
 
             return oList;
@@ -135,8 +136,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportStokProdukRepository.GetPenyesuaianStokByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportStokProdukRepository.GetPenyesuaianStokByTanggal(tanggalMulai, tanggalSelesai);
             }
 
             return oList;

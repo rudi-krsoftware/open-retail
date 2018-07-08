@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class ReturJualProdukBll : IReturJualProdukBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private ReturJualProdukValidator _validator;
 
 		public ReturJualProdukBll(ILog log)
@@ -47,8 +48,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                lastNota = uow.ReturJualProdukRepository.GetLastNota();
+                _unitOfWork = new UnitOfWork(context, _log);
+                lastNota = _unitOfWork.ReturJualProdukRepository.GetLastNota();
             }
 
             return lastNota;
@@ -60,8 +61,8 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.ReturJualProdukRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.ReturJualProdukRepository.GetByID(id);
             }
 
             return obj;
@@ -78,8 +79,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReturJualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReturJualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
             }
 
             return oList;
@@ -91,8 +92,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReturJualProdukRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReturJualProdukRepository.GetAll();
             }
 
             return oList;
@@ -104,8 +105,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.ReturJualProdukRepository.Save(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.ReturJualProdukRepository.Save(obj);
             }
 
             return result;
@@ -134,8 +135,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.ReturJualProdukRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.ReturJualProdukRepository.Update(obj);
             }
 
             return result;
@@ -164,8 +165,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.ReturJualProdukRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.ReturJualProdukRepository.Delete(obj);
             }
 
             return result;

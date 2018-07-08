@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class HeaderNotaMiniPosBll : IHeaderNotaMiniPosBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private HeaderNotaMiniPosValidator _validator;
 
 		public HeaderNotaMiniPosBll()
@@ -46,8 +47,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.HeaderNotaMiniPosRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.HeaderNotaMiniPosRepository.GetAll();
             }
 
             return oList;
@@ -64,8 +65,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.HeaderNotaMiniPosRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.HeaderNotaMiniPosRepository.Update(obj);
             }
 
             return result;

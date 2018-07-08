@@ -32,6 +32,7 @@ namespace OpenRetail.Bll.Service
     public class CetakNotaDummyBll :ICetakNotaBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
         public IList<NotaPembelian> GetNotaPembelian(string beliProdukId)
         {
@@ -44,8 +45,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.CetakNotaDummyRepository.GetNotaPenjualan(jualProdukId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.CetakNotaDummyRepository.GetNotaPenjualan(jualProdukId);
             }
 
             return oList;
