@@ -374,7 +374,7 @@ namespace OpenRetail.App.Transaksi
             }
 
             if (!_isNewData) // update
-                _beli.item_beli_deleted = _listOfItemBeliDeleted;
+                _beli.item_beli_deleted = _listOfItemBeliDeleted.ToList();
 
             var result = 0;
             var validationError = new ValidationError();

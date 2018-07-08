@@ -309,7 +309,7 @@ namespace OpenRetail.App.Transaksi
 
             var beli = _listOfBeli[index];
             beli.tanggal_tempo_old = beli.tanggal_tempo;
-            beli.item_beli = _bll.GetItemBeli(beli.beli_produk_id);
+            beli.item_beli = _bll.GetItemBeli(beli.beli_produk_id).ToList();
 
             LogicalThreadContext.Properties["OldValue"] = beli.ToJson();
 

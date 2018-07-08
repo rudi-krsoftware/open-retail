@@ -134,7 +134,7 @@ namespace OpenRetail.App.Transaksi
         private void LoadItemBeli(BeliProduk beliProduk)
         {
             IBeliProdukBll bll = new BeliProdukBll(_log);
-            _beli.item_beli = bll.GetItemBeli(_beli.beli_produk_id);
+            _beli.item_beli = bll.GetItemBeli(_beli.beli_produk_id).ToList();
         }
 
         private void InitGridControl(GridControl grid)
@@ -410,7 +410,7 @@ namespace OpenRetail.App.Transaksi
                 IBeliProdukBll bll = new BeliProdukBll(_log);
 
                 this._beli = (BeliProduk)data;
-                this._beli.item_beli = bll.GetItemBeli(this._beli.beli_produk_id);
+                this._beli.item_beli = bll.GetItemBeli(this._beli.beli_produk_id).ToList();
                 txtNotaBeli.Text = this._beli.nota;
 
                 KeyPressHelper.NextFocus();
@@ -747,7 +747,7 @@ namespace OpenRetail.App.Transaksi
                 else if (listOfBeli.Count == 1)
                 {
                     _beli = listOfBeli[0];
-                    _beli.item_beli = bll.GetItemBeli(_beli.beli_produk_id);
+                    _beli.item_beli = bll.GetItemBeli(_beli.beli_produk_id).ToList();
 
                     txtNotaBeli.Text = _beli.nota;
                     KeyPressHelper.NextFocus();

@@ -218,6 +218,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\Transaksi\ReturBeliProdukDTO.cs" />
+    <Compile Include="Models\DTO\Transaksi\BeliProdukDTO.cs" />
     <Compile Include="Models\DTO\Transaksi\ReturJualProdukDTO.cs" />
     <Compile Include="Models\DTO\Transaksi\ItemJualProdukDTO.cs" />
     <Compile Include="Models\DTO\Transaksi\JualProdukDTO.cs" />
@@ -242,6 +244,7 @@
     <Compile Include="Models\DTO\Referensi\KaryawanDTO.cs" />
     <Compile Include="Models\DTO\Pengeluaran\PengeluaranBiayaDTO.cs" />
     <Compile Include="Models\DTO\Referensi\ProdukDTO.cs" />
+    <Compile Include="Models\DTO\Transaksi\ItemBeliProdukDTO.cs" />
     <Compile Include="Models\ResponsePackage.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\DTO\Referensi\SupplierDTO.cs" />
