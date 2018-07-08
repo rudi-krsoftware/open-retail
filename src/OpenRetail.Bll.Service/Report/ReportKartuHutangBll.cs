@@ -32,6 +32,7 @@ namespace OpenRetail.Bll.Service.Report
     public class ReportKartuHutangBll : IReportKartuHutangBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
         public ReportKartuHutangBll(ILog log)
         {
@@ -131,8 +132,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportKartuHutangRepository.GetSaldoAwal(tanggal);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportKartuHutangRepository.GetSaldoAwal(tanggal);
             }
 
             return oList;
@@ -144,8 +145,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportKartuHutangRepository.GetByBulan(bulan, tahun);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportKartuHutangRepository.GetByBulan(bulan, tahun);
             }
 
             if (oList.Count > 0)
@@ -169,8 +170,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportKartuHutangRepository.GetByBulan(bulanAwal, bulanAkhir, tahun);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportKartuHutangRepository.GetByBulan(bulanAwal, bulanAkhir, tahun);
             }
 
             if (oList.Count > 0)
@@ -194,8 +195,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportKartuHutangRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportKartuHutangRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
             }
 
             if (oList.Count > 0)

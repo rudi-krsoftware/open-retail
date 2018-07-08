@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class ProfilBll : IProfilBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private ProfilValidator _validator;
 
 		public ProfilBll(ILog log)
@@ -52,8 +53,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.ProfilRepository.GetProfil();
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.ProfilRepository.GetProfil();
             }
 
             return obj;
@@ -70,8 +71,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.ProfilRepository.Save(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.ProfilRepository.Save(obj);
             }
 
             return result;

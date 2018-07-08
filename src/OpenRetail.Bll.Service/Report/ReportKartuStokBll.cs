@@ -32,6 +32,7 @@ namespace OpenRetail.Bll.Service.Report
     public class ReportKartuStokBll : IReportKartuStokBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
         public ReportKartuStokBll(ILog log)
         {
@@ -142,8 +143,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportKartuStokRepository.GetSaldoAwal(tanggal);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportKartuStokRepository.GetSaldoAwal(tanggal);
             }
 
             return oList;
@@ -154,11 +155,11 @@ namespace OpenRetail.Bll.Service.Report
             IList<ReportKartuStok> listAllTransaction = new List<ReportKartuStok>();
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
+                _unitOfWork = new UnitOfWork(context, _log);
 
                 IList<string> listOfProdukId = listOfSaldoAkhir.Select(f => f.produk_id).Distinct().ToList();
 
-                listAllTransaction = uow.ReportKartuStokRepository.GetAll(listOfProdukId);
+                listAllTransaction = _unitOfWork.ReportKartuStokRepository.GetAll(listOfProdukId);
             }
 
             listOfDistinctProduk = listAllTransaction.GroupBy(f => new { f.produk_id, f.stok_akhir })
@@ -189,8 +190,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportKartuStokRepository.GetByBulan(bulan, tahun);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportKartuStokRepository.GetByBulan(bulan, tahun);
             }
 
             if (oList.Count > 0)
@@ -219,8 +220,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportKartuStokRepository.GetByBulan(bulan, tahun, listOfKode);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportKartuStokRepository.GetByBulan(bulan, tahun, listOfKode);
             }
 
             if (oList.Count > 0)
@@ -254,8 +255,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportKartuStokRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportKartuStokRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
             }
 
             if (oList.Count > 0)
@@ -284,8 +285,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportKartuStokRepository.GetByTanggal(tanggalMulai, tanggalSelesai, listOfKode);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportKartuStokRepository.GetByTanggal(tanggalMulai, tanggalSelesai, listOfKode);
             }
 
             if (oList.Count > 0)

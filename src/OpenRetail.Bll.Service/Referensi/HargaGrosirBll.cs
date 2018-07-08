@@ -56,8 +56,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.HargaGrosirRepository.GetListHargaGrosir(produkId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.HargaGrosirRepository.GetListHargaGrosir(produkId);
             }
 
             return oList;

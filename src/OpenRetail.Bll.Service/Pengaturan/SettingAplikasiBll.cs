@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class SettingAplikasiBll : ISettingAplikasiBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
         public SettingAplikasiBll()
         {
@@ -44,8 +45,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.SettingAplikasiRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.SettingAplikasiRepository.GetByID(id);
             }
 
             return obj;
@@ -57,8 +58,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.SettingAplikasiRepository.Save(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.SettingAplikasiRepository.Save(obj);
             }
 
             return result;
@@ -70,8 +71,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.SettingAplikasiRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.SettingAplikasiRepository.Update(obj);
             }
 
             return result;
@@ -83,8 +84,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.SettingAplikasiRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.SettingAplikasiRepository.Delete(obj);
             }
 
             return result;
@@ -96,8 +97,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.SettingAplikasiRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.SettingAplikasiRepository.GetAll();
             }
 
             return oList;

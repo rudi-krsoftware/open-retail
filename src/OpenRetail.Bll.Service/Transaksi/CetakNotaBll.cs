@@ -32,6 +32,7 @@ namespace OpenRetail.Bll.Service
     public class CetakNotaBll : ICetakNotaBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
         public CetakNotaBll(ILog log)
         {
@@ -44,8 +45,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.CetakNotaRepository.GetNotaPembelian(beliProdukId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.CetakNotaRepository.GetNotaPembelian(beliProdukId);
             }
 
             return oList;
@@ -57,8 +58,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.CetakNotaRepository.GetNotaPenjualan(jualProdukId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.CetakNotaRepository.GetNotaPenjualan(jualProdukId);
             }
 
             foreach (var item in oList)

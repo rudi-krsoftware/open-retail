@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class FooterNotaMiniPosBll : IFooterNotaMiniPosBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private FooterNotaMiniPosValidator _validator;
 
 		public FooterNotaMiniPosBll()
@@ -46,8 +47,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.FooterNotaMiniPosRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.FooterNotaMiniPosRepository.GetAll();
             }
 
             return oList;
@@ -64,8 +65,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.FooterNotaMiniPosRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.FooterNotaMiniPosRepository.Update(obj);
             }
 
             return result;

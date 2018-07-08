@@ -32,6 +32,7 @@ namespace OpenRetail.Bll.Service.Report
     public class ReportPemasukanPengeluaranBll : IReportPemasukanPengeluaranBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
         public ReportPemasukanPengeluaranBll(ILog log)
         {
@@ -44,8 +45,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.ReportPemasukanPengeluaranRepository.GetByBulan(bulan, tahun);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.ReportPemasukanPengeluaranRepository.GetByBulan(bulan, tahun);
             }
 
             return obj;
@@ -57,8 +58,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.ReportPemasukanPengeluaranRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.ReportPemasukanPengeluaranRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
             }
 
             return obj;

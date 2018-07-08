@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class DatabaseVersionBll : IDatabaseVersionBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
 		public DatabaseVersionBll(ILog log)
         {
@@ -45,8 +46,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.DatabaseVersionRepository.Get();
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.DatabaseVersionRepository.Get();
             }
 
             return obj;
@@ -58,8 +59,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.DatabaseVersionRepository.UpdateVersion();
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.DatabaseVersionRepository.UpdateVersion();
             }
 
             return result;

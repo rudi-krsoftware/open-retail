@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class ItemMenuBll : IItemMenuBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
 		public ItemMenuBll(ILog log)
         {
@@ -45,8 +46,8 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.ItemMenuRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.ItemMenuRepository.GetByID(id);
             }
 
             return obj;
@@ -63,8 +64,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ItemMenuRepository.GetByMenu(menuId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ItemMenuRepository.GetByMenu(menuId);
             }
 
             return oList;
@@ -76,8 +77,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ItemMenuRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ItemMenuRepository.GetAll();
             }
 
             return oList;
@@ -89,8 +90,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.ItemMenuRepository.Save(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.ItemMenuRepository.Save(obj);
             }
 
             return result;

@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class RoleBll : IRoleBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private RoleValidator _validator;
 
 		public RoleBll(ILog log)
@@ -47,8 +48,8 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.RoleRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.RoleRepository.GetByID(id);
             }
 
             return obj;
@@ -65,8 +66,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.RoleRepository.GetByStatus(isActive);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.RoleRepository.GetByStatus(isActive);
             }
 
             return oList;
@@ -78,8 +79,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.RoleRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.RoleRepository.GetAll();
             }
 
             return oList;
@@ -91,8 +92,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.RoleRepository.Save(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.RoleRepository.Save(obj);
             }
 
             return result;
@@ -121,8 +122,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.RoleRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.RoleRepository.Update(obj);
             }
 
             return result;
@@ -151,8 +152,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.RoleRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.RoleRepository.Delete(obj);
             }
 
             return result;

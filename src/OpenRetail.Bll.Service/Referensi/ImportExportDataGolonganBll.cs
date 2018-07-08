@@ -35,6 +35,8 @@ namespace OpenRetail.Bll.Service
     public class ImportExportDataGolonganBll : IImportExportDataBll<Golongan>
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
+
         private string _fileName;
         private XLWorkbook _workbook;
 
@@ -135,7 +137,7 @@ namespace OpenRetail.Bll.Service
 
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
+                    _unitOfWork = new UnitOfWork(context, _log);
 
                     foreach (var golongan in listOfGolongan)
                     {
@@ -144,11 +146,11 @@ namespace OpenRetail.Bll.Service
                             if (golongan.nama_golongan.Length > 50)
                                 golongan.nama_golongan = golongan.nama_golongan.Substring(0, 50);
 
-                            var oldGolongan = uow.GolonganRepository.GetByName(golongan.nama_golongan, false)
+                            var oldGolongan = _unitOfWork.GolonganRepository.GetByName(golongan.nama_golongan, false)
                                                                     .FirstOrDefault();
 
                             if (oldGolongan == null) // data golongan belum ada
-                                result = Convert.ToBoolean(uow.GolonganRepository.Save(golongan));
+                                result = Convert.ToBoolean(_unitOfWork.GolonganRepository.Save(golongan));
                         }                        
                     }                    
                 }

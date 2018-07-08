@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service.Report
     public class ReportMesinKasirBll : IReportMesinKasirBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
         public ReportMesinKasirBll(ILog log)
         {
@@ -45,8 +46,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportMesinKasirRepository.PerKasirGetByPenggunaId(penggunaId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportMesinKasirRepository.PerKasirGetByPenggunaId(penggunaId);
             }
 
             return oList;

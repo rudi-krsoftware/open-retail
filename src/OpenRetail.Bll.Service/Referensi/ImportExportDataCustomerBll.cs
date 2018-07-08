@@ -35,6 +35,8 @@ namespace OpenRetail.Bll.Service
     public class ImportExportDataCustomerBll : IImportExportDataBll<Customer>
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
+
         private string _fileName;
         private XLWorkbook _workbook;
 
@@ -145,7 +147,7 @@ namespace OpenRetail.Bll.Service
 
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
+                    _unitOfWork = new UnitOfWork(context, _log);
 
                     foreach (var customer in listOfCustomer)
                     {
@@ -163,28 +165,28 @@ namespace OpenRetail.Bll.Service
                             if (customer.telepon.Length > 20)
                                 customer.telepon = customer.telepon.Substring(0, 20);
 
-                            var provinsi = uow.WilayahRepository.GetProvinsi(customer.Provinsi.nama_provinsi);
+                            var provinsi = _unitOfWork.WilayahRepository.GetProvinsi(customer.Provinsi.nama_provinsi);
                             if (provinsi != null)
                             {
                                 customer.provinsi_id = provinsi.provinsi_id;
                                 customer.Provinsi = new Provinsi { provinsi_id = provinsi.provinsi_id, nama_provinsi = provinsi.nama_provinsi };
                             }
 
-                            var kabupaten = uow.WilayahRepository.GetKabupaten(customer.Kabupaten.nama_kabupaten);
+                            var kabupaten = _unitOfWork.WilayahRepository.GetKabupaten(customer.Kabupaten.nama_kabupaten);
                             if (kabupaten != null)
                             {
                                 customer.kabupaten_id = kabupaten.kabupaten_id;
                                 customer.Kabupaten = new Kabupaten { kabupaten_id = kabupaten.kabupaten_id, nama_kabupaten = kabupaten.nama_kabupaten };
                             }
 
-                            var kecamatan = uow.WilayahRepository.GetKecamatan(customer.Kecamatan.nama_kecamatan);
+                            var kecamatan = _unitOfWork.WilayahRepository.GetKecamatan(customer.Kecamatan.nama_kecamatan);
                             if (kecamatan != null)
                             {
                                 customer.kecamatan_id = kecamatan.kecamatan_id;
                                 customer.Kecamatan = new Kecamatan { kecamatan_id = kecamatan.kecamatan_id, nama_kecamatan = kecamatan.nama_kecamatan };
                             }
 
-                            result = Convert.ToBoolean(uow.CustomerRepository.Save(customer));
+                            result = Convert.ToBoolean(_unitOfWork.CustomerRepository.Save(customer));
                         }
                     }
                 }

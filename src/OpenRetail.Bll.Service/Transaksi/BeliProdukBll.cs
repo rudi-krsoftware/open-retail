@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class BeliProdukBll : IBeliProdukBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private BeliProdukValidator _validator;
 
 		public BeliProdukBll(ILog log)
@@ -47,8 +48,8 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.BeliProdukRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.BeliProdukRepository.GetByID(id);
             }
 
             return obj;
@@ -60,8 +61,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetByName(name);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetByName(name);
             }
 
             return oList;
@@ -73,8 +74,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetByName(name, pageNumber, pageSize, ref pagesCount);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetByName(name, pageNumber, pageSize, ref pagesCount);
             }
 
             return oList;
@@ -86,8 +87,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetAll();
             }
 
             return oList;
@@ -99,8 +100,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetAll(pageNumber, pageSize, ref pagesCount);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetAll(pageNumber, pageSize, ref pagesCount);
             }
 
             return oList;
@@ -112,8 +113,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.BeliProdukRepository.Save(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.BeliProdukRepository.Save(obj);
             }
 
             return result;
@@ -142,8 +143,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.BeliProdukRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.BeliProdukRepository.Update(obj);
             }
 
             return result;
@@ -172,8 +173,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.BeliProdukRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.BeliProdukRepository.Delete(obj);
             }
 
             return result;
@@ -185,8 +186,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                lastNota = uow.BeliProdukRepository.GetLastNota();
+                _unitOfWork = new UnitOfWork(context, _log);
+                lastNota = _unitOfWork.BeliProdukRepository.GetLastNota();
             }
 
             return lastNota;
@@ -198,8 +199,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetAll(name);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetAll(name);
             }
 
             return oList;
@@ -211,8 +212,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetNotaSupplier(id, nota);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetNotaSupplier(id, nota);
             }
 
             return oList;
@@ -224,8 +225,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetNotaKreditBySupplier(id, isLunas);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetNotaKreditBySupplier(id, isLunas);
             }
 
             return oList;
@@ -237,8 +238,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetNotaKreditByNota(id, nota);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetNotaKreditByNota(id, nota);
             }
 
             return oList;
@@ -250,8 +251,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
             }
 
             return oList;
@@ -263,8 +264,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, pageNumber, pageSize, ref pagesCount);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, pageNumber, pageSize, ref pagesCount);
             }
 
             return oList;
@@ -276,8 +277,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, name);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, name);
             }
 
             return oList;
@@ -289,8 +290,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.BeliProdukRepository.GetItemBeli(beliId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.BeliProdukRepository.GetItemBeli(beliId);
             }
 
             return oList;

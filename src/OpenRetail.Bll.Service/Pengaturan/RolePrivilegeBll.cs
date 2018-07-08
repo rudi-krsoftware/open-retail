@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class RolePrivilegeBll : IRolePrivilegeBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
 		public RolePrivilegeBll(ILog log)
         {
@@ -55,8 +56,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.RolePrivilegeRepository.GetByRole(roleId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.RolePrivilegeRepository.GetByRole(roleId);
             }
 
             return oList;
@@ -68,8 +69,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.RolePrivilegeRepository.GetByRoleAndMenu(roleId, menuId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.RolePrivilegeRepository.GetByRoleAndMenu(roleId, menuId);
             }
 
             return oList;
@@ -81,8 +82,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.RolePrivilegeRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.RolePrivilegeRepository.GetAll();
             }
 
             return oList;
@@ -94,8 +95,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.RolePrivilegeRepository.Save(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.RolePrivilegeRepository.Save(obj);
             }
 
             return result;

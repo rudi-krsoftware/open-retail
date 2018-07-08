@@ -32,6 +32,7 @@ namespace OpenRetail.Bll.Service.Report
     public class ReportPembayaranPiutangJualProdukBll : IReportPembayaranPiutangJualProdukBll
     {
         private ILog _log;
+        private IUnitOfWork _unitOfWork;
 
         public ReportPembayaranPiutangJualProdukBll(ILog log)
         {
@@ -44,8 +45,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportPembayaranPiutangJualProdukRepository.GetByBulan(bulan, tahun);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportPembayaranPiutangJualProdukRepository.GetByBulan(bulan, tahun);
             }
 
             return oList;
@@ -57,8 +58,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportPembayaranPiutangJualProdukRepository.GetByBulan(bulanAwal, bulanAkhir, tahun);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportPembayaranPiutangJualProdukRepository.GetByBulan(bulanAwal, bulanAkhir, tahun);
             }
 
             return oList;
@@ -70,8 +71,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportPembayaranPiutangJualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportPembayaranPiutangJualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
             }
 
             return oList;
@@ -83,8 +84,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportPembayaranPiutangJualProdukRepository.DetailGetByBulan(bulan, tahun);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportPembayaranPiutangJualProdukRepository.DetailGetByBulan(bulan, tahun);
             }
 
             return oList;
@@ -96,8 +97,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportPembayaranPiutangJualProdukRepository.DetailGetByBulan(bulanAwal, bulanAkhir, tahun);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportPembayaranPiutangJualProdukRepository.DetailGetByBulan(bulanAwal, bulanAkhir, tahun);
             }
 
             return oList;
@@ -109,8 +110,8 @@ namespace OpenRetail.Bll.Service.Report
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.ReportPembayaranPiutangJualProdukRepository.DetailGetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.ReportPembayaranPiutangJualProdukRepository.DetailGetByTanggal(tanggalMulai, tanggalSelesai);
             }
 
             return oList;

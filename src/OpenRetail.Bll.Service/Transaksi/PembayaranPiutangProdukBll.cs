@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class PembayaranPiutangProdukBll : IPembayaranPiutangProdukBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private PembayaranPiutangProdukValidator _validator;
 
 		public PembayaranPiutangProdukBll(ILog log)
@@ -47,8 +48,8 @@ namespace OpenRetail.Bll.Service
             
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.PembayaranPiutangProdukRepository.GetByID(id);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.PembayaranPiutangProdukRepository.GetByID(id);
             }
 
             return obj;
@@ -60,8 +61,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                lastNota = uow.PembayaranPiutangProdukRepository.GetLastNota();
+                _unitOfWork = new UnitOfWork(context, _log);
+                lastNota = _unitOfWork.PembayaranPiutangProdukRepository.GetLastNota();
             }
 
             return lastNota;
@@ -73,8 +74,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                obj = uow.PembayaranPiutangProdukRepository.GetByJualID(id);
+                _unitOfWork = new UnitOfWork(context, _log);
+                obj = _unitOfWork.PembayaranPiutangProdukRepository.GetByJualID(id);
             }
 
             return obj;
@@ -86,8 +87,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PembayaranPiutangProdukRepository.GetByName(name);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.PembayaranPiutangProdukRepository.GetByName(name);
             }
 
             return oList;
@@ -99,8 +100,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PembayaranPiutangProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.PembayaranPiutangProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
             }
 
             return oList;
@@ -112,8 +113,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PembayaranPiutangProdukRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.PembayaranPiutangProdukRepository.GetAll();
             }
 
             return oList;
@@ -125,8 +126,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.PembayaranPiutangProdukRepository.GetHistoriPembayaran(jualId);
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.PembayaranPiutangProdukRepository.GetHistoriPembayaran(jualId);
             }
 
             return oList;
@@ -155,8 +156,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PembayaranPiutangProdukRepository.Save(obj, isSaveFromPenjualan);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.PembayaranPiutangProdukRepository.Save(obj, isSaveFromPenjualan);
             }
 
             return result;
@@ -185,8 +186,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PembayaranPiutangProdukRepository.Update(obj, isSaveFromPenjualan);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.PembayaranPiutangProdukRepository.Update(obj, isSaveFromPenjualan);
             }
 
             return result;
@@ -198,8 +199,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.PembayaranPiutangProdukRepository.Delete(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.PembayaranPiutangProdukRepository.Delete(obj);
             }
 
             return result;

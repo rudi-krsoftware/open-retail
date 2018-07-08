@@ -33,6 +33,7 @@ namespace OpenRetail.Bll.Service
     public class LabelNotaBll : ILabelNotaBll
     {
 		private ILog _log;
+        private IUnitOfWork _unitOfWork;
 		private LabelNotaValidator _validator;
 
 		public LabelNotaBll()
@@ -46,8 +47,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                oList = uow.LabelNotaRepository.GetAll();
+                _unitOfWork = new UnitOfWork(context, _log);
+                oList = _unitOfWork.LabelNotaRepository.GetAll();
             }
 
             return oList;
@@ -64,8 +65,8 @@ namespace OpenRetail.Bll.Service
 
             using (IDapperContext context = new DapperContext())
             {
-                IUnitOfWork uow = new UnitOfWork(context, _log);
-                result = uow.LabelNotaRepository.Update(obj);
+                _unitOfWork = new UnitOfWork(context, _log);
+                result = _unitOfWork.LabelNotaRepository.Update(obj);
             }
 
             return result;

@@ -91,8 +91,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.KasbonRepository.GetByStatus(isLunas);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.KasbonRepository.GetByStatus(isLunas);
                 }
             }            
 
@@ -112,8 +112,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.KasbonRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.KasbonRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
                 }
             }
 
@@ -133,8 +133,8 @@ namespace OpenRetail.Bll.Service
             {
                 using (IDapperContext context = new DapperContext())
                 {
-                    IUnitOfWork uow = new UnitOfWork(context, _log);
-                    oList = uow.KasbonRepository.GetByKaryawanId(karyawanId);
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.KasbonRepository.GetByKaryawanId(karyawanId);
                 }
             }            
 
