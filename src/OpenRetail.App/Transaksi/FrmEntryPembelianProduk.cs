@@ -374,7 +374,7 @@ namespace OpenRetail.App.Transaksi
             }
 
             if (!_isNewData) // update
-                _beli.item_beli_deleted = _listOfItemBeliDeleted;
+                _beli.item_beli_deleted = _listOfItemBeliDeleted.ToList();
 
             var result = 0;
             var validationError = new ValidationError();
@@ -545,7 +545,7 @@ namespace OpenRetail.App.Transaksi
             {
                 var supplierName = ((AdvancedTextbox)sender).Text;
 
-                ISupplierBll bll = new SupplierBll(_log);
+                ISupplierBll bll = new SupplierBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 var listOfSupplier = bll.GetByName(supplierName);
 
                 if (listOfSupplier.Count == 0)
@@ -608,7 +608,7 @@ namespace OpenRetail.App.Transaksi
                 var rowIndex = grid.CurrentCell.RowIndex;
                 var colIndex = grid.CurrentCell.ColIndex;
 
-                IProdukBll bll = new ProdukBll(_log);
+                IProdukBll bll = new ProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 Produk produk = null;
                 GridCurrentCell cc;
 
@@ -791,14 +791,14 @@ namespace OpenRetail.App.Transaksi
                 return;
             }
             
-            IGolonganBll golonganBll = new GolonganBll(_log);
+            IGolonganBll golonganBll = new GolonganBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             var listOfGolongan = golonganBll.GetAll();
 
             Golongan golongan = null;
             if (listOfGolongan.Count > 0)
                 golongan = listOfGolongan[0];
 
-            IProdukBll produkBll = new ProdukBll(_log);
+            IProdukBll produkBll = new ProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             var frmEntryProduk = new FrmEntryProduk("Tambah Data Produk", golongan, listOfGolongan, produkBll);
             frmEntryProduk.Listener = this;
             frmEntryProduk.ShowDialog();
@@ -813,7 +813,7 @@ namespace OpenRetail.App.Transaksi
                 return;
             }
 
-            ISupplierBll supplierBll = new SupplierBll(_log);
+            ISupplierBll supplierBll = new SupplierBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             var frmEntrySupplier = new FrmEntrySupplier("Tambah Data Supplier", supplierBll);
             frmEntrySupplier.Listener = this;
             frmEntrySupplier.ShowDialog();

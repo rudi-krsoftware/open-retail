@@ -89,21 +89,21 @@ namespace OpenRetail.Model
 		[Display(Name = "jumlah_retur")]
 		public double jumlah_retur { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         [Computed]
         public double diskon_rupiah
         {
             get { return diskon / 100 * harga_jual; }
         }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         [Computed]
         public double harga_setelah_diskon
         {
             get { return harga_jual - diskon_rupiah; }
         }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         [Computed]
         public double sub_total
         {

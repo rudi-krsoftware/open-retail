@@ -209,7 +209,10 @@ namespace OpenRetail.Repository.Service
 
         public IBeliProdukRepository BeliProdukRepository
         {
-            get { return _beliprodukRepository ?? (_beliprodukRepository = new BeliProdukRepository(_context, _log)); }
+            get
+            {
+                return _beliprodukRepository ?? (_beliprodukRepository = _isUseWebAPI ? (IBeliProdukRepository)new BeliProdukWebAPIRepository(_baseUrl, _log) : new BeliProdukRepository(_context, _log));
+            }
         }
 
         public IReturBeliProdukRepository ReturBeliProdukRepository
