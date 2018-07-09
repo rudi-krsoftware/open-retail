@@ -398,7 +398,9 @@ namespace OpenRetail.Repository.Service
 
                 var transaction = _context.transaction;
 
-                obj.beli_produk_id = _context.GetGUID();
+                if (obj.beli_produk_id == null)
+                    obj.beli_produk_id = _context.GetGUID();
+
                 obj.total_nota = GetTotalNota(obj);
 
                 // insert header
@@ -409,7 +411,9 @@ namespace OpenRetail.Repository.Service
                 {
                     if (item.produk_id.Length > 0)
                     {
-                        item.item_beli_produk_id = _context.GetGUID();
+                        if (item.item_beli_produk_id == null)
+                            item.item_beli_produk_id = _context.GetGUID();
+                        
                         item.beli_produk_id = obj.beli_produk_id;
                         item.pengguna_id = obj.pengguna_id;
 
@@ -473,7 +477,8 @@ namespace OpenRetail.Repository.Service
 
                     if (item.entity_state == EntityState.Added)
                     {
-                        item.item_beli_produk_id = _context.GetGUID();
+                        if (item.item_beli_produk_id == null)
+                            item.item_beli_produk_id = _context.GetGUID();                        
 
                         _context.db.Insert<ItemBeliProduk>(item, transaction);
 

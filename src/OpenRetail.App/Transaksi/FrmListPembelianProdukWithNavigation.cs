@@ -60,7 +60,7 @@ namespace OpenRetail.App.Transaksi
 
             _pageSize = MainProgram.pageSize;
             _log = MainProgram.log;
-            _bll = new BeliProdukBll(_log);
+            _bll = new BeliProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _pengguna = pengguna;
             _menuId = menuId;
 
@@ -295,9 +295,12 @@ namespace OpenRetail.App.Transaksi
 
         protected override void Tambah()
         {
-            var frm = new FrmEntryPembelianProduk("Tambah Data " + this.Text, _bll);
-            frm.Listener = this;
-            frm.ShowDialog();
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                var frm = new FrmEntryPembelianProduk("Tambah Data " + this.Text, _bll);
+                frm.Listener = this;
+                frm.ShowDialog();
+            }            
         }
 
         protected override void Perbaiki()
@@ -307,15 +310,18 @@ namespace OpenRetail.App.Transaksi
             if (!base.IsSelectedItem(index, this.TabText))
                 return;
 
-            var beli = _listOfBeli[index];
-            beli.tanggal_tempo_old = beli.tanggal_tempo;
-            beli.item_beli = _bll.GetItemBeli(beli.beli_produk_id).ToList();
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                var beli = _listOfBeli[index];
+                beli.tanggal_tempo_old = beli.tanggal_tempo;
+                beli.item_beli = _bll.GetItemBeli(beli.beli_produk_id).ToList();
 
-            LogicalThreadContext.Properties["OldValue"] = beli.ToJson();
+                LogicalThreadContext.Properties["OldValue"] = beli.ToJson();
 
-            var frm = new FrmEntryPembelianProduk("Edit Data " + this.Text, beli, _bll);
-            frm.Listener = this;
-            frm.ShowDialog();
+                var frm = new FrmEntryPembelianProduk("Edit Data " + this.Text, beli, _bll);
+                frm.Listener = this;
+                frm.ShowDialog();
+            }            
         }
 
         protected override void Hapus()
@@ -327,16 +333,18 @@ namespace OpenRetail.App.Transaksi
 
             if (MsgHelper.MsgDelete())
             {
-                var beli = _listOfBeli[index];
-
-                var result = _bll.Delete(beli);
-                if (result > 0)
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
-                    GridListControlHelper.RemoveObject<BeliProduk>(this.gridList, _listOfBeli, beli);
-                    ResetButton();
-                }
-                else
-                    MsgHelper.MsgDeleteError();
+                    var beli = _listOfBeli[index];
+                    var result = _bll.Delete(beli);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<BeliProduk>(this.gridList, _listOfBeli, beli);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }                
             }
         }
 

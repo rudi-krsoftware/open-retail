@@ -195,6 +195,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutoMapperConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\Transaksi\BeliProdukController.cs" />
     <Compile Include="Controllers\Transaksi\JualProdukController.cs" />
     <Compile Include="Controllers\Pengeluaran\GajiKaryawanController.cs" />
     <Compile Include="Controllers\Pengeluaran\KasbonController.cs" />
