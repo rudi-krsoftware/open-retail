@@ -54,7 +54,7 @@ namespace OpenRetail.App.Transaksi
             base.WindowState = FormWindowState.Maximized;
 
             _log = MainProgram.log;
-            _bll = new PembayaranPiutangProdukBll(_log);
+            _bll = new PembayaranPiutangProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _pengguna = pengguna;
             _menuId = menuId;
 

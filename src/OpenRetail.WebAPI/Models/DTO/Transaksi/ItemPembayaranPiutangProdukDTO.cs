@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2017 Kamarudin (http://coding4ever.net/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -22,22 +22,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using FluentValidation;
+using System.ComponentModel.DataAnnotations;
+using OpenRetail.Model;
 
-namespace OpenRetail.Model
-{        
-	[Table("t_item_pembayaran_piutang_produk")]
-    public class ItemPembayaranPiutangProduk
+namespace OpenRetail.WebAPI.Models.DTO
+{
+    public class ItemPembayaranPiutangProdukDTO
     {
-        public ItemPembayaranPiutangProduk()
-        {
-            entity_state = EntityState.Added;
-        }
-
-		[ExplicitKey]
 		[Display(Name = "item_pembayaran_piutang_id")]		
 		public string item_pembayaran_piutang_id { get; set; }
 		
@@ -45,15 +38,13 @@ namespace OpenRetail.Model
 		public string pembayaran_piutang_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
-        public PembayaranPiutangProduk PembayaranPiutangProduk { get; set; }
+        public PembayaranPiutangProdukDTO PembayaranPiutangProduk { get; set; }
 
 		[Display(Name = "jual_id")]
 		public string jual_id { get; set; }
 
         //[JsonIgnore]
-		[Write(false)]
-        public JualProduk JualProduk { get; set; }
+        public JualProdukDTO JualProduk { get; set; }
 
 		[Display(Name = "nominal")]
 		public double nominal { get; set; }
@@ -62,26 +53,43 @@ namespace OpenRetail.Model
 		public string keterangan { get; set; }
 
         [JsonIgnore]
-        [Write(false)]
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
 
-        [Write(false)]
         public EntityState entity_state { get; set; }
-	}
+    }
 
-    public class ItemPembayaranPiutangProdukValidator : AbstractValidator<ItemPembayaranPiutangProduk>
+    public class ItemPembayaranPiutangProdukDTOValidator : AbstractValidator<ItemPembayaranPiutangProdukDTO>
     {
-        public ItemPembayaranPiutangProdukValidator()
+        public ItemPembayaranPiutangProdukDTOValidator()
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
-            var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.pembayaran_piutang_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
-		}
-	}
+
+            RuleSet("save", () =>
+            {
+                DefaultRule(msgError1, msgError2);
+            });
+
+            RuleSet("update", () =>
+            {
+                RuleFor(c => c.item_pembayaran_piutang_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+                DefaultRule(msgError1, msgError2);
+            });
+
+            RuleSet("delete", () =>
+            {
+                RuleFor(c => c.item_pembayaran_piutang_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            });
+        }
+
+        private void DefaultRule(string msgError1, string msgError2)
+        {
+            RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
+        }
+    }
 }
