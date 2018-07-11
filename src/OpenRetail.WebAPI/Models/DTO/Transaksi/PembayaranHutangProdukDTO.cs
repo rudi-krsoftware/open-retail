@@ -29,45 +29,60 @@ using OpenRetail.Model;
 
 namespace OpenRetail.WebAPI.Models.DTO
 {
-    public class ItemPembayaranPiutangProdukDTO
+    public class PembayaranHutangProdukDTO
     {
-		[Display(Name = "item_pembayaran_piutang_id")]		
-		public string item_pembayaran_piutang_id { get; set; }
+        public PembayaranHutangProdukDTO()
+        {
+            item_pembayaran_hutang = new List<ItemPembayaranHutangProduk>();
+            item_pembayaran_hutang_deleted = new List<ItemPembayaranHutangProduk>();
+        }
+
+		[Display(Name = "pembayaran_hutang_produk_id")]		
+		public string pembayaran_hutang_produk_id { get; set; }
 		
-		[Display(Name = "pembayaran_piutang_id")]
-		public string pembayaran_piutang_id { get; set; }
+		[Display(Name = "Supplier")]
+		public string supplier_id { get; set; }
+
+        //[JsonIgnore]		
+        public Supplier Supplier { get; set; }
+
+		[Display(Name = "pengguna_id")]
+		public string pengguna_id { get; set; }
 
         [JsonIgnore]
-        public PembayaranPiutangProdukDTO PembayaranPiutangProduk { get; set; }
+        public Pengguna Pengguna { get; set; }
 
-		[Display(Name = "jual_id")]
-		public string jual_id { get; set; }
-
-        //[JsonIgnore]
-        public JualProdukDTO JualProduk { get; set; }
-
-		[Display(Name = "nominal")]
-		public double nominal { get; set; }
+		[Display(Name = "Tanggal")]
+		public Nullable<DateTime> tanggal { get; set; }
 		
-		[Display(Name = "keterangan")]
+		[Display(Name = "Keterangan")]
 		public string keterangan { get; set; }
 
         [JsonIgnore]
 		[Display(Name = "tanggal_sistem")]
 		public Nullable<DateTime> tanggal_sistem { get; set; }
+		
+		[Display(Name = "Nota")]
+		public string nota { get; set; }
+		
+		[Display(Name = "is_tunai")]
+		public bool is_tunai { get; set; }
 
-        public EntityState entity_state { get; set; }
+        public double total_pembayaran { get; set; }
+
+        public IList<ItemPembayaranHutangProduk> item_pembayaran_hutang { get; set; }
+
+        public IList<ItemPembayaranHutangProduk> item_pembayaran_hutang_deleted { get; set; }
     }
 
-    public class ItemPembayaranPiutangProdukDTOValidator : AbstractValidator<ItemPembayaranPiutangProdukDTO>
+    public class PembayaranHutangProdukDTOValidator : AbstractValidator<PembayaranHutangProdukDTO>
     {
-        public ItemPembayaranPiutangProdukDTOValidator()
+        public PembayaranHutangProdukDTOValidator()
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
             var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
-
 
             RuleSet("save", () =>
             {
@@ -76,20 +91,21 @@ namespace OpenRetail.WebAPI.Models.DTO
 
             RuleSet("update", () =>
             {
-                RuleFor(c => c.item_pembayaran_piutang_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+                RuleFor(c => c.pembayaran_hutang_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
                 DefaultRule(msgError1, msgError2);
             });
 
             RuleSet("delete", () =>
             {
-                RuleFor(c => c.item_pembayaran_piutang_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+                RuleFor(c => c.pembayaran_hutang_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
             });
         }
 
         private void DefaultRule(string msgError1, string msgError2)
         {
-            RuleFor(c => c.pembayaran_piutang_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-            RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.supplier_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
             RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
         }
     }

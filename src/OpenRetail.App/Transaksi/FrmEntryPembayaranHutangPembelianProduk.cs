@@ -301,7 +301,7 @@ namespace OpenRetail.App.Transaksi
             _pembayaranHutang.item_pembayaran_hutang = this._listOfItemPembayaranHutang.Where(f => f.BeliProduk != null).ToList();
 
             if (!_isNewData) // update
-                _pembayaranHutang.item_pembayaran_hutang_deleted = _listOfItemPembayaranHutangDeleted;
+                _pembayaranHutang.item_pembayaran_hutang_deleted = _listOfItemPembayaranHutangDeleted.ToList();
 
             var result = 0;
             var validationError = new ValidationError();

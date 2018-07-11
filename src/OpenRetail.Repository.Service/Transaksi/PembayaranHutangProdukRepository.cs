@@ -100,7 +100,7 @@ namespace OpenRetail.Repository.Service
 
                 obj = MappingRecordToObject(_sql, new { id }).SingleOrDefault();
                 if (obj != null)
-                    obj.item_pembayaran_hutang = GetItemPembayaran(obj.pembayaran_hutang_produk_id);
+                    obj.item_pembayaran_hutang = GetItemPembayaran(obj.pembayaran_hutang_produk_id).ToList();
             }
             catch (Exception ex)
             {
@@ -125,7 +125,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.item_pembayaran_hutang = GetItemPembayaran(item.pembayaran_hutang_produk_id);
+                    item.item_pembayaran_hutang = GetItemPembayaran(item.pembayaran_hutang_produk_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -149,7 +149,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.item_pembayaran_hutang = GetItemPembayaran(item.pembayaran_hutang_produk_id);
+                    item.item_pembayaran_hutang = GetItemPembayaran(item.pembayaran_hutang_produk_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -202,7 +202,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.item_pembayaran_hutang = GetItemPembayaran(item.pembayaran_hutang_produk_id);
+                    item.item_pembayaran_hutang = GetItemPembayaran(item.pembayaran_hutang_produk_id).ToList();
                 }
             }
             catch (Exception ex)

@@ -29,27 +29,27 @@ using OpenRetail.Model;
 
 namespace OpenRetail.WebAPI.Models.DTO
 {
-    public class ItemPembayaranPiutangProdukDTO
+    public class ItemPembayaranHutangProdukDTO
     {
-		[Display(Name = "item_pembayaran_piutang_id")]		
-		public string item_pembayaran_piutang_id { get; set; }
+		[Display(Name = "item_pembayaran_hutang_produk_id")]		
+		public string item_pembayaran_hutang_produk_id { get; set; }
 		
-		[Display(Name = "pembayaran_piutang_id")]
-		public string pembayaran_piutang_id { get; set; }
+		[Display(Name = "pembayaran_hutang_produk_id")]
+		public string pembayaran_hutang_produk_id { get; set; }
 
-        [JsonIgnore]
-        public PembayaranPiutangProdukDTO PembayaranPiutangProduk { get; set; }
+        [JsonIgnore]		
+        public PembayaranHutangProdukDTO PembayaranHutangProduk { get; set; }
 
-		[Display(Name = "jual_id")]
-		public string jual_id { get; set; }
+		[Display(Name = "Produk")]
+		public string beli_produk_id { get; set; }
 
         //[JsonIgnore]
-        public JualProdukDTO JualProduk { get; set; }
+        public BeliProdukDTO BeliProduk { get; set; }
 
-		[Display(Name = "nominal")]
+		[Display(Name = "Nominal")]
 		public double nominal { get; set; }
 		
-		[Display(Name = "keterangan")]
+		[Display(Name = "Keterangan")]
 		public string keterangan { get; set; }
 
         [JsonIgnore]
@@ -59,9 +59,9 @@ namespace OpenRetail.WebAPI.Models.DTO
         public EntityState entity_state { get; set; }
     }
 
-    public class ItemPembayaranPiutangProdukDTOValidator : AbstractValidator<ItemPembayaranPiutangProdukDTO>
+    public class ItemPembayaranHutangProdukDTOValidator : AbstractValidator<ItemPembayaranHutangProdukDTO>
     {
-        public ItemPembayaranPiutangProdukDTOValidator()
+        public ItemPembayaranHutangProdukDTOValidator()
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
@@ -76,20 +76,20 @@ namespace OpenRetail.WebAPI.Models.DTO
 
             RuleSet("update", () =>
             {
-                RuleFor(c => c.item_pembayaran_piutang_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+                RuleFor(c => c.item_pembayaran_hutang_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
                 DefaultRule(msgError1, msgError2);
             });
 
             RuleSet("delete", () =>
             {
-                RuleFor(c => c.item_pembayaran_piutang_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+                RuleFor(c => c.item_pembayaran_hutang_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
             });
         }
 
         private void DefaultRule(string msgError1, string msgError2)
         {
-            RuleFor(c => c.pembayaran_piutang_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-            RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.pembayaran_hutang_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.beli_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
             RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
         }
     }

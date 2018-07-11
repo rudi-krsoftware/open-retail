@@ -51,7 +51,7 @@ namespace OpenRetail.Model
 		[Display(Name = "Produk")]
 		public string beli_produk_id { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
 		[Write(false)]
         public BeliProduk BeliProduk { get; set; }
 
