@@ -43,7 +43,11 @@ namespace OpenRetail.WebAPI
                 config.CreateMap<BeliProdukDTO, BeliProduk>();
                 config.CreateMap<ItemBeliProdukDTO, ItemBeliProduk>();
                 config.CreateMap<ReturBeliProdukDTO, ReturBeliProduk>();
-                
+
+                // transaksi pembayaran hutang
+                config.CreateMap<PembayaranHutangProdukDTO, PembayaranHutangProduk>();
+                config.CreateMap<ItemPembayaranHutangProdukDTO, ItemPembayaranHutangProduk>();
+
                 // transaksi penjualan
                 config.CreateMap<JualProdukDTO, JualProduk>();
                 config.CreateMap<ItemJualProdukDTO, ItemJualProduk>();

@@ -423,7 +423,7 @@ namespace OpenRetail.App.Transaksi
             {
                 var name = ((TextBox)sender).Text;
 
-                ISupplierBll bll = new SupplierBll(_log);
+                ISupplierBll bll = new SupplierBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 var listOfSupplier = bll.GetByName(name);
 
                 if (listOfSupplier.Count == 0)
@@ -479,7 +479,7 @@ namespace OpenRetail.App.Transaksi
                         var nota = cc.Renderer.ControlValue.ToString();
 
                         IList<BeliProduk> listOfBeli = null;
-                        IBeliProdukBll bll = new BeliProdukBll(_log);
+                        IBeliProdukBll bll = new BeliProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
 
                         if (nota.Length > 0) // menampilkan nota kredit berdasarkan nota
                         {

@@ -54,7 +54,7 @@ namespace OpenRetail.App.Transaksi
             base.WindowState = FormWindowState.Maximized;
 
             _log = MainProgram.log;
-            _bll = new PembayaranHutangProdukBll(_log);
+            _bll = new PembayaranHutangProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _pengguna = pengguna;
             _menuId = menuId;
 
@@ -192,9 +192,12 @@ namespace OpenRetail.App.Transaksi
 
         protected override void Tambah()
         {
-            var frm = new FrmEntryPembayaranHutangPembelianProduk("Tambah Data " + this.Text, _bll);
-            frm.Listener = this;
-            frm.ShowDialog();
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                var frm = new FrmEntryPembayaranHutangPembelianProduk("Tambah Data " + this.Text, _bll);
+                frm.Listener = this;
+                frm.ShowDialog();
+            }            
         }
 
         protected override void Perbaiki()
@@ -204,13 +207,16 @@ namespace OpenRetail.App.Transaksi
             if (!base.IsSelectedItem(index, this.TabText))
                 return;
 
-            var pembayaran = _listOfPembayaranHutang[index];
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+            {
+                var pembayaran = _listOfPembayaranHutang[index];
 
-            LogicalThreadContext.Properties["OldValue"] = pembayaran.ToJson();
+                LogicalThreadContext.Properties["OldValue"] = pembayaran.ToJson();
 
-            var frm = new FrmEntryPembayaranHutangPembelianProduk("Edit Data " + this.Text, pembayaran, _bll);
-            frm.Listener = this;
-            frm.ShowDialog();
+                var frm = new FrmEntryPembayaranHutangPembelianProduk("Edit Data " + this.Text, pembayaran, _bll);
+                frm.Listener = this;
+                frm.ShowDialog();
+            }            
         }
 
         protected override void Hapus()
@@ -220,24 +226,27 @@ namespace OpenRetail.App.Transaksi
             if (!base.IsSelectedItem(index, this.Text))
                 return;
 
-            var pembayaran = _listOfPembayaranHutang[index];
-            if (pembayaran.is_tunai)
+            using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
-                MsgHelper.MsgWarning("Maaf pembayaran hutang pembelian tunai tidak bisa dihapus");
-                return;
-            }
-
-            if (MsgHelper.MsgDelete())
-            {                
-                var result = _bll.Delete(pembayaran);
-                if (result > 0)
+                var pembayaran = _listOfPembayaranHutang[index];
+                if (pembayaran.is_tunai)
                 {
-                    GridListControlHelper.RemoveObject<PembayaranHutangProduk>(this.gridList, _listOfPembayaranHutang, pembayaran);
-                    ResetButton();
+                    MsgHelper.MsgWarning("Maaf pembayaran hutang pembelian tunai tidak bisa dihapus");
+                    return;
                 }
-                else
-                    MsgHelper.MsgDeleteError();
-            }
+
+                if (MsgHelper.MsgDelete())
+                {
+                    var result = _bll.Delete(pembayaran);
+                    if (result > 0)
+                    {
+                        GridListControlHelper.RemoveObject<PembayaranHutangProduk>(this.gridList, _listOfPembayaranHutang, pembayaran);
+                        ResetButton();
+                    }
+                    else
+                        MsgHelper.MsgDeleteError();
+                }
+            }            
         }
 
         public void Ok(object sender, object data)
