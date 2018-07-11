@@ -44,6 +44,8 @@ namespace OpenRetail.App.Lookup
         private IList<KabupatenTujuanRajaOngkir> _listOfKabupatenTujuan = null;
 
         private ReferencesType _referensiType = ReferencesType.Supplier;
+        private bool _isShowHargaPembelian = false;
+
         public IListener Listener { private get; set; }
 
         public FrmLookupReferensi(string header, IList<JenisPengeluaran> listOfJenisPengeluaran)
@@ -98,7 +100,7 @@ namespace OpenRetail.App.Lookup
             base.SetActiveBtnPilih(listOfDropshipper.Count > 0);
         }
 
-        public FrmLookupReferensi(string header, IList<Produk> listOfProduk)
+        public FrmLookupReferensi(string header, IList<Produk> listOfProduk, bool isShowHargaPembelian = false)
             : base()
         {
             InitializeComponent();
@@ -106,6 +108,7 @@ namespace OpenRetail.App.Lookup
             base.SetHeader(header);
             this._listOfProduk = listOfProduk;
             this._referensiType = ReferencesType.Produk;
+            this._isShowHargaPembelian = isShowHargaPembelian;
 
             InitGridList();
             base.SetActiveBtnPilih(listOfProduk.Count > 0);
@@ -425,7 +428,7 @@ namespace OpenRetail.App.Lookup
 
                             case 4:
                                 e.Style.HorizontalAlignment = GridHorizontalAlignment.Right;
-                                e.Style.CellValue = NumberHelper.NumberToString(produk.harga_jual);
+                                e.Style.CellValue = _isShowHargaPembelian ? NumberHelper.NumberToString(produk.harga_beli) : NumberHelper.NumberToString(produk.harga_jual);
                                 break;
 
                             case 5:
