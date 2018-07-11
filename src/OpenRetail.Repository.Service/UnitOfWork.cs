@@ -230,12 +230,18 @@ namespace OpenRetail.Repository.Service
 
         public IPembayaranHutangProdukRepository PembayaranHutangProdukRepository
         {
-            get { return _pembayaranhutangprodukRepository ?? (_pembayaranhutangprodukRepository = new PembayaranHutangProdukRepository(_context, _log)); }
+            get
+            {
+                return _pembayaranhutangprodukRepository ?? (_pembayaranhutangprodukRepository = _isUseWebAPI ? (IPembayaranHutangProdukRepository)new PembayaranHutangProdukWebAPIRepository(_baseUrl, _log) : new PembayaranHutangProdukRepository(_context, _log));
+            }
         }
 
         public IPembayaranPiutangProdukRepository PembayaranPiutangProdukRepository
         {
-            get { return _pembayaranpiutangprodukRepository ?? (_pembayaranpiutangprodukRepository = new PembayaranPiutangProdukRepository(_context, _log)); }
+            get
+            {
+                return _pembayaranpiutangprodukRepository ?? (_pembayaranpiutangprodukRepository = _isUseWebAPI ? (IPembayaranPiutangProdukRepository)new PembayaranPiutangProdukWebAPIRepository(_baseUrl, _log) : new PembayaranPiutangProdukRepository(_context, _log));
+            }
         }
 
         public IReturJualProdukRepository ReturJualProdukRepository

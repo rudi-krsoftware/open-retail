@@ -45,7 +45,7 @@ namespace OpenRetail.Model
 		[Display(Name = "Customer")]
 		public string customer_id { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
 		[Write(false)]
         public Customer Customer { get; set; }
 
@@ -73,15 +73,14 @@ namespace OpenRetail.Model
 		[Display(Name = "is_tunai")]
 		public bool is_tunai { get; set; }
 
-        [JsonIgnore]
         [Computed]
         public double total_pembayaran { get; set; }
 
         [Write(false)]
-        public IList<ItemPembayaranPiutangProduk> item_pembayaran_piutang { get; set; }
+        public List<ItemPembayaranPiutangProduk> item_pembayaran_piutang { get; set; }
 
         [Write(false)]
-        public IList<ItemPembayaranPiutangProduk> item_pembayaran_piutang_deleted { get; set; }
+        public List<ItemPembayaranPiutangProduk> item_pembayaran_piutang_deleted { get; set; }
 	}
 
     public class PembayaranPiutangProdukValidator : AbstractValidator<PembayaranPiutangProduk>

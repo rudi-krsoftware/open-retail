@@ -36,21 +36,39 @@ namespace OpenRetail.Bll.Service
         private IUnitOfWork _unitOfWork;
 		private PembayaranPiutangProdukValidator _validator;
 
+        private bool _isUseWebAPI;
+        private string _baseUrl;
+
 		public PembayaranPiutangProdukBll(ILog log)
         {
 			_log = log;
             _validator = new PembayaranPiutangProdukValidator();
         }
 
+        public PembayaranPiutangProdukBll(bool isUseWebAPI, string baseUrl, ILog log)
+            : this(log)
+        {
+            _isUseWebAPI = isUseWebAPI;
+            _baseUrl = baseUrl;
+        }
+
         public PembayaranPiutangProduk GetByID(string id)
         {
             PembayaranPiutangProduk obj = null;
-            
-            using (IDapperContext context = new DapperContext())
+
+            if (_isUseWebAPI)
             {
-                _unitOfWork = new UnitOfWork(context, _log);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 obj = _unitOfWork.PembayaranPiutangProdukRepository.GetByID(id);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.PembayaranPiutangProdukRepository.GetByID(id);
+                }
+            }            
 
             return obj;
         }
@@ -59,11 +77,19 @@ namespace OpenRetail.Bll.Service
         {
             var lastNota = string.Empty;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                _unitOfWork = new UnitOfWork(context, _log);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 lastNota = _unitOfWork.PembayaranPiutangProdukRepository.GetLastNota();
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    lastNota = _unitOfWork.PembayaranPiutangProdukRepository.GetLastNota();
+                }
+            }            
 
             return lastNota;
         }
@@ -72,11 +98,19 @@ namespace OpenRetail.Bll.Service
         {
             ItemPembayaranPiutangProduk obj = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                _unitOfWork = new UnitOfWork(context, _log);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 obj = _unitOfWork.PembayaranPiutangProdukRepository.GetByJualID(id);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    obj = _unitOfWork.PembayaranPiutangProdukRepository.GetByJualID(id);
+                }
+            }            
 
             return obj;
         }
@@ -85,11 +119,19 @@ namespace OpenRetail.Bll.Service
         {
             IList<PembayaranPiutangProduk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                _unitOfWork = new UnitOfWork(context, _log);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 oList = _unitOfWork.PembayaranPiutangProdukRepository.GetByName(name);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PembayaranPiutangProdukRepository.GetByName(name);
+                }
+            }             
 
             return oList;
         }        
@@ -98,11 +140,19 @@ namespace OpenRetail.Bll.Service
         {
             IList<PembayaranPiutangProduk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                _unitOfWork = new UnitOfWork(context, _log);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 oList = _unitOfWork.PembayaranPiutangProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PembayaranPiutangProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
+                }
+            }            
 
             return oList;
         }
@@ -111,11 +161,19 @@ namespace OpenRetail.Bll.Service
         {
             IList<PembayaranPiutangProduk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                _unitOfWork = new UnitOfWork(context, _log);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 oList = _unitOfWork.PembayaranPiutangProdukRepository.GetAll();
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PembayaranPiutangProdukRepository.GetAll();
+                }
+            }            
 
             return oList;
         }
@@ -124,11 +182,19 @@ namespace OpenRetail.Bll.Service
         {
             IList<ItemPembayaranPiutangProduk> oList = null;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                _unitOfWork = new UnitOfWork(context, _log);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 oList = _unitOfWork.PembayaranPiutangProdukRepository.GetHistoriPembayaran(jualId);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.PembayaranPiutangProdukRepository.GetHistoriPembayaran(jualId);
+                }
+            }            
 
             return oList;
         }
@@ -154,11 +220,26 @@ namespace OpenRetail.Bll.Service
 
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                _unitOfWork = new UnitOfWork(context, _log);
+                obj.pembayaran_piutang_id = Guid.NewGuid().ToString();
+
+                foreach (var item in obj.item_pembayaran_piutang)
+                {
+                    item.item_pembayaran_piutang_id = Guid.NewGuid().ToString();
+                }
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 result = _unitOfWork.PembayaranPiutangProdukRepository.Save(obj, isSaveFromPenjualan);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PembayaranPiutangProdukRepository.Save(obj, isSaveFromPenjualan);
+                }
+            }            
 
             return result;
         }
@@ -184,11 +265,24 @@ namespace OpenRetail.Bll.Service
 
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                _unitOfWork = new UnitOfWork(context, _log);
+                foreach (var item in obj.item_pembayaran_piutang.Where(f => f.entity_state == EntityState.Added))
+                {
+                    item.item_pembayaran_piutang_id = Guid.NewGuid().ToString();
+                }
+
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 result = _unitOfWork.PembayaranPiutangProdukRepository.Update(obj, isSaveFromPenjualan);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PembayaranPiutangProdukRepository.Update(obj, isSaveFromPenjualan);
+                }
+            }            
 
             return result;
         }
@@ -197,11 +291,19 @@ namespace OpenRetail.Bll.Service
         {
             var result = 0;
 
-            using (IDapperContext context = new DapperContext())
+            if (_isUseWebAPI)
             {
-                _unitOfWork = new UnitOfWork(context, _log);
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 result = _unitOfWork.PembayaranPiutangProdukRepository.Delete(obj);
             }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PembayaranPiutangProdukRepository.Delete(obj);
+                }
+            }            
 
             return result;
         }        

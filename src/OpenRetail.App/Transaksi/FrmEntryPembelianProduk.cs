@@ -685,7 +685,7 @@ namespace OpenRetail.App.Transaksi
                                 _rowIndex = rowIndex;
                                 _colIndex = colIndex;
 
-                                var frmLookup = new FrmLookupReferensi("Data Produk", listOfProduk);
+                                var frmLookup = new FrmLookupReferensi("Data Produk", listOfProduk, true);
                                 frmLookup.Listener = this;
                                 frmLookup.ShowDialog();
                             }

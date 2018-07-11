@@ -45,7 +45,7 @@ namespace OpenRetail.Model
 		[Display(Name = "Supplier")]
 		public string supplier_id { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
 		[Write(false)]
         public Supplier Supplier { get; set; }
 
@@ -73,15 +73,14 @@ namespace OpenRetail.Model
 		[Display(Name = "is_tunai")]
 		public bool is_tunai { get; set; }
 
-        [JsonIgnore]
         [Computed]
         public double total_pembayaran { get; set; }
 
         [Write(false)]
-        public IList<ItemPembayaranHutangProduk> item_pembayaran_hutang { get; set; }
+        public List<ItemPembayaranHutangProduk> item_pembayaran_hutang { get; set; }
 
         [Write(false)]
-        public IList<ItemPembayaranHutangProduk> item_pembayaran_hutang_deleted { get; set; }
+        public List<ItemPembayaranHutangProduk> item_pembayaran_hutang_deleted { get; set; }
 	}
 
     public class PembayaranHutangProdukValidator : AbstractValidator<PembayaranHutangProduk>

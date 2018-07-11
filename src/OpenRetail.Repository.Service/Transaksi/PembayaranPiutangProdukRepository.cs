@@ -103,7 +103,7 @@ namespace OpenRetail.Repository.Service
 
                 obj = MappingRecordToObject(_sql, new { id }).SingleOrDefault();
                 if (obj != null)
-                    obj.item_pembayaran_piutang = GetItemPembayaran(obj.pembayaran_piutang_id);
+                    obj.item_pembayaran_piutang = GetItemPembayaran(obj.pembayaran_piutang_id).ToList();
             }
             catch (Exception ex)
             {
@@ -160,7 +160,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.item_pembayaran_piutang = GetItemPembayaran(item.pembayaran_piutang_id);
+                    item.item_pembayaran_piutang = GetItemPembayaran(item.pembayaran_piutang_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -184,7 +184,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.item_pembayaran_piutang = GetItemPembayaran(item.pembayaran_piutang_id);
+                    item.item_pembayaran_piutang = GetItemPembayaran(item.pembayaran_piutang_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -208,7 +208,7 @@ namespace OpenRetail.Repository.Service
 
                 foreach (var item in oList)
                 {
-                    item.item_pembayaran_piutang = GetItemPembayaran(item.pembayaran_piutang_id);
+                    item.item_pembayaran_piutang = GetItemPembayaran(item.pembayaran_piutang_id).ToList();
                 }
             }
             catch (Exception ex)
@@ -268,13 +268,14 @@ namespace OpenRetail.Repository.Service
                     transaction = _context.transaction;
                 }
 
-                obj.pembayaran_piutang_id = _context.GetGUID();
+                if (obj.pembayaran_piutang_id == null)
+                    obj.pembayaran_piutang_id = _context.GetGUID();
 
                 if (obj.nota == null || obj.nota.Length == 0)
                 {
                     obj.nota = this.GetLastNota();
                 }
-                
+
                 // insert header
                 _context.db.Insert<PembayaranPiutangProduk>(obj, transaction);
 
@@ -283,7 +284,9 @@ namespace OpenRetail.Repository.Service
                 {
                     if (item.jual_id.Length > 0)
                     {
-                        item.item_pembayaran_piutang_id = _context.GetGUID();
+                        if (item.item_pembayaran_piutang_id == null)
+                            item.item_pembayaran_piutang_id = _context.GetGUID();
+
                         item.pembayaran_piutang_id = obj.pembayaran_piutang_id;
 
                         _context.db.Insert<ItemPembayaranPiutangProduk>(item, transaction);
@@ -345,7 +348,8 @@ namespace OpenRetail.Repository.Service
 
                     if (item.entity_state == EntityState.Added)
                     {
-                        item.item_pembayaran_piutang_id = _context.GetGUID();
+                        if (item.item_pembayaran_piutang_id == null)
+                            item.item_pembayaran_piutang_id = _context.GetGUID();
 
                         _context.db.Insert<ItemPembayaranPiutangProduk>(item, transaction);
 

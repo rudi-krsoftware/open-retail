@@ -195,6 +195,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutoMapperConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\Transaksi\PembayaranHutangProdukController.cs" />
+    <Compile Include="Controllers\Transaksi\PembayaranPiutangProdukController.cs" />
     <Compile Include="Controllers\Transaksi\BeliProdukController.cs" />
     <Compile Include="Controllers\Transaksi\JualProdukController.cs" />
     <Compile Include="Controllers\Pengeluaran\GajiKaryawanController.cs" />
@@ -219,6 +221,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\Transaksi\ItemPembayaranHutangProdukDTO.cs" />
+    <Compile Include="Models\DTO\Transaksi\PembayaranHutangProdukDTO.cs" />
+    <Compile Include="Models\DTO\Transaksi\ItemPembayaranPiutangProdukDTO.cs" />
+    <Compile Include="Models\DTO\Transaksi\PembayaranPiutangProdukDTO.cs" />
     <Compile Include="Models\DTO\Transaksi\ReturBeliProdukDTO.cs" />
     <Compile Include="Models\DTO\Transaksi\BeliProdukDTO.cs" />
     <Compile Include="Models\DTO\Transaksi\ReturJualProdukDTO.cs" />

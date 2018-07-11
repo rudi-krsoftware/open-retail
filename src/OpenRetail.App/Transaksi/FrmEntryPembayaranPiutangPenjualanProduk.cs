@@ -303,7 +303,7 @@ namespace OpenRetail.App.Transaksi
             _pembayaranPiutang.item_pembayaran_piutang = this._listOfItemPembayaranPiutang.Where(f => f.JualProduk != null).ToList();
 
             if (!_isNewData) // update
-                _pembayaranPiutang.item_pembayaran_piutang_deleted = _listOfItemPembayaranPiutangDeleted;
+                _pembayaranPiutang.item_pembayaran_piutang_deleted = _listOfItemPembayaranPiutangDeleted.ToList();
 
             var result = 0;
             var validationError = new ValidationError();
@@ -424,7 +424,7 @@ namespace OpenRetail.App.Transaksi
             {
                 var name = ((TextBox)sender).Text;
 
-                ICustomerBll bll = new CustomerBll(_log);
+                ICustomerBll bll = new CustomerBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
                 var listOfCustomer = bll.GetByName(name);
 
                 if (listOfCustomer.Count == 0)
@@ -480,7 +480,7 @@ namespace OpenRetail.App.Transaksi
                         var nota = cc.Renderer.ControlValue.ToString();
 
                         IList<JualProduk> listOfJual = null;
-                        IJualProdukBll bll = new JualProdukBll(_log);
+                        IJualProdukBll bll = new JualProdukBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
 
                         if (nota.Length > 0) // menampilkan nota kredit berdasarkan nota
                         {
