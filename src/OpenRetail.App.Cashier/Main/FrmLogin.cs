@@ -149,6 +149,18 @@ namespace OpenRetail.App.Cashier.Main
             MainProgram.settingCustomerDisplay.delay_display_closing_sentence = Convert.ToInt32(AppConfigHelper.GetValue("customerDisplayDelayDisplayClosingSentence", _appConfigFile, "5"));
         }
 
+        private void SetSettingLebarKolomTabelTransaksi()
+        {
+            MainProgram.settingLebarKolomTabelTransaksi = new SettingLebarKolomTabelTransaksi();
+            MainProgram.settingLebarKolomTabelTransaksi.lebar_kolom_no = Convert.ToInt32(AppConfigHelper.GetValue("lebarKolomNo", _appConfigFile, "30"));
+            MainProgram.settingLebarKolomTabelTransaksi.lebar_kolom_kode_produk = Convert.ToInt32(AppConfigHelper.GetValue("lebarKolomKodeProduk", _appConfigFile, "190"));
+            MainProgram.settingLebarKolomTabelTransaksi.lebar_kolom_nama_produk = Convert.ToInt32(AppConfigHelper.GetValue("lebarKolomNamaProduk", _appConfigFile, "720"));
+            MainProgram.settingLebarKolomTabelTransaksi.lebar_kolom_keterangan = Convert.ToInt32(AppConfigHelper.GetValue("lebarKolomKeterangan", _appConfigFile, "200"));
+            MainProgram.settingLebarKolomTabelTransaksi.lebar_kolom_jumlah = Convert.ToInt32(AppConfigHelper.GetValue("lebarKolomJumlah", _appConfigFile, "75"));
+            MainProgram.settingLebarKolomTabelTransaksi.lebar_kolom_diskon = Convert.ToInt32(AppConfigHelper.GetValue("lebarKolomDiskon", _appConfigFile, "75"));
+            MainProgram.settingLebarKolomTabelTransaksi.lebar_kolom_harga = Convert.ToInt32(AppConfigHelper.GetValue("lebarKolomHarga", _appConfigFile, "120"));
+        }
+
         /// <summary>
         /// Load data kartu untuk pembayaran via kartu
         /// </summary>
@@ -258,6 +270,7 @@ namespace OpenRetail.App.Cashier.Main
                     SetPengaturanUmum();
                     SetSettingPort();
                     SetSettingCustomerDisplay();
+                    SetSettingLebarKolomTabelTransaksi();
                     LoadKartu();
 
                     var saldoAwal = NumberHelper.StringToDouble(txtSaldoAwal.Text);
