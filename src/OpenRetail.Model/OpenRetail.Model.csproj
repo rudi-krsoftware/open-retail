@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Pengaturan\SettingCustomerDisplay.cs" />
     <Compile Include="Pengaturan\SettingPort.cs" />
+    <Compile Include="Pengaturan\SettingLebarKolomTabelTransaksi.cs" />
     <Compile Include="Transaksi\AlamatKirim.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -46,17 +46,18 @@ namespace OpenRetail.App.Cashier.Transaksi
         private JualProduk _jual = null;
         private Customer _customer = null;
         private IList<ItemJualProduk> _listOfItemJual = new List<ItemJualProduk>();
-        private GodSerialPort _serialPort = null;
 
         private int _rowIndex = 0;
         private int _colIndex = 0;
-        
+
         private ILog _log;
         private Pengguna _pengguna;
         private Profil _profil;
         private PengaturanUmum _pengaturanUmum;
         private SettingPort _settingPort;
         private SettingCustomerDisplay _settingCustomerDisplay;
+        private SettingLebarKolomTabelTransaksi _settingLebarKolomTabelTransaksi;
+
         private bool _isCetakStruk = true;
         private string _currentNota;        
 
@@ -73,6 +74,7 @@ namespace OpenRetail.App.Cashier.Transaksi
             this._pengaturanUmum = MainProgram.pengaturanUmum;
             this._settingPort = MainProgram.settingPort;
             this._settingCustomerDisplay = MainProgram.settingCustomerDisplay;
+            this._settingLebarKolomTabelTransaksi = MainProgram.settingLebarKolomTabelTransaksi;
 
             _currentNota = this._bll.GetLastNota();
 
@@ -92,26 +94,20 @@ namespace OpenRetail.App.Cashier.Transaksi
         {
             var gridListProperties = new List<GridListControlProperties>();
 
-            gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 190 });
-
-            gridListProperties.Add(new GridListControlProperties
-                {
-                    Header = "Nama Produk",
-                    Width = _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual ? 520 : 720
-                }
-            );
+            gridListProperties.Add(new GridListControlProperties { Header = "No", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_no });
+            gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_kode_produk });
+            gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_nama_produk });
 
             gridListProperties.Add(new GridListControlProperties
                 {
                     Header = _pengaturanUmum.keterangan_tambahan_item_jual,
-                    Width = _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual ? 200 : 0
+                    Width = _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual ? _settingLebarKolomTabelTransaksi.lebar_kolom_keterangan : 0
                 }
             );
 
-            gridListProperties.Add(new GridListControlProperties { Header = "Jumlah", Width = 75 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = 75 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Harga", Width = 120 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Jumlah", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_jumlah });
+            gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_diskon });
+            gridListProperties.Add(new GridListControlProperties { Header = "Harga", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_harga });
             gridListProperties.Add(new GridListControlProperties { Header = "Sub Total" });
 
             GridListControlHelper.InitializeGridListControl<ItemJualProduk>(grid, _listOfItemJual, gridListProperties);
@@ -120,6 +116,57 @@ namespace OpenRetail.App.Cashier.Transaksi
             {
                 e.Size = 27;
                 e.Handled = true;
+            };
+
+            grid.ResizingColumns += delegate(object sender, GridResizingColumnsEventArgs e)
+            {
+                try
+                {
+                    var appConfigFile = string.Format("{0}\\OpenRetailCashier.exe.config", Utils.GetAppPath());
+                    var columnWidth = grid.ColWidths[e.Columns.Left];
+
+                    switch (e.Columns.Left)
+                    {
+                        case 1:
+                            _settingLebarKolomTabelTransaksi.lebar_kolom_no = columnWidth;
+                            AppConfigHelper.SaveValue("lebarKolomNo", columnWidth.ToString(), appConfigFile);
+                            break;
+
+                        case 2:
+                            _settingLebarKolomTabelTransaksi.lebar_kolom_kode_produk = columnWidth;
+                            AppConfigHelper.SaveValue("lebarKolomKodeProduk", columnWidth.ToString(), appConfigFile);
+                            break;
+
+                        case 3:
+                            _settingLebarKolomTabelTransaksi.lebar_kolom_nama_produk = columnWidth;
+                            AppConfigHelper.SaveValue("lebarKolomNamaProduk", columnWidth.ToString(), appConfigFile);
+                            break;
+
+                        case 4:
+                            _settingLebarKolomTabelTransaksi.lebar_kolom_keterangan = columnWidth;
+                            AppConfigHelper.SaveValue("lebarKolomKeterangan", columnWidth.ToString(), appConfigFile);
+                            break;
+
+                        case 5:
+                            _settingLebarKolomTabelTransaksi.lebar_kolom_jumlah = columnWidth;
+                            AppConfigHelper.SaveValue("lebarKolomJumlah", columnWidth.ToString(), appConfigFile);
+                            break;
+
+                        case 6:
+                            _settingLebarKolomTabelTransaksi.lebar_kolom_diskon = columnWidth;
+                            AppConfigHelper.SaveValue("lebarKolomDiskon", columnWidth.ToString(), appConfigFile);
+                            break;
+
+                        case 7:
+                            _settingLebarKolomTabelTransaksi.lebar_kolom_harga = columnWidth;
+                            AppConfigHelper.SaveValue("lebarKolomHarga", columnWidth.ToString(), appConfigFile);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+                catch { }
             };
 
             grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
@@ -261,7 +308,7 @@ namespace OpenRetail.App.Cashier.Transaksi
 
             var colIndex = 2; // kolom nama produk
             grid.CurrentCell.MoveTo(1, colIndex, GridSetCurrentCellOptions.BeginEndUpdate);
-        }        
+        }
 
         private HargaGrosir GetHargaGrosir(Produk produk, double jumlah)
         {
