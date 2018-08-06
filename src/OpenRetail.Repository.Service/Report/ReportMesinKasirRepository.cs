@@ -102,12 +102,12 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                var sql = @"SELECT m_produk.produk_id, m_produk.nama_produk, t_item_jual_produk.harga_jual, 
-                            SUM(t_item_jual_produk.jumlah) AS jumlah, SUM(t_item_jual_produk.jumlah_retur) AS jumlah_retur, SUM(t_item_jual_produk.diskon) AS diskon
+                var sql = @"SELECT m_produk.produk_id, m_produk.nama_produk, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon,
+                            SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur) AS jumlah
                             FROM public.t_jual_produk INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id 
                             INNER JOIN public.m_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
                             WHERE t_jual_produk.mesin_id = @mesinId
-                            GROUP BY m_produk.produk_id, m_produk.nama_produk, t_item_jual_produk.harga_jual
+                            GROUP BY m_produk.produk_id, m_produk.nama_produk, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon
                             ORDER BY m_produk.nama_produk";
                 oList = _context.db.Query<ReportPenjualanProduk>(sql, new { mesinId }).ToList();
             }
