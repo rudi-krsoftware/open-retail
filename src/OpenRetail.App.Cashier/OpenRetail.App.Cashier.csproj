@@ -35,8 +35,7 @@
     <ApplicationIcon>main-icon-cashier.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoUpdater.NET, Version=1.4.0.0, Culture=neutral, PublicKeyToken=942f95247e354701, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="AutoUpdater.NET">
       <HintPath>..\..\lib\AutoUpdater.NET.dll</HintPath>
     </Reference>
     <Reference Include="CrashReporter.NET, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
