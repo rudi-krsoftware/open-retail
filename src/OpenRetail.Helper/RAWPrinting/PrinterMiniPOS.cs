@@ -194,6 +194,9 @@ namespace OpenRetail.Helper.RAWPrinting
             {
                 textToPrint.Append(ESCCommandHelper.InitializePrinter());
 
+                if (openCashDrawerCode.Length > 0)
+                    textToPrint.Append(ESCCommandHelper.CustomeCode(openCashDrawerCode));
+
                 if (ukuranFont > 0)
                     textToPrint.Append(ESCCommandHelper.FontNormal(ukuranFont));
             }
@@ -354,14 +357,8 @@ namespace OpenRetail.Helper.RAWPrinting
             if (!Utils.IsRunningUnderIDE())
             {
                 if (autocutCode.Length > 0)
-                    textToPrint.Append(ESCCommandHelper.CustomeCode(autocutCode));
+                    textToPrint.Append(ESCCommandHelper.CustomeCode(autocutCode));                
 
-                if (openCashDrawerCode.Length > 0)
-                    textToPrint.Append(ESCCommandHelper.CustomeCode(openCashDrawerCode));
-            }
-
-            if (!Utils.IsRunningUnderIDE())
-            {
                 RawPrintHelper.SendStringToPrinter(_printerName, textToPrint.ToString());
             }
             else
