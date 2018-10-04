@@ -31,5 +31,6 @@ namespace OpenRetail.Repository.Api
     {
         HargaGrosir GetHargaGrosir(string produkId, int hargaKe, IDbTransaction transaction = null);
         IList<HargaGrosir> GetListHargaGrosir(string produkId);
+        IList<HargaGrosir> GetListHargaGrosir(string[] listOfProdukId);
     }
 }     
