@@ -70,7 +70,11 @@ namespace OpenRetail.Model
 		
 		[Display(Name = "Harga Jual")]
 		public double harga_jual { get; set; }
-		
+
+        [Write(false)]
+        [Display(Name = "Old Jumlah")]
+        public double old_jumlah { get; set; }
+
 		[Display(Name = "Jumlah")]
 		public double jumlah { get; set; }
 		

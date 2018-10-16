@@ -53,6 +53,12 @@ namespace OpenRetail.Model
         public bool is_cetak_keterangan_nota { get; set; }
         public bool is_fokus_input_kolom_jumlah { get; set; }
 
+        public bool is_autocut { get; set; }
+        public string autocut_code { get; set; }
+
+        public bool is_open_cash_drawer { get; set; }
+        public string open_cash_drawer_code { get; set; }
+
         /// <summary>
         /// Validasi stok produk boleh minus ketika penjualan
         /// </summary>
@@ -63,6 +69,7 @@ namespace OpenRetail.Model
         /// </summary>
         public bool is_update_harga_jual { get; set; }
 
+        public double default_ppn { get; set; }
         public bool is_singkat_penulisan_ongkir { get; set; }
         public bool is_tampilkan_keterangan_tambahan_item_jual { get; set; }
         public string keterangan_tambahan_item_jual { get; set; }
@@ -72,6 +79,6 @@ namespace OpenRetail.Model
         public IList<HeaderNota> list_of_header_nota { get; set; }
         public IList<HeaderNotaMiniPos> list_of_header_nota_mini_pos { get; set; }
         public IList<FooterNotaMiniPos> list_of_footer_nota_mini_pos { get; set; }
-        public IList<LabelNota> list_of_label_nota { get; set; }
+        public IList<LabelNota> list_of_label_nota { get; set; }        
     }
 }

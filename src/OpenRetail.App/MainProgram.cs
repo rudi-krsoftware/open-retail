@@ -69,12 +69,14 @@ namespace OpenRetail.App
         /// </summary>
         public static int pageSize = 200; // nilai default 50 record perhalaman
 
-        public static bool isUseWebAPI = true;
+        public static bool isUseWebAPI = false;
         public static string baseUrl = "http://localhost:50472/";
         public static Profil profil = null;
         public static Pengguna pengguna = null;
         public static PengaturanUmum pengaturanUmum = null;
         public static PengaturanBarcode pengaturanBarcode = null;
+        public static SettingPort settingPort = null;
+        public static SettingCustomerDisplay settingCustomerDisplay = null;
         public static IList<KabupatenRajaOngkir> ListOfKabupaten = null;
         public static IList<Wilayah> ListOfWilayah = null;
         public static IList<Produk> listOfMinimalStokProduk = new List<Produk>();

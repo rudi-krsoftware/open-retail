@@ -182,7 +182,7 @@ namespace OpenRetail.App.Laporan
 
                 if (this._produk == null)
                 {
-                    var listOfProduk = produkBll.GetByName(keyword);
+                    var listOfProduk = produkBll.GetByName(keyword, false);
 
                     if (listOfProduk.Count == 0)
                     {

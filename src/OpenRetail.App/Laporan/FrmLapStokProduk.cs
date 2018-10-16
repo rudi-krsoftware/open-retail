@@ -49,7 +49,7 @@ namespace OpenRetail.App.Laporan
         private IList<Supplier> _listOfSupplier = new List<Supplier>();
         private IList<Golongan> _listOfGolongan = new List<Golongan>();
         private IList<Produk> _listOfProduk = new List<Produk>();
-
+        
         public FrmLapStokProduk(string header)
         {
             InitializeComponent();
@@ -202,7 +202,7 @@ namespace OpenRetail.App.Laporan
 
                 if (this._produk == null)
                 {
-                    var listOfProduk = produkBll.GetByName(keyword);
+                    var listOfProduk = produkBll.GetByName(keyword, false);
 
                     if (listOfProduk.Count == 0)
                     {

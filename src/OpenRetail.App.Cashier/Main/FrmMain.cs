@@ -344,11 +344,11 @@ namespace OpenRetail.App.Cashier.Main
             frmPenjualan.Show(this.mainDock);
         }
 
-        private void mnuSettingPrinter_Click(object sender, EventArgs e)
+        private void mnuPengaturanAplikasi_Click(object sender, EventArgs e)
         {
             var header = GetMenuTitle(sender);
 
-            var frmPengaturan = new FrmPengaturanUmum(header, MainProgram.pengaturanUmum);
+            var frmPengaturan = new FrmPengaturanUmum(header, MainProgram.pengaturanUmum, MainProgram.settingPort, MainProgram.settingCustomerDisplay);
             frmPengaturan.ShowDialog();
         }
 

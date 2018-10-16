@@ -171,7 +171,7 @@ namespace OpenRetail.App.Referensi
         {
             var gridListProperties = new List<GridListControlProperties>();
 
-            gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
+            gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Golongan", Width = 130 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 130 });
             gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 350 });

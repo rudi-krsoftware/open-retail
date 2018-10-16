@@ -115,21 +115,21 @@ namespace OpenRetail.Bll.Service
             return lastNota;
         }
 
-        public IList<Produk> GetByName(string name)
+        public IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true)
         {
             IList<Produk> oList = null;
 
             if (_isUseWebAPI)
             {
                 _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
-                oList = _unitOfWork.ProdukRepository.GetByName(name);
+                oList = _unitOfWork.ProdukRepository.GetByName(name, isLoadHargaGrosir);
             }
             else
             {
                 using (IDapperContext context = new DapperContext())
                 {
                     _unitOfWork = new UnitOfWork(context, _log);
-                    oList = _unitOfWork.ProdukRepository.GetByName(name);
+                    oList = _unitOfWork.ProdukRepository.GetByName(name, isLoadHargaGrosir);
                 }
             }
 
@@ -141,21 +141,21 @@ namespace OpenRetail.Bll.Service
             return sortByIndex == 0 ? "m_produk.kode_produk" : "m_produk.nama_produk";
         }
 
-        public IList<Produk> GetByName(string name, int sortByIndex, int pageNumber, int pageSize, ref int pagesCount)
+        public IList<Produk> GetByName(string name, int sortByIndex, int pageNumber, int pageSize, ref int pagesCount, bool isLoadHargaGrosir = true)
         {
             IList<Produk> oList = null;
 
             if (_isUseWebAPI)
             {
                 _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
-                oList = _unitOfWork.ProdukRepository.GetByName(name, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+                oList = _unitOfWork.ProdukRepository.GetByName(name, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount, isLoadHargaGrosir);
             }
             else
             {
                 using (IDapperContext context = new DapperContext())
                 {
                     _unitOfWork = new UnitOfWork(context, _log);
-                    oList = _unitOfWork.ProdukRepository.GetByName(name, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount);
+                    oList = _unitOfWork.ProdukRepository.GetByName(name, GetSortByFieldName(sortByIndex), pageNumber, pageSize, ref pagesCount, isLoadHargaGrosir);
                 }
             }
 

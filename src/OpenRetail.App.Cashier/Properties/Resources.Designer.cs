@@ -103,6 +103,16 @@ namespace OpenRetail.App.Cashier.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap code32 {
+            get {
+                object obj = ResourceManager.GetObject("code32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap donasi_fix {
             get {
                 object obj = ResourceManager.GetObject("donasi_fix", resourceCulture);

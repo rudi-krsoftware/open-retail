@@ -36,13 +36,14 @@ namespace OpenRetail.Helper.RAWPrinting
         }
 
         public void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota,
-            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0, string infoCopyright1 = "", string infoCopyright2 = "")
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0,
+            string autocutCode = "", string openCashDrawerCode = "", string infoCopyright1 = "", string infoCopyright2 = "")
         {
             throw new NotImplementedException();
         }
 
         public void Cetak(IList<ReportMesinKasir> listOfMesinKasir, IList<HeaderNotaMiniPos> listOfHeaderNota, int jumlahKarakter, int lineFeed, int ukuranFont = 0,
-            string infoCopyright1 = "", string infoCopyright2 = "")
+            string autocutCode = "", string infoCopyright1 = "", string infoCopyright2 = "")
         {
             throw new NotImplementedException();
         }

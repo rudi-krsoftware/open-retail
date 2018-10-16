@@ -96,6 +96,15 @@ namespace OpenRetail.Helper
             return result;
         }
 
+        public static string CenterAlignment(int panjangString, int jumlahKarakter)
+        {
+            var div = (double)(jumlahKarakter - panjangString) / 2;
+            var posisiTengah = Math.Ceiling(div);
+            var result = PrintChar(' ', Convert.ToInt32(posisiTengah));
+
+            return result;
+        }
+
         /// <summary>
         /// Fungsi untuk memecah string berdasarkan karakter spasi
         /// </summary>

@@ -34,7 +34,7 @@ namespace OpenRetail.Repository.Service
 {        
     public class ProdukRepository : IProdukRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon,
+        private const string SQL_TEMPLATE = @"SELECT m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon, m_produk.persentase_keuntungan,
                                               m_produk.minimal_stok, m_produk.stok_gudang, m_produk.minimal_stok_gudang, m_golongan.golongan_id, m_golongan.nama_golongan, m_golongan.diskon
                                               FROM m_produk LEFT JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id
                                               {WHERE}
@@ -81,7 +81,7 @@ namespace OpenRetail.Repository.Service
         private IList<HargaGrosir> GetListHargaGrosir(string produkId)
         {
             IHargaGrosirRepository repo = new HargaGrosirRepository(_context, _log);
-
+        
             return repo.GetListHargaGrosir(produkId);
         }
 
@@ -96,9 +96,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
                 
                 obj = MappingRecordToObject(_sql, new { id }).SingleOrDefault();
-
-                if (obj != null)
-                    obj.list_of_harga_grosir = GetListHargaGrosir(obj.produk_id).ToList();
             }
             catch (Exception ex)
             {
@@ -138,7 +135,7 @@ namespace OpenRetail.Repository.Service
             return _context.GetLastNota(new Produk().GetTableName());
         }
 
-        public IList<Produk> GetByName(string name)
+        public IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true)
         {
             IList<Produk> oList = new List<Produk>();
 
@@ -152,10 +149,13 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql, new { name }).ToList();
 
-                foreach (var item in oList)
+                if (isLoadHargaGrosir)
                 {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
-                }
+                    foreach (var item in oList)
+                    {
+                        item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
+                    }
+                }                
             }
             catch (Exception ex)
             {
@@ -165,7 +165,7 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
 
-        public IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount)
+        public IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount, bool isLoadHargaGrosir = true)
         {
             IList<Produk> oList = new List<Produk>();
 
@@ -184,10 +184,13 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql, new { name, pageNumber, pageSize }).ToList();
 
-                foreach (var item in oList)
+                if (isLoadHargaGrosir)
                 {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
-                }
+                    foreach (var item in oList)
+                    {
+                        item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
+                    }
+                }                
             }
             catch (Exception ex)
             {
@@ -237,7 +240,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{ORDER BY}", sortBy);
                 _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
 
-                
                 oList = MappingRecordToObject(_sql, new { golonganId, pageNumber, pageSize }).ToList();
 
                 foreach (var item in oList)
@@ -264,11 +266,6 @@ namespace OpenRetail.Repository.Service
                 _sql = _sql.Replace("{OFFSET}", "");
 
                 oList = MappingRecordToObject(_sql).ToList();
-
-                foreach (var item in oList)
-                {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
-                }
             }
             catch (Exception ex)
             {
