@@ -84,5 +84,26 @@ namespace OpenRetail.Repository.Service
 
             return oList;
         }
+
+        public IList<HargaGrosir> GetListHargaGrosir(string[] listOfProdukId)
+        {
+            IList<HargaGrosir> oList = new List<HargaGrosir>();
+
+            try
+            {
+                var sql = @"SELECT harga_grosir_id, produk_id, harga_ke, harga_grosir, jumlah_minimal, diskon 
+                            FROM m_harga_grosir 
+                            WHERE produk_id = ANY(@listOfProdukId)";
+
+                oList = _context.db.Query<HargaGrosir>(sql, new { listOfProdukId })
+                                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
     }
 }     

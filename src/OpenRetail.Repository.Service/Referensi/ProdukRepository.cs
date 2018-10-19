@@ -85,6 +85,13 @@ namespace OpenRetail.Repository.Service
             return repo.GetListHargaGrosir(produkId);
         }
 
+        private IList<HargaGrosir> GetListHargaGrosir(string[] listOfProdukId)
+        {
+            IHargaGrosirRepository repo = new HargaGrosirRepository(_context, _log);
+
+            return repo.GetListHargaGrosir(listOfProdukId);
+        }
+
         public Produk GetByID(string id)
         {
             Produk obj = null;
@@ -135,6 +142,25 @@ namespace OpenRetail.Repository.Service
             return _context.GetLastNota(new Produk().GetTableName());
         }
 
+        private void SetHargaGrosir(IList<Produk> listOfProduk)
+        {
+            var listOfProdukId = new List<string>();
+
+            foreach (var produk in listOfProduk)
+            {
+                listOfProdukId.Add(produk.produk_id);
+            }
+
+            var listOfHargaGrosir = GetListHargaGrosir(listOfProdukId.ToArray());
+
+            foreach (var produk in listOfProduk)
+            {
+                produk.list_of_harga_grosir = listOfHargaGrosir.Where(f => f.produk_id == produk.produk_id)
+                                                               .OrderBy(f => f.harga_ke)
+                                                               .ToList();
+            }
+        }
+
         public IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true)
         {
             IList<Produk> oList = new List<Produk>();
@@ -149,13 +175,7 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql, new { name }).ToList();
 
-                if (isLoadHargaGrosir)
-                {
-                    foreach (var item in oList)
-                    {
-                        item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
-                    }
-                }                
+                if (isLoadHargaGrosir) SetHargaGrosir(oList);
             }
             catch (Exception ex)
             {
@@ -184,13 +204,7 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql, new { name, pageNumber, pageSize }).ToList();
 
-                if (isLoadHargaGrosir)
-                {
-                    foreach (var item in oList)
-                    {
-                        item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
-                    }
-                }                
+                if (isLoadHargaGrosir) SetHargaGrosir(oList);
             }
             catch (Exception ex)
             {
@@ -212,10 +226,7 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql, new { golonganId }).ToList();
 
-                foreach (var item in oList)
-                {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
-                }
+                SetHargaGrosir(oList);
             }
             catch (Exception ex)
             {
@@ -242,10 +253,7 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql, new { golonganId, pageNumber, pageSize }).ToList();
 
-                foreach (var item in oList)
-                {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
-                }
+                SetHargaGrosir(oList);
             }
             catch (Exception ex)
             {
@@ -287,10 +295,7 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql).ToList();
 
-                foreach (var item in oList)
-                {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
-                }
+                SetHargaGrosir(oList);
             }
             catch (Exception ex)
             {
@@ -314,10 +319,7 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql).ToList();
 
-                foreach (var item in oList)
-                {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
-                }
+                SetHargaGrosir(oList);
             }
             catch (Exception ex)
             {
@@ -344,10 +346,7 @@ namespace OpenRetail.Repository.Service
 
                 oList = MappingRecordToObject(_sql, new { pageNumber, pageSize }).ToList();
 
-                foreach (var item in oList)
-                {
-                    item.list_of_harga_grosir = GetListHargaGrosir(item.produk_id).ToList();
-                }
+                SetHargaGrosir(oList);
             }
             catch (Exception ex)
             {

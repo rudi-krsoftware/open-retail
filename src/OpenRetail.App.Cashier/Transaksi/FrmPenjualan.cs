@@ -94,7 +94,7 @@ namespace OpenRetail.App.Cashier.Transaksi
         {
             var gridListProperties = new List<GridListControlProperties>();
 
-            gridListProperties.Add(new GridListControlProperties { Header = "No", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_no });
+            gridListProperties.Add(new GridListControlProperties { Header = "No", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_no < 65 ? 65 : _settingLebarKolomTabelTransaksi.lebar_kolom_no });
             gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_kode_produk });
             gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_nama_produk });
 

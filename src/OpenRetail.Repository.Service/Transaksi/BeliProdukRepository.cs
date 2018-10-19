@@ -149,7 +149,7 @@ namespace OpenRetail.Repository.Service
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_supplier.nama_supplier) LIKE @name OR LOWER(t_beli_produk.keterangan) LIKE @name");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
-                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
+                _sql = _sql.Replace("{OFFSET}", "LIMIT @pageSize OFFSET @pageSize * (@pageNumber - 1)");
 
                 oList = MappingRecordToObject(_sql, new { name, pageNumber, pageSize }).ToList();
             }
@@ -192,7 +192,7 @@ namespace OpenRetail.Repository.Service
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
-                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");                
+                _sql = _sql.Replace("{OFFSET}", "LIMIT @pageSize OFFSET @pageSize * (@pageNumber - 1)");
 
                 oList = MappingRecordToObject(_sql, new { pageNumber, pageSize }).ToList();
             }
@@ -346,7 +346,7 @@ namespace OpenRetail.Repository.Service
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_beli_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
-                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");                
+                _sql = _sql.Replace("{OFFSET}", "LIMIT @pageSize OFFSET @pageSize * (@pageNumber - 1)");
 
                 oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai, pageNumber, pageSize }).ToList();
             }
