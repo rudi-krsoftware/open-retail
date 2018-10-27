@@ -29,8 +29,8 @@ namespace OpenRetail.Bll.Api
     public interface IProdukBll : IBaseBll<Produk>
     {
         Produk GetByID(string id);
-        Produk GetByKode(string kodeProduk);
-        IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true);
+        Produk GetByKode(string kodeProduk, bool isCekStatusAktif = false);
+        IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true, bool isCekStatusAktif = false);
         IList<Produk> GetByName(string name, int sortByIndex, int pageNumber, int pageSize, ref int pagesCount, bool isLoadHargaGrosir = true);
         IList<Produk> GetByGolongan(string golonganId);
         IList<Produk> GetByGolongan(string golonganId, int sortByIndex, int pageNumber, int pageSize, ref int pagesCount);

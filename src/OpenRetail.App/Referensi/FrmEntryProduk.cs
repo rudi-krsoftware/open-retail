@@ -88,6 +88,7 @@ namespace OpenRetail.App.Referensi
                 cmbGolongan.SelectedItem = this._produk.Golongan.nama_golongan;
 
             txtKodeProduk.Text = this._produk.kode_produk;
+            chkAktif.Checked = this._produk.is_aktif;
             txtNamaProduk.Text = this._produk.nama_produk;
             txtSatuan.Text = this._produk.satuan;
             txtHargaBeli.Text = this._produk.harga_beli.ToString();
@@ -197,6 +198,7 @@ namespace OpenRetail.App.Referensi
             _produk.Golongan = golongan;
 
             _produk.kode_produk = txtKodeProduk.Text;
+            _produk.is_aktif = chkAktif.Checked;
             _produk.nama_produk = txtNamaProduk.Text;
             _produk.satuan = txtSatuan.Text;
             _produk.harga_beli = NumberHelper.StringToDouble(txtHargaBeli.Text);
@@ -224,7 +226,8 @@ namespace OpenRetail.App.Referensi
                     if (_isNewData)
                     {
                         base.ResetForm(this);
-
+                        
+                        chkAktif.Checked = true;
                         txtKodeProduk.Text = this._bll.GetLastKodeProduk();
                         txtKodeProduk.Focus();
                     }
@@ -272,6 +275,11 @@ namespace OpenRetail.App.Referensi
             var golongan = _listOfGolongan[cmbGolongan.SelectedIndex];
             if (golongan != null)
                 txtKeuntungan.Text = golongan.persentase_keuntungan.ToString();
+        }
+
+        private void chkAktif_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (KeyPressHelper.IsEnter(e)) KeyPressHelper.NextFocus();
         }        
     }
 }

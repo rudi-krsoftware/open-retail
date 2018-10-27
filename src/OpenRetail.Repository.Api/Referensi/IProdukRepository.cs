@@ -29,10 +29,10 @@ namespace OpenRetail.Repository.Api
     public interface IProdukRepository : IBaseRepository<Produk>
     {
 		Produk GetByID(string id);
-        Produk GetByKode(string kodeProduk);
+        Produk GetByKode(string kodeProduk, bool isCekStatusAktif = false);
         string GetLastKodeProduk();
 
-        IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true);
+        IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true, bool isCekStatusAktif = false);
         IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount, bool isLoadHargaGrosir = true);
         IList<Produk> GetByGolongan(string golonganId);
         IList<Produk> GetByGolongan(string golonganId, string sortBy, int pageNumber, int pageSize, ref int pagesCount);

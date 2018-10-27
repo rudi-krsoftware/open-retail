@@ -173,9 +173,9 @@ namespace OpenRetail.App.Referensi
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Golongan", Width = 130 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 130 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 110 });
             gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 350 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Satuan", Width = 100 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Satuan", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga Beli", Width = 70 });
             
             gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 70 });
@@ -186,7 +186,8 @@ namespace OpenRetail.App.Referensi
             gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Stok Etalase", Width = 60 });
             gridListProperties.Add(new GridListControlProperties { Header = "Stok Gudang", Width = 60 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Min. Stok Gudang" });
+            gridListProperties.Add(new GridListControlProperties { Header = "Min. Stok Gudang", Width = 60 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Status" });
 
             GridListControlHelper.InitializeGridListControl<Produk>(this.gridList, _listOfProduk, gridListProperties, false, additionalRowCount: 1);
             this.gridList.Grid.Model.RowHeights[1] = 25;
@@ -245,7 +246,10 @@ namespace OpenRetail.App.Referensi
 
             column = 14; // kolom minimal stok
             this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
-            
+
+            column = 15; // kolom status
+            this.gridList.Grid.CoveredRanges.Add(GridRangeInfo.Cells(0, column, 1, column));
+
             var headerStyle = this.gridList.Grid.BaseStylesMap["Column Header"].StyleInfo;
             headerStyle.CellType = GridCellTypeName.Header;
 
@@ -354,6 +358,11 @@ namespace OpenRetail.App.Referensi
 
                                 case 14:
                                     e.Style.CellValue = produk.minimal_stok_gudang;
+                                    e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
+                                    break;
+
+                                case 15:
+                                    e.Style.CellValue = produk.is_aktif ? "Aktif" : "Non Aktif";
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
 
