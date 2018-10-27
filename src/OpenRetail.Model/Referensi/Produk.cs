@@ -82,6 +82,9 @@ namespace OpenRetail.Model
 		[Display(Name = "Stok Gudang")]
 		public double stok_gudang { get; set; }
 
+        [Display(Name = "Is Aktif")]
+        public bool is_aktif { get; set; }
+
         [Computed]
         public bool is_stok_minus 
         {

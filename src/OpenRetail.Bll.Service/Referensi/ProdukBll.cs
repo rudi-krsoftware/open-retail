@@ -73,21 +73,21 @@ namespace OpenRetail.Bll.Service
             return obj;
         }
 
-        public Produk GetByKode(string kodeProduk)
+        public Produk GetByKode(string kodeProduk, bool isCekStatusAktif = false)
         {
             Produk obj = null;
 
             if (_isUseWebAPI)
             {
                 _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
-                obj = _unitOfWork.ProdukRepository.GetByKode(kodeProduk);
+                obj = _unitOfWork.ProdukRepository.GetByKode(kodeProduk, isCekStatusAktif);
             }
             else
             {
                 using (IDapperContext context = new DapperContext())
                 {
                     _unitOfWork = new UnitOfWork(context, _log);
-                    obj = _unitOfWork.ProdukRepository.GetByKode(kodeProduk);
+                    obj = _unitOfWork.ProdukRepository.GetByKode(kodeProduk, isCekStatusAktif);
                 }
             }
 
@@ -115,21 +115,21 @@ namespace OpenRetail.Bll.Service
             return lastNota;
         }
 
-        public IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true)
+        public IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true, bool isCekStatusAktif = false)
         {
             IList<Produk> oList = null;
 
             if (_isUseWebAPI)
             {
                 _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
-                oList = _unitOfWork.ProdukRepository.GetByName(name, isLoadHargaGrosir);
+                oList = _unitOfWork.ProdukRepository.GetByName(name, isLoadHargaGrosir, isCekStatusAktif);
             }
             else
             {
                 using (IDapperContext context = new DapperContext())
                 {
                     _unitOfWork = new UnitOfWork(context, _log);
-                    oList = _unitOfWork.ProdukRepository.GetByName(name, isLoadHargaGrosir);
+                    oList = _unitOfWork.ProdukRepository.GetByName(name, isLoadHargaGrosir, isCekStatusAktif);
                 }
             }
 

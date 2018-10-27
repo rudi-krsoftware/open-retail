@@ -39,7 +39,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbGolongan = new System.Windows.Forms.ComboBox();
-            this.txtKodeProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtNamaProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtSatuan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.txtHargaJual = new OpenRetail.Helper.UserControl.AdvancedTextbox();
@@ -74,11 +73,15 @@
             this.txtHargaBeli = new OpenRetail.Helper.UserControl.AdvancedTextbox();
             this.label21 = new System.Windows.Forms.Label();
             this.txtKeuntungan = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtKodeProduk = new OpenRetail.Helper.UserControl.AdvancedTextbox();
+            this.chkAktif = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -96,7 +99,6 @@
             this.tableLayoutPanel3.Controls.Add(this.label8, 0, 15);
             this.tableLayoutPanel3.Controls.Add(this.label9, 0, 16);
             this.tableLayoutPanel3.Controls.Add(this.cmbGolongan, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txtKodeProduk, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.txtNamaProduk, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.txtSatuan, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.txtHargaJual, 1, 6);
@@ -119,6 +121,7 @@
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel2, 1, 10);
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel3, 1, 12);
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel4, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel5, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -256,22 +259,6 @@
             this.cmbGolongan.TabIndex = 15;
             this.cmbGolongan.Tag = "ignore";
             this.cmbGolongan.SelectedIndexChanged += new System.EventHandler(this.cmbGolongan_SelectedIndexChanged);
-            // 
-            // txtKodeProduk
-            // 
-            this.txtKodeProduk.AutoEnter = true;
-            this.txtKodeProduk.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
-            this.txtKodeProduk.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtKodeProduk.LeaveFocusColor = System.Drawing.Color.White;
-            this.txtKodeProduk.LetterOnly = false;
-            this.txtKodeProduk.Location = new System.Drawing.Point(106, 28);
-            this.txtKodeProduk.Name = "txtKodeProduk";
-            this.txtKodeProduk.NumericOnly = false;
-            this.txtKodeProduk.SelectionText = false;
-            this.txtKodeProduk.Size = new System.Drawing.Size(128, 20);
-            this.txtKodeProduk.TabIndex = 0;
-            this.txtKodeProduk.Tag = "kode_produk";
-            this.txtKodeProduk.ThousandSeparator = false;
             // 
             // txtNamaProduk
             // 
@@ -789,6 +776,47 @@
             this.txtKeuntungan.ThousandSeparator = false;
             this.txtKeuntungan.TextChanged += new System.EventHandler(this.HitungHargaRetail);
             // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.txtKodeProduk);
+            this.flowLayoutPanel5.Controls.Add(this.chkAktif);
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(103, 25);
+            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(384, 25);
+            this.flowLayoutPanel5.TabIndex = 0;
+            // 
+            // txtKodeProduk
+            // 
+            this.txtKodeProduk.AutoEnter = true;
+            this.txtKodeProduk.Conversion = OpenRetail.Helper.UserControl.EConversion.Normal;
+            this.txtKodeProduk.EnterFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtKodeProduk.LeaveFocusColor = System.Drawing.Color.White;
+            this.txtKodeProduk.LetterOnly = false;
+            this.txtKodeProduk.Location = new System.Drawing.Point(3, 3);
+            this.txtKodeProduk.Name = "txtKodeProduk";
+            this.txtKodeProduk.NumericOnly = false;
+            this.txtKodeProduk.SelectionText = false;
+            this.txtKodeProduk.Size = new System.Drawing.Size(128, 20);
+            this.txtKodeProduk.TabIndex = 0;
+            this.txtKodeProduk.Tag = "kode_produk";
+            this.txtKodeProduk.ThousandSeparator = false;
+            // 
+            // chkAktif
+            // 
+            this.chkAktif.AutoSize = true;
+            this.chkAktif.Checked = true;
+            this.chkAktif.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAktif.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkAktif.Location = new System.Drawing.Point(137, 3);
+            this.chkAktif.Name = "chkAktif";
+            this.chkAktif.Size = new System.Drawing.Size(47, 20);
+            this.chkAktif.TabIndex = 1;
+            this.chkAktif.Text = "Aktif";
+            this.chkAktif.UseVisualStyleBackColor = true;
+            this.chkAktif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.chkAktif_KeyPress);
+            // 
             // FrmEntryProduk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -808,6 +836,8 @@
             this.flowLayoutPanel3.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -860,6 +890,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Label label21;
         private Helper.UserControl.AdvancedTextbox txtKeuntungan;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.CheckBox chkAktif;
 
     }
 }

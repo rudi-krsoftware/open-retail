@@ -35,7 +35,8 @@ namespace OpenRetail.Repository.Service
     public class ProdukRepository : IProdukRepository
     {
         private const string SQL_TEMPLATE = @"SELECT m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon, m_produk.persentase_keuntungan,
-                                              m_produk.minimal_stok, m_produk.stok_gudang, m_produk.minimal_stok_gudang, m_golongan.golongan_id, m_golongan.nama_golongan, m_golongan.diskon
+                                              m_produk.minimal_stok, m_produk.stok_gudang, m_produk.minimal_stok_gudang, m_produk.is_aktif,
+                                              m_golongan.golongan_id, m_golongan.nama_golongan, m_golongan.diskon
                                               FROM m_produk LEFT JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id
                                               {WHERE}
                                               {ORDER BY}
@@ -112,13 +113,17 @@ namespace OpenRetail.Repository.Service
             return obj;
         }
 
-        public Produk GetByKode(string kodeProduk)
+        public Produk GetByKode(string kodeProduk, bool isCekStatusAktif = false)
         {
             Produk obj = null;
 
             try
             {
-                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.kode_produk) = @kodeProduk");
+                if (isCekStatusAktif)
+                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.kode_produk) = @kodeProduk AND m_produk.is_aktif = true");
+                else
+                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.kode_produk) = @kodeProduk");
+
                 _sql = _sql.Replace("{ORDER BY}", "");
                 _sql = _sql.Replace("{OFFSET}", "");
 
@@ -161,13 +166,17 @@ namespace OpenRetail.Repository.Service
             }
         }
 
-        public IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true)
+        public IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true, bool isCekStatusAktif = false)
         {
             IList<Produk> oList = new List<Produk>();
 
             try
             {
-                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name");
+                if (isCekStatusAktif)
+                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE (LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name) AND m_produk.is_aktif = true");
+                else
+                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name");
+
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY m_produk.nama_produk");
                 _sql = _sql.Replace("{OFFSET}", "");
 

@@ -64,13 +64,13 @@ namespace OpenRetail.Repository.Service
             return obj;
         }
 
-        public Produk GetByKode(string kodeProduk)
+        public Produk GetByKode(string kodeProduk, bool isCekStatusAktif = false)
         {
             Produk obj = null;
 
             try
             {
-                var api = string.Format("get_by_kode?kodeProduk={0}", kodeProduk);
+                var api = string.Format("get_by_kode?kodeProduk={0}&isCekStatusAktif={1}", kodeProduk, isCekStatusAktif);
                 var response = RestSharpHelper<OpenRetailWebApiGetResponse<Produk>>.GetRequest(_apiUrl, api).Data;
 
                 if (response.Results.Count > 0)
@@ -104,13 +104,13 @@ namespace OpenRetail.Repository.Service
             return result;
         }
 
-        public IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true)
+        public IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true, bool isCekStatusAktif = false)
         {
             IList<Produk> oList = new List<Produk>();
 
 			try
             {
-                var api = string.Format("get_by_name?name={0}&isLoadHargaGrosir={1}", name, isLoadHargaGrosir);
+                var api = string.Format("get_by_name?name={0}&isLoadHargaGrosir={1}&isCekStatusAktif={2}", name, isLoadHargaGrosir, isCekStatusAktif);
                 var response = RestSharpHelper<OpenRetailWebApiGetResponse<Produk>>.GetRequest(_apiUrl, api).Data;
 
                 if (response.Results.Count > 0)
