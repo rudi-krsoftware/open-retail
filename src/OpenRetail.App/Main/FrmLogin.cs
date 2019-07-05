@@ -157,6 +157,27 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanBarcode.batas_kiri_kolom3 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom3", _appConfigFile, "540"));
         }
 
+        private void SetPengaturanLabelHarga()
+        {
+            MainProgram.pengaturanLabelHarga = new PengaturanLabelHarga();
+            MainProgram.pengaturanLabelHarga.nama_printer = AppConfigHelper.GetValue("printerLabelHarga", _appConfigFile);
+            MainProgram.pengaturanLabelHarga.font_name = AppConfigHelper.GetValue("fontName", _appConfigFile, "Courier New");
+
+            MainProgram.pengaturanLabelHarga.batas_atas_baris1 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris1LabelHarga", _appConfigFile, "43"));
+            MainProgram.pengaturanLabelHarga.batas_atas_baris2 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris2LabelHarga", _appConfigFile, "187"));
+            MainProgram.pengaturanLabelHarga.batas_atas_baris3 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris3LabelHarga", _appConfigFile, "344"));
+            MainProgram.pengaturanLabelHarga.batas_atas_baris4 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris4LabelHarga", _appConfigFile, "496"));
+            MainProgram.pengaturanLabelHarga.batas_atas_baris5 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris5LabelHarga", _appConfigFile, "650"));
+            MainProgram.pengaturanLabelHarga.batas_atas_baris6 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris6LabelHarga", _appConfigFile, "805"));
+            MainProgram.pengaturanLabelHarga.batas_atas_baris7 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris7LabelHarga", _appConfigFile, "960"));
+            MainProgram.pengaturanLabelHarga.batas_atas_baris8 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris8LabelHarga", _appConfigFile, "1115"));
+
+            MainProgram.pengaturanLabelHarga.batas_kiri_kolom1 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom1LabelHarga", _appConfigFile, "30"));
+            MainProgram.pengaturanLabelHarga.batas_kiri_kolom2 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom2LabelHarga", _appConfigFile, "225"));
+            MainProgram.pengaturanLabelHarga.batas_kiri_kolom3 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom3LabelHarga", _appConfigFile, "425"));
+            MainProgram.pengaturanLabelHarga.batas_kiri_kolom4 = Convert.ToSingle(AppConfigHelper.GetValue("batasKiriKolom4LabelHarga", _appConfigFile, "625"));
+        }
+
         private void SetSettingPort()
         {
             MainProgram.settingPort = new SettingPort();
@@ -286,6 +307,7 @@ namespace OpenRetail.App.Main
                     SetProfil();
                     SetPengaturanUmum();
                     SetPengaturanBarcode();
+                    SetPengaturanLabelHarga();
                     SetSettingPort();
                     SetSettingCustomerDisplay();
                     LoadKabupaten();

@@ -108,6 +108,9 @@ namespace OpenRetail.Model
 
         [Write(false)]
         public List<HargaGrosir> list_of_harga_grosir { get; set; }
+
+        [Write(false)]
+        public Nullable<DateTime> last_update { get; set; }
 	}
 
     public class ProdukValidator : AbstractValidator<Produk>
