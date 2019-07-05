@@ -20,12 +20,13 @@ COPY m_menu (menu_id, nama_menu, judul_menu, parent_id, order_number, is_active,
 8a0ba72f-67d2-481f-9e10-a188f09effa5	mnuProduk	Produk	07b24b4b-cf52-4b3c-ab06-51f7312e4813	3	t	FrmListProduk	t
 8a8c6d23-963b-4819-819d-b9cdeaad7718	mnuGolongan	Golongan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	2	t	FrmListGolongan	t
 ed926af3-61a5-40e7-8975-de78c90eb784	mnuLapPenjualanPerGolongan	Penjualan Per Golongan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	9	t	FrmLapPenjualanPerGolongan	t
+95e9e230-c4f3-4fbc-9652-78cf4155d7ea	mnuPenyesuaianStok	Penyesuaian Stok	07b24b4b-cf52-4b3c-ab06-51f7312e4813	6	t	FrmListPenyesuaianStok	t
+fd48562f-9096-4cec-ad9c-37229fc072a3	mnuSupplier	Supplier	07b24b4b-cf52-4b3c-ab06-51f7312e4813	7	t	FrmListSupplier	t
+5ab9c82d-a116-4032-8891-cbfb7b71b8e3	mnuCustomer	Customer	07b24b4b-cf52-4b3c-ab06-51f7312e4813	8	t	FrmListCustomer	t
+7c7a2763-ed8b-41a7-a42d-b79233d02e02	mnuDropshipper	Dropshipper	07b24b4b-cf52-4b3c-ab06-51f7312e4813	9	t	FrmListDropshipper	t
 f18fbb6e-bd6f-5d21-fa8d-11923327b436	mnuKartu	Kartu	07b24b4b-cf52-4b3c-ab06-51f7312e4813	1	t	FrmListKartu	t
-95e9e230-c4f3-4fbc-9652-78cf4155d7ea	mnuPenyesuaianStok	Penyesuaian Stok	07b24b4b-cf52-4b3c-ab06-51f7312e4813	5	t	FrmListPenyesuaianStok	t
-fd48562f-9096-4cec-ad9c-37229fc072a3	mnuSupplier	Supplier	07b24b4b-cf52-4b3c-ab06-51f7312e4813	6	t	FrmListSupplier	t
-5ab9c82d-a116-4032-8891-cbfb7b71b8e3	mnuCustomer	Customer	07b24b4b-cf52-4b3c-ab06-51f7312e4813	7	t	FrmListCustomer	t
-7c7a2763-ed8b-41a7-a42d-b79233d02e02	mnuDropshipper	Dropshipper	07b24b4b-cf52-4b3c-ab06-51f7312e4813	8	t	FrmListDropshipper	t
-fa7e83ee-9b49-4cda-badd-d68cda7b7a9a	mnuCetakLabelBarcodeProduk	Cetak Label Barcode Produk	07b24b4b-cf52-4b3c-ab06-51f7312e4813	4	t	FrmCetakLabelBarcodeProduk	t
+fa7e83ee-9b49-4cda-badd-d68cda7b7a9a	mnuCetakLabelBarcodeProduk	Cetak Label Barcode Produk	07b24b4b-cf52-4b3c-ab06-51f7312e4813	5	t	FrmCetakLabelBarcodeProduk	t
+7cca3d24-3fc3-4c64-b361-78c0c7581920	mnuCetakLabelHargaProduk	Cetak Label Harga Produk	07b24b4b-cf52-4b3c-ab06-51f7312e4813	4	t	FrmCetakLabelHargaProduk	t
 b94a2365-c063-491e-a798-c68dccd2d80b	mnuLapPenjualanProdukFavorit	Penjualan Produk Favorit	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	11	t	FrmLapPenjualanProdukFavorit	t
 a1b976fc-99d3-4b5f-89b5-bc7e7fc4c0d2	mnuLapPenjualanPerKasir	Penjualan Per Kasir	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	10	t	FrmLapPenjualanPerKasir	t
 6f13d6e5-4322-4b4b-8fca-2278b04bd4eb	mnuLapPenjualan	Penjualan	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	17	t		t
@@ -44,6 +45,8 @@ a6043b21-18d0-4fcd-9ea9-f146542081d5	mnuPembelianProduk	Pembelian Produk	73e3254
 084488a3-092d-4e8c-8bf2-72dcf90262b4	mnuPembayaranHutangPembelianProduk	Pembayaran Hutang Pembelian Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	2	t	FrmListPembayaranHutangPembelianProduk	t
 870ec1d3-5b71-47dc-b241-1b0ae933217c	mnuReturPembelianProduk	Retur Pembelian Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	3	t	FrmListReturPembelianProduk	t
 b4be7b7c-4587-4af4-af07-fce34df723df	mnuPenjualanProduk	Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	4	t	FrmListPenjualanProduk	t
+e7be0d85-9f96-4095-be35-1da049028cef	mnuJabatan	Jabatan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	10	t	FrmListJabatan	t
+b7ade8cc-22aa-43c8-be9c-af6cb71d11a6	mnuKaryawan	Karyawan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	11	t	FrmListKaryawan	t
 99302348-4d3c-48dd-8d67-c422e3061f1c	mnuPembayaranPiutangPenjualanProduk	Pembayaran Piutang Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	5	t	FrmListPembayaranPiutangPenjualanProduk	t
 576b9f00-c29d-4c2c-9a6b-5a563344de93	mnuReturPenjualanProduk	Retur Penjualan Produk	73e32548-da86-4db9-b3f9-f2ecd81ea3c9	6	t	FrmListReturPenjualanProduk	t
 36aabcfa-60bc-48f5-9af6-30aa7600eb5b	mnuProfilPerusahaan	Profil Perusahaan	593c989d-be87-42bf-a11d-f177afcc2180	1	t	FrmProfilPerusahaan	t
@@ -54,9 +57,7 @@ b0b538ba-3535-4308-8012-9e2fa0daa0b0	mnuLapKartuHutangPembelianProduk	Kartu Huta
 5a4b0eab-0a7b-463a-bcf8-0cca0fbddded	mnuLapReturPembelianProduk	Retur Pembelian Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	5	t	FrmLapReturPembelianProduk	t
 6a593127-4efb-4d7e-be38-53894c4828d0	mnuLapPenjualanProduk	Penjualan Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	7	t	FrmLapPenjualanProduk	t
 f87b0496-d9cb-4aef-b9dd-b7fe62ac3a18	mnuLapPenjualanPerProduk	Penjualan Per Produk	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	8	t	FrmLapPenjualanPerProduk	t
-e7be0d85-9f96-4095-be35-1da049028cef	mnuJabatan	Jabatan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	9	t	FrmListJabatan	t
-b7ade8cc-22aa-43c8-be9c-af6cb71d11a6	mnuKaryawan	Karyawan	07b24b4b-cf52-4b3c-ab06-51f7312e4813	10	t	FrmListKaryawan	t
-b52e8eac-3bf6-4ebf-95a0-46ab9e7b0888	mnuJenisPengeluaran	Jenis Pengeluaran	07b24b4b-cf52-4b3c-ab06-51f7312e4813	11	t	FrmListJenisPengeluaran	t
+b52e8eac-3bf6-4ebf-95a0-46ab9e7b0888	mnuJenisPengeluaran	Jenis Pengeluaran	07b24b4b-cf52-4b3c-ab06-51f7312e4813	12	t	FrmListJenisPengeluaran	t
 08392673-2e61-4266-a6ae-5cb75fdf42e8	mnuPengeluaranBiaya	Pengeluaran Biaya	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	1	t	FrmListPengeluaranBiaya	t
 5c336652-4465-4b62-8de1-dac26fc696b6	mnuLapPengeluaranBiaya	Pengeluaran Biaya	3a62ea0b-0f48-495c-947b-ad5aa9af77f7	21	t	FrmLapPengeluaranBiaya	t
 13b929f3-d349-4686-b803-b350732003c8	mnuKasbon	Kasbon	d1bd5f93-996c-46a3-b80f-f4f50681a1f9	2	t	FrmListKasbon	t
