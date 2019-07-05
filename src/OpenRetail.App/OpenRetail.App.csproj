@@ -458,6 +458,12 @@
     <Compile Include="Referensi\FrmCetakLabelBarcodeProduk.Designer.cs">
       <DependentUpon>FrmCetakLabelBarcodeProduk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Referensi\FrmCetakLabelHargaProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Referensi\FrmCetakLabelHargaProduk.Designer.cs">
+      <DependentUpon>FrmCetakLabelHargaProduk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Referensi\FrmEntryKartu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -801,6 +807,9 @@
     </Compile>
     <EmbeddedResource Include="Referensi\FrmCetakLabelBarcodeProduk.resx">
       <DependentUpon>FrmCetakLabelBarcodeProduk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Referensi\FrmCetakLabelHargaProduk.resx">
+      <DependentUpon>FrmCetakLabelHargaProduk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Referensi\FrmEntryKartu.resx">
       <DependentUpon>FrmEntryKartu.cs</DependentUpon>
