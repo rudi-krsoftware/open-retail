@@ -37,7 +37,7 @@ namespace OpenRetail.WebAPI.Controllers
 	public interface IProdukController : IBaseApiController<ProdukDTO>
     {
         IHttpActionResult GetByID(string id);
-        IHttpActionResult GetByKode(string kodeProduk);
+        IHttpActionResult GetByKode(string kodeProduk, bool isCekStatusAktif);
         IHttpActionResult GetLastKodeProduk();
 
         IHttpActionResult GetByName(string name, bool isLoadHargaGrosir = true);
@@ -97,7 +97,7 @@ namespace OpenRetail.WebAPI.Controllers
         }
 
         [HttpGet, Route("get_by_kode")]
-        public IHttpActionResult GetByKode(string kodeProduk)
+        public IHttpActionResult GetByKode(string kodeProduk, bool isCekStatusAktif)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
             _response = Content(_httpStatusCode, new ResponsePackage(_httpStatusCode));
@@ -105,7 +105,7 @@ namespace OpenRetail.WebAPI.Controllers
             try
             {
                 var results = new List<Produk>();
-                var obj = _unitOfWork.ProdukRepository.GetByKode(kodeProduk);
+                var obj = _unitOfWork.ProdukRepository.GetByKode(kodeProduk, isCekStatusAktif);
 
                 if (obj != null)
                     results.Add(obj);

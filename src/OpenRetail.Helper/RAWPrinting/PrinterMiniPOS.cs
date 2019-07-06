@@ -44,6 +44,7 @@ namespace OpenRetail.Helper.RAWPrinting
             string autocutCode = "", string infoCopyright1 = "", string infoCopyright2 = "")
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
+            var isPrinterMiniPos58mm = jumlahKarakter <= 32;
             var textToPrint = new StringBuilder();            
             
             var totalSaldoAwal = 0d;
@@ -51,7 +52,7 @@ namespace OpenRetail.Helper.RAWPrinting
             var totalDiskon = 0d;
             var totalPPN = 0d;
             var grandTotal = 0d;
-            var maxFormatNumber = 10;
+            var maxFormatNumber = isPrinterMiniPos58mm ? 9 : 10;
 
             if (!Utils.IsRunningUnderIDE())
             {
@@ -112,12 +113,15 @@ namespace OpenRetail.Helper.RAWPrinting
                         var harga = StringHelper.RightAlignment(NumberHelper.NumberToString(produk.harga_jual), maxFormatNumber);
                         textToPrint.Append(harga);
 
-                        var diskon = StringHelper.RightAlignment(produk.diskon.ToString(), 7);
+                        var diskon = StringHelper.RightAlignment(produk.diskon.ToString(),
+                                isPrinterMiniPos58mm ? 3 : 7);
+
                         textToPrint.Append(diskon);
 
                         var subTotal = produk.jumlah * produk.harga_jual_setelah_diskon;
+                        var sSubTotal = StringHelper.RightAlignment(NumberHelper.NumberToString(subTotal),
+                                isPrinterMiniPos58mm ? garisPemisah.Length - 21 : garisPemisah.Length - 26);
 
-                        var sSubTotal = StringHelper.RightAlignment(NumberHelper.NumberToString(subTotal), garisPemisah.Length - 26);
                         textToPrint.Append(sSubTotal).Append(ESCCommandHelper.LineFeed(1));
                     }
 
@@ -187,7 +191,7 @@ namespace OpenRetail.Helper.RAWPrinting
             string autocutCode = "", string openCashDrawerCode = "", string infoCopyright1 = "", string infoCopyright2 = "")
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
-
+            var isPrinterMiniPos58mm = jumlahKarakter <= 32;
             var textToPrint = new StringBuilder();
 
             if (!Utils.IsRunningUnderIDE())
@@ -279,15 +283,19 @@ namespace OpenRetail.Helper.RAWPrinting
 
                 textToPrint.Append("  " + StringHelper.FixedLength("x", 3));
 
-                var harga = StringHelper.RightAlignment(NumberHelper.NumberToString(item.harga_jual), 10);
+                var harga = StringHelper.RightAlignment(NumberHelper.NumberToString(item.harga_jual),
+                        isPrinterMiniPos58mm ? 9 : 10);
+
                 textToPrint.Append(harga);
 
-                var diskon = StringHelper.RightAlignment(item.diskon.ToString(), 7);
+                var diskon = StringHelper.RightAlignment(item.diskon.ToString(), 
+                        isPrinterMiniPos58mm ? 3 : 7);
                 textToPrint.Append(diskon);
 
                 var subTotal = (item.jumlah - item.jumlah_retur) * item.harga_setelah_diskon;
+                var sSubTotal = StringHelper.RightAlignment(NumberHelper.NumberToString(subTotal), 
+                        isPrinterMiniPos58mm ? garisPemisah.Length - 21 : garisPemisah.Length - 26);
 
-                var sSubTotal = StringHelper.RightAlignment(NumberHelper.NumberToString(subTotal), garisPemisah.Length - 26);
                 textToPrint.Append(sSubTotal).Append(ESCCommandHelper.LineFeed(1));
             }
 

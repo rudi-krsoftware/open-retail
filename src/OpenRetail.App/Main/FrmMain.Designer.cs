@@ -44,6 +44,7 @@
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuGolongan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProduk = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCetakLabelHargaProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCetakLabelBarcodeProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPenyesuaianStok = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -138,6 +139,8 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuLapLabaRugiPenjualan = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -240,6 +243,7 @@
             this.toolStripSeparator17,
             this.mnuGolongan,
             this.mnuProduk,
+            this.mnuCetakLabelHargaProduk,
             this.mnuCetakLabelBarcodeProduk,
             this.mnuPenyesuaianStok,
             this.toolStripSeparator1,
@@ -283,6 +287,14 @@
             this.mnuProduk.Tag = "FrmListProduk";
             this.mnuProduk.Text = "Produk";
             this.mnuProduk.Click += new System.EventHandler(this.mnuProduk_Click);
+            // 
+            // mnuCetakLabelHargaProduk
+            // 
+            this.mnuCetakLabelHargaProduk.Name = "mnuCetakLabelHargaProduk";
+            this.mnuCetakLabelHargaProduk.Size = new System.Drawing.Size(222, 22);
+            this.mnuCetakLabelHargaProduk.Tag = "FrmCetakLabelHargaProduk";
+            this.mnuCetakLabelHargaProduk.Text = "Cetak Label Harga Produk";
+            this.mnuCetakLabelHargaProduk.Click += new System.EventHandler(this.mnuCetakLabelHargaProduk_Click);
             // 
             // mnuCetakLabelBarcodeProduk
             // 
@@ -374,7 +386,7 @@
             this.mnuPembayaranPiutangPenjualanProduk,
             this.mnuReturPenjualanProduk});
             this.mnuTransaksi.Name = "mnuTransaksi";
-            this.mnuTransaksi.Size = new System.Drawing.Size(68, 20);
+            this.mnuTransaksi.Size = new System.Drawing.Size(67, 20);
             this.mnuTransaksi.Text = "Transaksi";
             // 
             // mnuPembelianProduk
@@ -555,7 +567,9 @@
             this.mnuLapPembayaranPiutangPenjualanProduk,
             this.toolStripSeparator8,
             this.mnuLapKartuPiutangPenjualanProduk,
-            this.mnuLapReturPenjualanProduk});
+            this.mnuLapReturPenjualanProduk,
+            this.toolStripSeparator20,
+            this.mnuLapLabaRugiPenjualan});
             this.mnuLapPenjualan.Name = "mnuLapPenjualan";
             this.mnuLapPenjualan.Size = new System.Drawing.Size(227, 22);
             this.mnuLapPenjualan.Text = "Penjualan";
@@ -862,7 +876,7 @@
             // mnuCekUpdateTerbaru
             // 
             this.mnuCekUpdateTerbaru.Name = "mnuCekUpdateTerbaru";
-            this.mnuCekUpdateTerbaru.Size = new System.Drawing.Size(179, 22);
+            this.mnuCekUpdateTerbaru.Size = new System.Drawing.Size(178, 22);
             this.mnuCekUpdateTerbaru.Text = "Cek Update Terbaru";
             this.mnuCekUpdateTerbaru.Click += new System.EventHandler(this.mnuCekUpdateTerbaru_Click);
             // 
@@ -1063,6 +1077,19 @@
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
             // 
+            // toolStripSeparator20
+            // 
+            this.toolStripSeparator20.Name = "toolStripSeparator20";
+            this.toolStripSeparator20.Size = new System.Drawing.Size(277, 6);
+            // 
+            // mnuLapLabaRugiPenjualan
+            // 
+            this.mnuLapLabaRugiPenjualan.Name = "mnuLapLabaRugiPenjualan";
+            this.mnuLapLabaRugiPenjualan.Size = new System.Drawing.Size(280, 22);
+            this.mnuLapLabaRugiPenjualan.Tag = "FrmLapLabaRugiPenjualan";
+            this.mnuLapLabaRugiPenjualan.Text = "Laba/Rugi Penjualan";
+            this.mnuLapLabaRugiPenjualan.Click += new System.EventHandler(this.mnuLapLabaRugiPenjualan_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1201,5 +1228,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCetakLabelBarcodeProduk;
         private System.Windows.Forms.ToolStripMenuItem mnuGroupOpenRetail;
         private System.Windows.Forms.ToolStripMenuItem mnuLapPenjualanPerGolongan;
+        private System.Windows.Forms.ToolStripMenuItem mnuCetakLabelHargaProduk;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
+        private System.Windows.Forms.ToolStripMenuItem mnuLapLabaRugiPenjualan;
     }
 }

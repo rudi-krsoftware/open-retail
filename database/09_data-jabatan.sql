@@ -16,9 +16,12 @@ SET search_path = public, pg_catalog;
 --
 
 COPY m_jabatan (jabatan_id, nama_jabatan, keterangan) FROM stdin;
-448ee89a-04ae-4993-8071-49a3f28e3bb3	Kasir	
-183a66f0-93ab-41f9-aa04-d9bed4511280	Staf Administrasi	
-309a44f9-05a4-4af4-911d-ae5e25f83547	Owner	
+120d3472-ea93-4e29-8abd-5bd7044d26db	Kasir	
+f1e4ea09-b777-4e56-bb90-db2bf9211468	General Manager	
+583b27e0-1644-4884-8651-47789e7713e5	Staff Administrasi	
+edb47227-da98-4d97-bff2-b7ee41ff3400	Owner	Pemilik toko
+955d42f3-bd82-4aa7-8c9f-8a6207b0494d	Security	
+def6e55c-47d4-4381-9a67-4f2cdce1db4d	Sopir	
 \.
 
 

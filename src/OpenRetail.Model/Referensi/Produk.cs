@@ -82,6 +82,9 @@ namespace OpenRetail.Model
 		[Display(Name = "Stok Gudang")]
 		public double stok_gudang { get; set; }
 
+        [Display(Name = "Is Aktif")]
+        public bool is_aktif { get; set; }
+
         [Computed]
         public bool is_stok_minus 
         {
@@ -105,6 +108,9 @@ namespace OpenRetail.Model
 
         [Write(false)]
         public List<HargaGrosir> list_of_harga_grosir { get; set; }
+
+        [Write(false)]
+        public Nullable<DateTime> last_update { get; set; }
 	}
 
     public class ProdukValidator : AbstractValidator<Produk>

@@ -723,6 +723,16 @@ namespace OpenRetail.App.Main
         private void mnuLapPenjualanPerGolongan_Click(object sender, EventArgs e)
         {
             ShowFormDialog<FrmLapPenjualanPerGolongan>(sender);
+        }
+
+        private void mnuCetakLabelHargaProduk_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmCetakLabelHargaProduk>(sender);
+        }
+
+        private void mnuLapLabaRugiPenjualan_Click(object sender, EventArgs e)
+        {
+            ShowFormDialog<FrmLapLabaRugiPenjualan>(sender);
         }        
     }
 }

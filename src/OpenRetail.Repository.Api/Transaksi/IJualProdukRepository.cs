@@ -74,6 +74,8 @@ namespace OpenRetail.Repository.Api
 
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);
 
+        IList<JualProduk> GetByLimit(DateTime tanggalMulai, DateTime tanggalSelesai, int limit);
+
         IList<ItemJualProduk> GetItemJual(string jualId);
     }
 }     

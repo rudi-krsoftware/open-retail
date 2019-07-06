@@ -1278,6 +1278,44 @@ $$;
 
 ALTER FUNCTION public.f_update_total_retur_produk_aiud() OWNER TO postgres;
 
+--
+-- Name: fn_log_last_update(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION fn_log_last_update() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE 	
+    var_produk_id		t_guid;
+    var_harga_jual		t_harga;
+    var_harga_jual_old	t_harga;
+    
+BEGIN
+	IF TG_OP = 'UPDATE' THEN
+    	var_produk_id := NEW.produk_id;
+        var_harga_jual := NEW.harga_jual;        
+        var_harga_jual_old := OLD.harga_jual;    	
+    END IF;
+    
+    IF var_harga_jual IS NULL THEN
+    	var_harga_jual := 0;
+    END IF;
+    	   
+    IF var_harga_jual_old IS NULL THEN
+    	var_harga_jual_old := 0;
+    END IF;
+    
+    IF var_harga_jual_old <> var_harga_jual THEN
+    	UPDATE m_produk SET last_update = now() WHERE produk_id = var_produk_id;
+    END IF;
+    
+    RETURN NULL;
+END;
+$$;
+
+
+ALTER FUNCTION public.fn_log_last_update() OWNER TO postgres;
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -1637,7 +1675,9 @@ CREATE TABLE m_produk (
     stok_gudang t_jumlah,
     minimal_stok_gudang t_jumlah,
     diskon t_jumlah,
-    persentase_keuntungan t_jumlah
+    persentase_keuntungan t_jumlah,
+    is_aktif t_bool,
+    last_update timestamp(0) without time zone DEFAULT now()
 );
 
 
@@ -2106,9 +2146,9 @@ CREATE TABLE t_logs (
     class_name character varying(200),
     method_name character varying(100),
     message character varying(100),
-    new_value character varying(5000),
-    old_value character varying(5000),
-    exception character varying(5000),
+    new_value character varying(10000),
+    old_value character varying(10000),
+    exception character varying(10000),
     created_by character varying(50),
     log_date timestamp(0) without time zone DEFAULT now()
 );
@@ -2827,6 +2867,13 @@ CREATE INDEX m_produk_idx2 ON m_produk USING btree (golongan_id);
 
 
 --
+-- Name: m_produk_idx3; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX m_produk_idx3 ON m_produk USING btree (is_aktif);
+
+
+--
 -- Name: m_provinsi2_idx; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -3083,6 +3130,13 @@ CREATE TRIGGER tr_hapus_header_ad AFTER DELETE ON t_item_pembayaran_hutang_produ
 --
 
 CREATE TRIGGER tr_hapus_header_ad AFTER DELETE ON t_item_pembayaran_piutang_produk FOR EACH ROW EXECUTE PROCEDURE f_hapus_header_bayar_piutang_produk();
+
+
+--
+-- Name: tr_log_last_update; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER tr_log_last_update AFTER UPDATE OF harga_jual ON m_produk FOR EACH ROW EXECUTE PROCEDURE fn_log_last_update();
 
 
 --

@@ -720,6 +720,26 @@ namespace OpenRetail.Repository.Service
             }
 
             return oList;
-        }                        
+        }
+
+        public IList<JualProduk> GetByLimit(DateTime tanggalMulai, DateTime tanggalSelesai, int limit)
+        {
+            IList<JualProduk> oList = new List<JualProduk>();
+
+            try
+            {
+                _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE t_jual_produk.tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_jual_produk.nota DESC");
+                _sql = _sql.Replace("{OFFSET}", "LIMIT @limit");
+
+                oList = MappingRecordToObject(_sql, new { tanggalMulai, tanggalSelesai, limit }).ToList();
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error:", ex);
+            }
+
+            return oList;
+        }
     }
 }     

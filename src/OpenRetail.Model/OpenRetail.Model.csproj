@@ -62,6 +62,9 @@
     <Compile Include="Pengaturan\SettingCustomerDisplay.cs" />
     <Compile Include="Pengaturan\SettingPort.cs" />
     <Compile Include="Pengaturan\SettingLebarKolomTabelTransaksi.cs" />
+    <Compile Include="Referensi\LabelHargaProduk.cs" />
+    <Compile Include="Referensi\PengaturanLabelHarga.cs" />
+    <Compile Include="Report\ReportRugiLaba.cs" />
     <Compile Include="Transaksi\AlamatKirim.cs">
       <SubType>Code</SubType>
     </Compile>
