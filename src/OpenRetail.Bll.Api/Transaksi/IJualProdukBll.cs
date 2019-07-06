@@ -51,6 +51,8 @@ namespace OpenRetail.Bll.Api
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize, ref int pagesCount);
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);
 
+        IList<JualProduk> GetByLimit(DateTime tanggalMulai, DateTime tanggalSelesai, int limit);
+
         IList<ItemJualProduk> GetItemJual(string jualId);
 
 		int Save(JualProduk obj, ref ValidationError validationError);

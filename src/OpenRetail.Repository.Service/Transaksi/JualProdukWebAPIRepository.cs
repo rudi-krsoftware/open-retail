@@ -453,6 +453,12 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
+
+
+        public IList<JualProduk> GetByLimit(DateTime tanggalMulai, DateTime tanggalSelesai, int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
