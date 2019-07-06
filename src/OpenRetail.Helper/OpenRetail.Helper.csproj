@@ -221,7 +221,9 @@
     <Compile Include="UserControl\FilterRangeTanggal.Designer.cs">
       <DependentUpon>FilterRangeTanggal.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\LabelHargaProdukPanel.cs" />
+    <Compile Include="UserControl\LabelHargaProdukPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
