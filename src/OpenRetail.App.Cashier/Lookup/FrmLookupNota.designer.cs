@@ -1,6 +1,6 @@
 ﻿namespace OpenRetail.App.Cashier.Lookup
 {
-    partial class FrmLookupReferensi
+    partial class FrmLookupNota
     {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +44,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(950, 404);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(697, 353);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // gridList
@@ -57,20 +57,18 @@
             this.gridList.Name = "gridList";
             this.gridList.Properties.BackgroundColor = System.Drawing.SystemColors.Window;
             this.gridList.SelectedIndex = -1;
-            this.gridList.Size = new System.Drawing.Size(944, 398);
+            this.gridList.Size = new System.Drawing.Size(691, 347);
             this.gridList.TabIndex = 0;
             this.gridList.TopIndex = 0;
-            this.gridList.DoubleClick += new System.EventHandler(this.gridList_DoubleClick);
-            this.gridList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridList_KeyPress);
             // 
-            // FrmLookupReferensi
+            // FrmLookupNota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(950, 486);
+            this.ClientSize = new System.Drawing.Size(697, 435);
             this.Controls.Add(this.tableLayoutPanel3);
-            this.Name = "FrmLookupReferensi";
-            this.Text = "FrmLookupReferensi";
+            this.Name = "FrmLookupNota";
+            this.Text = "FrmLookupNota";
             this.Controls.SetChildIndex(this.tableLayoutPanel3, 0);
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridList)).EndInit();

@@ -145,6 +145,12 @@
     <Compile Include="Laporan\FrmLapPenjualan.Designer.cs">
       <DependentUpon>FrmLapPenjualan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lookup\FrmLookupNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lookup\FrmLookupNota.designer.cs">
+      <DependentUpon>FrmLookupNota.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lookup\FrmLookupReferensi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,12 +195,6 @@
     <Compile Include="Transaksi\FrmHapusItemTransaksi.Designer.cs">
       <DependentUpon>FrmHapusItemTransaksi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transaksi\FrmInfoNotaTerakhir.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Transaksi\FrmInfoNotaTerakhir.designer.cs">
-      <DependentUpon>FrmInfoNotaTerakhir.cs</DependentUpon>
-    </Compile>
     <Compile Include="Transaksi\FrmBayar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +212,9 @@
     </Compile>
     <EmbeddedResource Include="Laporan\FrmLapPenjualan.resx">
       <DependentUpon>FrmLapPenjualan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lookup\FrmLookupNota.resx">
+      <DependentUpon>FrmLookupNota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lookup\FrmLookupReferensi.resx">
       <DependentUpon>FrmLookupReferensi.cs</DependentUpon>
@@ -243,9 +246,6 @@
     </Compile>
     <EmbeddedResource Include="Transaksi\FrmHapusItemTransaksi.resx">
       <DependentUpon>FrmHapusItemTransaksi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Transaksi\FrmInfoNotaTerakhir.resx">
-      <DependentUpon>FrmInfoNotaTerakhir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaksi\FrmBayar.resx">
       <DependentUpon>FrmBayar.cs</DependentUpon>

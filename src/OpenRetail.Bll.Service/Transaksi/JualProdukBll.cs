@@ -455,6 +455,27 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
+        public IList<JualProduk> GetByLimit(DateTime tanggalMulai, DateTime tanggalSelesai, int limit)
+        {
+            IList<JualProduk> oList = null;
+
+            if (_isUseWebAPI)
+            {
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
+                oList = _unitOfWork.JualProdukRepository.GetByLimit(tanggalMulai, tanggalSelesai, limit);
+            }
+            else
+            {
+                using (IDapperContext context = new DapperContext())
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    oList = _unitOfWork.JualProdukRepository.GetByLimit(tanggalMulai, tanggalSelesai, limit);
+                }
+            }
+
+            return oList;
+        }
+
         public IList<ItemJualProduk> GetItemJual(string jualId)
         {
             IList<ItemJualProduk> oList = null;
@@ -474,6 +495,6 @@ namespace OpenRetail.Bll.Service
             }            
 
             return oList;
-        }                        
+        }        
     }
 }     

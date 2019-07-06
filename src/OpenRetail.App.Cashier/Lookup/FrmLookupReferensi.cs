@@ -70,14 +70,20 @@ namespace OpenRetail.App.Cashier.Lookup
         {
             var gridListProperties = new List<GridListControlProperties>();
 
-            gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
+            gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 50 });
 
             var listCount = 0;
+
+            this.gridList.Grid.QueryRowHeight += delegate(object sender, GridRowColSizeEventArgs e)
+            {
+                e.Size = 27;
+                e.Handled = true;
+            };
 
             switch (this._referensiType)
             {
                 case ReferencesType.Customer:
-                    gridListProperties.Add(new GridListControlProperties { Header = "Nama Customer", Width = 200 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Nama Customer", Width = 400 });
                     gridListProperties.Add(new GridListControlProperties { Header = "Alamat" });
 
                     GridListControlHelper.InitializeGridListControl<Customer>(this.gridList, _listOfCustomer, gridListProperties);
@@ -88,10 +94,10 @@ namespace OpenRetail.App.Cashier.Lookup
                     break;
 
                 case ReferencesType.Produk:
-                    gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 100 });
-                    gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 260 });
-                    gridListProperties.Add(new GridListControlProperties { Header = "Harga", Width = 70 });
-                    gridListProperties.Add(new GridListControlProperties { Header = "Stok", Width = 50 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Kode Produk", Width = 150 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 400 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Harga", Width = 120 });
+                    gridListProperties.Add(new GridListControlProperties { Header = "Stok", Width = 70 });
                     gridListProperties.Add(new GridListControlProperties { Header = "Golongan" });
                     GridListControlHelper.InitializeGridListControl<Produk>(this.gridList, _listOfProduk, gridListProperties);
                     this.gridList.Grid.QueryCellInfo += GridProduk_QueryCellInfo;
@@ -113,6 +119,8 @@ namespace OpenRetail.App.Cashier.Lookup
             {
                 if (e.RowIndex > 0)
                 {
+                    e.Style.Font = new GridFontInfo(new Font("Arial", 14f));
+
                     var rowIndex = e.RowIndex - 1;
 
                     if (rowIndex < _listOfCustomer.Count)
@@ -146,6 +154,8 @@ namespace OpenRetail.App.Cashier.Lookup
             {
                 if (e.RowIndex > 0)
                 {
+                    e.Style.Font = new GridFontInfo(new Font("Arial", 14f));
+
                     var rowIndex = e.RowIndex - 1;
 
                     if (rowIndex < _listOfProduk.Count)

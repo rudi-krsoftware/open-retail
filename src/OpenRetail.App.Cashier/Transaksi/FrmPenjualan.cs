@@ -993,18 +993,20 @@ namespace OpenRetail.App.Cashier.Transaksi
                                 break;
 
                             case Keys.F8: // cek nota terakhir
-                                var jual = _bll.GetListItemNotaTerakhir(_pengguna.pengguna_id, MainProgram.mesinId);
+                                var limit = 1000;
 
-                                if (jual == null)
+                                var tglMulai = DateTime.Today.AddDays(-7);
+
+                                var listOfJual = _bll.GetByLimit(tglMulai, DateTime.Today, limit);
+                                if (!(listOfJual.Count > 0))
                                 {
                                     ShowMessage("Belum ada info nota terakhir", true);
                                     return;
                                 }
 
-                                jual.item_jual = _bll.GetItemJual(jual.jual_id).ToList();
-                                var frmInfoNota = new FrmInfoNotaTerakhir("Info Nota Terakhir", jual);
-                                frmInfoNota.ShowDialog();
-                                
+                                var frmListNota = new FrmLookupNota("Daftar Nota", listOfJual);
+                                frmListNota.ShowDialog();
+
                                 break;
 
                             case Keys.F10: // bayar
