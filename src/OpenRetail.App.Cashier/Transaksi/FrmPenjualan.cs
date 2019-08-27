@@ -332,7 +332,7 @@ namespace OpenRetail.App.Cashier.Transaksi
         {
             var result = hargaJualRetail;
 
-            if (jumlah > 1)
+            if (jumlah >= 1)
             {
                 var grosir = GetHargaGrosir(produk, jumlah);
                 if (grosir != null)
@@ -349,7 +349,7 @@ namespace OpenRetail.App.Cashier.Transaksi
         {
             var result = diskonJualRetail;
 
-            if (jumlah > 1)
+            if (jumlah >= 1)
             {
                 var grosir = GetHargaGrosir(produk, jumlah);
                 if (grosir != null)
