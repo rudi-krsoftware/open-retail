@@ -127,8 +127,13 @@ namespace OpenRetail.Helper.RAWPrinting
 
                     textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(1));
                     textToPrint.Append("Total item : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.item_jual.Count), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
-                    textToPrint.Append("Diskon     : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.jual.diskon), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
-                    textToPrint.Append("PPN        : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.jual.ppn), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+
+                    if (mesin.jual.diskon > 0)
+                        textToPrint.Append("Diskon     : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.jual.diskon), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+
+                    if (mesin.jual.ppn > 0)
+                        textToPrint.Append("PPN        : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.jual.ppn), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+
                     textToPrint.Append("Total      : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(mesin.jual.grand_total), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
                     textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(1));
 
@@ -152,8 +157,13 @@ namespace OpenRetail.Helper.RAWPrinting
                 textToPrint.Append("Grand Total:").Append(ESCCommandHelper.LineFeed(1));
                 textToPrint.Append("Saldo Awal : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(totalSaldoAwal), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
                 textToPrint.Append("Total item : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(totalItem), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
-                textToPrint.Append("Diskon     : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(totalDiskon), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
-                textToPrint.Append("PPN        : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(totalPPN), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+
+                if (totalDiskon > 0)
+                    textToPrint.Append("Diskon     : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(totalDiskon), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+
+                if (totalPPN > 0)
+                    textToPrint.Append("PPN        : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(totalPPN), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
+
                 textToPrint.Append("Total      : ").Append(StringHelper.RightAlignment(NumberHelper.NumberToString(grandTotal), maxFormatNumber)).Append(ESCCommandHelper.LineFeed(1));
             }
             else
@@ -318,11 +328,17 @@ namespace OpenRetail.Helper.RAWPrinting
             textToPrint.Append(StringHelper.FixedLength("Total Item", fixedLengthLabelFooter));
             textToPrint.Append(" : " + StringHelper.RightAlignment(NumberHelper.NumberToString(jual.item_jual.Count), fixedLengthValueFooter)).Append(ESCCommandHelper.LineFeed(1));
 
-            textToPrint.Append(StringHelper.FixedLength("Diskon", fixedLengthLabelFooter));
-            textToPrint.Append(" : " + StringHelper.RightAlignment(NumberHelper.NumberToString(jual.diskon), fixedLengthValueFooter)).Append(ESCCommandHelper.LineFeed(1));
+            if (jual.diskon > 0)
+            {
+                textToPrint.Append(StringHelper.FixedLength("Diskon", fixedLengthLabelFooter));
+                textToPrint.Append(" : " + StringHelper.RightAlignment(NumberHelper.NumberToString(jual.diskon), fixedLengthValueFooter)).Append(ESCCommandHelper.LineFeed(1));
+            }            
 
-            textToPrint.Append(StringHelper.FixedLength("PPN", fixedLengthLabelFooter));
-            textToPrint.Append(" : " + StringHelper.RightAlignment(NumberHelper.NumberToString(jual.ppn), fixedLengthValueFooter)).Append(ESCCommandHelper.LineFeed(1));
+            if (jual.ppn > 0)
+            {
+                textToPrint.Append(StringHelper.FixedLength("PPN", fixedLengthLabelFooter));
+                textToPrint.Append(" : " + StringHelper.RightAlignment(NumberHelper.NumberToString(jual.ppn), fixedLengthValueFooter)).Append(ESCCommandHelper.LineFeed(1));
+            }            
 
             textToPrint.Append(StringHelper.FixedLength("Total", fixedLengthLabelFooter));
             textToPrint.Append(" : " + StringHelper.RightAlignment(NumberHelper.NumberToString(jual.grand_total), fixedLengthValueFooter)).Append(ESCCommandHelper.LineFeed(1));

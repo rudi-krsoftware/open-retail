@@ -332,7 +332,7 @@ namespace OpenRetail.App.Cashier.Transaksi
         {
             var result = hargaJualRetail;
 
-            if (jumlah > 1)
+            if (jumlah >= 1)
             {
                 var grosir = GetHargaGrosir(produk, jumlah);
                 if (grosir != null)
@@ -349,7 +349,7 @@ namespace OpenRetail.App.Cashier.Transaksi
         {
             var result = diskonJualRetail;
 
-            if (jumlah > 1)
+            if (jumlah >= 1)
             {
                 var grosir = GetHargaGrosir(produk, jumlah);
                 if (grosir != null)
@@ -420,6 +420,8 @@ namespace OpenRetail.App.Cashier.Transaksi
                 itemJual.entity_state = EntityState.Modified;
 
             itemJual.jumlah += 1;
+            itemJual.diskon = GetDiskonJualFix(itemJual.Produk, itemJual.jumlah, itemJual.diskon);
+            itemJual.harga_jual = GetHargaJualFix(itemJual.Produk, itemJual.jumlah, itemJual.harga_jual);
 
             _listOfItemJual[rowIndex] = itemJual;
         }
