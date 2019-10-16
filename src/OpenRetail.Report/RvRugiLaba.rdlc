@@ -37,7 +37,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(Fields!penjualan.Value, 0)</Value>
+                <Value>=FormatNumber(Fields!penjualan.Value, 2)</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -158,7 +158,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(Fields!penjualan.Value - Fields!diskon.Value, 0)</Value>
+                <Value>=FormatNumber(Fields!penjualan.Value - Fields!diskon.Value, 2)</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -190,7 +190,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(Fields!diskon.Value, 0)</Value>
+                <Value>=FormatNumber(Fields!diskon.Value, 2)</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -280,7 +280,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(Fields!return_penjualan.Value, 0)</Value>
+                <Value>=FormatNumber(Fields!return_penjualan.Value, 2)</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -312,7 +312,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(Fields!hpp.Value, 0)</Value>
+                <Value>=FormatNumber(Fields!hpp.Value, 2)</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -375,7 +375,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatNumber(Fields!penjualan.Value - Fields!diskon.Value - Fields!return_penjualan.Value - Fields!hpp.Value, 0)</Value>
+                <Value>=FormatNumber(Fields!penjualan.Value - Fields!diskon.Value - Fields!return_penjualan.Value - Fields!hpp.Value, 2)</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
