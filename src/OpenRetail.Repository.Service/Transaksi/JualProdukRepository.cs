@@ -138,16 +138,20 @@ namespace OpenRetail.Repository.Service
             {
                 var sql = @"SELECT t_item_jual_produk.item_jual_id, t_item_jual_produk.jual_id, t_item_jual_produk.pengguna_id, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual, 
                             t_item_jual_produk.jumlah, t_item_jual_produk.jumlah AS old_jumlah, t_item_jual_produk.jumlah_retur, t_item_jual_produk.diskon, COALESCE(t_item_jual_produk.keterangan, t_item_jual_produk.keterangan, '') AS keterangan, t_item_jual_produk.tanggal_sistem, 1 as entity_state,
-                            m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon, m_produk.stok, m_produk.stok_gudang
+                            m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon, m_produk.stok, m_produk.stok_gudang,
+                            m_golongan.golongan_id, m_golongan.nama_golongan, m_golongan.diskon
                             FROM public.t_item_jual_produk INNER JOIN public.m_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
+                            INNER JOIN public.m_golongan ON m_golongan.golongan_id = m_produk.golongan_id
                             WHERE t_item_jual_produk.jual_id = @jualId
                             ORDER BY t_item_jual_produk.tanggal_sistem";
 
-                oList = _context.db.Query<ItemJualProduk, Produk, ItemJualProduk>(sql, (ij, p) =>
+                oList = _context.db.Query<ItemJualProduk, Produk, Golongan, ItemJualProduk>(sql, (ij, p, g) =>
                 {
+                    p.golongan_id = g.golongan_id; p.Golongan = g;
                     ij.produk_id = p.produk_id; ij.Produk = p;
+
                     return ij;
-                }, new { jualId }, splitOn: "produk_id").ToList();
+                }, new { jualId }, splitOn: "produk_id, golongan_id").ToList();
 
                 foreach (var item in oList)
                 {
