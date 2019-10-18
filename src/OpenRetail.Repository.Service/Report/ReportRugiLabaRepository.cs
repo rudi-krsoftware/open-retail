@@ -44,7 +44,7 @@ namespace OpenRetail.Repository.Service.Report
                                                             FROM t_jual_produk INNER JOIN t_item_jual_produk ON t_jual_produk.jual_id = t_item_jual_produk.jual_id
                                                             {WHERE}";
 
-        private const string SQL_TEMPLATE_HPP = @"SELECT COALESCE(SUM(t_item_jual_produk.harga_beli), SUM(t_item_jual_produk.harga_beli), 0)
+        private const string SQL_TEMPLATE_HPP = @"SELECT SUM(t_item_jual_produk.harga_beli * (t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur))
                                                   FROM t_jual_produk INNER JOIN t_item_jual_produk ON t_jual_produk.jual_id = t_item_jual_produk.jual_id
                                                   {WHERE}";
 
