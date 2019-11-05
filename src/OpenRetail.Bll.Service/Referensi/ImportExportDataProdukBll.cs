@@ -212,6 +212,7 @@ namespace OpenRetail.Bll.Service
                             var oldProduk = _unitOfWork.ProdukRepository.GetByKode(produk.kode_produk);
                             if (oldProduk == null)
                             {
+                                produk.is_aktif = true;
                                 result = Convert.ToBoolean(_unitOfWork.ProdukRepository.Save(produk));
                             }                                
                             else
@@ -221,6 +222,7 @@ namespace OpenRetail.Bll.Service
                                 produk.kode_produk_old = oldProduk.kode_produk;
                                 produk.stok = oldProduk.stok;
                                 produk.stok_gudang = oldProduk.stok_gudang;
+                                produk.is_aktif = oldProduk.is_aktif;
 
                                 foreach (var grosir in produk.list_of_harga_grosir.OrderBy(f => f.harga_ke))
                                 {
