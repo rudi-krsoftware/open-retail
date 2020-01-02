@@ -106,7 +106,7 @@ namespace OpenRetail.App.Cashier.Transaksi
             );
 
             gridListProperties.Add(new GridListControlProperties { Header = "Jumlah", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_jumlah });
-            gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_diskon });
+            gridListProperties.Add(new GridListControlProperties { Header = "Diskon (%)", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_diskon });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga", Width = _settingLebarKolomTabelTransaksi.lebar_kolom_harga });
             gridListProperties.Add(new GridListControlProperties { Header = "Sub Total" });
 

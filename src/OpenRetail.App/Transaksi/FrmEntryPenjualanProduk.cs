@@ -190,7 +190,7 @@ namespace OpenRetail.App.Transaksi
             gridListProperties.Add(new GridListControlProperties 
                 { 
                     Header = "Nama Produk", 
-                    Width = _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual ? 390 : 500
+                    Width = _pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual ? 370 : 480
                 }
             );
 
@@ -202,7 +202,7 @@ namespace OpenRetail.App.Transaksi
             );
 
             gridListProperties.Add(new GridListControlProperties { Header = "Jumlah", Width = 50 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Diskon", Width = 50 });
+            gridListProperties.Add(new GridListControlProperties { Header = "Diskon (%)", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga", Width = 90 });
             gridListProperties.Add(new GridListControlProperties { Header = "Sub Total", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Aksi" });
