@@ -84,6 +84,8 @@ namespace OpenRetail.App.Main
         private ILog _log;        
 
         private ThreadHelper _lightSleeper = new ThreadHelper();
+        private BackgroundWorker _backgroundWorker = null;
+        private bool _isCheckOnlineUpdateBackgroundWorker;
 
         public bool IsLogout { get; private set; }
 
@@ -148,7 +150,40 @@ namespace OpenRetail.App.Main
             SetMenuId();
             SetDisabledMenuAndToolbar(menuStrip1, toolStrip1);
             
-            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;            
+            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
+            RunOnlineUpdateBackgroundWorker();
+        }
+
+        private void RunOnlineUpdateBackgroundWorker()
+        {
+            _isCheckOnlineUpdateBackgroundWorker = true;
+
+            _backgroundWorker = new BackgroundWorker();
+            _backgroundWorker.DoWork += DoWorkEventHandler;
+            _backgroundWorker.RunWorkerCompleted += DoWorkCompletedEventHandler;
+            _backgroundWorker.RunWorkerAsync();
+        }
+
+        private void DoWorkEventHandler(object sender, DoWorkEventArgs e)
+        {
+            if (MainProgram.onlineUpdateUrlInfo.Length > 0)
+            {
+                using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
+                {
+                    AutoUpdater.Start(MainProgram.onlineUpdateUrlInfo);
+
+                    while (!_lightSleeper.HasBeenCanceled)
+                    {
+                        _lightSleeper.Sleep(10000);
+                    }
+                }
+            }            
+        }
+
+        private void DoWorkCompletedEventHandler(object sender, RunWorkerCompletedEventArgs e)
+        {
+            _backgroundWorker.DoWork -= DoWorkEventHandler;
+            _backgroundWorker.RunWorkerCompleted -= DoWorkCompletedEventHandler;
         }
 
         private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
@@ -185,12 +220,14 @@ namespace OpenRetail.App.Main
                 }
                 else
                 {
-                    MessageBox.Show("Tidak ada update yang tersedia, silahkan dicoba lain waktu.", "Update belum tersedia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (!_isCheckOnlineUpdateBackgroundWorker)
+                        MessageBox.Show("Tidak ada update yang tersedia, silahkan dicoba lain waktu.", "Update belum tersedia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Gagal melakukan koneksi ke server, silahkan dicoba lain waktu.", "Cek update terbaru gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!_isCheckOnlineUpdateBackgroundWorker)
+                    MessageBox.Show("Gagal melakukan koneksi ke server, silahkan dicoba lain waktu.", "Cek update terbaru gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -669,6 +706,8 @@ namespace OpenRetail.App.Main
         {
             if (MainProgram.onlineUpdateUrlInfo.Length > 0)
             {
+                _isCheckOnlineUpdateBackgroundWorker = false;
+
                 using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                 {
                     AutoUpdater.Start(MainProgram.onlineUpdateUrlInfo);
