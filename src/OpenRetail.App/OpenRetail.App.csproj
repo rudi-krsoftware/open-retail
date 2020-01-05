@@ -1039,7 +1039,6 @@
     <None Include="Resources\code32.png" />
     <None Include="Resources\code16.png" />
     <None Include="Resources\code.png" />
-    <None Include="Resources\background-server.png" />
     <None Include="Resources\open16.png" />
     <None Include="Resources\donasi-fix.png" />
     <None Include="Resources\label16.png" />

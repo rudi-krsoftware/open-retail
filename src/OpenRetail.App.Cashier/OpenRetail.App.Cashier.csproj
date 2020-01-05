@@ -286,7 +286,6 @@
   <ItemGroup>
     <Content Include="main-icon-cashier.ico" />
     <None Include="Resources\code32.png" />
-    <None Include="Resources\background-cashier.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\login2.png" />

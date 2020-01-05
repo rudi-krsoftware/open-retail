@@ -89,6 +89,8 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLapKartuPiutangPenjualanProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapReturPenjualanProduk = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuLapLabaRugiPenjualan = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLapStokProduk = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLapPenyesuaianStok = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,8 +141,6 @@
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tbLapPembelianProduk = new System.Windows.Forms.ToolStripButton();
             this.tbLapPenjualanProduk = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuLapLabaRugiPenjualan = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -664,6 +664,19 @@
             this.mnuLapReturPenjualanProduk.Text = "Retur Penjualan Produk";
             this.mnuLapReturPenjualanProduk.Click += new System.EventHandler(this.mnuLapReturPenjualanProduk_Click);
             // 
+            // toolStripSeparator20
+            // 
+            this.toolStripSeparator20.Name = "toolStripSeparator20";
+            this.toolStripSeparator20.Size = new System.Drawing.Size(277, 6);
+            // 
+            // mnuLapLabaRugiPenjualan
+            // 
+            this.mnuLapLabaRugiPenjualan.Name = "mnuLapLabaRugiPenjualan";
+            this.mnuLapLabaRugiPenjualan.Size = new System.Drawing.Size(280, 22);
+            this.mnuLapLabaRugiPenjualan.Tag = "FrmLapLabaRugiPenjualan";
+            this.mnuLapLabaRugiPenjualan.Text = "Laba/Rugi Penjualan";
+            this.mnuLapLabaRugiPenjualan.Click += new System.EventHandler(this.mnuLapLabaRugiPenjualan_Click);
+            // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
@@ -1076,19 +1089,6 @@
             this.tbLapPenjualanProduk.Size = new System.Drawing.Size(36, 36);
             this.tbLapPenjualanProduk.Tag = "FrmLapPenjualanProduk";
             this.tbLapPenjualanProduk.Text = "Laporan Penjualan Produk";
-            // 
-            // toolStripSeparator20
-            // 
-            this.toolStripSeparator20.Name = "toolStripSeparator20";
-            this.toolStripSeparator20.Size = new System.Drawing.Size(277, 6);
-            // 
-            // mnuLapLabaRugiPenjualan
-            // 
-            this.mnuLapLabaRugiPenjualan.Name = "mnuLapLabaRugiPenjualan";
-            this.mnuLapLabaRugiPenjualan.Size = new System.Drawing.Size(280, 22);
-            this.mnuLapLabaRugiPenjualan.Tag = "FrmLapLabaRugiPenjualan";
-            this.mnuLapLabaRugiPenjualan.Text = "Laba/Rugi Penjualan";
-            this.mnuLapLabaRugiPenjualan.Click += new System.EventHandler(this.mnuLapLabaRugiPenjualan_Click);
             // 
             // FrmMain
             // 
