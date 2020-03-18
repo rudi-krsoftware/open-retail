@@ -16,16 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Bll.Api.Report;
+using OpenRetail.Model.Report;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using log4net;
-using OpenRetail.Model.Report;
-using OpenRetail.Bll.Api.Report;
-using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
 
 namespace OpenRetail.Bll.Service.Report
 {
@@ -79,7 +77,7 @@ namespace OpenRetail.Bll.Service.Report
         {
             var currentSupplierId = string.Empty;
             var isFirstRecord = false;
-            double saldo = 0;            
+            double saldo = 0;
 
             foreach (var item in listOfSaldoAkhir)
             {
@@ -92,7 +90,7 @@ namespace OpenRetail.Bll.Service.Report
                     }
 
                     saldo = 0;
-                    currentSupplierId = item.supplier_id;                    
+                    currentSupplierId = item.supplier_id;
                     isFirstRecord = true;
                 }
 
@@ -212,6 +210,6 @@ namespace OpenRetail.Bll.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

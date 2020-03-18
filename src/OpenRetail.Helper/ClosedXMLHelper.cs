@@ -16,13 +16,8 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using ClosedXML.Excel;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Helper
 {

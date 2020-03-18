@@ -20,7 +20,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace OpenRetail.Helper.UserControl
@@ -30,9 +29,9 @@ namespace OpenRetail.Helper.UserControl
         public LabelHargaProdukPanel()
         {
             this.SuspendLayout();
-            // 
+            //
             // BarcodePanel
-            // 
+            //
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;

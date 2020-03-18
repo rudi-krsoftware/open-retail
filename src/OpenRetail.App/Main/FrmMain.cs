@@ -16,29 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using AutoUpdaterDotNET;
+using ConceptCave.WaitCursor;
+using log4net;
+using OpenRetail.App.Laporan;
+using OpenRetail.App.Pengaturan;
+using OpenRetail.App.Pengeluaran;
+using OpenRetail.App.Referensi;
+using OpenRetail.App.Transaksi;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using WeifenLuo.WinFormsUI.Docking;
-
-using OpenRetail.App.Referensi;
-using OpenRetail.App.Transaksi;
-using OpenRetail.App.Pengeluaran;
-using OpenRetail.App.Laporan;
-using OpenRetail.App.Pengaturan;
-using OpenRetail.Helper;
-using ConceptCave.WaitCursor;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using log4net;
-using AutoUpdaterDotNET;
-using System.Threading;
 
 namespace OpenRetail.App.Main
 {
@@ -77,11 +72,12 @@ namespace OpenRetail.App.Main
         private FrmListOperator _frmListOperator;
 
         /// <summary>
-        /// Variabel lokal untuk menampung menu id. 
+        /// Variabel lokal untuk menampung menu id.
         /// Menu id digunakan untuk mengeset hak akses masing-masing form yang diakses
         /// </summary>
         private Dictionary<string, string> _getMenuID;
-        private ILog _log;        
+
+        private ILog _log;
 
         private ThreadHelper _lightSleeper = new ThreadHelper();
 
@@ -122,7 +118,7 @@ namespace OpenRetail.App.Main
                     return cp;
                 }
             }
-        }        
+        }
 
         private IEnumerable<ToolStripMenuItem> GetItems(ToolStripMenuItem menuItem)
         {
@@ -147,8 +143,8 @@ namespace OpenRetail.App.Main
         {
             SetMenuId();
             SetDisabledMenuAndToolbar(menuStrip1, toolStrip1);
-            
-            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;            
+
+            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
         }
 
         private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
@@ -158,7 +154,7 @@ namespace OpenRetail.App.Main
             if (args != null)
             {
                 if (args.IsUpdateAvailable)
-                {                    
+                {
                     var msg = "Update terbaru versi {0} sudah tersedia. Saat ini Anda sedang menggunakan Versi {1}\n\nApakah Anda ingin memperbarui aplikasi ini sekarang ?";
 
                     var installedVersion = string.Format("{0}.{1}.{2}.{3} (v{0}.{1}.{2}{4})", args.InstalledVersion.Major, args.InstalledVersion.Minor, args.InstalledVersion.Build, args.InstalledVersion.Revision, MainProgram.stageOfDevelopment);
@@ -215,7 +211,7 @@ namespace OpenRetail.App.Main
             var listOfMenu = menuBll.GetAll()
                                     .Where(f => f.parent_id != null && f.nama_form.Length > 0)
                                     .ToList();
-            
+
             // perulangan untuk mengecek menu dan sub menu
             foreach (ToolStripMenuItem parentMenu in menuStrip.Items)
             {
@@ -287,14 +283,14 @@ namespace OpenRetail.App.Main
         private bool IsChildFormExists(Form frm)
         {
             return !(frm == null || frm.IsDisposed);
-        }        
+        }
 
         private void CloseAllDocuments()
         {
             foreach (var form in MdiChildren)
             {
                 form.Close();
-            }                
+            }
         }
 
         private void ShowForm<T>(object sender, ref T form)
@@ -379,7 +375,7 @@ namespace OpenRetail.App.Main
         private void mnuGolongan_Click(object sender, EventArgs e)
         {
             ShowForm<FrmListGolongan>(sender, ref _frmListGolongan);
-        }        
+        }
 
         private void mnuProduk_Click(object sender, EventArgs e)
         {
@@ -399,7 +395,7 @@ namespace OpenRetail.App.Main
         private void mnuJabatan_Click(object sender, EventArgs e)
         {
             ShowForm<FrmListJabatan>(sender, ref _frmListJabatan);
-        }        
+        }
 
         private void mnuPembelianProduk_Click(object sender, EventArgs e)
         {
@@ -486,7 +482,7 @@ namespace OpenRetail.App.Main
         }
 
         private void mnuGantiUser_Click(object sender, EventArgs e)
-        {            
+        {
             if (MsgHelper.MsgKonfirmasi("Apakah proses ingin dilanjutkan ?"))
             {
                 using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
@@ -539,7 +535,7 @@ namespace OpenRetail.App.Main
         {
             var url = "https://openretailblog.wordpress.com/registrasi/";
             OpenUrl(url);
-        }        
+        }
 
         private void mnuDukungPengembanganOpenRetail_Click(object sender, EventArgs e)
         {
@@ -673,7 +669,7 @@ namespace OpenRetail.App.Main
                     while (!_lightSleeper.HasBeenCanceled)
                     {
                         _lightSleeper.Sleep(10000);
-                    } 
+                    }
                 }
             }
             else
@@ -733,6 +729,6 @@ namespace OpenRetail.App.Main
         private void mnuLapLabaRugiPenjualan_Click(object sender, EventArgs e)
         {
             ShowFormDialog<FrmLapLabaRugiPenjualan>(sender);
-        }        
+        }
     }
 }

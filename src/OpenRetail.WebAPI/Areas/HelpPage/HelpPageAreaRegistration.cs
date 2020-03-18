@@ -1,6 +1,3 @@
-using System.Web.Http;
-using System.Web.Mvc;
-
 namespace OpenRetail.WebAPI.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration

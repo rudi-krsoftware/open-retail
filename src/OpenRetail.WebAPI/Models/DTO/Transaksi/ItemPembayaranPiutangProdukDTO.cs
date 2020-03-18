@@ -16,45 +16,40 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
 using FluentValidation;
-using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 using OpenRetail.Model;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.WebAPI.Models.DTO
 {
     public class ItemPembayaranPiutangProdukDTO
     {
-		[Display(Name = "item_pembayaran_piutang_id")]		
-		public string item_pembayaran_piutang_id { get; set; }
-		
-		[Display(Name = "pembayaran_piutang_id")]
-		public string pembayaran_piutang_id { get; set; }
+        [Display(Name = "item_pembayaran_piutang_id")]
+        public string item_pembayaran_piutang_id { get; set; }
+
+        [Display(Name = "pembayaran_piutang_id")]
+        public string pembayaran_piutang_id { get; set; }
 
         [JsonIgnore]
         public PembayaranPiutangProdukDTO PembayaranPiutangProduk { get; set; }
 
-		[Display(Name = "jual_id")]
-		public string jual_id { get; set; }
+        [Display(Name = "jual_id")]
+        public string jual_id { get; set; }
 
         //[JsonIgnore]
         public JualProdukDTO JualProduk { get; set; }
 
-		[Display(Name = "nominal")]
-		public double nominal { get; set; }
-		
-		[Display(Name = "keterangan")]
-		public string keterangan { get; set; }
+        [Display(Name = "nominal")]
+        public double nominal { get; set; }
+
+        [Display(Name = "keterangan")]
+        public string keterangan { get; set; }
 
         [JsonIgnore]
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
 
         public EntityState entity_state { get; set; }
     }
@@ -67,7 +62,6 @@ namespace OpenRetail.WebAPI.Models.DTO
 
             var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
-
 
             RuleSet("save", () =>
             {

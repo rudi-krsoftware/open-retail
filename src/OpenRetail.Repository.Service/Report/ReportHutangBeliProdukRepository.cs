@@ -16,29 +16,26 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
     public class ReportHutangBeliProdukRepository : IReportHutangBeliProdukRepository
     {
         private const string SQL_TEMPLATE_HEADER = @"SELECT m_supplier.supplier_id, m_supplier.nama_supplier, SUM(t_beli_produk.ppn) AS ppn, SUM(t_beli_produk.diskon) AS diskon, SUM(t_beli_produk.total_nota) AS total_nota, SUM(t_beli_produk.total_pelunasan) AS total_pelunasan
-                                                     FROM public.m_supplier INNER JOIN public.t_beli_produk ON t_beli_produk.supplier_id = m_supplier.supplier_id                                                     
+                                                     FROM public.m_supplier INNER JOIN public.t_beli_produk ON t_beli_produk.supplier_id = m_supplier.supplier_id
                                                      {WHERE}
                                                      GROUP BY m_supplier.supplier_id, m_supplier.nama_supplier
                                                      HAVING (SUM(t_beli_produk.total_nota - t_beli_produk.diskon + t_beli_produk.ppn) - SUM(t_beli_produk.total_pelunasan)) <> 0
                                                      ORDER BY m_supplier.nama_supplier";
 
-        private const string SQL_TEMPLATE_DETAIL = @"SELECT t_beli_produk.beli_produk_id, t_beli_produk.nota, t_beli_produk.tanggal, t_beli_produk.tanggal_tempo, t_beli_produk.ppn, t_beli_produk.diskon, t_beli_produk.total_nota, t_beli_produk.total_pelunasan, 
+        private const string SQL_TEMPLATE_DETAIL = @"SELECT t_beli_produk.beli_produk_id, t_beli_produk.nota, t_beli_produk.tanggal, t_beli_produk.tanggal_tempo, t_beli_produk.ppn, t_beli_produk.diskon, t_beli_produk.total_nota, t_beli_produk.total_pelunasan,
                                                      m_supplier.supplier_id, m_supplier.nama_supplier
                                                      FROM public.m_supplier INNER JOIN public.t_beli_produk ON t_beli_produk.supplier_id = m_supplier.supplier_id
                                                      {WHERE}
@@ -56,7 +53,7 @@ namespace OpenRetail.Repository.Service.Report
         public IList<ReportHutangPembelianProdukHeader> GetByBulan(int bulan, int tahun)
         {
             IList<ReportHutangPembelianProdukHeader> oList = new List<ReportHutangPembelianProdukHeader>();
-            
+
             try
             {
                 var whereBuilder = new WhereBuilder(SQL_TEMPLATE_HEADER);
@@ -190,6 +187,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

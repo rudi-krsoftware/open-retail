@@ -17,15 +17,8 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using WeifenLuo.WinFormsUI.Docking;
-using OpenRetail.Helper;
 
 namespace OpenRetail.Helper.UI.Template
 {
@@ -40,7 +33,7 @@ namespace OpenRetail.Helper.UI.Template
             ColorManagerHelper.SetTheme(this, this);
         }
 
-        public FrmListStandardWithNavigation(string header) 
+        public FrmListStandardWithNavigation(string header)
             : this()
         {
             this.Text = header;
@@ -121,7 +114,7 @@ namespace OpenRetail.Helper.UI.Template
         {
             if (btnPerbaiki.Enabled)
                 Perbaiki();
-        }        
+        }
 
         private void btnSelesai_Click(object sender, EventArgs e)
         {

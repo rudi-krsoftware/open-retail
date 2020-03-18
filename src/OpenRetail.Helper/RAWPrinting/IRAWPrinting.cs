@@ -16,13 +16,9 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using OpenRetail.Model;
 using OpenRetail.Model.Report;
+using System.Collections.Generic;
 
 namespace OpenRetail.Helper.RAWPrinting
 {
@@ -33,11 +29,11 @@ namespace OpenRetail.Helper.RAWPrinting
         /// </summary>
         /// <param name="jual">objek jual</param>
         /// <param name="listOfHeaderNota">list objek header nota</param>
-        /// <param name="listOfFooterNota">list objek footer nota</param>        
+        /// <param name="listOfFooterNota">list objek footer nota</param>
         /// <param name="jumlahKarakter">maksimal jumlah karakter yang tercetak</param>
         /// <param name="lineFeed">jumlah gulung kertas setelah pencetakan selesai</param>
         void Cetak(JualProduk jual, IList<HeaderNotaMiniPos> listOfHeaderNota, IList<FooterNotaMiniPos> listOfFooterNota,
-            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0, 
+            int jumlahKarakter, int lineFeed, bool isCetakCustomer = true, bool isCetakKeteranganNota = true, int ukuranFont = 0,
             string autocutCode = "", string openCashDrawerCode = "", string infoCopyright1 = "", string infoCopyright2 = "");
 
         /// <summary>

@@ -16,26 +16,21 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.App.Lookup;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using Syncfusion.Windows.Forms.Grid;
-using OpenRetail.Helper.UserControl;
-using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.App.Lookup;
+using OpenRetail.App.Referensi;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Pengeluaran
 {
@@ -46,7 +41,7 @@ namespace OpenRetail.App.Pengeluaran
         private IList<ItemPengeluaranBiaya> _listOfItemPengeluaran = new List<ItemPengeluaranBiaya>();
         private IList<ItemPengeluaranBiaya> _listOfItemPengeluaranOld = new List<ItemPengeluaranBiaya>();
         private IList<ItemPengeluaranBiaya> _listOfItemPengeluaranDeleted = new List<ItemPengeluaranBiaya>();
-                
+
         private int _rowIndex = 0;
         private int _colIndex = 0;
 
@@ -56,9 +51,9 @@ namespace OpenRetail.App.Pengeluaran
 
         public IListener Listener { private get; set; }
 
-        public FrmEntryPengeluaranBiaya(string header, IPengeluaranBiayaBll bll) 
+        public FrmEntryPengeluaranBiaya(string header, IPengeluaranBiayaBll bll)
             : base()
-        {            
+        {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
 
@@ -105,7 +100,7 @@ namespace OpenRetail.App.Pengeluaran
                     harga = item.harga
                 });
             }
-            
+
             _listOfItemPengeluaran = this._pengeluaran.item_pengeluaran_biaya;
             _listOfItemPengeluaran.Add(new ItemPengeluaranBiaya()); // add dummy objek
 
@@ -127,7 +122,7 @@ namespace OpenRetail.App.Pengeluaran
 
             GridListControlHelper.InitializeGridListControl<ItemPengeluaranBiaya>(grid, _listOfItemPengeluaran, gridListProperties);
 
-            grid.PushButtonClick += delegate(object sender, GridCellPushButtonClickEventArgs e)
+            grid.PushButtonClick += delegate (object sender, GridCellPushButtonClickEventArgs e)
             {
                 if (e.ColIndex == 6)
                 {
@@ -149,11 +144,11 @@ namespace OpenRetail.App.Pengeluaran
                         grid.Refresh();
 
                         RefreshTotal();
-                    }                    
+                    }
                 }
             };
 
-            grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 // Make sure the cell falls inside the grid
                 if (e.RowIndex > 0)
@@ -279,7 +274,7 @@ namespace OpenRetail.App.Pengeluaran
                     Listener.Ok(this, _isNewData, _pengeluaran);
 
                     _listOfItemPengeluaran.Clear();
-                    _listOfItemPengeluaranDeleted.Clear();                                        
+                    _listOfItemPengeluaranDeleted.Clear();
 
                     this.Close();
                 }
@@ -293,7 +288,7 @@ namespace OpenRetail.App.Pengeluaran
                     else
                         MsgHelper.MsgUpdateError();
                 }
-            }            
+            }
         }
 
         protected override void Selesai()
@@ -408,7 +403,7 @@ namespace OpenRetail.App.Pengeluaran
 
                 var rowIndex = grid.CurrentCell.RowIndex;
                 var colIndex = grid.CurrentCell.ColIndex;
-                
+
                 JenisPengeluaran jenisPengeluaran = null;
 
                 switch (colIndex)
@@ -523,7 +518,7 @@ namespace OpenRetail.App.Pengeluaran
                 grid.Refresh();
 
                 RefreshTotal();
-            }           
+            }
         }
 
         private void ShowEntryJenisPengeluaran()
@@ -582,7 +577,6 @@ namespace OpenRetail.App.Pengeluaran
 
         private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
         {
-
         }
     }
 }

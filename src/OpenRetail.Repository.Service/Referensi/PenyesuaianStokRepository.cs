@@ -16,34 +16,28 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class PenyesuaianStokRepository : IPenyesuaianStokRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT t_penyesuaian_stok.penyesuaian_stok_id, t_penyesuaian_stok.tanggal, t_penyesuaian_stok.penambahan_stok, t_penyesuaian_stok.pengurangan_stok, 
-                                              t_penyesuaian_stok.penambahan_stok_gudang, t_penyesuaian_stok.pengurangan_stok_gudang, t_penyesuaian_stok.keterangan, t_penyesuaian_stok.tanggal_sistem, 
+        private const string SQL_TEMPLATE = @"SELECT t_penyesuaian_stok.penyesuaian_stok_id, t_penyesuaian_stok.tanggal, t_penyesuaian_stok.penambahan_stok, t_penyesuaian_stok.pengurangan_stok,
+                                              t_penyesuaian_stok.penambahan_stok_gudang, t_penyesuaian_stok.pengurangan_stok_gudang, t_penyesuaian_stok.keterangan, t_penyesuaian_stok.tanggal_sistem,
                                               m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.stok_gudang,
                                               m_alasan_penyesuaian_stok.alasan_penyesuaian_stok_id, m_alasan_penyesuaian_stok.alasan
-                                              FROM public.m_alasan_penyesuaian_stok INNER JOIN public.t_penyesuaian_stok ON t_penyesuaian_stok.alasan_penyesuaian_id = m_alasan_penyesuaian_stok.alasan_penyesuaian_stok_id 
+                                              FROM public.m_alasan_penyesuaian_stok INNER JOIN public.t_penyesuaian_stok ON t_penyesuaian_stok.alasan_penyesuaian_id = m_alasan_penyesuaian_stok.alasan_penyesuaian_stok_id
                                               INNER JOIN public.m_produk ON t_penyesuaian_stok.produk_id = m_produk.produk_id
                                               {WHERE}
                                               {ORDER BY}";
 
         private IDapperContext _context;
-		private ILog _log;
+        private ILog _log;
         private string _sql;
 
         public PenyesuaianStokRepository(IDapperContext context, ILog log)
@@ -193,6 +187,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

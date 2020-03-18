@@ -16,13 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model;
+using OpenRetail.Model.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-using OpenRetail.Model;
-using OpenRetail.Model.Report;
 
 namespace OpenRetail.Helper.RAWPrinting
 {
@@ -45,8 +44,8 @@ namespace OpenRetail.Helper.RAWPrinting
         {
             var garisPemisah = StringHelper.PrintChar('=', jumlahKarakter);
             var isPrinterMiniPos58mm = jumlahKarakter <= 32;
-            var textToPrint = new StringBuilder();            
-            
+            var textToPrint = new StringBuilder();
+
             var totalSaldoAwal = 0d;
             var totalItem = 0;
             var totalDiskon = 0d;
@@ -60,7 +59,7 @@ namespace OpenRetail.Helper.RAWPrinting
 
                 if (ukuranFont > 0)
                     textToPrint.Append(ESCCommandHelper.FontNormal(ukuranFont));
-            }                
+            }
 
             // cetak header
             foreach (var header in listOfHeaderNota)
@@ -169,7 +168,7 @@ namespace OpenRetail.Helper.RAWPrinting
             else
             {
                 textToPrint.Append(">> Belum ada transaksi <<").Append(ESCCommandHelper.LineFeed(1));
-            }            
+            }
 
             if (infoCopyright1.Length > 0)
             {
@@ -184,7 +183,7 @@ namespace OpenRetail.Helper.RAWPrinting
             {
                 if (autocutCode.Length > 0)
                     textToPrint.Append(ESCCommandHelper.CustomeCode(autocutCode));
-            }                
+            }
 
             if (!Utils.IsRunningUnderIDE())
             {
@@ -254,7 +253,7 @@ namespace OpenRetail.Helper.RAWPrinting
             if (jual.tanggal_tempo != null)
             {
                 textToPrint.Append("Tempo  : ").Append(DateTimeHelper.DateToString(jual.tanggal_tempo)).Append(ESCCommandHelper.LineFeed(1));
-            }            
+            }
 
             if (isCetakCustomer)
             {
@@ -298,12 +297,12 @@ namespace OpenRetail.Helper.RAWPrinting
 
                 textToPrint.Append(harga);
 
-                var diskon = StringHelper.RightAlignment(item.diskon.ToString(), 
+                var diskon = StringHelper.RightAlignment(item.diskon.ToString(),
                         isPrinterMiniPos58mm ? 3 : 7);
                 textToPrint.Append(diskon);
 
                 var subTotal = (item.jumlah - item.jumlah_retur) * item.harga_setelah_diskon;
-                var sSubTotal = StringHelper.RightAlignment(NumberHelper.NumberToString(subTotal), 
+                var sSubTotal = StringHelper.RightAlignment(NumberHelper.NumberToString(subTotal),
                         isPrinterMiniPos58mm ? garisPemisah.Length - 21 : garisPemisah.Length - 26);
 
                 textToPrint.Append(sSubTotal).Append(ESCCommandHelper.LineFeed(1));
@@ -332,13 +331,13 @@ namespace OpenRetail.Helper.RAWPrinting
             {
                 textToPrint.Append(StringHelper.FixedLength("Diskon", fixedLengthLabelFooter));
                 textToPrint.Append(" : " + StringHelper.RightAlignment(NumberHelper.NumberToString(jual.diskon), fixedLengthValueFooter)).Append(ESCCommandHelper.LineFeed(1));
-            }            
+            }
 
             if (jual.ppn > 0)
             {
                 textToPrint.Append(StringHelper.FixedLength("PPN", fixedLengthLabelFooter));
                 textToPrint.Append(" : " + StringHelper.RightAlignment(NumberHelper.NumberToString(jual.ppn), fixedLengthValueFooter)).Append(ESCCommandHelper.LineFeed(1));
-            }            
+            }
 
             textToPrint.Append(StringHelper.FixedLength("Total", fixedLengthLabelFooter));
             textToPrint.Append(" : " + StringHelper.RightAlignment(NumberHelper.NumberToString(jual.grand_total), fixedLengthValueFooter)).Append(ESCCommandHelper.LineFeed(1));
@@ -364,7 +363,7 @@ namespace OpenRetail.Helper.RAWPrinting
                     {
                         footer.keterangan = StringHelper.FixedLength(footer.keterangan, garisPemisah.Length);
                     }
-                    
+
                     textToPrint.Append(CenterText(footer.keterangan.Length, jumlahKarakter)).Append(footer.keterangan).Append(ESCCommandHelper.LineFeed(1));
                 }
             }
@@ -381,7 +380,7 @@ namespace OpenRetail.Helper.RAWPrinting
             if (!Utils.IsRunningUnderIDE())
             {
                 if (autocutCode.Length > 0)
-                    textToPrint.Append(ESCCommandHelper.CustomeCode(autocutCode));                
+                    textToPrint.Append(ESCCommandHelper.CustomeCode(autocutCode));
 
                 RawPrintHelper.SendStringToPrinter(_printerName, textToPrint.ToString());
             }

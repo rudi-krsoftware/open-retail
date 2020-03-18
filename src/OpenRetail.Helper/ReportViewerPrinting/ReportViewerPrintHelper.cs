@@ -16,13 +16,9 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Reflection;
-using System.Text;
-using Microsoft.Reporting.WinForms;
 
 namespace OpenRetail.Helper
 {
@@ -33,7 +29,7 @@ namespace OpenRetail.Helper
         private Stream _stream;
         private string _printerName;
         private ReportDataSource _reportDataSource;
-        IEnumerable<ReportParameter> _parameters;
+        private IEnumerable<ReportParameter> _parameters;
 
         public ReportViewerPrintHelper()
         {
@@ -63,7 +59,7 @@ namespace OpenRetail.Helper
             using (var printer = new ReportPrintHelper())
             {
                 printer.PrintToPrinter(report, _printerName);
-            } 
+            }
         }
     }
 }

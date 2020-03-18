@@ -16,6 +16,10 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using FluentValidation;
+using FluentValidation.Internal;
+using FluentValidation.Results;
+using OpenRetail.WebAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +27,6 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Web;
-using System.Web.Hosting;
-using System.Web.Http;
-
-using FluentValidation;
-using FluentValidation.Internal;
-using FluentValidation.Results;
-using OpenRetail.WebAPI.Models;
 
 namespace OpenRetail.WebAPI.Controllers.Helper
 {
@@ -66,7 +63,7 @@ namespace OpenRetail.WebAPI.Controllers.Helper
             return true;
         }
 
-        static ValidationResult Validate<T>(T obj, string ruleSetName)
+        private static ValidationResult Validate<T>(T obj, string ruleSetName)
         {
             ValidationResult validationResult = null;
             var vt = typeof(AbstractValidator<>);
@@ -103,7 +100,7 @@ namespace OpenRetail.WebAPI.Controllers.Helper
             return validationResult;
         }
 
-        static Type FindValidatorType(Assembly assembly, Type evt)
+        private static Type FindValidatorType(Assembly assembly, Type evt)
         {
             if (assembly == null) throw new ArgumentNullException("assembly");
             if (evt == null) throw new ArgumentNullException("evt");

@@ -16,25 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class JualProdukRepository : IJualProdukRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT t_jual_produk.jual_id, t_jual_produk.retur_jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, 
-                                              t_jual_produk.ppn, t_jual_produk.kurir, t_jual_produk.ongkos_kirim, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan, t_jual_produk.total_pelunasan AS total_pelunasan_old, t_jual_produk.keterangan, t_jual_produk.tanggal_sistem, 
+        private const string SQL_TEMPLATE = @"SELECT t_jual_produk.jual_id, t_jual_produk.retur_jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo,
+                                              t_jual_produk.ppn, t_jual_produk.kurir, t_jual_produk.ongkos_kirim, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan, t_jual_produk.total_pelunasan AS total_pelunasan_old, t_jual_produk.keterangan, t_jual_produk.tanggal_sistem,
                                               t_jual_produk.is_sdac, t_jual_produk.is_dropship, t_jual_produk.kirim_kepada, t_jual_produk.kirim_alamat, t_jual_produk.kirim_kecamatan, t_jual_produk.kirim_desa, t_jual_produk.kirim_kabupaten, t_jual_produk.kirim_kelurahan, t_jual_produk.kirim_kota, t_jual_produk.kirim_kode_pos, t_jual_produk.kirim_telepon,
                                               t_jual_produk.label_dari1, t_jual_produk.label_dari2, t_jual_produk.label_dari3, t_jual_produk.label_dari4,
                                               t_jual_produk.label_kepada1, t_jual_produk.label_kepada2, t_jual_produk.label_kepada3, t_jual_produk.label_kepada4,
@@ -50,8 +44,8 @@ namespace OpenRetail.Repository.Service
                                               {ORDER BY}
                                               {OFFSET}";
 
-        private const string SQL_TEMPLATE_DETAIL = @"SELECT DISTINCT t_jual_produk.jual_id, t_jual_produk.retur_jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, 
-                                                     t_jual_produk.ppn, t_jual_produk.kurir, t_jual_produk.ongkos_kirim, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan, t_jual_produk.total_pelunasan AS total_pelunasan_old, t_jual_produk.keterangan, t_jual_produk.tanggal_sistem, 
+        private const string SQL_TEMPLATE_DETAIL = @"SELECT DISTINCT t_jual_produk.jual_id, t_jual_produk.retur_jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo,
+                                                     t_jual_produk.ppn, t_jual_produk.kurir, t_jual_produk.ongkos_kirim, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan, t_jual_produk.total_pelunasan AS total_pelunasan_old, t_jual_produk.keterangan, t_jual_produk.tanggal_sistem,
                                                      t_jual_produk.is_sdac, t_jual_produk.is_dropship, t_jual_produk.kirim_kepada, t_jual_produk.kirim_alamat, t_jual_produk.kirim_kecamatan, t_jual_produk.kirim_desa, t_jual_produk.kirim_kabupaten, t_jual_produk.kirim_kelurahan, t_jual_produk.kirim_kota, t_jual_produk.kirim_kode_pos, t_jual_produk.kirim_telepon,
                                                      t_jual_produk.label_dari1, t_jual_produk.label_dari2, t_jual_produk.label_dari3, t_jual_produk.label_dari4,
                                                      t_jual_produk.label_kepada1, t_jual_produk.label_kepada2, t_jual_produk.label_kepada3, t_jual_produk.label_kepada4,
@@ -86,7 +80,7 @@ namespace OpenRetail.Repository.Service
         private IDapperContext _context;
         private ILog _log;
         private string _sql;
-		
+
         public JualProdukRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -136,7 +130,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT t_item_jual_produk.item_jual_id, t_item_jual_produk.jual_id, t_item_jual_produk.pengguna_id, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual, 
+                var sql = @"SELECT t_item_jual_produk.item_jual_id, t_item_jual_produk.jual_id, t_item_jual_produk.pengguna_id, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual,
                             t_item_jual_produk.jumlah, t_item_jual_produk.jumlah AS old_jumlah, t_item_jual_produk.jumlah_retur, t_item_jual_produk.diskon, COALESCE(t_item_jual_produk.keterangan, t_item_jual_produk.keterangan, '') AS keterangan, t_item_jual_produk.tanggal_sistem, 1 as entity_state,
                             m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon, m_produk.stok, m_produk.stok_gudang,
                             m_golongan.golongan_id, m_golongan.nama_golongan, m_golongan.diskon
@@ -243,7 +237,7 @@ namespace OpenRetail.Repository.Service
                 pagesCount = _context.GetPagesCount(sqlPageCount, pageSize, new { name });
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_customer.nama_customer) LIKE @name OR LOWER(t_jual_produk.keterangan) LIKE @name");
-                
+
                 if (isCekKeteranganItemJual)
                     _sql = SQL_TEMPLATE_DETAIL.Replace("{WHERE}", "WHERE LOWER(m_customer.nama_customer) LIKE @name OR LOWER(t_jual_produk.keterangan) LIKE @name OR LOWER(t_item_jual_produk.keterangan) LIKE @name");
 
@@ -323,7 +317,7 @@ namespace OpenRetail.Repository.Service
 
                 if (obj.jual_id == null)
                     obj.jual_id = _context.GetGUID();
-                
+
                 obj.total_nota = GetTotalNota(obj);
 
                 // insert header
@@ -353,7 +347,6 @@ namespace OpenRetail.Repository.Service
                     result = SavePembayaranPiutang(obj);
                     if (result > 0)
                         obj.total_pelunasan = obj.grand_total;
-
                 }
 
                 _context.Commit();
@@ -384,7 +377,7 @@ namespace OpenRetail.Repository.Service
 
             var result = 0;
 
-            // set detail            
+            // set detail
             itemPembayaranPiutang = pembayaranPiutangRepo.GetByJualID(obj.jual_id);
             if (itemPembayaranPiutang != null) // sudah ada pelunasan
             {
@@ -526,7 +519,7 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
 
         public int Delete(JualProduk obj)
         {
@@ -573,7 +566,7 @@ namespace OpenRetail.Repository.Service
             {
                 _log.Error("Error:", ex);
             }
-            
+
             return oList;
         }
 
@@ -746,4 +739,4 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
     }
-}     
+}

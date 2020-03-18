@@ -16,22 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
+using System;
+using System.Collections.Generic;
 using System.Data;
- 
+using System.Linq;
+
 namespace OpenRetail.Repository.Service
-{        
+{
     public class ProdukRepository : IProdukRepository
     {
         private const string SQL_TEMPLATE = @"SELECT m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon, m_produk.persentase_keuntungan,
@@ -42,7 +36,7 @@ namespace OpenRetail.Repository.Service
                                               {ORDER BY}
                                               {OFFSET}";
 
-        private const string SQL_TEMPLATE_FOR_PAGING = @"SELECT COUNT(*) 
+        private const string SQL_TEMPLATE_FOR_PAGING = @"SELECT COUNT(*)
                                                          FROM m_produk LEFT JOIN public.m_golongan ON m_produk.golongan_id = m_golongan.golongan_id
                                                          {WHERE}";
 
@@ -65,7 +59,7 @@ namespace OpenRetail.Repository.Service
                 {
                     p.golongan_id = g.golongan_id; p.Golongan = g;
                 }
-                
+
                 return p;
             }, param, splitOn: "golongan_id");
 
@@ -82,7 +76,7 @@ namespace OpenRetail.Repository.Service
         private IList<HargaGrosir> GetListHargaGrosir(string produkId)
         {
             IHargaGrosirRepository repo = new HargaGrosirRepository(_context, _log);
-        
+
             return repo.GetListHargaGrosir(produkId);
         }
 
@@ -96,20 +90,20 @@ namespace OpenRetail.Repository.Service
         public Produk GetByID(string id)
         {
             Produk obj = null;
-            
+
             try
             {
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_produk.produk_id = @id");
                 _sql = _sql.Replace("{ORDER BY}", "");
                 _sql = _sql.Replace("{OFFSET}", "");
-                
+
                 obj = MappingRecordToObject(_sql, new { id }).SingleOrDefault();
             }
             catch (Exception ex)
             {
                 _log.Error("Error:", ex);
             }
-            
+
             return obj;
         }
 
@@ -209,7 +203,7 @@ namespace OpenRetail.Repository.Service
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE LOWER(m_produk.nama_produk) LIKE @name OR LOWER(m_produk.kode_produk) LIKE @name");
                 _sql = _sql.Replace("{ORDER BY}", sortBy);
-                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");                
+                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
 
                 oList = MappingRecordToObject(_sql, new { name, pageNumber, pageSize }).ToList();
 
@@ -351,7 +345,7 @@ namespace OpenRetail.Repository.Service
 
                 _sql = SQL_TEMPLATE.Replace("{WHERE}", "");
                 _sql = _sql.Replace("{ORDER BY}", sortBy);
-                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");                
+                _sql = _sql.Replace("{OFFSET}", "OFFSET @pageSize * (@pageNumber - 1) LIMIT @pageSize");
 
                 oList = MappingRecordToObject(_sql, new { pageNumber, pageSize }).ToList();
 
@@ -386,7 +380,7 @@ namespace OpenRetail.Repository.Service
                         obj.produk_id = _context.GetGUID();
 
                     _context.BeginTransaction();
-                    
+
                     var transaction = _context.transaction;
 
                     _context.db.Insert<Produk>(obj, transaction);
@@ -438,11 +432,11 @@ namespace OpenRetail.Repository.Service
                         item.produk_id = obj.produk_id;
 
                         var hargaGrosir = GetHargaGrosir(obj.produk_id, item.harga_ke, transaction);
-                        
+
                         if (hargaGrosir == null)
                         {
                             if (item.harga_grosir_id == null)
-                                item.harga_grosir_id = _context.GetGUID();                            
+                                item.harga_grosir_id = _context.GetGUID();
 
                             _context.db.Insert<HargaGrosir>(item, transaction);
                             result = 1;
@@ -481,6 +475,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

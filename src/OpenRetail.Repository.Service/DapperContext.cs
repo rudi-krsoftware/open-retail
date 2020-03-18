@@ -16,16 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Repository.Api;
 using System;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
-using System.Configuration;
-using OpenRetail.Repository.Api;
-using Dapper;
-using log4net;
 
 namespace OpenRetail.Repository.Service
-{    
+{
     public class DapperContext : IDapperContext
     {
         private IDbConnection _db;
@@ -51,9 +50,9 @@ namespace OpenRetail.Repository.Service
             {
                 _db = GetOpenConnection(_providerName, _connectionString);
             }
-        }        
+        }
 
-		public bool IsOpenConnection()
+        public bool IsOpenConnection()
         {
             var isConnected = false;
 
@@ -111,7 +110,7 @@ namespace OpenRetail.Repository.Service
             get { return _db ?? (_db = GetOpenConnection(_providerName, _connectionString)); }
         }
 
-		public IDbTransaction transaction
+        public IDbTransaction transaction
         {
             get { return _transaction; }
         }
@@ -128,7 +127,7 @@ namespace OpenRetail.Repository.Service
             {
                 _transaction.Commit();
                 _transaction = null;
-            }            
+            }
         }
 
         public void Rollback()
@@ -137,7 +136,7 @@ namespace OpenRetail.Repository.Service
             {
                 _transaction.Rollback();
                 _transaction = null;
-            }            
+            }
         }
 
         private int GetGeneratorIDByTable(string tableName, IDbTransaction transaction = null)
@@ -149,7 +148,7 @@ namespace OpenRetail.Repository.Service
                 var generatorName = tableName + "_" + tableName.Substring(2) + "_id_seq";
 
                 var strSql = String.Format("SELECT NEXTVAL('{0}')", generatorName);
-				result = _db.QuerySingleOrDefault<int>(strSql, transaction);
+                result = _db.QuerySingleOrDefault<int>(strSql, transaction);
             }
             catch (Exception ex)
             {
@@ -167,7 +166,7 @@ namespace OpenRetail.Repository.Service
             return lastNota;
         }
 
-		public string GetGUID()
+        public string GetGUID()
         {
             var result = string.Empty;
 
@@ -214,7 +213,7 @@ namespace OpenRetail.Repository.Service
                         }
 
                         _db.Close();
-                    }                        
+                    }
                 }
                 finally
                 {
@@ -223,6 +222,6 @@ namespace OpenRetail.Repository.Service
             }
 
             GC.SuppressFinalize(this);
-        }        
+        }
     }
 }

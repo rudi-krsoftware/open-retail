@@ -16,11 +16,6 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using OpenRetail.Model;
 
 namespace OpenRetail.Repository.Api
@@ -28,7 +23,9 @@ namespace OpenRetail.Repository.Api
     public interface IWilayahRepository : IBaseRepository<Wilayah>
     {
         Wilayah GetProvinsi(string name);
+
         Wilayah GetKabupaten(string name);
+
         Wilayah GetKecamatan(string name);
     }
 }

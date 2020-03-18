@@ -16,25 +16,22 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
     public class ReportGajiKaryawanRepository : IReportGajiKaryawanRepository
     {
-        private const string SQL_TEMPLATE_HEADER = @"SELECT m_karyawan.karyawan_id, m_karyawan.nama_karyawan, m_karyawan.jenis_gajian, m_jabatan.nama_jabatan, 
-                                                     t_gaji_karyawan.tanggal, t_gaji_karyawan.bulan, t_gaji_karyawan.tahun, 
-                                                     t_gaji_karyawan.kehadiran, t_gaji_karyawan.absen, t_gaji_karyawan.gaji_pokok, t_gaji_karyawan.lembur, t_gaji_karyawan.bonus, 
-                                                     t_gaji_karyawan.potongan, t_gaji_karyawan.jam, t_gaji_karyawan.lainnya, t_gaji_karyawan.keterangan, 
+        private const string SQL_TEMPLATE_HEADER = @"SELECT m_karyawan.karyawan_id, m_karyawan.nama_karyawan, m_karyawan.jenis_gajian, m_jabatan.nama_jabatan,
+                                                     t_gaji_karyawan.tanggal, t_gaji_karyawan.bulan, t_gaji_karyawan.tahun,
+                                                     t_gaji_karyawan.kehadiran, t_gaji_karyawan.absen, t_gaji_karyawan.gaji_pokok, t_gaji_karyawan.lembur, t_gaji_karyawan.bonus,
+                                                     t_gaji_karyawan.potongan, t_gaji_karyawan.jam, t_gaji_karyawan.lainnya, t_gaji_karyawan.keterangan,
                                                      t_gaji_karyawan.jumlah_hari, t_gaji_karyawan.tunjangan
                                                      FROM public.t_gaji_karyawan INNER JOIN public.m_karyawan ON t_gaji_karyawan.karyawan_id = m_karyawan.karyawan_id
                                                      INNER JOIN public.m_jabatan ON m_karyawan.jabatan_id = m_jabatan.jabatan_id

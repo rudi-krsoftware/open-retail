@@ -16,18 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api.Report;
 using OpenRetail.Bll.Service.Report;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest.Report
 {
@@ -52,7 +45,7 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
 
         [TestMethod]
         public void GetByBulanAndTahunTest()
-        {            
+        {
             var bulan = 1;
             var tahun = 2017;
 
@@ -87,7 +80,7 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
 
             Assert.IsNotNull(obj);
             Assert.AreEqual("Pixel Computer", obj.nama_supplier);
-            Assert.AreEqual("201701310072", obj.nota);            
+            Assert.AreEqual("201701310072", obj.nota);
             Assert.AreEqual(new DateTime(2017, 1, 31), obj.tanggal);
             Assert.IsNull(obj.tanggal_tempo);
             Assert.AreEqual(0, obj.ppn);

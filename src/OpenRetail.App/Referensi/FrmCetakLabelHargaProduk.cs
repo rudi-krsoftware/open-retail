@@ -16,25 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.App.Lookup;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Drawing.Printing;
-
-using log4net;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UserControl;
-using OpenRetail.App.Lookup;
-using System.Drawing.Text;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Referensi
 {
@@ -51,7 +45,7 @@ namespace OpenRetail.App.Referensi
 
         public FrmCetakLabelHargaProduk(string header)
         {
-            InitializeComponent();            
+            InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
 
             this.Text = header;
@@ -214,14 +208,14 @@ namespace OpenRetail.App.Referensi
                 labelHargaProdukPanel.KodeProduk = _produk.kode_produk;
                 labelHargaProdukPanel.NamaProduk = _produk.nama_produk;
                 labelHargaProdukPanel.HargaProduk = _produk.harga_jual;
-                labelHargaProdukPanel.LastUpdate = _produk.last_update;                
+                labelHargaProdukPanel.LastUpdate = _produk.last_update;
 
                 labelHargaProdukPanel.GenerateLabel();
             }
         }
 
         private void ResetLabelHarga(bool resetAll = false)
-        {            
+        {
             labelHargaProdukPanel.BackgroundImage = null;
 
             if (!resetAll) return;
@@ -352,7 +346,7 @@ namespace OpenRetail.App.Referensi
                     PreviewLabelHargaProduk();
                 }
             }
-        }        
+        }
 
         public void Ok(object sender, object data)
         {
@@ -368,7 +362,7 @@ namespace OpenRetail.App.Referensi
         public void Ok(object sender, bool isNewData, object data)
         {
             throw new NotImplementedException();
-        }        
+        }
 
         private void btnCetak_Click(object sender, EventArgs e)
         {
@@ -409,7 +403,7 @@ namespace OpenRetail.App.Referensi
             labelHargaArea.Height = (e.MarginBounds.Height / numLines);
 
             var listOfPosition = new Dictionary<int, PointF>();
-            
+
             // baris 1
             listOfPosition.Add(0, new PointF(_pengaturanLabelHarga.batas_kiri_kolom1, _pengaturanLabelHarga.batas_atas_baris1));
             listOfPosition.Add(1, new PointF(_pengaturanLabelHarga.batas_kiri_kolom2, listOfPosition[0].Y));
@@ -461,7 +455,7 @@ namespace OpenRetail.App.Referensi
             for (var index = 0; index < labelHargaPerPage; index++)
             {
                 var isPrint = _listOfCheckboxPosisiLabel[index].Checked;
-                
+
                 if (isPrint)
                 {
                     var position = listOfPosition[index];
@@ -489,9 +483,8 @@ namespace OpenRetail.App.Referensi
                         }
                         catch
                         {
-                        } 
+                        }
                     }
-
                 }
             }
         }
@@ -501,24 +494,24 @@ namespace OpenRetail.App.Referensi
             var maxLength = 23;
             var font = new Font("Courier New", 9.5f);
 
-            g.DrawString(string.Format("{0}{1}", 
+            g.DrawString(string.Format("{0}{1}",
                     StringHelper.CenterAlignment(label.NamaProduk1.Length, maxLength), label.NamaProduk1), font, brush, nLeft, nTop);
 
             if (label.NamaProduk2.Length > 0)
             {
                 nTop += 15;
-                g.DrawString(string.Format("{0}{1}", 
+                g.DrawString(string.Format("{0}{1}",
                         StringHelper.CenterAlignment(label.NamaProduk2.Length, maxLength), label.NamaProduk2), font, brush, nLeft, nTop);
             }
 
             nTop += 15;
-            g.DrawString(string.Format("{0}{1}", 
+            g.DrawString(string.Format("{0}{1}",
                     StringHelper.CenterAlignment(label.Barcode.Length, maxLength), label.Barcode), font, brush, nLeft, nTop);
 
             nTop += 10;
-            g.DrawString(string.Format("{0}{1}", 
+            g.DrawString(string.Format("{0}{1}",
                     StringHelper.CenterAlignment(3, maxLength - label.Harga.Length - 5), "Rp."), font, brush, nLeft, nTop + 5);
-            g.DrawString(string.Format("{0}{1}", 
+            g.DrawString(string.Format("{0}{1}",
                     StringHelper.CenterAlignment(label.Harga.Length, maxLength - 6), label.Harga), new Font("Courier New", 14f, FontStyle.Bold), brush, nLeft, nTop + 2);
 
             if (label.TanggalUpdate.Length > 0)
@@ -526,7 +519,7 @@ namespace OpenRetail.App.Referensi
                 nTop += 20;
                 g.DrawString(string.Format("{0}{1}",
                         StringHelper.CenterAlignment(label.TanggalUpdate.Length, maxLength), label.TanggalUpdate), font, brush, nLeft, nTop);
-            }            
+            }
         }
 
         private void chkPilihSemua_CheckedChanged(object sender, EventArgs e)
@@ -538,7 +531,7 @@ namespace OpenRetail.App.Referensi
         }
 
         private void FrmCetakLabelHargaProduk_KeyPress(object sender, KeyPressEventArgs e)
-        {        
+        {
             if (KeyPressHelper.IsEsc(e)) this.Close();
         }
 
@@ -572,8 +565,8 @@ namespace OpenRetail.App.Referensi
                     _listOfLabelHargaProduk.Add(labelHarga);
 
                     break;
-                }          
-      
+                }
+
                 index++;
             }
 

@@ -16,16 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Helper.UserControl;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Helper.UserControl;
 
 namespace OpenRetail.Helper
 {
@@ -54,7 +50,6 @@ namespace OpenRetail.Helper
 
             foreach (Control ctl in parent.Controls)
             {
-
                 var ctlType = ctl.GetType().Name;
 
                 switch (ctlType)
@@ -99,7 +94,7 @@ namespace OpenRetail.Helper
                             {
                                 color = GetRgbColor(ColorSection.PanelFooterBackColor);
                                 objPanel.BorderStyle = BorderStyle.FixedSingle;
-                            }                            
+                            }
                         }
 
                         objPanel.BackColor = color;

@@ -18,9 +18,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Web;
 
 namespace OpenRetail.WebAPI.Models
 {
@@ -48,6 +46,6 @@ namespace OpenRetail.WebAPI.Models
         }
 
         public Status Status { get; set; }
-        public object Results { get; set; }        
+        public object Results { get; set; }
     }
 }

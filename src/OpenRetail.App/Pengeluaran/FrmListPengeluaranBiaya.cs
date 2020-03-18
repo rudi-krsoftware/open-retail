@@ -16,34 +16,28 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Pengeluaran
 {
     public partial class FrmListPengeluaranBiaya : FrmListEmptyBody, IListener
-    {        
-        private IPengeluaranBiayaBll _bll; // deklarasi objek business logic layer 
+    {
+        private IPengeluaranBiayaBll _bll; // deklarasi objek business logic layer
         private IList<PengeluaranBiaya> _listOfPengeluaran = new List<PengeluaranBiaya>();
         private ILog _log;
         private Pengguna _pengguna;
         private string _menuId;
-        
+
         public FrmListPengeluaranBiaya(string header, Pengguna pengguna, string menuId)
             : base()
         {
@@ -65,7 +59,7 @@ namespace OpenRetail.App.Pengeluaran
                     LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
 
                 filterRangeTanggal.Enabled = role.is_grant;
-            }            
+            }
 
             InitGridList();
 
@@ -88,9 +82,8 @@ namespace OpenRetail.App.Pengeluaran
             if (_listOfPengeluaran.Count > 0)
                 this.gridList.SetSelected(0, true);
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
-
                 if (_listOfPengeluaran.Count > 0)
                 {
                     if (e.RowIndex > 0)
@@ -207,7 +200,7 @@ namespace OpenRetail.App.Pengeluaran
                     }
                     else
                         MsgHelper.MsgDeleteError();
-                }                
+                }
             }
         }
 

@@ -16,26 +16,20 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class PengeluaranBiayaRepository : IPengeluaranBiayaRepository
     {
         private IDapperContext _context;
-		private ILog _log;
-		
+        private ILog _log;
+
         public PengeluaranBiayaRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -48,7 +42,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT t_item_pengeluaran_biaya.item_pengeluaran_id, t_item_pengeluaran_biaya.pengeluaran_id, t_item_pengeluaran_biaya.pengguna_id, 
+                var sql = @"SELECT t_item_pengeluaran_biaya.item_pengeluaran_id, t_item_pengeluaran_biaya.pengeluaran_id, t_item_pengeluaran_biaya.pengguna_id,
                             t_item_pengeluaran_biaya.jumlah, t_item_pengeluaran_biaya.harga, 1 as entity_state,
                             m_jenis_pengeluaran.jenis_pengeluaran_id, m_jenis_pengeluaran.nama_jenis_pengeluaran
                             FROM public.t_item_pengeluaran_biaya INNER JOIN public.m_jenis_pengeluaran ON t_item_pengeluaran_biaya.jenis_pengeluaran_id = m_jenis_pengeluaran.jenis_pengeluaran_id
@@ -109,7 +103,6 @@ namespace OpenRetail.Repository.Service
                 {
                     item.item_pengeluaran_biaya = GetItemPengeluaranBiaya(item.pengeluaran_id).ToList();
                 }
-
             }
             catch (Exception ex)
             {
@@ -179,7 +172,7 @@ namespace OpenRetail.Repository.Service
 
                         item.pengeluaran_id = obj.pengeluaran_id;
                         item.pengguna_id = obj.pengguna_id;
-                        
+
                         _context.db.Insert<ItemPengeluaranBiaya>(item, transaction);
 
                         // update entity state
@@ -213,7 +206,7 @@ namespace OpenRetail.Repository.Service
                 var transaction = _context.transaction;
 
                 obj.total = GetTotalNota(obj);
-                
+
                 // update header
                 result = _context.db.Update<PengeluaranBiaya>(obj, transaction) ? 1 : 0;
 
@@ -289,4 +282,4 @@ namespace OpenRetail.Repository.Service
             return _context.GetLastNota(new PengeluaranBiaya().GetTableName());
         }
     }
-}     
+}

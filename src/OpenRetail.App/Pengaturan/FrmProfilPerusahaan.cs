@@ -16,27 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Pengaturan
 {
     public partial class FrmProfilPerusahaan : FrmEntryStandard
     {
         private Profil _profil = null;
-        
+
         public IListener Listener { private get; set; }
 
         public FrmProfilPerusahaan(string header, Profil profil)
@@ -57,7 +49,7 @@ namespace OpenRetail.App.Pengaturan
                 txtTelepon.Text = this._profil.telepon;
                 txtEmail.Text = this._profil.email;
                 txtWebsite.Text = this._profil.website;
-            }            
+            }
         }
 
         protected override void Simpan()
@@ -78,7 +70,7 @@ namespace OpenRetail.App.Pengaturan
             IProfilBll bll = new ProfilBll(MainProgram.log);
             result = bll.Save(_profil, ref validationError);
 
-            if (result > 0) 
+            if (result > 0)
             {
                 Listener.Ok(this, _profil);
                 this.Close();
@@ -92,13 +84,13 @@ namespace OpenRetail.App.Pengaturan
                 }
                 else
                     MsgHelper.MsgUpdateError();
-            }                
+            }
         }
 
         private void txtWebsite_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEnter(e))
                 Simpan();
-        }        
+        }
     }
 }

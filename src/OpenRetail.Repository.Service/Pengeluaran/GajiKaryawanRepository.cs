@@ -16,33 +16,28 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class GajiKaryawanRepository : IGajiKaryawanRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT t_gaji_karyawan.gaji_karyawan_id, t_gaji_karyawan.pengguna_id, t_gaji_karyawan.bulan, t_gaji_karyawan.tahun, 
-                                              t_gaji_karyawan.kehadiran, t_gaji_karyawan.absen, t_gaji_karyawan.gaji_pokok, t_gaji_karyawan.lembur, t_gaji_karyawan.bonus, 
-                                              t_gaji_karyawan.potongan, t_gaji_karyawan.jam, t_gaji_karyawan.lainnya, t_gaji_karyawan.keterangan, 
-                                              t_gaji_karyawan.jumlah_hari, t_gaji_karyawan.tunjangan, t_gaji_karyawan.kasbon, t_gaji_karyawan.tanggal, t_gaji_karyawan.nota, 
-                                              m_karyawan.karyawan_id, m_karyawan.nama_karyawan, m_karyawan.gaji_pokok, m_karyawan.jenis_gajian, m_karyawan.gaji_lembur, m_karyawan.total_kasbon, m_karyawan.total_pembayaran_kasbon, 
+        private const string SQL_TEMPLATE = @"SELECT t_gaji_karyawan.gaji_karyawan_id, t_gaji_karyawan.pengguna_id, t_gaji_karyawan.bulan, t_gaji_karyawan.tahun,
+                                              t_gaji_karyawan.kehadiran, t_gaji_karyawan.absen, t_gaji_karyawan.gaji_pokok, t_gaji_karyawan.lembur, t_gaji_karyawan.bonus,
+                                              t_gaji_karyawan.potongan, t_gaji_karyawan.jam, t_gaji_karyawan.lainnya, t_gaji_karyawan.keterangan,
+                                              t_gaji_karyawan.jumlah_hari, t_gaji_karyawan.tunjangan, t_gaji_karyawan.kasbon, t_gaji_karyawan.tanggal, t_gaji_karyawan.nota,
+                                              m_karyawan.karyawan_id, m_karyawan.nama_karyawan, m_karyawan.gaji_pokok, m_karyawan.jenis_gajian, m_karyawan.gaji_lembur, m_karyawan.total_kasbon, m_karyawan.total_pembayaran_kasbon,
                                               m_jabatan.jabatan_id, m_jabatan.nama_jabatan
                                               FROM public.t_gaji_karyawan INNER JOIN public.m_karyawan ON t_gaji_karyawan.karyawan_id = m_karyawan.karyawan_id
                                               INNER JOIN public.m_jabatan ON m_karyawan.jabatan_id = m_jabatan.jabatan_id
                                               {WHERE}
                                               {ORDER BY}";
+
         private IDapperContext _context;
         private ILog _log;
 
@@ -113,7 +108,6 @@ namespace OpenRetail.Repository.Service
                 {
                     gaji.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByGajiKaryawan(gaji.gaji_karyawan_id).ToList();
                 }
-
             }
             catch (Exception ex)
             {
@@ -165,7 +159,7 @@ namespace OpenRetail.Repository.Service
                     {
                         item.pembayaran_kasbon_id = _context.GetGUID();
                         item.pengguna_id = obj.pengguna_id;
-                        item.gaji_karyawan_id = obj.gaji_karyawan_id;                        
+                        item.gaji_karyawan_id = obj.gaji_karyawan_id;
                         item.tanggal = obj.tanggal;
                         item.nota = obj.nota;
 
@@ -262,6 +256,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

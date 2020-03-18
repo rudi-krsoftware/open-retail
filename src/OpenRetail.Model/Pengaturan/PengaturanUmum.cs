@@ -16,10 +16,7 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Model
 {
@@ -28,12 +25,12 @@ namespace OpenRetail.Model
         /// <summary>
         /// Jenis printer inkjet/lasetjet
         /// </summary>
-        InkJet = 1, 
+        InkJet = 1,
 
         /// <summary>
         /// Jenis printer dot matrix
         /// </summary>
-        DotMatrix = 2, 
+        DotMatrix = 2,
 
         /// <summary>
         /// Jenis printer mini pos
@@ -79,6 +76,6 @@ namespace OpenRetail.Model
         public IList<HeaderNota> list_of_header_nota { get; set; }
         public IList<HeaderNotaMiniPos> list_of_header_nota_mini_pos { get; set; }
         public IList<FooterNotaMiniPos> list_of_footer_nota_mini_pos { get; set; }
-        public IList<LabelNota> list_of_label_nota { get; set; }        
+        public IList<LabelNota> list_of_label_nota { get; set; }
     }
 }

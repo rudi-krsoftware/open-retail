@@ -16,38 +16,31 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using FluentValidation;
-using Dapper.Contrib.Extensions;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("m_shift")]
+{
+    [Table("m_shift")]
     public class Shift
     {
-		[ExplicitKey]
-		[Display(Name = "shift_id")]		
-		public string shift_id { get; set; }
-		
-		[Display(Name = "nama_shift")]
-		public string nama_shift { get; set; }
-		
-		[Display(Name = "jam_mulai")]
-		public Nullable<DateTime> jam_mulai { get; set; }
-		
-		[Display(Name = "jam_selesai")]
-		public Nullable<DateTime> jam_selesai { get; set; }
-		
-		[Display(Name = "is_active")]
-		public bool is_active { get; set; }
-		
-	}
+        [ExplicitKey]
+        [Display(Name = "shift_id")]
+        public string shift_id { get; set; }
+
+        [Display(Name = "nama_shift")]
+        public string nama_shift { get; set; }
+
+        [Display(Name = "jam_mulai")]
+        public Nullable<DateTime> jam_mulai { get; set; }
+
+        [Display(Name = "jam_selesai")]
+        public Nullable<DateTime> jam_selesai { get; set; }
+
+        [Display(Name = "is_active")]
+        public bool is_active { get; set; }
+    }
 
     public class ShiftValidator : AbstractValidator<Shift>
     {
@@ -55,10 +48,10 @@ namespace OpenRetail.Model
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.nama_shift).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
-		}
-	}
+            RuleFor(c => c.nama_shift).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
+        }
+    }
 }

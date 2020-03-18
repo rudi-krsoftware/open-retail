@@ -16,14 +16,9 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Zen.Barcode;
 
 namespace OpenRetail.Helper.UserControl
 {
@@ -33,33 +28,37 @@ namespace OpenRetail.Helper.UserControl
     public class BarcodePanel : Panel
     {
         #region Private Fields
+
         private BarcodeSymbology _symbology;
         private int _maxBarHeight = 30;
         private int _scaleBarWidth = 1;
         private string _headerLabel = string.Empty;
         private double _priceLabel = 0;
         private bool _isDisplayPriceLabel = true;
-        #endregion
+
+        #endregion Private Fields
 
         #region Public Constructors
+
         /// <summary>
         /// Initialises an instance of <see cref="T:BarcodePanel" />.
         /// </summary>
         public BarcodePanel()
         {
             this.SuspendLayout();
-            // 
+            //
             // BarcodePanel
-            // 
+            //
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ResumeLayout(false);
         }
 
-        #endregion
+        #endregion Public Constructors
 
         #region Public Properties
+
         /// <summary>
         /// Gets or sets the barcode symbology.
         /// </summary>
@@ -199,9 +198,10 @@ namespace OpenRetail.Helper.UserControl
             }
         }
 
-        #endregion
+        #endregion Public Properties
 
         #region Private Methods
+
         private void RefreshBarcodeImage()
         {
             // Allocate new barcode image as needed
@@ -287,6 +287,7 @@ namespace OpenRetail.Helper.UserControl
                 AutoScrollMinSize = BackgroundImage.Size;
             }
         }
-        #endregion
+
+        #endregion Private Methods
     }
 }

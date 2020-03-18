@@ -1,3 +1,5 @@
+using OpenRetail.WebAPI.Areas.HelpPage.ModelDescriptions;
+using OpenRetail.WebAPI.Areas.HelpPage.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,11 +10,6 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Web.Http;
-using System.Web.Http.Controllers;
-using System.Web.Http.Description;
-using OpenRetail.WebAPI.Areas.HelpPage.ModelDescriptions;
-using OpenRetail.WebAPI.Areas.HelpPage.Models;
 
 namespace OpenRetail.WebAPI.Areas.HelpPage
 {
@@ -282,7 +279,7 @@ namespace OpenRetail.WebAPI.Areas.HelpPage
                     //     public int Y { get; set; }
                     // }
                     // Class Point is bindable with a TypeConverter, so Point will be added to UriParameters collection.
-                    // 
+                    //
                     // public class Point
                     // {
                     //     public int X { get; set; }

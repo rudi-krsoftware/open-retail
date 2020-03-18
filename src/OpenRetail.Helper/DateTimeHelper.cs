@@ -17,15 +17,11 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Helper
 {
     public static class DateTimeHelper
     {
-
         public static DateTime GetNullDateTime()
         {
             return new DateTime(0001, 1, 1);

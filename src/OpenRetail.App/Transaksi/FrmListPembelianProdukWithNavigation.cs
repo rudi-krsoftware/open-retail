@@ -16,30 +16,26 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
 using OpenRetail.App.Lookup;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Transaksi
 {
     public partial class FrmListPembelianProdukWithNavigation : FrmListEmptyBodyWithNavigation, IListener
     {
-        private IBeliProdukBll _bll; // deklarasi objek business logic layer 
+        private IBeliProdukBll _bll; // deklarasi objek business logic layer
         private IList<BeliProduk> _listOfBeli = new List<BeliProduk>();
         private ILog _log;
         private Pengguna _pengguna;
@@ -72,13 +68,13 @@ namespace OpenRetail.App.Transaksi
                 {
                     this.updLimit.Value = _pageSize;
                     LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
-                }                    
+                }
 
                 txtNamaSupplier.Enabled = role.is_grant;
                 btnCari.Enabled = role.is_grant;
 
                 filterRangeTanggal.Enabled = role.is_grant;
-            } 
+            }
 
             InitGridList();
 
@@ -105,7 +101,7 @@ namespace OpenRetail.App.Transaksi
             if (_listOfBeli.Count > 0)
                 this.gridList.SetSelected(0, true);
 
-            this.gridList.Grid.PushButtonClick += delegate(object sender, GridCellPushButtonClickEventArgs e)
+            this.gridList.Grid.PushButtonClick += delegate (object sender, GridCellPushButtonClickEventArgs e)
             {
                 if (e.RowIndex > 0)
                 {
@@ -140,9 +136,8 @@ namespace OpenRetail.App.Transaksi
                 }
             };
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
-
                 if (_listOfBeli.Count > 0)
                 {
                     if (e.RowIndex > 0)
@@ -156,7 +151,6 @@ namespace OpenRetail.App.Transaksi
                             var beli = _listOfBeli[rowIndex];
                             if (beli != null)
                                 totalNota = beli.grand_total;
-
 
                             var isRetur = beli.retur_beli_produk_id != null;
 
@@ -300,7 +294,7 @@ namespace OpenRetail.App.Transaksi
                 var frm = new FrmEntryPembelianProduk("Tambah Data " + this.Text, _bll);
                 frm.Listener = this;
                 frm.ShowDialog();
-            }            
+            }
         }
 
         protected override void Perbaiki()
@@ -321,7 +315,7 @@ namespace OpenRetail.App.Transaksi
                 var frm = new FrmEntryPembelianProduk("Edit Data " + this.Text, beli, _bll);
                 frm.Listener = this;
                 frm.ShowDialog();
-            }            
+            }
         }
 
         protected override void Hapus()
@@ -344,7 +338,7 @@ namespace OpenRetail.App.Transaksi
                     }
                     else
                         MsgHelper.MsgDeleteError();
-                }                
+                }
             }
         }
 
@@ -400,13 +394,13 @@ namespace OpenRetail.App.Transaksi
                 LoadData();
                 txtNamaSupplier.Enabled = false;
                 btnCari.Enabled = false;
-            }                
+            }
             else
             {
                 LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
                 txtNamaSupplier.Enabled = true;
                 btnCari.Enabled = true;
-            }                
+            }
         }
 
         private void btnCari_Click(object sender, EventArgs e)
@@ -415,7 +409,7 @@ namespace OpenRetail.App.Transaksi
             {
                 _pageNumber = 1;
                 LoadData(txtNamaSupplier.Text);
-            }                
+            }
         }
 
         private void txtNamaSupplier_KeyPress(object sender, KeyPressEventArgs e)
@@ -483,7 +477,7 @@ namespace OpenRetail.App.Transaksi
                     }
                 }
             }
-            
+
             // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
             RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfBeli.Count);
         }

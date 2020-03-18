@@ -10,15 +10,15 @@
     <tbody>
         @foreach (EnumValueDescription value in Model.Values)
         {
-            <tr>
-                <td class="enum-name"><b>@value.Name</b></td>
-                <td class="enum-value">
-                    <p>@value.Value</p>
-                </td>
-                <td class="enum-description">
-                    <p>@value.Documentation</p>
-                </td>
-            </tr>
+        <tr>
+            <td class="enum-name"><b>@value.Name</b></td>
+            <td class="enum-value">
+                <p>@value.Value</p>
+            </td>
+            <td class="enum-description">
+                <p>@value.Documentation</p>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -16,30 +16,25 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class HeaderNotaMiniPosRepository : IHeaderNotaMiniPosRepository
     {
         private IDapperContext _context;
-		private ILog _log;
-		
+        private ILog _log;
+
         public HeaderNotaMiniPosRepository(IDapperContext context, ILog log)
         {
             this._context = context;
             this._log = log;
-        }        
+        }
 
         public IList<HeaderNotaMiniPos> GetAll()
         {
@@ -86,4 +81,4 @@ namespace OpenRetail.Repository.Service
             throw new NotImplementedException();
         }
     }
-}     
+}

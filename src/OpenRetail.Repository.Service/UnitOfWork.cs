@@ -16,19 +16,13 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
 using OpenRetail.Repository.Service.Report;
- 
+
 namespace OpenRetail.Repository.Service
-{    
+{
     public class UnitOfWork : IUnitOfWork
     {
         private IDapperContext _context;
@@ -110,7 +104,7 @@ namespace OpenRetail.Repository.Service
         {
             this._isUseWebAPI = isUseWebAPI;
             this._baseUrl = baseUrl;
-            this._log = log;            
+            this._log = log;
         }
 
         public IDatabaseVersionRepository DatabaseVersionRepository
@@ -120,7 +114,7 @@ namespace OpenRetail.Repository.Service
 
         public IKartuRepository KartuRepository
         {
-            get 
+            get
             {
                 return _kartuRepository ?? (_kartuRepository = _isUseWebAPI ? (IKartuRepository)new KartuWebAPIRepository(_baseUrl, _log) : new KartuRepository(_context, _log));
             }
@@ -128,7 +122,7 @@ namespace OpenRetail.Repository.Service
 
         public IAlasanPenyesuaianStokRepository AlasanPenyesuaianStokRepository
         {
-            get 
+            get
             {
                 return _alasanpenyesuaianstokRepository ?? (_alasanpenyesuaianstokRepository = _isUseWebAPI ? (IAlasanPenyesuaianStokRepository)new AlasanPenyesuaianStokWebAPIRepository(_baseUrl, _log) : new AlasanPenyesuaianStokRepository(_context, _log));
             }
@@ -144,15 +138,15 @@ namespace OpenRetail.Repository.Service
 
         public IJenisPengeluaranRepository JenisPengeluaranRepository
         {
-            get 
-            { 
+            get
+            {
                 return _jenispengeluaranRepository ?? (_jenispengeluaranRepository = _isUseWebAPI ? (IJenisPengeluaranRepository)new JenisPengeluaranWebAPIRepository(_baseUrl, _log) : new JenisPengeluaranRepository(_context, _log));
             }
         }
 
         public IGolonganRepository GolonganRepository
         {
-            get 
+            get
             {
                 return _golonganRepository ?? (_golonganRepository = _isUseWebAPI ? (IGolonganRepository)new GolonganWebAPIRepository(_baseUrl, _log) : new GolonganRepository(_context, _log));
             }
@@ -194,8 +188,8 @@ namespace OpenRetail.Repository.Service
 
         public IDropshipperRepository DropshipperRepository
         {
-            get 
-            { 
+            get
+            {
                 return _dropshipperRepository ?? (_dropshipperRepository = _isUseWebAPI ? (IDropshipperRepository)new DropshipperWebAPIRepository(_baseUrl, _log) : new DropshipperRepository(_context, _log));
             }
         }
@@ -460,4 +454,4 @@ namespace OpenRetail.Repository.Service
             get { return _headernotaminiposRepository ?? (_headernotaminiposRepository = new HeaderNotaMiniPosRepository(_context, _log)); }
         }
     }
-}     
+}

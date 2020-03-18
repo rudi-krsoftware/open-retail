@@ -16,14 +16,9 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using OpenRetail.Model;
 using OpenRetail.Helper;
-using GodSharp;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.App.Cashier.Transaksi
 {

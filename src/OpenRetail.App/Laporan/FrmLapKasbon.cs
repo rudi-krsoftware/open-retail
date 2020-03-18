@@ -16,32 +16,26 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
+using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Api.Report;
+using OpenRetail.Bll.Service;
+using OpenRetail.Bll.Service.Report;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.Model;
 using OpenRetail.Model.Report;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper;
-using OpenRetail.Report;
-using OpenRetail.Bll.Api.Report;
-using OpenRetail.Bll.Service.Report;
-using ConceptCave.WaitCursor;
-using Microsoft.Reporting.WinForms;
-using OpenRetail.Helper.UI.Template;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Laporan
 {
     public partial class FrmLapKasbon : FrmSettingReportStandard
-    {        
+    {
         private IList<Karyawan> _listOfKaryawan = new List<Karyawan>();
         private ILog _log;
 
@@ -61,7 +55,7 @@ namespace OpenRetail.App.Laporan
             chkTampilkanRincianNota.Enabled = true;
 
             LoadKaryawan();
-            LoadBulanDanTahun();            
+            LoadBulanDanTahun();
         }
 
         private void LoadKaryawan()
@@ -133,9 +127,9 @@ namespace OpenRetail.App.Laporan
         private void PreviewReportHeader()
         {
             var periode = string.Empty;
-                                    
+
             IReportKasbonBll reportBll = new ReportKasbonBll(_log);
-            
+
             IList<ReportKasbonHeader> listOfReportPiutangPenjualan = new List<ReportKasbonHeader>();
             IList<string> listOfKaryawanId = new List<string>();
 
@@ -205,7 +199,7 @@ namespace OpenRetail.App.Laporan
             var periode = string.Empty;
 
             IReportKasbonBll reportBll = new ReportKasbonBll(_log);
-            
+
             IList<ReportKasbonDetail> listOfReportPiutangPenjualan = new List<ReportKasbonDetail>();
 
             IList<string> listOfKaryawanId = new List<string>();

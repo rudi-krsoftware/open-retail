@@ -16,65 +16,59 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
 using FluentValidation;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.WebAPI.Models.DTO
-{        
+{
     public class KaryawanDTO
     {
-		[Display(Name = "karyawan_id")]		
-		public string karyawan_id { get; set; }
-		
-		[Display(Name = "jabatan_id")]
-		public string jabatan_id { get; set; }
+        [Display(Name = "karyawan_id")]
+        public string karyawan_id { get; set; }
 
-		[JsonIgnore]
+        [Display(Name = "jabatan_id")]
+        public string jabatan_id { get; set; }
+
+        [JsonIgnore]
         public JabatanDTO Jabatan { get; set; }
 
-		[Display(Name = "nama_karyawan")]
-		public string nama_karyawan { get; set; }
-		
-		[Display(Name = "alamat")]
-		public string alamat { get; set; }
-		
-		[Display(Name = "telepon")]
-		public string telepon { get; set; }
-		
-		[Display(Name = "gaji_pokok")]
-		public double gaji_pokok { get; set; }
-		
-		[Display(Name = "is_active")]
-		public bool is_active { get; set; }
-		        
-		[Display(Name = "keterangan")]
-		public string keterangan { get; set; }
-		
-		[Display(Name = "jenis_gajian")]
-		public int jenis_gajian { get; set; }
-		
-		[Display(Name = "gaji_lembur")]
-		public double gaji_lembur { get; set; }
-		
-		[Display(Name = "total_kasbon")]
-		public double total_kasbon { get; set; }
-		
-		[Display(Name = "total_pembayaran_kasbon")]
-		public double total_pembayaran_kasbon { get; set; }
+        [Display(Name = "nama_karyawan")]
+        public string nama_karyawan { get; set; }
+
+        [Display(Name = "alamat")]
+        public string alamat { get; set; }
+
+        [Display(Name = "telepon")]
+        public string telepon { get; set; }
+
+        [Display(Name = "gaji_pokok")]
+        public double gaji_pokok { get; set; }
+
+        [Display(Name = "is_active")]
+        public bool is_active { get; set; }
+
+        [Display(Name = "keterangan")]
+        public string keterangan { get; set; }
+
+        [Display(Name = "jenis_gajian")]
+        public int jenis_gajian { get; set; }
+
+        [Display(Name = "gaji_lembur")]
+        public double gaji_lembur { get; set; }
+
+        [Display(Name = "total_kasbon")]
+        public double total_kasbon { get; set; }
+
+        [Display(Name = "total_pembayaran_kasbon")]
+        public double total_pembayaran_kasbon { get; set; }
 
         [Display(Name = "sisa_kasbon")]
         public double sisa_kasbon
         {
             get { return total_kasbon - total_pembayaran_kasbon; }
         }
-	}
+    }
 
     public class KaryawanDTOValidator : AbstractValidator<KaryawanDTO>
     {
@@ -82,7 +76,7 @@ namespace OpenRetail.WebAPI.Models.DTO
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
 
             RuleSet("save", () =>
@@ -100,7 +94,7 @@ namespace OpenRetail.WebAPI.Models.DTO
             {
                 RuleFor(c => c.karyawan_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
             });
-		}
+        }
 
         private void DefaultRule(string msgError1, string msgError2)
         {
@@ -108,7 +102,7 @@ namespace OpenRetail.WebAPI.Models.DTO
             RuleFor(c => c.nama_karyawan).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
             RuleFor(c => c.alamat).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.telepon).Length(0, 20).WithMessage(msgError2);
-            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);			
+            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
         }
-	}
+    }
 }

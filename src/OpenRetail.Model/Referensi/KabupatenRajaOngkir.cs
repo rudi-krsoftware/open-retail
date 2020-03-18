@@ -16,40 +16,33 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using FluentValidation;
-using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("m_kabupaten")]
+{
+    [Table("m_kabupaten")]
     public class KabupatenRajaOngkir
     {
-		[ExplicitKey]
-		[Display(Name = "kabupaten_id")]		
-		public int kabupaten_id { get; set; }
-		
-		[Display(Name = "provinsi_id")]
-		public int provinsi_id { get; set; }
+        [ExplicitKey]
+        [Display(Name = "kabupaten_id")]
+        public int kabupaten_id { get; set; }
 
-		[Write(false)]
+        [Display(Name = "provinsi_id")]
+        public int provinsi_id { get; set; }
+
+        [Write(false)]
         public ProvinsiRajaOngkir Provinsi { get; set; }
 
-		[Display(Name = "tipe")]
-		public string tipe { get; set; }
-		
-		[Display(Name = "nama_kabupaten")]
-		public string nama_kabupaten { get; set; }
-		
-		[Display(Name = "kode_pos")]
-		public string kode_pos { get; set; }
-	}
+        [Display(Name = "tipe")]
+        public string tipe { get; set; }
+
+        [Display(Name = "nama_kabupaten")]
+        public string nama_kabupaten { get; set; }
+
+        [Display(Name = "kode_pos")]
+        public string kode_pos { get; set; }
+    }
 
     public class KabupatenRajaOngkirValidator : AbstractValidator<KabupatenRajaOngkir>
     {
@@ -57,12 +50,12 @@ namespace OpenRetail.Model
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.tipe).NotEmpty().WithMessage(msgError1).Length(1, 15).WithMessage(msgError2);
-			RuleFor(c => c.nama_kabupaten).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
-			RuleFor(c => c.kode_pos).NotEmpty().WithMessage(msgError1).Length(0, 6).WithMessage(msgError2);
-		}
-	}
+            RuleFor(c => c.tipe).NotEmpty().WithMessage(msgError1).Length(1, 15).WithMessage(msgError2);
+            RuleFor(c => c.nama_kabupaten).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
+            RuleFor(c => c.kode_pos).NotEmpty().WithMessage(msgError1).Length(0, 6).WithMessage(msgError2);
+        }
+    }
 }

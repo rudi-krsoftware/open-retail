@@ -22,9 +22,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using Microsoft.Reporting.WinForms;
 
 namespace OpenRetail.Helper
 {

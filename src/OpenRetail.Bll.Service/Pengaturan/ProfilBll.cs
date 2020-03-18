@@ -16,29 +16,25 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class ProfilBll : IProfilBll
     {
-		private ILog _log;
+        private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private ProfilValidator _validator;
+        private ProfilValidator _validator;
 
-		public ProfilBll(ILog log)
+        public ProfilBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new ProfilValidator();
         }
 
@@ -65,7 +61,7 @@ namespace OpenRetail.Bll.Service
             throw new NotImplementedException();
         }
 
-		public int Save(Profil obj)
+        public int Save(Profil obj)
         {
             var result = 0;
 
@@ -80,7 +76,7 @@ namespace OpenRetail.Bll.Service
 
         public int Save(Profil obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -95,10 +91,10 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(Profil obj)
+        public int Update(Profil obj)
         {
             throw new NotImplementedException();
-        }        
+        }
 
         public int Delete(Profil obj)
         {
@@ -110,4 +106,4 @@ namespace OpenRetail.Bll.Service
             throw new NotImplementedException();
         }
     }
-}     
+}

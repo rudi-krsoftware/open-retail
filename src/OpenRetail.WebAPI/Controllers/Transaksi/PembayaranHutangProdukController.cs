@@ -16,35 +16,34 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using System.Net;
-using System.Web.Http;
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
+using OpenRetail.WebAPI.Controllers.Helper;
 using OpenRetail.WebAPI.Models;
 using OpenRetail.WebAPI.Models.DTO;
-using OpenRetail.WebAPI.Controllers.Helper;
+using System;
+using System.Collections.Generic;
+using System.Net;
 
 namespace OpenRetail.WebAPI.Controllers
 {
     public interface IPembayaranHutangProdukController : IBaseApiController<PembayaranHutangProdukDTO>
     {
         IHttpActionResult Save(PembayaranHutangProdukDTO obj, bool isSaveFromPembelian);
+
         IHttpActionResult Update(PembayaranHutangProdukDTO obj, bool isUpdateFromPembelian);
 
         IHttpActionResult GetLastNota();
+
         IHttpActionResult GetByID(string id);
+
         IHttpActionResult GetByBeliID(string id);
 
         IHttpActionResult GetByName(string name);
+
         IHttpActionResult GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
         IHttpActionResult GetHistoriPembayaran(string beliId);
     }
 
@@ -55,8 +54,8 @@ namespace OpenRetail.WebAPI.Controllers
         private ILog _log;
         private HttpStatusCode _httpStatusCode = HttpStatusCode.BadRequest;
         private IHttpActionResult _response = null;
-		
-		public PembayaranHutangProdukController(IUnitOfWork unitOfWork)
+
+        public PembayaranHutangProdukController(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -281,7 +280,7 @@ namespace OpenRetail.WebAPI.Controllers
             }
 
             return _response;
-        }        
+        }
 
         public IHttpActionResult Update(PembayaranHutangProdukDTO objDTO)
         {
@@ -348,6 +347,6 @@ namespace OpenRetail.WebAPI.Controllers
             }
 
             return _response;
-        }        
+        }
     }
 }

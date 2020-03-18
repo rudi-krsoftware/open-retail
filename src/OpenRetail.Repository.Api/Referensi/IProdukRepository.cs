@@ -16,28 +16,31 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using OpenRetail.Model;
- 
+using System.Collections.Generic;
+
 namespace OpenRetail.Repository.Api
-{        
+{
     public interface IProdukRepository : IBaseRepository<Produk>
     {
-		Produk GetByID(string id);
+        Produk GetByID(string id);
+
         Produk GetByKode(string kodeProduk, bool isCekStatusAktif = false);
+
         string GetLastKodeProduk();
 
         IList<Produk> GetByName(string name, bool isLoadHargaGrosir = true, bool isCekStatusAktif = false);
+
         IList<Produk> GetByName(string name, string sortBy, int pageNumber, int pageSize, ref int pagesCount, bool isLoadHargaGrosir = true);
+
         IList<Produk> GetByGolongan(string golonganId);
+
         IList<Produk> GetByGolongan(string golonganId, string sortBy, int pageNumber, int pageSize, ref int pagesCount);
+
         IList<Produk> GetInfoMinimalStok();
+
         IList<Produk> GetAll(string sortBy);
+
         IList<Produk> GetAll(string sortBy, int pageNumber, int pageSize, ref int pagesCount);
     }
-}     
+}

@@ -16,33 +16,28 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class KabupatenRajaOngkirRepository : IKabupatenRajaOngkirRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT m_kabupaten.kabupaten_id, m_kabupaten.tipe, m_kabupaten.nama_kabupaten, m_kabupaten.kode_pos, 
+        private const string SQL_TEMPLATE = @"SELECT m_kabupaten.kabupaten_id, m_kabupaten.tipe, m_kabupaten.nama_kabupaten, m_kabupaten.kode_pos,
                                               m_provinsi.provinsi_id, m_provinsi.nama_provinsi
-                                              FROM public.m_kabupaten INNER JOIN public.m_provinsi ON m_kabupaten.provinsi_id = m_provinsi.provinsi_id                                              
+                                              FROM public.m_kabupaten INNER JOIN public.m_provinsi ON m_kabupaten.provinsi_id = m_provinsi.provinsi_id
                                               {WHERE}
                                               ORDER BY m_kabupaten.nama_kabupaten";
+
         private IDapperContext _context;
         private ILog _log;
 
         private string _sql;
-		
+
         public KabupatenRajaOngkirRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -122,4 +117,4 @@ namespace OpenRetail.Repository.Service
             throw new NotImplementedException();
         }
     }
-}     
+}

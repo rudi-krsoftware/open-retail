@@ -16,26 +16,17 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class MenuBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IMenuBll _bll;
 
         [TestInitialize]
@@ -66,16 +57,15 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(obj.is_active);
             Assert.AreEqual("FrmListTransaksiPembelianBahanBaku", obj.nama_form);
             Assert.IsTrue(obj.is_enabled);
-                     
         }
 
         [TestMethod]
         public void GetByNameTest()
         {
             var menuName = "mnuTrxPembelianBahanBaku";
-            
+
             var obj = _bll.GetByName(menuName);
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("5df78447-219a-47c8-8a28-53b8e71ffb9d", obj.menu_id);
             Assert.AreEqual("mnuTrxPembelianBahanBaku", obj.nama_menu);
@@ -84,8 +74,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(1, obj.order_number);
             Assert.IsTrue(obj.is_active);
             Assert.AreEqual("FrmListTransaksiPembelianBahanBaku", obj.nama_form);
-            Assert.IsTrue(obj.is_enabled);                              
-                     
+            Assert.IsTrue(obj.is_enabled);
         }
 
         [TestMethod]
@@ -94,7 +83,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 2;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("5df78447-219a-47c8-8a28-53b8e71ffb9d", obj.menu_id);
             Assert.AreEqual("mnuTrxPembelianBahanBaku", obj.nama_menu);
@@ -103,8 +92,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(1, obj.order_number);
             Assert.IsTrue(obj.is_active);
             Assert.AreEqual("FrmListTransaksiPembelianBahanBaku", obj.nama_form);
-            Assert.IsTrue(obj.is_enabled);                               
-                     
+            Assert.IsTrue(obj.is_enabled);
         }
 
         [TestMethod]
@@ -134,8 +122,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.order_number, newObj.order_number);
             Assert.AreEqual(obj.is_active, newObj.is_active);
             Assert.AreEqual(obj.nama_form, newObj.nama_form);
-            Assert.AreEqual(obj.is_enabled, newObj.is_enabled);                                
-            
-		}
+            Assert.AreEqual(obj.is_enabled, newObj.is_enabled);
+        }
     }
-}     
+}

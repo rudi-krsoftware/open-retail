@@ -16,25 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using Microsoft.Reporting.WinForms;
-using System.Reflection;
-using System.IO;
-
+using ConceptCave.WaitCursor;
 using log4net;
-using OpenRetail.Helper;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using ConceptCave.WaitCursor;
+using OpenRetail.Helper;
+using OpenRetail.Model;
+using System;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -46,7 +36,7 @@ namespace OpenRetail.App.Transaksi
         private ILog _log;
         private Customer _customer = null;
         private Dropshipper _dropshipper = null;
-        private JualProduk _jual = null;        
+        private JualProduk _jual = null;
         private Pengguna _pengguna;
         private Profil _profil;
         private PengaturanUmum _pengaturanUmum;
@@ -59,7 +49,7 @@ namespace OpenRetail.App.Transaksi
             this.reportViewer1.ZoomPercent = 100;
 
             ColorManagerHelper.SetTheme(this, this);
-            _assemblyReport = Assembly.LoadFrom("OpenRetail.Report.dll");            
+            _assemblyReport = Assembly.LoadFrom("OpenRetail.Report.dll");
         }
 
         public FrmPreviewLabelNotaPenjualan(string header, JualProduk jual)
@@ -134,7 +124,7 @@ namespace OpenRetail.App.Transaksi
             _jual.label_kepada2 = txtKepada2.Text;
             _jual.label_kepada3 = txtKepada3.Text;
             _jual.label_kepada4 = txtKepada4.Text;
-            
+
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 PreviewLabelNota(_jual);
@@ -173,7 +163,7 @@ namespace OpenRetail.App.Transaksi
                     else
                     {
                         item.label_ongkos_kirim = NumberHelper.NumberToString(item.ongkos_kirim);
-                    }                        
+                    }
                 }
 
                 var reportName = "RvLabelNotaPenjualan";
@@ -193,7 +183,7 @@ namespace OpenRetail.App.Transaksi
                 {
                     var printReport = new ReportViewerPrintHelper(reportName, reportDataSource, printerName: _pengaturanUmum.nama_printer);
                     printReport.Print();
-                }                
+                }
             }
         }
 

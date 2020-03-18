@@ -16,29 +16,23 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmListJabatan : FrmListStandard, IListener
-    {                
-        private IJabatanBll _bll; // deklarasi objek business logic layer 
+    {
+        private IJabatanBll _bll; // deklarasi objek business logic layer
         private IList<Jabatan> _listOfJabatan = new List<Jabatan>();
         private ILog _log;
 
@@ -75,7 +69,7 @@ namespace OpenRetail.App.Referensi
             if (_listOfJabatan.Count > 0)
                 this.gridList.SetSelected(0, true);
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 if (_listOfJabatan.Count > 0)
                 {
@@ -166,7 +160,7 @@ namespace OpenRetail.App.Referensi
                     }
                     else
                         MsgHelper.MsgDeleteError();
-                }                
+                }
             }
         }
 

@@ -16,22 +16,20 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using OpenRetail.Model;
- 
 namespace OpenRetail.Repository.Api
-{        
+{
     public interface IReturBeliProdukRepository : IBaseRepository<ReturBeliProduk>
     {
         string GetLastNota();
-		ReturBeliProduk GetByID(string id);            
+
+        ReturBeliProduk GetByID(string id);
 
         IList<ReturBeliProduk> GetByName(string name);
-        IList<ReturBeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);  
+
+        IList<ReturBeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
-}     
+}

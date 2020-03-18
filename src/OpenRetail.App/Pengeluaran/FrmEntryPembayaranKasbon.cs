@@ -16,31 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
+using ConceptCave.WaitCursor;
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
-using ConceptCave.WaitCursor;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using System;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Pengeluaran
 {
     public partial class FrmEntryPembayaranKasbon : FrmEntryStandard
-    {                    
-        private IPembayaranKasbonBll _bll = null; // deklarasi objek business logic layer 
+    {
+        private IPembayaranKasbonBll _bll = null; // deklarasi objek business logic layer
         private Kasbon _kasbon = null;
         private PembayaranKasbon _pembayaranKasbon = null;
-        
+
         private bool _isNewData = false;
         private Pengguna _pengguna;
         private ILog _log;
@@ -71,7 +64,7 @@ namespace OpenRetail.App.Pengeluaran
         {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
-            
+
             base.SetHeader(header);
             base.SetButtonSelesaiToBatal();
 
@@ -104,7 +97,7 @@ namespace OpenRetail.App.Pengeluaran
             _pembayaranKasbon.tanggal = dtpTanggal.Value;
             _pembayaranKasbon.nominal = NumberHelper.StringToDouble(txtJumlah.Text);
             _pembayaranKasbon.sisa_kasbon = NumberHelper.StringToDouble(txtSisaKasbon.Text);
-            _pembayaranKasbon.keterangan = txtKeterangan.Text;            
+            _pembayaranKasbon.keterangan = txtKeterangan.Text;
 
             var result = 0;
             var validationError = new ValidationError();
@@ -129,7 +122,7 @@ namespace OpenRetail.App.Pengeluaran
                         base.SetFocusObject(validationError.PropertyName, this);
                     }
                 }
-            }                            
+            }
         }
 
         private void txtKeterangan_KeyPress(object sender, KeyPressEventArgs e)

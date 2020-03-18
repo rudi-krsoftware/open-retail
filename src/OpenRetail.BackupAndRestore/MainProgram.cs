@@ -16,22 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-
 using OpenRetail.BackupAndRestore.Main;
+using System;
+using System.Windows.Forms;
 
 namespace OpenRetail.BackupAndRestore
 {
-    static class MainProgram
+    internal static class MainProgram
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

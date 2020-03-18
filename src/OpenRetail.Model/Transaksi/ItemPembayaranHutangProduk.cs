@@ -16,20 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("t_item_pembayaran_hutang_produk")]
+{
+    [Table("t_item_pembayaran_hutang_produk")]
     public class ItemPembayaranHutangProduk
     {
         public ItemPembayaranHutangProduk()
@@ -37,38 +31,38 @@ namespace OpenRetail.Model
             entity_state = EntityState.Added;
         }
 
-		[ExplicitKey]
-		[Display(Name = "item_pembayaran_hutang_produk_id")]		
-		public string item_pembayaran_hutang_produk_id { get; set; }
-		
-		[Display(Name = "pembayaran_hutang_produk_id")]
-		public string pembayaran_hutang_produk_id { get; set; }
+        [ExplicitKey]
+        [Display(Name = "item_pembayaran_hutang_produk_id")]
+        public string item_pembayaran_hutang_produk_id { get; set; }
 
-        [JsonIgnore]
-		[Write(false)]
-        public PembayaranHutangProduk PembayaranHutangProduk { get; set; }
-
-		[Display(Name = "Produk")]
-		public string beli_produk_id { get; set; }
-
-        //[JsonIgnore]
-		[Write(false)]
-        public BeliProduk BeliProduk { get; set; }
-
-		[Display(Name = "Nominal")]
-		public double nominal { get; set; }
-		
-		[Display(Name = "Keterangan")]
-		public string keterangan { get; set; }
+        [Display(Name = "pembayaran_hutang_produk_id")]
+        public string pembayaran_hutang_produk_id { get; set; }
 
         [JsonIgnore]
         [Write(false)]
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
+        public PembayaranHutangProduk PembayaranHutangProduk { get; set; }
+
+        [Display(Name = "Produk")]
+        public string beli_produk_id { get; set; }
+
+        //[JsonIgnore]
+        [Write(false)]
+        public BeliProduk BeliProduk { get; set; }
+
+        [Display(Name = "Nominal")]
+        public double nominal { get; set; }
+
+        [Display(Name = "Keterangan")]
+        public string keterangan { get; set; }
+
+        [JsonIgnore]
+        [Write(false)]
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
 
         [Write(false)]
         public EntityState entity_state { get; set; }
-	}
+    }
 
     public class ItemPembayaranHutangProdukValidator : AbstractValidator<ItemPembayaranHutangProduk>
     {
@@ -76,12 +70,12 @@ namespace OpenRetail.Model
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.pembayaran_hutang_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.beli_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
-		}
-	}
+            RuleFor(c => c.pembayaran_hutang_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.beli_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
+        }
+    }
 }

@@ -16,32 +16,27 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class RolePrivilegeRepository : IRolePrivilegeRepository
     {
         private const string SQL_TEMPLATE = @"SELECT m_role_privilege.role_id, m_role_privilege.grant_id, m_role_privilege.is_grant, m_menu.menu_id, m_menu.nama_menu
                                               FROM public.m_role_privilege INNER JOIN public.m_menu ON m_role_privilege.menu_id = m_menu.menu_id
                                               {WHERE}
                                               {ORDER BY}";
+
         private IDapperContext _context;
         private ILog _log;
 
         private string _sql;
-		
+
         public RolePrivilegeRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -140,7 +135,7 @@ namespace OpenRetail.Repository.Service
                 if (row == 0)
                 {
                     sql = @"INSERT INTO m_role_privilege (role_id, menu_id, grant_id, is_grant)
-                            VALUES (@role_id, @menu_id, @grant_id, @is_grant)";                                        
+                            VALUES (@role_id, @menu_id, @grant_id, @is_grant)";
                 }
                 else
                 {
@@ -167,6 +162,6 @@ namespace OpenRetail.Repository.Service
         public int Delete(RolePrivilege obj)
         {
             throw new NotImplementedException();
-        }        
+        }
     }
-}     
+}

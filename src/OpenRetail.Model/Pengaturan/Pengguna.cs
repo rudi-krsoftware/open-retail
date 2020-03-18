@@ -16,16 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using FluentValidation;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using FluentValidation;
-using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
+using System.Linq;
 
 namespace OpenRetail.Model
 {
@@ -34,36 +30,36 @@ namespace OpenRetail.Model
         SELECT, CREATE, UPDATE, DELETE
     }
 
-	[Table("m_pengguna")]
+    [Table("m_pengguna")]
     public class Pengguna
     {
-		[ExplicitKey]
-		[Display(Name = "pengguna_id")]		
-		public string pengguna_id { get; set; }
-		
-		[Display(Name = "role_id")]
-		public string role_id { get; set; }
+        [ExplicitKey]
+        [Display(Name = "pengguna_id")]
+        public string pengguna_id { get; set; }
+
+        [Display(Name = "role_id")]
+        public string role_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
+        [Write(false)]
         public Role Role { get; set; }
 
-		[Display(Name = "User Name")]
-		public string nama_pengguna { get; set; }
-		
-		[Display(Name = "Password")]
-		public string pass_pengguna { get; set; }
+        [Display(Name = "User Name")]
+        public string nama_pengguna { get; set; }
+
+        [Display(Name = "Password")]
+        public string pass_pengguna { get; set; }
 
         [Write(false)]
         [Display(Name = "Konfirmasi Password")]
         public string konf_pass_pengguna { get; set; }
 
-		[Display(Name = "Aktif")]
-		public bool is_active { get; set; }
+        [Display(Name = "Aktif")]
+        public bool is_active { get; set; }
 
         [Write(false)]
-		[Display(Name = "Status User")]
-		public int status_user { get; set; }
+        [Display(Name = "Status User")]
+        public int status_user { get; set; }
 
         [Write(false)]
         public bool is_administrator
@@ -106,8 +102,7 @@ namespace OpenRetail.Model
 
             return obj;
         }
-
-	}
+    }
 
     public class PenggunaValidator : AbstractValidator<Pengguna>
     {
@@ -115,13 +110,13 @@ namespace OpenRetail.Model
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.role_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.nama_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
-			RuleFor(c => c.pass_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 32).WithMessage(msgError2);
+            RuleFor(c => c.role_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.nama_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
+            RuleFor(c => c.pass_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 32).WithMessage(msgError2);
             RuleFor(c => c.konf_pass_pengguna).NotEmpty().WithMessage(msgError1).Length(1, 32).WithMessage(msgError2);
-		}
-	}
+        }
+    }
 }

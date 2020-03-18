@@ -16,22 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Bll.Api.Report;
+using OpenRetail.Bll.Service.Report;
+using OpenRetail.Helper;
+using OpenRetail.Helper.RAWPrinting;
+using OpenRetail.Model;
+using OpenRetail.Model.Report;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using OpenRetail.Model;
-using OpenRetail.Model.Report;
-using OpenRetail.Bll.Api.Report;
-using OpenRetail.Bll.Service.Report;
-using log4net;
-using OpenRetail.Helper.RAWPrinting;
 
 namespace OpenRetail.App.Cashier.Laporan
 {
@@ -49,19 +46,19 @@ namespace OpenRetail.App.Cashier.Laporan
 
             this._log = MainProgram.log;
             this._pengguna = pengguna;
-            this._pengaturanUmum = pengaturanUmum;            
+            this._pengaturanUmum = pengaturanUmum;
 
             this.Text = header;
             this.lblHeader.Text = header;
 
             txtOutput.Text = GenerateReport();
-        }        
+        }
 
         private string GenerateReport()
         {
             var txtOutput = new StringBuilder();
             var garisPemisah = StringHelper.PrintChar('=', 40);
-            
+
             var totalSaldoAwal = 0d;
             var totalItem = 0;
             var totalDiskon = 0d;
@@ -144,7 +141,7 @@ namespace OpenRetail.App.Cashier.Laporan
             else
             {
                 txtOutput.Append(">> Belum ada transaksi <<").Append(Environment.NewLine);
-            }            
+            }
 
             return txtOutput.ToString();
         }
@@ -157,11 +154,11 @@ namespace OpenRetail.App.Cashier.Laporan
 
                 IRAWPrinting printerMiniPos = new PrinterMiniPOS(_pengaturanUmum.nama_printer);
 
-                printerMiniPos.Cetak(_listOfMesinKasir, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.jumlah_karakter, 
+                printerMiniPos.Cetak(_listOfMesinKasir, _pengaturanUmum.list_of_header_nota_mini_pos, _pengaturanUmum.jumlah_karakter,
                     _pengaturanUmum.jumlah_gulung, ukuranFont: _pengaturanUmum.ukuran_font, autocutCode: autocutCode);
 
                 this.Close();
-            }            
+            }
         }
 
         private void btnCetak_Click(object sender, EventArgs e)

@@ -16,24 +16,21 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.App.Cashier.Main;
+using OpenRetail.Helper;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-
-using log4net;
 using System.Globalization;
 using System.Threading;
-using CrashReporterDotNET;
-
-using OpenRetail.Model;
-using OpenRetail.Helper;
-using OpenRetail.App.Cashier.Main;
+using System.Windows.Forms;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
 namespace OpenRetail.App.Cashier
 {
-    static class MainProgram
+    internal static class MainProgram
     {
         /// <summary>
         /// Instance log4net
@@ -70,16 +67,16 @@ namespace OpenRetail.App.Cashier
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             if (!Utils.IsRunningUnderIDE())
             {
-                Application.ThreadException += delegate(object sender, ThreadExceptionEventArgs e)
+                Application.ThreadException += delegate (object sender, ThreadExceptionEventArgs e)
                 {
                     ReportCrash(e.Exception);
                 };
 
-                AppDomain.CurrentDomain.UnhandledException += delegate(object sender, UnhandledExceptionEventArgs e)
+                AppDomain.CurrentDomain.UnhandledException += delegate (object sender, UnhandledExceptionEventArgs e)
                 {
                     ReportCrash((Exception)e.ExceptionObject);
                     Environment.Exit(0);
@@ -97,7 +94,7 @@ namespace OpenRetail.App.Cashier
         /// Untuk petunjuknya cek: http://coding4ever.net/blog/2015/04/14/paket-nuget-yang-wajib-dicoba-bagian-number-1-crashreporter-dot-net/
         /// </summary>
         /// <param name="exception"></param>
-        static void ReportCrash(Exception exception)
+        private static void ReportCrash(Exception exception)
         {
             // TODO: lengkapi property FromEmail, ToEmail, UserName dan Password
             var reportCrash = new ReportCrash
@@ -115,12 +112,12 @@ namespace OpenRetail.App.Cashier
             reportCrash.Send(exception);
         }
 
-        static void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        private static void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             _isLogout = ((FrmMain)sender).IsLogout;
         }
 
-        static void Login()
+        private static void Login()
         {
             var frmMain = new FrmMain();
             frmMain.FormClosed += frmMain_FormClosed;
@@ -143,7 +140,7 @@ namespace OpenRetail.App.Cashier
                 Application.Exit();
         }
 
-        static void SetDefaultRegionalSetting()
+        private static void SetDefaultRegionalSetting()
         {
             var cultureInfo = Thread.CurrentThread.CurrentCulture;
             var regionInfo = new RegionInfo(cultureInfo.LCID);

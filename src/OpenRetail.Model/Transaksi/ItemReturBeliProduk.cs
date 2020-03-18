@@ -16,20 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("t_item_retur_beli_produk")]
+{
+    [Table("t_item_retur_beli_produk")]
     public class ItemReturBeliProduk
     {
         public ItemReturBeliProduk()
@@ -37,58 +31,58 @@ namespace OpenRetail.Model
             entity_state = EntityState.Added;
         }
 
-		[ExplicitKey]
-		[Display(Name = "item_retur_beli_produk_id")]		
-		public string item_retur_beli_produk_id { get; set; }
-		
-		[Display(Name = "retur_beli_produk_id")]
-		public string retur_beli_produk_id { get; set; }
+        [ExplicitKey]
+        [Display(Name = "item_retur_beli_produk_id")]
+        public string item_retur_beli_produk_id { get; set; }
+
+        [Display(Name = "retur_beli_produk_id")]
+        public string retur_beli_produk_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
+        [Write(false)]
         public ReturBeliProduk ReturBeliProduk { get; set; }
 
-		[Display(Name = "pengguna_id")]
-		public string pengguna_id { get; set; }
+        [Display(Name = "pengguna_id")]
+        public string pengguna_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
+        [Write(false)]
         public Pengguna Pengguna { get; set; }
 
-		[Display(Name = "Produk")]
-		public string produk_id { get; set; }
+        [Display(Name = "Produk")]
+        public string produk_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
+        [Write(false)]
         public Produk Produk { get; set; }
 
-		[Display(Name = "Harga")]
-		public double harga { get; set; }
-		
+        [Display(Name = "Harga")]
+        public double harga { get; set; }
+
         /// <summary>
         /// Jumlah pembelian sebelum retur
         /// </summary>
-		[Display(Name = "Jumlah")]
-		public double jumlah { get; set; }
+        [Display(Name = "Jumlah")]
+        public double jumlah { get; set; }
 
         [Display(Name = "Jumlah Retur")]
         public double jumlah_retur { get; set; }
 
         [JsonIgnore]
         [Write(false)]
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
-					
-		[Display(Name = "Item Beli Id")]
-		public string item_beli_id { get; set; }
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
+
+        [Display(Name = "Item Beli Id")]
+        public string item_beli_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
+        [Write(false)]
         public ItemBeliProduk ItemBeliProduk { get; set; }
 
         [Write(false)]
         public EntityState entity_state { get; set; }
-	}
+    }
 
     public class ItemReturBeliProdukValidator : AbstractValidator<ItemReturBeliProduk>
     {
@@ -96,13 +90,13 @@ namespace OpenRetail.Model
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.retur_beli_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.item_beli_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-		}
-	}
+            RuleFor(c => c.retur_beli_produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.produk_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.item_beli_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+        }
+    }
 }

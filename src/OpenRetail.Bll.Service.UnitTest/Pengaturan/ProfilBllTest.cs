@@ -16,26 +16,18 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class ProfilBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IProfilBll _bll;
 
         [TestInitialize]
@@ -62,7 +54,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("Ringroad Utara", obj.alamat);
             Assert.AreEqual("Yogyakarta", obj.kota);
             Assert.AreEqual("0274-123456789", obj.telepon);
-                     
         }
 
         [TestMethod]
@@ -90,7 +81,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.alamat, newObj.alamat);
             Assert.AreEqual(obj.kota, newObj.kota);
             Assert.AreEqual(obj.telepon, newObj.telepon);
-
         }
     }
-}     
+}

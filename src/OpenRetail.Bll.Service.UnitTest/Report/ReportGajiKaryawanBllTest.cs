@@ -16,17 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api.Report;
 using OpenRetail.Bll.Service.Report;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest.Report
 {

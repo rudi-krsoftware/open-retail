@@ -16,16 +16,13 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
@@ -38,7 +35,7 @@ namespace OpenRetail.Repository.Service.Report
                                                      GROUP BY c.customer_id, c.nama_customer, p.tanggal, p.keterangan
                                                      ORDER BY p.tanggal, c.nama_customer";
 
-        private const string SQL_TEMPLATE_DETAIL = @"SELECT c.customer_id, c.nama_customer, j.nota AS nota_jual, p.nota AS nota_bayar, p.tanggal, j.ppn, j.diskon, j.ongkos_kirim, j.total_nota, 
+        private const string SQL_TEMPLATE_DETAIL = @"SELECT c.customer_id, c.nama_customer, j.nota AS nota_jual, p.nota AS nota_bayar, p.tanggal, j.ppn, j.diskon, j.ongkos_kirim, j.total_nota,
                                                      i.nominal AS pelunasan, j.keterangan AS keterangan_jual, p.keterangan AS keterangan_bayar
                                                      FROM public.t_jual_produk j INNER JOIN public.t_item_pembayaran_piutang_produk i ON i.jual_id = j.jual_id
                                                      LEFT JOIN public.m_customer c ON j.customer_id = c.customer_id
@@ -183,6 +180,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

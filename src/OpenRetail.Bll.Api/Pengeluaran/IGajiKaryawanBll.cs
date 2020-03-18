@@ -16,24 +16,23 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using OpenRetail.Model;
- 
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Api
-{    
+{
     public interface IGajiKaryawanBll : IBaseBll<GajiKaryawan>
     {
         string GetLastNota();
-        GajiKaryawan GetByID(string id);    
+
+        GajiKaryawan GetByID(string id);
+
         IList<GajiKaryawan> GetByName(string name);
+
         IList<GajiKaryawan> GetByBulanAndTahun(int bulan, int tahun);
 
-		int Save(GajiKaryawan obj, ref ValidationError validationError);
-		int Update(GajiKaryawan obj, ref ValidationError validationError);
+        int Save(GajiKaryawan obj, ref ValidationError validationError);
+
+        int Update(GajiKaryawan obj, ref ValidationError validationError);
     }
-}     
+}

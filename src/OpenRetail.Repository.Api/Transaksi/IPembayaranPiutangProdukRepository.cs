@@ -16,26 +16,28 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using OpenRetail.Model;
- 
 namespace OpenRetail.Repository.Api
-{        
+{
     public interface IPembayaranPiutangProdukRepository : IBaseRepository<PembayaranPiutangProduk>
     {
         int Save(PembayaranPiutangProduk obj, bool isSaveFromPenjualan);
+
         int Update(PembayaranPiutangProduk obj, bool isUpdateFromPenjualan);
 
         string GetLastNota();
-		PembayaranPiutangProduk GetByID(string id);
+
+        PembayaranPiutangProduk GetByID(string id);
+
         ItemPembayaranPiutangProduk GetByJualID(string id);
+
         IList<PembayaranPiutangProduk> GetByName(string name);
+
         IList<PembayaranPiutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
         IList<ItemPembayaranPiutangProduk> GetHistoriPembayaran(string jualId);
     }
-}     
+}

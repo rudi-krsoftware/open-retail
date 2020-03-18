@@ -16,36 +16,30 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Pengeluaran
 {
     public partial class FrmListKasbon : FrmListEmptyBody, IListener
-    {                
-        private IKasbonBll _bll; // deklarasi objek business logic layer 
+    {
+        private IKasbonBll _bll; // deklarasi objek business logic layer
         private IList<Kasbon> _listOfKasbon = new List<Kasbon>();
         private IList<PembayaranKasbon> _listOfHistoriPembayaranKasbon = new List<PembayaranKasbon>();
         private IList<Karyawan> _listOfKaryawan = new List<Karyawan>();
         private ILog _log;
         private Pengguna _pengguna;
         private string _menuId;
-        
+
         public FrmListKasbon(string header, Pengguna pengguna, string menuId)
             : base()
         {
@@ -53,7 +47,7 @@ namespace OpenRetail.App.Pengeluaran
 
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
-            ColorManagerHelper.SetTheme(this, this);            
+            ColorManagerHelper.SetTheme(this, this);
 
             _log = MainProgram.log;
             _bll = new KasbonBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
@@ -67,18 +61,18 @@ namespace OpenRetail.App.Pengeluaran
                 if (role.is_grant)
                 {
                     LoadDataKaryawan();
-                    LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);                    
-                }                    
+                    LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
+                }
 
                 filterRangeTanggal.Enabled = role.is_grant;
-            }            
+            }
 
             InitGridList();
             InitGridListHistoriPembayaran();
 
             // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
             RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfKasbon.Count);
-        }        
+        }
 
         private void InitGridList()
         {
@@ -98,11 +92,10 @@ namespace OpenRetail.App.Pengeluaran
             {
                 this.gridList.SetSelected(0, true);
                 GridListHandleSelectionChanged(this.gridList);
-            }                
+            }
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
-
                 if (_listOfKasbon.Count > 0)
                 {
                     if (e.RowIndex > 0)
@@ -156,7 +149,7 @@ namespace OpenRetail.App.Pengeluaran
                 }
             };
 
-            this.gridList.SelectedValueChanged += delegate(object sender, EventArgs e)
+            this.gridList.SelectedValueChanged += delegate (object sender, EventArgs e)
             {
                 GridListHandleSelectionChanged((GridListControl)sender);
             };
@@ -203,9 +196,8 @@ namespace OpenRetail.App.Pengeluaran
             if (_listOfHistoriPembayaranKasbon.Count > 0)
                 this.gridListHistoriPembayaran.SetSelected(0, true);
 
-            this.gridListHistoriPembayaran.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridListHistoriPembayaran.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
-
                 if (_listOfHistoriPembayaranKasbon.Count > 0)
                 {
                     if (e.RowIndex > 0)
@@ -247,12 +239,12 @@ namespace OpenRetail.App.Pengeluaran
                 }
             };
 
-            this.gridListHistoriPembayaran.SelectedValueChanged += delegate(object sender, EventArgs e)
+            this.gridListHistoriPembayaran.SelectedValueChanged += delegate (object sender, EventArgs e)
             {
                 GridListHistoriPembayaranHandleSelectionChanged((GridListControl)sender);
             };
 
-            this.gridListHistoriPembayaran.DoubleClick += delegate(object sender, EventArgs e)
+            this.gridListHistoriPembayaran.DoubleClick += delegate (object sender, EventArgs e)
             {
                 if (btnPerbaikiPembayaran.Enabled)
                     btnPerbaikiPembayaran_Click(sender, e);
@@ -276,7 +268,7 @@ namespace OpenRetail.App.Pengeluaran
                     // nonaktifkan tombol edit dan hapus jika pembayaran kasbon dari gaji
                     ResetButtonHistoriPembayaran(pembayaranKasbon.gaji_karyawan_id == null);
                 }
-            }            
+            }
         }
 
         private void LoadDataKaryawan()
@@ -291,9 +283,9 @@ namespace OpenRetail.App.Pengeluaran
         private void LoadData()
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
-            {                
+            {
                 _listOfKasbon = _bll.GetAll();
-                GridListControlHelper.Refresh<Kasbon>(this.gridList, _listOfKasbon);                
+                GridListControlHelper.Refresh<Kasbon>(this.gridList, _listOfKasbon);
             }
 
             ResetButton();
@@ -321,7 +313,7 @@ namespace OpenRetail.App.Pengeluaran
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 _listOfKasbon = _bll.GetByTanggal(tanggalMulai, tanggalSelesai);
-                GridListControlHelper.Refresh<Kasbon>(this.gridList, _listOfKasbon);                
+                GridListControlHelper.Refresh<Kasbon>(this.gridList, _listOfKasbon);
             }
 
             ResetButton();
@@ -333,7 +325,7 @@ namespace OpenRetail.App.Pengeluaran
         private void ResetButton()
         {
             base.SetActiveBtnPerbaikiAndHapus(_listOfKasbon.Count > 0);
-            
+
             // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
             RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfKasbon.Count);
         }
@@ -390,7 +382,7 @@ namespace OpenRetail.App.Pengeluaran
                     }
                     else
                         MsgHelper.MsgDeleteError();
-                }                
+                }
             }
         }
 
@@ -413,7 +405,7 @@ namespace OpenRetail.App.Pengeluaran
                 }
                 else
                     GridListControlHelper.UpdateObject<Kasbon>(this.gridList, _listOfKasbon, kasbon);
-            }            
+            }
             else if (data is PembayaranKasbon)
             {
                 var index = this.gridList.SelectedIndex;
@@ -438,7 +430,7 @@ namespace OpenRetail.App.Pengeluaran
                     btnTambahPembayaran.Enabled = kasbon.sisa > 0;
                     GridListControlHelper.UpdateObject<Kasbon>(this.gridList, _listOfKasbon, kasbon);
                     GridListControlHelper.UpdateObject<PembayaranKasbon>(this.gridListHistoriPembayaran, kasbon.item_pembayaran_kasbon, pembayaranKasbon);
-                }                                    
+                }
             }
         }
 
@@ -493,7 +485,7 @@ namespace OpenRetail.App.Pengeluaran
             if (!base.IsSelectedItem(index, this.TabText))
                 return;
 
-            var kasbon = _listOfKasbon[this.gridList.SelectedIndex];           
+            var kasbon = _listOfKasbon[this.gridList.SelectedIndex];
 
             if (_listOfHistoriPembayaranKasbon.Count > 0)
             {
@@ -505,7 +497,7 @@ namespace OpenRetail.App.Pengeluaran
                 var frm = new FrmEntryPembayaranKasbon("Edit Data Pembayaran Kasbon", kasbon, pembayaranKasbon);
                 frm.Listener = this;
                 frm.ShowDialog();
-            }            
+            }
         }
 
         private void btnHapusPembayaran_Click(object sender, EventArgs e)
@@ -539,7 +531,7 @@ namespace OpenRetail.App.Pengeluaran
                     }
                     else
                         MsgHelper.MsgDeleteError();
-                }                
+                }
             }
         }
 

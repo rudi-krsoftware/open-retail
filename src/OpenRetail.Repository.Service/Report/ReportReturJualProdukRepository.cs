@@ -16,30 +16,27 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
     public class ReportReturJualProdukRepository : IReportReturJualProdukRepository
     {
-        private const string SQL_TEMPLATE_HEADER = @"SELECT m_customer.customer_id, m_customer.nama_customer, t_retur_jual_produk.nota AS nota_retur, 
+        private const string SQL_TEMPLATE_HEADER = @"SELECT m_customer.customer_id, m_customer.nama_customer, t_retur_jual_produk.nota AS nota_retur,
                                                      t_retur_jual_produk.tanggal AS tanggal_retur, t_retur_jual_produk.total_nota AS total_retur, t_retur_jual_produk.keterangan, t_jual_produk.nota as nota_jual
                                                      FROM public.t_retur_jual_produk INNER JOIN public.t_jual_produk ON t_retur_jual_produk.jual_id = t_jual_produk.jual_id
                                                      INNER JOIN public.m_customer ON t_retur_jual_produk.customer_id = m_customer.customer_id
                                                      {WHERE}
                                                      ORDER BY t_retur_jual_produk.tanggal, t_retur_jual_produk.nota";
 
-        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_customer.customer_id, m_customer.nama_customer, t_retur_jual_produk.nota AS nota_retur, 
-                                                     t_retur_jual_produk.tanggal AS tanggal_retur, t_item_retur_jual_produk.jumlah_retur, t_item_retur_jual_produk.harga_jual AS harga, 
+        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_customer.customer_id, m_customer.nama_customer, t_retur_jual_produk.nota AS nota_retur,
+                                                     t_retur_jual_produk.tanggal AS tanggal_retur, t_item_retur_jual_produk.jumlah_retur, t_item_retur_jual_produk.harga_jual AS harga,
                                                      t_jual_produk.nota AS nota_jual, m_produk.nama_produk, m_produk.satuan
                                                      FROM public.t_retur_jual_produk INNER JOIN public.t_jual_produk ON t_retur_jual_produk.jual_id = t_jual_produk.jual_id
                                                      INNER JOIN public.m_customer ON t_retur_jual_produk.customer_id = m_customer.customer_id
@@ -185,6 +182,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

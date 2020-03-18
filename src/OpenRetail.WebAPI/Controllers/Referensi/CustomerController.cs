@@ -16,40 +16,36 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using System.Net;
-using System.Web.Http;
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
+using OpenRetail.WebAPI.Controllers.Helper;
 using OpenRetail.WebAPI.Models;
 using OpenRetail.WebAPI.Models.DTO;
-using OpenRetail.WebAPI.Controllers.Helper;
+using System;
+using System.Collections.Generic;
+using System.Net;
 
 namespace OpenRetail.WebAPI.Controllers
-{        
-	public interface ICustomerController : IBaseApiController<CustomerDTO>
+{
+    public interface ICustomerController : IBaseApiController<CustomerDTO>
     {
         IHttpActionResult GetByID(string id);
+
         IHttpActionResult GetByName(string name);
+
         IHttpActionResult GetByJenisCustomer(bool isReseller);
     }
 
-	[RoutePrefix("api/customer")]
+    [RoutePrefix("api/customer")]
     public class CustomerController : BaseApiController, ICustomerController
     {
         private IUnitOfWork _unitOfWork;
         private ILog _log;
         private HttpStatusCode _httpStatusCode = HttpStatusCode.BadRequest;
         private IHttpActionResult _response = null;
-		
-		public CustomerController(IUnitOfWork unitOfWork)
+
+        public CustomerController(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -60,7 +56,7 @@ namespace OpenRetail.WebAPI.Controllers
             this._log = log;
         }
 
-		[HttpGet, Route("get_by_id")]
+        [HttpGet, Route("get_by_id")]
         public IHttpActionResult GetByID(string id)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -70,7 +66,7 @@ namespace OpenRetail.WebAPI.Controllers
             {
                 var results = new List<Customer>();
                 var obj = _unitOfWork.CustomerRepository.GetByID(id);
-                
+
                 if (obj != null)
                     results.Add(obj);
 
@@ -88,7 +84,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpGet, Route("get_by_name")]
+        [HttpGet, Route("get_by_name")]
         public IHttpActionResult GetByName(string name)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -112,7 +108,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpGet, Route("get_all")]
+        [HttpGet, Route("get_all")]
         public IHttpActionResult GetAll()
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -160,7 +156,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpPost, Route("save")]
+        [HttpPost, Route("save")]
         public IHttpActionResult Save(CustomerDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -191,7 +187,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpPost, Route("update")]
+        [HttpPost, Route("update")]
         public IHttpActionResult Update(CustomerDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -222,7 +218,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpPost, Route("delete")]
+        [HttpPost, Route("delete")]
         public IHttpActionResult Delete(CustomerDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -251,6 +247,6 @@ namespace OpenRetail.WebAPI.Controllers
             }
 
             return _response;
-        }        
+        }
     }
-}     
+}

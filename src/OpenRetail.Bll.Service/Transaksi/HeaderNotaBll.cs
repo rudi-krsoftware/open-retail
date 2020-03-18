@@ -16,27 +16,23 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class HeaderNotaBll : IHeaderNotaBll
     {
-		private ILog _log;
+        private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private HeaderNotaValidator _validator;
+        private HeaderNotaValidator _validator;
 
-		public HeaderNotaBll()
+        public HeaderNotaBll()
         {
             _validator = new HeaderNotaValidator();
         }
@@ -59,7 +55,7 @@ namespace OpenRetail.Bll.Service
             throw new NotImplementedException();
         }
 
-		public int Update(HeaderNota obj)
+        public int Update(HeaderNota obj)
         {
             var result = 0;
 
@@ -92,6 +88,6 @@ namespace OpenRetail.Bll.Service
         public int Delete(HeaderNota obj)
         {
             throw new NotImplementedException();
-        }        
+        }
     }
-}     
+}

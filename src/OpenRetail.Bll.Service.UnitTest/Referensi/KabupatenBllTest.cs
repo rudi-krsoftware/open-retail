@@ -16,26 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class KabupatenBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IKabupatenRajaOngkirBll _bll;
 
         [TestInitialize]
@@ -69,7 +59,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var provinsi = obj.Provinsi;
             Assert.AreEqual(21, obj.provinsi_id);
             Assert.AreEqual(21, provinsi.provinsi_id);
-            Assert.AreEqual("Nanggroe Aceh Darussalam (NAD)", provinsi.nama_provinsi);                                
+            Assert.AreEqual("Nanggroe Aceh Darussalam (NAD)", provinsi.nama_provinsi);
         }
 
         [TestMethod]
@@ -78,9 +68,9 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 4;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
-            Assert.AreEqual(5, obj.kabupaten_id);            
+            Assert.AreEqual(5, obj.kabupaten_id);
             Assert.AreEqual("Kabupaten", obj.tipe);
             Assert.AreEqual("Aceh Selatan", obj.nama_kabupaten);
             Assert.AreEqual("23719", obj.kode_pos);
@@ -88,7 +78,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var provinsi = obj.Provinsi;
             Assert.AreEqual(21, obj.provinsi_id);
             Assert.AreEqual(21, provinsi.provinsi_id);
-            Assert.AreEqual("Nanggroe Aceh Darussalam (NAD)", provinsi.nama_provinsi);                                
+            Assert.AreEqual("Nanggroe Aceh Darussalam (NAD)", provinsi.nama_provinsi);
         }
     }
-}     
+}

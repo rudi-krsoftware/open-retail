@@ -16,33 +16,28 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class PenggunaRepository : IPenggunaRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT m_pengguna.pengguna_id, m_pengguna.nama_pengguna, m_pengguna.pass_pengguna, m_pengguna.is_active, m_pengguna.status_user, 
+        private const string SQL_TEMPLATE = @"SELECT m_pengguna.pengguna_id, m_pengguna.nama_pengguna, m_pengguna.pass_pengguna, m_pengguna.is_active, m_pengguna.status_user,
                                               m_role.role_id, m_role.nama_role
                                               FROM public.m_pengguna LEFT JOIN public.m_role ON m_pengguna.role_id = m_role.role_id
                                               {WHERE}
                                               {ORDER BY}";
+
         private IDapperContext _context;
         private ILog _log;
 
         private string _sql;
-		
+
         public PenggunaRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -193,6 +188,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

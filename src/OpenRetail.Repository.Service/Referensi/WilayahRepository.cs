@@ -16,23 +16,17 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
 
 namespace OpenRetail.Repository.Service
 {
     public class WilayahRepository : IWilayahRepository
-    {        
+    {
         private IDapperContext _context;
         private ILog _log;
 
@@ -63,8 +57,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT m_provinsi2.provinsi_id, m_provinsi2.nama_provinsi, 
-                            m_kabupaten2.kabupaten_id, m_kabupaten2.nama_kabupaten, 
+                var sql = @"SELECT m_provinsi2.provinsi_id, m_provinsi2.nama_provinsi,
+                            m_kabupaten2.kabupaten_id, m_kabupaten2.nama_kabupaten,
                             m_kecamatan.kecamatan_id, m_kecamatan.nama_kecamatan
                             FROM public.m_provinsi2 INNER JOIN public.m_kabupaten2 ON m_kabupaten2.provinsi_id = m_provinsi2.provinsi_id
                             INNER JOIN public.m_kecamatan ON m_kecamatan.kabupaten_id = m_kabupaten2.kabupaten_id
@@ -82,12 +76,12 @@ namespace OpenRetail.Repository.Service
         }
 
         public Wilayah GetProvinsi(string name)
-        {            
+        {
             Wilayah obj = null;
 
             try
             {
-                var sql = @"SELECT * FROM m_provinsi2 
+                var sql = @"SELECT * FROM m_provinsi2
                             WHERE LOWER(nama_provinsi) = @name";
 
                 name = name.ToLower();

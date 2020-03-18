@@ -17,9 +17,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Helper
 {
@@ -68,7 +65,6 @@ namespace OpenRetail.Helper
 
                 if (s.Length == 0)
                     s = "0";
-
             }
             catch (Exception)
             {
@@ -99,7 +95,6 @@ namespace OpenRetail.Helper
         {
             try
             {
-
                 s = RemoveSeparator(s, isUseDecimal);
 
                 if (s.Length == 0)

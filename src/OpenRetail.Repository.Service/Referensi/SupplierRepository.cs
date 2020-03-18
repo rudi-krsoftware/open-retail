@@ -16,20 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class SupplierRepository : ISupplierRepository
     {
         private IDapperContext _context;
@@ -146,4 +141,4 @@ namespace OpenRetail.Repository.Service
             return result;
         }
     }
-}     
+}

@@ -16,30 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using ConceptCave.WaitCursor;
+using log4net;
+using OpenRetail.App.Lookup;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UserControl;
-using OpenRetail.App.Lookup;
-using log4net;
-using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmEntryPenyesuaianStok : FrmEntryStandard, IListener
     {
-        private IPenyesuaianStokBll _bll = null; // deklarasi objek business logic layer 
+        private IPenyesuaianStokBll _bll = null; // deklarasi objek business logic layer
         private PenyesuaianStok _penyesuaianStok = null;
         private Produk _produk = null;
         private IList<AlasanPenyesuaianStok> _listOfAlasanPenyesuaian;
@@ -166,11 +160,9 @@ namespace OpenRetail.App.Referensi
                         base.ResetForm(this);
                         this._produk = null;
                         txtKodeProduk.Focus();
-
                     }
                     else
                         this.Close();
-
                 }
                 else
                 {
@@ -181,8 +173,8 @@ namespace OpenRetail.App.Referensi
                     }
                     else
                         MsgHelper.MsgUpdateError();
-                }       
-            }                     
+                }
+            }
         }
 
         private void txtGolongan_KeyPress(object sender, KeyPressEventArgs e)
@@ -264,7 +256,6 @@ namespace OpenRetail.App.Referensi
 
         private void txtKodeProduk_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -16,29 +16,21 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using log4net;
-using OpenRetail.Model;
-using OpenRetail.Model.Report;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper;
-using OpenRetail.Report;
-using OpenRetail.Bll.Api.Report;
-using OpenRetail.Bll.Service.Report;
 using ConceptCave.WaitCursor;
-using Microsoft.Reporting.WinForms;
+using log4net;
+using OpenRetail.App.Lookup;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Api.Report;
+using OpenRetail.Bll.Service;
+using OpenRetail.Bll.Service.Report;
+using OpenRetail.Helper;
 using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper.UserControl;
-using OpenRetail.App.Lookup;
+using OpenRetail.Model;
+using OpenRetail.Model.Report;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Laporan
 {
@@ -49,7 +41,7 @@ namespace OpenRetail.App.Laporan
         private IList<Supplier> _listOfSupplier = new List<Supplier>();
         private IList<Golongan> _listOfGolongan = new List<Golongan>();
         private IList<Produk> _listOfProduk = new List<Produk>();
-        
+
         public FrmLapStokProduk(string header)
         {
             InitializeComponent();
@@ -103,7 +95,7 @@ namespace OpenRetail.App.Laporan
             var keterangan = string.Empty;
 
             IReportStokProdukBll reportBll = new ReportStokProdukBll(_log);
-            IList<ReportStokProduk> listOfReportStokProduk = new List<ReportStokProduk>();            
+            IList<ReportStokProduk> listOfReportStokProduk = new List<ReportStokProduk>();
 
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
@@ -149,7 +141,7 @@ namespace OpenRetail.App.Laporan
                     listOfReportStokProduk = reportBll.GetStokBerdasarkanKode(listOfKode);
                 }
 
-                PreviewReport(listOfReportStokProduk, keterangan);                   
+                PreviewReport(listOfReportStokProduk, keterangan);
             }
         }
 
@@ -255,7 +247,7 @@ namespace OpenRetail.App.Laporan
 
         private void rdoStokBerdasarkanProduk_CheckedChanged(object sender, EventArgs e)
         {
-            txtNamaProduk.Focus();            
+            txtNamaProduk.Focus();
         }
 
         private void rdoStatusStok_CheckedChanged(object sender, EventArgs e)

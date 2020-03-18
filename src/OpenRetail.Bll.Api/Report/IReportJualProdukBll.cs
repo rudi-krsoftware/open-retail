@@ -16,44 +16,54 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model.Report;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using OpenRetail.Model;
-using OpenRetail.Model.Report;
 
 namespace OpenRetail.Bll.Api.Report
 {
     public interface IReportJualProdukBll : IBaseReportBll<ReportPenjualanProdukHeader>
     {
         IList<ReportPenjualanProdukDetail> DetailGetByBulan(int bulan, int tahun);
+
         IList<ReportPenjualanProdukDetail> DetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+
         IList<ReportPenjualanProdukDetail> DetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
 
         IList<ReportPenjualanProduk> PerProdukGetByBulan(int bulan, int tahun);
+
         IList<ReportPenjualanProduk> PerProdukGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+
         IList<ReportPenjualanProduk> PerProdukGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
 
         IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulan, int tahun, int limit);
+
         IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulanAwal, int bulanAkhir, int tahun, int limit);
+
         IList<ReportProdukFavorit> ProdukFavoritGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int limit);
 
         IList<ReportPenjualanPerKasir> PerKasirGetByBulan(int bulan, int tahun);
+
         IList<ReportPenjualanPerKasir> PerKasirGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+
         IList<ReportPenjualanPerKasir> PerKasirGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
 
         IList<ReportCustomerProduk> CustomerProdukGetByBulan(int bulan, int tahun);
+
         IList<ReportCustomerProduk> CustomerProdukGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+
         IList<ReportCustomerProduk> CustomerProdukGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
 
         IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByBulan(int bulan, int tahun);
+
         IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+
         IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
 
         IList<ReportPenjualanProduk> PerGolonganDetailGetByBulan(int bulan, int tahun);
+
         IList<ReportPenjualanProduk> PerGolonganDetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+
         IList<ReportPenjualanProduk> PerGolonganDetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 }

@@ -16,17 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.Model;
 using Syncfusion.Windows.Forms.Grid;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace OpenRetail.App.Lookup

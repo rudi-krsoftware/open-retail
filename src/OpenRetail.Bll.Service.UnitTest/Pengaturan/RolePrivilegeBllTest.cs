@@ -16,26 +16,17 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class RolePrivilegeBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IRolePrivilegeBll _bll;
 
         [TestInitialize]
@@ -58,15 +49,14 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var index = 4;
             var oList = _bll.GetByRole(roleId);
-            Assert.AreEqual(197, oList.Count);     
+            Assert.AreEqual(197, oList.Count);
 
             var obj = oList[index];
             Assert.IsNotNull(obj);
             Assert.AreEqual("11dc1faf-2c66-4525-932d-a90e24da8987", obj.role_id);
-            Assert.AreEqual("5df78447-219a-47c8-8a28-53b8e71ffb9d", obj.menu_id);                                
-            Assert.AreEqual(1, obj.grant_id);                                
-            Assert.IsTrue(obj.is_grant);                                
-                     
+            Assert.AreEqual("5df78447-219a-47c8-8a28-53b8e71ffb9d", obj.menu_id);
+            Assert.AreEqual(1, obj.grant_id);
+            Assert.IsTrue(obj.is_grant);
         }
 
         [TestMethod]
@@ -84,7 +74,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("5df78447-219a-47c8-8a28-53b8e71ffb9d", obj.menu_id);
             Assert.AreEqual(0, obj.grant_id);
             Assert.IsFalse(obj.is_grant);
-
         }
 
         [TestMethod]
@@ -93,13 +82,12 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 3;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("11dc1faf-2c66-4525-932d-a90e24da8987", obj.role_id);
-            Assert.AreEqual("a138abfd-73da-438e-a0fe-aa3e6c6ddce9", obj.menu_id);                                
-            Assert.AreEqual(3, obj.grant_id);                                
-            Assert.IsTrue(obj.is_grant);                                
-                     
+            Assert.AreEqual("a138abfd-73da-438e-a0fe-aa3e6c6ddce9", obj.menu_id);
+            Assert.AreEqual(3, obj.grant_id);
+            Assert.IsTrue(obj.is_grant);
         }
 
         [TestMethod]
@@ -115,8 +103,7 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var result = _bll.Save(obj);
             Assert.IsTrue(result != 0);
-            
-		}
+        }
 
         [TestMethod]
         public void SaveUpdateTest()
@@ -131,7 +118,6 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var result = _bll.Save(obj);
             Assert.IsTrue(result != 0);
-
         }
     }
-}     
+}

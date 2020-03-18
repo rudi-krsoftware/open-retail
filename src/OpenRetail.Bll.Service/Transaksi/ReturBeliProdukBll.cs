@@ -16,36 +16,32 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class ReturBeliProdukBll : IReturBeliProdukBll
     {
-		private ILog _log;
+        private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private ReturBeliProdukValidator _validator;
+        private ReturBeliProdukValidator _validator;
 
-		public ReturBeliProdukBll(ILog log)
+        public ReturBeliProdukBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new ReturBeliProdukValidator();
         }
 
         public ReturBeliProduk GetByID(string id)
         {
             ReturBeliProduk obj = null;
-            
+
             using (IDapperContext context = new DapperContext())
             {
                 _unitOfWork = new UnitOfWork(context, _log);
@@ -99,7 +95,7 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-		public int Save(ReturBeliProduk obj)
+        public int Save(ReturBeliProduk obj)
         {
             var result = 0;
 
@@ -114,7 +110,7 @@ namespace OpenRetail.Bll.Service
 
         public int Save(ReturBeliProduk obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -129,7 +125,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(ReturBeliProduk obj)
+        public int Update(ReturBeliProduk obj)
         {
             var result = 0;
 
@@ -170,6 +166,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

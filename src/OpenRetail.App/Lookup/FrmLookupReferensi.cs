@@ -16,20 +16,13 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Model.RajaOngkir;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
-using OpenRetail.Helper.UI.Template;
 
 namespace OpenRetail.App.Lookup
 {
@@ -233,7 +226,7 @@ namespace OpenRetail.App.Lookup
         }
 
         private void GridDropshipper_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
-        {            
+        {
             if (_listOfDropshipper.Count > 0)
             {
                 if (e.RowIndex > 0)
@@ -266,7 +259,7 @@ namespace OpenRetail.App.Lookup
         }
 
         private void GridKabupatenTujuan_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
-        {            
+        {
             if (_listOfKabupatenTujuan.Count > 0)
             {
                 if (e.RowIndex > 0)
@@ -304,7 +297,7 @@ namespace OpenRetail.App.Lookup
         }
 
         private void GridKabupatenAsal_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
-        {            
+        {
             if (_listOfKabupatenAsal.Count > 0)
             {
                 if (e.RowIndex > 0)
@@ -342,7 +335,7 @@ namespace OpenRetail.App.Lookup
         }
 
         private void GridJenisPengeluaran_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
-        {            
+        {
             if (_listOfJenisPengeluaran.Count > 0)
             {
                 if (e.RowIndex > 0)

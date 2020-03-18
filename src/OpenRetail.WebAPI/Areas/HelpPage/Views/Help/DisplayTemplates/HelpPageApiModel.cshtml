@@ -22,21 +22,21 @@
 
     @if (Model.RequestModelDescription != null)
     {
-        @Html.DisplayFor(m => m.RequestModelDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.RequestModelDescription })
+    @Html.DisplayFor(m => m.RequestModelDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.RequestModelDescription })
         if (Model.RequestBodyParameters != null)
         {
-            @Html.DisplayFor(m => m.RequestBodyParameters, "Parameters")
+    @Html.DisplayFor(m => m.RequestBodyParameters, "Parameters")
         }
     }
     else
     {
-        <p>None.</p>
+    <p>None.</p>
     }
 
     @if (Model.SampleRequests.Count > 0)
     {
-        <h3>Request Formats</h3>
-        @Html.DisplayFor(m => m.SampleRequests, "Samples")
+    <h3>Request Formats</h3>
+    @Html.DisplayFor(m => m.SampleRequests, "Samples")
     }
 
     <h2>Response Information</h2>
@@ -47,21 +47,20 @@
 
     @if (Model.ResourceDescription != null)
     {
-        @Html.DisplayFor(m => m.ResourceDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.ResourceDescription })
+    @Html.DisplayFor(m => m.ResourceDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.ResourceDescription })
         if (Model.ResourceProperties != null)
         {
-            @Html.DisplayFor(m => m.ResourceProperties, "Parameters")
+    @Html.DisplayFor(m => m.ResourceProperties, "Parameters")
         }
     }
     else
     {
-        <p>None.</p>
+    <p>None.</p>
     }
 
     @if (Model.SampleResponses.Count > 0)
     {
-        <h3>Response Formats</h3>
-        @Html.DisplayFor(m => m.SampleResponses, "Samples")
+    <h3>Response Formats</h3>
+    @Html.DisplayFor(m => m.SampleResponses, "Samples")
     }
-
 </div>

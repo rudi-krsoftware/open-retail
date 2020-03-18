@@ -16,27 +16,21 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using ConceptCave.WaitCursor;
+using OpenRetail.Bll.Api;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using OpenRetail.Helper.UserControl;
-using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmEntryProduk : FrmEntryStandard
-    {        
-        private IProdukBll _bll = null; // deklarasi objek business logic layer 
+    {
+        private IProdukBll _bll = null; // deklarasi objek business logic layer
         private Produk _produk = null;
         private IList<Golongan> _listOfGolongan;
 
@@ -45,7 +39,7 @@ namespace OpenRetail.App.Referensi
         private IList<AdvancedTextbox> _listOfTxtDiskonGrosir = new List<AdvancedTextbox>();
 
         private bool _isNewData = false;
-        
+
         public IListener Listener { private get; set; }
 
         public FrmEntryProduk(string header, Golongan golongan, IList<Golongan> listOfGolongan, IProdukBll bll)
@@ -66,7 +60,7 @@ namespace OpenRetail.App.Referensi
                 cmbGolongan.SelectedItem = golongan.nama_golongan;
 
             txtKodeProduk.Text = this._bll.GetLastKodeProduk();
-            txtKeuntungan.Text = golongan.persentase_keuntungan.ToString();            
+            txtKeuntungan.Text = golongan.persentase_keuntungan.ToString();
         }
 
         public FrmEntryProduk(string header, Produk produk, IList<Golongan> listOfGolongan, IProdukBll bll)
@@ -97,7 +91,7 @@ namespace OpenRetail.App.Referensi
             txtDiskon.Text = this._produk.diskon.ToString();
             txtStok.Text = this._produk.stok.ToString();
             txtStokGudang.Text = this._produk.stok_gudang.ToString();
-            txtMinStokGudang.Text = this._produk.minimal_stok_gudang.ToString();            
+            txtMinStokGudang.Text = this._produk.minimal_stok_gudang.ToString();
         }
 
         private void LoadInputGrosir()
@@ -134,7 +128,7 @@ namespace OpenRetail.App.Referensi
                         index++;
                     }
                 }
-            }            
+            }
         }
 
         private void LoadDataGolongan()
@@ -153,12 +147,12 @@ namespace OpenRetail.App.Referensi
         {
             if (_isNewData)
                 _produk = new Produk();
-            
+
             if (_produk.list_of_harga_grosir.Count == 0)
             {
                 var index = 0;
                 foreach (var item in _listOfTxtHargaGrosir)
-                {                    
+                {
                     var txtHargaGrosir = _listOfTxtHargaGrosir[index];
                     var txtJumlahMinGrosir = _listOfTxtJumlahGrosir[index];
                     var txtDiskonGrosir = _listOfTxtDiskonGrosir[index];
@@ -180,17 +174,17 @@ namespace OpenRetail.App.Referensi
             {
                 var index = 0;
                 foreach (var item in _produk.list_of_harga_grosir)
-	            {
+                {
                     var txtHargaGrosir = _listOfTxtHargaGrosir[index];
                     var txtJumlahMinGrosir = _listOfTxtJumlahGrosir[index];
                     var txtDiskonGrosir = _listOfTxtDiskonGrosir[index];
-                    
+
                     item.harga_grosir = NumberHelper.StringToDouble(txtHargaGrosir.Text);
                     item.jumlah_minimal = NumberHelper.StringToDouble(txtJumlahMinGrosir.Text, true);
                     item.diskon = NumberHelper.StringToDouble(txtDiskonGrosir.Text, true);
 
                     index++;
-	            }
+                }
             }
 
             var golongan = _listOfGolongan[cmbGolongan.SelectedIndex];
@@ -226,14 +220,13 @@ namespace OpenRetail.App.Referensi
                     if (_isNewData)
                     {
                         base.ResetForm(this);
-                        
+
                         chkAktif.Checked = true;
                         txtKodeProduk.Text = this._bll.GetLastKodeProduk();
                         txtKodeProduk.Focus();
                     }
                     else
                         this.Close();
-
                 }
                 else
                 {
@@ -248,8 +241,8 @@ namespace OpenRetail.App.Referensi
                         txtKodeProduk.Focus();
                         txtKodeProduk.SelectAll();
                     }
-                }         
-            }                   
+                }
+            }
         }
 
         private void txtMinStokGudang_KeyPress(object sender, KeyPressEventArgs e)
@@ -280,6 +273,6 @@ namespace OpenRetail.App.Referensi
         private void chkAktif_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEnter(e)) KeyPressHelper.NextFocus();
-        }        
+        }
     }
 }

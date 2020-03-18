@@ -16,16 +16,13 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
@@ -38,8 +35,8 @@ namespace OpenRetail.Repository.Service.Report
                                                      {WHERE}
                                                      ORDER BY t_retur_beli_produk.tanggal, t_retur_beli_produk.nota";
 
-        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_supplier.supplier_id, m_supplier.nama_supplier, 
-                                                     t_retur_beli_produk.nota AS nota_retur, t_retur_beli_produk.tanggal AS tanggal_retur, t_item_retur_beli_produk.jumlah_retur, t_item_retur_beli_produk.harga, 
+        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_supplier.supplier_id, m_supplier.nama_supplier,
+                                                     t_retur_beli_produk.nota AS nota_retur, t_retur_beli_produk.tanggal AS tanggal_retur, t_item_retur_beli_produk.jumlah_retur, t_item_retur_beli_produk.harga,
                                                      t_beli_produk.nota AS nota_beli, m_produk.nama_produk, m_produk.satuan
                                                      FROM public.t_retur_beli_produk INNER JOIN public.t_beli_produk ON t_retur_beli_produk.beli_produk_id = t_beli_produk.beli_produk_id
                                                      INNER JOIN public.m_supplier ON t_retur_beli_produk.supplier_id = m_supplier.supplier_id
@@ -185,6 +182,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

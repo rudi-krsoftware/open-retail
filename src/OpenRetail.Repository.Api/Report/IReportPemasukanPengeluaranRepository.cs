@@ -16,18 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using OpenRetail.Model.Report;
+using System;
 
 namespace OpenRetail.Repository.Api.Report
 {
     public interface IReportPemasukanPengeluaranRepository
     {
         ReportPemasukanPengeluaran GetByBulan(int bulan, int tahun);
+
         ReportPemasukanPengeluaran GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 }

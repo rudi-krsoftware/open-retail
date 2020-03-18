@@ -16,21 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class KasbonRepository : IKasbonRepository
     {
         private const string SQL_TEMPLATE = @"SELECT t_kasbon.kasbon_id, t_kasbon.nota, t_kasbon.tanggal, t_kasbon.nominal, t_kasbon.total_pelunasan, t_kasbon.keterangan, t_kasbon.pengguna_id,
@@ -38,11 +32,12 @@ namespace OpenRetail.Repository.Service
                                               FROM public.m_karyawan INNER JOIN public.t_kasbon ON m_karyawan.karyawan_id = t_kasbon.karyawan_id
                                               {WHERE}
                                               {ORDER BY}";
+
         private IDapperContext _context;
         private ILog _log;
 
         private string _sql;
-		
+
         public KasbonRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -117,7 +112,7 @@ namespace OpenRetail.Repository.Service
                 {
                     _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE (t_kasbon.nominal  - t_kasbon.total_pelunasan) > 0");
                 }
-                
+
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_kasbon.tanggal");
 
                 oList = MappingRecordToObject(_sql).ToList();
@@ -159,7 +154,7 @@ namespace OpenRetail.Repository.Service
                     {
                         kasbon.item_pembayaran_kasbon = pembayaranKasbonRepo.GetByKasbonId(kasbon.kasbon_id).ToList();
                     }
-                }                
+                }
             }
             catch (Exception ex)
             {
@@ -269,6 +264,6 @@ namespace OpenRetail.Repository.Service
         public string GetLastNota()
         {
             return _context.GetLastNota(new Kasbon().GetTableName());
-        }        
+        }
     }
-}     
+}

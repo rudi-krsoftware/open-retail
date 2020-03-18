@@ -16,28 +16,20 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using ConceptCave.WaitCursor;
+using OpenRetail.Bll.Api;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using ConceptCave.WaitCursor;
-using OpenRetail.Helper.RAWPrinting;
-using log4net;
 
 namespace OpenRetail.App.Cashier.Transaksi
 {
     public partial class FrmBayar : FrmEntryStandard
     {
-        private IJualProdukBll _bll = null; // deklarasi objek business logic layer 
+        private IJualProdukBll _bll = null; // deklarasi objek business logic layer
         private JualProduk _jual = null;
         private IList<Kartu> _listOfKartu;
 
@@ -98,17 +90,17 @@ namespace OpenRetail.App.Cashier.Transaksi
         }
 
         private void HitungKembalian(object sender, EventArgs e)
-        {            
+        {
             var bayarTunai = NumberHelper.StringToNumber(txtBayarTunai.Text);
             var bayarKartu = NumberHelper.StringToNumber(txtBayarKartu.Text);
 
             var kembalian = (bayarTunai + bayarKartu) - _jual.grand_total;
 
-            txtKembalian.Text = "0";            
+            txtKembalian.Text = "0";
             if (kembalian > 0)
             {
                 txtKembalian.Text = kembalian.ToString();
-            }                
+            }
         }
 
         private void UpdateDefaultPPN(double ppn)
@@ -147,7 +139,7 @@ namespace OpenRetail.App.Cashier.Transaksi
             }
 
             _jual.bayar_tunai = bayarTunai;
-            _jual.bayar_kartu = bayarKartu;            
+            _jual.bayar_kartu = bayarKartu;
 
             if ((_jual.jumlah_bayar - _jual.grand_total) < 0)
             {
@@ -217,7 +209,7 @@ namespace OpenRetail.App.Cashier.Transaksi
             {
                 KeyPressHelper.NextFocus();
                 KeyPressHelper.NextFocus();
-            }                
+            }
         }
 
         private void chkBayarViaKartu_CheckedChanged(object sender, EventArgs e)
@@ -230,6 +222,6 @@ namespace OpenRetail.App.Cashier.Transaksi
 
             if (!isChecked)
                 txtBayarKartu.Text = "0";
-        }        
+        }
     }
 }

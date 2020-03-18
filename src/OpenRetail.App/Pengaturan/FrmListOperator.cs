@@ -16,29 +16,23 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Pengaturan
 {
     public partial class FrmListOperator : FrmListStandard, IListener
     {
-        private IPenggunaBll _bll; // deklarasi objek business logic layer 
+        private IPenggunaBll _bll; // deklarasi objek business logic layer
         private IList<Pengguna> _listOfOperator = new List<Pengguna>();
         private IList<Role> _listOfRole = new List<Role>();
         private ILog _log;
@@ -77,7 +71,7 @@ namespace OpenRetail.App.Pengaturan
             if (_listOfOperator.Count > 0)
                 this.gridList.SetSelected(0, true);
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 if (_listOfOperator.Count > 0)
                 {
@@ -188,7 +182,7 @@ namespace OpenRetail.App.Pengaturan
         public void Ok(object sender, bool isNewData, object data)
         {
             var userOperator = (Pengguna)data;
-            
+
             if (isNewData)
             {
                 GridListControlHelper.AddObject<Pengguna>(this.gridList, _listOfOperator, userOperator);

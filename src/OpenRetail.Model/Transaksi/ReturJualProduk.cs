@@ -16,20 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using FluentValidation;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using FluentValidation;
-using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
 
 namespace OpenRetail.Model
-{        
-	[Table("t_retur_jual_produk")]
+{
+    [Table("t_retur_jual_produk")]
     public class ReturJualProduk
     {
         public ReturJualProduk()
@@ -38,56 +33,56 @@ namespace OpenRetail.Model
             item_retur_deleted = new List<ItemReturJualProduk>();
         }
 
-		[ExplicitKey]
-		[Display(Name = "retur_jual_id")]		
-		public string retur_jual_id { get; set; }
-		
-		[Display(Name = "jual_id")]
-		public string jual_id { get; set; }
+        [ExplicitKey]
+        [Display(Name = "retur_jual_id")]
+        public string retur_jual_id { get; set; }
 
-        [JsonIgnore]
-		[Write(false)]
-        public JualProduk JualProduk { get; set; }
-
-		[Display(Name = "pengguna_id")]
-		public string pengguna_id { get; set; }
-
-        [JsonIgnore]
-		[Write(false)]
-        public Pengguna Pengguna { get; set; }
-
-		[Display(Name = "Customer")]
-		public string customer_id { get; set; }
-
-        [JsonIgnore]
-		[Write(false)]
-        public Customer Customer { get; set; }
-
-		[Display(Name = "Nota")]
-		public string nota { get; set; }
-		
-		[Display(Name = "Tanggal")]
-		public Nullable<DateTime> tanggal { get; set; }
-		
-		[Display(Name = "Keterangan")]
-		public string keterangan { get; set; }
+        [Display(Name = "jual_id")]
+        public string jual_id { get; set; }
 
         [JsonIgnore]
         [Write(false)]
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
+        public JualProduk JualProduk { get; set; }
+
+        [Display(Name = "pengguna_id")]
+        public string pengguna_id { get; set; }
+
+        [JsonIgnore]
+        [Write(false)]
+        public Pengguna Pengguna { get; set; }
+
+        [Display(Name = "Customer")]
+        public string customer_id { get; set; }
+
+        [JsonIgnore]
+        [Write(false)]
+        public Customer Customer { get; set; }
+
+        [Display(Name = "Nota")]
+        public string nota { get; set; }
+
+        [Display(Name = "Tanggal")]
+        public Nullable<DateTime> tanggal { get; set; }
+
+        [Display(Name = "Keterangan")]
+        public string keterangan { get; set; }
+
+        [JsonIgnore]
+        [Write(false)]
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
 
         [JsonIgnore]
         [Computed]
-		[Display(Name = "total_nota")]
-		public double total_nota { get; set; }
+        [Display(Name = "total_nota")]
+        public double total_nota { get; set; }
 
         [Write(false)]
         public IList<ItemReturJualProduk> item_retur { get; set; }
 
         [Write(false)]
-        public IList<ItemReturJualProduk> item_retur_deleted { get; set; }		
-	}
+        public IList<ItemReturJualProduk> item_retur_deleted { get; set; }
+    }
 
     public class ReturJualProdukValidator : AbstractValidator<ReturJualProduk>
     {
@@ -95,14 +90,14 @@ namespace OpenRetail.Model
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.customer_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
-			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
-		}
-	}
+            RuleFor(c => c.jual_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.customer_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
+            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
+        }
+    }
 }

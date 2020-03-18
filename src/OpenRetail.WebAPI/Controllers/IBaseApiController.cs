@@ -16,21 +16,17 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http;
-
 namespace OpenRetail.WebAPI.Controllers
 {
     public interface IBaseApiController<T>
         where T : class
     {
         IHttpActionResult Save(T obj);
+
         IHttpActionResult Update(T obj);
+
         IHttpActionResult Delete(T obj);
+
         IHttpActionResult GetAll();
     }
 }

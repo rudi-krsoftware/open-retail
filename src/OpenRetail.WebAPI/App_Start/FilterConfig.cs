@@ -1,7 +1,4 @@
-﻿using System.Web;
-using System.Web.Mvc;
-
-namespace OpenRetail.WebAPI
+﻿namespace OpenRetail.WebAPI
 {
     public class FilterConfig
     {

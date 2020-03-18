@@ -16,22 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class CustomerBllTest
     {
@@ -66,7 +58,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(2000000, obj.plafon_piutang);
             Assert.AreEqual(1500000, obj.total_piutang);
             Assert.AreEqual(500000, obj.total_pembayaran_piutang);
-                     
         }
 
         [TestMethod]
@@ -77,7 +68,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 0;
             var oList = _bll.GetByName(name);
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("0b9940b5-33a9-415b-9d44-8ee1d47e706d", obj.customer_id);
             Assert.AreEqual("Swalayan WS", obj.nama_customer);
@@ -86,8 +77,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("0274-4444433", obj.telepon);
             Assert.AreEqual(2000000, obj.plafon_piutang);
             Assert.AreEqual(1500000, obj.total_piutang);
-            Assert.AreEqual(500000, obj.total_pembayaran_piutang);                                                         
-                     
+            Assert.AreEqual(500000, obj.total_pembayaran_piutang);
         }
 
         [TestMethod]
@@ -105,8 +95,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("0274-4444433", obj.telepon);
             Assert.AreEqual(2000000, obj.plafon_piutang);
             Assert.AreEqual(1500000, obj.total_piutang);
-            Assert.AreEqual(500000, obj.total_pembayaran_piutang);                          
-                     
+            Assert.AreEqual(500000, obj.total_pembayaran_piutang);
         }
 
         [TestMethod]
@@ -128,14 +117,13 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var newObj = _bll.GetByID(obj.customer_id);
-			Assert.IsNotNull(newObj);
-			Assert.AreEqual(obj.customer_id, newObj.customer_id);                                
-            Assert.AreEqual(obj.nama_customer, newObj.nama_customer);                                
-            Assert.AreEqual(obj.alamat, newObj.alamat);                                
-            Assert.AreEqual(obj.kontak, newObj.kontak);                                
-            Assert.AreEqual(obj.telepon, newObj.telepon);                                
-            
-		}
+            Assert.IsNotNull(newObj);
+            Assert.AreEqual(obj.customer_id, newObj.customer_id);
+            Assert.AreEqual(obj.nama_customer, newObj.nama_customer);
+            Assert.AreEqual(obj.alamat, newObj.alamat);
+            Assert.AreEqual(obj.kontak, newObj.kontak);
+            Assert.AreEqual(obj.telepon, newObj.telepon);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -147,7 +135,7 @@ namespace OpenRetail.Bll.Service.UnitTest
                 alamat = "Jl. Magelang",
                 kontak = "Mas Adi",
                 telepon = "0274-4444433"
-        	};
+            };
 
             var validationError = new ValidationError();
 
@@ -163,7 +151,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.alamat, updatedObj.alamat);
             Assert.AreEqual(obj.kontak, updatedObj.kontak);
             Assert.AreEqual(obj.telepon, updatedObj.telepon);
-            
         }
 
         [TestMethod]
@@ -178,7 +165,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.customer_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

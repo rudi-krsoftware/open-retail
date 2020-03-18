@@ -16,20 +16,17 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using OpenRetail.Model;
- 
 namespace OpenRetail.Repository.Api
-{        
+{
     public interface IJualProdukRepository : IBaseRepository<JualProduk>
     {
         string GetLastNota();
-		JualProduk GetByID(string id);
+
+        JualProduk GetByID(string id);
 
         /// <summary>
         /// Method untuk mendapatkan informasi item nota terakhir untuk keperluan aplikasi kasir
@@ -40,6 +37,7 @@ namespace OpenRetail.Repository.Api
         JualProduk GetListItemNotaTerakhir(string penggunaId, string mesinId);
 
         IList<JualProduk> GetAll(string name);
+
         IList<JualProduk> GetAll(int pageNumber, int pageSize, ref int pagesCount);
 
         /// <summary>
@@ -67,9 +65,11 @@ namespace OpenRetail.Repository.Api
         IList<JualProduk> GetNotaKreditByNota(string id, string nota);
 
         IList<JualProduk> GetByName(string name);
+
         IList<JualProduk> GetByName(string name, bool isCekKeteranganItemJual, int pageNumber, int pageSize, ref int pagesCount);
 
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize, ref int pagesCount);
 
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);
@@ -78,4 +78,4 @@ namespace OpenRetail.Repository.Api
 
         IList<ItemJualProduk> GetItemJual(string jualId);
     }
-}     
+}

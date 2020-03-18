@@ -16,19 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
-using OpenRetail.Helper.UI.Template;
 
 namespace OpenRetail.App.Cashier.Lookup
 {
@@ -74,7 +69,7 @@ namespace OpenRetail.App.Cashier.Lookup
 
             var listCount = 0;
 
-            this.gridList.Grid.QueryRowHeight += delegate(object sender, GridRowColSizeEventArgs e)
+            this.gridList.Grid.QueryRowHeight += delegate (object sender, GridRowColSizeEventArgs e)
             {
                 e.Size = 27;
                 e.Handled = true;
@@ -220,7 +215,7 @@ namespace OpenRetail.App.Cashier.Lookup
                     var customer = _listOfCustomer[rowIndex];
                     this.Listener.Ok(this, customer);
                     break;
-    
+
                 case ReferencesType.Produk:
                     var produk = _listOfProduk[rowIndex];
                     this.Listener.Ok(this, produk);

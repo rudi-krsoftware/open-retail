@@ -17,16 +17,7 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using OpenRetail.Helper.UserControl;
 
 namespace OpenRetail.Helper.UI.Template
 {
@@ -38,9 +29,9 @@ namespace OpenRetail.Helper.UI.Template
         public FrmLookupEmptyBody()
         {
             InitializeComponent();
-            ColorManagerHelper.SetTheme(this, this);            
+            ColorManagerHelper.SetTheme(this, this);
         }
-        
+
         public override bool IsButtonPilihEnabled
         {
             get { return this.btnPilih.Enabled; }
@@ -80,13 +71,13 @@ namespace OpenRetail.Helper.UI.Template
                     Pilih();
 
                 e.SuppressKeyPress = true;
-            }                
+            }
         }
 
         private void FrmLookupEmptyBody_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEsc(e))
                 Batal();
-        }        
+        }
     }
 }

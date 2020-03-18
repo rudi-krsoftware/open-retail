@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-using AutoMapper;
-using OpenRetail.Model;
+﻿using OpenRetail.Model;
 using OpenRetail.WebAPI.Models.DTO;
 
 namespace OpenRetail.WebAPI
@@ -29,7 +23,7 @@ namespace OpenRetail.WebAPI
                 config.CreateMap<KabupatenDTO, Kabupaten>();
                 config.CreateMap<KecamatanDTO, Kecamatan>();
                 config.CreateMap<CustomerDTO, Customer>();
-                config.CreateMap<SupplierDTO, Supplier>();                
+                config.CreateMap<SupplierDTO, Supplier>();
                 config.CreateMap<KaryawanDTO, Karyawan>();
 
                 // pengeluaran

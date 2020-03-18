@@ -16,17 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
+using System.Collections.Generic;
 
 namespace OpenRetail.Bll.Service
 {

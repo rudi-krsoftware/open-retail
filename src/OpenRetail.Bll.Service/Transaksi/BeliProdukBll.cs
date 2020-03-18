@@ -16,30 +16,27 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
- 
 namespace OpenRetail.Bll.Service
-{    
+{
     public class BeliProdukBll : IBeliProdukBll
     {
         private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private BeliProdukValidator _validator;
+        private BeliProdukValidator _validator;
 
         private bool _isUseWebAPI;
         private string _baseUrl;
 
-		public BeliProdukBll(ILog log)
+        public BeliProdukBll(ILog log)
         {
             _log = log;
             _validator = new BeliProdukValidator();
@@ -68,7 +65,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     obj = _unitOfWork.BeliProdukRepository.GetByID(id);
                 }
-            }            
+            }
 
             return obj;
         }
@@ -89,7 +86,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetByName(name);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -110,7 +107,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetByName(name, pageNumber, pageSize, ref pagesCount);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -131,7 +128,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetAll();
                 }
-            }            
+            }
 
             return oList;
         }
@@ -152,12 +149,12 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetAll(pageNumber, pageSize, ref pagesCount);
                 }
-            }            
+            }
 
             return oList;
         }
 
-		public int Save(BeliProduk obj)
+        public int Save(BeliProduk obj)
         {
             var result = 0;
 
@@ -180,14 +177,14 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.BeliProdukRepository.Save(obj);
                 }
-            }            
+            }
 
             return result;
         }
 
         public int Save(BeliProduk obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -202,7 +199,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(BeliProduk obj)
+        public int Update(BeliProduk obj)
         {
             var result = 0;
 
@@ -223,7 +220,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.BeliProdukRepository.Update(obj);
                 }
-            }            
+            }
 
             return result;
         }
@@ -261,7 +258,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.BeliProdukRepository.Delete(obj);
                 }
-            }            
+            }
 
             return result;
         }
@@ -282,7 +279,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     lastNota = _unitOfWork.BeliProdukRepository.GetLastNota();
                 }
-            }            
+            }
 
             return lastNota;
         }
@@ -303,7 +300,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetAll(name);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -324,7 +321,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetNotaSupplier(id, nota);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -345,7 +342,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetNotaKreditBySupplier(id, isLunas);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -366,7 +363,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetNotaKreditByNota(id, nota);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -387,7 +384,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -408,7 +405,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, pageNumber, pageSize, ref pagesCount);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -429,7 +426,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, name);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -450,9 +447,9 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.BeliProdukRepository.GetItemBeli(beliId);
                 }
-            }            
+            }
 
             return oList;
         }
     }
-}     
+}

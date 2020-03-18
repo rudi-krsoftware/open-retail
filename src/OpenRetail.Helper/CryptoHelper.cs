@@ -17,10 +17,7 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace OpenRetail.Helper
 {
@@ -143,6 +140,6 @@ namespace OpenRetail.Helper
             return UTF8.GetString(Results);
         }
 
-        #endregion
+        #endregion TripleDES Crypto
     }
 }

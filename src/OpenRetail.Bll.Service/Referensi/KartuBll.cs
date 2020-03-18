@@ -16,32 +16,28 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class KartuBll : IKartuBll
     {
-		private ILog _log;
+        private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private KartuValidator _validator;
+        private KartuValidator _validator;
 
         private bool _isUseWebAPI;
         private string _baseUrl;
 
-		public KartuBll(ILog log)
+        public KartuBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new KartuValidator();
         }
 
@@ -68,7 +64,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     obj = _unitOfWork.KartuRepository.GetByID(id);
                 }
-            }            
+            }
 
             return obj;
         }
@@ -99,7 +95,7 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-		public int Save(Kartu obj)
+        public int Save(Kartu obj)
         {
             var result = 0;
 
@@ -124,7 +120,7 @@ namespace OpenRetail.Bll.Service
 
         public int Save(Kartu obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -139,7 +135,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(Kartu obj)
+        public int Update(Kartu obj)
         {
             var result = 0;
 
@@ -198,4 +194,4 @@ namespace OpenRetail.Bll.Service
             return result;
         }
     }
-}     
+}

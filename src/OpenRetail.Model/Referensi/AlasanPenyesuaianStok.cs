@@ -16,28 +16,21 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using FluentValidation;
-using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("m_alasan_penyesuaian_stok")]
+{
+    [Table("m_alasan_penyesuaian_stok")]
     public class AlasanPenyesuaianStok
     {
         [ExplicitKey]
-		[Display(Name = "alasan_penyesuaian_stok_id")]		
-		public string alasan_penyesuaian_stok_id { get; set; }
-		
-		[Display(Name = "Alasan")]
-		public string alasan { get; set; }
-	}
+        [Display(Name = "alasan_penyesuaian_stok_id")]
+        public string alasan_penyesuaian_stok_id { get; set; }
+
+        [Display(Name = "Alasan")]
+        public string alasan { get; set; }
+    }
 
     public class AlasanPenyesuaianStokValidator : AbstractValidator<AlasanPenyesuaianStok>
     {
@@ -45,10 +38,10 @@ namespace OpenRetail.Model
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.alasan).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
-		}
-	}
+            RuleFor(c => c.alasan).NotEmpty().WithMessage(msgError1).Length(1, 100).WithMessage(msgError2);
+        }
+    }
 }

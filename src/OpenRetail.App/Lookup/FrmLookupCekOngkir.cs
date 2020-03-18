@@ -16,26 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using ConceptCave.WaitCursor;
+using Newtonsoft.Json;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
+using OpenRetail.Model.RajaOngkir;
 using Syncfusion.Windows.Forms.Grid;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using OpenRetail.Model;
-using OpenRetail.Model.RajaOngkir;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using RestSharp;
-using Newtonsoft.Json;
-using ConceptCave.WaitCursor;
-using OpenRetail.Helper.UserControl;
-using OpenRetail.Helper.UI.Template;
 
 namespace OpenRetail.App.Lookup
 {
@@ -74,7 +67,7 @@ namespace OpenRetail.App.Lookup
             if (_listOfCost.Count > 0)
                 this.gridList.SetSelected(0, true);
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 if (_listOfCost.Count > 0)
                 {
@@ -178,7 +171,7 @@ namespace OpenRetail.App.Lookup
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 CekOngkir();
-            }            
+            }
         }
 
         private void CekOngkir()
@@ -229,7 +222,7 @@ namespace OpenRetail.App.Lookup
                 {
                 }
             }
-            
+
             GridListControlHelper.Refresh<costs>(this.gridList, _listOfCost);
             base.SetActiveBtnPilih(_listOfCost.Count > 0);
         }
@@ -281,7 +274,6 @@ namespace OpenRetail.App.Lookup
                     MsgHelper.MsgWarning("Data kota/kabupaten asal tidak ditemukan");
                     txtKabupatenAsal.Focus();
                     txtKabupatenAsal.SelectAll();
-
                 }
                 else if (listOfKabupaten.Count == 1)
                 {
@@ -311,7 +303,6 @@ namespace OpenRetail.App.Lookup
                     MsgHelper.MsgWarning("Data kota/kabupaten tujuan tidak ditemukan");
                     txtKabupatenTujuan.Focus();
                     txtKabupatenTujuan.SelectAll();
-
                 }
                 else if (listOfKabupaten.Count == 1)
                 {

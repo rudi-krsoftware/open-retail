@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-
-using Ninject.Activation;
-using Ninject.Parameters;
-using Ninject.Syntax;
-using System.Web.Http.Dependencies;
 
 namespace OpenRetail.WebAPI.App_Start
 {

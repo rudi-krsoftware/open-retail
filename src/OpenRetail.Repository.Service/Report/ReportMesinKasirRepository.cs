@@ -16,17 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
@@ -59,7 +56,6 @@ namespace OpenRetail.Repository.Service.Report
                     return m;
                 }, new { penggunaId }, splitOn: "pengguna_id").ToList();
 
-
                 foreach (var item in oList)
                 {
                     item.jual = GetJual(item.mesin_id);
@@ -67,7 +63,6 @@ namespace OpenRetail.Repository.Service.Report
                     if (item.jual != null)
                         item.item_jual = GetItemJual(item.mesin_id);
                 }
-
             }
             catch (Exception ex)
             {
@@ -78,7 +73,7 @@ namespace OpenRetail.Repository.Service.Report
         }
 
         private ReportPenjualanProdukHeader GetJual(string mesinId)
-        {            
+        {
             ReportPenjualanProdukHeader obj = null;
 
             try
@@ -104,7 +99,7 @@ namespace OpenRetail.Repository.Service.Report
             {
                 var sql = @"SELECT m_produk.produk_id, m_produk.nama_produk, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon,
                             SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur) AS jumlah
-                            FROM public.t_jual_produk INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id 
+                            FROM public.t_jual_produk INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
                             INNER JOIN public.m_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
                             WHERE t_jual_produk.mesin_id = @mesinId
                             GROUP BY m_produk.produk_id, m_produk.nama_produk, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon

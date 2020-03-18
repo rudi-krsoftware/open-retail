@@ -16,19 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
 {
@@ -73,7 +65,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("Yogyakarta", obj.kota);
             Assert.AreEqual("28115", obj.kode_pos);
             Assert.AreEqual(0, obj.diskon);
-
         }
 
         [TestMethod]
@@ -99,7 +90,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("Yogyakarta", obj.kota);
             Assert.AreEqual("28115", obj.kode_pos);
             Assert.AreEqual(0, obj.diskon);
-
         }
 
         [TestMethod]
@@ -150,7 +140,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.alamat, newObj.alamat);
             Assert.AreEqual(obj.kontak, newObj.kontak);
             Assert.AreEqual(obj.telepon, newObj.telepon);
-
         }
 
         [TestMethod]
@@ -179,7 +168,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.alamat, updatedObj.alamat);
             Assert.AreEqual(obj.kontak, updatedObj.kontak);
             Assert.AreEqual(obj.telepon, updatedObj.telepon);
-
         }
 
         [TestMethod]

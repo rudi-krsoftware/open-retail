@@ -16,22 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class GolonganBllTest
     {
@@ -60,7 +52,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsNotNull(obj);
             Assert.AreEqual("6ae85958-80c6-4f3a-bc01-53a715e25bf1", obj.golongan_id);
             Assert.AreEqual("Hardware new", obj.nama_golongan);
-                     
         }
 
         [TestMethod]
@@ -71,11 +62,10 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 1;
             var oList = _bll.GetByName(name);
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("6ae85958-80c6-4f3a-bc01-53a715e25bf1", obj.golongan_id);
-            Assert.AreEqual("Hardware new", obj.nama_golongan);                                               
-                     
+            Assert.AreEqual("Hardware new", obj.nama_golongan);
         }
 
         [TestMethod]
@@ -84,11 +74,10 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 2;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("6ae85958-80c6-4f3a-bc01-53a715e25bf1", obj.golongan_id);
-            Assert.AreEqual("Hardware new", obj.nama_golongan);                    
-                     
+            Assert.AreEqual("Hardware new", obj.nama_golongan);
         }
 
         [TestMethod]
@@ -107,11 +96,10 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var newObj = _bll.GetByID(obj.golongan_id);
-			Assert.IsNotNull(newObj);
-			Assert.AreEqual(obj.golongan_id, newObj.golongan_id);                                
-            Assert.AreEqual(obj.nama_golongan, newObj.nama_golongan);                                
-            
-		}
+            Assert.IsNotNull(newObj);
+            Assert.AreEqual(obj.golongan_id, newObj.golongan_id);
+            Assert.AreEqual(obj.nama_golongan, newObj.nama_golongan);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -120,7 +108,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             {
                 golongan_id = "4758c3ec-e931-40d5-a903-75b7dc48bee1",
                 nama_golongan = "Lain-lain"
-        	};
+            };
 
             var validationError = new ValidationError();
 
@@ -130,10 +118,9 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var updatedObj = _bll.GetByID(obj.golongan_id);
-			Assert.IsNotNull(updatedObj);
-            Assert.AreEqual(obj.golongan_id, updatedObj.golongan_id);                                
-            Assert.AreEqual(obj.nama_golongan, updatedObj.nama_golongan);                                
-            
+            Assert.IsNotNull(updatedObj);
+            Assert.AreEqual(obj.golongan_id, updatedObj.golongan_id);
+            Assert.AreEqual(obj.nama_golongan, updatedObj.nama_golongan);
         }
 
         [TestMethod]
@@ -148,7 +135,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.golongan_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

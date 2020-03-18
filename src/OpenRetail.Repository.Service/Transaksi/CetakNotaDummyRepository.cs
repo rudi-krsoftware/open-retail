@@ -16,15 +16,10 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using log4net;
-using Dapper;
 using OpenRetail.Model.Nota;
 using OpenRetail.Repository.Api;
+using System;
+using System.Collections.Generic;
 
 namespace OpenRetail.Repository.Service
 {
@@ -89,7 +84,10 @@ namespace OpenRetail.Repository.Service
                 label_kepada2 = "Jl. Ring Road Utara",
                 label_kepada3 = "Condong Catur - Sleman - Yogyakarta - 55283",
                 label_kepada4 = "HP: 0813 2828282",
-                kode_produk = "201704070002", nama_produk = "HDD 160 Gb SATA Seagate", harga = 500000, jumlah = 1
+                kode_produk = "201704070002",
+                nama_produk = "HDD 160 Gb SATA Seagate",
+                harga = 500000,
+                jumlah = 1
             };
 
             var itemNota3 = new NotaPenjualan
@@ -113,7 +111,11 @@ namespace OpenRetail.Repository.Service
                 label_kepada2 = "Jl. Ring Road Utara",
                 label_kepada3 = "Condong Catur - Sleman - Yogyakarta - 55283",
                 label_kepada4 = "HP: 0813 2828282",
-                kode_produk = "201704070003", nama_produk = "LCD 16 in Samsung 633NW", harga = 800000, jumlah = 1, diskon = 1
+                kode_produk = "201704070003",
+                nama_produk = "LCD 16 in Samsung 633NW",
+                harga = 800000,
+                jumlah = 1,
+                diskon = 1
             };
 
             _listOfNotaJual.Add(itemNota1);

@@ -16,22 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using OpenRetail.Model;
- 
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Api
-{    
+{
     public interface IKabupatenRajaOngkirBll : IBaseBll<KabupatenRajaOngkir>
     {
-        KabupatenRajaOngkir GetByID(int id);    
+        KabupatenRajaOngkir GetByID(int id);
+
         IList<KabupatenRajaOngkir> GetByName(string name);
 
-		int Save(KabupatenRajaOngkir obj, ref ValidationError validationError);
-		int Update(KabupatenRajaOngkir obj, ref ValidationError validationError);
+        int Save(KabupatenRajaOngkir obj, ref ValidationError validationError);
+
+        int Update(KabupatenRajaOngkir obj, ref ValidationError validationError);
     }
-}     
+}

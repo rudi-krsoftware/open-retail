@@ -16,19 +16,13 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
-using log4net;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
 
 namespace OpenRetail.Bll.Service.UnitTest
 {
@@ -155,7 +149,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             var golongan = obj.Golongan;
             Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", golongan.golongan_id);
             Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);
-
         }
 
         [TestMethod]
@@ -183,7 +176,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             var golongan = obj.Golongan;
             Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", golongan.golongan_id);
             Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);
-
         }
 
         [TestMethod]
@@ -209,7 +201,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             var golongan = obj.Golongan;
             Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", golongan.golongan_id);
             Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);
-
         }
 
         [TestMethod]
@@ -255,7 +246,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.minimal_stok, newObj.minimal_stok);
             Assert.AreEqual(obj.stok_gudang, newObj.stok_gudang);
             Assert.AreEqual(obj.minimal_stok_gudang, newObj.minimal_stok_gudang);
-
         }
 
         [TestMethod]

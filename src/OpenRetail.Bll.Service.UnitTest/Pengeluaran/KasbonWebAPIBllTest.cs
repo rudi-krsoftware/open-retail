@@ -16,26 +16,18 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class KasbonWebAPIBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IKasbonBll _bll;
 
         [TestInitialize]
@@ -108,16 +100,16 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 1;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("5f913b90-6ff2-4210-878d-ed4b2717050e", obj.kasbon_id);
             Assert.AreEqual("00b5acfa-b533-454b-8dfd-e7881edd180f", obj.pengguna_id);
-            Assert.AreEqual("201703270003", obj.nota);                                
-            Assert.AreEqual(new DateTime(2017, 3, 27), obj.tanggal);                                
+            Assert.AreEqual("201703270003", obj.nota);
+            Assert.AreEqual(new DateTime(2017, 3, 27), obj.tanggal);
             Assert.AreEqual(10000, obj.nominal);
             Assert.AreEqual(0, obj.total_pelunasan);
             Assert.AreEqual("tessss", obj.keterangan);
-            
+
             var karyawan = obj.Karyawan;
             Assert.AreEqual("d3506b64-df74-4283-b17a-6c5dbb770e85", obj.karyawan_id);
             Assert.AreEqual("d3506b64-df74-4283-b17a-6c5dbb770e85", karyawan.karyawan_id);
@@ -197,4 +189,4 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsNull(deletedObj);
         }
     }
-}     
+}

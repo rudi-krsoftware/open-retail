@@ -17,9 +17,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Model.Report
 {
@@ -34,7 +31,7 @@ namespace OpenRetail.Model.Report
         public double diskon { get; set; }
         public double ongkos_kirim { get; set; }
         public double total_nota { get; set; }
-        public double total_pelunasan { get; set; }        
+        public double total_pelunasan { get; set; }
         public string keterangan { get; set; }
         public string retur_jual_id { get; set; }
 

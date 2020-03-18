@@ -18,14 +18,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Helper
 {
     public static class DayMonthHelper
     {
-
         /// <summary>
         /// Untuk mengecek tanggal minimal
         /// </summary>
@@ -73,9 +70,9 @@ namespace OpenRetail.Helper
         /// <returns></returns>
         public static string GetBulanIndonesia(int bulan)
         {
-            string[] bulans = { 
-                                "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", 
-                                "Agustus", "September", "Oktober", "November", "Desember" 
+            string[] bulans = {
+                                "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
+                                "Agustus", "September", "Oktober", "November", "Desember"
                               };
 
             return bulans[bulan - 1];

@@ -16,17 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api.Report;
 using OpenRetail.Bll.Service.Report;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest.Report
 {
@@ -133,7 +127,6 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(2, obj.jumlah_retur);
             Assert.AreEqual(53000, obj.harga);
             Assert.AreEqual(106000, obj.sub_total);
-
         }
 
         [TestMethod]

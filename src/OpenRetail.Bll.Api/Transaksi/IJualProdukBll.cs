@@ -16,19 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using OpenRetail.Model;
- 
 namespace OpenRetail.Bll.Api
-{    
+{
     public interface IJualProdukBll : IBaseBll<JualProduk>
     {
         string GetLastNota();
+
         JualProduk GetByID(string id);
 
         /// <summary>
@@ -39,23 +36,32 @@ namespace OpenRetail.Bll.Api
         /// <returns></returns>
         JualProduk GetListItemNotaTerakhir(string penggunaId, string mesinId);
 
-        IList<JualProduk> GetAll(string name);        
+        IList<JualProduk> GetAll(string name);
+
         IList<JualProduk> GetAll(int pageNumber, int pageSize, ref int pagesCount);
 
         IList<JualProduk> GetNotaCustomer(string id, string nota);
+
         IList<JualProduk> GetNotaKreditByCustomer(string id, bool isLunas);
+
         IList<JualProduk> GetNotaKreditByNota(string id, string nota);
+
         IList<JualProduk> GetByName(string name);
+
         IList<JualProduk> GetByName(string name, bool isCekKeteranganItemJual, int pageNumber, int pageSize, ref int pagesCount);
+
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize, ref int pagesCount);
+
         IList<JualProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);
 
         IList<JualProduk> GetByLimit(DateTime tanggalMulai, DateTime tanggalSelesai, int limit);
 
         IList<ItemJualProduk> GetItemJual(string jualId);
 
-		int Save(JualProduk obj, ref ValidationError validationError);
-		int Update(JualProduk obj, ref ValidationError validationError);
+        int Save(JualProduk obj, ref ValidationError validationError);
+
+        int Update(JualProduk obj, ref ValidationError validationError);
     }
-}     
+}

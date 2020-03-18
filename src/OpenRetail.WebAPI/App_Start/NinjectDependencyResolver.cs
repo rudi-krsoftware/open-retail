@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-using Ninject;
-using System.Web.Http.Dependencies;
-
-namespace OpenRetail.WebAPI.App_Start
+﻿namespace OpenRetail.WebAPI.App_Start
 {
     public class NinjectDependencyResolver : NinjectDependencyScope, IDependencyResolver
     {
-        IKernel kernel;
+        private IKernel kernel;
 
         public NinjectDependencyResolver(IKernel kernel)
             : base(kernel)

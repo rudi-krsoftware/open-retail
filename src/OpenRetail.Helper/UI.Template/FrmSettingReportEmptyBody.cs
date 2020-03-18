@@ -18,15 +18,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using Microsoft.Reporting.WinForms;
 
 namespace OpenRetail.Helper.UI.Template
 {
@@ -101,13 +94,13 @@ namespace OpenRetail.Helper.UI.Template
                 Preview();
 
                 e.SuppressKeyPress = true;
-            }                
+            }
         }
 
         private void FrmSettingReportEmptyBody_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEsc(e))
                 Selesai();
-        }        
+        }
     }
 }

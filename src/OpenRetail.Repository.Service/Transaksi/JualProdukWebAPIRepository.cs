@@ -16,19 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using RestSharp;
-using Newtonsoft.Json;
 using OpenRetail.Helper;
 using OpenRetail.Model;
 using OpenRetail.Model.WebAPI;
 using OpenRetail.Repository.Api;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service
 {
@@ -454,7 +449,6 @@ namespace OpenRetail.Repository.Service
 
             return result;
         }
-
 
         public IList<JualProduk> GetByLimit(DateTime tanggalMulai, DateTime tanggalSelesai, int limit)
         {

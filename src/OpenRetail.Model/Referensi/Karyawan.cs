@@ -16,16 +16,9 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
 {
@@ -63,7 +56,7 @@ namespace OpenRetail.Model
         public bool is_active { get; set; }
 
         [JsonIgnore]
-        [Write(false)]        
+        [Write(false)]
         [Display(Name = "Keterangan")]
         public string keterangan { get; set; }
 
@@ -72,7 +65,7 @@ namespace OpenRetail.Model
 
         [Display(Name = "Gaji Lembur")]
         public double gaji_lembur { get; set; }
-        
+
         [Computed]
         [Display(Name = "total_kasbon")]
         public double total_kasbon { get; set; }

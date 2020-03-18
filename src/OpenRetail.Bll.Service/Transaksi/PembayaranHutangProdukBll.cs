@@ -16,30 +16,27 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
- 
 namespace OpenRetail.Bll.Service
-{    
+{
     public class PembayaranHutangProdukBll : IPembayaranHutangProdukBll
     {
         private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private PembayaranHutangProdukValidator _validator;
+        private PembayaranHutangProdukValidator _validator;
 
         private bool _isUseWebAPI;
         private string _baseUrl;
 
-		public PembayaranHutangProdukBll(ILog log)
+        public PembayaranHutangProdukBll(ILog log)
         {
             _log = log;
             _validator = new PembayaranHutangProdukValidator();
@@ -68,7 +65,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     obj = _unitOfWork.PembayaranHutangProdukRepository.GetByID(id);
                 }
-            }            
+            }
 
             return obj;
         }
@@ -89,7 +86,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.PembayaranHutangProdukRepository.GetByName(name);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -110,7 +107,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.PembayaranHutangProdukRepository.GetAll();
                 }
-            }            
+            }
 
             return oList;
         }
@@ -131,19 +128,19 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.PembayaranHutangProdukRepository.GetHistoriPembayaran(beliId);
                 }
-            }            
+            }
 
             return oList;
         }
 
-		public int Save(PembayaranHutangProduk obj)
+        public int Save(PembayaranHutangProduk obj)
         {
             throw new NotImplementedException();
         }
 
         public int Save(PembayaranHutangProduk obj, bool isSaveFromPembelian, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -176,12 +173,12 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.PembayaranHutangProdukRepository.Save(obj, isSaveFromPembelian);
                 }
-            }            
+            }
 
             return result;
         }
 
-		public int Update(PembayaranHutangProduk obj)
+        public int Update(PembayaranHutangProduk obj)
         {
             throw new NotImplementedException();
         }
@@ -219,7 +216,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.PembayaranHutangProdukRepository.Update(obj, isUpdateFromPembelian);
                 }
-            }            
+            }
 
             return result;
         }
@@ -240,7 +237,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.PembayaranHutangProdukRepository.Delete(obj);
                 }
-            }             
+            }
 
             return result;
         }
@@ -261,7 +258,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     lastNota = _unitOfWork.PembayaranHutangProdukRepository.GetLastNota();
                 }
-            }            
+            }
 
             return lastNota;
         }
@@ -282,7 +279,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     obj = _unitOfWork.PembayaranHutangProdukRepository.GetByBeliID(id);
                 }
-            }            
+            }
 
             return obj;
         }
@@ -290,7 +287,7 @@ namespace OpenRetail.Bll.Service
         public IList<PembayaranHutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
             IList<PembayaranHutangProduk> oList = null;
-            
+
             if (_isUseWebAPI)
             {
                 _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
@@ -303,9 +300,9 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.PembayaranHutangProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
                 }
-            }             
+            }
 
             return oList;
-        }        
+        }
     }
-}     
+}

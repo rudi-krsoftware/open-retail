@@ -16,40 +16,46 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using System.Net;
-using System.Web.Http;
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
+using OpenRetail.WebAPI.Controllers.Helper;
 using OpenRetail.WebAPI.Models;
 using OpenRetail.WebAPI.Models.DTO;
-using OpenRetail.WebAPI.Controllers.Helper;
+using System;
+using System.Collections.Generic;
+using System.Net;
 
 namespace OpenRetail.WebAPI.Controllers
 {
     public interface IJualProdukController : IBaseApiController<JualProdukDTO>
     {
         IHttpActionResult GetLastNota();
+
         IHttpActionResult GetByID(string id);
+
         IHttpActionResult GetListItemNotaTerakhir(string penggunaId, string mesinId);
 
         IHttpActionResult GetAll(string name);
+
         IHttpActionResult GetAll(int pageNumber, int pageSize);
+
         IHttpActionResult GetNotaCustomer(string id, string nota);
+
         IHttpActionResult GetNotaKreditByCustomer(string id, bool isLunas);
+
         IHttpActionResult GetNotaKreditByNota(string id, string nota);
+
         IHttpActionResult GetByName(string name);
+
         IHttpActionResult GetByName(string name, bool isCekKeteranganItemJual, int pageNumber, int pageSize);
+
         IHttpActionResult GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
         IHttpActionResult GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize);
+
         IHttpActionResult GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);
+
         IHttpActionResult GetItemJual(string jualId);
     }
 
@@ -60,8 +66,8 @@ namespace OpenRetail.WebAPI.Controllers
         private ILog _log;
         private HttpStatusCode _httpStatusCode = HttpStatusCode.BadRequest;
         private IHttpActionResult _response = null;
-		
-		public JualProdukController(IUnitOfWork unitOfWork)
+
+        public JualProdukController(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -538,6 +544,6 @@ namespace OpenRetail.WebAPI.Controllers
             }
 
             return _response;
-        }        
+        }
     }
 }

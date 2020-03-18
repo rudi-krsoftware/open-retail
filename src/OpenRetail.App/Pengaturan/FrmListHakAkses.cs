@@ -16,31 +16,26 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
+using ConceptCave.WaitCursor;
+using log4net;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using OpenRetail.Helper;
-using OpenRetail.Helper.UserControl;
-using ConceptCave.WaitCursor;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
 using Syncfusion.Windows.Forms.Grid;
 using Syncfusion.Windows.Forms.Tools;
-using log4net;
-using OpenRetail.Helper.UI.Template;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Pengaturan
 {
     public partial class FrmListHakAkses : FrmListEmptyBody, IListener
     {
-        private IRoleBll _bll; // deklarasi objek business logic layer 
+        private IRoleBll _bll; // deklarasi objek business logic layer
         private IList<Role> _listOfRole = new List<Role>();
         private IList<RolePrivilege> _listOfRolePrivilege = null;
         private IList<MenuAplikasi> _listOfMenuAplikasi = null;
@@ -55,7 +50,7 @@ namespace OpenRetail.App.Pengaturan
             base.WindowState = FormWindowState.Maximized;
 
             _log = MainProgram.log;
-            _bll = new RoleBll(_log);            
+            _bll = new RoleBll(_log);
 
             // set hak akses untuk SELECT
             var role = pengguna.GetRoleByMenuAndGrant(menuId, GrantState.SELECT);
@@ -72,13 +67,13 @@ namespace OpenRetail.App.Pengaturan
                 cmbMenu.Enabled = role.is_grant;
                 chkPilihSemua.Enabled = role.is_grant;
                 btnSimpan.Enabled = role.is_grant;
-            }    
+            }
 
             InitGridList();
 
             // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
             RolePrivilegeHelper.SetHakAkses(this, pengguna, menuId, _listOfRole.Count);
-        }                
+        }
 
         private void InitGridList()
         {
@@ -94,16 +89,14 @@ namespace OpenRetail.App.Pengaturan
             {
                 this.gridList.SetSelected(0, true);
                 HandleSelectionChanged(this.gridList);
-            }                
+            }
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
-
                 if (_listOfRole.Count > 0)
                 {
                     if (e.RowIndex > 0)
                     {
-
                         var rowIndex = e.RowIndex - 1;
 
                         if (rowIndex < _listOfRole.Count)
@@ -171,7 +164,6 @@ namespace OpenRetail.App.Pengaturan
 
         private void LoadMenuChild(string menuParentId)
         {
-
             treeViewAdv.Nodes.Clear();
 
             var menuChild = _listOfMenuAplikasi.Where(f => f.parent_id == menuParentId && f.is_active == true && f.nama_form.Length > 0)
@@ -209,7 +201,6 @@ namespace OpenRetail.App.Pengaturan
 
                 treeViewAdv.Nodes.Add(nodeChild);
             }
-
         }
 
         private void CheckRecursive(TreeNodeAdv treeNode, bool isSave)
@@ -273,7 +264,6 @@ namespace OpenRetail.App.Pengaturan
 
         private void EnabledObject(bool isEnabled)
         {
-
             cmbMenu.Enabled = isEnabled;
             treeViewAdv.Enabled = isEnabled;
             chkPilihSemua.Enabled = isEnabled;
@@ -434,7 +424,6 @@ namespace OpenRetail.App.Pengaturan
 
                 chkPilihSemua.Checked = false;
             }
-
 
             chkPilihSemua.Checked = false;
         }

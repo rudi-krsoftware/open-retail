@@ -16,16 +16,13 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
@@ -37,10 +34,9 @@ namespace OpenRetail.Repository.Service.Report
                                               {WHERE}
                                               ORDER BY t_pengeluaran_biaya.tanggal";
 
-
         private IDapperContext _context;
         private ILog _log;
-        
+
         public ReportPengeluaranBiayaRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -59,7 +55,6 @@ namespace OpenRetail.Repository.Service.Report
                 whereBuilder.Add("EXTRACT(YEAR FROM t_pengeluaran_biaya.tanggal) = @tahun");
 
                 oList = _context.db.Query<ReportPengeluaranBiaya>(whereBuilder.ToSql(), new { bulan, tahun }).ToList();
-
             }
             catch (Exception ex)
             {

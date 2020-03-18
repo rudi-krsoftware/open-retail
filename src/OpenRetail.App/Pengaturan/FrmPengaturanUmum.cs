@@ -16,26 +16,20 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
+using ConceptCave.WaitCursor;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
-using System.Drawing.Printing;
-using Microsoft.Reporting.WinForms;
-using ConceptCave.WaitCursor;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.IO.Ports;
-using GodSharp;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Pengaturan
 {
@@ -227,7 +221,7 @@ namespace OpenRetail.App.Pengaturan
                     break;
             }
 
-            // setting khusus printer mini pos            
+            // setting khusus printer mini pos
             chkCetakCustomer.Checked = _pengaturanUmum.is_cetak_customer;
             txtJumlahKarakter.Text = _pengaturanUmum.jumlah_karakter.ToString();
             txtJumlahGulung.Text = _pengaturanUmum.jumlah_gulung.ToString();
@@ -240,7 +234,7 @@ namespace OpenRetail.App.Pengaturan
 
                 chkAutocut.Checked = _pengaturanUmum.is_autocut;
                 chkOpenCashDrawer.Checked = _pengaturanUmum.is_open_cash_drawer;
-            }            
+            }
         }
 
         private void LoadSettingLainnya()
@@ -259,7 +253,7 @@ namespace OpenRetail.App.Pengaturan
         protected override void Simpan()
         {
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
-            {                
+            {
                 // simpan pengaturan lokal (app.config)
                 SimpanPengaturanLokal();
 
@@ -278,8 +272,8 @@ namespace OpenRetail.App.Pengaturan
                 // simpan label nota
                 SimpanLabelNota();
 
-                this.Close();    
-            }            
+                this.Close();
+            }
         }
 
         /// <summary>
@@ -379,7 +373,7 @@ namespace OpenRetail.App.Pengaturan
         }
 
         private void SimpanHeaderNota()
-        {            
+        {
             IHeaderNotaBll headerNotaBll = new HeaderNotaBll();
 
             var index = 0;
@@ -490,7 +484,7 @@ namespace OpenRetail.App.Pengaturan
                         Name = "NotaPenjualan",
                         Value = listOfJual
                     };
-                    
+
                     var parameters = new List<ReportParameter>();
                     var index = 1;
 
@@ -523,7 +517,7 @@ namespace OpenRetail.App.Pengaturan
                     var frmPreviewReport = new FrmPreviewReport("Contoh Nota Penjualan", "RvNotaPenjualanProdukLabel", reportDataSource, parameters);
                     frmPreviewReport.ShowDialog();
                 }
-            }            
+            }
         }
 
         private void chkPrinterMiniPOS_CheckedChanged(object sender, EventArgs e)
@@ -577,7 +571,7 @@ namespace OpenRetail.App.Pengaturan
             txtJumlahKarakter.Enabled = false;
             txtJumlahGulung.Enabled = false;
             chkUkuranFont.Enabled = false;
-            chkUkuranFont.Checked = false;  
+            chkUkuranFont.Checked = false;
             txtUkuranFont.Enabled = false;
             txtUkuranFont.Text = "0";
 

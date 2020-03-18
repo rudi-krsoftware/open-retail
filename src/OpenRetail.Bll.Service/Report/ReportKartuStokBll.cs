@@ -16,16 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Bll.Api.Report;
+using OpenRetail.Model.Report;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using log4net;
-using OpenRetail.Model.Report;
-using OpenRetail.Bll.Api.Report;
-using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
 
 namespace OpenRetail.Bll.Service.Report
 {
@@ -66,7 +64,7 @@ namespace OpenRetail.Bll.Service.Report
                 {
                     saldo -= item.keluar;
                 }
-                
+
                 item.saldo = saldo;
             }
 
@@ -104,11 +102,11 @@ namespace OpenRetail.Bll.Service.Report
                     // copy saldo awal
                     var produkSaldoAwal = listOfSaldoAwal.LastOrDefault(f => f.produk_id == currentProdukId);
                     if (produkSaldoAwal != null)
-                    {                        
+                    {
                         if (stokAwal != null)
                             item.saldo_awal = produkSaldoAwal.saldo_akhir + stokAwal.stok_awal;
                         else
-                            item.saldo_awal = produkSaldoAwal.saldo_akhir;                        
+                            item.saldo_awal = produkSaldoAwal.saldo_akhir;
                     }
                     else
                     {
@@ -203,7 +201,7 @@ namespace OpenRetail.Bll.Service.Report
                 // hitung stok awal
                 IList<ReportKartuStok> listOfDistinctProduk = new List<ReportKartuStok>();
                 HitungStokAwal(oList, ref listOfDistinctProduk);
-                
+
                 // hitung saldo awal
                 HitungSaldoAwal(listOfSaldoAwal);
 
@@ -278,7 +276,7 @@ namespace OpenRetail.Bll.Service.Report
 
             return oList;
         }
-        
+
         public IList<ReportKartuStok> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, IList<string> listOfKode)
         {
             IList<ReportKartuStok> oList = new List<ReportKartuStok>();

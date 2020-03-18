@@ -16,26 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
+using System.Collections.Generic;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class ReturJualProdukBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IReturJualProdukBll _bll;
 
         [TestInitialize]
@@ -71,7 +64,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var oList = _bll.GetByTanggal(tglMulai, tglSelesai);
             var obj = oList[index];
 
-            // tes retur     
+            // tes retur
             Assert.IsNotNull(obj);
             Assert.AreEqual("2fb82570-d64e-4f2d-bd03-aab5bdf75884", obj.retur_jual_id);
             Assert.AreEqual("27d40236-c8ab-44be-bc47-7a9bbd68c31e", obj.jual_id);
@@ -106,22 +99,21 @@ namespace OpenRetail.Bll.Service.UnitTest
 
         [TestMethod]
         public void GetAllTest()
-        {            
+        {
             var index = 0;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
-            Assert.AreEqual("", obj.retur_jual_id);                                
-            Assert.AreEqual("", obj.jual_id);                                
-            Assert.AreEqual("", obj.pengguna_id);                                
-            Assert.AreEqual("", obj.customer_id);                                
-            Assert.AreEqual("", obj.nota);                                
-            Assert.AreEqual("", obj.tanggal);                                
-            Assert.AreEqual("", obj.keterangan);                                
-            Assert.AreEqual("", obj.tanggal_sistem);                                
-            Assert.AreEqual("", obj.total_nota);                                
-                     
+            Assert.AreEqual("", obj.retur_jual_id);
+            Assert.AreEqual("", obj.jual_id);
+            Assert.AreEqual("", obj.pengguna_id);
+            Assert.AreEqual("", obj.customer_id);
+            Assert.AreEqual("", obj.nota);
+            Assert.AreEqual("", obj.tanggal);
+            Assert.AreEqual("", obj.keterangan);
+            Assert.AreEqual("", obj.tanggal_sistem);
+            Assert.AreEqual("", obj.total_nota);
         }
 
         [TestMethod]
@@ -158,8 +150,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.nota, newObj.nota);
             Assert.AreEqual(obj.tanggal, newObj.tanggal);
             Assert.AreEqual(obj.keterangan, newObj.keterangan);
-            Assert.AreEqual(obj.total_nota, newObj.total_nota); 
-
+            Assert.AreEqual(obj.total_nota, newObj.total_nota);
         }
 
         [TestMethod]
@@ -194,7 +185,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.tanggal, updatedObj.tanggal);
             Assert.AreEqual(obj.keterangan, updatedObj.keterangan);
             Assert.AreEqual(obj.total_nota, updatedObj.total_nota);
-
         }
 
         [TestMethod]
@@ -212,4 +202,4 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsNull(deletedObj);
         }
     }
-}     
+}

@@ -16,20 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 
 namespace OpenRetail.Bll.Service
 {
     public class AlamatKirimBll : IAlamatKirimBll
     {
         private AlamatKirimValidator _validator;
-        
+
         public AlamatKirimBll()
         {
             _validator = new AlamatKirimValidator();

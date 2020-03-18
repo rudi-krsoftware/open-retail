@@ -16,26 +16,20 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class BeliProdukRepository : IBeliProdukRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT t_beli_produk.beli_produk_id, t_beli_produk.pengguna_id, t_beli_produk.retur_beli_produk_id, t_beli_produk.nota, t_beli_produk.tanggal, 
-                                              t_beli_produk.tanggal_tempo, t_beli_produk.ppn, t_beli_produk.diskon, t_beli_produk.total_nota, t_beli_produk.total_pelunasan, 
-                                              t_beli_produk.total_pelunasan AS total_pelunasan_old, t_beli_produk.keterangan, t_beli_produk.tanggal_sistem, 
+        private const string SQL_TEMPLATE = @"SELECT t_beli_produk.beli_produk_id, t_beli_produk.pengguna_id, t_beli_produk.retur_beli_produk_id, t_beli_produk.nota, t_beli_produk.tanggal,
+                                              t_beli_produk.tanggal_tempo, t_beli_produk.ppn, t_beli_produk.diskon, t_beli_produk.total_nota, t_beli_produk.total_pelunasan,
+                                              t_beli_produk.total_pelunasan AS total_pelunasan_old, t_beli_produk.keterangan, t_beli_produk.tanggal_sistem,
                                               m_supplier.supplier_id, m_supplier.nama_supplier, m_supplier.alamat
                                               FROM public.t_beli_produk INNER JOIN public.m_supplier ON t_beli_produk.supplier_id = m_supplier.supplier_id
                                               {WHERE}
@@ -73,7 +67,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT t_item_beli_produk.item_beli_produk_id, t_item_beli_produk.beli_produk_id, t_item_beli_produk.pengguna_id, t_item_beli_produk.harga, 
+                var sql = @"SELECT t_item_beli_produk.item_beli_produk_id, t_item_beli_produk.beli_produk_id, t_item_beli_produk.pengguna_id, t_item_beli_produk.harga,
                             t_item_beli_produk.jumlah, t_item_beli_produk.jumlah_retur, t_item_beli_produk.diskon, t_item_beli_produk.tanggal_sistem, 1 as entity_state,
                             m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.harga_beli, m_produk.harga_jual, m_produk.diskon
                             FROM public.t_item_beli_produk INNER JOIN public.m_produk ON t_item_beli_produk.produk_id = m_produk.produk_id
@@ -137,7 +131,7 @@ namespace OpenRetail.Repository.Service
         }
 
         public IList<BeliProduk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount)
-        {            
+        {
             IList<BeliProduk> oList = new List<BeliProduk>();
 
             try
@@ -250,7 +244,7 @@ namespace OpenRetail.Repository.Service
                 {
                     param = new { id };
 
-                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_supplier.supplier_id = @id");                    
+                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_supplier.supplier_id = @id");
                 }
 
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
@@ -274,7 +268,7 @@ namespace OpenRetail.Repository.Service
             {
                 if (isLunas)
                 {
-                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_supplier.supplier_id = @id AND t_beli_produk.tanggal_tempo IS NOT NULL AND (t_beli_produk.total_nota - t_beli_produk.diskon + t_beli_produk.ppn) <= t_beli_produk.total_pelunasan");                    
+                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_supplier.supplier_id = @id AND t_beli_produk.tanggal_tempo IS NOT NULL AND (t_beli_produk.total_nota - t_beli_produk.diskon + t_beli_produk.ppn) <= t_beli_produk.total_pelunasan");
                 }
                 else
                 {
@@ -283,7 +277,7 @@ namespace OpenRetail.Repository.Service
 
                 _sql = _sql.Replace("{ORDER BY}", "ORDER BY t_beli_produk.tanggal DESC, t_beli_produk.nota");
                 _sql = _sql.Replace("{OFFSET}", "");
-                
+
                 oList = MappingRecordToObject(_sql, new { id }).ToList();
             }
             catch (Exception ex)
@@ -413,7 +407,7 @@ namespace OpenRetail.Repository.Service
                     {
                         if (item.item_beli_produk_id == null)
                             item.item_beli_produk_id = _context.GetGUID();
-                        
+
                         item.beli_produk_id = obj.beli_produk_id;
                         item.pengguna_id = obj.pengguna_id;
 
@@ -423,16 +417,15 @@ namespace OpenRetail.Repository.Service
                         item.entity_state = EntityState.Unchanged;
                     }
                 }
-                
+
                 // jika pembelian tunai, langsung insert ke pembayaran hutang
                 if (obj.tanggal_tempo.IsNull())
                 {
                     result = SavePembayaranHutang(obj);
                     if (result > 0)
                         obj.total_pelunasan = obj.grand_total;
-
                 }
-                
+
                 _context.Commit();
 
                 LogicalThreadContext.Properties["NewValue"] = obj.ToJson();
@@ -446,7 +439,7 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
 
         public int Update(BeliProduk obj)
         {
@@ -478,7 +471,7 @@ namespace OpenRetail.Repository.Service
                     if (item.entity_state == EntityState.Added)
                     {
                         if (item.item_beli_produk_id == null)
-                            item.item_beli_produk_id = _context.GetGUID();                        
+                            item.item_beli_produk_id = _context.GetGUID();
 
                         _context.db.Insert<ItemBeliProduk>(item, transaction);
 
@@ -578,7 +571,7 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
 
         /// <summary>
         /// Method untuk menghapus pembayaran hutang jika terjadi perubahan status nota dari tunai ke kredit
@@ -624,6 +617,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

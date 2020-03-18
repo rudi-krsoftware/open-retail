@@ -16,31 +16,25 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.App.Lookup;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using Syncfusion.Windows.Forms.Grid;
-using OpenRetail.Helper.UserControl;
-using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.App.Lookup;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Transaksi
 {
     public partial class FrmEntryReturPenjualanProduk : FrmEntryStandard, IListener
-    {                
+    {
         private IReturJualProdukBll _bll = null;
         private ReturJualProduk _retur = null;
         private Customer _customer = null;
@@ -48,9 +42,9 @@ namespace OpenRetail.App.Transaksi
         private IList<ItemReturJualProduk> _listOfItemRetur = new List<ItemReturJualProduk>();
         private IList<ItemReturJualProduk> _listOfItemReturOld = new List<ItemReturJualProduk>();
         private IList<ItemReturJualProduk> _listOfItemReturDeleted = new List<ItemReturJualProduk>();
-        
+
         private int _rowIndex = 0;
-        private int _colIndex = 0;        
+        private int _colIndex = 0;
 
         private bool _isNewData = false;
         private bool _isValidJumlahRetur = false;
@@ -61,9 +55,9 @@ namespace OpenRetail.App.Transaksi
 
         public IListener Listener { private get; set; }
 
-        public FrmEntryReturPenjualanProduk(string header, IReturJualProdukBll bll) 
+        public FrmEntryReturPenjualanProduk(string header, IReturJualProdukBll bll)
             : base()
-        {            
+        {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
 
@@ -100,7 +94,7 @@ namespace OpenRetail.App.Transaksi
             txtNota.Enabled = false;
 
             dtpTanggal.Value = (DateTime)this._retur.tanggal;
-            txtCustomer.Text = this._customer.nama_customer;            
+            txtCustomer.Text = this._customer.nama_customer;
             txtKeterangan.Text = this._retur.keterangan;
 
             if (this._jual != null)
@@ -109,12 +103,12 @@ namespace OpenRetail.App.Transaksi
                 txtNotaJual.Enabled = false;
 
                 LoadItemJual(this._jual);
-            }                
+            }
 
             // simpan data lama
             _listOfItemReturOld.Clear();
             foreach (var item in this._retur.item_retur)
-            {                
+            {
                 _listOfItemReturOld.Add(new ItemReturJualProduk
                 {
                     item_retur_jual_id = item.item_retur_jual_id,
@@ -122,7 +116,7 @@ namespace OpenRetail.App.Transaksi
                     harga_jual = item.harga_jual
                 });
             }
-            
+
             _listOfItemRetur = this._retur.item_retur;
             _listOfItemRetur.Add(new ItemReturJualProduk()); // add dummy objek
 
@@ -151,7 +145,7 @@ namespace OpenRetail.App.Transaksi
 
             GridListControlHelper.InitializeGridListControl<ItemReturJualProduk>(grid, _listOfItemRetur, gridListProperties, 30);
 
-            grid.PushButtonClick += delegate(object sender, GridCellPushButtonClickEventArgs e)
+            grid.PushButtonClick += delegate (object sender, GridCellPushButtonClickEventArgs e)
             {
                 if (e.ColIndex == 7)
                 {
@@ -173,11 +167,11 @@ namespace OpenRetail.App.Transaksi
                         grid.Refresh();
 
                         RefreshTotal();
-                    }                    
+                    }
                 }
             };
 
-            grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 // Make sure the cell falls inside the grid
                 if (e.RowIndex > 0)
@@ -287,7 +281,7 @@ namespace OpenRetail.App.Transaksi
 
             if (_isNewData)
                 _retur = new ReturJualProduk();
-            
+
             _retur.jual_id = this._jual.jual_id;
             _retur.JualProduk = this._jual;
             _retur.pengguna_id = this._pengguna.pengguna_id;
@@ -323,7 +317,7 @@ namespace OpenRetail.App.Transaksi
 
                     _customer = null;
                     _listOfItemRetur.Clear();
-                    _listOfItemReturDeleted.Clear();                                        
+                    _listOfItemReturDeleted.Clear();
 
                     this.Close();
                 }
@@ -337,7 +331,7 @@ namespace OpenRetail.App.Transaksi
                     else
                         MsgHelper.MsgUpdateError();
                 }
-            }            
+            }
         }
 
         protected override void Selesai()
@@ -445,7 +439,6 @@ namespace OpenRetail.App.Transaksi
                     MsgHelper.MsgWarning("Data Customer tidak ditemukan");
                     txtCustomer.Focus();
                     txtCustomer.SelectAll();
-
                 }
                 else if (listOfCustomer.Count == 1)
                 {
@@ -474,7 +467,6 @@ namespace OpenRetail.App.Transaksi
         {
             if (e.KeyCode == Keys.Enter)
             {
-
                 if (this._jual == null || txtNotaJual.Text.Length == 0)
                 {
                     MsgHelper.MsgWarning("Maaf isian data belum lengkap !");
@@ -576,7 +568,7 @@ namespace OpenRetail.App.Transaksi
                                 frmLookup.Listener = this;
                                 frmLookup.ShowDialog();
                             }
-                        }                        
+                        }
 
                         break;
 
@@ -703,7 +695,7 @@ namespace OpenRetail.App.Transaksi
 
                     RefreshTotal();
                 }
-            }           
+            }
         }
 
         private void FrmEntryReturPenjualanProduk_FormClosing(object sender, FormClosingEventArgs e)

@@ -17,9 +17,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Model.Report
 {
@@ -29,6 +26,7 @@ namespace OpenRetail.Model.Report
         /// 1 = Pembelian, 2 = Retur Penjualan, 3 = Penjualan, 4 = Retur Pembelian
         /// </summary>
         public int jenis_nota { get; set; }
+
         public string produk_id { get; set; }
         public string nama_produk { get; set; }
         public string nota { get; set; }
@@ -38,18 +36,17 @@ namespace OpenRetail.Model.Report
 
         public double masuk
         {
-            get 
+            get
             {
-                return jenis_nota == 1 || jenis_nota == 2 ? qty : 0; 
+                return jenis_nota == 1 || jenis_nota == 2 ? qty : 0;
             }
         }
 
-
         public double keluar
         {
-            get 
+            get
             {
-                return jenis_nota == 3 || jenis_nota == 4 ? qty : 0; 
+                return jenis_nota == 3 || jenis_nota == 4 ? qty : 0;
             }
         }
 

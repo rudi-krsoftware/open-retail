@@ -16,44 +16,36 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using FluentValidation;
-using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("m_menu")]
+{
+    [Table("m_menu")]
     public class MenuAplikasi
     {
-		[ExplicitKey]
-		[Display(Name = "menu_id")]		
-		public string menu_id { get; set; }
-		
-		[Display(Name = "nama_menu")]
-		public string nama_menu { get; set; }
-		
-		[Display(Name = "judul_menu")]
-		public string judul_menu { get; set; }
-		
-		[Display(Name = "parent_id")]
-		public string parent_id { get; set; }
-		
-		[Display(Name = "order_number")]
-		public int order_number { get; set; }
-		
-		[Display(Name = "is_active")]
-		public bool is_active { get; set; }
-		
-		[Display(Name = "nama_form")]
-		public string nama_form { get; set; }
-		
-		[Display(Name = "is_enabled")]
-		public bool is_enabled { get; set; }
-	}    
+        [ExplicitKey]
+        [Display(Name = "menu_id")]
+        public string menu_id { get; set; }
+
+        [Display(Name = "nama_menu")]
+        public string nama_menu { get; set; }
+
+        [Display(Name = "judul_menu")]
+        public string judul_menu { get; set; }
+
+        [Display(Name = "parent_id")]
+        public string parent_id { get; set; }
+
+        [Display(Name = "order_number")]
+        public int order_number { get; set; }
+
+        [Display(Name = "is_active")]
+        public bool is_active { get; set; }
+
+        [Display(Name = "nama_form")]
+        public string nama_form { get; set; }
+
+        [Display(Name = "is_enabled")]
+        public bool is_enabled { get; set; }
+    }
 }

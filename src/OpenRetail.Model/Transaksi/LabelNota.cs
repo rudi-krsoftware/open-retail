@@ -16,36 +16,29 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using FluentValidation;
-using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("m_label_nota")]
+{
+    [Table("m_label_nota")]
     public class LabelNota
     {
-		[ExplicitKey]
-		[Display(Name = "label_nota_id")]		
-		public string label_nota_id { get; set; }
-		
-		[Display(Name = "Keterangan Label")]
-		public string keterangan { get; set; }
+        [ExplicitKey]
+        [Display(Name = "label_nota_id")]
+        public string label_nota_id { get; set; }
+
+        [Display(Name = "Keterangan Label")]
+        public string keterangan { get; set; }
 
         [Write(false)]
-		[Display(Name = "order_number")]
-		public int order_number { get; set; }
+        [Display(Name = "order_number")]
+        public int order_number { get; set; }
 
         [Write(false)]
-		[Display(Name = "is_active")]
-		public bool is_active { get; set; }
-	}
+        [Display(Name = "is_active")]
+        public bool is_active { get; set; }
+    }
 
     public class LabelNotaValidator : AbstractValidator<LabelNota>
     {
@@ -56,6 +49,6 @@ namespace OpenRetail.Model
             var msgError = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
             RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError);
-		}
-	}
+        }
+    }
 }

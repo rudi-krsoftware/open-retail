@@ -16,33 +16,28 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class ReturBeliProdukRepository : IReturBeliProdukRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT t_retur_beli_produk.retur_beli_produk_id, t_retur_beli_produk.pengguna_id, t_retur_beli_produk.nota, t_retur_beli_produk.tanggal, t_retur_beli_produk.keterangan, t_retur_beli_produk.tanggal_sistem, t_retur_beli_produk.total_nota, 
+        private const string SQL_TEMPLATE = @"SELECT t_retur_beli_produk.retur_beli_produk_id, t_retur_beli_produk.pengguna_id, t_retur_beli_produk.nota, t_retur_beli_produk.tanggal, t_retur_beli_produk.keterangan, t_retur_beli_produk.tanggal_sistem, t_retur_beli_produk.total_nota,
                                               m_supplier.supplier_id, m_supplier.nama_supplier, m_supplier.alamat, t_beli_produk.beli_produk_id, t_beli_produk.nota
                                               FROM public.m_supplier INNER JOIN public.t_retur_beli_produk ON t_retur_beli_produk.supplier_id = m_supplier.supplier_id
                                               INNER JOIN public.t_beli_produk ON t_retur_beli_produk.beli_produk_id = t_beli_produk.beli_produk_id
                                               {WHERE}
                                               {ORDER BY}";
+
         private IDapperContext _context;
         private ILog _log;
         private string _sql;
-		
+
         public ReturBeliProdukRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -70,7 +65,7 @@ namespace OpenRetail.Repository.Service
             {
                 var sql = @"SELECT t_item_retur_beli_produk.item_retur_beli_produk_id, t_item_retur_beli_produk.retur_beli_produk_id, t_item_retur_beli_produk.pengguna_id, t_item_retur_beli_produk.item_beli_id, t_item_retur_beli_produk.harga, t_item_retur_beli_produk.jumlah, t_item_retur_beli_produk.jumlah_retur, t_item_retur_beli_produk.tanggal_sistem, 1 as entity_state,
                             m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.harga_jual
-                            FROM public.t_item_retur_beli_produk INNER JOIN public.m_produk ON t_item_retur_beli_produk.produk_id = m_produk.produk_id  
+                            FROM public.t_item_retur_beli_produk INNER JOIN public.m_produk ON t_item_retur_beli_produk.produk_id = m_produk.produk_id
                             WHERE t_item_retur_beli_produk.retur_beli_produk_id = @returId
                             ORDER BY t_item_retur_beli_produk.tanggal_sistem";
 
@@ -78,7 +73,6 @@ namespace OpenRetail.Repository.Service
                 {
                     ir.produk_id = p.produk_id; ir.Produk = p;
                     return ir;
-
                 }, new { returId }, splitOn: "produk_id").ToList();
             }
             catch (Exception ex)
@@ -176,7 +170,7 @@ namespace OpenRetail.Repository.Service
         {
             var total = obj.item_retur.Where(f => f.Produk != null && f.entity_state != EntityState.Deleted)
                                       .Sum(f => f.jumlah_retur * f.harga);
-            
+
             return Math.Round(total, MidpointRounding.AwayFromZero);
         }
 
@@ -226,7 +220,7 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
 
         public int Update(ReturBeliProduk obj)
         {
@@ -277,7 +271,6 @@ namespace OpenRetail.Repository.Service
                 _log.Info("Update data");
 
                 result = 1;
-
             }
             catch (Exception ex)
             {
@@ -307,6 +300,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

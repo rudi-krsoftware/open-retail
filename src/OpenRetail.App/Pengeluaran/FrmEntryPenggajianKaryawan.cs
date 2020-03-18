@@ -16,31 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using ConceptCave.WaitCursor;
+using OpenRetail.Bll.Api;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using log4net;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Pengeluaran
 {
     public partial class FrmEntryPenggajianKaryawan : FrmEntryStandard
-    {                    
-        private IGajiKaryawanBll _bll = null; // deklarasi objek business logic layer 
+    {
+        private IGajiKaryawanBll _bll = null; // deklarasi objek business logic layer
         private GajiKaryawan _gaji = null;
         private Karyawan _karyawan;
         private IList<Karyawan> _listOfKaryawan;
-        
+
         private bool _isNewData = false;
         private Pengguna _pengguna;
 
@@ -86,7 +79,7 @@ namespace OpenRetail.App.Pengeluaran
             cmbKaryawan.Enabled = false;
 
             txtNota.Text = this._gaji.nota;
-            dtpTanggal.Value = (DateTime)this._gaji.tanggal;            
+            dtpTanggal.Value = (DateTime)this._gaji.tanggal;
 
             AddHandlerTotal();
 
@@ -153,7 +146,7 @@ namespace OpenRetail.App.Pengeluaran
             if (_isNewData)
             {
                 _gaji = new GajiKaryawan();
-            
+
                 if (this._karyawan == null)
                 {
                     MsgHelper.MsgWarning("Karyawan belum dipilih");
@@ -169,7 +162,7 @@ namespace OpenRetail.App.Pengeluaran
 
             _gaji.pengguna_id = this._pengguna.pengguna_id;
             _gaji.Pengguna = this._pengguna;
-            _gaji.nota = txtNota.Text;            
+            _gaji.nota = txtNota.Text;
 
             _gaji.tanggal = dtpTanggal.Value;
             _gaji.kehadiran = int.Parse(txtKehadiran.Text);
@@ -206,7 +199,6 @@ namespace OpenRetail.App.Pengeluaran
                     }
                     else
                         this.Close();
-
                 }
                 else
                 {
@@ -221,7 +213,7 @@ namespace OpenRetail.App.Pengeluaran
                         MsgHelper.MsgWarning(pesan);
                     }
                 }
-            }                            
+            }
         }
 
         private void cmbKaryawan_SelectedIndexChanged(object sender, EventArgs e)
@@ -233,7 +225,7 @@ namespace OpenRetail.App.Pengeluaran
                 base.ResetForm(this);
                 this._karyawan = null;
                 return;
-            }                
+            }
 
             txtJabatan.Clear();
 

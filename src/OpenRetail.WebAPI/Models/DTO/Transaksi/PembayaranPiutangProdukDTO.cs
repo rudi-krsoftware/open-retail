@@ -16,16 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using FluentValidation;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
-using FluentValidation;
 using System.ComponentModel.DataAnnotations;
-using OpenRetail.Model;
 
 namespace OpenRetail.WebAPI.Models.DTO
 {
@@ -37,36 +32,36 @@ namespace OpenRetail.WebAPI.Models.DTO
             item_pembayaran_piutang_deleted = new List<ItemPembayaranPiutangProdukDTO>();
         }
 
-		[Display(Name = "pembayaran_piutang_id")]		
-		public string pembayaran_piutang_id { get; set; }
-		
-		[Display(Name = "Customer")]
-		public string customer_id { get; set; }
+        [Display(Name = "pembayaran_piutang_id")]
+        public string pembayaran_piutang_id { get; set; }
+
+        [Display(Name = "Customer")]
+        public string customer_id { get; set; }
 
         //[JsonIgnore]
         public CustomerDTO Customer { get; set; }
 
-		[Display(Name = "pengguna_id")]
-		public string pengguna_id { get; set; }
+        [Display(Name = "pengguna_id")]
+        public string pengguna_id { get; set; }
 
         [JsonIgnore]
         public PenggunaDTO Pengguna { get; set; }
 
-		[Display(Name = "Tanggal")]
-		public Nullable<DateTime> tanggal { get; set; }
-		
-		[Display(Name = "Keterangan")]
-		public string keterangan { get; set; }
+        [Display(Name = "Tanggal")]
+        public Nullable<DateTime> tanggal { get; set; }
+
+        [Display(Name = "Keterangan")]
+        public string keterangan { get; set; }
 
         [JsonIgnore]
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
-		
-		[Display(Name = "Nota")]
-		public string nota { get; set; }
-		
-		[Display(Name = "is_tunai")]
-		public bool is_tunai { get; set; }
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
+
+        [Display(Name = "Nota")]
+        public string nota { get; set; }
+
+        [Display(Name = "is_tunai")]
+        public bool is_tunai { get; set; }
 
         public double total_pembayaran { get; set; }
 

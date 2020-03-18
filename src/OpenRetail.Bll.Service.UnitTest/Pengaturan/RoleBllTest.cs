@@ -16,26 +16,18 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class RoleBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IRoleBll _bll;
 
         [TestInitialize]
@@ -61,7 +53,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("c58ee40a-5ae2-4067-b6ad-8cae9c65913c", obj.role_id);
             Assert.AreEqual("Owner", obj.nama_role);
             Assert.IsTrue(obj.is_active);
-                     
         }
 
         [TestMethod]
@@ -70,12 +61,11 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 1;
             var oList = _bll.GetByStatus(true);
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("c58ee40a-5ae2-4067-b6ad-8cae9c65913c", obj.role_id);
             Assert.AreEqual("Owner", obj.nama_role);
-            Assert.IsTrue(obj.is_active);                            
-                     
+            Assert.IsTrue(obj.is_active);
         }
 
         [TestMethod]
@@ -84,12 +74,11 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 2;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("c58ee40a-5ae2-4067-b6ad-8cae9c65913c", obj.role_id);
             Assert.AreEqual("Owner", obj.nama_role);
-            Assert.IsTrue(obj.is_active);                           
-                     
+            Assert.IsTrue(obj.is_active);
         }
 
         [TestMethod]
@@ -109,12 +98,11 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var newObj = _bll.GetByID(obj.role_id);
-			Assert.IsNotNull(newObj);
-			Assert.AreEqual(obj.role_id, newObj.role_id);                                
-            Assert.AreEqual(obj.nama_role, newObj.nama_role);                                
-            Assert.AreEqual(obj.is_active, newObj.is_active);                                
-            
-		}
+            Assert.IsNotNull(newObj);
+            Assert.AreEqual(obj.role_id, newObj.role_id);
+            Assert.AreEqual(obj.nama_role, newObj.nama_role);
+            Assert.AreEqual(obj.is_active, newObj.is_active);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -124,7 +112,7 @@ namespace OpenRetail.Bll.Service.UnitTest
                 role_id = "42d0a7b9-2b1a-4ad7-b6ad-b7c8b65ef04a",
                 nama_role = "Kasir",
                 is_active = true
-        	};
+            };
 
             var validationError = new ValidationError();
 
@@ -134,11 +122,10 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var updatedObj = _bll.GetByID(obj.role_id);
-			Assert.IsNotNull(updatedObj);
-            Assert.AreEqual(obj.role_id, updatedObj.role_id);                                
-            Assert.AreEqual(obj.nama_role, updatedObj.nama_role);                                
-            Assert.AreEqual(obj.is_active, updatedObj.is_active);                                
-            
+            Assert.IsNotNull(updatedObj);
+            Assert.AreEqual(obj.role_id, updatedObj.role_id);
+            Assert.AreEqual(obj.nama_role, updatedObj.nama_role);
+            Assert.AreEqual(obj.is_active, updatedObj.is_active);
         }
 
         [TestMethod]
@@ -153,7 +140,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.role_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

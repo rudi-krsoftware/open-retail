@@ -16,22 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Helper;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
-using ConceptCave.WaitCursor;
-using log4net;
 
 namespace OpenRetail.App.Lookup
 {
@@ -99,7 +91,7 @@ namespace OpenRetail.App.Lookup
 
             gridListProperties.Add(new GridListControlProperties { Header = "No", Width = 30 });
             gridListProperties.Add(new GridListControlProperties { Header = "Tanggal", Width = 90 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Nota", Width = 90 });            
+            gridListProperties.Add(new GridListControlProperties { Header = "Nota", Width = 90 });
             gridListProperties.Add(new GridListControlProperties { Header = "Keterangan", Width = 250 });
             gridListProperties.Add(new GridListControlProperties { Header = "Operator", Width = 100 });
             gridListProperties.Add(new GridListControlProperties { Header = "Nominal" });
@@ -151,7 +143,7 @@ namespace OpenRetail.App.Lookup
 
                             case 3:
                                 e.Style.CellValue = historiPembayaran.PembayaranHutangProduk.nota;
-                                break;                            
+                                break;
 
                             case 4:
                                 e.Style.CellValue = historiPembayaran.keterangan;
@@ -177,8 +169,8 @@ namespace OpenRetail.App.Lookup
             }
         }
 
-        void GridPembayaranPiutang_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
-        {            
+        private void GridPembayaranPiutang_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
+        {
             if (_listOfHistoriPembayaranPiutang.Count > 0)
             {
                 if (e.RowIndex > 0)
@@ -198,7 +190,7 @@ namespace OpenRetail.App.Lookup
 
                             case 3:
                                 e.Style.CellValue = historiPembayaran.PembayaranPiutangProduk.nota;
-                                break;                            
+                                break;
 
                             case 4:
                                 e.Style.CellValue = historiPembayaran.keterangan;

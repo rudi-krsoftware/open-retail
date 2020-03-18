@@ -17,11 +17,7 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace OpenRetail.Helper.UserControl
@@ -35,7 +31,7 @@ namespace OpenRetail.Helper.UserControl
         UpperCase = 1
     }
 
-    #endregion
+    #endregion ">> Enumerators <<"
 
     public class AdvancedTextbox : TextBox
     {
@@ -50,7 +46,7 @@ namespace OpenRetail.Helper.UserControl
         private bool _isLetterOnly = false;
         private bool _isAutoEnter = false;
         private bool _isDecimal = false;
-        
+
         #region >> property <<
 
         public override int MaxLength
@@ -143,7 +139,7 @@ namespace OpenRetail.Helper.UserControl
             set { _conversion = value; }
         }
 
-        #endregion
+        #endregion >> property <<
 
         public AdvancedTextbox()
         {
@@ -152,14 +148,14 @@ namespace OpenRetail.Helper.UserControl
             KeyPress += AdvancedTextbox_KeyPress;
             Enter += AdvancedTextbox_Enter;
             EnabledChanged += AdvancedTextbox_EnabledChanged;
-        }        
+        }
 
         #region ">> delegate method <<"
 
         private void AdvancedTextbox_EnabledChanged(object sender, EventArgs e)
         {
             this.BackColor = this.Enabled ? this._leaveFocusColor : Color.FromArgb(232, 235, 242);
-        }        
+        }
 
         private void AdvancedTextbox_Enter(object sender, EventArgs e)
         {
@@ -186,14 +182,12 @@ namespace OpenRetail.Helper.UserControl
                 {
                     e.Handled = ValidasiAngka(e);
                 }
-
             }
             else if (this._isLetterOnly)
             {
                 if (this._conversion == EConversion.UpperCase)
                     e.KeyChar = HurufBesar(e);
                 e.Handled = ValidasiHuruf(e);
-
             }
             else if (this._conversion == EConversion.UpperCase)
             {
@@ -250,7 +244,7 @@ namespace OpenRetail.Helper.UserControl
             }
         }
 
-        #endregion
+        #endregion ">> delegate method <<"
 
         #region ">> private method <<"
 
@@ -275,11 +269,11 @@ namespace OpenRetail.Helper.UserControl
             var pos = strValid.IndexOf(e.KeyChar);
             if (pos < 0 && !(e.KeyChar == (char)(Keys.Back)))
             {
-                return true; // not valid                
+                return true; // not valid
             }
             else
             {
-                return false; // valid                
+                return false; // valid
             }
         }
 
@@ -290,14 +284,15 @@ namespace OpenRetail.Helper.UserControl
             var pos = strValid.IndexOf(e.KeyChar);
             if (pos < 0 && !(e.KeyChar == (char)(Keys.Back)))
             {
-                return true; // not valid                
+                return true; // not valid
             }
             else
             {
-                return false; // valid                
+                return false; // valid
             }
         }
 
-        #endregion        
+        #endregion ">> private method <<"
+
     }
 }

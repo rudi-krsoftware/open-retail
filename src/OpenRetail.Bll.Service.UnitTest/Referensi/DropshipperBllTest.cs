@@ -16,26 +16,18 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class DropshipperBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IDropshipperBll _bll;
 
         [TestInitialize]
@@ -55,17 +47,17 @@ namespace OpenRetail.Bll.Service.UnitTest
         public void GetByNameTest()
         {
             var name = "maypes";
-            
+
             var index = 0;
             var oList = _bll.GetByName(name);
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("23649ae7-3435-4a5e-81d6-f7697a5b3775", obj.dropshipper_id);
             Assert.AreEqual("Madelena Maypes", obj.nama_dropshipper);
             Assert.AreEqual("2 Nancy Place", obj.alamat);
             Assert.AreEqual("Maypes", obj.kontak);
-            Assert.AreEqual("566-561-8188", obj.telepon);                                 
+            Assert.AreEqual("566-561-8188", obj.telepon);
         }
 
         [TestMethod]
@@ -74,13 +66,13 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 1;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("23649ae7-3435-4a5e-81d6-f7697a5b3775", obj.dropshipper_id);
             Assert.AreEqual("Madelena Maypes", obj.nama_dropshipper);
             Assert.AreEqual("2 Nancy Place", obj.alamat);
             Assert.AreEqual("Maypes", obj.kontak);
-            Assert.AreEqual("566-561-8188", obj.telepon);                                
+            Assert.AreEqual("566-561-8188", obj.telepon);
         }
 
         [TestMethod]
@@ -102,13 +94,13 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var newObj = _bll.GetByID(obj.dropshipper_id);
-			Assert.IsNotNull(newObj);
-			Assert.AreEqual(obj.dropshipper_id, newObj.dropshipper_id);                                
-            Assert.AreEqual(obj.nama_dropshipper, newObj.nama_dropshipper);                                
-            Assert.AreEqual(obj.alamat, newObj.alamat);                                
-            Assert.AreEqual(obj.kontak, newObj.kontak);                                
-            Assert.AreEqual(obj.telepon, newObj.telepon);                                
-		}
+            Assert.IsNotNull(newObj);
+            Assert.AreEqual(obj.dropshipper_id, newObj.dropshipper_id);
+            Assert.AreEqual(obj.nama_dropshipper, newObj.nama_dropshipper);
+            Assert.AreEqual(obj.alamat, newObj.alamat);
+            Assert.AreEqual(obj.kontak, newObj.kontak);
+            Assert.AreEqual(obj.telepon, newObj.telepon);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -127,12 +119,12 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var updatedObj = _bll.GetByID(obj.dropshipper_id);
-			Assert.IsNotNull(updatedObj);
-            Assert.AreEqual(obj.dropshipper_id, updatedObj.dropshipper_id);                                
-            Assert.AreEqual(obj.nama_dropshipper, updatedObj.nama_dropshipper);                                
-            Assert.AreEqual(obj.alamat, updatedObj.alamat);                                
-            Assert.AreEqual(obj.kontak, updatedObj.kontak);                                
-            Assert.AreEqual(obj.telepon, updatedObj.telepon);                                
+            Assert.IsNotNull(updatedObj);
+            Assert.AreEqual(obj.dropshipper_id, updatedObj.dropshipper_id);
+            Assert.AreEqual(obj.nama_dropshipper, updatedObj.nama_dropshipper);
+            Assert.AreEqual(obj.alamat, updatedObj.alamat);
+            Assert.AreEqual(obj.kontak, updatedObj.kontak);
+            Assert.AreEqual(obj.telepon, updatedObj.telepon);
         }
 
         [TestMethod]
@@ -147,7 +139,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.dropshipper_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

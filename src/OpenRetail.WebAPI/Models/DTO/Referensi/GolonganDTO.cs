@@ -16,11 +16,6 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 using FluentValidation;
 using System.ComponentModel.DataAnnotations;
 
@@ -45,7 +40,7 @@ namespace OpenRetail.WebAPI.Models.DTO
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
             var msgError1 = "'{PropertyName}' tidak boleh kosong !";
-            var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";            
+            var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
 
             RuleSet("save", () =>
             {

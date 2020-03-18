@@ -16,29 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Transaksi
 {
     public partial class FrmListPembayaranHutangPembelianProduk : FrmListEmptyBody, IListener
     {
-        private IPembayaranHutangProdukBll _bll; // deklarasi objek business logic layer 
+        private IPembayaranHutangProdukBll _bll; // deklarasi objek business logic layer
         private IList<PembayaranHutangProduk> _listOfPembayaranHutang = new List<PembayaranHutangProduk>();
         private ILog _log;
         private Pengguna _pengguna;
@@ -86,16 +81,15 @@ namespace OpenRetail.App.Transaksi
             gridListProperties.Add(new GridListControlProperties { Header = "Nota Pembayaran", Width = 120 });
             gridListProperties.Add(new GridListControlProperties { Header = "Supplier", Width = 300 });
             gridListProperties.Add(new GridListControlProperties { Header = "Pembayaran", Width = 150 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Keterangan" });            
+            gridListProperties.Add(new GridListControlProperties { Header = "Keterangan" });
 
             GridListControlHelper.InitializeGridListControl<PembayaranHutangProduk>(this.gridList, _listOfPembayaranHutang, gridListProperties);
 
             if (_listOfPembayaranHutang.Count > 0)
                 this.gridList.SetSelected(0, true);
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
-
                 if (_listOfPembayaranHutang.Count > 0)
                 {
                     if (e.RowIndex > 0)
@@ -197,7 +191,7 @@ namespace OpenRetail.App.Transaksi
                 var frm = new FrmEntryPembayaranHutangPembelianProduk("Tambah Data " + this.Text, _bll);
                 frm.Listener = this;
                 frm.ShowDialog();
-            }            
+            }
         }
 
         protected override void Perbaiki()
@@ -216,7 +210,7 @@ namespace OpenRetail.App.Transaksi
                 var frm = new FrmEntryPembayaranHutangPembelianProduk("Edit Data " + this.Text, pembayaran, _bll);
                 frm.Listener = this;
                 frm.ShowDialog();
-            }            
+            }
         }
 
         protected override void Hapus()
@@ -246,7 +240,7 @@ namespace OpenRetail.App.Transaksi
                     else
                         MsgHelper.MsgDeleteError();
                 }
-            }            
+            }
         }
 
         public void Ok(object sender, object data)
@@ -299,13 +293,13 @@ namespace OpenRetail.App.Transaksi
                 LoadData();
                 txtNamaSupplier.Enabled = false;
                 btnCari.Enabled = false;
-            }                
+            }
             else
             {
                 LoadData(filterRangeTanggal.TanggalMulai, filterRangeTanggal.TanggalSelesai);
                 txtNamaSupplier.Enabled = true;
                 btnCari.Enabled = true;
-            }                
+            }
         }
 
         private void btnCari_Click(object sender, EventArgs e)

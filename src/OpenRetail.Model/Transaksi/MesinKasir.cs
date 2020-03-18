@@ -16,54 +16,47 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using OpenRetail.Model.Report;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("t_mesin")]
+{
+    [Table("t_mesin")]
     public class MesinKasir
     {
-		[ExplicitKey]
-		[Display(Name = "mesin_id")]		
-		public string mesin_id { get; set; }
-		
-		[Display(Name = "pengguna_id")]
-		public string pengguna_id { get; set; }
+        [ExplicitKey]
+        [Display(Name = "mesin_id")]
+        public string mesin_id { get; set; }
 
-		[Write(false)]
+        [Display(Name = "pengguna_id")]
+        public string pengguna_id { get; set; }
+
+        [Write(false)]
         public Pengguna Pengguna { get; set; }
 
         [Write(false)]
-		[Display(Name = "tanggal")]
-		public Nullable<DateTime> tanggal { get; set; }
-		
-		[Display(Name = "saldo_awal")]
-		public double saldo_awal { get; set; }
-		
-		[Display(Name = "uang_masuk")]
-		public double uang_masuk { get; set; }        
-		
-		[Display(Name = "shift_id")]
-		public string shift_id { get; set; }
-		
-		[Display(Name = "uang_keluar")]
-		public double uang_keluar { get; set; }
+        [Display(Name = "tanggal")]
+        public Nullable<DateTime> tanggal { get; set; }
+
+        [Display(Name = "saldo_awal")]
+        public double saldo_awal { get; set; }
+
+        [Display(Name = "uang_masuk")]
+        public double uang_masuk { get; set; }
+
+        [Display(Name = "shift_id")]
+        public string shift_id { get; set; }
+
+        [Display(Name = "uang_keluar")]
+        public double uang_keluar { get; set; }
 
         [JsonIgnore]
         [Write(false)]
         [Display(Name = "tanggal_sistem")]
         public Nullable<DateTime> tanggal_sistem { get; set; }
-	}
+    }
 
     public class MesinValidator : AbstractValidator<MesinKasir>
     {
@@ -71,11 +64,11 @@ namespace OpenRetail.Model
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			//RuleFor(c => c.shift_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-		}
-	}
+            RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            //RuleFor(c => c.shift_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+        }
+    }
 }

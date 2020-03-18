@@ -17,9 +17,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Model.Report
 {
@@ -31,7 +28,7 @@ namespace OpenRetail.Model.Report
         public string nota { get; set; }
         public double nominal { get; set; }
         public double total_pelunasan { get; set; }
-        
+
         public double sisa
         {
             get { return nominal - total_pelunasan; }

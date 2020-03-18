@@ -16,18 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using RestSharp;
-using Newtonsoft.Json;
 using OpenRetail.Helper;
 using OpenRetail.Model;
 using OpenRetail.Model.WebAPI;
 using OpenRetail.Repository.Api;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service
 {
@@ -39,7 +35,7 @@ namespace OpenRetail.Repository.Service
         public GolonganWebAPIRepository(string baseUrl, ILog log)
         {
             this._apiUrl = baseUrl + "api/golongan/";
-            this._log = log;            
+            this._log = log;
         }
 
         public Golongan GetByID(string id)
@@ -157,6 +153,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
 }

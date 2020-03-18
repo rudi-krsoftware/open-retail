@@ -16,17 +16,13 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using OpenRetail.Model;
-using OpenRetail.Model.Report;
 using OpenRetail.Bll.Api.Report;
+using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
+using System;
+using System.Collections.Generic;
 
 namespace OpenRetail.Bll.Service.Report
 {
@@ -188,7 +184,6 @@ namespace OpenRetail.Bll.Service.Report
             return oList;
         }
 
-
         public IList<ReportPenjualanPerKasir> PerKasirGetByBulan(int bulan, int tahun)
         {
             IList<ReportPenjualanPerKasir> oList = null;
@@ -250,7 +245,6 @@ namespace OpenRetail.Bll.Service.Report
 
             return oList;
         }
-
 
         public IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByBulan(int bulan, int tahun)
         {

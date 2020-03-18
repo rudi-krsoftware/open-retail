@@ -16,24 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using RestSharp;
-using Newtonsoft.Json;
 using OpenRetail.Helper;
 using OpenRetail.Model;
 using OpenRetail.Model.WebAPI;
 using OpenRetail.Repository.Api;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service
 {
     public class PembayaranPiutangProdukWebAPIRepository : IPembayaranPiutangProdukRepository
-    {        
+    {
         private string _apiUrl = string.Empty;
         private ILog _log;
 
@@ -215,7 +210,7 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
 
         public int Update(PembayaranPiutangProduk obj)
         {
@@ -268,6 +263,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
 }

@@ -16,27 +16,21 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
+using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Api.Report;
+using OpenRetail.Bll.Service;
+using OpenRetail.Bll.Service.Report;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.Model;
 using OpenRetail.Model.Report;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper;
-using OpenRetail.Report;
-using OpenRetail.Bll.Api.Report;
-using OpenRetail.Bll.Service.Report;
-using ConceptCave.WaitCursor;
-using Microsoft.Reporting.WinForms;
-using OpenRetail.Helper.UI.Template;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Laporan
 {
@@ -44,7 +38,7 @@ namespace OpenRetail.App.Laporan
     {
         private IList<AlasanPenyesuaianStok> _listOfAlasanPenyesuaianStok = new List<AlasanPenyesuaianStok>();
         private ILog _log;
-        
+
         public FrmLapPenyesuaianStok(string header)
         {
             InitializeComponent();
@@ -58,7 +52,7 @@ namespace OpenRetail.App.Laporan
             chkTampilkanNota.Visible = false;
 
             LoadAlasanPenyesuaianStok();
-            LoadBulanDanTahun();            
+            LoadBulanDanTahun();
         }
 
         private void LoadAlasanPenyesuaianStok()
@@ -73,7 +67,7 @@ namespace OpenRetail.App.Laporan
         {
             FillDataHelper.FillBulan(cmbBulan, true);
             FillDataHelper.FillTahun(cmbTahun, true);
-        }        
+        }
 
         protected override void Preview()
         {
@@ -149,7 +143,7 @@ namespace OpenRetail.App.Laporan
                 listOfReportPenyesuaianStokProduk = listOfReportPenyesuaianStokProduk.Where(f => listOfAlasanPenyesuaianStokId.Contains(f.alasan_penyesuaian_stok_id))
                                                                    .ToList();
             }
-            
+
             if (listOfReportPenyesuaianStokProduk.Count > 0)
             {
                 var reportDataSource = new ReportDataSource

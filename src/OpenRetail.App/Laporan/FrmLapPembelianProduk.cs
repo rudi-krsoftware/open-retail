@@ -16,27 +16,21 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
+using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Api.Report;
+using OpenRetail.Bll.Service;
+using OpenRetail.Bll.Service.Report;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.Model;
 using OpenRetail.Model.Report;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper;
-using OpenRetail.Report;
-using OpenRetail.Bll.Api.Report;
-using OpenRetail.Bll.Service.Report;
-using ConceptCave.WaitCursor;
-using Microsoft.Reporting.WinForms;
-using OpenRetail.Helper.UI.Template;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Laporan
 {
@@ -54,7 +48,7 @@ namespace OpenRetail.App.Laporan
             base.ReSize(120);
 
             _log = MainProgram.log;
-            
+
             chkTampilkanNota.Visible = false;
 
             chkTampilkanRincianNota.Visible = true;
@@ -62,7 +56,7 @@ namespace OpenRetail.App.Laporan
             chkTampilkanRincianNota.Text = "Tampilkan rincian pembelian";
 
             LoadSupplier();
-            LoadBulanDanTahun();            
+            LoadBulanDanTahun();
         }
 
         private void LoadSupplier()
@@ -112,7 +106,7 @@ namespace OpenRetail.App.Laporan
             var periode = string.Empty;
 
             IReportBeliProdukBll reportBll = new ReportBeliProdukBll(_log);
-            
+
             IList<ReportPembelianProdukHeader> listOfReportPembelian = new List<ReportPembelianProdukHeader>();
             IList<string> listOfSupplierId = new List<string>();
 

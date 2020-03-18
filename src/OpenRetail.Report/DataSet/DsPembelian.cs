@@ -1,6 +1,6 @@
-﻿namespace OpenRetail.Report.DataSet {
-    
-    
-    public partial class DsPembelian {
+﻿namespace OpenRetail.Report.DataSet
+{
+    public partial class DsPembelian
+    {
     }
 }

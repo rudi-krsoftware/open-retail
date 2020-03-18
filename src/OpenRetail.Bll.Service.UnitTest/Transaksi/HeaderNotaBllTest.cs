@@ -16,22 +16,13 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
-using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class HeaderNotaBllTest
     {
@@ -55,10 +46,10 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 2;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("567abd02-cd14-1c97-262b-805038b7d6a8", obj.header_nota_id);
-            Assert.AreEqual("Piyungan, Sitimulyo, Bantul", obj.keterangan);                                
+            Assert.AreEqual("Piyungan, Sitimulyo, Bantul", obj.keterangan);
             Assert.AreEqual(3, obj.order_number);
             Assert.IsTrue(obj.is_active);
         }
@@ -80,4 +71,4 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
         }
     }
-}     
+}

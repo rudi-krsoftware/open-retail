@@ -16,23 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using OpenRetail.Model;
- 
 namespace OpenRetail.Repository.Api
-{        
+{
     public interface IKasbonRepository : IBaseRepository<Kasbon>
     {
         string GetLastNota();
-		Kasbon GetByID(string id);
+
+        Kasbon GetByID(string id);
+
         IList<Kasbon> GetByKaryawanId(string karyawanId);
+
         IList<Kasbon> GetByName(string name);
+
         IList<Kasbon> GetByStatus(bool isLunas);
+
         IList<Kasbon> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
-}     
+}

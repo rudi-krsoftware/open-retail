@@ -16,13 +16,10 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
 using OpenRetail.Model;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.Helper
 {
@@ -76,11 +73,10 @@ namespace OpenRetail.Helper
                                 btn.Enabled = recordCount > 0;
                         }
                     }
-
                 }
 
                 SetHakAkses(ctl, pengguna, menuId, recordCount);
             }
-        }        
+        }
     }
 }

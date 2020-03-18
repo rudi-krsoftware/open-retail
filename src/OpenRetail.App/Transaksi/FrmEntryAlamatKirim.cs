@@ -16,20 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
 using OpenRetail.Helper;
 using OpenRetail.Helper.UI.Template;
 using OpenRetail.Model;
+using System;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Transaksi
 {

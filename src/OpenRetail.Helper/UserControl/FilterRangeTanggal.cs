@@ -17,12 +17,7 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace OpenRetail.Helper.UserControl
@@ -31,8 +26,10 @@ namespace OpenRetail.Helper.UserControl
     public partial class FilterRangeTanggal : System.Windows.Forms.UserControl
     {
         public delegate void EventHandler(object sender, EventArgs e);
+
         public event EventHandler BtnTampilkanClicked;
-        public event EventHandler ChkTampilkanSemuaDataClicked;        
+
+        public event EventHandler ChkTampilkanSemuaDataClicked;
 
         public FilterRangeTanggal()
         {
@@ -41,7 +38,7 @@ namespace OpenRetail.Helper.UserControl
             dtpTanggalMulai.Value = DateTime.Today;
             dtpTanggalSelesai.Value = DateTime.Today;
 
-            this.EnabledChanged += delegate(object sender, EventArgs e)
+            this.EnabledChanged += delegate (object sender, EventArgs e)
             {
                 chkTampilkanSemuaData.Checked = false;
             };

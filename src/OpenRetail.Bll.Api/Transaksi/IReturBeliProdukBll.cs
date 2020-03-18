@@ -16,25 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using OpenRetail.Model;
- 
 namespace OpenRetail.Bll.Api
-{    
+{
     public interface IReturBeliProdukBll : IBaseBll<ReturBeliProduk>
     {
         string GetLastNota();
+
         ReturBeliProduk GetByID(string id);
 
         IList<ReturBeliProduk> GetByName(string name);
-        IList<ReturBeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);  
 
-		int Save(ReturBeliProduk obj, ref ValidationError validationError);
-		int Update(ReturBeliProduk obj, ref ValidationError validationError);
+        IList<ReturBeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
+        int Save(ReturBeliProduk obj, ref ValidationError validationError);
+
+        int Update(ReturBeliProduk obj, ref ValidationError validationError);
     }
-}     
+}

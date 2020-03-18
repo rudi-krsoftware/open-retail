@@ -16,22 +16,20 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using OpenRetail.Model;
- 
 namespace OpenRetail.Repository.Api
-{        
+{
     public interface IBeliProdukRepository : IBaseRepository<BeliProduk>
     {
         string GetLastNota();
-		BeliProduk GetByID(string id);
+
+        BeliProduk GetByID(string id);
 
         IList<BeliProduk> GetAll(string name);
+
         IList<BeliProduk> GetAll(int pageNumber, int pageSize, ref int pagesCount);
 
         /// <summary>
@@ -59,13 +57,15 @@ namespace OpenRetail.Repository.Api
         IList<BeliProduk> GetNotaKreditByNota(string id, string nota);
 
         IList<BeliProduk> GetByName(string name);
+
         IList<BeliProduk> GetByName(string name, int pageNumber, int pageSize, ref int pagesCount);
 
         IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
         IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, int pageNumber, int pageSize, ref int pagesCount);
 
         IList<BeliProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, string name);
 
         IList<ItemBeliProduk> GetItemBeli(string beliId);
     }
-}     
+}

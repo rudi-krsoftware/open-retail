@@ -16,16 +16,6 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using FluentValidation;
-using Dapper.Contrib.Extensions;
-using System.ComponentModel.DataAnnotations;
-
 namespace OpenRetail.Model
 {
     [Table("m_setting_aplikasi")]
@@ -33,6 +23,7 @@ namespace OpenRetail.Model
     {
         [ExplicitKey]
         public string setting_aplikasi_id { get; set; }
+
         public bool is_update_harga_jual_master_produk { get; set; }
         public bool is_stok_produk_boleh_minus { get; set; }
         public bool is_fokus_input_kolom_jumlah { get; set; }

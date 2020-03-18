@@ -16,26 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
 using ConceptCave.WaitCursor;
+using OpenRetail.Bll.Api;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using System;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmEntryDropshipper : FrmEntryStandard
-    {        
-        private IDropshipperBll _bll = null; // deklarasi objek business logic layer 
+    {
+        private IDropshipperBll _bll = null; // deklarasi objek business logic layer
         private Dropshipper _dropshipper = null;
         private bool _isNewData = false;
 
@@ -98,7 +91,6 @@ namespace OpenRetail.App.Referensi
                     }
                     else
                         this.Close();
-
                 }
                 else
                 {
@@ -110,13 +102,13 @@ namespace OpenRetail.App.Referensi
                     else
                         MsgHelper.MsgUpdateError();
                 }
-            }                            
+            }
         }
 
         private void txtTelepon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEnter(e))
                 Simpan();
-        }        
+        }
     }
 }

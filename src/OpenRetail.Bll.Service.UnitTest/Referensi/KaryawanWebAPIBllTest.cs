@@ -16,19 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
 {
@@ -94,7 +86,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(60000, obj.gaji_lembur);
             Assert.AreEqual(200000, obj.total_kasbon);
             Assert.AreEqual(50000, obj.total_pembayaran_kasbon);
-
         }
 
         [TestMethod]
@@ -116,7 +107,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(60000, obj.gaji_lembur);
             Assert.AreEqual(200000, obj.total_kasbon);
             Assert.AreEqual(50000, obj.total_pembayaran_kasbon);
-
         }
 
         [TestMethod]
@@ -153,7 +143,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.keterangan, newObj.keterangan);
             Assert.AreEqual(obj.jenis_gajian, newObj.jenis_gajian);
             Assert.AreEqual(obj.gaji_lembur, newObj.gaji_lembur);
-
         }
 
         [TestMethod]
@@ -193,7 +182,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.gaji_lembur, updatedObj.gaji_lembur);
             Assert.AreEqual(obj.total_kasbon, updatedObj.total_kasbon);
             Assert.AreEqual(obj.total_pembayaran_kasbon, updatedObj.total_pembayaran_kasbon);
-
         }
 
         [TestMethod]

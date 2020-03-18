@@ -16,34 +16,28 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
-using System.Linq.Expressions;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class CustomerRepository : ICustomerRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT m_customer.customer_id, m_customer.nama_customer, COALESCE(m_customer.kabupaten, m_customer.kabupaten, m_customer.kota) AS kabupaten_old, m_customer.kecamatan AS kecamatan_old, 
-                                              m_customer.alamat, m_customer.kontak, m_customer.telepon, m_customer.plafon_piutang, m_customer.total_piutang, 
-                                              m_customer.total_pembayaran_piutang, m_customer.kode_pos, m_customer.diskon, 
-                                              m_provinsi2.provinsi_id, m_provinsi2.nama_provinsi, m_kabupaten2.kabupaten_id, m_kabupaten2.nama_kabupaten, 
+        private const string SQL_TEMPLATE = @"SELECT m_customer.customer_id, m_customer.nama_customer, COALESCE(m_customer.kabupaten, m_customer.kabupaten, m_customer.kota) AS kabupaten_old, m_customer.kecamatan AS kecamatan_old,
+                                              m_customer.alamat, m_customer.kontak, m_customer.telepon, m_customer.plafon_piutang, m_customer.total_piutang,
+                                              m_customer.total_pembayaran_piutang, m_customer.kode_pos, m_customer.diskon,
+                                              m_provinsi2.provinsi_id, m_provinsi2.nama_provinsi, m_kabupaten2.kabupaten_id, m_kabupaten2.nama_kabupaten,
                                               m_kecamatan.kecamatan_id, m_kecamatan.nama_kecamatan
                                               FROM public.m_customer LEFT JOIN public.m_provinsi2 ON m_customer.provinsi_id = m_provinsi2.provinsi_id
                                               LEFT JOIN public.m_kabupaten2 ON m_customer.kabupaten_id = m_kabupaten2.kabupaten_id
                                               LEFT JOIN public.m_kecamatan ON m_customer.kecamatan_id = m_kecamatan.kecamatan_id
                                               {WHERE}
                                               {ORDER BY}";
+
         private IDapperContext _context;
         private ILog _log;
         private string _sql;
@@ -71,7 +65,7 @@ namespace OpenRetail.Repository.Service
                 if (kec != null)
                 {
                     cus.kecamatan_id = kec.kecamatan_id; cus.Kecamatan = kec;
-                }                
+                }
 
                 return cus;
             }, param, splitOn: "provinsi_id, kabupaten_id, kecamatan_id");
@@ -161,10 +155,10 @@ namespace OpenRetail.Repository.Service
                 }
                 else
                 {
-                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_customer.diskon <= 0");                                      
+                    _sql = SQL_TEMPLATE.Replace("{WHERE}", "WHERE m_customer.diskon <= 0");
                 }
 
-                _sql = _sql.Replace("{ORDER BY}", "ORDER BY m_customer.nama_customer");  
+                _sql = _sql.Replace("{ORDER BY}", "ORDER BY m_customer.nama_customer");
                 oList = MappingRecordToObject(_sql).ToList();
             }
             catch (Exception ex)
@@ -225,6 +219,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

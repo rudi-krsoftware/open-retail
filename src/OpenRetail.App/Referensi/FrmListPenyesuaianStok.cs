@@ -16,30 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
 using Syncfusion.Styles;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmListPenyesuaianStok : FrmListStandard, IListener
     {
-        private IPenyesuaianStokBll _bll; // deklarasi objek business logic layer 
+        private IPenyesuaianStokBll _bll; // deklarasi objek business logic layer
         private IList<PenyesuaianStok> _listOfPenyesuaianStok = new List<PenyesuaianStok>();
         private ILog _log;
 
@@ -81,7 +75,7 @@ namespace OpenRetail.App.Referensi
             this.gridList.Grid.Model.RowHeights[1] = 25;
             this.gridList.Grid.Model.Rows.FrozenCount = 1;
 
-            this.gridList.Grid.PrepareViewStyleInfo += delegate(object sender, GridPrepareViewStyleInfoEventArgs e)
+            this.gridList.Grid.PrepareViewStyleInfo += delegate (object sender, GridPrepareViewStyleInfoEventArgs e)
             {
                 var subHeaderHargaJual = new string[] { "Stok Etalase", "Stok Gudang", "Stok Etalase", "Stok Gudang" };
                 if (e.ColIndex > 3 && e.RowIndex == 1)
@@ -126,7 +120,7 @@ namespace OpenRetail.App.Referensi
             var headerStyle = this.gridList.Grid.BaseStylesMap["Column Header"].StyleInfo;
             headerStyle.CellType = GridCellTypeName.Header;
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 if (e.RowIndex == 1)
                 {
@@ -262,7 +256,7 @@ namespace OpenRetail.App.Referensi
                     }
                     else
                         MsgHelper.MsgDeleteError();
-                }                
+                }
             }
         }
 

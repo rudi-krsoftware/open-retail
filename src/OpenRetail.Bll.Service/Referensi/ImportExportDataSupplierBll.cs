@@ -16,19 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using ClosedXML.Excel;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
-using System.IO;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 
 namespace OpenRetail.Bll.Service
 {
@@ -157,8 +154,8 @@ namespace OpenRetail.Bll.Service
                                 supplier.telepon = supplier.telepon.Substring(0, 20);
 
                             result = Convert.ToBoolean(_unitOfWork.SupplierRepository.Save(supplier));
-                        }                        
-                    }                    
+                        }
+                    }
                 }
 
                 result = true;
@@ -210,7 +207,7 @@ namespace OpenRetail.Bll.Service
                     var fi = new FileInfo(_fileName);
                     if (fi.Exists)
                         Process.Start(_fileName);
-                }                
+                }
             }
             catch (Exception ex)
             {

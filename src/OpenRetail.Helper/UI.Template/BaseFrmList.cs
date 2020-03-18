@@ -16,13 +16,6 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using OpenRetail.Helper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WeifenLuo.WinFormsUI.Docking;
-
 namespace OpenRetail.Helper.UI.Template
 {
     public class BaseFrmList : DockContent

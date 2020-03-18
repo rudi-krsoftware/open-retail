@@ -16,26 +16,20 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.App.Lookup;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using Syncfusion.Windows.Forms.Grid;
-using OpenRetail.Helper.UserControl;
-using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.App.Lookup;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -57,9 +51,9 @@ namespace OpenRetail.App.Transaksi
 
         public IListener Listener { private get; set; }
 
-        public FrmEntryPembayaranHutangPembelianProduk(string header, IPembayaranHutangProdukBll bll) 
+        public FrmEntryPembayaranHutangPembelianProduk(string header, IPembayaranHutangProdukBll bll)
             : base()
-        {            
+        {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
 
@@ -108,7 +102,7 @@ namespace OpenRetail.App.Transaksi
                     keterangan = item.keterangan
                 });
             }
-            
+
             _listOfItemPembayaranHutang = this._pembayaranHutang.item_pembayaran_hutang;
             _listOfItemPembayaranHutang.Add(new ItemPembayaranHutangProduk()); // add dummy objek
 
@@ -131,7 +125,7 @@ namespace OpenRetail.App.Transaksi
 
             GridListControlHelper.InitializeGridListControl<ItemPembayaranHutangProduk>(grid, _listOfItemPembayaranHutang, gridListProperties);
 
-            grid.PushButtonClick += delegate(object sender, GridCellPushButtonClickEventArgs e)
+            grid.PushButtonClick += delegate (object sender, GridCellPushButtonClickEventArgs e)
             {
                 if (e.ColIndex == 7)
                 {
@@ -153,11 +147,11 @@ namespace OpenRetail.App.Transaksi
                         grid.Refresh();
 
                         RefreshTotal();
-                    }                    
+                    }
                 }
             };
 
-            grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 // Make sure the cell falls inside the grid
                 if (e.RowIndex > 0)
@@ -182,7 +176,7 @@ namespace OpenRetail.App.Transaksi
                             e.Style.CellValue = e.RowIndex.ToString();
                             break;
 
-                        case 2: // nota beli                            
+                        case 2: // nota beli
                             if (beli != null)
                                 e.Style.CellValue = beli.nota;
 
@@ -323,7 +317,7 @@ namespace OpenRetail.App.Transaksi
 
                     _supplier = null;
                     _listOfItemPembayaranHutang.Clear();
-                    _listOfItemPembayaranHutangDeleted.Clear();                                        
+                    _listOfItemPembayaranHutangDeleted.Clear();
 
                     this.Close();
                 }
@@ -337,7 +331,7 @@ namespace OpenRetail.App.Transaksi
                     else
                         MsgHelper.MsgUpdateError();
                 }
-            }            
+            }
         }
 
         protected override void Selesai()
@@ -431,7 +425,6 @@ namespace OpenRetail.App.Transaksi
                     MsgHelper.MsgWarning("Data supplier tidak ditemukan");
                     txtSupplier.Focus();
                     txtSupplier.SelectAll();
-
                 }
                 else if (listOfSupplier.Count == 1)
                 {
@@ -463,7 +456,7 @@ namespace OpenRetail.App.Transaksi
                 var grid = (GridControl)sender;
 
                 var rowIndex = grid.CurrentCell.RowIndex;
-                var colIndex = grid.CurrentCell.ColIndex;                
+                var colIndex = grid.CurrentCell.ColIndex;
 
                 switch (colIndex)
                 {
@@ -626,7 +619,7 @@ namespace OpenRetail.App.Transaksi
                 SetItemBayar(grid, cc.RowIndex, cc.ColIndex, beli, itemPembayaran.nominal, itemPembayaran.keterangan);
                 grid.Refresh();
                 RefreshTotal();
-            }             
+            }
         }
 
         private void FrmEntryPembayaranHutangPembelianProduk_FormClosing(object sender, FormClosingEventArgs e)
@@ -635,12 +628,12 @@ namespace OpenRetail.App.Transaksi
             if (!_isNewData)
             {
                 var itemsToRemove = _pembayaranHutang.item_pembayaran_hutang.Where(f => f.BeliProduk == null && f.entity_state == EntityState.Added)
-                                                                            .ToArray();   
+                                                                            .ToArray();
                 foreach (var item in itemsToRemove)
                 {
                     _pembayaranHutang.item_pembayaran_hutang.Remove(item);
                 }
             }
-        }        
+        }
     }
 }

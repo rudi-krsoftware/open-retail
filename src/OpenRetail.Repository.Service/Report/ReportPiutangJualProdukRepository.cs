@@ -16,22 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
     public class ReportPiutangJualProdukRepository : IReportPiutangJualProdukRepository
     {
-        private const string SQL_TEMPLATE_HEADER = @"SELECT m_customer.customer_id, m_customer.nama_customer, SUM(t_jual_produk.ppn) AS ppn, SUM(t_jual_produk.ongkos_kirim) AS ongkos_kirim, SUM(t_jual_produk.diskon) AS diskon, 
+        private const string SQL_TEMPLATE_HEADER = @"SELECT m_customer.customer_id, m_customer.nama_customer, SUM(t_jual_produk.ppn) AS ppn, SUM(t_jual_produk.ongkos_kirim) AS ongkos_kirim, SUM(t_jual_produk.diskon) AS diskon,
                                                      SUM(t_jual_produk.total_nota) AS total_nota, SUM(t_jual_produk.total_pelunasan) AS total_pelunasan
                                                      FROM public.m_customer RIGHT JOIN public.t_jual_produk ON t_jual_produk.customer_id = m_customer.customer_id
                                                      {WHERE}
@@ -39,14 +36,14 @@ namespace OpenRetail.Repository.Service.Report
                                                      HAVING SUM(t_jual_produk.total_nota - t_jual_produk.diskon + t_jual_produk.ppn + t_jual_produk.ongkos_kirim) - SUM(t_jual_produk.total_pelunasan) <> 0
                                                      ORDER BY m_customer.nama_customer";
 
-        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_customer.customer_id, m_customer.nama_customer, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, 
+        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_customer.customer_id, m_customer.nama_customer, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo,
                                                      t_jual_produk.ppn, t_jual_produk.ongkos_kirim, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan
                                                      FROM public.m_customer RIGHT JOIN public.t_jual_produk ON t_jual_produk.customer_id = m_customer.customer_id
                                                      {WHERE}
                                                      ORDER BY m_customer.nama_customer, t_jual_produk.tanggal, t_jual_produk.nota";
 
         private const string SQL_TEMPLATE_PER_PRODUK = @"SELECT m_customer.customer_id, m_customer.nama_customer,
-                                                         t_jual_produk.jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, t_jual_produk.ppn, t_jual_produk.ongkos_kirim, t_jual_produk.diskon AS diskon_nota, 
+                                                         t_jual_produk.jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, t_jual_produk.ppn, t_jual_produk.ongkos_kirim, t_jual_produk.diskon AS diskon_nota,
                                                          t_jual_produk.total_nota, t_jual_produk.total_pelunasan,
                                                          m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, t_item_jual_produk.jumlah, t_item_jual_produk.jumlah_retur, t_item_jual_produk.diskon, t_item_jual_produk.harga_jual
                                                          FROM public.t_jual_produk INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
@@ -98,7 +95,7 @@ namespace OpenRetail.Repository.Service.Report
                 whereBuilder.Add("t_jual_produk.tanggal_tempo IS NOT NULL");
                 whereBuilder.Add("(EXTRACT(MONTH FROM t_jual_produk.tanggal) BETWEEN @bulanAwal AND @bulanAkhir)");
                 whereBuilder.Add("EXTRACT(YEAR FROM t_jual_produk.tanggal) = @tahun");
-                
+
                 oList = _context.db.Query<ReportPiutangPenjualanProdukHeader>(whereBuilder.ToSql(), new { bulanAwal, bulanAkhir, tahun })
                                 .ToList();
             }
@@ -272,6 +269,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

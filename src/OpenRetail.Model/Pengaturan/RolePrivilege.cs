@@ -16,39 +16,30 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using FluentValidation;
-using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("m_role_privilege")]
+{
+    [Table("m_role_privilege")]
     public class RolePrivilege
     {
         [ExplicitKey]
-		[Display(Name = "role_id")]
-		public string role_id { get; set; }
+        [Display(Name = "role_id")]
+        public string role_id { get; set; }
 
-		[Write(false)]
+        [Write(false)]
         public Role Role { get; set; }
 
-		[Display(Name = "menu_id")]
-		public string menu_id { get; set; }
+        [Display(Name = "menu_id")]
+        public string menu_id { get; set; }
 
-		[Write(false)]
+        [Write(false)]
         public MenuAplikasi Menu { get; set; }
 
-		[Display(Name = "grant_id")]		
-		public int grant_id { get; set; }
-		
-		[Display(Name = "is_grant")]
-		public bool is_grant { get; set; }
-		
-	}
+        [Display(Name = "grant_id")]
+        public int grant_id { get; set; }
+
+        [Display(Name = "is_grant")]
+        public bool is_grant { get; set; }
+    }
 }

@@ -16,20 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using FluentValidation;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using FluentValidation;
-using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
 
 namespace OpenRetail.Model
-{        
-	[Table("t_jual_produk")]
+{
+    [Table("t_jual_produk")]
     public class JualProduk
     {
         private Nullable<DateTime> _tanggal_tempo;
@@ -41,31 +36,31 @@ namespace OpenRetail.Model
             item_jual_deleted = new List<ItemJualProduk>();
         }
 
-		[ExplicitKey]
-		[Display(Name = "jual_id")]		
-		public string jual_id { get; set; }
-		
-		[Display(Name = "pengguna_id")]
-		public string pengguna_id { get; set; }
+        [ExplicitKey]
+        [Display(Name = "jual_id")]
+        public string jual_id { get; set; }
+
+        [Display(Name = "pengguna_id")]
+        public string pengguna_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]        
+        [Write(false)]
         public Pengguna Pengguna { get; set; }
 
-		[Display(Name = "Customer")]
-		public string customer_id { get; set; }
+        [Display(Name = "Customer")]
+        public string customer_id { get; set; }
 
         //[JsonIgnore]
-		[Write(false)]
+        [Write(false)]
         public Customer Customer { get; set; }
 
-		[Display(Name = "Nota")]
-		public string nota { get; set; }
-		
-		[Display(Name = "Tanggal")]
-		public Nullable<DateTime> tanggal { get; set; }        
+        [Display(Name = "Nota")]
+        public string nota { get; set; }
 
-		[Display(Name = "Tanggal Tempo")]        
+        [Display(Name = "Tanggal")]
+        public Nullable<DateTime> tanggal { get; set; }
+
+        [Display(Name = "Tanggal Tempo")]
         public Nullable<DateTime> tanggal_tempo
         {
             get { return _tanggal_tempo.IsNull() ? null : _tanggal_tempo; }
@@ -76,11 +71,11 @@ namespace OpenRetail.Model
         [Write(false)]
         public Nullable<DateTime> tanggal_tempo_old { get; set; }
 
-		[Display(Name = "PPN")]
-		public double ppn { get; set; }
-		
-		[Display(Name = "Diskon")]
-		public double diskon { get; set; }
+        [Display(Name = "PPN")]
+        public double ppn { get; set; }
+
+        [Display(Name = "Diskon")]
+        public double diskon { get; set; }
 
         [Display(Name = "Kurir")]
         public string kurir { get; set; }
@@ -89,15 +84,15 @@ namespace OpenRetail.Model
         public double ongkos_kirim { get; set; }
 
         [Computed]
-		[Display(Name = "total_nota")]
-		public double total_nota { get; set; }
+        [Display(Name = "total_nota")]
+        public double total_nota { get; set; }
 
         [Computed]
-		[Display(Name = "total_pelunasan")]
-		public double total_pelunasan { get; set; }
-		
-		[Display(Name = "keterangan")]
-		public string keterangan { get; set; }
+        [Display(Name = "total_pelunasan")]
+        public double total_pelunasan { get; set; }
+
+        [Display(Name = "keterangan")]
+        public string keterangan { get; set; }
 
         /// <summary>
         /// Property untuk menyimpan informasi apakah alamat kirim sama dengan alamat customer
@@ -113,7 +108,7 @@ namespace OpenRetail.Model
         public string kirim_alamat { get; set; }
 
         [Display(Name = "Desa")]
-        public string kirim_desa { get; set; }        
+        public string kirim_desa { get; set; }
 
         [Display(Name = "Kelurahan")]
         public string kirim_kelurahan { get; set; }
@@ -174,21 +169,21 @@ namespace OpenRetail.Model
 
         [JsonIgnore]
         [Write(false)]
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
-		
-		[Display(Name = "retur_jual_id")]
-		public string retur_jual_id { get; set; }
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
+
+        [Display(Name = "retur_jual_id")]
+        public string retur_jual_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
+        [Write(false)]
         public ReturJualProduk ReturJualProduk { get; set; }
 
-		[Display(Name = "shift_id")]
-		public string shift_id { get; set; }
+        [Display(Name = "shift_id")]
+        public string shift_id { get; set; }
 
         [JsonIgnore]
-		[Write(false)]
+        [Write(false)]
         public Shift Shift { get; set; }
 
         [Display(Name = "mesin_id")]
@@ -220,7 +215,7 @@ namespace OpenRetail.Model
 
         //[JsonIgnore]
         [Computed]
-        public double total_pelunasan_old { get; set; }        
+        public double total_pelunasan_old { get; set; }
 
         /// <summary>
         /// total nota setelah dikurangi diskon kemudian ditambah ppn
@@ -244,7 +239,7 @@ namespace OpenRetail.Model
 
         [Write(false)]
         public List<ItemJualProduk> item_jual_deleted { get; set; }
-	}
+    }
 
     public class JualProdukValidator : AbstractValidator<JualProduk>
     {
@@ -252,12 +247,12 @@ namespace OpenRetail.Model
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-			RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
-			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.pengguna_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
+            RuleFor(c => c.nota).NotEmpty().WithMessage(msgError1).Length(1, 20).WithMessage(msgError2);
+            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.kurir).Length(0, 100).WithMessage(msgError2);
             RuleFor(c => c.nomor_kartu).Length(0, 20).WithMessage(msgError2);
 
@@ -270,6 +265,6 @@ namespace OpenRetail.Model
             RuleFor(c => c.label_kepada2).Length(0, 250).WithMessage(msgError2);
             RuleFor(c => c.label_kepada3).Length(0, 250).WithMessage(msgError2);
             RuleFor(c => c.label_kepada4).Length(0, 250).WithMessage(msgError2);
-		}
-	}
+        }
+    }
 }

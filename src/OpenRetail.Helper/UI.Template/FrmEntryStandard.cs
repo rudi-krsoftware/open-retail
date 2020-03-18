@@ -16,19 +16,9 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Helper;
 using OpenRetail.Helper.UserControl;
-using System.Configuration;
-using System.Collections.Specialized;
+using System;
+using System.Windows.Forms;
 
 namespace OpenRetail.Helper.UI.Template
 {
@@ -39,8 +29,8 @@ namespace OpenRetail.Helper.UI.Template
     {
         public FrmEntryStandard()
         {
-            InitializeComponent();            
-        }        
+            InitializeComponent();
+        }
 
         #region protected dan override method
 
@@ -116,7 +106,7 @@ namespace OpenRetail.Helper.UI.Template
                             ((AdvancedTextbox)ctl).Focus();
                             ((AdvancedTextbox)ctl).SelectAll();
                             break;
-                        
+
                         case "ComboBox":
                             ((ComboBox)ctl).Focus();
                             break;
@@ -152,7 +142,6 @@ namespace OpenRetail.Helper.UI.Template
         {
             foreach (Control ctl in parent.Controls)
             {
-
                 var ctlType = ctl.GetType().Name;
 
                 switch (ctlType)
@@ -206,7 +195,7 @@ namespace OpenRetail.Helper.UI.Template
             }
         }
 
-        #endregion
+        #endregion protected dan override method
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {

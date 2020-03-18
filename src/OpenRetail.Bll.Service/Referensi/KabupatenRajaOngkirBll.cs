@@ -16,34 +16,30 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class KabupatenRajaOngkirBll : IKabupatenRajaOngkirBll
     {
-		private ILog _log;
+        private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private KabupatenRajaOngkirValidator _validator;
+        private KabupatenRajaOngkirValidator _validator;
 
         public KabupatenRajaOngkirBll()
         {
             _validator = new KabupatenRajaOngkirValidator();
         }
 
-		public KabupatenRajaOngkirBll(ILog log)
+        public KabupatenRajaOngkirBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new KabupatenRajaOngkirValidator();
         }
 
@@ -78,7 +74,7 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-		public int Save(KabupatenRajaOngkir obj)
+        public int Save(KabupatenRajaOngkir obj)
         {
             throw new NotImplementedException();
         }
@@ -88,7 +84,7 @@ namespace OpenRetail.Bll.Service
             throw new NotImplementedException();
         }
 
-		public int Update(KabupatenRajaOngkir obj)
+        public int Update(KabupatenRajaOngkir obj)
         {
             throw new NotImplementedException();
         }
@@ -103,4 +99,4 @@ namespace OpenRetail.Bll.Service
             throw new NotImplementedException();
         }
     }
-}     
+}

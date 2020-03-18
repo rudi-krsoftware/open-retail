@@ -16,20 +16,20 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model.Report;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using OpenRetail.Model.Report;
 
 namespace OpenRetail.Repository.Api.Report
 {
     public interface IReportKartuPiutangRepository
     {
         IList<ReportKartuPiutang> GetSaldoAwal(DateTime tanggal);
+
         IList<ReportKartuPiutang> GetByBulan(int bulan, int tahun);
+
         IList<ReportKartuPiutang> GetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+
         IList<ReportKartuPiutang> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 }

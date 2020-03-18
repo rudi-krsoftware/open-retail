@@ -16,25 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using Microsoft.Reporting.WinForms;
-using System.Reflection;
-using System.IO;
-
+using ConceptCave.WaitCursor;
 using log4net;
-using OpenRetail.Helper;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using ConceptCave.WaitCursor;
+using OpenRetail.Helper;
+using OpenRetail.Model;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -45,7 +36,7 @@ namespace OpenRetail.App.Transaksi
 
         private ILog _log;
         private Customer _customer = null;
-        private JualProduk _jual = null;        
+        private JualProduk _jual = null;
         private Pengguna _pengguna;
         private Profil _profil;
         private PengaturanUmum _pengaturanUmum;
@@ -76,7 +67,7 @@ namespace OpenRetail.App.Transaksi
             chkIsSdac.Checked = this._jual.is_sdac;
             chkIsSdac_CheckedChanged(chkIsSdac, new EventArgs());
             btnPreviewNota_Click(btnPreviewNota, new EventArgs());
-        }        
+        }
 
         private void chkIsSdac_CheckedChanged(object sender, EventArgs e)
         {
@@ -117,7 +108,7 @@ namespace OpenRetail.App.Transaksi
                 _jual.kirim_kecamatan = txtKepada3.Text;
                 _jual.kirim_kelurahan = txtKepada4.Text;
             }
-            
+
             using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
             {
                 PreviewNota(_jual);
@@ -162,7 +153,7 @@ namespace OpenRetail.App.Transaksi
                         item.kirim_alamat = txtKepada2.Text;
                         item.kirim_kecamatan = txtKepada3.Text;
                         item.kirim_kelurahan = txtKepada4.Text;
-                    }                    
+                    }
                 }
 
                 // set footer nota
@@ -192,7 +183,7 @@ namespace OpenRetail.App.Transaksi
                 {
                     var printReport = new ReportViewerPrintHelper(reportName, reportDataSource, parameters, _pengaturanUmum.nama_printer);
                     printReport.Print();
-                }                
+                }
             }
         }
 

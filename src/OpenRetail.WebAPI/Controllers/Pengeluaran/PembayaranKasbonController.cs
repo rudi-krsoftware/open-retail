@@ -16,43 +16,40 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using System.Net;
-using System.Web.Http;
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
+using OpenRetail.WebAPI.Controllers.Helper;
 using OpenRetail.WebAPI.Models;
 using OpenRetail.WebAPI.Models.DTO;
-using OpenRetail.WebAPI.Controllers.Helper;
+using System;
+using System.Collections.Generic;
+using System.Net;
 
 namespace OpenRetail.WebAPI.Controllers
-{        
-	public interface IPembayaranKasbonController : IBaseApiController<PembayaranKasbonDTO>
-    {        
+{
+    public interface IPembayaranKasbonController : IBaseApiController<PembayaranKasbonDTO>
+    {
         IHttpActionResult GetByID(string id);
+
         IHttpActionResult GetByName(string name);
 
         IHttpActionResult GetLastNota();
+
         IHttpActionResult GetByKasbonId(string kasbonId);
+
         IHttpActionResult GetByGajiKaryawan(string gajiKaryawanId);
     }
 
-	[RoutePrefix("api/pembayaran_kasbon")]
+    [RoutePrefix("api/pembayaran_kasbon")]
     public class PembayaranKasbonController : BaseApiController, IPembayaranKasbonController
     {
         private IUnitOfWork _unitOfWork;
         private ILog _log;
         private HttpStatusCode _httpStatusCode = HttpStatusCode.BadRequest;
         private IHttpActionResult _response = null;
-		
-		public PembayaranKasbonController(IUnitOfWork unitOfWork)
+
+        public PembayaranKasbonController(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -63,7 +60,7 @@ namespace OpenRetail.WebAPI.Controllers
             this._log = log;
         }
 
-		[HttpGet, Route("get_by_id")]
+        [HttpGet, Route("get_by_id")]
         public IHttpActionResult GetByID(string id)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -73,7 +70,7 @@ namespace OpenRetail.WebAPI.Controllers
             {
                 var results = new List<PembayaranKasbon>();
                 var obj = _unitOfWork.PembayaranKasbonRepository.GetByID(id);
-                
+
                 if (obj != null)
                     results.Add(obj);
 
@@ -177,7 +174,7 @@ namespace OpenRetail.WebAPI.Controllers
             throw new NotImplementedException();
         }
 
-		[HttpPost, Route("save")]
+        [HttpPost, Route("save")]
         public IHttpActionResult Save(PembayaranKasbonDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -208,7 +205,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpPost, Route("update")]
+        [HttpPost, Route("update")]
         public IHttpActionResult Update(PembayaranKasbonDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -239,7 +236,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpPost, Route("delete")]
+        [HttpPost, Route("delete")]
         public IHttpActionResult Delete(PembayaranKasbonDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -268,6 +265,6 @@ namespace OpenRetail.WebAPI.Controllers
             }
 
             return _response;
-        }                
+        }
     }
-}     
+}

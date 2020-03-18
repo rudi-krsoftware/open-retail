@@ -16,17 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api.Report;
 using OpenRetail.Bll.Service.Report;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest.Report
 {
@@ -128,9 +122,9 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(100000, obj.ppn);
             Assert.AreEqual(150000, obj.diskon);
             Assert.AreEqual(1651000, obj.total_nota);
-            Assert.AreEqual(1601000, obj.pelunasan);            
+            Assert.AreEqual(1601000, obj.pelunasan);
             Assert.AreEqual("", obj.keterangan_beli);
-            Assert.AreEqual("Pembelian tunai produk", obj.keterangan_bayar);            
+            Assert.AreEqual("Pembelian tunai produk", obj.keterangan_bayar);
         }
 
         [TestMethod]
@@ -157,7 +151,7 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(1651000, obj.total_nota);
             Assert.AreEqual(1601000, obj.pelunasan);
             Assert.AreEqual("", obj.keterangan_beli);
-            Assert.AreEqual("Pembelian tunai produk", obj.keterangan_bayar);         
+            Assert.AreEqual("Pembelian tunai produk", obj.keterangan_bayar);
         }
 
         [TestMethod]
@@ -183,7 +177,7 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(1651000, obj.total_nota);
             Assert.AreEqual(1601000, obj.pelunasan);
             Assert.AreEqual("", obj.keterangan_beli);
-            Assert.AreEqual("Pembelian tunai produk", obj.keterangan_bayar);        
+            Assert.AreEqual("Pembelian tunai produk", obj.keterangan_bayar);
         }
     }
 }

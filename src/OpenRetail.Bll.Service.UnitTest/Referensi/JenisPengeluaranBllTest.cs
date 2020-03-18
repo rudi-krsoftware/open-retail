@@ -16,22 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class JenisPengeluaranBllTest
     {
@@ -60,7 +52,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsNotNull(obj);
             Assert.AreEqual("40bc64d4-9671-4220-a119-dfeb1c0adbc0", obj.jenis_pengeluaran_id);
             Assert.AreEqual("Biaya Ambil Jagung", obj.nama_jenis_pengeluaran);
-                     
         }
 
         [TestMethod]
@@ -69,11 +60,10 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 1;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("40bc64d4-9671-4220-a119-dfeb1c0adbc0", obj.jenis_pengeluaran_id);
             Assert.AreEqual("Biaya Ambil Jagung", obj.nama_jenis_pengeluaran);
-                     
         }
 
         [TestMethod]
@@ -92,11 +82,10 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var newObj = _bll.GetByID(obj.jenis_pengeluaran_id);
-			Assert.IsNotNull(newObj);
-			Assert.AreEqual(obj.jenis_pengeluaran_id, newObj.jenis_pengeluaran_id);                                
-            Assert.AreEqual(obj.nama_jenis_pengeluaran, newObj.nama_jenis_pengeluaran);                                
-            
-		}
+            Assert.IsNotNull(newObj);
+            Assert.AreEqual(obj.jenis_pengeluaran_id, newObj.jenis_pengeluaran_id);
+            Assert.AreEqual(obj.nama_jenis_pengeluaran, newObj.nama_jenis_pengeluaran);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -105,7 +94,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             {
                 jenis_pengeluaran_id = "0c9ef589-be0c-415d-8fec-19ddafd942c2",
                 nama_jenis_pengeluaran = "Biaya Listrik"
-        	};
+            };
 
             var validationError = new ValidationError();
 
@@ -115,10 +104,9 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var updatedObj = _bll.GetByID(obj.jenis_pengeluaran_id);
-			Assert.IsNotNull(updatedObj);
-            Assert.AreEqual(obj.jenis_pengeluaran_id, updatedObj.jenis_pengeluaran_id);                                
-            Assert.AreEqual(obj.nama_jenis_pengeluaran, updatedObj.nama_jenis_pengeluaran);                                
-            
+            Assert.IsNotNull(updatedObj);
+            Assert.AreEqual(obj.jenis_pengeluaran_id, updatedObj.jenis_pengeluaran_id);
+            Assert.AreEqual(obj.nama_jenis_pengeluaran, updatedObj.nama_jenis_pengeluaran);
         }
 
         [TestMethod]
@@ -133,7 +121,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.jenis_pengeluaran_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

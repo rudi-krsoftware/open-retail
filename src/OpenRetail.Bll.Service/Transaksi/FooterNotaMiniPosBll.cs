@@ -16,27 +16,23 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class FooterNotaMiniPosBll : IFooterNotaMiniPosBll
     {
-		private ILog _log;
+        private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private FooterNotaMiniPosValidator _validator;
+        private FooterNotaMiniPosValidator _validator;
 
-		public FooterNotaMiniPosBll()
+        public FooterNotaMiniPosBll()
         {
             _validator = new FooterNotaMiniPosValidator();
         }
@@ -54,12 +50,12 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-		public int Save(FooterNotaMiniPos obj)
+        public int Save(FooterNotaMiniPos obj)
         {
             throw new NotImplementedException();
         }
 
-		public int Update(FooterNotaMiniPos obj)
+        public int Update(FooterNotaMiniPos obj)
         {
             var result = 0;
 
@@ -94,4 +90,4 @@ namespace OpenRetail.Bll.Service
             throw new NotImplementedException();
         }
     }
-}     
+}

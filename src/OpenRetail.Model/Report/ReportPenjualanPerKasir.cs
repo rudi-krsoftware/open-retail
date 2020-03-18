@@ -16,17 +16,13 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace OpenRetail.Model.Report
 {
     public class ReportPenjualanPerKasir
     {
         // header
         public string kasir_id { get; set; }
+
         public string kasir { get; set; }
         public double saldo_awal { get; set; }
         public double ongkos_kirim { get; set; }
@@ -41,6 +37,7 @@ namespace OpenRetail.Model.Report
 
         // detail
         public string nama_produk { get; set; }
+
         public string keterangan { get; set; }
         public double harga_jual { get; set; }
         public double jumlah { get; set; }
@@ -60,6 +57,6 @@ namespace OpenRetail.Model.Report
         public double sub_total
         {
             get { return (jumlah - jumlah_retur) * harga_jual_setelah_diskon; }
-        }        
+        }
     }
 }

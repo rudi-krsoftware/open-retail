@@ -16,19 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
+using System.Collections.Generic;
 
 namespace OpenRetail.Bll.Service.UnitTest
 {
@@ -130,7 +123,7 @@ namespace OpenRetail.Bll.Service.UnitTest
                 tanggal = DateTime.Today,
                 keterangan = "tes keterangan"
             };
-            
+
             var listOfItemPengeluaran = new List<ItemPengeluaranBiaya>();
             listOfItemPengeluaran.Add(new ItemPengeluaranBiaya { JenisPengeluaran = new JenisPengeluaran { jenis_pengeluaran_id = "7fde2c41-5187-4fe9-a274-b96ad8e79451" }, jenis_pengeluaran_id = "7fde2c41-5187-4fe9-a274-b96ad8e79451", pengguna_id = obj.pengguna_id, harga = 50000, jumlah = 5 });
             listOfItemPengeluaran.Add(new ItemPengeluaranBiaya { JenisPengeluaran = new JenisPengeluaran { jenis_pengeluaran_id = "b7968f37-5a92-4ea3-bff0-2909aed18d9d" }, jenis_pengeluaran_id = "b7968f37-5a92-4ea3-bff0-2909aed18d9d", pengguna_id = obj.pengguna_id, harga = 25000, jumlah = 10 });

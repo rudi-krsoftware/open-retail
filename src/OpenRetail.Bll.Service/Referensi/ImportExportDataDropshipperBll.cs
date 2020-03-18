@@ -16,19 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using ClosedXML.Excel;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
-using System.IO;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 
 namespace OpenRetail.Bll.Service
 {
@@ -119,7 +116,7 @@ namespace OpenRetail.Bll.Service
                 var supplierTable = supplierRange.AsTable();
 
                 var listOfDropshipper = new List<Dropshipper>();
-                
+
                 listOfDropshipper = supplierTable.DataRange.Rows().Select(row => new Dropshipper
                 {
                     nama_dropshipper = row.Field("NAMA").GetString(),
@@ -153,8 +150,8 @@ namespace OpenRetail.Bll.Service
                                 dropshipper.telepon = dropshipper.telepon.Substring(0, 20);
 
                             result = Convert.ToBoolean(_unitOfWork.DropshipperRepository.Save(dropshipper));
-                        }                        
-                    }                    
+                        }
+                    }
                 }
 
                 result = true;
@@ -184,7 +181,7 @@ namespace OpenRetail.Bll.Service
                     // Set header table
                     ws.Cell(1, 1).Value = "NO";
                     ws.Cell(1, 2).Value = "NAMA";
-                    ws.Cell(1, 3).Value = "ALAMAT";                    
+                    ws.Cell(1, 3).Value = "ALAMAT";
                     ws.Cell(1, 4).Value = "TELEPON";
 
                     var noUrut = 1;
@@ -192,7 +189,7 @@ namespace OpenRetail.Bll.Service
                     {
                         ws.Cell(1 + noUrut, 1).Value = noUrut;
                         ws.Cell(1 + noUrut, 2).Value = dropshipper.nama_dropshipper;
-                        ws.Cell(1 + noUrut, 3).Value = dropshipper.alamat;                        
+                        ws.Cell(1 + noUrut, 3).Value = dropshipper.alamat;
                         ws.Cell(1 + noUrut, 4).SetValue(dropshipper.telepon).SetDataType(XLCellValues.Text);
 
                         noUrut++;
@@ -204,7 +201,7 @@ namespace OpenRetail.Bll.Service
                     var fi = new FileInfo(_fileName);
                     if (fi.Exists)
                         Process.Start(_fileName);
-                }                
+                }
             }
             catch (Exception ex)
             {

@@ -16,26 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
+using System.Collections.Generic;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class GajiKaryawanWebAPIBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IGajiKaryawanBll _bll;
 
         [TestInitialize]
@@ -74,7 +67,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var obj = oList[index];
 
             Assert.IsNotNull(obj);
-            Assert.AreEqual("229d712c-a1c5-45e4-be20-2c07bff86406", obj.gaji_karyawan_id);            
+            Assert.AreEqual("229d712c-a1c5-45e4-be20-2c07bff86406", obj.gaji_karyawan_id);
             Assert.AreEqual("00b5acfa-b533-454b-8dfd-e7881edd180f", obj.pengguna_id);
             Assert.AreEqual(3, obj.bulan);
             Assert.AreEqual(2017, obj.tahun);
@@ -124,7 +117,7 @@ namespace OpenRetail.Bll.Service.UnitTest
                 jam = 1,
                 keterangan = "tesss",
                 jumlah_hari = 6,
-                tunjangan = 0             
+                tunjangan = 0
             };
 
             // item pembayaran kasbon
@@ -236,4 +229,4 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsNull(deletedObj);
         }
     }
-}     
+}

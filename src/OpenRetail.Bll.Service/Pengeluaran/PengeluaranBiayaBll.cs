@@ -16,20 +16,17 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
- 
 namespace OpenRetail.Bll.Service
-{    
+{
     public class PengeluaranBiayaBll : IPengeluaranBiayaBll
     {
         private ILog _log;
@@ -39,9 +36,9 @@ namespace OpenRetail.Bll.Service
         private bool _isUseWebAPI;
         private string _baseUrl;
 
-		public PengeluaranBiayaBll(ILog log)
+        public PengeluaranBiayaBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new PengeluaranBiayaValidator();
         }
 
@@ -102,7 +99,7 @@ namespace OpenRetail.Bll.Service
             }
 
             return oList;
-        }        
+        }
 
         public IList<PengeluaranBiaya> GetAll()
         {
@@ -125,7 +122,7 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-		public int Save(PengeluaranBiaya obj)
+        public int Save(PengeluaranBiaya obj)
         {
             var result = 0;
 
@@ -155,7 +152,7 @@ namespace OpenRetail.Bll.Service
 
         public int Save(PengeluaranBiaya obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -170,7 +167,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(PengeluaranBiaya obj)
+        public int Update(PengeluaranBiaya obj)
         {
             var result = 0;
 
@@ -255,4 +252,4 @@ namespace OpenRetail.Bll.Service
             return lastNota;
         }
     }
-}     
+}

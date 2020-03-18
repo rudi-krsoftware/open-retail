@@ -16,29 +16,26 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
     public class ReportKasbonRepository : IReportKasbonRepository
     {
-        private const string SQL_TEMPLATE_HEADER = @"SELECT m_karyawan.karyawan_id, m_karyawan.nama_karyawan, 
+        private const string SQL_TEMPLATE_HEADER = @"SELECT m_karyawan.karyawan_id, m_karyawan.nama_karyawan,
                                                      t_kasbon.tanggal, t_kasbon.nota, t_kasbon.nominal, t_kasbon.total_pelunasan, t_kasbon.keterangan
                                                      FROM public.t_kasbon INNER JOIN public.m_karyawan ON t_kasbon.karyawan_id = m_karyawan.karyawan_id
                                                      {WHERE}
                                                      ORDER BY t_kasbon.tanggal, m_karyawan.nama_karyawan";
 
-        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_karyawan.karyawan_id, m_karyawan.nama_karyawan, 
-                                                     t_kasbon.tanggal AS tanggal_kasbon, t_kasbon.nota AS nota_kasbon, t_kasbon.nominal AS jumlah_kasbon, t_kasbon.total_pelunasan, t_kasbon.keterangan AS keterangan_kasbon, 
+        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_karyawan.karyawan_id, m_karyawan.nama_karyawan,
+                                                     t_kasbon.tanggal AS tanggal_kasbon, t_kasbon.nota AS nota_kasbon, t_kasbon.nominal AS jumlah_kasbon, t_kasbon.total_pelunasan, t_kasbon.keterangan AS keterangan_kasbon,
                                                      t_pembayaran_kasbon.nota AS nota_pembayaran, t_pembayaran_kasbon.tanggal AS tanggal_pembayaran, t_pembayaran_kasbon.nominal AS jumlah_pembayaran, t_pembayaran_kasbon.keterangan AS keterangan_pembayaran
                                                      FROM public.t_kasbon INNER JOIN public.m_karyawan ON t_kasbon.karyawan_id = m_karyawan.karyawan_id
                                                      INNER JOIN public.t_pembayaran_kasbon ON t_pembayaran_kasbon.kasbon_id = t_kasbon.kasbon_id
@@ -182,6 +179,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

@@ -16,36 +16,29 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using FluentValidation;
-using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("m_header_nota")]
+{
+    [Table("m_header_nota")]
     public class HeaderNota
     {
-		[ExplicitKey]
-		[Display(Name = "header_nota_id")]		
-		public string header_nota_id { get; set; }
-		
-		[Display(Name = "Keterangan Header")]
-		public string keterangan { get; set; }
+        [ExplicitKey]
+        [Display(Name = "header_nota_id")]
+        public string header_nota_id { get; set; }
+
+        [Display(Name = "Keterangan Header")]
+        public string keterangan { get; set; }
 
         [Write(false)]
-		[Display(Name = "order_number")]
-		public int order_number { get; set; }
+        [Display(Name = "order_number")]
+        public int order_number { get; set; }
 
         [Write(false)]
-		[Display(Name = "is_active")]
-		public bool is_active { get; set; }
-	}
+        [Display(Name = "is_active")]
+        public bool is_active { get; set; }
+    }
 
     public class HeaderNotaValidator : AbstractValidator<HeaderNota>
     {
@@ -55,7 +48,7 @@ namespace OpenRetail.Model
 
             var msgError = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError);
-		}
-	}
+            RuleFor(c => c.keterangan).Length(0, 100).WithMessage(msgError);
+        }
+    }
 }

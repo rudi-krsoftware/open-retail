@@ -16,27 +16,22 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using AutoUpdaterDotNET;
+using ConceptCave.WaitCursor;
+using log4net;
+using OpenRetail.App.Cashier.Laporan;
+using OpenRetail.App.Cashier.Pengaturan;
+using OpenRetail.App.Cashier.Transaksi;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using WeifenLuo.WinFormsUI.Docking;
-
-using OpenRetail.Helper;
-using ConceptCave.WaitCursor;
-using OpenRetail.App.Cashier.Transaksi;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using log4net;
-using AutoUpdaterDotNET;
-using System.Threading;
-using OpenRetail.App.Cashier.Pengaturan;
-using OpenRetail.App.Cashier.Laporan;
 
 namespace OpenRetail.App.Cashier.Main
 {
@@ -46,10 +41,11 @@ namespace OpenRetail.App.Cashier.Main
         private const int CP_DISABLE_CLOSE_BUTTON = 0x200;
 
         /// <summary>
-        /// Variabel lokal untuk menampung menu id. 
+        /// Variabel lokal untuk menampung menu id.
         /// Menu id digunakan untuk mengeset hak akses masing-masing form yang diakses
         /// </summary>
         private Dictionary<string, string> _getMenuID;
+
         private ILog _log;
 
         private ThreadHelper _lightSleeper = new ThreadHelper();
@@ -91,7 +87,7 @@ namespace OpenRetail.App.Cashier.Main
                     return cp;
                 }
             }
-        }        
+        }
 
         private IEnumerable<ToolStripMenuItem> GetItems(ToolStripMenuItem menuItem)
         {
@@ -116,8 +112,8 @@ namespace OpenRetail.App.Cashier.Main
         {
             SetMenuId();
             SetDisabledMenuAndToolbar(menuStrip1, toolStrip1);
-            
-            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;            
+
+            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
         }
 
         private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
@@ -127,7 +123,7 @@ namespace OpenRetail.App.Cashier.Main
             if (args != null)
             {
                 if (args.IsUpdateAvailable)
-                {                    
+                {
                     var msg = "Update terbaru versi {0} sudah tersedia. Saat ini Anda sedang menggunakan Versi {1}\n\nApakah Anda ingin memperbarui aplikasi ini sekarang ?";
 
                     var installedVersion = string.Format("{0}.{1}.{2}.{3} (v{0}.{1}.{2}{4})", args.InstalledVersion.Major, args.InstalledVersion.Minor, args.InstalledVersion.Build, args.InstalledVersion.Revision, MainProgram.stageOfDevelopment);
@@ -184,7 +180,7 @@ namespace OpenRetail.App.Cashier.Main
             var listOfMenu = menuBll.GetAll()
                                     .Where(f => f.parent_id != null && f.nama_form.Length > 0)
                                     .ToList();
-            
+
             // perulangan untuk mengecek menu dan sub menu
             foreach (ToolStripMenuItem parentMenu in menuStrip.Items)
             {
@@ -246,14 +242,14 @@ namespace OpenRetail.App.Cashier.Main
         private bool IsChildFormExists(Form frm)
         {
             return !(frm == null || frm.IsDisposed);
-        }        
+        }
 
         private void CloseAllDocuments()
         {
             foreach (var form in MdiChildren)
             {
                 form.Close();
-            }                
+            }
         }
 
         private void ShowForm<T>(object sender, ref T form)
@@ -353,7 +349,7 @@ namespace OpenRetail.App.Cashier.Main
         }
 
         private void mnuGantiUser_Click(object sender, EventArgs e)
-        {            
+        {
             if (MsgHelper.MsgKonfirmasi("Apakah proses ingin dilanjutkan ?"))
             {
                 using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
@@ -406,7 +402,7 @@ namespace OpenRetail.App.Cashier.Main
         {
             var url = "https://openretailblog.wordpress.com/registrasi/";
             OpenUrl(url);
-        }        
+        }
 
         private void mnuDukungPengembanganOpenRetail_Click(object sender, EventArgs e)
         {
@@ -434,7 +430,6 @@ namespace OpenRetail.App.Cashier.Main
             throw new NotImplementedException();
         }
 
-
         private void mnuLapPenjualanProduk_Click(object sender, EventArgs e)
         {
             var header = GetMenuTitle(sender);
@@ -454,11 +449,11 @@ namespace OpenRetail.App.Cashier.Main
                     while (!_lightSleeper.HasBeenCanceled)
                     {
                         _lightSleeper.Sleep(10000);
-                    } 
+                    }
                 }
             }
             else
                 MsgHelper.MsgWarning("Maaf link/url Online Update belum diset !!!\nProses cek update terbaru batal.");
-        }        
+        }
     }
 }

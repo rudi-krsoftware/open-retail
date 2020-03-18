@@ -16,30 +16,22 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
 using FluentValidation;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.WebAPI.Models.DTO
-{        
+{
     public class RoleDTO
     {
-		[Display(Name = "role_id")]		
-		public string role_id { get; set; }
-		
-		[Display(Name = "nama_role")]
-		public string nama_role { get; set; }
-		
-		[Display(Name = "is_active")]
-		public bool is_active { get; set; }
-		
-	}
+        [Display(Name = "role_id")]
+        public string role_id { get; set; }
+
+        [Display(Name = "nama_role")]
+        public string nama_role { get; set; }
+
+        [Display(Name = "is_active")]
+        public bool is_active { get; set; }
+    }
 
     public class RoleDTOValidator : AbstractValidator<RoleDTO>
     {
@@ -47,24 +39,24 @@ namespace OpenRetail.WebAPI.Models.DTO
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleSet("save", () =>
+            RuleSet("save", () =>
             {
-                RuleFor(c => c.nama_role).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);			
+                RuleFor(c => c.nama_role).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
             });
 
             RuleSet("update", () =>
             {
                 RuleFor(c => c.role_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
-                RuleFor(c => c.nama_role).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);			
+                RuleFor(c => c.nama_role).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
             });
 
             RuleSet("delete", () =>
             {
-                RuleFor(c => c.role_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);			
+                RuleFor(c => c.role_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
             });
-		}
-	}
+        }
+    }
 }

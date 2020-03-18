@@ -16,23 +16,17 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
+using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.RAWPrinting;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Bll.Service;
-using OpenRetail.Bll.Api;
-using log4net;
-using OpenRetail.Helper.RAWPrinting;
 
 namespace OpenRetail.App.Cashier.Lookup
 {
@@ -52,11 +46,11 @@ namespace OpenRetail.App.Cashier.Lookup
             this._pengaturanUmum = MainProgram.pengaturanUmum;
             this._log = MainProgram.log;
             this._listOfJual = listOfJual;
-            
+
             InitGridList();
             base.SetActiveBtnPilih(listOfJual.Count > 0);
             base.SetTitleBtnPilih("F10 Cetak");
-        }        
+        }
 
         private void InitGridList()
         {
@@ -70,7 +64,7 @@ namespace OpenRetail.App.Cashier.Lookup
 
             GridListControlHelper.InitializeGridListControl<JualProduk>(this.gridList, _listOfJual, gridListProperties);
 
-            this.gridList.Grid.QueryRowHeight += delegate(object sender, GridRowColSizeEventArgs e)
+            this.gridList.Grid.QueryRowHeight += delegate (object sender, GridRowColSizeEventArgs e)
             {
                 e.Size = 27;
                 e.Handled = true;
@@ -162,7 +156,7 @@ namespace OpenRetail.App.Cashier.Lookup
                             break;
                     }
                 }
-            }            
+            }
         }
 
         private void CetakNotaDotMatrix(JualProduk jual)

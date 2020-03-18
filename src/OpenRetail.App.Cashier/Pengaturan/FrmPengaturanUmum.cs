@@ -16,37 +16,31 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
+using ConceptCave.WaitCursor;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
-using ConceptCave.WaitCursor;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Printing;
 using System.IO.Ports;
-using GodSharp;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Cashier.Pengaturan
 {
     public partial class FrmPengaturanUmum : FrmEntryStandard
-    {        
+    {
         private IList<AdvancedTextbox> _listOfTxtHeaderNota = new List<AdvancedTextbox>();
         private IList<AdvancedTextbox> _listOfTxtFooterNota = new List<AdvancedTextbox>();
         private PengaturanUmum _pengaturanUmum = null;
         private SettingPort _settingPort = null;
         private SettingCustomerDisplay _settingCustomerDisplay = null;
 
-        public FrmPengaturanUmum(string header, PengaturanUmum pengaturanUmum, 
+        public FrmPengaturanUmum(string header, PengaturanUmum pengaturanUmum,
             SettingPort settingPort, SettingCustomerDisplay settingCustomerDisplay) : base()
         {
             InitializeComponent();
@@ -145,7 +139,7 @@ namespace OpenRetail.App.Cashier.Pengaturan
             {
                 if (cmbPort.Items.Count > 0)
                     cmbPort.SelectedIndex = 0;
-            }            
+            }
         }
 
         private void SetInfoCustomerDisplay()
@@ -178,7 +172,7 @@ namespace OpenRetail.App.Cashier.Pengaturan
                     break;
             }
 
-            // setting khusus printer mini pos            
+            // setting khusus printer mini pos
             txtJumlahKarakter.Text = _pengaturanUmum.jumlah_karakter.ToString();
             txtJumlahGulung.Text = _pengaturanUmum.jumlah_gulung.ToString();
 
@@ -206,8 +200,8 @@ namespace OpenRetail.App.Cashier.Pengaturan
                 // simpan footer nota minipos
                 SimpanFooterNota();
 
-                this.Close();    
-            }            
+                this.Close();
+            }
         }
 
         /// <summary>
@@ -333,7 +327,7 @@ namespace OpenRetail.App.Cashier.Pengaturan
             btnShowAutocutCode.Enabled = false;
             btnShowOpenCashDrawerCode.Enabled = false;
 
-            groupBox4.Enabled = false;            
+            groupBox4.Enabled = false;
         }
 
         private void rdoJenisPrinterMiniPOS_CheckedChanged(object sender, EventArgs e)
@@ -354,7 +348,6 @@ namespace OpenRetail.App.Cashier.Pengaturan
             chkOpenCashDrawer.Checked = _pengaturanUmum.is_open_cash_drawer;
 
             groupBox4.Enabled = true;
-
         }
 
         private void chkUkuranFont_CheckedChanged(object sender, EventArgs e)

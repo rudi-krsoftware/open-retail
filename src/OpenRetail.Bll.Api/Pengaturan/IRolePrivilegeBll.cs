@@ -16,21 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using OpenRetail.Model;
- 
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Api
-{    
+{
     public interface IRolePrivilegeBll : IBaseBll<RolePrivilege>
     {
-        RolePrivilege GetByID(string id);    
+        RolePrivilege GetByID(string id);
+
         IList<RolePrivilege> GetByName(string name);
+
         IList<RolePrivilege> GetByRole(string roleId);
+
         IList<RolePrivilege> GetByRoleAndMenu(string roleId, string menuId);
     }
-}     
+}

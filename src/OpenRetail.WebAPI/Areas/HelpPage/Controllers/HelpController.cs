@@ -1,8 +1,6 @@
-using System;
-using System.Web.Http;
-using System.Web.Mvc;
 using OpenRetail.WebAPI.Areas.HelpPage.ModelDescriptions;
 using OpenRetail.WebAPI.Areas.HelpPage.Models;
+using System;
 
 namespace OpenRetail.WebAPI.Areas.HelpPage.Controllers
 {

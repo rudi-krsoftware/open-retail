@@ -16,20 +16,18 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model.Report;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using OpenRetail.Model;
-using OpenRetail.Model.Report;
 
 namespace OpenRetail.Bll.Api.Report
 {
     public interface IReportBeliProdukBll : IBaseReportBll<ReportPembelianProdukHeader>
     {
         IList<ReportPembelianProdukDetail> DetailGetByBulan(int bulan, int tahun);
+
         IList<ReportPembelianProdukDetail> DetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+
         IList<ReportPembelianProdukDetail> DetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 }

@@ -16,14 +16,8 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
 using FluentValidation;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.WebAPI.Models.DTO

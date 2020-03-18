@@ -16,26 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
+using System.Collections.Generic;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class PembayaranPiutangProdukBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IPembayaranPiutangProdukBll _bll;
 
         [TestInitialize]
@@ -65,7 +58,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("tesss", obj.PembayaranPiutangProduk.keterangan);
             Assert.AreEqual("BP-12345", obj.PembayaranPiutangProduk.nota);
             Assert.IsTrue(obj.PembayaranPiutangProduk.is_tunai);
-
         }
 
         [TestMethod]
@@ -89,7 +81,7 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var customer = obj.Customer;
             Assert.AreEqual("c7b1ac7f-d201-474f-b018-1dc363d5d7f3", customer.customer_id);
-            Assert.AreEqual("Swalayan Citrouli", customer.nama_customer);   
+            Assert.AreEqual("Swalayan Citrouli", customer.nama_customer);
         }
 
         [TestMethod]
@@ -98,20 +90,19 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 0;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("10479db1-699e-40d0-b6f9-1f030792ca24", obj.pembayaran_piutang_id);
             Assert.AreEqual("c7b1ac7f-d201-474f-b018-1dc363d5d7f3", obj.customer_id);
-            Assert.AreEqual("960a9111-a077-4e0e-a440-cef77293038a", obj.pengguna_id);                                
+            Assert.AreEqual("960a9111-a077-4e0e-a440-cef77293038a", obj.pengguna_id);
             Assert.AreEqual(DateTime.Today, obj.tanggal);
             Assert.AreEqual("tesss", obj.keterangan);
-            Assert.AreEqual("BP-12345", obj.nota);                                
+            Assert.AreEqual("BP-12345", obj.nota);
             Assert.IsTrue(obj.is_tunai);
 
             var customer = obj.Customer;
             Assert.AreEqual("c7b1ac7f-d201-474f-b018-1dc363d5d7f3", customer.customer_id);
-            Assert.AreEqual("Swalayan Citrouli", customer.nama_customer);                            
-                     
+            Assert.AreEqual("Swalayan Citrouli", customer.nama_customer);
         }
 
         [TestMethod]
@@ -148,9 +139,8 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.tanggal, newObj.tanggal);
             Assert.AreEqual(obj.keterangan, newObj.keterangan);
             Assert.AreEqual(obj.nota, newObj.nota);
-            Assert.AreEqual(obj.is_tunai, newObj.is_tunai);                                
-            
-		}
+            Assert.AreEqual(obj.is_tunai, newObj.is_tunai);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -181,8 +171,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.tanggal, updatedObj.tanggal);
             Assert.AreEqual(obj.keterangan, updatedObj.keterangan);
             Assert.AreEqual(obj.nota, updatedObj.nota);
-            Assert.AreEqual(obj.is_tunai, updatedObj.is_tunai);                                
-            
+            Assert.AreEqual(obj.is_tunai, updatedObj.is_tunai);
         }
 
         [TestMethod]
@@ -197,7 +186,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.pembayaran_piutang_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

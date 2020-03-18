@@ -16,11 +16,8 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Data;
- 
 namespace OpenRetail.Model
-{    
+{
     public class ValidationError
     {
         public string Message { get; set; }

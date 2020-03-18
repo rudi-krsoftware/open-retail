@@ -16,13 +16,8 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Newtonsoft.Json;
-using Dapper.Contrib.Extensions;
+using System;
 
 namespace OpenRetail.Model
 {
@@ -124,6 +119,6 @@ namespace OpenRetail.Model
             if (string.IsNullOrEmpty(value)) return string.Empty;
 
             return value.Length > length ? value.Substring(value.Length - length) : value;
-        }        
+        }
     }
 }

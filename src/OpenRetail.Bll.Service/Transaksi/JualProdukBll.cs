@@ -16,32 +16,29 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Bll.Api;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
- 
 namespace OpenRetail.Bll.Service
-{    
+{
     public class JualProdukBll : IJualProdukBll
     {
         private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private JualProdukValidator _validator;
+        private JualProdukValidator _validator;
 
         private bool _isUseWebAPI;
         private string _baseUrl;
 
-		public JualProdukBll(ILog log)
+        public JualProdukBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new JualProdukValidator();
         }
 
@@ -68,7 +65,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     obj = _unitOfWork.JualProdukRepository.GetByID(id);
                 }
-            }            
+            }
 
             return obj;
         }
@@ -89,7 +86,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     obj = _unitOfWork.JualProdukRepository.GetListItemNotaTerakhir(penggunaId, mesinId);
                 }
-            }            
+            }
 
             return obj;
         }
@@ -110,7 +107,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetByName(name);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -131,7 +128,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetByName(name, isCekKeteranganItemJual, pageNumber, pageSize, ref pagesCount);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -152,14 +149,14 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetAll();
                 }
-            }            
+            }
 
             return oList;
         }
 
         public IList<JualProduk> GetAll(int pageNumber, int pageSize, ref int pagesCount)
         {
-            IList<JualProduk> oList = null;            
+            IList<JualProduk> oList = null;
 
             if (_isUseWebAPI)
             {
@@ -178,9 +175,9 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-		public int Save(JualProduk obj)
+        public int Save(JualProduk obj)
         {
-            var result = 0;            
+            var result = 0;
 
             if (_isUseWebAPI)
             {
@@ -208,7 +205,7 @@ namespace OpenRetail.Bll.Service
 
         public int Save(JualProduk obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -223,7 +220,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(JualProduk obj)
+        public int Update(JualProduk obj)
         {
             var result = 0;
 
@@ -244,7 +241,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.JualProdukRepository.Update(obj);
                 }
-            }            
+            }
 
             return result;
         }
@@ -282,7 +279,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.JualProdukRepository.Delete(obj);
                 }
-            }            
+            }
 
             return result;
         }
@@ -303,13 +300,13 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     lastNota = _unitOfWork.JualProdukRepository.GetLastNota();
                 }
-            }            
+            }
 
             return lastNota;
         }
 
         public IList<JualProduk> GetAll(string name)
-        {            
+        {
             IList<JualProduk> oList = null;
 
             if (_isUseWebAPI)
@@ -324,7 +321,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetAll(name);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -345,7 +342,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetNotaCustomer(id, nota);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -366,7 +363,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetNotaKreditByCustomer(id, isLunas);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -387,7 +384,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetNotaKreditByNota(id, nota);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -408,7 +405,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -429,7 +426,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, pageNumber, pageSize, ref pagesCount);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -450,7 +447,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetByTanggal(tanggalMulai, tanggalSelesai, name);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -492,9 +489,9 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JualProdukRepository.GetItemJual(jualId);
                 }
-            }            
+            }
 
             return oList;
-        }        
+        }
     }
-}     
+}

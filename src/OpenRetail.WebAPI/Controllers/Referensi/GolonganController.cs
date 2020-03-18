@@ -16,26 +16,22 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-
 using log4net;
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
+using OpenRetail.WebAPI.Controllers.Helper;
 using OpenRetail.WebAPI.Models;
 using OpenRetail.WebAPI.Models.DTO;
-using OpenRetail.WebAPI.Controllers.Helper;
+using System;
+using System.Collections.Generic;
+using System.Net;
 
 namespace OpenRetail.WebAPI.Controllers
 {
     public interface IGolonganController : IBaseApiController<GolonganDTO>
     {
         IHttpActionResult GetByID(string id);
+
         IHttpActionResult GetByName(string name, bool useLikeOperator = true);
     }
 
@@ -68,7 +64,7 @@ namespace OpenRetail.WebAPI.Controllers
             {
                 var results = new List<Golongan>();
                 var obj = _unitOfWork.GolonganRepository.GetByID(id);
-                
+
                 if (obj != null)
                     results.Add(obj);
 
@@ -84,7 +80,7 @@ namespace OpenRetail.WebAPI.Controllers
             }
 
             return _response;
-        }        
+        }
 
         [HttpGet, Route("get_by_name")]
         public IHttpActionResult GetByName(string name, bool useLikeOperator = true)
@@ -225,6 +221,6 @@ namespace OpenRetail.WebAPI.Controllers
             }
 
             return _response;
-        }        
+        }
     }
 }

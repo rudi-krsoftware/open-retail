@@ -16,33 +16,27 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
-using System.IO;
-using System.Diagnostics;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmListCustomer : FrmListEmptyBody, IListener
     {
-        private ICustomerBll _bll; // deklarasi objek business logic layer 
-        private IList<Customer> _listOfCustomer = new List<Customer>();        
+        private ICustomerBll _bll; // deklarasi objek business logic layer
+        private IList<Customer> _listOfCustomer = new List<Customer>();
         private ILog _log;
         private Pengguna _pengguna;
         private string _menuId = string.Empty;
@@ -61,7 +55,7 @@ namespace OpenRetail.App.Referensi
 
             base.SetHeader(header);
             base.WindowState = FormWindowState.Maximized;
-            
+
             _log = MainProgram.log;
             _bll = new CustomerBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             _pengguna = pengguna;
@@ -78,8 +72,7 @@ namespace OpenRetail.App.Referensi
 
                 cmbJenisCustomer.Enabled = role.is_grant;
                 btnImport.Enabled = _pengguna.is_administrator;
-            }                
-
+            }
 
             InitGridList();
 
@@ -96,7 +89,7 @@ namespace OpenRetail.App.Referensi
 
             gridListProperties.Add(new GridListControlProperties { Header = "Provinsi", Width = 120 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kabupaten", Width = 140 });
-            gridListProperties.Add(new GridListControlProperties { Header = "Kecamatan", Width = 140 });            
+            gridListProperties.Add(new GridListControlProperties { Header = "Kecamatan", Width = 140 });
             gridListProperties.Add(new GridListControlProperties { Header = "Alamat", Width = 250 });
             gridListProperties.Add(new GridListControlProperties { Header = "Kode Pos", Width = 70 });
 
@@ -112,7 +105,7 @@ namespace OpenRetail.App.Referensi
             if (_listOfCustomer.Count > 0)
                 this.gridList.SetSelected(0, true);
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 if (_listOfCustomer.Count > 0)
                 {
@@ -268,7 +261,7 @@ namespace OpenRetail.App.Referensi
                     }
                     else
                         MsgHelper.MsgDeleteError();
-                }                
+                }
             }
         }
 

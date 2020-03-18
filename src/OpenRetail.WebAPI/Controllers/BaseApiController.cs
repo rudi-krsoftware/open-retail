@@ -16,14 +16,9 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-
-using System.Net;
 using OpenRetail.WebAPI.Models;
+using System;
+using System.Net;
 
 namespace OpenRetail.WebAPI.Controllers
 {

@@ -16,33 +16,26 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
+using ConceptCave.WaitCursor;
+using log4net;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
-using ConceptCave.WaitCursor;
-using OpenRetail.Helper.UserControl;
-using log4net;
-using System.IO;
-using System.Diagnostics;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
 using Syncfusion.Styles;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmListProdukWithNavigation : FrmListEmptyBodyWithNavigation, IListener
     {
-        private IProdukBll _bll; // deklarasi objek business logic layer 
+        private IProdukBll _bll; // deklarasi objek business logic layer
         private IList<Produk> _listOfProduk = new List<Produk>();
         private IList<Golongan> _listOfGolongan = new List<Golongan>();
         private ILog _log;
@@ -83,7 +76,7 @@ namespace OpenRetail.App.Referensi
                     cmbSortBy.SelectedIndex = 1;
                     this.updLimit.Value = _pageSize;
 
-                    LoadDataGolongan();                    
+                    LoadDataGolongan();
                 }
 
                 cmbSortBy.Enabled = role.is_grant;
@@ -148,7 +141,7 @@ namespace OpenRetail.App.Referensi
             {
                 _listOfProduk = _bll.GetByName(name, sortIndex, _pageNumber, _pageSize, ref _pagesCount);
                 GridListControlHelper.Refresh<Produk>(this.gridList, _listOfProduk, additionalRowCount: 1);
-                
+
                 base.SetInfoHalaman(_pageNumber, _pagesCount);
                 base.SetStateBtnNavigation(_pageNumber, _pagesCount);
 
@@ -177,7 +170,7 @@ namespace OpenRetail.App.Referensi
             gridListProperties.Add(new GridListControlProperties { Header = "Nama Produk", Width = 350 });
             gridListProperties.Add(new GridListControlProperties { Header = "Satuan", Width = 50 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga Beli", Width = 70 });
-            
+
             gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 70 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 70 });
             gridListProperties.Add(new GridListControlProperties { Header = "Harga Jual", Width = 70 });
@@ -193,7 +186,7 @@ namespace OpenRetail.App.Referensi
             this.gridList.Grid.Model.RowHeights[1] = 25;
             this.gridList.Grid.Model.Rows.FrozenCount = 1;
 
-            this.gridList.Grid.PrepareViewStyleInfo += delegate(object sender, GridPrepareViewStyleInfoEventArgs e)
+            this.gridList.Grid.PrepareViewStyleInfo += delegate (object sender, GridPrepareViewStyleInfoEventArgs e)
             {
                 var subHeaderHargaJual = new string[] { "Retail", "Grosir 1", "Grosir 2", "Grosir 3" };
                 if (e.ColIndex > 6 && e.RowIndex == 1)
@@ -253,7 +246,7 @@ namespace OpenRetail.App.Referensi
             var headerStyle = this.gridList.Grid.BaseStylesMap["Column Header"].StyleInfo;
             headerStyle.CellType = GridCellTypeName.Header;
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 if (e.RowIndex == 1)
                 {
@@ -267,10 +260,9 @@ namespace OpenRetail.App.Referensi
                 }
 
                 if (_listOfProduk.Count > 0)
-                {                    
+                {
                     if (e.RowIndex > 1)
                     {
-
                         var rowIndex = e.RowIndex - 2;
 
                         if (rowIndex < _listOfProduk.Count)
@@ -504,7 +496,7 @@ namespace OpenRetail.App.Referensi
                     }
                     else
                         MsgHelper.MsgDeleteError();
-                }                
+                }
             }
         }
 
@@ -545,7 +537,7 @@ namespace OpenRetail.App.Referensi
         }
 
         protected override void ExportData()
-        {            
+        {
             using (var dlgSave = new SaveFileDialog())
             {
                 dlgSave.Filter = "Microsoft Excel files (*.xlsx)|*.xlsx";
@@ -557,12 +549,12 @@ namespace OpenRetail.App.Referensi
                     using (new StCursor(Cursors.WaitCursor, new TimeSpan(0, 0, 0, 0)))
                     {
                         var listOfProduk = _bll.GetAll(cmbSortBy.SelectedIndex);
-                        
+
                         IImportExportDataBll<Produk> _importDataBll = new ImportExportDataProdukBll(dlgSave.FileName, _log);
                         _importDataBll.Export(listOfProduk);
-                    }                    
+                    }
                 }
-            }                   
+            }
         }
 
         private void RefreshData()
@@ -601,7 +593,7 @@ namespace OpenRetail.App.Referensi
             _pageNumber = 1;
 
             RefreshData();
-        }        
+        }
 
         protected override void MovePrevious()
         {
@@ -663,6 +655,5 @@ namespace OpenRetail.App.Referensi
             // set hak akses selain SELECT (TAMBAH, PERBAIKI dan HAPUS)
             RolePrivilegeHelper.SetHakAkses(this, _pengguna, _menuId, _listOfGolongan.Count);
         }
-        
     }
 }

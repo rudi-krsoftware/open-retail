@@ -16,29 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class KaryawanRepository : IKaryawanRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT m_karyawan.karyawan_id, m_karyawan.nama_karyawan, m_karyawan.alamat, m_karyawan.telepon, 
+        private const string SQL_TEMPLATE = @"SELECT m_karyawan.karyawan_id, m_karyawan.nama_karyawan, m_karyawan.alamat, m_karyawan.telepon,
                                               m_karyawan.jenis_gajian, m_karyawan.gaji_pokok, m_karyawan.gaji_lembur, m_karyawan.total_kasbon, m_karyawan.total_pembayaran_kasbon, m_karyawan.is_active, m_karyawan.keterangan,
                                               m_jabatan.jabatan_id, m_jabatan.nama_jabatan, m_jabatan.keterangan
                                               FROM public.m_karyawan INNER JOIN public.m_jabatan ON m_karyawan.jabatan_id = m_jabatan.jabatan_id
                                               {WHERE}
                                               {ORDER BY}";
+
         private IDapperContext _context;
         private ILog _log;
         private string _sql;
@@ -171,4 +166,4 @@ namespace OpenRetail.Repository.Service
             return result;
         }
     }
-}     
+}

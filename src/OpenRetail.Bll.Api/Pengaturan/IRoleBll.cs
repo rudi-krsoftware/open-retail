@@ -16,23 +16,21 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using OpenRetail.Model;
- 
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Api
-{    
+{
     public interface IRoleBll : IBaseBll<Role>
     {
-        Role GetByID(string id);    
+        Role GetByID(string id);
+
         IList<Role> GetByName(string name);
+
         IList<Role> GetByStatus(bool isActive);
 
-		int Save(Role obj, ref ValidationError validationError);
-		int Update(Role obj, ref ValidationError validationError);
+        int Save(Role obj, ref ValidationError validationError);
+
+        int Update(Role obj, ref ValidationError validationError);
     }
-}     
+}

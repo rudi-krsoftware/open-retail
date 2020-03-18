@@ -16,29 +16,25 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class ReturJualProdukBll : IReturJualProdukBll
     {
-		private ILog _log;
+        private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private ReturJualProdukValidator _validator;
+        private ReturJualProdukValidator _validator;
 
-		public ReturJualProdukBll(ILog log)
+        public ReturJualProdukBll(ILog log)
         {
-			_log = log;
+            _log = log;
             _validator = new ReturJualProdukValidator();
         }
 
@@ -58,7 +54,7 @@ namespace OpenRetail.Bll.Service
         public ReturJualProduk GetByID(string id)
         {
             ReturJualProduk obj = null;
-            
+
             using (IDapperContext context = new DapperContext())
             {
                 _unitOfWork = new UnitOfWork(context, _log);
@@ -99,7 +95,7 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-		public int Save(ReturJualProduk obj)
+        public int Save(ReturJualProduk obj)
         {
             var result = 0;
 
@@ -114,7 +110,7 @@ namespace OpenRetail.Bll.Service
 
         public int Save(ReturJualProduk obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -129,7 +125,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(ReturJualProduk obj)
+        public int Update(ReturJualProduk obj)
         {
             var result = 0;
 
@@ -170,6 +166,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return result;
-        }                
+        }
     }
-}     
+}

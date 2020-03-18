@@ -16,27 +16,20 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using log4net;
 using ConceptCave.WaitCursor;
-
-using OpenRetail.Helper;
+using log4net;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
 using OpenRetail.Model;
+using System;
+using System.IO;
 using System.IO.Ports;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Cashier.Main
-{    
+{
     public partial class FrmLogin : Form
     {
         private ILog _log;
@@ -48,12 +41,12 @@ namespace OpenRetail.App.Cashier.Main
             ColorManagerHelper.SetTheme(this, this);
 
             _log = MainProgram.log;
-            
+
             LoadAppConfig();
         }
 
         private void LoadAppConfig()
-        {            
+        {
             txtServer.Text = AppConfigHelper.GetValue("server", _appConfigFile);
 
             if (Utils.IsRunningUnderIDE()) // mode debug, set user dan password default untuk development
@@ -64,7 +57,7 @@ namespace OpenRetail.App.Cashier.Main
         }
 
         private void SaveAppConfig()
-        {            
+        {
             AppConfigHelper.SaveValue("server", txtServer.Text, _appConfigFile);
         }
 
@@ -76,7 +69,7 @@ namespace OpenRetail.App.Cashier.Main
 
         private void SetPengaturanUmum()
         {
-            // set pengaturan lokal (setting di simpan di file app.config)            
+            // set pengaturan lokal (setting di simpan di file app.config)
             MainProgram.pengaturanUmum = new PengaturanUmum();
             MainProgram.pengaturanUmum.nama_printer = AppConfigHelper.GetValue("printerName", _appConfigFile);
             MainProgram.pengaturanUmum.is_auto_print = AppConfigHelper.GetValue("isAutoPrinter", _appConfigFile).ToLower() == "true" ? true : false;
@@ -207,13 +200,13 @@ namespace OpenRetail.App.Cashier.Main
         private void UpgradeDatabase(int newDatabaseVersion)
         {
             IDatabaseVersionBll bll = new DatabaseVersionBll(_log);
-            
+
             var dbVersion = bll.Get();
             if (dbVersion != null)
             {
                 var result = true;
                 var upgradeTo = dbVersion.version_number + 1;
-                
+
                 while (upgradeTo <= newDatabaseVersion)
                 {
                     var scriptUpgrade = DatabaseVersionHelper.ListOfUpgradeDatabaseScript[upgradeTo];
@@ -275,7 +268,7 @@ namespace OpenRetail.App.Cashier.Main
 
                     var saldoAwal = NumberHelper.StringToDouble(txtSaldoAwal.Text);
                     SimpanSaldoAwal(MainProgram.pengguna.pengguna_id, (int)saldoAwal);
-                    
+
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -313,6 +306,6 @@ namespace OpenRetail.App.Cashier.Main
         {
             if (KeyPressHelper.IsEnter(e))
                 btnLogin_Click(sender, e);
-        }        
+        }
     }
 }

@@ -16,12 +16,6 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
 namespace OpenRetail.WebAPI.Controllers
 {
     public class HomeController : Controller

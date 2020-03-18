@@ -16,28 +16,22 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using RestSharp;
-using Newtonsoft.Json;
-
 using OpenRetail.Helper;
 using OpenRetail.Model;
 using OpenRetail.Model.WebAPI;
 using OpenRetail.Repository.Api;
- 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace OpenRetail.Repository.Service
-{        
+{
     public class PenyesuaianStokWebAPIRepository : IPenyesuaianStokRepository
     {
         private string _apiUrl = string.Empty;
         private ILog _log;
-		
+
         public PenyesuaianStokWebAPIRepository(string baseUrl, ILog log)
         {
             this._apiUrl = baseUrl + "api/penyesuaian_stok/";
@@ -48,7 +42,7 @@ namespace OpenRetail.Repository.Service
         {
             PenyesuaianStok obj = null;
 
-			try
+            try
             {
                 var api = string.Format("get_by_id?id={0}", id);
                 var response = RestSharpHelper<OpenRetailWebApiGetResponse<PenyesuaianStok>>.GetRequest(_apiUrl, api).Data;
@@ -68,7 +62,7 @@ namespace OpenRetail.Repository.Service
         {
             IList<PenyesuaianStok> oList = new List<PenyesuaianStok>();
 
-			try
+            try
             {
                 var api = string.Format("get_by_name?name={0}", name);
                 var response = RestSharpHelper<OpenRetailWebApiGetResponse<PenyesuaianStok>>.GetRequest(_apiUrl, api).Data;
@@ -108,7 +102,7 @@ namespace OpenRetail.Repository.Service
         {
             IList<PenyesuaianStok> oList = new List<PenyesuaianStok>();
 
-			try
+            try
             {
                 var api = "get_all";
                 var response = RestSharpHelper<OpenRetailWebApiGetResponse<PenyesuaianStok>>.GetRequest(_apiUrl, api).Data;
@@ -128,7 +122,7 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-			try
+            try
             {
                 var api = "save";
                 var response = RestSharpHelper<OpenRetailWebApiPostResponse>.PostRequest(_apiUrl, api, obj);
@@ -147,7 +141,7 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-			try
+            try
             {
                 var api = "update";
                 var response = RestSharpHelper<OpenRetailWebApiPostResponse>.PostRequest(_apiUrl, api, obj);
@@ -166,7 +160,7 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-			try
+            try
             {
                 var api = "delete";
                 var response = RestSharpHelper<OpenRetailWebApiPostResponse>.PostRequest(_apiUrl, api, obj);
@@ -179,6 +173,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

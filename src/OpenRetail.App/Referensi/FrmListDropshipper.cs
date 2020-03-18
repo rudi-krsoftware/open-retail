@@ -16,32 +16,26 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using Syncfusion.Windows.Forms.Grid;
 using ConceptCave.WaitCursor;
 using log4net;
-using System.IO;
-using System.Diagnostics;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmListDropshipper : FrmListEmptyBody, IListener
-    {                
-        private IDropshipperBll _bll; // deklarasi objek business logic layer 
+    {
+        private IDropshipperBll _bll; // deklarasi objek business logic layer
         private IList<Dropshipper> _listOfDropshipper = new List<Dropshipper>();
         private ILog _log;
         private Pengguna _pengguna;
@@ -75,7 +69,7 @@ namespace OpenRetail.App.Referensi
                     LoadData();
 
                     btnImport.Enabled = _pengguna.is_administrator;
-                }                    
+                }
 
             InitGridList();
 
@@ -97,7 +91,7 @@ namespace OpenRetail.App.Referensi
             if (_listOfDropshipper.Count > 0)
                 this.gridList.SetSelected(0, true);
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 if (_listOfDropshipper.Count > 0)
                 {
@@ -206,7 +200,7 @@ namespace OpenRetail.App.Referensi
                     }
                     else
                         MsgHelper.MsgDeleteError();
-                }                
+                }
             }
         }
 
@@ -243,7 +237,7 @@ namespace OpenRetail.App.Referensi
         {
             var frm = new FrmImportDataDropshipper("Import Data Dropshipper dari File Excel");
             frm.Listener = this;
-            frm.ShowDialog();        
+            frm.ShowDialog();
         }
 
         protected override void ExportData()
@@ -264,7 +258,6 @@ namespace OpenRetail.App.Referensi
                 }
             }
         }
-
 
         public void Ok(object sender, object data)
         {

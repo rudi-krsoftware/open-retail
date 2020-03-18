@@ -16,25 +16,18 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.App.Lookup;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Drawing.Printing;
-
-using log4net;
-using Zen.Barcode;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using OpenRetail.Bll.Service;
-using OpenRetail.Helper.UserControl;
-using OpenRetail.App.Lookup;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Referensi
 {
@@ -48,7 +41,7 @@ namespace OpenRetail.App.Referensi
 
         public FrmCetakLabelBarcodeProduk(string header)
         {
-            InitializeComponent();            
+            InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
 
             this.Text = header;
@@ -268,7 +261,7 @@ namespace OpenRetail.App.Referensi
                     PreviewBarcode();
                 }
             }
-        }        
+        }
 
         private void chkCetakHargaJual_CheckedChanged(object sender, EventArgs e)
         {
@@ -278,7 +271,7 @@ namespace OpenRetail.App.Referensi
         private void txtHeaderBarcode_TextChanged(object sender, EventArgs e)
         {
             PreviewBarcode();
-        }        
+        }
 
         public void Ok(object sender, object data)
         {
@@ -294,7 +287,7 @@ namespace OpenRetail.App.Referensi
         public void Ok(object sender, bool isNewData, object data)
         {
             throw new NotImplementedException();
-        }        
+        }
 
         private void btnCetak_Click(object sender, EventArgs e)
         {
@@ -335,7 +328,7 @@ namespace OpenRetail.App.Referensi
             barcodeArea.Height = (e.MarginBounds.Height / numLines);
 
             var listOfPosition = new Dictionary<int, PointF>();
-            
+
             // baris 1
             listOfPosition.Add(0, new PointF(_pengaturanBarcode.batas_kiri_kolom1, _pengaturanBarcode.batas_atas_baris1));
             listOfPosition.Add(1, new PointF(_pengaturanBarcode.batas_kiri_kolom2, listOfPosition[0].Y));
@@ -359,14 +352,14 @@ namespace OpenRetail.App.Referensi
             for (var index = 0; index < barcodesPerPage; index++)
             {
                 var isPrint = _listOfCheckboxPosisiLabel[index].Checked;
-                
+
                 if (isPrint)
                 {
                     var position = listOfPosition[index];
 
                     var drawRectangle = new RectangleF(position, barcodeArea);
                     var barcodeImageLocation = new PointF(position.X, position.Y);
-                    
+
                     barcodeImageLocation.X += (drawRectangle.Width - barcodePanel.BackgroundImage.Width) / 2;
 
                     e.Graphics.DrawImage(barcodePanel.BackgroundImage, barcodeImageLocation);
@@ -391,6 +384,6 @@ namespace OpenRetail.App.Referensi
         private void btnSelesai_Click(object sender, EventArgs e)
         {
             this.Close();
-        }        
+        }
     }
 }

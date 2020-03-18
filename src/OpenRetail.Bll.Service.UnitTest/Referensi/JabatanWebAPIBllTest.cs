@@ -16,19 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
 {
@@ -99,7 +91,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.jabatan_id, newObj.jabatan_id);
             Assert.AreEqual(obj.nama_jabatan, newObj.nama_jabatan);
             Assert.AreEqual(obj.keterangan, newObj.keterangan);
-
         }
 
         [TestMethod]
@@ -124,7 +115,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.jabatan_id, updatedObj.jabatan_id);
             Assert.AreEqual(obj.nama_jabatan, updatedObj.nama_jabatan);
             Assert.AreEqual(obj.keterangan, updatedObj.keterangan);
-
         }
 
         [TestMethod]

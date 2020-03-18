@@ -16,26 +16,18 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class KartuWebAPIBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IKartuBll _bll;
 
         [TestInitialize]
@@ -59,7 +51,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 1;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("3f6c7750-e461-4c48-b2ae-738a50f83b50", obj.kartu_id);
             Assert.AreEqual("Visa", obj.nama_kartu);
@@ -83,11 +75,11 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var newObj = _bll.GetByID(obj.kartu_id);
-			Assert.IsNotNull(newObj);
-			Assert.AreEqual(obj.kartu_id, newObj.kartu_id);                                
-            Assert.AreEqual(obj.nama_kartu, newObj.nama_kartu);                                
-            Assert.AreEqual(obj.is_debit, newObj.is_debit);                                
-		}
+            Assert.IsNotNull(newObj);
+            Assert.AreEqual(obj.kartu_id, newObj.kartu_id);
+            Assert.AreEqual(obj.nama_kartu, newObj.nama_kartu);
+            Assert.AreEqual(obj.is_debit, newObj.is_debit);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -103,11 +95,11 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             Assert.IsTrue(result != 0);
 
-			var updatedObj = _bll.GetByID(obj.kartu_id);
-			Assert.IsNotNull(updatedObj);
-            Assert.AreEqual(obj.kartu_id, updatedObj.kartu_id);                                
-            Assert.AreEqual(obj.nama_kartu, updatedObj.nama_kartu);                                
-            Assert.AreEqual(obj.is_debit, updatedObj.is_debit);                                
+            var updatedObj = _bll.GetByID(obj.kartu_id);
+            Assert.IsNotNull(updatedObj);
+            Assert.AreEqual(obj.kartu_id, updatedObj.kartu_id);
+            Assert.AreEqual(obj.nama_kartu, updatedObj.nama_kartu);
+            Assert.AreEqual(obj.is_debit, updatedObj.is_debit);
         }
 
         [TestMethod]
@@ -122,7 +114,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.kartu_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

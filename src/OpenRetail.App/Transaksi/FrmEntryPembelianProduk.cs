@@ -16,27 +16,23 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using ConceptCave.WaitCursor;
+using log4net;
+using OpenRetail.App.Lookup;
+using OpenRetail.App.Referensi;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.App.Lookup;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using Syncfusion.Windows.Forms.Grid;
-using OpenRetail.Helper.UserControl;
-using OpenRetail.App.Referensi;
-using ConceptCave.WaitCursor;
-using log4net;
-using Microsoft.Reporting.WinForms;
 
 namespace OpenRetail.App.Transaksi
 {
@@ -61,9 +57,9 @@ namespace OpenRetail.App.Transaksi
 
         public IListener Listener { private get; set; }
 
-        public FrmEntryPembelianProduk(string header, IBeliProdukBll bll) 
+        public FrmEntryPembelianProduk(string header, IBeliProdukBll bll)
             : base()
-        {            
+        {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
 
@@ -153,7 +149,7 @@ namespace OpenRetail.App.Transaksi
 
             GridListControlHelper.InitializeGridListControl<ItemBeliProduk>(grid, _listOfItemBeli, gridListProperties);
 
-            grid.PushButtonClick += delegate(object sender, GridCellPushButtonClickEventArgs e)
+            grid.PushButtonClick += delegate (object sender, GridCellPushButtonClickEventArgs e)
             {
                 if (e.ColIndex == 8)
                 {
@@ -175,11 +171,11 @@ namespace OpenRetail.App.Transaksi
                         grid.Refresh();
 
                         RefreshTotal();
-                    }                    
+                    }
                 }
             };
 
-            grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 // Make sure the cell falls inside the grid
                 if (e.RowIndex > 0)
@@ -398,14 +394,14 @@ namespace OpenRetail.App.Transaksi
                             CetakNota(_beli.beli_produk_id);
                     }
                     catch
-                    {                        
+                    {
                     }
 
                     Listener.Ok(this, _isNewData, _beli);
 
                     _supplier = null;
                     _listOfItemBeli.Clear();
-                    _listOfItemBeliDeleted.Clear();                                        
+                    _listOfItemBeliDeleted.Clear();
 
                     this.Close();
                 }
@@ -419,7 +415,7 @@ namespace OpenRetail.App.Transaksi
                     else
                         MsgHelper.MsgUpdateError();
                 }
-            }            
+            }
         }
 
         private void CetakNota(string beliProdukId)
@@ -553,7 +549,6 @@ namespace OpenRetail.App.Transaksi
                     MsgHelper.MsgWarning("Data supplier tidak ditemukan");
                     txtSupplier.Focus();
                     txtSupplier.SelectAll();
-
                 }
                 else if (listOfSupplier.Count == 1)
                 {
@@ -770,7 +765,7 @@ namespace OpenRetail.App.Transaksi
                 grid.Refresh();
 
                 RefreshTotal();
-            }           
+            }
         }
 
         private void gridControl_KeyDown(object sender, KeyEventArgs e)
@@ -790,7 +785,7 @@ namespace OpenRetail.App.Transaksi
                 MsgHelper.MsgWarning("Maaf Anda tidak mempunyai otoritas untuk mengakses menu ini");
                 return;
             }
-            
+
             IGolonganBll golonganBll = new GolonganBll(MainProgram.isUseWebAPI, MainProgram.baseUrl, _log);
             var listOfGolongan = golonganBll.GetAll();
 

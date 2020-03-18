@@ -16,34 +16,30 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class ItemMenuBll : IItemMenuBll
     {
-		private ILog _log;
+        private ILog _log;
         private IUnitOfWork _unitOfWork;
 
-		public ItemMenuBll(ILog log)
+        public ItemMenuBll(ILog log)
         {
-			_log = log;
+            _log = log;
         }
 
         public ItemMenu GetByID(string id)
         {
             ItemMenu obj = null;
-            
+
             using (IDapperContext context = new DapperContext())
             {
                 _unitOfWork = new UnitOfWork(context, _log);
@@ -84,7 +80,7 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-		public int Save(ItemMenu obj)
+        public int Save(ItemMenu obj)
         {
             var result = 0;
 
@@ -97,7 +93,7 @@ namespace OpenRetail.Bll.Service
             return result;
         }
 
-		public int Update(ItemMenu obj)
+        public int Update(ItemMenu obj)
         {
             throw new NotImplementedException();
         }
@@ -105,6 +101,6 @@ namespace OpenRetail.Bll.Service
         public int Delete(ItemMenu obj)
         {
             throw new NotImplementedException();
-        }        
+        }
     }
-}     
+}

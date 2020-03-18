@@ -16,10 +16,7 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Model.RajaOngkir
 {
@@ -37,6 +34,7 @@ namespace OpenRetail.Model.RajaOngkir
         /// Jenis Daerah Tingkat II. Berisi "Kota" atau "Kabupaten"
         /// </summary>
         public string type { get; set; }
+
         public string city_name { get; set; }
         public string postal_code { get; set; }
 

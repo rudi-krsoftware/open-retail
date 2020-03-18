@@ -17,10 +17,6 @@
  */
 
 using Syncfusion.Windows.Forms.Grid;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Helper
 {
@@ -35,7 +31,6 @@ namespace OpenRetail.Helper
 
         public GridControlColSizeHelper()
         {
-
         }
 
         public void WireGrid(GridControlBase grid)
@@ -86,6 +81,7 @@ namespace OpenRetail.Helper
             else if (_colSizeBehavior == GridColSizeBehavior.FillLeftColumn && e.Columns.Left == this.grid.Model.Cols.HeaderCount + 1)
                 e.Cancel = true;
         }
+
         private void grid_QueryColWidth(object sender, GridRowColSizeEventArgs e)
         {
             switch (_colSizeBehavior)
@@ -97,6 +93,7 @@ namespace OpenRetail.Helper
                         e.Handled = true;
                     }
                     break;
+
                 case GridColSizeBehavior.FillLeftColumn:
                     if (e.Index == this.grid.Model.Cols.FrozenCount + 1)
                     {
@@ -129,12 +126,14 @@ namespace OpenRetail.Helper
                     e.Handled = true;
 
                     break;
+
                 default:
                     break;
             }
         }
 
         private bool inColWidthsChanged = false;
+
         private void grid_ColWidthsChanged(object sender, GridRowColSizeChangedEventArgs e)
         {
             if (this.inColWidthsChanged)
@@ -152,11 +151,13 @@ namespace OpenRetail.Helper
             }
             inColWidthsChanged = false;
         }
+
         public GridColSizeBehavior ColSizeBehavior
         {
             get { return _colSizeBehavior; }
             set { _colSizeBehavior = value; }
         }
+
         public enum GridColSizeBehavior
         {
             None = 0,

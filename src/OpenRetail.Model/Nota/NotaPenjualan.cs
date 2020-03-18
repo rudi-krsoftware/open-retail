@@ -17,9 +17,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Model.Nota
 {
@@ -27,9 +24,9 @@ namespace OpenRetail.Model.Nota
     {
         public string nama_customer { get; set; }
         public string alamat { get; set; }
-        public string provinsi { get; set; }        
+        public string provinsi { get; set; }
         public string kabupaten { get; set; }
-        public string kecamatan { get; set; }        
+        public string kecamatan { get; set; }
         public string kode_pos { get; set; }
 
         public string kontak { get; set; }
@@ -46,7 +43,7 @@ namespace OpenRetail.Model.Nota
         public string kirim_alamat { get; set; }
         public string kirim_desa { get; set; }
         public string kirim_kelurahan { get; set; }
-        public string kirim_kecamatan { get; set; }        
+        public string kirim_kecamatan { get; set; }
         public string kirim_kota { get; set; }
         public string kirim_kabupaten { get; set; }
         public string kirim_kode_pos { get; set; }
@@ -70,7 +67,7 @@ namespace OpenRetail.Model.Nota
         public string kurir { get; set; }
         public double ongkos_kirim { get; set; }
         public string label_ongkos_kirim { get; set; }
-        public double total_nota { get; set; }        
+        public double total_nota { get; set; }
 
         public string kode_produk { get; set; }
         public string nama_produk { get; set; }

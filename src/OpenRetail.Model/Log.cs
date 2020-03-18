@@ -16,13 +16,6 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Dapper.Contrib.Extensions;
-
 namespace OpenRetail.Model
 {
     /// <summary>
@@ -38,6 +31,6 @@ namespace OpenRetail.Model
         public string new_value { get; set; }
         public string old_value { get; set; }
         public string exception { get; set; }
-        public string created_by { get; set; }        
+        public string created_by { get; set; }
     }
 }

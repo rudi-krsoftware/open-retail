@@ -18,23 +18,18 @@
 
 using ConceptCave.WaitCursor;
 using log4net;
-using OpenRetail.Helper;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
 using OpenRetail.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.IO.Ports;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Main
-{    
+{
     public partial class FrmLogin : Form
     {
         private ILog _log;
@@ -46,7 +41,7 @@ namespace OpenRetail.App.Main
             ColorManagerHelper.SetTheme(this, this);
 
             _log = MainProgram.log;
-            
+
             LoadAppConfig();
         }
 
@@ -87,7 +82,7 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanUmum.is_auto_print_label_nota = AppConfigHelper.GetValue("isAutoPrinterLabelNota", _appConfigFile).ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.is_show_minimal_stok = AppConfigHelper.GetValue("isShowMinimalStok", _appConfigFile).ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.is_customer_required = AppConfigHelper.GetValue("isCustomerRequired", _appConfigFile).ToLower() == "true" ? true : false;
-            MainProgram.pengaturanUmum.is_cetak_keterangan_nota = AppConfigHelper.GetValue("isCetakKeteranganNota", _appConfigFile, "true").ToLower() == "true" ? true : false;            
+            MainProgram.pengaturanUmum.is_cetak_keterangan_nota = AppConfigHelper.GetValue("isCetakKeteranganNota", _appConfigFile, "true").ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.is_singkat_penulisan_ongkir = AppConfigHelper.GetValue("isSingkatPenulisanOngkir", _appConfigFile).ToLower() == "true" ? true : false;
             MainProgram.pengaturanUmum.default_ppn = Convert.ToDouble(AppConfigHelper.GetValue("defaultPPN", _appConfigFile, "0"));
 
@@ -120,7 +115,7 @@ namespace OpenRetail.App.Main
                 MainProgram.pengaturanUmum.is_fokus_input_kolom_jumlah = settingAplikasi.is_fokus_input_kolom_jumlah;
                 MainProgram.pengaturanUmum.is_tampilkan_keterangan_tambahan_item_jual = settingAplikasi.is_tampilkan_keterangan_tambahan_item_jual;
                 MainProgram.pengaturanUmum.keterangan_tambahan_item_jual = settingAplikasi.keterangan_tambahan_item_jual;
-            }            
+            }
 
             // set header nota
             IHeaderNotaBll headerNotaBll = new HeaderNotaBll();
@@ -144,7 +139,7 @@ namespace OpenRetail.App.Main
             MainProgram.pengaturanBarcode = new PengaturanBarcode();
             MainProgram.pengaturanBarcode.nama_printer = AppConfigHelper.GetValue("printerBarcode", _appConfigFile);
 
-            MainProgram.pengaturanBarcode.header_label = AppConfigHelper.GetValue("headerLabel", _appConfigFile).Length == 0 ? MainProgram.profil.nama_profil.NullToString() 
+            MainProgram.pengaturanBarcode.header_label = AppConfigHelper.GetValue("headerLabel", _appConfigFile).Length == 0 ? MainProgram.profil.nama_profil.NullToString()
                                                                                                                             : AppConfigHelper.GetValue("headerLabel", _appConfigFile);
 
             MainProgram.pengaturanBarcode.batas_atas_baris1 = Convert.ToSingle(AppConfigHelper.GetValue("batasAtasBaris1", _appConfigFile, "43"));
@@ -245,13 +240,13 @@ namespace OpenRetail.App.Main
         private void UpgradeDatabase(int newDatabaseVersion)
         {
             IDatabaseVersionBll bll = new DatabaseVersionBll(_log);
-            
+
             var dbVersion = bll.Get();
             if (dbVersion != null)
             {
                 var result = true;
                 var upgradeTo = dbVersion.version_number + 1;
-                
+
                 while (upgradeTo <= newDatabaseVersion)
                 {
                     var scriptUpgrade = DatabaseVersionHelper.ListOfUpgradeDatabaseScript[upgradeTo];
@@ -316,7 +311,7 @@ namespace OpenRetail.App.Main
                     if (MainProgram.pengaturanUmum.is_show_minimal_stok)
                     {
                         LoadInfoMinimalStokProduk();
-                    }                        
+                    }
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -355,6 +350,6 @@ namespace OpenRetail.App.Main
         {
             if (KeyPressHelper.IsEnter(e))
                 btnLogin_Click(sender, e);
-        }        
+        }
     }
 }

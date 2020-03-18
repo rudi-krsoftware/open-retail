@@ -16,16 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using OpenRetail.Model.Nota;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model.Nota;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
+using System.Collections.Generic;
 
 namespace OpenRetail.Bll.Service
 {
@@ -67,7 +63,7 @@ namespace OpenRetail.Bll.Service
                 item.provinsi = string.IsNullOrEmpty(item.provinsi) ? "" : item.provinsi;
                 item.kabupaten = string.IsNullOrEmpty(item.kabupaten) ? "" : item.kabupaten;
                 item.kecamatan = string.IsNullOrEmpty(item.kecamatan) ? "" : item.kecamatan;
-                
+
                 item.kode_pos = (string.IsNullOrEmpty(item.kode_pos) || item.kode_pos == "0") ? "" : item.kode_pos;
                 item.telepon = string.IsNullOrEmpty(item.telepon) ? "" : item.telepon;
 

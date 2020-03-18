@@ -16,29 +16,20 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
 
 namespace OpenRetail.App.Pengaturan
 {
     public partial class FrmEntryHakAkses : FrmEntryStandard
-    {        
-        private IRoleBll _bll = null; // deklarasi objek business logic layer 
+    {
+        private IRoleBll _bll = null; // deklarasi objek business logic layer
         private Role _role = null;
 
         private bool _isNewData = false;
-        
+
         public IListener Listener { private get; set; }
 
         public FrmEntryHakAkses(string header, IRoleBll bll)
@@ -87,7 +78,7 @@ namespace OpenRetail.App.Pengaturan
             else
                 result = _bll.Update(_role, ref validationError);
 
-            if (result > 0) 
+            if (result > 0)
             {
                 Listener.Ok(this, _isNewData, _role);
 
@@ -98,7 +89,6 @@ namespace OpenRetail.App.Pengaturan
                 }
                 else
                     this.Close();
-
             }
             else
             {
@@ -110,8 +100,8 @@ namespace OpenRetail.App.Pengaturan
                 else
                 {
                     MsgHelper.MsgUpdateError();
-                }                    
-            }                
+                }
+            }
         }
     }
 }

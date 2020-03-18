@@ -16,44 +16,42 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using System.Net;
-using System.Web.Http;
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
+using OpenRetail.WebAPI.Controllers.Helper;
 using OpenRetail.WebAPI.Models;
 using OpenRetail.WebAPI.Models.DTO;
-using OpenRetail.WebAPI.Controllers.Helper;
+using System;
+using System.Collections.Generic;
+using System.Net;
 
 namespace OpenRetail.WebAPI.Controllers
-{        
-	public interface IKasbonController : IBaseApiController<KasbonDTO>
+{
+    public interface IKasbonController : IBaseApiController<KasbonDTO>
     {
         IHttpActionResult GetByID(string id);
+
         IHttpActionResult GetByName(string name);
 
         IHttpActionResult GetLastNota();
+
         IHttpActionResult GetByKaryawanId(string karyawanId);
+
         IHttpActionResult GetByStatus(bool isLunas);
+
         IHttpActionResult GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 
-	[RoutePrefix("api/kasbon")]
+    [RoutePrefix("api/kasbon")]
     public class KasbonController : BaseApiController, IKasbonController
     {
         private IUnitOfWork _unitOfWork;
         private ILog _log;
         private HttpStatusCode _httpStatusCode = HttpStatusCode.BadRequest;
         private IHttpActionResult _response = null;
-		
-		public KasbonController(IUnitOfWork unitOfWork)
+
+        public KasbonController(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -64,7 +62,7 @@ namespace OpenRetail.WebAPI.Controllers
             this._log = log;
         }
 
-		[HttpGet, Route("get_by_id")]
+        [HttpGet, Route("get_by_id")]
         public IHttpActionResult GetByID(string id)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -74,7 +72,7 @@ namespace OpenRetail.WebAPI.Controllers
             {
                 var results = new List<Kasbon>();
                 var obj = _unitOfWork.KasbonRepository.GetByID(id);
-                
+
                 if (obj != null)
                     results.Add(obj);
 
@@ -92,7 +90,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpGet, Route("get_by_name")]
+        [HttpGet, Route("get_by_name")]
         public IHttpActionResult GetByName(string name)
         {
             throw new NotImplementedException();
@@ -198,7 +196,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpGet, Route("get_all")]
+        [HttpGet, Route("get_all")]
         public IHttpActionResult GetAll()
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -222,7 +220,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpPost, Route("save")]
+        [HttpPost, Route("save")]
         public IHttpActionResult Save(KasbonDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -253,7 +251,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpPost, Route("update")]
+        [HttpPost, Route("update")]
         public IHttpActionResult Update(KasbonDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -284,7 +282,7 @@ namespace OpenRetail.WebAPI.Controllers
             return _response;
         }
 
-		[HttpPost, Route("delete")]
+        [HttpPost, Route("delete")]
         public IHttpActionResult Delete(KasbonDTO objDTO)
         {
             _httpStatusCode = HttpStatusCode.BadRequest;
@@ -313,6 +311,6 @@ namespace OpenRetail.WebAPI.Controllers
             }
 
             return _response;
-        }        
+        }
     }
-}     
+}

@@ -16,20 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class GajiKaryawanBll : IGajiKaryawanBll
     {
         private ILog _log;
@@ -125,7 +121,7 @@ namespace OpenRetail.Bll.Service
             return oList;
         }
 
-		public int Save(GajiKaryawan obj)
+        public int Save(GajiKaryawan obj)
         {
             var result = 0;
 
@@ -150,7 +146,7 @@ namespace OpenRetail.Bll.Service
 
         public int Save(GajiKaryawan obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -165,7 +161,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(GajiKaryawan obj)
+        public int Update(GajiKaryawan obj)
         {
             var result = 0;
 
@@ -222,6 +218,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

@@ -16,16 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
 
 namespace OpenRetail.Repository.Service.Report
 {
@@ -39,7 +34,7 @@ namespace OpenRetail.Repository.Service.Report
                                                           FROM t_jual_produk
                                                           {WHERE}";
 
-        private const string SQL_TEMPLATE_DISKON_PRODUK = @"SELECT COALESCE(SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur), SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur), 0) * 
+        private const string SQL_TEMPLATE_DISKON_PRODUK = @"SELECT COALESCE(SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur), SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur), 0) *
                                                             COALESCE(SUM(t_item_jual_produk.diskon), SUM(t_item_jual_produk.diskon), 0)
                                                             FROM t_jual_produk INNER JOIN t_item_jual_produk ON t_jual_produk.jual_id = t_item_jual_produk.jual_id
                                                             {WHERE}";
@@ -170,7 +165,7 @@ namespace OpenRetail.Repository.Service.Report
 
             try
             {
-                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_DISKON_NOTA);                
+                var whereBuilder = new WhereBuilder(SQL_TEMPLATE_DISKON_NOTA);
                 whereBuilder.Add("tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
 
                 result = _context.db.QuerySingleOrDefault<double>(whereBuilder.ToSql(), new { tanggalMulai, tanggalSelesai });

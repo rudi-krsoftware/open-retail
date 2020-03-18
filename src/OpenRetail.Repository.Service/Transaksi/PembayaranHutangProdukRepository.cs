@@ -16,30 +16,25 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
+using System;
+using System.Collections.Generic;
 using System.Data;
- 
+using System.Linq;
+
 namespace OpenRetail.Repository.Service
-{        
+{
     public class PembayaranHutangProdukRepository : IPembayaranHutangProdukRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT t_pembayaran_hutang_produk.pembayaran_hutang_produk_id, t_pembayaran_hutang_produk.pengguna_id, t_pembayaran_hutang_produk.tanggal, 
+        private const string SQL_TEMPLATE = @"SELECT t_pembayaran_hutang_produk.pembayaran_hutang_produk_id, t_pembayaran_hutang_produk.pengguna_id, t_pembayaran_hutang_produk.tanggal,
                                               t_pembayaran_hutang_produk.keterangan, t_pembayaran_hutang_produk.tanggal_sistem, t_pembayaran_hutang_produk.nota, t_pembayaran_hutang_produk.is_tunai,
                                               m_supplier.supplier_id, m_supplier.nama_supplier
                                               FROM public.t_pembayaran_hutang_produk INNER JOIN public.m_supplier ON t_pembayaran_hutang_produk.supplier_id = m_supplier.supplier_id
                                               {WHERE}
                                               {ORDER BY}";
+
         private IDapperContext _context;
         private ILog _log;
         private string _sql;
@@ -67,7 +62,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT t_item_pembayaran_hutang_produk.item_pembayaran_hutang_produk_id, t_item_pembayaran_hutang_produk.pembayaran_hutang_produk_id, t_item_pembayaran_hutang_produk.nominal, 
+                var sql = @"SELECT t_item_pembayaran_hutang_produk.item_pembayaran_hutang_produk_id, t_item_pembayaran_hutang_produk.pembayaran_hutang_produk_id, t_item_pembayaran_hutang_produk.nominal,
                             t_item_pembayaran_hutang_produk.keterangan, t_item_pembayaran_hutang_produk.tanggal_sistem, 1 as entity_state, (SELECT COUNT(*) FROM t_item_pembayaran_hutang_produk WHERE beli_produk_id = t_beli_produk.beli_produk_id) AS jumlah_angsuran,
                             t_beli_produk.beli_produk_id, t_beli_produk.nota, t_beli_produk.tanggal, t_beli_produk.tanggal_tempo, t_beli_produk.ppn, t_beli_produk.diskon, t_beli_produk.total_nota, t_beli_produk.total_pelunasan
                             FROM public.t_item_pembayaran_hutang_produk INNER JOIN public.t_beli_produk ON t_item_pembayaran_hutang_produk.beli_produk_id = t_beli_produk.beli_produk_id
@@ -166,7 +161,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT t_item_pembayaran_hutang_produk.item_pembayaran_hutang_produk_id, t_item_pembayaran_hutang_produk.nominal, t_item_pembayaran_hutang_produk.keterangan, 
+                var sql = @"SELECT t_item_pembayaran_hutang_produk.item_pembayaran_hutang_produk_id, t_item_pembayaran_hutang_produk.nominal, t_item_pembayaran_hutang_produk.keterangan,
                             t_pembayaran_hutang_produk.pembayaran_hutang_produk_id, t_pembayaran_hutang_produk.tanggal, t_pembayaran_hutang_produk.nota, m_pengguna.pengguna_id, m_pengguna.nama_pengguna
                             FROM public.t_item_pembayaran_hutang_produk INNER JOIN public.t_pembayaran_hutang_produk ON t_item_pembayaran_hutang_produk.pembayaran_hutang_produk_id = t_pembayaran_hutang_produk.pembayaran_hutang_produk_id
                             INNER JOIN public.m_pengguna ON t_pembayaran_hutang_produk.pengguna_id = m_pengguna.pengguna_id
@@ -336,14 +331,13 @@ namespace OpenRetail.Repository.Service
                 _log.Info("Update data");
 
                 result = 1;
-
             }
             catch (Exception ex)
             {
                 _log.Error("Error:", ex);
             }
 
-            return result; 
+            return result;
         }
 
         public int Delete(PembayaranHutangProduk obj)
@@ -366,7 +360,7 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }                
+        }
 
         public string GetLastNota()
         {
@@ -379,7 +373,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT t_item_pembayaran_hutang_produk.item_pembayaran_hutang_produk_id, t_item_pembayaran_hutang_produk.beli_produk_id, t_item_pembayaran_hutang_produk.nominal, t_item_pembayaran_hutang_produk.keterangan, 1 as entity_state, 
+                var sql = @"SELECT t_item_pembayaran_hutang_produk.item_pembayaran_hutang_produk_id, t_item_pembayaran_hutang_produk.beli_produk_id, t_item_pembayaran_hutang_produk.nominal, t_item_pembayaran_hutang_produk.keterangan, 1 as entity_state,
                             t_pembayaran_hutang_produk.pembayaran_hutang_produk_id, t_pembayaran_hutang_produk.supplier_id, t_pembayaran_hutang_produk.pengguna_id, t_pembayaran_hutang_produk.tanggal, t_pembayaran_hutang_produk.keterangan, t_pembayaran_hutang_produk.nota, t_pembayaran_hutang_produk.is_tunai
                             FROM public.t_item_pembayaran_hutang_produk INNER JOIN public.t_pembayaran_hutang_produk ON t_item_pembayaran_hutang_produk.pembayaran_hutang_produk_id = t_pembayaran_hutang_produk.pembayaran_hutang_produk_id
                             WHERE t_item_pembayaran_hutang_produk.beli_produk_id = @id";
@@ -398,6 +392,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return obj;
-        }        
+        }
     }
-}     
+}

@@ -16,23 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model.Report;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using OpenRetail.Model.Report;
 
 namespace OpenRetail.Repository.Api.Report
 {
     public interface IReportPiutangJualProdukRepository : IBaseReportRepository<ReportPiutangPenjualanProdukHeader>
     {
         IList<ReportPiutangPenjualanProdukDetail> DetailGetByBulan(int bulan, int tahun);
+
         IList<ReportPiutangPenjualanProdukDetail> DetailGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+
         IList<ReportPiutangPenjualanProdukDetail> DetailGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
 
         IList<ReportPiutangPenjualanProduk> PerProdukGetByBulan(int bulan, int tahun);
+
         IList<ReportPiutangPenjualanProduk> PerProdukGetByBulan(int bulanAwal, int bulanAkhir, int tahun);
-        IList<ReportPiutangPenjualanProduk> PerProdukGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);   
+
+        IList<ReportPiutangPenjualanProduk> PerProdukGetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 }

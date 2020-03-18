@@ -16,16 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using FluentValidation;
+using Newtonsoft.Json;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
-using FluentValidation;
 using System.ComponentModel.DataAnnotations;
-using OpenRetail.Model;
 
 namespace OpenRetail.WebAPI.Models.DTO
 {
@@ -40,25 +36,25 @@ namespace OpenRetail.WebAPI.Models.DTO
             item_jual_deleted = new List<ItemJualProdukDTO>();
         }
 
-		[Display(Name = "jual_id")]		
-		public string jual_id { get; set; }
-		
-		[Display(Name = "pengguna_id")]
-		public string pengguna_id { get; set; }
+        [Display(Name = "jual_id")]
+        public string jual_id { get; set; }
 
-		[Display(Name = "Customer")]
-		public string customer_id { get; set; }
+        [Display(Name = "pengguna_id")]
+        public string pengguna_id { get; set; }
+
+        [Display(Name = "Customer")]
+        public string customer_id { get; set; }
 
         [JsonIgnore]
         public Customer Customer { get; set; }
 
-		[Display(Name = "Nota")]
-		public string nota { get; set; }
-		
-		[Display(Name = "Tanggal")]
-		public Nullable<DateTime> tanggal { get; set; }        
+        [Display(Name = "Nota")]
+        public string nota { get; set; }
 
-		[Display(Name = "Tanggal Tempo")]        
+        [Display(Name = "Tanggal")]
+        public Nullable<DateTime> tanggal { get; set; }
+
+        [Display(Name = "Tanggal Tempo")]
         public Nullable<DateTime> tanggal_tempo
         {
             get { return _tanggal_tempo.IsNull() ? null : _tanggal_tempo; }
@@ -68,11 +64,11 @@ namespace OpenRetail.WebAPI.Models.DTO
         [JsonIgnore]
         public Nullable<DateTime> tanggal_tempo_old { get; set; }
 
-		[Display(Name = "PPN")]
-		public double ppn { get; set; }
-		
-		[Display(Name = "Diskon")]
-		public double diskon { get; set; }
+        [Display(Name = "PPN")]
+        public double ppn { get; set; }
+
+        [Display(Name = "Diskon")]
+        public double diskon { get; set; }
 
         [Display(Name = "Kurir")]
         public string kurir { get; set; }
@@ -80,14 +76,14 @@ namespace OpenRetail.WebAPI.Models.DTO
         [Display(Name = "Ongkos Kirim")]
         public double ongkos_kirim { get; set; }
 
-		[Display(Name = "total_nota")]
-		public double total_nota { get; set; }
+        [Display(Name = "total_nota")]
+        public double total_nota { get; set; }
 
-		[Display(Name = "total_pelunasan")]
-		public double total_pelunasan { get; set; }
-		
-		[Display(Name = "keterangan")]
-		public string keterangan { get; set; }
+        [Display(Name = "total_pelunasan")]
+        public double total_pelunasan { get; set; }
+
+        [Display(Name = "keterangan")]
+        public string keterangan { get; set; }
 
         /// <summary>
         /// Property untuk menyimpan informasi apakah alamat kirim sama dengan alamat customer
@@ -103,7 +99,7 @@ namespace OpenRetail.WebAPI.Models.DTO
         public string kirim_alamat { get; set; }
 
         [Display(Name = "Desa")]
-        public string kirim_desa { get; set; }        
+        public string kirim_desa { get; set; }
 
         [Display(Name = "Kelurahan")]
         public string kirim_kelurahan { get; set; }
@@ -162,15 +158,15 @@ namespace OpenRetail.WebAPI.Models.DTO
         [JsonIgnore]
         [Display(Name = "tanggal_sistem")]
         public Nullable<DateTime> tanggal_sistem { get; set; }
-		
-		[Display(Name = "retur_jual_id")]
-		public string retur_jual_id { get; set; }
+
+        [Display(Name = "retur_jual_id")]
+        public string retur_jual_id { get; set; }
 
         [JsonIgnore]
         public ReturJualProdukDTO ReturJualProduk { get; set; }
 
-		[Display(Name = "shift_id")]
-		public string shift_id { get; set; }
+        [Display(Name = "shift_id")]
+        public string shift_id { get; set; }
 
         [JsonIgnore]
         public Shift Shift { get; set; }
@@ -198,7 +194,7 @@ namespace OpenRetail.WebAPI.Models.DTO
 
         public bool is_tunai { get; set; }
 
-        public double total_pelunasan_old { get; set; }        
+        public double total_pelunasan_old { get; set; }
 
         /// <summary>
         /// total nota setelah dikurangi diskon kemudian ditambah ppn

@@ -16,26 +16,21 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using Dapper;
-
-using System.Data;
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
- 
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+
 namespace OpenRetail.Repository.Service
-{        
+{
     public class HargaGrosirRepository : IHargaGrosirRepository
     {
         private IDapperContext _context;
-		private ILog _log;
-		
+        private ILog _log;
+
         public HargaGrosirRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -48,8 +43,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT harga_grosir_id, produk_id, harga_ke, harga_grosir, jumlah_minimal, diskon 
-                            FROM m_harga_grosir 
+                var sql = @"SELECT harga_grosir_id, produk_id, harga_ke, harga_grosir, jumlah_minimal, diskon
+                            FROM m_harga_grosir
                             WHERE produk_id = @produkId AND harga_ke = @hargaKe";
 
                 obj = _context.db.Query<HargaGrosir>(sql, new { produkId, hargaKe }, transaction)
@@ -69,8 +64,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT harga_grosir_id, produk_id, harga_ke, harga_grosir, jumlah_minimal, diskon 
-                            FROM m_harga_grosir 
+                var sql = @"SELECT harga_grosir_id, produk_id, harga_ke, harga_grosir, jumlah_minimal, diskon
+                            FROM m_harga_grosir
                             WHERE produk_id = @produkId
                             ORDER BY harga_ke";
 
@@ -91,8 +86,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT harga_grosir_id, produk_id, harga_ke, harga_grosir, jumlah_minimal, diskon 
-                            FROM m_harga_grosir 
+                var sql = @"SELECT harga_grosir_id, produk_id, harga_ke, harga_grosir, jumlah_minimal, diskon
+                            FROM m_harga_grosir
                             WHERE produk_id = ANY(@listOfProdukId)";
 
                 oList = _context.db.Query<HargaGrosir>(sql, new { listOfProdukId })
@@ -106,4 +101,4 @@ namespace OpenRetail.Repository.Service
             return oList;
         }
     }
-}     
+}

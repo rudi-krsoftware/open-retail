@@ -17,16 +17,8 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using WeifenLuo.WinFormsUI.Docking;
 
 namespace OpenRetail.Helper.UI.Template
 {
@@ -35,7 +27,7 @@ namespace OpenRetail.Helper.UI.Template
         public FrmListEmptyBody()
         {
             InitializeComponent();
-            ColorManagerHelper.SetTheme(this, this);            
+            ColorManagerHelper.SetTheme(this, this);
         }
 
         protected void SetHeader(string header)

@@ -16,12 +16,8 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace OpenRetail.Helper
@@ -45,7 +41,6 @@ namespace OpenRetail.Helper
         {
             return Directory.GetCurrentDirectory();
         }
-
 
         /// <summary>
         /// Untuk mendapatkan versi aplikasi dengan format : Major.Minor.Revision

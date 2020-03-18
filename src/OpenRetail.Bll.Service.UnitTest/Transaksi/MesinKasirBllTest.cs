@@ -16,26 +16,18 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class MesinKasirBllTest
     {
-		private ILog _log;
+        private ILog _log;
         private IMesinKasirBll _bll;
 
         [TestInitialize]
@@ -69,12 +61,12 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var newObj = _bll.GetByID(obj.mesin_id);
-			Assert.IsNotNull(newObj);
-			Assert.AreEqual(obj.mesin_id, newObj.mesin_id);                                
-            Assert.AreEqual(obj.pengguna_id, newObj.pengguna_id);                                
-            Assert.AreEqual(obj.tanggal, newObj.tanggal);                                
-            Assert.AreEqual(obj.saldo_awal, newObj.saldo_awal);                                
-		}
+            Assert.IsNotNull(newObj);
+            Assert.AreEqual(obj.mesin_id, newObj.mesin_id);
+            Assert.AreEqual(obj.pengguna_id, newObj.pengguna_id);
+            Assert.AreEqual(obj.tanggal, newObj.tanggal);
+            Assert.AreEqual(obj.saldo_awal, newObj.saldo_awal);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -91,16 +83,15 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var updatedObj = _bll.GetByID(obj.mesin_id);
-			Assert.IsNotNull(updatedObj);
-            Assert.AreEqual(obj.mesin_id, updatedObj.mesin_id);                                
-            Assert.AreEqual(obj.pengguna_id, updatedObj.pengguna_id);                                
-            Assert.AreEqual(obj.tanggal, updatedObj.tanggal);                                
-            Assert.AreEqual(obj.saldo_awal, updatedObj.saldo_awal);                                
-            Assert.AreEqual(obj.uang_masuk, updatedObj.uang_masuk);                                
-            Assert.AreEqual(obj.tanggal_sistem, updatedObj.tanggal_sistem);                                
-            Assert.AreEqual(obj.shift_id, updatedObj.shift_id);                                
-            Assert.AreEqual(obj.uang_keluar, updatedObj.uang_keluar);                                
-            
+            Assert.IsNotNull(updatedObj);
+            Assert.AreEqual(obj.mesin_id, updatedObj.mesin_id);
+            Assert.AreEqual(obj.pengguna_id, updatedObj.pengguna_id);
+            Assert.AreEqual(obj.tanggal, updatedObj.tanggal);
+            Assert.AreEqual(obj.saldo_awal, updatedObj.saldo_awal);
+            Assert.AreEqual(obj.uang_masuk, updatedObj.uang_masuk);
+            Assert.AreEqual(obj.tanggal_sistem, updatedObj.tanggal_sistem);
+            Assert.AreEqual(obj.shift_id, updatedObj.shift_id);
+            Assert.AreEqual(obj.uang_keluar, updatedObj.uang_keluar);
         }
 
         [TestMethod]
@@ -115,7 +106,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.mesin_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

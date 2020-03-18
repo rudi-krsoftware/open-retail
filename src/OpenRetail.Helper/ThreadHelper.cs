@@ -16,10 +16,6 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace OpenRetail.Helper
@@ -34,7 +30,7 @@ namespace OpenRetail.Helper
         private const int Canceled = 1;
 
         private int _canceled = NotCanceled;
-        private ManualResetEvent _manualResetEvent = new ManualResetEvent(false); 
+        private ManualResetEvent _manualResetEvent = new ManualResetEvent(false);
 
         /// <summary>
         /// Sleeps for the specified amount of time.
@@ -70,6 +66,6 @@ namespace OpenRetail.Helper
             {
                 return (_canceled == Canceled);
             }
-        }        
+        }
     }
 }

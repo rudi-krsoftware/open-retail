@@ -17,11 +17,8 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace OpenRetail.Helper
 {
@@ -34,11 +31,14 @@ namespace OpenRetail.Helper
         {
             [MarshalAs(UnmanagedType.LPStr)]
             public string pDocName;
+
             [MarshalAs(UnmanagedType.LPStr)]
             public string pOutputFile;
+
             [MarshalAs(UnmanagedType.LPStr)]
             public string pDataType;
         }
+
         [DllImport("winspool.Drv", EntryPoint = "OpenPrinterA", SetLastError = true, CharSet = CharSet.Ansi, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
         public static extern bool OpenPrinter([MarshalAs(UnmanagedType.LPStr)] string szPrinter, out IntPtr hPrinter, IntPtr pd);
 

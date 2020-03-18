@@ -16,23 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Threading;
-using System.Threading.Tasks;
-
-using Dapper;
 using ConceptCave.WaitCursor;
 using OpenRetail.BackupAndRestore.Context;
 using OpenRetail.Helper;
-using System.IO;
+using System;
 using System.Diagnostics;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OpenRetail.BackupAndRestore.Main
 {
@@ -40,11 +32,11 @@ namespace OpenRetail.BackupAndRestore.Main
     {
         private event EventHandler ResultChanged;
 
-        private string _result = "";        
+        private string _result = "";
         private string _appConfigFile = string.Format("{0}\\OpenRetail.BackupAndRestore.exe.config", Utils.GetAppPath());
 
         private string _port = "5435";
-        private string _dbName = "DbOpenRetail";        
+        private string _dbName = "DbOpenRetail";
         private string _pgPassword = "masterkey";
 
         private string Result
@@ -112,7 +104,6 @@ namespace OpenRetail.BackupAndRestore.Main
                                   "2. Jangan melakukan restore database jika tidak terjadi masalah dengan database Anda.\n" +
                                   "3. Pilihlah file backup yang benar.";
 
-
             var dt = DateTime.Now;
             txtNamaFileBackup.Text = string.Format("DbOpenRetail_{0}_{1}_{2}_{3}{4}{5}.backup", dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second);
         }
@@ -127,7 +118,7 @@ namespace OpenRetail.BackupAndRestore.Main
             }
 
             if (!Directory.Exists(txtLokasiPenyimpananFileBackup.Text))
-                Directory.CreateDirectory(txtLokasiPenyimpananFileBackup.Text   );
+                Directory.CreateDirectory(txtLokasiPenyimpananFileBackup.Text);
 
             if (!MsgHelper.MsgKonfirmasi("Apakah proses backup database ingin dilanjutkan ?"))
                 return;
@@ -154,7 +145,7 @@ namespace OpenRetail.BackupAndRestore.Main
 
                 var cmd = "-U postgres -h " + txtServer.Text + " -p " + _port + " -i -F c -b -v -f \"" + fileBackup + "\" " + _dbName;
                 ExecuteCommand("pg_dump", cmd);
-                
+
                 OpenFolder(fileBackup, txtLokasiPenyimpananFileBackup.Text);
             }
         }
@@ -201,9 +192,9 @@ namespace OpenRetail.BackupAndRestore.Main
                 Result = "Sedang merestore database ..." + Environment.NewLine + Environment.NewLine;
 
                 var cmd = "-U postgres -h " + txtServer.Text + " -p " + _port + " -i -v -d " + _dbName + " \"" + txtLokasiFileBackup.Text + "\"";
-                ExecuteCommand("pg_restore", cmd);                
+                ExecuteCommand("pg_restore", cmd);
             }
-        }                
+        }
 
         private void OpenFolder(string fileBackup, string lokasiFileBackup)
         {
@@ -216,7 +207,7 @@ namespace OpenRetail.BackupAndRestore.Main
         {
             try
             {
-                _result = "";                
+                _result = "";
 
                 var info = new System.Diagnostics.ProcessStartInfo();
                 info.FileName = "pgsql\\" + cmd + ".exe ";
@@ -226,13 +217,13 @@ namespace OpenRetail.BackupAndRestore.Main
                 info.RedirectStandardError = true;
                 info.UseShellExecute = false;
 
-                try 
-	            {	        
-                    info.EnvironmentVariables.Add("PGPASSWORD", _pgPassword); 
-	            }
-	            catch
-	            {
-	            }
+                try
+                {
+                    info.EnvironmentVariables.Add("PGPASSWORD", _pgPassword);
+                }
+                catch
+                {
+                }
 
                 var proc = new System.Diagnostics.Process();
                 proc.StartInfo = info;
@@ -248,13 +239,12 @@ namespace OpenRetail.BackupAndRestore.Main
                     Result += Environment.NewLine + ((cmd == "pg_dump") ? "Backup database berhasil." : "Restore database berhasil.");
                 else
                     Result += Environment.NewLine + "Error Occured";
-
             }
             catch (Exception ex)
             {
                 MsgHelper.MsgError(ex.Message);
             }
-        }                
+        }
 
         private bool IsOpenConnection()
         {
@@ -278,7 +268,7 @@ namespace OpenRetail.BackupAndRestore.Main
                 {
                     Result = "Menonaktifkan semua koneksi" + Environment.NewLine;
 
-                    var sql = @"SELECT pg_terminate_backend(pid) 
+                    var sql = @"SELECT pg_terminate_backend(pid)
                                 FROM pg_stat_activity WHERE datname = @dbName";
                     context.db.Execute(sql, new { dbName });
 
@@ -339,6 +329,6 @@ namespace OpenRetail.BackupAndRestore.Main
         {
             if (KeyPressHelper.IsEsc(e))
                 this.Close();
-        }        
+        }
     }
 }

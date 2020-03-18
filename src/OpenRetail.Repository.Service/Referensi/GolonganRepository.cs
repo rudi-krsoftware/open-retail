@@ -16,20 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class GolonganRepository : IGolonganRepository
     {
         private IDapperContext _context;
@@ -51,7 +46,7 @@ namespace OpenRetail.Repository.Service
             }
             catch (Exception ex)
             {
-                _log.Error("Error:", ex);                
+                _log.Error("Error:", ex);
             }
 
             return obj;
@@ -133,7 +128,7 @@ namespace OpenRetail.Repository.Service
         public int Delete(Golongan obj)
         {
             var result = 0;
-            
+
             try
             {
                 result = _context.db.Delete<Golongan>(obj) ? 1 : 0;
@@ -146,4 +141,4 @@ namespace OpenRetail.Repository.Service
             return result;
         }
     }
-}     
+}

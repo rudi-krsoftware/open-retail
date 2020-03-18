@@ -16,37 +16,30 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using FluentValidation;
-using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.Model
-{        
-	[Table("m_dropshipper")]
+{
+    [Table("m_dropshipper")]
     public class Dropshipper
     {
-		[ExplicitKey]
-		[Display(Name = "dropshipper_id")]		
-		public string dropshipper_id { get; set; }
-		
-		[Display(Name = "Dropshipper")]
-		public string nama_dropshipper { get; set; }
-		
-		[Display(Name = "Alamat")]
-		public string alamat { get; set; }
-		
-		[Display(Name = "Kontak")]
-		public string kontak { get; set; }
-		
-		[Display(Name = "Telepon")]
-		public string telepon { get; set; }
-	}
+        [ExplicitKey]
+        [Display(Name = "dropshipper_id")]
+        public string dropshipper_id { get; set; }
+
+        [Display(Name = "Dropshipper")]
+        public string nama_dropshipper { get; set; }
+
+        [Display(Name = "Alamat")]
+        public string alamat { get; set; }
+
+        [Display(Name = "Kontak")]
+        public string kontak { get; set; }
+
+        [Display(Name = "Telepon")]
+        public string telepon { get; set; }
+    }
 
     public class DropshipperValidator : AbstractValidator<Dropshipper>
     {
@@ -54,13 +47,13 @@ namespace OpenRetail.Model
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "Inputan '{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleFor(c => c.nama_dropshipper).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
-			RuleFor(c => c.alamat).Length(0, 100).WithMessage(msgError2);
-			RuleFor(c => c.kontak).Length(0, 50).WithMessage(msgError2);
-			RuleFor(c => c.telepon).Length(0, 20).WithMessage(msgError2);
-		}
-	}
+            RuleFor(c => c.nama_dropshipper).NotEmpty().WithMessage(msgError1).Length(1, 50).WithMessage(msgError2);
+            RuleFor(c => c.alamat).Length(0, 100).WithMessage(msgError2);
+            RuleFor(c => c.kontak).Length(0, 50).WithMessage(msgError2);
+            RuleFor(c => c.telepon).Length(0, 20).WithMessage(msgError2);
+        }
+    }
 }

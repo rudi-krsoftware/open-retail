@@ -16,65 +16,60 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
 using FluentValidation;
-using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 using OpenRetail.Model;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.WebAPI.Models.DTO
 {
     public class ItemJualProdukDTO
     {
-		[Display(Name = "item_jual_id")]		
-		public string item_jual_id { get; set; }
-		
-		[Display(Name = "jual_id")]
-		public string jual_id { get; set; }
+        [Display(Name = "item_jual_id")]
+        public string item_jual_id { get; set; }
+
+        [Display(Name = "jual_id")]
+        public string jual_id { get; set; }
 
         [JsonIgnore]
         public JualProdukDTO JualProduk { get; set; }
 
-		[Display(Name = "pengguna_id")]
-		public string pengguna_id { get; set; }
+        [Display(Name = "pengguna_id")]
+        public string pengguna_id { get; set; }
 
         [JsonIgnore]
         public PenggunaDTO Pengguna { get; set; }
 
-		[Display(Name = "produk_id")]
-		public string produk_id { get; set; }
+        [Display(Name = "produk_id")]
+        public string produk_id { get; set; }
 
         public ProdukDTO Produk { get; set; }
 
         [Display(Name = "Keterangan tambahan")]
         public string keterangan { get; set; }
 
-		[Display(Name = "Harga Beli")]
-		public double harga_beli { get; set; }
-		
-		[Display(Name = "Harga Jual")]
-		public double harga_jual { get; set; }
+        [Display(Name = "Harga Beli")]
+        public double harga_beli { get; set; }
+
+        [Display(Name = "Harga Jual")]
+        public double harga_jual { get; set; }
 
         [Display(Name = "Old Jumlah")]
         public double old_jumlah { get; set; }
 
-		[Display(Name = "Jumlah")]
-		public double jumlah { get; set; }
-		
-		[Display(Name = "Diskon")]
-		public double diskon { get; set; }
+        [Display(Name = "Jumlah")]
+        public double jumlah { get; set; }
+
+        [Display(Name = "Diskon")]
+        public double diskon { get; set; }
 
         [JsonIgnore]
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
-        
-		[Display(Name = "jumlah_retur")]
-		public double jumlah_retur { get; set; }
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
+
+        [Display(Name = "jumlah_retur")]
+        public double jumlah_retur { get; set; }
 
         public double diskon_rupiah
         {
@@ -102,7 +97,6 @@ namespace OpenRetail.WebAPI.Models.DTO
 
             var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
-
 
             RuleSet("save", () =>
             {

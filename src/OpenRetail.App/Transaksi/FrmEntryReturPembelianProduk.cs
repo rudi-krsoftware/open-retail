@@ -16,31 +16,25 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.App.Lookup;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using Syncfusion.Windows.Forms.Grid;
-using OpenRetail.Helper.UserControl;
-using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.App.Lookup;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Transaksi
 {
     public partial class FrmEntryReturPembelianProduk : FrmEntryStandard, IListener
-    {        
+    {
         private IReturBeliProdukBll _bll = null;
         private ReturBeliProduk _retur = null;
         private Supplier _supplier = null;
@@ -50,7 +44,7 @@ namespace OpenRetail.App.Transaksi
         private IList<ItemReturBeliProduk> _listOfItemReturDeleted = new List<ItemReturBeliProduk>();
 
         private int _rowIndex = 0;
-        private int _colIndex = 0;        
+        private int _colIndex = 0;
 
         private bool _isNewData = false;
         private bool _isValidJumlahRetur = false;
@@ -61,9 +55,9 @@ namespace OpenRetail.App.Transaksi
 
         public IListener Listener { private get; set; }
 
-        public FrmEntryReturPembelianProduk(string header, IReturBeliProdukBll bll) 
+        public FrmEntryReturPembelianProduk(string header, IReturBeliProdukBll bll)
             : base()
-        {            
+        {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
 
@@ -100,7 +94,7 @@ namespace OpenRetail.App.Transaksi
             txtNota.Enabled = false;
 
             dtpTanggal.Value = (DateTime)this._retur.tanggal;
-            txtSupplier.Text = this._supplier.nama_supplier;            
+            txtSupplier.Text = this._supplier.nama_supplier;
             txtKeterangan.Text = this._retur.keterangan;
 
             if (this._beli != null)
@@ -109,7 +103,7 @@ namespace OpenRetail.App.Transaksi
                 txtNotaBeli.Enabled = false;
 
                 LoadItemBeli(this._beli);
-            }                
+            }
 
             // simpan data lama
             _listOfItemReturOld.Clear();
@@ -122,7 +116,7 @@ namespace OpenRetail.App.Transaksi
                     harga = item.harga
                 });
             }
-            
+
             _listOfItemRetur = this._retur.item_retur;
             _listOfItemRetur.Add(new ItemReturBeliProduk()); // add dummy objek
 
@@ -151,7 +145,7 @@ namespace OpenRetail.App.Transaksi
 
             GridListControlHelper.InitializeGridListControl<ItemReturBeliProduk>(grid, _listOfItemRetur, gridListProperties, 30);
 
-            grid.PushButtonClick += delegate(object sender, GridCellPushButtonClickEventArgs e)
+            grid.PushButtonClick += delegate (object sender, GridCellPushButtonClickEventArgs e)
             {
                 if (e.ColIndex == 7)
                 {
@@ -173,11 +167,11 @@ namespace OpenRetail.App.Transaksi
                         grid.Refresh();
 
                         RefreshTotal();
-                    }                    
+                    }
                 }
             };
 
-            grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 // Make sure the cell falls inside the grid
                 if (e.RowIndex > 0)
@@ -323,7 +317,7 @@ namespace OpenRetail.App.Transaksi
 
                     _supplier = null;
                     _listOfItemRetur.Clear();
-                    _listOfItemReturDeleted.Clear();                                        
+                    _listOfItemReturDeleted.Clear();
 
                     this.Close();
                 }
@@ -337,7 +331,7 @@ namespace OpenRetail.App.Transaksi
                     else
                         MsgHelper.MsgUpdateError();
                 }
-            }            
+            }
         }
 
         protected override void Selesai()
@@ -445,7 +439,6 @@ namespace OpenRetail.App.Transaksi
                     MsgHelper.MsgWarning("Data Supplier tidak ditemukan");
                     txtSupplier.Focus();
                     txtSupplier.SelectAll();
-
                 }
                 else if (listOfSupplier.Count == 1)
                 {
@@ -474,7 +467,6 @@ namespace OpenRetail.App.Transaksi
         {
             if (e.KeyCode == Keys.Enter)
             {
-
                 if (this._beli == null || txtNotaBeli.Text.Length == 0)
                 {
                     MsgHelper.MsgWarning("Maaf isian data belum lengkap !");
@@ -576,7 +568,7 @@ namespace OpenRetail.App.Transaksi
                                 frmLookup.Listener = this;
                                 frmLookup.ShowDialog();
                             }
-                        }                        
+                        }
 
                         break;
 
@@ -703,7 +695,7 @@ namespace OpenRetail.App.Transaksi
 
                     RefreshTotal();
                 }
-            }           
+            }
         }
 
         private void FrmEntryReturPembelianProduk_FormClosing(object sender, FormClosingEventArgs e)

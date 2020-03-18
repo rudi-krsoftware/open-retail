@@ -16,33 +16,28 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
-using OpenRetail.Model;
-using OpenRetail.Repository.Api;
- 
 namespace OpenRetail.Repository.Service
-{        
+{
     public class ReturJualProdukRepository : IReturJualProdukRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT t_retur_jual_produk.retur_jual_id, t_retur_jual_produk.pengguna_id, t_retur_jual_produk.nota, t_retur_jual_produk.tanggal, t_retur_jual_produk.keterangan, t_retur_jual_produk.tanggal_sistem, t_retur_jual_produk.total_nota, 
+        private const string SQL_TEMPLATE = @"SELECT t_retur_jual_produk.retur_jual_id, t_retur_jual_produk.pengguna_id, t_retur_jual_produk.nota, t_retur_jual_produk.tanggal, t_retur_jual_produk.keterangan, t_retur_jual_produk.tanggal_sistem, t_retur_jual_produk.total_nota,
                                               m_customer.customer_id, m_customer.nama_customer, m_customer.alamat, t_jual_produk.jual_id, t_jual_produk.nota
                                               FROM public.m_customer INNER JOIN public.t_retur_jual_produk ON t_retur_jual_produk.customer_id = m_customer.customer_id
-                                              INNER JOIN public.t_jual_produk ON t_retur_jual_produk.jual_id = t_jual_produk.jual_id 
+                                              INNER JOIN public.t_jual_produk ON t_retur_jual_produk.jual_id = t_jual_produk.jual_id
                                               {WHERE}
                                               {ORDER BY}";
+
         private IDapperContext _context;
         private ILog _log;
         private string _sql;
-		
+
         public ReturJualProdukRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -70,7 +65,7 @@ namespace OpenRetail.Repository.Service
             {
                 var sql = @"SELECT t_item_retur_jual_produk.item_retur_jual_id, t_item_retur_jual_produk.retur_jual_id, t_item_retur_jual_produk.pengguna_id, t_item_retur_jual_produk.item_jual_id, t_item_retur_jual_produk.harga_jual, t_item_retur_jual_produk.jumlah, t_item_retur_jual_produk.jumlah_retur, t_item_retur_jual_produk.tanggal_sistem, 1 as entity_state,
                             m_produk.produk_id, m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan, m_produk.harga_jual
-                            FROM public.t_item_retur_jual_produk INNER JOIN public.m_produk ON t_item_retur_jual_produk.produk_id = m_produk.produk_id  
+                            FROM public.t_item_retur_jual_produk INNER JOIN public.m_produk ON t_item_retur_jual_produk.produk_id = m_produk.produk_id
                             WHERE t_item_retur_jual_produk.retur_jual_id = @returId
                             ORDER BY t_item_retur_jual_produk.tanggal_sistem";
 
@@ -78,7 +73,6 @@ namespace OpenRetail.Repository.Service
                 {
                     ir.produk_id = p.produk_id; ir.Produk = p;
                     return ir;
-
                 }, new { returId }, splitOn: "produk_id").ToList();
             }
             catch (Exception ex)
@@ -226,7 +220,7 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
 
         public int Update(ReturJualProduk obj)
         {
@@ -277,7 +271,6 @@ namespace OpenRetail.Repository.Service
                 _log.Info("Update data");
 
                 result = 1;
-
             }
             catch (Exception ex)
             {
@@ -307,6 +300,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }                
+        }
     }
-}     
+}

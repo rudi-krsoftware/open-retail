@@ -16,28 +16,25 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
     public class ReportBeliProdukRepository : IReportBeliProdukRepository
     {
-        private const string SQL_TEMPLATE_HEADER = @"SELECT t_beli_produk.tanggal, t_beli_produk.tanggal_tempo, t_beli_produk.nota, m_supplier.supplier_id, m_supplier.nama_supplier, 
+        private const string SQL_TEMPLATE_HEADER = @"SELECT t_beli_produk.tanggal, t_beli_produk.tanggal_tempo, t_beli_produk.nota, m_supplier.supplier_id, m_supplier.nama_supplier,
                                                      t_beli_produk.total_nota, t_beli_produk.diskon, t_beli_produk.ppn, t_beli_produk.total_pelunasan
                                                      FROM public.t_beli_produk INNER JOIN public.m_supplier ON t_beli_produk.supplier_id = m_supplier.supplier_id
                                                      {WHERE}
                                                      ORDER BY t_beli_produk.tanggal, t_beli_produk.nota";
 
-        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_supplier.supplier_id, m_supplier.nama_supplier, t_beli_produk.tanggal, t_beli_produk.nota, m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, t_item_beli_produk.jumlah, t_item_beli_produk.jumlah_retur, t_item_beli_produk.harga, t_item_beli_produk.diskon 
+        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_supplier.supplier_id, m_supplier.nama_supplier, t_beli_produk.tanggal, t_beli_produk.nota, m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, t_item_beli_produk.jumlah, t_item_beli_produk.jumlah_retur, t_item_beli_produk.harga, t_item_beli_produk.diskon
                                                      FROM public.t_beli_produk INNER JOIN public.m_supplier ON m_supplier.supplier_id = t_beli_produk.supplier_id
                                                      INNER JOIN public.t_item_beli_produk ON t_item_beli_produk.beli_produk_id = t_beli_produk.beli_produk_id
                                                      INNER JOIN public.m_produk ON t_item_beli_produk.produk_id = m_produk.produk_id
@@ -181,6 +178,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

@@ -16,27 +16,22 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using RestSharp;
-using Newtonsoft.Json;
 using OpenRetail.Helper;
 using OpenRetail.Model;
 using OpenRetail.Model.WebAPI;
 using OpenRetail.Repository.Api;
- 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace OpenRetail.Repository.Service
-{        
+{
     public class PembayaranKasbonWebAPIRepository : IPembayaranKasbonRepository
     {
         private string _apiUrl = string.Empty;
         private ILog _log;
-		
+
         public PembayaranKasbonWebAPIRepository(string baseUrl, ILog log)
         {
             this._apiUrl = baseUrl + "api/pembayaran_kasbon/";
@@ -47,7 +42,7 @@ namespace OpenRetail.Repository.Service
         {
             PembayaranKasbon obj = null;
 
-			try
+            try
             {
                 var api = string.Format("get_by_id?id={0}", id);
                 var response = RestSharpHelper<OpenRetailWebApiGetResponse<PembayaranKasbon>>.GetRequest(_apiUrl, api).Data;
@@ -137,7 +132,7 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-			try
+            try
             {
                 var api = "save";
                 var response = RestSharpHelper<OpenRetailWebApiPostResponse>.PostRequest(_apiUrl, api, obj);
@@ -175,7 +170,7 @@ namespace OpenRetail.Repository.Service
         {
             var result = 0;
 
-			try
+            try
             {
                 var api = "delete";
                 var response = RestSharpHelper<OpenRetailWebApiPostResponse>.PostRequest(_apiUrl, api, obj);
@@ -188,6 +183,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

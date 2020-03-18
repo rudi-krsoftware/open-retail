@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using log4net;
-using Dapper;
+﻿using log4net;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace OpenRetail.Repository.Service.Report
 {
     public class ReportKartuStokRepository : IReportKartuStokRepository
     {
-        private const string SQL_TEMPLATE = @"SELECT 1 AS jenis_nota, m_produk.produk_id, m_produk.nama_produk, m_produk.stok + m_produk.stok_gudang AS stok_akhir, t_beli_produk.nota, t_beli_produk.tanggal, 
+        private const string SQL_TEMPLATE = @"SELECT 1 AS jenis_nota, m_produk.produk_id, m_produk.nama_produk, m_produk.stok + m_produk.stok_gudang AS stok_akhir, t_beli_produk.nota, t_beli_produk.tanggal,
                                               m_supplier.nama_supplier AS supplier_or_customer, SUM(t_item_beli_produk.jumlah) AS qty, COALESCE(t_beli_produk.keterangan, t_beli_produk.keterangan, '') AS keterangan
                                               FROM public.t_beli_produk INNER JOIN public.t_item_beli_produk ON t_item_beli_produk.beli_produk_id = t_beli_produk.beli_produk_id
                                               INNER JOIN public.m_supplier ON t_beli_produk.supplier_id = m_supplier.supplier_id
@@ -21,15 +19,15 @@ namespace OpenRetail.Repository.Service.Report
                                               {WHERE_1}
                                               GROUP BY m_produk.produk_id, m_produk.nama_produk, t_beli_produk.nota, t_beli_produk.tanggal, m_supplier.nama_supplier, COALESCE(t_beli_produk.keterangan, t_beli_produk.keterangan, '')
                                               UNION
-                                              SELECT 2 AS jenis_nota, m_produk.produk_id, m_produk.nama_produk, m_produk.stok + m_produk.stok_gudang AS stok_akhir, t_retur_jual_produk.nota, t_retur_jual_produk.tanggal, 
+                                              SELECT 2 AS jenis_nota, m_produk.produk_id, m_produk.nama_produk, m_produk.stok + m_produk.stok_gudang AS stok_akhir, t_retur_jual_produk.nota, t_retur_jual_produk.tanggal,
                                               m_customer.nama_customer AS supplier_or_customer, SUM(t_item_retur_jual_produk.jumlah_retur) AS qty, COALESCE(t_retur_jual_produk.keterangan, t_retur_jual_produk.keterangan, '') AS keterangan
                                               FROM public.t_retur_jual_produk INNER JOIN public.t_item_retur_jual_produk ON t_item_retur_jual_produk.retur_jual_id = t_retur_jual_produk.retur_jual_id
                                               INNER JOIN public.m_produk ON t_item_retur_jual_produk.produk_id = m_produk.produk_id
                                               INNER JOIN public.m_customer ON t_retur_jual_produk.customer_id = m_customer.customer_id
                                               {WHERE_2}
                                               GROUP BY m_produk.produk_id, m_produk.nama_produk, t_retur_jual_produk.nota, t_retur_jual_produk.tanggal, m_customer.nama_customer, COALESCE(t_retur_jual_produk.keterangan, t_retur_jual_produk.keterangan, '')
-                                              UNION 
-                                              SELECT 3 AS jenis_nota, m_produk.produk_id, m_produk.nama_produk, m_produk.stok + m_produk.stok_gudang AS stok_akhir, t_jual_produk.nota, t_jual_produk.tanggal, 
+                                              UNION
+                                              SELECT 3 AS jenis_nota, m_produk.produk_id, m_produk.nama_produk, m_produk.stok + m_produk.stok_gudang AS stok_akhir, t_jual_produk.nota, t_jual_produk.tanggal,
                                               m_customer.nama_customer AS supplier_or_customer, SUM(t_item_jual_produk.jumlah) AS qty, COALESCE(t_jual_produk.keterangan, t_jual_produk.keterangan, '') AS keterangan
                                               FROM public.t_jual_produk INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
                                               INNER JOIN public.m_customer ON t_jual_produk.customer_id = m_customer.customer_id
@@ -37,7 +35,7 @@ namespace OpenRetail.Repository.Service.Report
                                               {WHERE_3}
                                               GROUP BY m_produk.produk_id, m_produk.nama_produk, t_jual_produk.nota, t_jual_produk.tanggal, m_customer.nama_customer, COALESCE(t_jual_produk.keterangan, t_jual_produk.keterangan, '')
                                               UNION
-                                              SELECT 4 AS jenis_nota, m_produk.produk_id, m_produk.nama_produk, m_produk.stok + m_produk.stok_gudang AS stok_akhir, t_retur_beli_produk.nota, t_retur_beli_produk.tanggal, 
+                                              SELECT 4 AS jenis_nota, m_produk.produk_id, m_produk.nama_produk, m_produk.stok + m_produk.stok_gudang AS stok_akhir, t_retur_beli_produk.nota, t_retur_beli_produk.tanggal,
                                               m_supplier.nama_supplier AS supplier_or_customer, SUM(t_item_retur_beli_produk.jumlah_retur) AS qty, COALESCE(t_retur_beli_produk.keterangan, t_retur_beli_produk.keterangan, '') AS keterangan
                                               FROM public.t_retur_beli_produk INNER JOIN public.t_item_retur_beli_produk ON t_item_retur_beli_produk.retur_beli_produk_id = t_retur_beli_produk.retur_beli_produk_id
                                               INNER JOIN public.m_produk ON t_item_retur_beli_produk.produk_id = m_produk.produk_id
@@ -77,7 +75,6 @@ namespace OpenRetail.Repository.Service.Report
 
                 oList = _context.db.Query<ReportKartuStok>(_sql, new { tanggal })
                                 .ToList();
-
             }
             catch (Exception ex)
             {
@@ -107,7 +104,6 @@ namespace OpenRetail.Repository.Service.Report
 
                 oList = _context.db.Query<ReportKartuStok>(_sql, new { bulan, tahun })
                                 .ToList();
-
             }
             catch (Exception ex)
             {
@@ -147,7 +143,6 @@ namespace OpenRetail.Repository.Service.Report
 
                 oList = _context.db.Query<ReportKartuStok>(_sql, new { bulan, tahun })
                                 .ToList();
-
             }
             catch (Exception ex)
             {
@@ -192,7 +187,7 @@ namespace OpenRetail.Repository.Service.Report
         }
 
         public IList<ReportKartuStok> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai, IList<string> listOfKode)
-        {            
+        {
             IList<ReportKartuStok> oList = new List<ReportKartuStok>();
 
             try
@@ -244,7 +239,6 @@ namespace OpenRetail.Repository.Service.Report
                 oList = _context.db.Query<ReportKartuStok>(_sql)
                                 .Where(f => listOfProdukId.Contains(f.produk_id))
                                 .ToList();
-
             }
             catch (Exception ex)
             {
@@ -252,6 +246,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

@@ -16,17 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using OpenRetail.Helper.UI.Template;
 using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
 using OpenRetail.Model;
 using Syncfusion.Windows.Forms.Grid;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace OpenRetail.App.Lookup
@@ -116,7 +111,7 @@ namespace OpenRetail.App.Lookup
         }
 
         private void GridNotaJualProduk_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
-        {            
+        {
             if (_listOfNotaJualProduk.Count > 0)
             {
                 if (e.RowIndex > 0)
@@ -165,7 +160,7 @@ namespace OpenRetail.App.Lookup
         }
 
         private void GridNotaBeliProduk_QueryCellInfo(object sender, GridQueryCellInfoEventArgs e)
-        {            
+        {
             if (_listOfNotaBeliProduk.Count > 0)
             {
                 if (e.RowIndex > 0)
@@ -253,6 +248,6 @@ namespace OpenRetail.App.Lookup
             }
 
             this.Close();
-        }        
+        }
     }
 }

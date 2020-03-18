@@ -16,25 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
 using OpenRetail.Helper;
 using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace OpenRetail.App.Pengaturan
 {
     public partial class FrmEntryOperator : FrmEntryStandard
-    {        
-        private IPenggunaBll _bll = null; // deklarasi objek business logic layer 
+    {
+        private IPenggunaBll _bll = null; // deklarasi objek business logic layer
         private Pengguna _operator = null;
         private IList<Role> listOfRole;
         private bool _isNewData = false;
@@ -78,7 +72,6 @@ namespace OpenRetail.App.Pengaturan
             }
             catch
             {
-
                 if (listOfRole.Count > 0)
                     cmbRole.SelectedIndex = 0;
             }
@@ -112,7 +105,7 @@ namespace OpenRetail.App.Pengaturan
                     txtPassword.SelectAll();
                     return;
                 }
-            }            
+            }
 
             if (_isNewData)
                 _operator = new Pengguna();
@@ -136,7 +129,7 @@ namespace OpenRetail.App.Pengaturan
             else
                 result = _bll.Update(_operator);
 
-            if (result > 0) 
+            if (result > 0)
             {
                 Listener.Ok(this, _isNewData, _operator);
 
@@ -144,11 +137,9 @@ namespace OpenRetail.App.Pengaturan
                 {
                     base.ResetForm(this);
                     txtNama.Focus();
-
                 }
                 else
                     this.Close();
-
             }
             else
             {
@@ -159,7 +150,7 @@ namespace OpenRetail.App.Pengaturan
                 }
                 else
                     MsgHelper.MsgUpdateError();
-            }                
+            }
         }
     }
 }

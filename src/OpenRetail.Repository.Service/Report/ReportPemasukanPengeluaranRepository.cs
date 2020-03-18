@@ -16,16 +16,13 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
@@ -39,7 +36,7 @@ namespace OpenRetail.Repository.Service.Report
                                                         FROM t_beli_produk
                                                         {WHERE}";
 
-        private const string SQL_TEMPLATE_GAJI_KARYAWAN = @"SELECT 
+        private const string SQL_TEMPLATE_GAJI_KARYAWAN = @"SELECT
                                                               SUM(CASE
                                                                   WHEN jumlah_hari > 0 THEN jumlah_hari * gaji_pokok
                                                                   ELSE gaji_pokok
@@ -54,7 +51,7 @@ namespace OpenRetail.Repository.Service.Report
 
         private const string SQL_TEMPLATE_BEBAN = @"SELECT m_jenis_pengeluaran.nama_jenis_pengeluaran AS keterangan, SUM(t_item_pengeluaran_biaya.jumlah * t_item_pengeluaran_biaya.harga) AS jumlah
                                                     FROM public.t_pengeluaran_biaya INNER JOIN public.t_item_pengeluaran_biaya ON t_item_pengeluaran_biaya.pengeluaran_id = t_pengeluaran_biaya.pengeluaran_id
-                                                    INNER JOIN public.m_jenis_pengeluaran ON t_item_pengeluaran_biaya.jenis_pengeluaran_id = m_jenis_pengeluaran.jenis_pengeluaran_id  
+                                                    INNER JOIN public.m_jenis_pengeluaran ON t_item_pengeluaran_biaya.jenis_pengeluaran_id = m_jenis_pengeluaran.jenis_pengeluaran_id
                                                     {WHERE}
                                                     GROUP BY m_jenis_pengeluaran.nama_jenis_pengeluaran
                                                     ORDER BY m_jenis_pengeluaran.nama_jenis_pengeluaran";
@@ -66,7 +63,7 @@ namespace OpenRetail.Repository.Service.Report
         {
             this._context = context;
             this._log = log;
-        }        
+        }
 
         public ReportPemasukanPengeluaran GetByBulan(int bulan, int tahun)
         {
@@ -135,7 +132,7 @@ namespace OpenRetail.Repository.Service.Report
             try
             {
                 var whereBuilder = new WhereBuilder(SQL_TEMPLATE_PENJUALAN);
-                
+
                 whereBuilder.Add("tanggal BETWEEN @tanggalMulai AND @tanggalSelesai");
 
                 result = _context.db.QuerySingleOrDefault<double>(whereBuilder.ToSql(), new { tanggalMulai, tanggalSelesai });

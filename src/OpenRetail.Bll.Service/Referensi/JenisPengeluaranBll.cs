@@ -16,30 +16,26 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class JenisPengeluaranBll : IJenisPengeluaranBll
     {
         private ILog _log;
         private IUnitOfWork _unitOfWork;
-		private JenisPengeluaranValidator _validator;
+        private JenisPengeluaranValidator _validator;
 
         private bool _isUseWebAPI;
         private string _baseUrl;
 
-		public JenisPengeluaranBll(ILog log)
+        public JenisPengeluaranBll(ILog log)
         {
             _log = log;
             _validator = new JenisPengeluaranValidator();
@@ -68,7 +64,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     obj = _unitOfWork.JenisPengeluaranRepository.GetByID(id);
                 }
-            }            
+            }
 
             return obj;
         }
@@ -89,7 +85,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JenisPengeluaranRepository.GetByName(name);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -110,12 +106,12 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.JenisPengeluaranRepository.GetAll();
                 }
-            }            
+            }
 
             return oList;
         }
 
-		public int Save(JenisPengeluaran obj)
+        public int Save(JenisPengeluaran obj)
         {
             var result = 0;
 
@@ -123,7 +119,7 @@ namespace OpenRetail.Bll.Service
             {
                 obj.jenis_pengeluaran_id = Guid.NewGuid().ToString();
 
-                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);                
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 result = _unitOfWork.JenisPengeluaranRepository.Save(obj);
             }
             else
@@ -133,14 +129,14 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.JenisPengeluaranRepository.Save(obj);
                 }
-            }            
+            }
 
             return result;
         }
 
         public int Save(JenisPengeluaran obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -155,7 +151,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(JenisPengeluaran obj)
+        public int Update(JenisPengeluaran obj)
         {
             var result = 0;
 
@@ -171,7 +167,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.JenisPengeluaranRepository.Update(obj);
                 }
-            }            
+            }
 
             return result;
         }
@@ -209,9 +205,9 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.JenisPengeluaranRepository.Delete(obj);
                 }
-            }            
+            }
 
             return result;
         }
     }
-}     
+}

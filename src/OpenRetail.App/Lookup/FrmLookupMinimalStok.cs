@@ -16,22 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
+using ConceptCave.WaitCursor;
+using log4net;
 using OpenRetail.Bll.Api;
 using OpenRetail.Bll.Service;
 using OpenRetail.Helper;
+using OpenRetail.Model;
 using Syncfusion.Windows.Forms.Grid;
-using ConceptCave.WaitCursor;
-using log4net;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Lookup
 {
@@ -64,13 +58,13 @@ namespace OpenRetail.App.Lookup
             gridListProperties.Add(new GridListControlProperties { Header = "Stok Etalase", Width = 60 });
             gridListProperties.Add(new GridListControlProperties { Header = "Stok Gudang", Width = 60 });
             gridListProperties.Add(new GridListControlProperties { Header = "Min. Stok Gudang" });
-            
-            GridListControlHelper.InitializeGridListControl<Produk>(this.gridList, _listOfProduk, gridListProperties, rowHeight:40);
+
+            GridListControlHelper.InitializeGridListControl<Produk>(this.gridList, _listOfProduk, gridListProperties, rowHeight: 40);
 
             if (_listOfProduk.Count > 0)
                 this.gridList.SetSelected(0, true);
 
-            this.gridList.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            this.gridList.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 if (_listOfProduk.Count > 0)
                 {
@@ -110,6 +104,7 @@ namespace OpenRetail.App.Lookup
                                     e.Style.CellValue = produk.minimal_stok_gudang;
                                     e.Style.HorizontalAlignment = GridHorizontalAlignment.Center;
                                     break;
+
                                 default:
                                     break;
                             }

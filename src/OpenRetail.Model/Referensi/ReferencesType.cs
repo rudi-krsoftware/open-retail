@@ -16,22 +16,17 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace OpenRetail.Model
 {
     public enum ReferencesType
     {
-        Supplier = 1, 
-        Customer = 2, 
+        Supplier = 1,
+        Customer = 2,
         Produk = 3,
         NotaBeliProduk = 4,
         NotaJualProduk = 5,
         JenisPengeluaran = 6,
-        KabupatenAsal = 7, 
+        KabupatenAsal = 7,
         KabupatenTujuan = 8,
         Dropshipper = 9
     }

@@ -16,30 +16,22 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Dapper.Contrib.Extensions;
-
 namespace OpenRetail.Model
-{        
-	[Table("m_harga_grosir")]
+{
+    [Table("m_harga_grosir")]
     public class HargaGrosir
     {
         [ExplicitKey]
         public string harga_grosir_id { get; set; }
 
-		public string produk_id { get; set; }
+        public string produk_id { get; set; }
 
-		[Write(false)]
+        [Write(false)]
         public Produk Produk { get; set; }
 
-		public int harga_ke { get; set; }
-		public double harga_grosir { get; set; }
-		public double jumlah_minimal { get; set; }
-		public double diskon { get; set; }
-	}    
+        public int harga_ke { get; set; }
+        public double harga_grosir { get; set; }
+        public double jumlah_minimal { get; set; }
+        public double diskon { get; set; }
+    }
 }

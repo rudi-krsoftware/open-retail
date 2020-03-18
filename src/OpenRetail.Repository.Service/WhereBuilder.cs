@@ -16,17 +16,15 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace OpenRetail.Repository.Service
 {
     public sealed class WhereBuilder
     {
-        IList<string> _parameters = new List<string>();
-        string _query;
+        private IList<string> _parameters = new List<string>();
+        private string _query;
 
         public WhereBuilder(string query)
         {
@@ -67,6 +65,6 @@ namespace OpenRetail.Repository.Service
             _query = _query.Replace(whereAttribute, sb.ToString());
 
             return _query;
-        }    
+        }
     }
 }

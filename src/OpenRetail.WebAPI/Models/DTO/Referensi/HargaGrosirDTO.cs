@@ -16,42 +16,35 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
 using FluentValidation;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.WebAPI.Models.DTO
-{        
+{
     public class HargaGrosirDTO
     {
-		[Display(Name = "harga_grosir_id")]		
-		public string harga_grosir_id { get; set; }
-		
-		[Display(Name = "produk_id")]
-		public string produk_id { get; set; }
+        [Display(Name = "harga_grosir_id")]
+        public string harga_grosir_id { get; set; }
 
-		[JsonIgnore]
+        [Display(Name = "produk_id")]
+        public string produk_id { get; set; }
+
+        [JsonIgnore]
         public ProdukDTO Produk { get; set; }
 
-		[Display(Name = "harga_ke")]
-		public int harga_ke { get; set; }
-		
-		[Display(Name = "harga_grosir")]
-		public double harga_grosir { get; set; }
-		
-		[Display(Name = "jumlah_minimal")]
-		public double jumlah_minimal { get; set; }
-		
-		[Display(Name = "diskon")]
-		public double diskon { get; set; }
-		
-	}
+        [Display(Name = "harga_ke")]
+        public int harga_ke { get; set; }
+
+        [Display(Name = "harga_grosir")]
+        public double harga_grosir { get; set; }
+
+        [Display(Name = "jumlah_minimal")]
+        public double jumlah_minimal { get; set; }
+
+        [Display(Name = "diskon")]
+        public double diskon { get; set; }
+    }
 
     public class HargaGrosirDTOValidator : AbstractValidator<HargaGrosirDTO>
     {
@@ -59,11 +52,10 @@ namespace OpenRetail.WebAPI.Models.DTO
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
-					
 
-			RuleSet("save", () =>
+            RuleSet("save", () =>
             {
                 DefaultRule(msgError1, msgError2);
             });
@@ -76,9 +68,9 @@ namespace OpenRetail.WebAPI.Models.DTO
 
             RuleSet("delete", () =>
             {
-                RuleFor(c => c.harga_grosir_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);			
+                RuleFor(c => c.harga_grosir_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
             });
-		}
+        }
 
         private void DefaultRule(string msgError1, string msgError2)
         {
@@ -87,5 +79,5 @@ namespace OpenRetail.WebAPI.Models.DTO
             RuleFor(c => c.harga_grosir).NotEmpty().WithMessage(msgError1);
             RuleFor(c => c.jumlah_minimal).NotEmpty().WithMessage(msgError1);
         }
-	}
+    }
 }

@@ -16,29 +16,27 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model;
+using OpenRetail.Model.Report;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Api.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using log4net;
-using Dapper;
-using OpenRetail.Model.Report;
-using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Api.Report;
-using OpenRetail.Model;
-
 namespace OpenRetail.Repository.Service.Report
 {
     public class ReportStokProdukRepository : IReportStokProdukRepository
     {
-        private const string SQL_TEMPLATE_STOK_PRODUK = @"SELECT m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.stok_gudang, m_produk.harga_beli, m_produk.harga_jual, 
+        private const string SQL_TEMPLATE_STOK_PRODUK = @"SELECT m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.stok_gudang, m_produk.harga_beli, m_produk.harga_jual,
                                                           m_golongan.golongan_id, m_golongan.nama_golongan
                                                           FROM public.m_golongan INNER JOIN public.m_produk ON m_produk.golongan_id = m_golongan.golongan_id
                                                           {WHERE}
                                                           ORDER BY m_produk.nama_produk";
 
-        private const string SQL_TEMPLATE_STOK_PRODUK_BY_SUPPLIER = @"SELECT m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.stok_gudang, m_produk.harga_beli, m_produk.harga_jual, 
+        private const string SQL_TEMPLATE_STOK_PRODUK_BY_SUPPLIER = @"SELECT m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, m_produk.stok, m_produk.stok_gudang, m_produk.harga_beli, m_produk.harga_jual,
                                                                       m_golongan.golongan_id, m_golongan.nama_golongan
                                                                       FROM public.m_golongan INNER JOIN public.m_produk ON m_produk.golongan_id = m_golongan.golongan_id
                                                                       INNER JOIN public.t_item_beli_produk ON t_item_beli_produk.produk_id = m_produk.produk_id
@@ -46,7 +44,7 @@ namespace OpenRetail.Repository.Service.Report
                                                                       {WHERE}
                                                                       ORDER BY m_produk.nama_produk";
 
-        private const string SQL_TEMPLATE_PENYESUAIAN_STOK = @"SELECT t_penyesuaian_stok.penyesuaian_stok_id, t_penyesuaian_stok.tanggal, t_penyesuaian_stok.penambahan_stok, t_penyesuaian_stok.pengurangan_stok, t_penyesuaian_stok.penambahan_stok_gudang, t_penyesuaian_stok.pengurangan_stok_gudang, t_penyesuaian_stok.keterangan, 
+        private const string SQL_TEMPLATE_PENYESUAIAN_STOK = @"SELECT t_penyesuaian_stok.penyesuaian_stok_id, t_penyesuaian_stok.tanggal, t_penyesuaian_stok.penambahan_stok, t_penyesuaian_stok.pengurangan_stok, t_penyesuaian_stok.penambahan_stok_gudang, t_penyesuaian_stok.pengurangan_stok_gudang, t_penyesuaian_stok.keterangan,
                                                                m_produk.produk_id, m_produk.nama_produk, m_alasan_penyesuaian_stok.alasan_penyesuaian_stok_id, m_alasan_penyesuaian_stok.alasan
                                                                FROM public.m_produk INNER JOIN public.t_penyesuaian_stok ON t_penyesuaian_stok.produk_id = m_produk.produk_id
                                                                INNER JOIN public.m_alasan_penyesuaian_stok ON t_penyesuaian_stok.alasan_penyesuaian_id = m_alasan_penyesuaian_stok.alasan_penyesuaian_stok_id
@@ -55,7 +53,7 @@ namespace OpenRetail.Repository.Service.Report
 
         private IDapperContext _context;
         private ILog _log;
-        
+
         private string _sql;
 
         public ReportStokProdukRepository(IDapperContext context, ILog log)
@@ -118,7 +116,7 @@ namespace OpenRetail.Repository.Service.Report
 
             return oList;
         }
-        
+
         public IList<ReportStokProduk> GetStokKurangDari(double stok)
         {
             IList<ReportStokProduk> oList = new List<ReportStokProduk>();
@@ -200,10 +198,10 @@ namespace OpenRetail.Repository.Service.Report
 
                 _sql = SQL_TEMPLATE_STOK_PRODUK.Replace("{WHERE}", "WHERE LOWER(m_produk.kode_produk) IN (" + param + ")");
 
-                oList = _context.db.Query<ReportStokProduk>(_sql ).ToList();
+                oList = _context.db.Query<ReportStokProduk>(_sql).ToList();
 
                 if (oList.Count > 0)
-                    SetHargaGrosir(oList);          
+                    SetHargaGrosir(oList);
             }
             catch (Exception ex)
             {
@@ -247,7 +245,6 @@ namespace OpenRetail.Repository.Service.Report
                 whereBuilder.Add("EXTRACT(YEAR FROM t_penyesuaian_stok.tanggal) = @tahun");
 
                 oList = _context.db.Query<ReportPenyesuaianStokProduk>(whereBuilder.ToSql(), new { bulan, tahun }).ToList();
-
             }
             catch (Exception ex)
             {
@@ -275,6 +272,6 @@ namespace OpenRetail.Repository.Service.Report
             }
 
             return oList;
-        }        
+        }
     }
 }

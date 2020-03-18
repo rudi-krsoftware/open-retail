@@ -16,17 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api.Report;
 using OpenRetail.Bll.Service.Report;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest.Report
 {
@@ -58,7 +52,7 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             var oList = _bll.GetByBulan(bulan, tahun);
 
             var index = 2;
-            var obj = oList[index];            
+            var obj = oList[index];
 
             Assert.IsNotNull(obj);
             Assert.AreEqual("85ecb92b-3cb7-4d98-8390-cc76a942b880", obj.supplier_id);
@@ -66,7 +60,7 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual("201703180121", obj.nota_beli);
             Assert.AreEqual("201703200030", obj.nota_retur);
             Assert.AreEqual(new DateTime(2017, 3, 20), obj.tanggal_retur);
-            Assert.AreEqual(270000, obj.total_retur);            
+            Assert.AreEqual(270000, obj.total_retur);
         }
 
         [TestMethod]
@@ -134,7 +128,6 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             Assert.AreEqual(1, obj.jumlah_retur);
             Assert.AreEqual(200000, obj.harga);
             Assert.AreEqual(200000, obj.sub_total);
-
         }
 
         [TestMethod]

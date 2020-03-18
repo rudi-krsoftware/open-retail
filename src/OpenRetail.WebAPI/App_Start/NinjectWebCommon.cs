@@ -2,21 +2,13 @@
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(OpenRetail.WebAPI.App_Start.NinjectWebCommon), "Stop")]
 
 namespace OpenRetail.WebAPI.App_Start
-{        
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;    
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection;
-    using System.Web;
-    using System.Web.Http;
-
+{
     using log4net;
-    using Ninject;
-    using Ninject.Web.Common;
-
     using OpenRetail.Repository.Api;
     using OpenRetail.Repository.Service;
+    using System;
+    using System.Reflection;
+    using System.Web;
 
     public static class NinjectWebCommon
     {

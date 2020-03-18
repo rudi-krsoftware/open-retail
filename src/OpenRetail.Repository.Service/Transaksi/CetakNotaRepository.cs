@@ -16,15 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Model.Nota;
+using OpenRetail.Repository.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using log4net;
-using Dapper;
-using OpenRetail.Model.Nota;
-using OpenRetail.Repository.Api;
 
 namespace OpenRetail.Repository.Service
 {
@@ -32,7 +29,7 @@ namespace OpenRetail.Repository.Service
     {
         private IDapperContext _context;
         private ILog _log;
-        
+
         public CetakNotaRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -45,7 +42,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT m_supplier.nama_supplier, m_supplier.alamat, m_supplier.kontak, m_supplier.telepon, 
+                var sql = @"SELECT m_supplier.nama_supplier, m_supplier.alamat, m_supplier.kontak, m_supplier.telepon,
                             t_beli_produk.nota, t_beli_produk.tanggal, t_beli_produk.tanggal_tempo, t_beli_produk.ppn, t_beli_produk.diskon AS diskon_nota, t_beli_produk.total_nota,
                             m_produk.kode_produk, m_produk.nama_produk, m_produk.satuan,
                             t_item_beli_produk.harga, t_item_beli_produk.jumlah, t_item_beli_produk.jumlah_retur, t_item_beli_produk.diskon
@@ -56,7 +53,6 @@ namespace OpenRetail.Repository.Service
                             ORDER BY t_item_beli_produk.tanggal_sistem";
 
                 oList = _context.db.Query<NotaPembelian>(sql, new { beliProdukId }).ToList();
-
             }
             catch (Exception ex)
             {
@@ -72,8 +68,8 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT m_customer.nama_customer, m_customer.alamat, m_customer.kode_pos, m_customer.kontak, m_customer.telepon, 
-                            m_provinsi2.nama_provinsi AS provinsi, m_kabupaten2.nama_kabupaten AS kabupaten, m_kecamatan.nama_kecamatan AS kecamatan, 
+                var sql = @"SELECT m_customer.nama_customer, m_customer.alamat, m_customer.kode_pos, m_customer.kontak, m_customer.telepon,
+                            m_provinsi2.nama_provinsi AS provinsi, m_kabupaten2.nama_kabupaten AS kabupaten, m_kecamatan.nama_kecamatan AS kecamatan,
                             t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, t_jual_produk.keterangan, t_jual_produk.ppn, t_jual_produk.kurir, t_jual_produk.ongkos_kirim, t_jual_produk.diskon AS diskon_nota, t_jual_produk.total_nota,
                             t_jual_produk.is_sdac, t_jual_produk.is_dropship, t_jual_produk.kirim_kepada, t_jual_produk.kirim_alamat, t_jual_produk.kirim_kecamatan, t_jual_produk.kirim_desa, t_jual_produk.kirim_kabupaten, t_jual_produk.kirim_kelurahan, t_jual_produk.kirim_kota, t_jual_produk.kirim_kode_pos, t_jual_produk.kirim_telepon,
                             t_jual_produk.label_dari1, t_jual_produk.label_dari2, t_jual_produk.label_dari3, t_jual_produk.label_dari4,
@@ -90,7 +86,6 @@ namespace OpenRetail.Repository.Service
                             ORDER BY t_item_jual_produk.tanggal_sistem";
 
                 oList = _context.db.Query<NotaPenjualan>(sql, new { jualProdukId }).ToList();
-
             }
             catch (Exception ex)
             {

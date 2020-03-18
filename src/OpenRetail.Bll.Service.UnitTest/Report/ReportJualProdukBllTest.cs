@@ -16,16 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 using OpenRetail.Bll.Api.Report;
 using OpenRetail.Bll.Service.Report;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest.Report
 {
@@ -150,7 +145,7 @@ namespace OpenRetail.Bll.Service.UnitTest.Report
             var index = 2;
             var obj = oList[index];
 
-            Assert.IsNotNull(obj);            
+            Assert.IsNotNull(obj);
 
             // cek customer
             Assert.AreEqual("576c503f-69a7-46a5-b4be-107c634db7e3", obj.customer_id);

@@ -16,28 +16,22 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
 using FluentValidation;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpenRetail.WebAPI.Models.DTO
-{        
+{
     public class CustomerDTO
     {
-		[Display(Name = "customer_id")]		
-		public string customer_id { get; set; }
-		
-		[Display(Name = "nama_customer")]
-		public string nama_customer { get; set; }
-		
-		[Display(Name = "alamat")]
-		public string alamat { get; set; }
+        [Display(Name = "customer_id")]
+        public string customer_id { get; set; }
+
+        [Display(Name = "nama_customer")]
+        public string nama_customer { get; set; }
+
+        [Display(Name = "alamat")]
+        public string alamat { get; set; }
 
         public string provinsi_id { get; set; }
 
@@ -54,33 +48,33 @@ namespace OpenRetail.WebAPI.Models.DTO
         [JsonIgnore]
         public KecamatanDTO Kecamatan { get; set; }
 
-		[Display(Name = "kontak")]
-		public string kontak { get; set; }
-		
-		[Display(Name = "telepon")]
-		public string telepon { get; set; }
-		
-		[Display(Name = "plafon_piutang")]
-		public double plafon_piutang { get; set; }
-		
-		[Display(Name = "total_piutang")]
-		public double total_piutang { get; set; }
-		
-		[Display(Name = "total_pembayaran_piutang")]
-		public double total_pembayaran_piutang { get; set; }
-		
-		[Display(Name = "kelurahan")]
-		public string kelurahan { get; set; }
-		
-		[Display(Name = "kota")]
-		public string kota { get; set; }
-		
-		[Display(Name = "kode_pos")]
-		public string kode_pos { get; set; }
-		
-		[Display(Name = "diskon")]
-		public double diskon { get; set; }
-	}
+        [Display(Name = "kontak")]
+        public string kontak { get; set; }
+
+        [Display(Name = "telepon")]
+        public string telepon { get; set; }
+
+        [Display(Name = "plafon_piutang")]
+        public double plafon_piutang { get; set; }
+
+        [Display(Name = "total_piutang")]
+        public double total_piutang { get; set; }
+
+        [Display(Name = "total_pembayaran_piutang")]
+        public double total_pembayaran_piutang { get; set; }
+
+        [Display(Name = "kelurahan")]
+        public string kelurahan { get; set; }
+
+        [Display(Name = "kota")]
+        public string kota { get; set; }
+
+        [Display(Name = "kode_pos")]
+        public string kode_pos { get; set; }
+
+        [Display(Name = "diskon")]
+        public double diskon { get; set; }
+    }
 
     public class CustomerDTOValidator : AbstractValidator<CustomerDTO>
     {
@@ -88,10 +82,10 @@ namespace OpenRetail.WebAPI.Models.DTO
         {
             CascadeMode = FluentValidation.CascadeMode.StopOnFirstFailure;
 
-			var msgError1 = "'{PropertyName}' tidak boleh kosong !";
+            var msgError1 = "'{PropertyName}' tidak boleh kosong !";
             var msgError2 = "'{PropertyName}' maksimal {MaxLength} karakter !";
 
-			RuleSet("save", () =>
+            RuleSet("save", () =>
             {
                 DefaultRule(msgError1, msgError2);
             });
@@ -104,9 +98,9 @@ namespace OpenRetail.WebAPI.Models.DTO
 
             RuleSet("delete", () =>
             {
-                RuleFor(c => c.customer_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);						
+                RuleFor(c => c.customer_id).NotEmpty().WithMessage(msgError1).Length(1, 36).WithMessage(msgError2);
             });
-		}
+        }
 
         private void DefaultRule(string msgError1, string msgError2)
         {
@@ -121,5 +115,5 @@ namespace OpenRetail.WebAPI.Models.DTO
             RuleFor(c => c.kontak).Length(0, 50).WithMessage(msgError2);
             RuleFor(c => c.telepon).Length(0, 20).WithMessage(msgError2);
         }
-	}
+    }
 }

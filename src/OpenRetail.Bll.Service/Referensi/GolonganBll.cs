@@ -16,20 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class GolonganBll : IGolonganBll
     {
         private ILog _log;
@@ -37,7 +33,7 @@ namespace OpenRetail.Bll.Service
         private GolonganValidator _validator;
 
         private bool _isUseWebAPI;
-        private string _baseUrl;		
+        private string _baseUrl;
 
         public GolonganBll(ILog log)
         {
@@ -68,7 +64,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     obj = _unitOfWork.GolonganRepository.GetByID(id);
                 }
-            }            
+            }
 
             return obj;
         }
@@ -89,7 +85,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.GolonganRepository.GetByName(name);
                 }
-            }            
+            }
 
             return oList;
         }
@@ -110,12 +106,12 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     oList = _unitOfWork.GolonganRepository.GetAll();
                 }
-            }            
+            }
 
             return oList;
         }
 
-		public int Save(Golongan obj)
+        public int Save(Golongan obj)
         {
             var result = 0;
 
@@ -123,7 +119,7 @@ namespace OpenRetail.Bll.Service
             {
                 obj.golongan_id = Guid.NewGuid().ToString();
 
-                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);                
+                _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 result = _unitOfWork.GolonganRepository.Save(obj);
             }
             else
@@ -133,14 +129,14 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.GolonganRepository.Save(obj);
                 }
-            }            
+            }
 
             return result;
         }
 
         public int Save(Golongan obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -155,7 +151,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(Golongan obj)
+        public int Update(Golongan obj)
         {
             var result = 0;
 
@@ -171,7 +167,7 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.GolonganRepository.Update(obj);
                 }
-            }            
+            }
 
             return result;
         }
@@ -209,9 +205,9 @@ namespace OpenRetail.Bll.Service
                     _unitOfWork = new UnitOfWork(context, _log);
                     result = _unitOfWork.GolonganRepository.Delete(obj);
                 }
-            }            
+            }
 
             return result;
         }
     }
-}     
+}

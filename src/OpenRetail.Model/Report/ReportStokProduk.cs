@@ -16,11 +16,6 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace OpenRetail.Model.Report
 {
     public enum StatusStok
@@ -43,7 +38,8 @@ namespace OpenRetail.Model.Report
         public double harga_grosir2 { get; set; }
         public double harga_grosir3 { get; set; }
         public string golongan_id { get; set; }
-        public string nama_golongan { get; set; }        
+        public string nama_golongan { get; set; }
+
         public double asset
         {
             get { return (stok + stok_gudang) > 0 ? (stok + stok_gudang) * harga_jual : 0; }

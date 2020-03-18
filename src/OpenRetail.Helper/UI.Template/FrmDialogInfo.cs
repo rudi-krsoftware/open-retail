@@ -17,16 +17,7 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using OpenRetail.Helper.UserControl;
 
 namespace OpenRetail.Helper.UI.Template
 {
@@ -38,9 +29,9 @@ namespace OpenRetail.Helper.UI.Template
         public FrmDialogInfo()
         {
             InitializeComponent();
-            ColorManagerHelper.SetTheme(this, this);            
+            ColorManagerHelper.SetTheme(this, this);
         }
-        
+
         protected override void SetHeader(string header)
         {
             this.Text = header;
@@ -56,6 +47,6 @@ namespace OpenRetail.Helper.UI.Template
         {
             if (KeyPressHelper.IsEsc(e))
                 Batal();
-        }        
+        }
     }
 }

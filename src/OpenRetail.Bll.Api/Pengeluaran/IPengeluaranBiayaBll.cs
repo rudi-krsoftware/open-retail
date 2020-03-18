@@ -16,25 +16,26 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using OpenRetail.Model;
- 
 namespace OpenRetail.Bll.Api
-{    
+{
     public interface IPengeluaranBiayaBll : IBaseBll<PengeluaranBiaya>
     {
         string GetLastNota();
-        PengeluaranBiaya GetByID(string id);    
+
+        PengeluaranBiaya GetByID(string id);
+
         IList<PengeluaranBiaya> GetByName(string name);
+
         IList<PengeluaranBiaya> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
         IList<ItemPengeluaranBiaya> GetItemPengeluaranBiaya(string pengeluaranBiayaId);
 
-		int Save(PengeluaranBiaya obj, ref ValidationError validationError);
-		int Update(PengeluaranBiaya obj, ref ValidationError validationError);
+        int Save(PengeluaranBiaya obj, ref ValidationError validationError);
+
+        int Update(PengeluaranBiaya obj, ref ValidationError validationError);
     }
-}     
+}

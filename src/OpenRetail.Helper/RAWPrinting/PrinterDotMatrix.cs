@@ -16,13 +16,11 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using OpenRetail.Model;
 using OpenRetail.Model.Report;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace OpenRetail.Helper.RAWPrinting
 {
@@ -159,7 +157,7 @@ namespace OpenRetail.Helper.RAWPrinting
                 {
                     textToPrint.Append(ESCCommandHelper.LineFeed(1));
                 }
-            }                        
+            }
 
             textToPrint.Append(garisPemisah).Append(ESCCommandHelper.LineFeed(1));
 
@@ -229,7 +227,7 @@ namespace OpenRetail.Helper.RAWPrinting
 
                 rowCount++;
             }
-            
+
             if (jual.diskon > 0)
             {
                 var strDiscNota = StringHelper.RightAlignment(NumberHelper.NumberToString(jual.diskon), lengthOngkosKirim);
@@ -274,7 +272,6 @@ namespace OpenRetail.Helper.RAWPrinting
                 {
                     textToPrint.Append(ket).Append(ESCCommandHelper.LineFeed(1));
                 }
-
             }
 
             if (infoCopyright.Length > 0)
@@ -322,6 +319,6 @@ namespace OpenRetail.Helper.RAWPrinting
             {
                 RawPrintHelper.SendStringToFile(textToPrint.ToString());
             }
-        }        
+        }
     }
 }

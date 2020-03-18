@@ -16,26 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
 using ConceptCave.WaitCursor;
+using OpenRetail.Bll.Api;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using System;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmEntryGolongan : FrmEntryStandard
     {
-        private IGolonganBll _bll = null; // deklarasi objek business logic layer 
+        private IGolonganBll _bll = null; // deklarasi objek business logic layer
         private Golongan _golongan = null;
         private bool _isNewData = false;
 
@@ -96,11 +89,9 @@ namespace OpenRetail.App.Referensi
                     {
                         base.ResetForm(this);
                         txtGolongan.Focus();
-
                     }
                     else
                         this.Close();
-
                 }
                 else
                 {
@@ -112,13 +103,13 @@ namespace OpenRetail.App.Referensi
                     else
                         MsgHelper.MsgUpdateError();
                 }
-            }                            
+            }
         }
 
         private void txtDiskon_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (KeyPressHelper.IsEnter(e))
                 Simpan();
-        }        
+        }
     }
 }

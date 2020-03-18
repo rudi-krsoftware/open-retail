@@ -16,16 +16,10 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
- 
 using OpenRetail.Repository.Api.Report;
 
 namespace OpenRetail.Repository.Api
-{    
+{
     public interface IUnitOfWork
     {
         IDatabaseVersionRepository DatabaseVersionRepository { get; }
@@ -45,12 +39,12 @@ namespace OpenRetail.Repository.Api
 
         IJabatanRepository JabatanRepository { get; }
         IKaryawanRepository KaryawanRepository { get; }
-        
+
         IBeliProdukRepository BeliProdukRepository { get; }
         IPembayaranHutangProdukRepository PembayaranHutangProdukRepository { get; }
-        IReturBeliProdukRepository ReturBeliProdukRepository { get; }              
-  
-        IJualProdukRepository JualProdukRepository { get; }                
+        IReturBeliProdukRepository ReturBeliProdukRepository { get; }
+
+        IJualProdukRepository JualProdukRepository { get; }
         IPembayaranPiutangProdukRepository PembayaranPiutangProdukRepository { get; }
         IReturJualProdukRepository ReturJualProdukRepository { get; }
 
@@ -63,7 +57,7 @@ namespace OpenRetail.Repository.Api
         ICetakNotaRepository CetakNotaDummyRepository { get; }
 
         ILog4NetRepository Log4NetRepository { get; }
-        
+
         IPenggunaRepository PenggunaRepository { get; }
         IRoleRepository RoleRepository { get; }
         IRolePrivilegeRepository RolePrivilegeRepository { get; }
@@ -100,6 +94,6 @@ namespace OpenRetail.Repository.Api
         IKabupatenRajaOngkirRepository KabupatenRepository { get; }
         IWilayahRepository WilayahRepository { get; }
         IFooterNotaMiniPosRepository FooterNotaMiniPosRepository { get; }
-        IHeaderNotaMiniPosRepository HeaderNotaMiniPosRepository { get; }        
+        IHeaderNotaMiniPosRepository HeaderNotaMiniPosRepository { get; }
     }
-}     
+}

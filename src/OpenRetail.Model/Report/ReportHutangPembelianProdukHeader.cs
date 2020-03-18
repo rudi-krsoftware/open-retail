@@ -16,11 +16,6 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace OpenRetail.Model.Report
 {
     public class ReportHutangPembelianProdukHeader
@@ -31,6 +26,7 @@ namespace OpenRetail.Model.Report
         public double ppn { get; set; }
         public double diskon { get; set; }
         public double total_nota { get; set; }
+
         public double grand_total
         {
             get { return total_nota - diskon + ppn; }

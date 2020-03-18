@@ -16,28 +16,24 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class DatabaseVersionBll : IDatabaseVersionBll
     {
-		private ILog _log;
+        private ILog _log;
         private IUnitOfWork _unitOfWork;
 
-		public DatabaseVersionBll(ILog log)
+        public DatabaseVersionBll(ILog log)
         {
-			_log = log;
+            _log = log;
         }
 
         public DatabaseVersion Get()
@@ -64,19 +60,19 @@ namespace OpenRetail.Bll.Service
             }
 
             return result;
-        }        
+        }
 
         public IList<DatabaseVersion> GetAll()
         {
             throw new NotImplementedException();
         }
 
-		public int Save(DatabaseVersion obj)
+        public int Save(DatabaseVersion obj)
         {
             throw new NotImplementedException();
         }
 
-		public int Update(DatabaseVersion obj)
+        public int Update(DatabaseVersion obj)
         {
             throw new NotImplementedException();
         }
@@ -84,6 +80,6 @@ namespace OpenRetail.Bll.Service
         public int Delete(DatabaseVersion obj)
         {
             throw new NotImplementedException();
-        }        
+        }
     }
-}     
+}

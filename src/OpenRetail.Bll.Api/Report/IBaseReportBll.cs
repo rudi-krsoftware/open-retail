@@ -18,8 +18,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Bll.Api.Report
 {
@@ -27,7 +25,9 @@ namespace OpenRetail.Bll.Api.Report
         where T : class
     {
         IList<T> GetByBulan(int bulan, int tahun);
+
         IList<T> GetByBulan(int bulanAwal, int bulanAkhir, int tahun);
+
         IList<T> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
     }
 }

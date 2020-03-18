@@ -16,21 +16,18 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Data;
 using OpenRetail.Model;
- 
+using System.Collections.Generic;
+using System.Data;
+
 namespace OpenRetail.Repository.Api
-{        
+{
     public interface IHargaGrosirRepository
     {
         HargaGrosir GetHargaGrosir(string produkId, int hargaKe, IDbTransaction transaction = null);
+
         IList<HargaGrosir> GetListHargaGrosir(string produkId);
+
         IList<HargaGrosir> GetListHargaGrosir(string[] listOfProdukId);
     }
-}     
+}

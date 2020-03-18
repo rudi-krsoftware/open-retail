@@ -16,20 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
- 
+using System;
+using System.Collections.Generic;
+
 namespace OpenRetail.Bll.Service
-{    
+{
     public class PembayaranKasbonBll : IPembayaranKasbonBll
     {
         private ILog _log;
@@ -146,24 +142,24 @@ namespace OpenRetail.Bll.Service
             throw new NotImplementedException();
         }
 
-		public int Save(PembayaranKasbon obj)
+        public int Save(PembayaranKasbon obj)
         {
             var result = 0;
 
             if (_isUseWebAPI)
             {
-				obj.pembayaran_kasbon_id = Guid.NewGuid().ToString();
-            
+                obj.pembayaran_kasbon_id = Guid.NewGuid().ToString();
+
                 _unitOfWork = new UnitOfWork(_isUseWebAPI, _baseUrl, _log);
                 result = _unitOfWork.PembayaranKasbonRepository.Save(obj);
             }
             else
             {
                 using (IDapperContext context = new DapperContext())
-				{
-					_unitOfWork = new UnitOfWork(context, _log);
-					result = _unitOfWork.PembayaranKasbonRepository.Save(obj);
-				}
+                {
+                    _unitOfWork = new UnitOfWork(context, _log);
+                    result = _unitOfWork.PembayaranKasbonRepository.Save(obj);
+                }
             }
 
             return result;
@@ -171,7 +167,7 @@ namespace OpenRetail.Bll.Service
 
         public int Save(PembayaranKasbon obj, ref ValidationError validationError)
         {
-			var validatorResults = _validator.Validate(obj);
+            var validatorResults = _validator.Validate(obj);
 
             if (!validatorResults.IsValid)
             {
@@ -186,7 +182,7 @@ namespace OpenRetail.Bll.Service
             return Save(obj);
         }
 
-		public int Update(PembayaranKasbon obj)
+        public int Update(PembayaranKasbon obj)
         {
             var result = 0;
 
@@ -243,6 +239,6 @@ namespace OpenRetail.Bll.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

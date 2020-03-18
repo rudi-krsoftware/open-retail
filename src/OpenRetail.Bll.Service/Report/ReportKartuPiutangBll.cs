@@ -16,16 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using OpenRetail.Bll.Api.Report;
+using OpenRetail.Model.Report;
+using OpenRetail.Repository.Api;
+using OpenRetail.Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using log4net;
-using OpenRetail.Model.Report;
-using OpenRetail.Bll.Api.Report;
-using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
 
 namespace OpenRetail.Bll.Service.Report
 {
@@ -38,14 +36,14 @@ namespace OpenRetail.Bll.Service.Report
         {
             _log = log;
         }
-        
+
         private void HitungSaldoAwal(IList<ReportKartuPiutang> oList)
         {
             var currentCustomerId = string.Empty;
             double saldo = 0;
 
             foreach (var item in oList)
-            {                
+            {
                 if (currentCustomerId != item.customer_id)
                 {
                     if (currentCustomerId.Length > 0)
@@ -133,7 +131,7 @@ namespace OpenRetail.Bll.Service.Report
             using (IDapperContext context = new DapperContext())
             {
                 _unitOfWork = new UnitOfWork(context, _log);
-                oList = _unitOfWork.ReportKartuPiutangRepository.GetSaldoAwal(tanggal);                
+                oList = _unitOfWork.ReportKartuPiutangRepository.GetSaldoAwal(tanggal);
             }
 
             return oList;

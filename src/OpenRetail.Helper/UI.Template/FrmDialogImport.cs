@@ -17,15 +17,7 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Helper;
 
 namespace OpenRetail.Helper.UI.Template
 {
@@ -69,7 +61,7 @@ namespace OpenRetail.Helper.UI.Template
         private void btnSelesai_Click(object sender, EventArgs e)
         {
             Selesai();
-        }       
+        }
 
         private void btnContohFile_Click(object sender, EventArgs e)
         {

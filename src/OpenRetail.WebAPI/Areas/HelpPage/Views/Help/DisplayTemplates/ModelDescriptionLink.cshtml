@@ -6,21 +6,21 @@
     {
         if (Model == typeof(Object))
         {
-            @:Object
+    @:Object
         }
         else
         {
-            @Html.ActionLink(modelDescription.Name, "ResourceModel", "Help", new { modelName = modelDescription.Name }, null)
+    @Html.ActionLink(modelDescription.Name, "ResourceModel", "Help", new { modelName = modelDescription.Name }, null)
         }
     }
     else if (modelDescription is CollectionModelDescription)
     {
         var collectionDescription = modelDescription as CollectionModelDescription;
         var elementDescription = collectionDescription.ElementDescription;
-        @:Collection of @Html.DisplayFor(m => elementDescription.ModelType, "ModelDescriptionLink", new { modelDescription = elementDescription })
+    @:Collection of @Html.DisplayFor(m => elementDescription.ModelType, "ModelDescriptionLink", new { modelDescription = elementDescription })
     }
     else
     {
-        @Html.DisplayFor(m => modelDescription)
+    @Html.DisplayFor(m => modelDescription)
     }
 }

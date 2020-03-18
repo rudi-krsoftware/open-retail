@@ -16,22 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class AlasanPenyesuaianStokBllTest
     {
@@ -60,7 +52,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsNotNull(obj);
             Assert.AreEqual("e4ef2a27-6600-365f-1e07-2963d55cc4bf", obj.alasan_penyesuaian_stok_id);
             Assert.AreEqual("Koreksi (Koreksi karena kesalahan input)", obj.alasan);
-                     
         }
 
         [TestMethod]
@@ -69,11 +60,10 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 1;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("e4ef2a27-6600-365f-1e07-2963d55cc4bf", obj.alasan_penyesuaian_stok_id);
-            Assert.AreEqual("Koreksi (Koreksi karena kesalahan input)", obj.alasan);                               
-                     
+            Assert.AreEqual("Koreksi (Koreksi karena kesalahan input)", obj.alasan);
         }
 
         [TestMethod]
@@ -92,11 +82,10 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var newObj = _bll.GetByID(obj.alasan_penyesuaian_stok_id);
-			Assert.IsNotNull(newObj);
-			Assert.AreEqual(obj.alasan_penyesuaian_stok_id, newObj.alasan_penyesuaian_stok_id);                                
-            Assert.AreEqual(obj.alasan, newObj.alasan);                                
-            
-		}
+            Assert.IsNotNull(newObj);
+            Assert.AreEqual(obj.alasan_penyesuaian_stok_id, newObj.alasan_penyesuaian_stok_id);
+            Assert.AreEqual(obj.alasan, newObj.alasan);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -105,7 +94,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             {
                 alasan_penyesuaian_stok_id = "ab6b9e7d-f0c2-4b49-b257-cf518f7af145",
                 alasan = "Dipake sendiri (Prive)"
-        	};
+            };
 
             var validationError = new ValidationError();
 
@@ -115,10 +104,9 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var updatedObj = _bll.GetByID(obj.alasan_penyesuaian_stok_id);
-			Assert.IsNotNull(updatedObj);
-            Assert.AreEqual(obj.alasan_penyesuaian_stok_id, updatedObj.alasan_penyesuaian_stok_id);                                
-            Assert.AreEqual(obj.alasan, updatedObj.alasan);                                
-            
+            Assert.IsNotNull(updatedObj);
+            Assert.AreEqual(obj.alasan_penyesuaian_stok_id, updatedObj.alasan_penyesuaian_stok_id);
+            Assert.AreEqual(obj.alasan, updatedObj.alasan);
         }
 
         [TestMethod]
@@ -133,7 +121,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.alasan_penyesuaian_stok_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

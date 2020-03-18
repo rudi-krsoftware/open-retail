@@ -18,11 +18,8 @@
 
 using Syncfusion.Windows.Forms;
 using Syncfusion.Windows.Forms.Grid;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace OpenRetail.Helper
@@ -51,8 +48,8 @@ namespace OpenRetail.Helper
                 colIndex++;
             }
 
-            // set header 
-            gridControl.Grid.PrepareViewStyleInfo += delegate(object sender, GridPrepareViewStyleInfoEventArgs e)
+            // set header
+            gridControl.Grid.PrepareViewStyleInfo += delegate (object sender, GridPrepareViewStyleInfoEventArgs e)
             {
                 if (e.ColIndex > 0 && e.RowIndex == 0)
                 {
@@ -68,7 +65,7 @@ namespace OpenRetail.Helper
             };
 
             // set col count
-            gridControl.Grid.QueryColCount += delegate(object sender, Syncfusion.Windows.Forms.Grid.GridRowColCountEventArgs e)
+            gridControl.Grid.QueryColCount += delegate (object sender, Syncfusion.Windows.Forms.Grid.GridRowColCountEventArgs e)
             {
                 e.Count = oglProperty.Count;
                 e.Handled = true;
@@ -76,7 +73,7 @@ namespace OpenRetail.Helper
 
             if (addRowNumber)
             {
-                gridControl.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+                gridControl.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
                 {
                     // Make sure the cell falls inside the grid
                     if (e.RowIndex > 0)
@@ -112,7 +109,7 @@ namespace OpenRetail.Helper
             }
             else
             {
-                gridControl.Grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+                gridControl.Grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
                 {
                     // Make sure the cell falls inside the grid
                     if (e.RowIndex > 0)
@@ -170,7 +167,7 @@ namespace OpenRetail.Helper
                 if (!item.IsEditable)
                     colStyle.BackColor = ColorCollection.DEFAULT_FORM_COLOR;
 
-                #endregion cell style
+                #endregion column style
 
                 colIndex++;
             }
@@ -225,7 +222,6 @@ namespace OpenRetail.Helper
 
             if (record.Count > 0)
                 gridControl.SetSelected(additionalRowCount, true);
-
         }
 
         public static void Refresh<T>(GridControl gridControl, IList<T> record)

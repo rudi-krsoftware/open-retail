@@ -16,38 +16,32 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.App.Lookup;
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
-using Syncfusion.Windows.Forms.Grid;
-using OpenRetail.Helper.UserControl;
-using OpenRetail.App.Referensi;
 using ConceptCave.WaitCursor;
 using log4net;
+using OpenRetail.App.Lookup;
+using OpenRetail.Bll.Api;
+using OpenRetail.Bll.Service;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
+using Syncfusion.Windows.Forms.Grid;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OpenRetail.App.Transaksi
 {
     public partial class FrmEntryPembayaranPiutangPenjualanProduk : FrmEntryStandard, IListener
-    {        
+    {
         private IPembayaranPiutangProdukBll _bll = null;
         private PembayaranPiutangProduk _pembayaranPiutang = null;
         private Customer _customer = null;
         private IList<ItemPembayaranPiutangProduk> _listOfItemPembayaranPiutang = new List<ItemPembayaranPiutangProduk>();
         private IList<ItemPembayaranPiutangProduk> _listOfItemPembayaranPiutangOld = new List<ItemPembayaranPiutangProduk>();
         private IList<ItemPembayaranPiutangProduk> _listOfItemPembayaranPiutangDeleted = new List<ItemPembayaranPiutangProduk>();
-        
+
         private int _rowIndex = 0;
         private int _colIndex = 0;
 
@@ -57,9 +51,9 @@ namespace OpenRetail.App.Transaksi
 
         public IListener Listener { private get; set; }
 
-        public FrmEntryPembayaranPiutangPenjualanProduk(string header, IPembayaranPiutangProdukBll bll) 
+        public FrmEntryPembayaranPiutangPenjualanProduk(string header, IPembayaranPiutangProdukBll bll)
             : base()
-        {            
+        {
             InitializeComponent();
             ColorManagerHelper.SetTheme(this, this);
 
@@ -73,7 +67,7 @@ namespace OpenRetail.App.Transaksi
             dtpTanggal.Value = DateTime.Today;
 
             _listOfItemPembayaranPiutang.Add(new ItemPembayaranPiutangProduk()); // add dummy objek
-            
+
             InitGridControl(gridControl);
         }
 
@@ -98,7 +92,7 @@ namespace OpenRetail.App.Transaksi
                 txtCustomer.Text = this._customer.nama_customer;
 
             txtKeterangan.Text = this._pembayaranPiutang.keterangan;
-            
+
             // simpan data lama
             _listOfItemPembayaranPiutangOld.Clear();
             foreach (var item in this._pembayaranPiutang.item_pembayaran_piutang)
@@ -110,7 +104,7 @@ namespace OpenRetail.App.Transaksi
                     keterangan = item.keterangan
                 });
             }
-            
+
             _listOfItemPembayaranPiutang = this._pembayaranPiutang.item_pembayaran_piutang;
             _listOfItemPembayaranPiutang.Add(new ItemPembayaranPiutangProduk()); // add dummy objek
 
@@ -133,7 +127,7 @@ namespace OpenRetail.App.Transaksi
 
             GridListControlHelper.InitializeGridListControl<ItemPembayaranPiutangProduk>(grid, _listOfItemPembayaranPiutang, gridListProperties);
 
-            grid.PushButtonClick += delegate(object sender, GridCellPushButtonClickEventArgs e)
+            grid.PushButtonClick += delegate (object sender, GridCellPushButtonClickEventArgs e)
             {
                 if (e.ColIndex == 7)
                 {
@@ -155,11 +149,11 @@ namespace OpenRetail.App.Transaksi
                         grid.Refresh();
 
                         RefreshTotal();
-                    }                    
+                    }
                 }
             };
 
-            grid.QueryCellInfo += delegate(object sender, GridQueryCellInfoEventArgs e)
+            grid.QueryCellInfo += delegate (object sender, GridQueryCellInfoEventArgs e)
             {
                 // Make sure the cell falls inside the grid
                 if (e.RowIndex > 0)
@@ -325,7 +319,7 @@ namespace OpenRetail.App.Transaksi
 
                     _customer = null;
                     _listOfItemPembayaranPiutang.Clear();
-                    _listOfItemPembayaranPiutangDeleted.Clear();                                        
+                    _listOfItemPembayaranPiutangDeleted.Clear();
 
                     this.Close();
                 }
@@ -339,7 +333,7 @@ namespace OpenRetail.App.Transaksi
                     else
                         MsgHelper.MsgUpdateError();
                 }
-            }            
+            }
         }
 
         protected override void Selesai()
@@ -354,7 +348,7 @@ namespace OpenRetail.App.Transaksi
                 foreach (var item in itemsModified)
                 {
                     var itemPembayaran = _listOfItemPembayaranPiutangOld.Where(f => f.item_pembayaran_piutang_id == item.item_pembayaran_piutang_id)
-                                                                       .SingleOrDefault();                    
+                                                                       .SingleOrDefault();
                     if (itemPembayaran != null)
                     {
                         item.nominal = itemPembayaran.nominal;
@@ -432,7 +426,6 @@ namespace OpenRetail.App.Transaksi
                     MsgHelper.MsgWarning("Data customer tidak ditemukan");
                     txtCustomer.Focus();
                     txtCustomer.SelectAll();
-
                 }
                 else if (listOfCustomer.Count == 1)
                 {
@@ -464,7 +457,7 @@ namespace OpenRetail.App.Transaksi
                 var grid = (GridControl)sender;
 
                 var rowIndex = grid.CurrentCell.RowIndex;
-                var colIndex = grid.CurrentCell.ColIndex;                
+                var colIndex = grid.CurrentCell.ColIndex;
 
                 switch (colIndex)
                 {
@@ -627,7 +620,7 @@ namespace OpenRetail.App.Transaksi
                 SetItemBayar(grid, cc.RowIndex, cc.ColIndex, jual, itemPembayaran.nominal, itemPembayaran.keterangan);
                 grid.Refresh();
                 RefreshTotal();
-            }             
+            }
         }
 
         private void FrmEntryPembayaranPiutangPenjualanProduk_FormClosing(object sender, FormClosingEventArgs e)
@@ -636,12 +629,12 @@ namespace OpenRetail.App.Transaksi
             if (!_isNewData)
             {
                 var itemsToRemove = _pembayaranPiutang.item_pembayaran_piutang.Where(f => f.JualProduk == null && f.entity_state == EntityState.Added)
-                                                                            .ToArray();   
+                                                                            .ToArray();
                 foreach (var item in itemsToRemove)
                 {
                     _pembayaranPiutang.item_pembayaran_piutang.Remove(item);
                 }
             }
-        }        
+        }
     }
 }

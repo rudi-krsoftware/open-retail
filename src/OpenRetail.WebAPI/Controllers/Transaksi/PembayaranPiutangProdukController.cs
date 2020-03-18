@@ -16,47 +16,46 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using System.Net;
-using System.Web.Http;
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
-using OpenRetail.Repository.Service;
+using OpenRetail.WebAPI.Controllers.Helper;
 using OpenRetail.WebAPI.Models;
 using OpenRetail.WebAPI.Models.DTO;
-using OpenRetail.WebAPI.Controllers.Helper;
+using System;
+using System.Collections.Generic;
+using System.Net;
 
 namespace OpenRetail.WebAPI.Controllers
 {
     public interface IPembayaranPiutangProdukController : IBaseApiController<PembayaranPiutangProdukDTO>
     {
         IHttpActionResult Save(PembayaranPiutangProdukDTO obj, bool isSaveFromPenjualan);
+
         IHttpActionResult Update(PembayaranPiutangProdukDTO obj, bool isUpdateFromPenjualan);
 
         IHttpActionResult GetLastNota();
+
         IHttpActionResult GetByID(string id);
+
         IHttpActionResult GetByJualID(string id);
 
         IHttpActionResult GetByName(string name);
+
         IHttpActionResult GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
+
         IHttpActionResult GetHistoriPembayaran(string jualId);
     }
 
     [RoutePrefix("api/pembayaran_piutang")]
     public class PembayaranPiutangProdukController : BaseApiController, IPembayaranPiutangProdukController
-    {        
+    {
         private IUnitOfWork _unitOfWork;
         private ILog _log;
         private HttpStatusCode _httpStatusCode = HttpStatusCode.BadRequest;
         private IHttpActionResult _response = null;
-		
-		public PembayaranPiutangProdukController(IUnitOfWork unitOfWork)
+
+        public PembayaranPiutangProdukController(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -246,7 +245,7 @@ namespace OpenRetail.WebAPI.Controllers
 
             return _response;
         }
-        
+
         public IHttpActionResult Save(PembayaranPiutangProdukDTO objDTO)
         {
             throw new NotImplementedException();
@@ -348,6 +347,6 @@ namespace OpenRetail.WebAPI.Controllers
             }
 
             return _response;
-        }        
+        }
     }
 }

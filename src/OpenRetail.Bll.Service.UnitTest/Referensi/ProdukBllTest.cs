@@ -16,22 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using log4net;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenRetail.Bll.Api;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
-using log4net;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class ProdukBllTest
     {
@@ -67,7 +61,7 @@ namespace OpenRetail.Bll.Service.UnitTest
                 Assert.AreEqual(50000, hargaGrosir.harga_grosir);
                 Assert.AreEqual(5, hargaGrosir.jumlah_minimal);
                 Assert.AreEqual(1, hargaGrosir.diskon);
-            }            
+            }
         }
 
         [TestMethod]
@@ -91,7 +85,7 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var golongan = obj.Golongan;
             Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", golongan.golongan_id);
-            Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);                     
+            Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);
         }
 
         [TestMethod]
@@ -152,8 +146,7 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var golongan = obj.Golongan;
             Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", golongan.golongan_id);
-            Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);                             
-                     
+            Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);
         }
 
         [TestMethod]
@@ -181,7 +174,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             var golongan = obj.Golongan;
             Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", golongan.golongan_id);
             Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);
-
         }
 
         [TestMethod]
@@ -190,7 +182,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 3;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("17c7626c-e5ca-43f2-b075-af6b6cbcbf83", obj.produk_id);
             Assert.AreEqual("201607000000055", obj.kode_produk);
@@ -206,8 +198,7 @@ namespace OpenRetail.Bll.Service.UnitTest
 
             var golongan = obj.Golongan;
             Assert.AreEqual("2aae21ba-8954-4db6-a6dc-c648e27255ad", golongan.golongan_id);
-            Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);                                
-                     
+            Assert.AreEqual("Hardward 2nd", golongan.nama_golongan);
         }
 
         [TestMethod]
@@ -226,8 +217,8 @@ namespace OpenRetail.Bll.Service.UnitTest
                 stok = 10,
                 minimal_stok = 5,
                 harga_beli = 1000000,
-                harga_jual = 1500000,                
-                golongan_id = "0a8b59e5-bb3b-4081-b963-9dc9584dcda6",                
+                harga_jual = 1500000,
+                golongan_id = "0a8b59e5-bb3b-4081-b963-9dc9584dcda6",
                 stok_gudang = 15,
                 minimal_stok_gudang = 5
             };
@@ -241,20 +232,19 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var newObj = _bll.GetByID(obj.produk_id);
-			Assert.IsNotNull(newObj);
-			Assert.AreEqual(obj.produk_id, newObj.produk_id);                                
-            Assert.AreEqual(obj.nama_produk, newObj.nama_produk);                                
-            Assert.AreEqual(obj.satuan, newObj.satuan);                                
-            Assert.AreEqual(obj.stok, newObj.stok);                                
-            Assert.AreEqual(obj.harga_beli, newObj.harga_beli);                                
-            Assert.AreEqual(obj.harga_jual, newObj.harga_jual);                                
-            Assert.AreEqual(obj.kode_produk, newObj.kode_produk);                                
-            Assert.AreEqual(obj.golongan_id, newObj.golongan_id);                                
-            Assert.AreEqual(obj.minimal_stok, newObj.minimal_stok);                                
-            Assert.AreEqual(obj.stok_gudang, newObj.stok_gudang);                                
-            Assert.AreEqual(obj.minimal_stok_gudang, newObj.minimal_stok_gudang);                                
-            
-		}
+            Assert.IsNotNull(newObj);
+            Assert.AreEqual(obj.produk_id, newObj.produk_id);
+            Assert.AreEqual(obj.nama_produk, newObj.nama_produk);
+            Assert.AreEqual(obj.satuan, newObj.satuan);
+            Assert.AreEqual(obj.stok, newObj.stok);
+            Assert.AreEqual(obj.harga_beli, newObj.harga_beli);
+            Assert.AreEqual(obj.harga_jual, newObj.harga_jual);
+            Assert.AreEqual(obj.kode_produk, newObj.kode_produk);
+            Assert.AreEqual(obj.golongan_id, newObj.golongan_id);
+            Assert.AreEqual(obj.minimal_stok, newObj.minimal_stok);
+            Assert.AreEqual(obj.stok_gudang, newObj.stok_gudang);
+            Assert.AreEqual(obj.minimal_stok_gudang, newObj.minimal_stok_gudang);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -291,7 +281,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual(obj.golongan_id, updatedObj.golongan_id);
             Assert.AreEqual(obj.minimal_stok, updatedObj.minimal_stok);
             Assert.AreEqual(obj.stok_gudang, updatedObj.stok_gudang);
-            Assert.AreEqual(obj.minimal_stok_gudang, updatedObj.minimal_stok_gudang);                                
+            Assert.AreEqual(obj.minimal_stok_gudang, updatedObj.minimal_stok_gudang);
         }
 
         [TestMethod]
@@ -306,7 +296,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.produk_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

@@ -16,19 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Helper.UserControl;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Helper;
-using Microsoft.Reporting.WinForms;
-using OpenRetail.Model;
-using OpenRetail.Helper.UserControl;
 
 namespace OpenRetail.Helper.UI.Template
 {
@@ -42,7 +35,7 @@ namespace OpenRetail.Helper.UI.Template
             ColorManagerHelper.SetTheme(this, this);
 
             dtpTanggalMulai.Value = DateTime.Today;
-            dtpTanggalSelesai.Value = DateTime.Today;  
+            dtpTanggalSelesai.Value = DateTime.Today;
         }
 
         protected void SetHeader(string header)
@@ -178,7 +171,7 @@ namespace OpenRetail.Helper.UI.Template
         protected virtual void Selesai()
         {
             this.Close();
-        }                
+        }
 
         private void chkBoxTitle_CheckedChanged(object sender, EventArgs e)
         {
@@ -198,7 +191,7 @@ namespace OpenRetail.Helper.UI.Template
         private void btnSelesai_Click(object sender, EventArgs e)
         {
             Selesai();
-        }        
+        }
 
         private void chkPilihSemua_CheckedChanged(object sender, EventArgs e)
         {
@@ -212,7 +205,7 @@ namespace OpenRetail.Helper.UI.Template
                 Preview();
 
                 e.SuppressKeyPress = true;
-            }                
+            }
         }
 
         private void FrmSettingReportStandard_KeyPress(object sender, KeyPressEventArgs e)

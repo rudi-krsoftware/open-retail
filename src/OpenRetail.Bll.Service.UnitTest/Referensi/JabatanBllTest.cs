@@ -16,22 +16,14 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OpenRetail.Model;
 using OpenRetail.Bll.Api;
-using OpenRetail.Bll.Service;
+using OpenRetail.Model;
+using System;
 
 namespace OpenRetail.Bll.Service.UnitTest
-{    
+{
     [TestClass]
     public class JabatanBllTest
     {
@@ -61,7 +53,6 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.AreEqual("edb47227-da98-4d97-bff2-b7ee41ff3400", obj.jabatan_id);
             Assert.AreEqual("Owner", obj.nama_jabatan);
             Assert.AreEqual("Pemilik toko", obj.keterangan);
-                     
         }
 
         [TestMethod]
@@ -70,12 +61,11 @@ namespace OpenRetail.Bll.Service.UnitTest
             var index = 2;
             var oList = _bll.GetAll();
             var obj = oList[index];
-                 
+
             Assert.IsNotNull(obj);
             Assert.AreEqual("edb47227-da98-4d97-bff2-b7ee41ff3400", obj.jabatan_id);
             Assert.AreEqual("Owner", obj.nama_jabatan);
-            Assert.AreEqual("Pemilik toko", obj.keterangan);                           
-                     
+            Assert.AreEqual("Pemilik toko", obj.keterangan);
         }
 
         [TestMethod]
@@ -95,12 +85,11 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var newObj = _bll.GetByID(obj.jabatan_id);
-			Assert.IsNotNull(newObj);
-			Assert.AreEqual(obj.jabatan_id, newObj.jabatan_id);                                
-            Assert.AreEqual(obj.nama_jabatan, newObj.nama_jabatan);                                
-            Assert.AreEqual(obj.keterangan, newObj.keterangan);                                
-            
-		}
+            Assert.IsNotNull(newObj);
+            Assert.AreEqual(obj.jabatan_id, newObj.jabatan_id);
+            Assert.AreEqual(obj.nama_jabatan, newObj.nama_jabatan);
+            Assert.AreEqual(obj.keterangan, newObj.keterangan);
+        }
 
         [TestMethod]
         public void UpdateTest()
@@ -110,7 +99,7 @@ namespace OpenRetail.Bll.Service.UnitTest
                 jabatan_id = "a60c6afb-ea16-467d-98eb-d724c33fc578",
                 nama_jabatan = "KA Gudang",
                 keterangan = "Kepala Gudang"
-        	};
+            };
 
             var validationError = new ValidationError();
 
@@ -120,11 +109,10 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var updatedObj = _bll.GetByID(obj.jabatan_id);
-			Assert.IsNotNull(updatedObj);
-            Assert.AreEqual(obj.jabatan_id, updatedObj.jabatan_id);                                
-            Assert.AreEqual(obj.nama_jabatan, updatedObj.nama_jabatan);                                
-            Assert.AreEqual(obj.keterangan, updatedObj.keterangan);                                
-            
+            Assert.IsNotNull(updatedObj);
+            Assert.AreEqual(obj.jabatan_id, updatedObj.jabatan_id);
+            Assert.AreEqual(obj.nama_jabatan, updatedObj.nama_jabatan);
+            Assert.AreEqual(obj.keterangan, updatedObj.keterangan);
         }
 
         [TestMethod]
@@ -139,7 +127,7 @@ namespace OpenRetail.Bll.Service.UnitTest
             Assert.IsTrue(result != 0);
 
             var deletedObj = _bll.GetByID(obj.jabatan_id);
-			Assert.IsNull(deletedObj);
+            Assert.IsNull(deletedObj);
         }
     }
-}     
+}

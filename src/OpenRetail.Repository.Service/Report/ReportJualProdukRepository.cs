@@ -16,23 +16,19 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using Dapper;
-using OpenRetail.Model;
 using OpenRetail.Model.Report;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Api.Report;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenRetail.Repository.Service.Report
 {
     public class ReportJualProdukRepository : IReportJualProdukRepository
     {
-        private const string SQL_TEMPLATE_HEADER = @"SELECT t_jual_produk.retur_jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, 
+        private const string SQL_TEMPLATE_HEADER = @"SELECT t_jual_produk.retur_jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo,
                                                      t_jual_produk.ppn, t_jual_produk.ongkos_kirim, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan, t_jual_produk.keterangan, t_jual_produk.tanggal_sistem,
                                                      m_customer.customer_id, m_customer.nama_customer, m_pengguna.pengguna_id, m_pengguna.nama_pengguna,
                                                      m_role.role_id, m_role.nama_role, m_shift.shift_id, m_shift.nama_shift
@@ -43,9 +39,9 @@ namespace OpenRetail.Repository.Service.Report
                                                      {WHERE}
                                                      ORDER BY t_jual_produk.tanggal, t_jual_produk.nota";
 
-        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, t_item_jual_produk.jumlah, t_item_jual_produk.jumlah_retur, t_item_jual_produk.harga_beli, 
+        private const string SQL_TEMPLATE_DETAIL = @"SELECT m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, t_item_jual_produk.jumlah, t_item_jual_produk.jumlah_retur, t_item_jual_produk.harga_beli,
                                                      t_item_jual_produk.harga_jual, t_item_jual_produk.diskon, COALESCE(t_item_jual_produk.keterangan, t_item_jual_produk.keterangan, '') AS keterangan,
-                                                     t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, t_jual_produk.nota, 
+                                                     t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, t_jual_produk.nota,
                                                      m_customer.customer_id, m_customer.nama_customer
                                                      FROM public.t_jual_produk LEFT JOIN public.m_customer ON m_customer.customer_id = t_jual_produk.customer_id
                                                      INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
@@ -53,13 +49,13 @@ namespace OpenRetail.Repository.Service.Report
                                                      {WHERE}
                                                      ORDER BY t_jual_produk.tanggal, t_jual_produk.nota, m_produk.nama_produk";
 
-        private const string SQL_TEMPLATE_PER_PRODUK = @"SELECT m_customer.customer_id, m_customer.nama_customer, t_jual_produk.tanggal, m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, SUM(t_item_jual_produk.jumlah) AS jumlah, 
+        private const string SQL_TEMPLATE_PER_PRODUK = @"SELECT m_customer.customer_id, m_customer.nama_customer, t_jual_produk.tanggal, m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, SUM(t_item_jual_produk.jumlah) AS jumlah,
                                                          SUM(t_item_jual_produk.jumlah_retur) AS jumlah_retur, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon
-                                                         FROM public.t_jual_produk LEFT JOIN public.m_customer ON m_customer.customer_id = t_jual_produk.customer_id 
+                                                         FROM public.t_jual_produk LEFT JOIN public.m_customer ON m_customer.customer_id = t_jual_produk.customer_id
                                                          INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
                                                          INNER JOIN public.m_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
                                                          {WHERE}
-                                                         GROUP BY m_customer.customer_id, m_customer.nama_customer, t_jual_produk.tanggal, m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon                                            
+                                                         GROUP BY m_customer.customer_id, m_customer.nama_customer, t_jual_produk.tanggal, m_produk.produk_id, m_produk.nama_produk, m_produk.satuan, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon
                                                          ORDER BY t_jual_produk.tanggal, m_produk.nama_produk";
 
         private const string SQL_TEMPLATE_PRODUK_FAVORIT = @"SELECT m_produk.nama_produk, SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur) AS jumlah
@@ -76,7 +72,7 @@ namespace OpenRetail.Repository.Service.Report
                                                                GROUP BY m_pengguna.pengguna_id, m_pengguna.nama_pengguna
                                                                ORDER BY m_pengguna.nama_pengguna";
 
-        private const string SQL_TEMPLATE_PER_KASIR_DETAIL = @"SELECT m_produk.nama_produk, COALESCE(t_item_jual_produk.keterangan, t_item_jual_produk.keterangan, '') AS keterangan, SUM(t_item_jual_produk.jumlah) AS jumlah, SUM(t_item_jual_produk.jumlah_retur) AS jumlah_retur, 
+        private const string SQL_TEMPLATE_PER_KASIR_DETAIL = @"SELECT m_produk.nama_produk, COALESCE(t_item_jual_produk.keterangan, t_item_jual_produk.keterangan, '') AS keterangan, SUM(t_item_jual_produk.jumlah) AS jumlah, SUM(t_item_jual_produk.jumlah_retur) AS jumlah_retur,
                                                                SUM(t_item_jual_produk.diskon) AS diskon, t_item_jual_produk.harga_jual
                                                                FROM public.t_mesin INNER JOIN public.t_jual_produk ON t_jual_produk.mesin_id = t_mesin.mesin_id
                                                                INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.jual_id = t_jual_produk.jual_id
@@ -85,7 +81,7 @@ namespace OpenRetail.Repository.Service.Report
                                                                GROUP BY m_produk.nama_produk, t_item_jual_produk.keterangan, t_item_jual_produk.harga_jual
                                                                ORDER BY m_produk.nama_produk";
 
-        private const string SQL_TEMPLATE_CUSTOMER_PRODUK = @"SELECT m_produk.produk_id, m_produk.nama_produk, 
+        private const string SQL_TEMPLATE_CUSTOMER_PRODUK = @"SELECT m_produk.produk_id, m_produk.nama_produk,
                                                               COALESCE(m_customer.customer_id, m_customer.customer_id, '6ecdf4af-d9e1-8c33-f22a-3cb8e053c02a') AS customer_id,
                                                               COALESCE(m_customer.nama_customer, m_customer.nama_customer, '-') AS nama_customer, m_customer.alamat, m_customer.telepon,
                                                               SUM(t_item_jual_produk.jumlah - t_item_jual_produk.jumlah_retur) AS jumlah
@@ -105,7 +101,7 @@ namespace OpenRetail.Repository.Service.Report
                                                                   GROUP BY m_golongan.golongan_id, m_golongan.nama_golongan
                                                                   ORDER BY m_golongan.nama_golongan";
 
-        private const string SQL_TEMPLATE_PER_GOLONGAN_DETAIL = @"SELECT m_golongan.golongan_id, m_golongan.nama_golongan, t_jual_produk.tanggal, m_produk.produk_id, m_produk.nama_produk, COALESCE(t_item_jual_produk.keterangan, t_item_jual_produk.keterangan, '') AS keterangan,  
+        private const string SQL_TEMPLATE_PER_GOLONGAN_DETAIL = @"SELECT m_golongan.golongan_id, m_golongan.nama_golongan, t_jual_produk.tanggal, m_produk.produk_id, m_produk.nama_produk, COALESCE(t_item_jual_produk.keterangan, t_item_jual_produk.keterangan, '') AS keterangan,
                                                                   SUM(t_item_jual_produk.jumlah) AS jumlah, SUM(t_item_jual_produk.jumlah_retur) AS jumlah_retur, t_item_jual_produk.harga_beli, t_item_jual_produk.harga_jual, t_item_jual_produk.diskon
                                                                   FROM public.m_golongan INNER JOIN public.m_produk ON m_produk.golongan_id = m_golongan.golongan_id
                                                                   INNER JOIN public.t_item_jual_produk ON t_item_jual_produk.produk_id = m_produk.produk_id
@@ -318,7 +314,6 @@ namespace OpenRetail.Repository.Service.Report
             return oList;
         }
 
-
         public IList<ReportProdukFavorit> ProdukFavoritGetByBulan(int bulan, int tahun, int limit)
         {
             IList<ReportProdukFavorit> oList = new List<ReportProdukFavorit>();
@@ -366,7 +361,6 @@ namespace OpenRetail.Repository.Service.Report
 
             return oList;
         }
-
 
         public IList<ReportPenjualanPerKasir> PerKasirGetByBulan(int bulan, int tahun)
         {
@@ -508,7 +502,6 @@ namespace OpenRetail.Repository.Service.Report
 
             return oList;
         }
-
 
         public IList<ReportPenjualanProdukPerGolongan> PerGolonganGetByBulan(int bulan, int tahun)
         {

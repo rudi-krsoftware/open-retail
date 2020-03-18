@@ -16,23 +16,22 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using OpenRetail.Model;
- 
 namespace OpenRetail.Bll.Api
-{    
+{
     public interface IPenyesuaianStokBll : IBaseBll<PenyesuaianStok>
     {
-        PenyesuaianStok GetByID(string id);    
+        PenyesuaianStok GetByID(string id);
+
         IList<PenyesuaianStok> GetByName(string name);
+
         IList<PenyesuaianStok> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai);
 
-		int Save(PenyesuaianStok obj, ref ValidationError validationError);
-		int Update(PenyesuaianStok obj, ref ValidationError validationError);
+        int Save(PenyesuaianStok obj, ref ValidationError validationError);
+
+        int Update(PenyesuaianStok obj, ref ValidationError validationError);
     }
-}     
+}

@@ -16,22 +16,16 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using log4net;
-using Dapper;
-using Dapper.Contrib.Extensions;
-
 using OpenRetail.Model;
 using OpenRetail.Repository.Api;
+using System;
+using System.Collections.Generic;
 using System.Data;
- 
+using System.Linq;
+
 namespace OpenRetail.Repository.Service
-{        
+{
     public class PembayaranPiutangProdukRepository : IPembayaranPiutangProdukRepository
     {
         private const string SQL_TEMPLATE = @"SELECT t_pembayaran_piutang_produk.pembayaran_piutang_id, t_pembayaran_piutang_produk.pengguna_id, t_pembayaran_piutang_produk.tanggal, t_pembayaran_piutang_produk.keterangan, t_pembayaran_piutang_produk.tanggal_sistem, t_pembayaran_piutang_produk.nota, t_pembayaran_piutang_produk.is_tunai,
@@ -39,10 +33,11 @@ namespace OpenRetail.Repository.Service
                                               FROM public.m_customer RIGHT JOIN public.t_pembayaran_piutang_produk ON t_pembayaran_piutang_produk.customer_id = m_customer.customer_id
                                               {WHERE}
                                               {ORDER BY}";
+
         private IDapperContext _context;
         private ILog _log;
         private string _sql;
-		
+
         public PembayaranPiutangProdukRepository(IDapperContext context, ILog log)
         {
             this._context = context;
@@ -70,7 +65,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT t_item_pembayaran_piutang_produk.item_pembayaran_piutang_id, t_item_pembayaran_piutang_produk.pembayaran_piutang_id, t_item_pembayaran_piutang_produk.nominal, t_item_pembayaran_piutang_produk.keterangan, 
+                var sql = @"SELECT t_item_pembayaran_piutang_produk.item_pembayaran_piutang_id, t_item_pembayaran_piutang_produk.pembayaran_piutang_id, t_item_pembayaran_piutang_produk.nominal, t_item_pembayaran_piutang_produk.keterangan,
                             t_item_pembayaran_piutang_produk.tanggal_sistem, 1 as entity_state, (SELECT COUNT(*) FROM t_item_pembayaran_piutang_produk WHERE jual_id = t_jual_produk.jual_id) AS jumlah_angsuran,
                             t_jual_produk.jual_id, t_jual_produk.nota, t_jual_produk.tanggal, t_jual_produk.tanggal_tempo, t_jual_produk.ppn, t_jual_produk.ongkos_kirim, t_jual_produk.diskon, t_jual_produk.total_nota, t_jual_produk.total_pelunasan
                             FROM public.t_item_pembayaran_piutang_produk INNER JOIN public.t_jual_produk ON t_item_pembayaran_piutang_produk.jual_id = t_jual_produk.jual_id
@@ -124,7 +119,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT t_item_pembayaran_piutang_produk.item_pembayaran_piutang_id, t_item_pembayaran_piutang_produk.jual_id, t_item_pembayaran_piutang_produk.nominal, t_item_pembayaran_piutang_produk.keterangan, 1 as entity_state, 
+                var sql = @"SELECT t_item_pembayaran_piutang_produk.item_pembayaran_piutang_id, t_item_pembayaran_piutang_produk.jual_id, t_item_pembayaran_piutang_produk.nominal, t_item_pembayaran_piutang_produk.keterangan, 1 as entity_state,
                             t_pembayaran_piutang_produk.pembayaran_piutang_id, t_pembayaran_piutang_produk.customer_id, t_pembayaran_piutang_produk.pengguna_id, t_pembayaran_piutang_produk.tanggal, t_pembayaran_piutang_produk.keterangan, t_pembayaran_piutang_produk.nota, t_pembayaran_piutang_produk.is_tunai
                             FROM public.t_item_pembayaran_piutang_produk INNER JOIN public.t_pembayaran_piutang_produk ON t_item_pembayaran_piutang_produk.pembayaran_piutang_id = t_pembayaran_piutang_produk.pembayaran_piutang_id
                             WHERE t_item_pembayaran_piutang_produk.jual_id = @id";
@@ -169,7 +164,7 @@ namespace OpenRetail.Repository.Service
             }
 
             return oList;
-        }        
+        }
 
         public IList<PembayaranPiutangProduk> GetByTanggal(DateTime tanggalMulai, DateTime tanggalSelesai)
         {
@@ -225,7 +220,7 @@ namespace OpenRetail.Repository.Service
 
             try
             {
-                var sql = @"SELECT t_item_pembayaran_piutang_produk.item_pembayaran_piutang_id, t_item_pembayaran_piutang_produk.nominal, t_item_pembayaran_piutang_produk.keterangan, 
+                var sql = @"SELECT t_item_pembayaran_piutang_produk.item_pembayaran_piutang_id, t_item_pembayaran_piutang_produk.nominal, t_item_pembayaran_piutang_produk.keterangan,
                             t_pembayaran_piutang_produk.pembayaran_piutang_id, t_pembayaran_piutang_produk.tanggal, t_pembayaran_piutang_produk.nota, m_pengguna.pengguna_id, m_pengguna.nama_pengguna
                             FROM public.t_item_pembayaran_piutang_produk INNER JOIN public.t_pembayaran_piutang_produk ON t_item_pembayaran_piutang_produk.pembayaran_piutang_id = t_pembayaran_piutang_produk.pembayaran_piutang_id
                             INNER JOIN public.m_pengguna ON t_pembayaran_piutang_produk.pengguna_id = m_pengguna.pengguna_id
@@ -310,7 +305,7 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
 
         public int Update(PembayaranPiutangProduk obj)
         {
@@ -371,15 +366,14 @@ namespace OpenRetail.Repository.Service
                 _log.Info("Update data");
 
                 result = 1;
-
             }
             catch (Exception ex)
             {
                 _log.Error("Error:", ex);
             }
 
-            return result; 
-        }        
+            return result;
+        }
 
         public int Delete(PembayaranPiutangProduk obj)
         {
@@ -401,6 +395,6 @@ namespace OpenRetail.Repository.Service
             }
 
             return result;
-        }        
+        }
     }
-}     
+}

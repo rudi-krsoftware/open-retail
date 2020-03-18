@@ -16,20 +16,17 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using log4net;
-using OpenRetail.Model.Nota;
 using OpenRetail.Bll.Api;
+using OpenRetail.Model.Nota;
 using OpenRetail.Repository.Api;
 using OpenRetail.Repository.Service;
+using System;
+using System.Collections.Generic;
 
 namespace OpenRetail.Bll.Service
 {
-    public class CetakNotaDummyBll :ICetakNotaBll
+    public class CetakNotaDummyBll : ICetakNotaBll
     {
         private ILog _log;
         private IUnitOfWork _unitOfWork;

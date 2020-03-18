@@ -16,16 +16,12 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using FluentValidation;
+using Newtonsoft.Json;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
-using FluentValidation;
 using System.ComponentModel.DataAnnotations;
-using OpenRetail.Model;
 
 namespace OpenRetail.WebAPI.Models.DTO
 {
@@ -39,34 +35,34 @@ namespace OpenRetail.WebAPI.Models.DTO
             item_beli_deleted = new List<ItemBeliProdukDTO>();
         }
 
-		[Display(Name = "beli_produk_id")]		
-		public string beli_produk_id { get; set; }
-		
-		[Display(Name = "pengguna_id")]
-		public string pengguna_id { get; set; }
+        [Display(Name = "beli_produk_id")]
+        public string beli_produk_id { get; set; }
+
+        [Display(Name = "pengguna_id")]
+        public string pengguna_id { get; set; }
 
         [JsonIgnore]
         public PenggunaDTO Pengguna { get; set; }
 
-		[Display(Name = "Supplier")]
-		public string supplier_id { get; set; }
+        [Display(Name = "Supplier")]
+        public string supplier_id { get; set; }
 
         [JsonIgnore]
         public SupplierDTO Supplier { get; set; }
 
-		[Display(Name = "retur_beli_produk_id")]
-		public string retur_beli_produk_id { get; set; }
+        [Display(Name = "retur_beli_produk_id")]
+        public string retur_beli_produk_id { get; set; }
 
         [JsonIgnore]
         public ReturBeliProdukDTO ReturBeliProduk { get; set; }
 
-		[Display(Name = "Nota")]
-		public string nota { get; set; }
-		
-		[Display(Name = "Tanggal")]
-		public Nullable<DateTime> tanggal { get; set; }
-		
-		[Display(Name = "Tanggal Tempo")]
+        [Display(Name = "Nota")]
+        public string nota { get; set; }
+
+        [Display(Name = "Tanggal")]
+        public Nullable<DateTime> tanggal { get; set; }
+
+        [Display(Name = "Tanggal Tempo")]
         public Nullable<DateTime> tanggal_tempo
         {
             get { return _tanggal_tempo.IsNull() ? null : _tanggal_tempo; }
@@ -76,24 +72,24 @@ namespace OpenRetail.WebAPI.Models.DTO
         [JsonIgnore]
         public Nullable<DateTime> tanggal_tempo_old { get; set; }
 
-		[Display(Name = "PPN")]
-		public double ppn { get; set; }
-		
-		[Display(Name = "diskon")]
-		public double diskon { get; set; }
-		
-		[Display(Name = "total_nota")]
-		public double total_nota { get; set; }
+        [Display(Name = "PPN")]
+        public double ppn { get; set; }
 
-		[Display(Name = "total_pelunasan")]
-		public double total_pelunasan { get; set; }
-		
-		[Display(Name = "Keterangan")]
-		public string keterangan { get; set; }
+        [Display(Name = "diskon")]
+        public double diskon { get; set; }
+
+        [Display(Name = "total_nota")]
+        public double total_nota { get; set; }
+
+        [Display(Name = "total_pelunasan")]
+        public double total_pelunasan { get; set; }
+
+        [Display(Name = "Keterangan")]
+        public string keterangan { get; set; }
 
         [JsonIgnore]
-		[Display(Name = "tanggal_sistem")]
-		public Nullable<DateTime> tanggal_sistem { get; set; }
+        [Display(Name = "tanggal_sistem")]
+        public Nullable<DateTime> tanggal_sistem { get; set; }
 
         public double total_pelunasan_old { get; set; }
 
@@ -110,7 +106,7 @@ namespace OpenRetail.WebAPI.Models.DTO
         public bool is_tunai { get; set; }
 
         public IList<ItemBeliProdukDTO> item_beli { get; set; }
-        
+
         public IList<ItemBeliProdukDTO> item_beli_deleted { get; set; }
     }
 

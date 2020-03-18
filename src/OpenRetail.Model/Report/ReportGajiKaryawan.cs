@@ -17,9 +17,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenRetail.Model.Report
 {
@@ -42,7 +39,7 @@ namespace OpenRetail.Model.Report
         public int jam { get; set; }
         public int jumlah_hari { get; set; }
         public double tunjangan { get; set; }
-        
+
         public double gaji_akhir
         {
             get

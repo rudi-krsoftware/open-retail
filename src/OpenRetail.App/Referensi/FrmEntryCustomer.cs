@@ -16,26 +16,22 @@
  * The latest version of this file can be found at https://github.com/rudi-krsoftware/open-retail
  */
 
+using ConceptCave.WaitCursor;
+using OpenRetail.Bll.Api;
+using OpenRetail.Helper;
+using OpenRetail.Helper.UI.Template;
+using OpenRetail.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using OpenRetail.Model;
-using OpenRetail.Bll.Api;
-using OpenRetail.Helper.UI.Template;
-using OpenRetail.Helper;
-using ConceptCave.WaitCursor;
 
 namespace OpenRetail.App.Referensi
 {
     public partial class FrmEntryCustomer : FrmEntryStandard
     {
-        private ICustomerBll _bll = null; // deklarasi objek business logic layer 
+        private ICustomerBll _bll = null; // deklarasi objek business logic layer
         private Customer _customer = null;
         private bool _isNewData = false;
 
@@ -131,13 +127,13 @@ namespace OpenRetail.App.Referensi
         }
 
         private void LoadKecamatan(string kabupatenId)
-        {            
+        {
             _listOfKecamatan = _listOfWilayah.Where(f => f.kabupaten_id == kabupatenId)
                                              .GroupBy(g => new { g.kecamatan_id, g.nama_kecamatan })
                                              .Select(f => new Kecamatan { kecamatan_id = f.FirstOrDefault().kecamatan_id, nama_kecamatan = f.FirstOrDefault().nama_kecamatan })
                                              .OrderBy(f => f.nama_kecamatan)
-                                             .ToList();            
-            
+                                             .ToList();
+
             cmbKecamatan.Items.Clear();
             cmbKecamatan.Items.Add("Pilih");
 
@@ -193,7 +189,7 @@ namespace OpenRetail.App.Referensi
             _customer.desa = string.Empty;
             _customer.kelurahan = string.Empty;
             _customer.kota = string.Empty;
-            
+
             _customer.kode_pos = txtKodePos.Text;
             _customer.kontak = txtKontak.Text;
             _customer.telepon = txtTelepon.Text;
@@ -221,7 +217,6 @@ namespace OpenRetail.App.Referensi
                     }
                     else
                         this.Close();
-
                 }
                 else
                 {
@@ -232,8 +227,8 @@ namespace OpenRetail.App.Referensi
                     }
                     else
                         MsgHelper.MsgUpdateError();
-                } 
-            }                           
+                }
+            }
         }
 
         private void txtPlafonPiutang_KeyPress(object sender, KeyPressEventArgs e)
@@ -252,6 +247,6 @@ namespace OpenRetail.App.Referensi
         {
             var kabupatenId = ((ComboBox)sender).SelectedIndex == 0 ? "0" : _listOfKabupaten[((ComboBox)sender).SelectedIndex - 1].kabupaten_id;
             LoadKecamatan(kabupatenId);
-        }        
+        }
     }
 }
